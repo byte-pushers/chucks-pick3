@@ -6,13 +6,22 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
 
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
   <modules>
     <module>pick3-lottery-web-scraper</module>
     <module>chucks-pick3-ws</module>
+    <module>chucks-pick3-api</module>
+    <module>chucks-pick3-core</module>
+    <module>chucks-pick3-model</module>
   </modules>
 
   <name>chucks-pick-3</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -20,5 +29,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- Lombok IntelliJ Plugin is at https://plugins.jetbrains.com/plugin/6317-lombok-plugin -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.16</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
+
 </project>

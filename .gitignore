@@ -2,5 +2,5 @@
 *.iml
 chucks-pick3.iml
 chucks-pick3-ws/chucks-pick3-ws.iml
-chucks-pick3-ws/target
 .DS_Store
+*/target/*

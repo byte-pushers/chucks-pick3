@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Configuration
 @ComponentScan("software.bytepushers.pick3.controller")
+@ComponentScan("software.bytepushers.pick3.converter")
 public class SpringApiConfig {
     /*
      * Create required HandlerMapping, to avoid several default HandlerMapping instances being created
