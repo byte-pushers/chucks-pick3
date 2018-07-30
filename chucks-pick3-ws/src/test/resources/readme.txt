@@ -1,1 +1,0 @@
-This resources directory is for application test properties and configuration files.

@@ -1,0 +1,20 @@
+{
+  "name": "pick3-lottery-web-scraper",
+  "version": "0.0.3",
+  "description": "Web scraper that gets past winning numbers for the Pick 3 lottery.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byte-pushers/pick3-lottery-web-scraper.git"
+  },
+  "license": "MIT",
+  "author": "Tonté Pouncil <tonte.pouncil@bytepushers.software>",
+  "contributors": [
+    "Tonté Pouncil <pouncilt.developer@gmail.com> "
+  ],
+  "directories": {
+    "lib": "release"
+  },
+  "main": [
+    "release/pick3-lottery-web-scraper.js"
+  ]
+}

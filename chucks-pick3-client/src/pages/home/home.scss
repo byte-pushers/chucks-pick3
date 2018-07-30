@@ -1,0 +1,25 @@
+page-home {
+  li { height: 100%; list-style-type:none; display:inline-block; }
+
+  .home-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    height: 100%;
+  }
+
+  .home-container > .row {
+    -webkit-flex: 1;
+    border-bottom: 1px solid black;
+  }
+
+  .header {
+    -webkit-flex: 1.5 !important;
+    -webkit-align-items: center;
+    background-color: #1abc9c;
+  }
+
+  .icon-row {
+    -webkit-align-items: center;
+    border-bottom: 1px solid black;
+  }
+}
