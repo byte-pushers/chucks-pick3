@@ -1,4 +1,4 @@
-package software.bytepushers.pick3.controller;
+package software.bytepushers.pick3.controllers;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

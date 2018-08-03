@@ -1,8 +1,10 @@
-package software.bytepushers.pick3;
+package software.bytepushers.pick3.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.HandlerAdapter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.HandlerMapping;
@@ -17,6 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 @Configuration
 @ComponentScan("software.bytepushers.pick3")
 public class SpringApiConfig {
+    @Bean
+    public LocalValidatorFactoryBean validator(MessageSource messageSource) {
+        LocalValidatorFactoryBean validatorFactoryBean = new LocalValidatorFactoryBean();
+        validatorFactoryBean.setValidationMessageSource(messageSource);
+        return validatorFactoryBean;
+    }
+
     /*
      * Create required HandlerMapping, to avoid several default HandlerMapping instances being created
      */
