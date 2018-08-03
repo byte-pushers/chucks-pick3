@@ -16,6 +16,7 @@ import java.io.OutputStream;
 
 public class StreamLambdaHandler implements RequestStreamHandler {
     private static SpringLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
+
     static {
         try {
             handler = SpringLambdaContainerHandler.getAwsProxyHandler(SpringApiConfig.class);

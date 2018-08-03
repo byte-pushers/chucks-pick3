@@ -2,8 +2,8 @@ package software.bytepushers.pick3.services;
 
 
 import org.springframework.stereotype.Service;
-import software.bytepushers.pick3.config.Pick3PlaysConfig;
 import software.bytepushers.pick3.api.v1.DrawingTime;
+import software.bytepushers.pick3.config.Pick3PlaysConfig;
 import software.bytepushers.pick3.domain.Pick3Plays;
 
 import java.util.Arrays;

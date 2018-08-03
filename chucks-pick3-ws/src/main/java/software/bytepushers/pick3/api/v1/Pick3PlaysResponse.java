@@ -10,6 +10,6 @@ import java.util.List;
 @Setter
 public class Pick3PlaysResponse {
     private Date date;
-    private DrawingTime drawingTime;
+    private String drawingTime;
     private List<Integer> plays;
 }

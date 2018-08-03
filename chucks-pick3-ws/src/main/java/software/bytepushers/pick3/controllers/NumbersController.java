@@ -29,21 +29,21 @@ public class NumbersController {
         this.pick3PlaysMapper = pick3PlaysMapper;
     }
 
-    @GetMapping(path="/numbers")
+    @GetMapping(path = "/numbers")
     public Pick3PlaysResponse getNumbers(@RequestParam("winNumber") @Max(999) @Min(0)
-                                                     Integer winningNumber,
-                                         @RequestParam("winDate") @DateTimeFormat(pattern="yyyy-MM-dd")
-                                            @Past(message = "{errors.winDate.past}")
-                                                     Date winningDrawDate,
-                                         @RequestParam("futureDrawDate") @DateTimeFormat(pattern="yyyy-MM-dd")
-                                             @Future(message = "{errors.futureDrawDate.future")
-                                                     Date futureDrawDate,
-                                         @RequestParam("winTime")        DrawingTime winningDrawTime,
+                                                 Integer winningNumber,
+                                         @RequestParam("winDate") @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                         @Past(message = "{errors.winDate.past}")
+                                                 Date winningDrawDate,
+                                         @RequestParam("futureDrawDate") @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                         @Future(message = "{errors.futureDrawDate.future")
+                                                 Date futureDrawDate,
+                                         @RequestParam("winTime") DrawingTime winningDrawTime,
                                          @RequestParam("futureDrawTime") DrawingTime futureDrawTime) {
         return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(pick3PlaysService.getPick3Plays(winningNumber,
                 winningDrawDate, winningDrawTime, futureDrawDate, futureDrawTime));
     }
-    
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<String> handleValidationExceptions(MethodArgumentNotValidException ex) {
