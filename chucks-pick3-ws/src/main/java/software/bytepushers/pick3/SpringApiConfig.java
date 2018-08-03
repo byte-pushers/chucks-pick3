@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @Configuration
-@ComponentScan("software.bytepushers.pick3.controller")
-@ComponentScan("software.bytepushers.pick3.converter")
+@ComponentScan("software.bytepushers.pick3")
 public class SpringApiConfig {
     /*
      * Create required HandlerMapping, to avoid several default HandlerMapping instances being created
@@ -32,23 +31,5 @@ public class SpringApiConfig {
     @Bean
     public HandlerAdapter handlerAdapter() {
         return new RequestMappingHandlerAdapter();
-    }
-
-    /*
-     * optimization - avoids creating default exception resolvers; not required as the serverless container handles
-     * all exceptions
-     *
-     * By default, an ExceptionHandlerExceptionResolver is created which creates many dependent object, including
-     * an expensive ObjectMapper instance.
-     */
-    @Bean
-    public HandlerExceptionResolver handlerExceptionResolver() {
-        return new HandlerExceptionResolver() {
-
-            @Override
-            public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-                return null;
-            }
-        };
     }
 }
