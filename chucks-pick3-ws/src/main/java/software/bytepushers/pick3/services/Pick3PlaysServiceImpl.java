@@ -16,7 +16,6 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
     private final Pick3PredictionService pick3PredictionService;
     private final Pick3PlaysConfig config;
 
-    // TODO: inject outside service this service will call.
     public Pick3PlaysServiceImpl(Pick3PredictionService predictionService, Pick3PlaysConfig config) {
         this.pick3PredictionService = predictionService;
         this.config = config;

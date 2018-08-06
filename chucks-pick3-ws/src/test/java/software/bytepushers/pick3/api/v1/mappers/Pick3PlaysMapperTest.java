@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.api.v1.mappers;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mapstruct.ap.internal.util.Collections;
@@ -27,21 +28,40 @@ public class Pick3PlaysMapperTest {
     }
 
     @Autowired
-    Pick3PlaysMapper mapper;
+    private Pick3PlaysMapper mapper;
+
+    private Pick3Plays plays;
+
+    @Before
+    public void before() {
+        plays = new Pick3Plays();
+    }
 
     @Test
-    public void testMapsPick3PlaysToPick3PlaysResponse() {
-        Pick3Plays plays = new Pick3Plays();
-
-        Date date = new Date();
+    public void testMapsDrawingTimeToResponse() {
         plays.setDrawingTime(DrawingTime.DAY);
-        plays.setDrawingDate(new Date());
-        plays.setPlays(Collections.newArrayList(123, 456, 789));
+
+        Pick3PlaysResponse response = mapper.pick3PlaysToPick3PlaysResponse(plays);
+
+        assertThat(response.getDrawingTime()).isEqualTo(DrawingTime.DAY.toString());
+    }
+
+    @Test
+    public void testMapsDrawingDateToResponse() {
+        Date date = new Date();
+        plays.setDrawingDate(date);
 
         Pick3PlaysResponse response = mapper.pick3PlaysToPick3PlaysResponse(plays);
 
         assertThat(response.getDate()).isEqualTo(new SimpleDateFormat("yyyy-MM-dd").format(date));
-        assertThat(response.getDrawingTime()).isEqualTo(DrawingTime.DAY.toString());
+    }
+
+    @Test
+    public void testMapsPlaysToResponse() {
+        plays.setPlays(Collections.newArrayList(123, 456, 789));
+
+        Pick3PlaysResponse response = mapper.pick3PlaysToPick3PlaysResponse(plays);
+
         assertThat(response.getPlays()).containsExactlyInAnyOrder(123, 456, 789);
     }
 }
