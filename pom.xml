@@ -9,10 +9,11 @@
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
 
   <modules>
-    <module>pick3-lottery-web-scraper</module>
+    <!--<module>pick3-lottery-web-scraper</module>-->
     <module>chucks-pick3-ws</module>
     <module>chucks-pick3-api</module>
     <module>chucks-pick3-core</module>

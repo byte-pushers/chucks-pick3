@@ -3,14 +3,14 @@ package software.bytepushers.pick3.config;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@Component
 @Getter
+@PropertySource("classpath:application.yml")
 public class Pick3PlaysConfig {
 
-    @Value("pick3.config.numPlaysToPredict")
+    @Value("${config.numPlaysToPredict:10}")
     Integer numPlaysToPredict;
 
 }

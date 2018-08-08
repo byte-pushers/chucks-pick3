@@ -8,6 +8,7 @@ import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import software.bytepushers.pick3.util.UrlUtils;
 
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.core.HttpHeaders;
@@ -16,11 +17,13 @@ import javax.ws.rs.core.Response;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.*;
 
 
-public class StreamLambdaHandlerTest {
+public class StreamLambdaHandlerIT {
 
     private static StreamLambdaHandler handler;
     private static Context lambdaContext;
@@ -32,10 +35,19 @@ public class StreamLambdaHandlerTest {
     }
 
     @Test
-    public void ping_streamRequest_respondsWithHello() {
-        InputStream requestStream = new AwsProxyRequestBuilder("/ping", HttpMethod.GET)
-                                            .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
-                                            .buildStream();
+    public void testStreamRequestRespondsWithPredictions() {
+        String now = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String tomorrow = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        InputStream requestStream = new AwsProxyRequestBuilder("/numbers", HttpMethod.GET)
+                        .queryString("winNumber", "123")
+                        .queryString("winDrawDate", now)
+                        .queryString("futureDrawDate", tomorrow)
+                        .queryString("winDrawTime", "EVENING")
+                        .queryString("futureDrawTime", "NIGHT")
+                        .header(HttpHeaders.ACCEPT, "application/json;charset=UTF-8")
+                        .buildStream();
+
         ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
 
         handle(requestStream, responseStream);
@@ -46,8 +58,9 @@ public class StreamLambdaHandlerTest {
 
         assertFalse(response.isBase64Encoded());
 
-        assertTrue(response.getBody().contains("pong"));
-        assertTrue(response.getBody().contains("Hello, World!"));
+        assertTrue(response.getBody().contains("\"date\":\"" + tomorrow + "\""));
+        assertTrue(response.getBody().contains("\"drawingTime\":\"NIGHT\""));
+        assertTrue(response.getBody().contains("\"plays\":["));
 
         assertTrue(response.getHeaders().containsKey(HttpHeaders.CONTENT_TYPE));
         assertTrue(response.getHeaders().get(HttpHeaders.CONTENT_TYPE).startsWith(MediaType.APPLICATION_JSON));

@@ -14,7 +14,8 @@ import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.domain.Pick3Plays;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,12 +49,12 @@ public class Pick3PlaysMapperTest {
 
     @Test
     public void testMapsDrawingDateToResponse() {
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
         plays.setDrawingDate(date);
 
         Pick3PlaysResponse response = mapper.pick3PlaysToPick3PlaysResponse(plays);
 
-        assertThat(response.getDate()).isEqualTo(new SimpleDateFormat("yyyy-MM-dd").format(date));
+        assertThat(response.getDate()).isEqualTo(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
 
     @Test

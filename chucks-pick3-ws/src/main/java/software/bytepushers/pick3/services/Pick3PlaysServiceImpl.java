@@ -6,8 +6,8 @@ import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.config.Pick3PlaysConfig;
 import software.bytepushers.pick3.domain.Pick3Plays;
 
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,8 +22,8 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
     }
 
     @Override
-    public Pick3Plays getPick3Plays(Integer winningNumber, Date winningDrawDate, DrawingTime winningDrawTime,
-                                    Date futureDrawDate, DrawingTime futureDrawTime) {
+    public Pick3Plays getPick3Plays(Integer winningNumber, LocalDate winningDrawDate, DrawingTime winningDrawTime,
+                                    LocalDate futureDrawDate, DrawingTime futureDrawTime) {
         int[][] predictions = pick3PredictionService.predictPick3Plays(winningNumber, winningDrawDate, winningDrawTime,
                 futureDrawDate, futureDrawTime, config.getNumPlaysToPredict());
 
