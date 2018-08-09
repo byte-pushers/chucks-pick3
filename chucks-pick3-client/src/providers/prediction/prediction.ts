@@ -16,8 +16,8 @@ export class PredictionProvider {
     console.log('Hello PredictionProvider Provider');
   }
 
-  getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: DrawingTime, futureDrawTime: DrawingTime, winNumber: number) {
-
+  getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: string, futureDrawTime: string, winNumber: number) {
+    
   }
 
   formatDate(d: Date) {
