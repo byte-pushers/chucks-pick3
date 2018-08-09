@@ -12,7 +12,7 @@
   </properties>
 
   <modules>
-    <module>pick3-lottery-web-scraper</module>
+    <!--<module>pick3-lottery-web-scraper</module> // disabled for now -->
     <module>chucks-pick3-ws</module>
     <module>chucks-pick3-api</module>
     <module>chucks-pick3-core</module>
