@@ -1,9 +1,9 @@
 var BytePushers = require('bytepushers-js-oop');
+var BaseWebScraper = require('./software.bytepushers.pick3.lottery.web.BaseWebScraper');
 
 function WebScraper(txPick3WebScraperConfig) {
     'use strict';
-    var url = (txPick3WebScraperConfig && txPick3WebScraperConfig.url)? txPick3WebScraperConfig.url: null;
-    var $ = (txPick3WebScraperConfig && txPick3WebScraperConfig.cheerio)? txPick3WebScraperConfig.cheerio: {};
+    WebScraper.prototype.superclass.apply(this, [txPick3WebScraperConfig]);
     var drawingDate = (txPick3WebScraperConfig && txPick3WebScraperConfig.drawingDate)? txPick3WebScraperConfig.drawingDate: null;
     var drawingTime = (txPick3WebScraperConfig && txPick3WebScraperConfig.drawingTime)? txPick3WebScraperConfig.drawingTime: null;
     var drawingNumber = -1;
@@ -11,14 +11,6 @@ function WebScraper(txPick3WebScraperConfig) {
     function pad(n) {
         return n < 10 ? '0' + n : n;
     }
-
-    this.getUrl = function () {
-        return url;
-    };
-
-    this.getCheerio = function () {
-        return $;
-    };
 
     this.getDrawingDate = function () {
         return drawingDate;
@@ -33,19 +25,35 @@ function WebScraper(txPick3WebScraperConfig) {
     };
 
     this.findMorningWinningNumber = function (drawingDate) {
-        throw Error("method not implemented by WebScraper" + this.constructor.name);
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
     };
 
     this.findDayWinningNumber = function (drawingDate) {
-        throw Error("method not implemented by WebScraper" + this.constructor.name);
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
     };
 
     this.findEveningWinningNumber = function (drawingDate) {
-        throw Error("method not implemented by WebScraper" + this.constructor.name);
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
     };
 
     this.findNightWinningNumber = function (drawingDate) {
-        throw Error("method not implemented by WebScraper" + this.constructor.name);
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
+    };
+
+    this.getMorningPostTime = function() {
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
+    };
+
+    this.getDayPostTime = function() {
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
+    };
+
+    this.getEveningPostTime = function() {
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
+    };
+
+    this.getNightPostTime = function() {
+        throw Error("method not implemented by WebScraper " + this.constructor.name);
     };
 
     this.findWinningNumber = function (drawingDate, drawingTime) {
@@ -73,7 +81,7 @@ function WebScraper(txPick3WebScraperConfig) {
                 break;
             default:
                 //TODO: Use specific Error for Drawing Times not supported.
-                throw new Error("TexasPick3WebScraper.DRAWING_TIMES("+drawingTime+") is not supported.");
+                throw new Error("WebScraper.DRAWING_TIMES("+drawingTime+") is not supported.");
         }
 
         return winningNumber;
@@ -109,5 +117,9 @@ WebScraper.DRAWING_TIMES = BytePushers.enumeration({
         description: "Pick 3 Lottery drawing time for night time drawing."
     }
 });
+
+WebScraper.prototype = BytePushers.inherit(BaseWebScraper.prototype);
+WebScraper.prototype.constructor = WebScraper;
+WebScraper.prototype.superclass = BaseWebScraper;
 
 module.exports = WebScraper;

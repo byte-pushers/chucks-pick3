@@ -1,11 +1,13 @@
 
 var BytePushers = require('bytepushers-js-oop');
 var WebScraper = require('./software.bytepushers.pick3.lottery.web.WebScraper');
+var DrawingTimeNotFoundException = require('./software.bytepushers.pick3.lottery.web.exceptions.DrawingTimeNotFoundException');
 
 function TexasPick3WebScraper(TxPick3WebScraperConfig) {
     'use strict';
     TexasPick3WebScraper.prototype.superclass.apply(this, [TxPick3WebScraperConfig]);
-    var $ = this.getCheerio();
+    var $ = this.getCheerio(),
+        self = this;
 
     function findTargetDrawDateSection(drawingDate){
         var $targetTdElement = scrapeDrawDateTdElement(drawingDate),
@@ -16,32 +18,35 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
 
     this.findMorningWinningNumber = function (drawingDate) {
         var $targetDrawDateSection = findTargetDrawDateSection(drawingDate),
-            winningNumber = scrapeMorningWinningNumber($targetDrawDateSection);
+            parsedDrawDateSection = parseTargetDrawDateSection($targetDrawDateSection),
+            winningNumber = scrapeWinningNumber(parsedDrawDateSection.morningTdElements);
 
         return winningNumber;
     };
 
     this.findDayWinningNumber = function (drawingDate) {
         var $targetDrawDateSection = findTargetDrawDateSection(drawingDate),
-            winningNumber = scrapeDayWinningNumber($targetDrawDateSection);
+            parsedDrawDateSection = parseTargetDrawDateSection($targetDrawDateSection),
+            winningNumber = scrapeWinningNumber(parsedDrawDateSection.dayTdElements);
 
         return winningNumber;
     };
 
     this.findEveningWinningNumber = function (drawingDate) {
         var $targetDrawDateSection = findTargetDrawDateSection(drawingDate),
-            winningNumber = scrapeEveningWinningNumber($targetDrawDateSection);
+            parsedDrawDateSection = parseTargetDrawDateSection($targetDrawDateSection),
+            winningNumber = scrapeWinningNumber(parsedDrawDateSection.eveningTdElements);
 
         return winningNumber;
     };
 
     this.findNightWinningNumber = function (drawingDate) {
         var $targetDrawDateSection = findTargetDrawDateSection(drawingDate),
-            winningNumber = scrapeNightWinningNumber($targetDrawDateSection);
+            parsedDrawDateSection = parseTargetDrawDateSection($targetDrawDateSection),
+            winningNumber = scrapeWinningNumber(parsedDrawDateSection.nightTdElements);
 
         return winningNumber;
     };
-
 
     function removeNewLineBytes(someText) {
         var bytes = []; // char codes
@@ -73,50 +78,16 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
         return result;
     }
 
-    function scrapeMorningWinningNumber($section) {
-        var num1 = $section.find("td:nth-child(2)").text(),
-            num2 = $section.find("td:nth-child(3)").text(),
-            num3 = $section.find("td:nth-child(4)").text();
+    function scrapeWinningNumber(parsedDrawDateSection) {
+        var num1, num2, num3;
 
-        num1 = removeNewLineBytes(num1).trim();
-        num2 = removeNewLineBytes(num2).trim();
-        num3 = removeNewLineBytes(num3).trim();
+        if (parsedDrawDateSection.length != 3) {
+            throw new DrawingTimeNotFoundException(self.getDrawingTime(), self.getDrawingDate());
+        }
 
-        return 100 * num1 + 10 * num2 + 1 * num3;
-    }
-
-    function scrapeDayWinningNumber($section) {
-        var num1 = $section.find("td:nth-child(6)").text(),
-            num2 = $section.find("td:nth-child(7)").text(),
-            num3 = $section.find("td:nth-child(8)").text();
-
-        num1 = removeNewLineBytes(num1).trim();
-        num2 = removeNewLineBytes(num2).trim();
-        num3 = removeNewLineBytes(num3).trim();
-
-        return 100 * num1 + 10 * num2 + 1 * num3;
-    }
-
-    function scrapeEveningWinningNumber($section) {
-        var num1 = $section.find("td:nth-child(10)").text(),
-            num2 = $section.find("td:nth-child(11)").text(),
-            num3 = $section.find("td:nth-child(12)").text();
-
-        num1 = removeNewLineBytes(num1).trim();
-        num2 = removeNewLineBytes(num2).trim();
-        num3 = removeNewLineBytes(num3).trim();
-
-        return 100 * num1 + 10 * num2 + 1 * num3;
-    }
-
-    function scrapeNightWinningNumber($section) {
-        var num1 = $section.find("td:nth-child(14)").text(),
-            num2 = $section.find("td:nth-child(15)").text(),
-            num3 = $section.find("td:nth-child(16)").text();
-
-        num1 = removeNewLineBytes(num1).trim();
-        num2 = removeNewLineBytes(num2).trim();
-        num3 = removeNewLineBytes(num3).trim();
+        num1 = removeNewLineBytes(parsedDrawDateSection[0].children[0].data).trim();
+        num2 = removeNewLineBytes(parsedDrawDateSection[1].children[0].data).trim();
+        num3 = removeNewLineBytes(parsedDrawDateSection[2].children[0].data).trim();
 
         return 100 * num1 + 10 * num2 + 1 * num3;
     }
@@ -131,6 +102,37 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
         var $drawDateTrElement = $targetTdElement.parent();
 
         return $drawDateTrElement;
+    }
+
+    function parseTargetDrawDateSection($targetTrElement) {
+        var tdElements = $targetTrElement.children('td'),
+            result = { morningTdElements:[],
+                       dayTdElements: [],
+                       eveningTdElements: [],
+                       nightTdElements: []},
+            columnCount = 0;
+
+        // Iterate over the td elements and separate them into morning, day, evening, and night buckets
+        // based on the column the element lies in.
+        tdElements.each((index, $tdElement) => {
+            if ($tdElement.attribs['colspan']) {
+                columnCount += parseInt($tdElement.attribs['colspan']);
+            } else {
+                columnCount++;
+            }
+
+            if (2 <= columnCount && columnCount <= 4) {
+                result.morningTdElements.push($tdElement);
+            } else if (6 <= columnCount && columnCount <= 8) {
+                result.dayTdElements.push($tdElement);
+            } else if (10 <= columnCount && columnCount <= 12) {
+                result.eveningTdElements.push($tdElement);
+            } else if (14 <= columnCount && columnCount <= 16) {
+                result.nightTdElements.push($tdElement);
+            }
+        });
+
+        return result;
     }
 }
 
