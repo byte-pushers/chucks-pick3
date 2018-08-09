@@ -11,11 +11,16 @@ import com.amazonaws.services.cloudformation.model.*;
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.AWSLambdaClient;
 import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
-import com.amazonaws.services.lambda.model.*;
+import com.amazonaws.services.lambda.model.GetFunctionRequest;
+import com.amazonaws.services.lambda.model.GetFunctionResult;
+import com.amazonaws.services.lambda.model.UpdateFunctionCodeRequest;
+import com.amazonaws.services.lambda.model.UpdateFunctionCodeResult;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.*;
+import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
+import com.amazonaws.services.s3.model.HeadBucketRequest;
+import com.amazonaws.services.s3.model.SetBucketVersioningConfigurationRequest;
 import org.joda.time.DateTime;
 
 import java.io.File;
@@ -45,7 +50,7 @@ public class DeployToAwsLambda {
         final String bucketName = System.getProperty(PROP_BUCKET_NAME);
         String objectName = System.getProperty(PROP_OBJECT_NAME);
 
-        if (!s3BucketExists(s3Client, bucketName)){
+        if (!s3BucketExists(s3Client, bucketName)) {
             createS3Bucket(s3Client, bucketName);
         }
 
@@ -96,11 +101,11 @@ public class DeployToAwsLambda {
         final String changeSetName = "createFromInitialSamTransform";
 
         CreateChangeSetResult changeSetResult = cloudFormationClient.createChangeSet(new CreateChangeSetRequest()
-            .withStackName(stackName)
-            .withChangeSetName(changeSetName)
-            .withChangeSetType(ChangeSetType.CREATE)
-            .withTemplateBody(templateBody)
-            .withCapabilities(Capability.CAPABILITY_IAM));
+                .withStackName(stackName)
+                .withChangeSetName(changeSetName)
+                .withChangeSetType(ChangeSetType.CREATE)
+                .withTemplateBody(templateBody)
+                .withCapabilities(Capability.CAPABILITY_IAM));
 
         ChangeSetStatus status = monitorChangeSetCreationStatus(cloudFormationClient, stackName, changeSetName);
         if (status != ChangeSetStatus.CREATE_COMPLETE) {
@@ -110,8 +115,8 @@ public class DeployToAwsLambda {
         checkForErrors(changeSetResult, "create new change set");
 
         ExecuteChangeSetResult executeChangeSetResult = cloudFormationClient.executeChangeSet(new ExecuteChangeSetRequest()
-            .withStackName(stackName)
-            .withChangeSetName(changeSetName));
+                .withStackName(stackName)
+                .withChangeSetName(changeSetName));
 
         try {
             ExecutionStatus execStatus = monitorChangeSetExecutionStatus(cloudFormationClient, stackName, changeSetName);
@@ -124,7 +129,7 @@ public class DeployToAwsLambda {
         }
 
         StackStatus stackStatus = monitorStackCreationStatus(cloudFormationClient, stackName);
-        if(stackStatus != StackStatus.CREATE_COMPLETE) {
+        if (stackStatus != StackStatus.CREATE_COMPLETE) {
             throw new RuntimeException("Attempt to create stack failed for stack " + stackName);
         }
 
@@ -138,10 +143,10 @@ public class DeployToAwsLambda {
         String awsRegion = System.getenv(PROP_AWS_REGION);
 
         for (StackResourceSummary summary : stackResources.getStackResourceSummaries()) {
-            if (summary.getResourceType().equals("AWS::Lambda::Function")){
+            if (summary.getResourceType().equals("AWS::Lambda::Function")) {
                 System.out.println("\nPhysicalResourceId (functionName) of lambda function: " + summary.getPhysicalResourceId());
                 System.out.println("\n!!!IMPORTANT INFO BELOW!!!\n" +
-                                   "Replace the lambdaFunctionName in pom.xml to update the function in the new stack.");
+                        "Replace the lambdaFunctionName in pom.xml to update the function in the new stack.");
             }
         }
 
@@ -259,14 +264,14 @@ public class DeployToAwsLambda {
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(templateFilename));
-        } catch(IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         StringBuilder b = new StringBuilder();
         for (String line : lines) {
             b.append(line.replaceFirst("\\$\\{" + PROP_BUCKET_NAME + "\\}", bucketName)
-                         .replaceFirst("\\$\\{" + PROP_OBJECT_NAME + "\\}", objectName));
+                    .replaceFirst("\\$\\{" + PROP_OBJECT_NAME + "\\}", objectName));
             b.append('\n');
         }
         return b.toString();
@@ -303,7 +308,7 @@ public class DeployToAwsLambda {
             client.headBucket(new HeadBucketRequest(bucketName));
             return true; // if headBucket doesn't throw an exception, the bucket exists.
         } catch (AmazonServiceException e) {
-            if(e.getStatusCode() == 404) {
+            if (e.getStatusCode() == 404) {
                 return false;
             }
             throw e;
@@ -349,7 +354,7 @@ public class DeployToAwsLambda {
     }
 
     private static AwsSyncClientBuilder setCommonProperties(AwsSyncClientBuilder builder) {
-        if(System.getProperty(PROP_AWS_REGION) != null) {
+        if (System.getProperty(PROP_AWS_REGION) != null) {
             builder.setRegion(System.getProperty(PROP_AWS_REGION));
         }
         return builder;
