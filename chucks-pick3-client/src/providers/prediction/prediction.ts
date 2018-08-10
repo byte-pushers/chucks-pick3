@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { WebScraper } from 'pick3-lottery-web-scraper';
+import {Pick3PlaysResponse} from "./api/v1/Pick3PlaysResponse";
+import {DrawingTime} from "./api/v1/DrawingTime";
+import {catchError} from "rxjs/operators";
 
 /*
   Generated class for the PredictionProvider provider.
@@ -11,18 +13,38 @@ import { WebScraper } from 'pick3-lottery-web-scraper';
 */
 @Injectable()
 export class PredictionProvider {
-  configUrl = "https://39nvsj21bl.execute-api.us-east-1.amazonaws.com/Prod";
-  "winDrawDate=2018-07-08&winNumber=123&futureDrawDate=2018-08-08&winDrawTime=MORNING&futureDrawTime=DAY"
+
+  configUrl: string = "https://39nvsj21bl.execute-api.us-east-1.amazonaws.com/Prod";
 
   constructor(public http: HttpClient) {
     console.log('Hello PredictionProvider Provider');
   }
 
-  getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: string, futureDrawTime: string, winNumber: number) {
-
+  getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: DrawingTime, futureDrawTime: DrawingTime, winNumber: number) {
+    return this.http.get<Pick3PlaysResponse>(this.configUrl + '/numbers',
+      {
+        params: {
+          winDrawDate: this.formatDate(winDrawDate),
+          futureDrawDate: this.formatDate(futureDrawDate),
+          winDrawTime: winDrawTime.toString(),
+          futureDrawTime: futureDrawTime.toString(),
+          winNumber: winNumber.toString()
+        }
+      }).pipe(catchError(this.handleError));
   }
 
-  formatDate(d: Date) {
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return 'Something bad happened; please try again later.';
+  }
+
+  private formatDate(d: Date): string {
       var month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();

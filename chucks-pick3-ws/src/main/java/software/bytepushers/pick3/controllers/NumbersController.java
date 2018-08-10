@@ -36,7 +36,6 @@ public class NumbersController {
     @RequestMapping(path = "/numbers",
                     method=RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    @TypeScriptEndpoint
     public Pick3PlaysResponse getNumbers(Integer winNumber,
                                          @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate winDrawDate,
                                          @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate futureDrawDate,

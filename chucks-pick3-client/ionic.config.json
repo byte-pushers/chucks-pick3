@@ -1,6 +1,8 @@
 {
   "name": "chuckspick3-client",
-  "app_id": "ac976762",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
-  "integrations": {}
+  "pro_id": "ac976762"
 }
