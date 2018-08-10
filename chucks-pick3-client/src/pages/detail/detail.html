@@ -7,12 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>detail</ion-title>
+    <ion-title>Get Predictions</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content padding class="no-scroll">
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        <ion-label>Winning Number</ion-label>
+        <div item-content>{{item.winningNumber}}</div>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label>{{item.drawTime}} Drawing of</ion-label>
+        <div item-content>{{item.date | date:'longDate'}}</div>
+      </ion-item>
+    </ion-row>
+    <ion-row height="100%">
+      <ion-item>
+        <ion-label>Future Date to Play</ion-label>
+        <ion-datetime displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY" [(ngModel)]="selectedDate"
+                      [min]="minDate" [max]="maxDate"></ion-datetime>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
+<ion-footer>
+  <button [disabled]="selectedDate == null" ion-button block (click)='submit();'>Submit</button>
+</ion-footer>

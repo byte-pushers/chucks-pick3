@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 
 @Component({
@@ -9,11 +9,12 @@ import { DetailPage } from '../detail/detail';
 export class HomePage {
   items: any[] = [];
 
-  constructor(public navCtrl: NavController) {
-      this.items.push({type: 'Morning', winningNumber: 355});
-      this.items.push({type: 'Day', winningNumber: 987});
-      this.items.push({type: 'Evening', winningNumber: 123});
-      this.items.push({type: 'Night', winningNumber: 728});
+  constructor(public navCtrl: NavController, public modalControl: ModalController) {
+    var date = new Date();
+    this.items.push({date: date, drawTime: 'Morning', winningNumber: 355});
+    this.items.push({date: date, drawTime: 'Day', winningNumber: 987});
+    this.items.push({date: date, drawTime: 'Evening', winningNumber: 123});
+    this.items.push({date: date, drawTime: 'Night', winningNumber: 728});
 
   }
 
