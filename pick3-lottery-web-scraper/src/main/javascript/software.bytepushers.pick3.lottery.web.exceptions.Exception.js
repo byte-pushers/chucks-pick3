@@ -10,7 +10,7 @@ function Exception(drawingTime, drawingDate, expectedDrawTime) {
     this.toString = function() {
         return String.format("DrawingTimeInFutureException: the requested drawing time \"{1}\" is in the future. Check back on {2} after {3}",
             this.drawingTime, this.drawingDate, this.expectedDrawTime);
-    }
+    };
 }
 
 Exception.prototype = BytePushers.inherit(Error.prototype);

@@ -13,7 +13,7 @@ function DrawingTimeNotFoundException(drawingTime, drawingDate) {
     this.toString = function() {
         return String.format("DrawingTimeNotFoundException: the requested drawing time \"{1}\" was not available for date {2}",
             this.drawingTime, this.drawingDate);
-    }
+    };
 }
 
 DrawingTimeNotFoundException.prototype = BytePushers.inherit(Error.prototype);

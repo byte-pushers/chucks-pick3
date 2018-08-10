@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
+import org.leandreck.endpoints.annotations.TypeScriptEndpoint;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,7 +35,8 @@ public class NumbersController {
 
     @RequestMapping(path = "/numbers",
                     method=RequestMethod.GET,
-                    produces = {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_JSON_VALUE})
+                    produces = MediaType.APPLICATION_JSON_VALUE)
+    @TypeScriptEndpoint
     public Pick3PlaysResponse getNumbers(Integer winNumber,
                                          @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate winDrawDate,
                                          @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate futureDrawDate,

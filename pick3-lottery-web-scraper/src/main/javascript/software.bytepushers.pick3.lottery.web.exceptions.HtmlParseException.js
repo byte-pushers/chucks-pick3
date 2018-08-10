@@ -11,7 +11,7 @@ function HtmlParseException(message) {
 
     this.toString = function() {
         return String.format("HtmlParseException: {1}", this.message);
-    }
+    };
 }
 
 HtmlParseException.prototype = BytePushers.inherit(Exception.prototype);

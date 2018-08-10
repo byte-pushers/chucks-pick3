@@ -16,6 +16,7 @@ module.exports = function (grunt) {
                 undef: false,
                 unused: false,
                 nonbsp: true,
+                esversion: 6,
                 reporter: require('jshint-stylish')
             },
             files: ['src/main/javascript/**/*.js']
@@ -107,8 +108,8 @@ module.exports = function (grunt) {
             }
         }
     });
-    
-    
+
+
 
     var build = grunt.option('target') || 'build';
     var release = grunt.option('target') || 'release';

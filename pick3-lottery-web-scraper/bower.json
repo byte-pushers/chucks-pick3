@@ -1,6 +1,6 @@
 {
   "name": "pick3-lottery-web-scraper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Web scraper that gets past winning numbers for the Pick 3 lottery.",
   "repository": {
     "type": "git",

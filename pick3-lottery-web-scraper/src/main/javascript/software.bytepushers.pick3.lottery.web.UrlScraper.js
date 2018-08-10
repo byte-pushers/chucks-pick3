@@ -13,17 +13,17 @@ function UrlScraper(urlScraperConfig) {
 
     this.getDrawingDate = function() {
         return drawingDate;
-    }
+    };
 
     this.scrapeTargetUrl = function(targetDate) {
         throw Error("method not implemented by UrlScraper " + this.constructor.name);
-    }
+    };
 
     this.findSourcePath = function(drawingDate) {
         var targetUrl = this.scrapeTargetUrl(drawingDate);
 
         return targetUrl;
-    }
+    };
 }
 
 UrlScraper.prototype = BytePushers.inherit(BaseWebScraper.prototype);

@@ -12,7 +12,7 @@ function DrawingYearNotAvailableException(drawingYear) {
     this.toString = function() {
         return String.format("DrawingYearNotAvailableException: data is not available for the requested drawing year \"{1}\".",
             this.drawingYear);
-    }
+    };
 }
 
 DrawingYearNotAvailableException.prototype = BytePushers.inherit(Error.prototype);

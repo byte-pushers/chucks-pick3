@@ -21,7 +21,7 @@ function TexasPick3UrlScraper(TxPick3UrlScraperConfig) {
             throw new DrawingYearNotAvailableException(targetYear);
         }
         return baseUrl + targetUrl.replace("index", "print");
-    }
+    };
 }
 
 TexasPick3UrlScraper.prototype = BytePushers.inherit(UrlScraper.prototype);

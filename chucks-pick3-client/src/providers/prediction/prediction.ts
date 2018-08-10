@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { WebScraper } from 'pick3-lottery-web-scraper';
+
 /*
   Generated class for the PredictionProvider provider.
 
@@ -17,7 +19,7 @@ export class PredictionProvider {
   }
 
   getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: string, futureDrawTime: string, winNumber: number) {
-    
+
   }
 
   formatDate(d: Date) {

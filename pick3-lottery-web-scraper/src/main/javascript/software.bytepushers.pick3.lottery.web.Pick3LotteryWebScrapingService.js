@@ -44,8 +44,8 @@ function Pick3LotteryWebScrapingService() {
                                 });
                                 try {
                                     winningNumber.number = scraper.findWinningNumber(drawingDate, drawingTime);
-                                } catch(error) {
-                                    reject(error);
+                                } catch (e) {
+                                    reject(e);
                                 }
                                 resolve(winningNumber);
                             }
@@ -66,8 +66,7 @@ function Pick3LotteryWebScrapingService() {
     };
 
     function doScrape(url, callback) {
-
-        request(url, callback)
+        request(url, callback);
     }
 
     function getWinningNumberSourcePath(drawingState, drawingDate) {
@@ -93,8 +92,8 @@ function Pick3LotteryWebScrapingService() {
                         });
                         try {
                             sourcePath.url = scraper.findSourcePath(drawingDate);
-                        } catch (error) {
-                            reject(error);
+                        } catch (err) {
+                            reject(err);
                         }
                         resolve(sourcePath);
                     }

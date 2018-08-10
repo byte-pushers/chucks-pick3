@@ -49,15 +49,16 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
     };
 
     function removeNewLineBytes(someText) {
-        var bytes = []; // char codes
+        var bytes = [],
+            i = 0; // char codes
 
-        for (var i = 0; i < someText.length; ++i) {
+        for (i = 0; i < someText.length; ++i) {
             var code = someText.charCodeAt(i);
 
             bytes = bytes.concat([code]);
         }
 
-        for (var i = 0; i < bytes.length; i++) {
+        for (i = 0; i < bytes.length; i++) {
             if (bytes[i] === 92 && bytes[i+1] === 110) {
                 bytes.splice(i, 2);
             }
@@ -115,8 +116,8 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
         // Iterate over the td elements and separate them into morning, day, evening, and night buckets
         // based on the column the element lies in.
         tdElements.each((index, $tdElement) => {
-            if ($tdElement.attribs['colspan']) {
-                columnCount += parseInt($tdElement.attribs['colspan']);
+            if ($tdElement.attribs.colspan) {
+                columnCount += parseInt($tdElement.attribs.colspan);
             } else {
                 columnCount++;
             }
