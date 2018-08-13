@@ -4,17 +4,21 @@ import { PredictionPage } from "../prediction/prediction";
 
 @Component({
   selector: 'page-detail',
-  templateUrl: 'detail.html',
+  templateUrl: 'future-select.html',
 })
 export class DetailPage {
-  public item: any;
+  public item: any; // TODO: type-safety.
+
   private minDate: string;
   private maxDate: string;
+
   public selectedDate: string;
+  public selectedDrawTime: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.item = navParams.get('item');
 
+    // Set min and max date to ensure user can only select from dates in the future.
     var today = new Date();
     this.minDate = today.toISOString();
     today.setFullYear(today.getFullYear() + 100, 12, 31);
@@ -22,15 +26,20 @@ export class DetailPage {
   }
 
   submit(): void {
-    this.item.futureDrawDate = this.selectedDate;
+    this.item['futureDrawDate'] = this.adjustForTimezone(this.selectedDate);
+    this.item['futureDrawTime'] = this.selectedDrawTime;
     this.navCtrl.push(PredictionPage, {
-      item: this.item
+      item: this.item     // TODO: Type-safety
     });
+  }
+
+  private adjustForTimezone(d: string): Date {
+    var date: Date = new Date(d);
+    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
-    console.log(this.minDate, this.maxDate);
   }
 
 }

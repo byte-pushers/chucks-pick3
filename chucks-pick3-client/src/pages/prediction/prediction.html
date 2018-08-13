@@ -7,12 +7,43 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>predictionPage</ion-title>
+    <ion-title>Numbers to Play</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+  <div *ngIf="!requestSuccess && !requestFailed">
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col align-self-center>
+          <ion-spinner></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="requestSuccess">
+    <ion-item>
+      <ion-label>
+        Play Date
+      </ion-label>
+      <div item-content>{{ response.date }}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Play Time
+      </ion-label>
+      <div item-content>{{ response.drawingTime | titlecase }}</div>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let play of response.plays" justify-content-start col-4 class="play">
+          <div item-content>{{ play.toString() | leftpad: 3:'0'}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="requestFailed">
+    <ion-item>Request Failed!</ion-item>
+  </div>
 </ion-content>

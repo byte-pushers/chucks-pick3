@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Get Predictions</ion-title>
+    <ion-title>Select Day to Play</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,13 +17,24 @@
     <ion-row>
       <ion-item>
         <ion-label>Winning Number</ion-label>
-        <div item-content>{{item.winningNumber}}</div>
+        <div item-content>{{item.winNumber}}</div>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
-        <ion-label>{{item.drawTime}} Drawing of</ion-label>
-        <div item-content>{{item.date | date:'longDate'}}</div>
+        <ion-label>{{item.winDrawTime | titlecase}} Drawing of</ion-label>
+        <div item-content>{{item.winDrawDate | date:'longDate'}}</div>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label>Future Draw Time</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedDrawTime">
+          <ion-option value="MORNING">Morning</ion-option>
+          <ion-option value="DAY">Day</ion-option>
+          <ion-option value="EVENING">Evening</ion-option>
+          <ion-option value="NIGHT">Night</ion-option>
+        </ion-select>
       </ion-item>
     </ion-row>
     <ion-row height="100%">
@@ -38,5 +49,7 @@
 
 
 <ion-footer>
-  <button [disabled]="selectedDate == null" ion-button block (click)='submit();'>Submit</button>
+  <button [disabled]="selectedDate == null || selectedDrawTime == null" ion-button block (click)='submit();'>
+    Submit
+  </button>
 </ion-footer>

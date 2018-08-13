@@ -1,35 +1,28 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import {Pick3PlaysResponse} from "./api/v1/Pick3PlaysResponse";
-import {DrawingTime} from "./api/v1/DrawingTime";
-import {catchError} from "rxjs/operators";
+import {Pick3PlaysResponse} from './api/v1/Pick3PlaysResponse.model';
+import {catchError} from 'rxjs/operators';
 
-/*
-  Generated class for the PredictionProvider provider.
+import { API_URL } from '../../app/app.config';
+import {Pick3PlaysRequest} from "./api/v1/Pick3PlaysRequest.model";
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class PredictionProvider {
-
-  configUrl: string = "https://39nvsj21bl.execute-api.us-east-1.amazonaws.com/Prod";
 
   constructor(public http: HttpClient) {
     console.log('Hello PredictionProvider Provider');
   }
 
-  getPredictions(winDrawDate: Date, futureDrawDate: Date, winDrawTime: DrawingTime, futureDrawTime: DrawingTime, winNumber: number) {
-    return this.http.get<Pick3PlaysResponse>(this.configUrl + '/numbers',
+  public getPredictions(request: Pick3PlaysRequest) {
+    return this.http.get<Pick3PlaysResponse>(API_URL + "/numbers",
       {
-        params: {
-          winDrawDate: this.formatDate(winDrawDate),
-          futureDrawDate: this.formatDate(futureDrawDate),
-          winDrawTime: winDrawTime.toString(),
-          futureDrawTime: futureDrawTime.toString(),
-          winNumber: winNumber.toString()
-        }
+        params: new HttpParams()
+          .append("winDrawDate", this.formatDate(request.winDrawDate))
+          .append("futureDrawDate", this.formatDate(request.futureDrawDate))
+          .append("winDrawTime", request.winDrawTime)
+          .append("futureDrawTime", request.futureDrawTime)
+          .append("winNumber", "" + request.winNumber)
       }).pipe(catchError(this.handleError));
   }
 
@@ -39,7 +32,7 @@ export class PredictionProvider {
     } else {
       console.error(
         `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `body was: ${JSON.stringify(error.error)}`);
     }
     return 'Something bad happened; please try again later.';
   }
