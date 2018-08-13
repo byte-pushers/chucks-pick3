@@ -68,11 +68,14 @@ public class DeployToAwsLambda {
         sendPayloadToS3(s3Client, bucketName, objectName, file);
 
         final AWSLambda lambdaClient = buildLambdaClient();
+        final AmazonCloudFormation cloudFormationClient = buildCloudFormationClient();
         final String functionName = System.getProperty(PROP_LAMBDA_FUNCTION_NAME);
+        final String stackName = System.getProperty(PROP_CLOUDFORMATION_STACK_NAME);
 
-        if (functionName == null || functionName.isEmpty()) {
+        if (!cloudFormationStackExists(cloudFormationClient, stackName)) {
+        //if (functionName == null || functionName.isEmpty()) {
             // Create a new cloud formation stack using the specified SAM template.
-            createCloudFormationStack(bucketName, objectName);
+            createCloudFormationStack(cloudFormationClient, bucketName, objectName);
         } else {
             // Attempt to update the existing lambda function.
             updateAndPublishLambdaFunction(lambdaClient, functionName, bucketName, objectName, fileName);
@@ -87,14 +90,14 @@ public class DeployToAwsLambda {
         System.out.println("!!!IMPORTANT!!! Created new S3 Bucket " + bucketName + ". Configure bucket management via console");
     }
 
-    private static void createCloudFormationStack(String bucketName, String objectName) {
-        final AmazonCloudFormation cloudFormationClient = buildCloudFormationClient();
-
+    private static void createCloudFormationStack(AmazonCloudFormation cloudFormationClient, String bucketName,
+                                                  String objectName) {
         final String stackName = System.getProperty(PROP_CLOUDFORMATION_STACK_NAME);
         final String templateFile = System.getProperty(PROP_CLOUDFORMATION_TEMPLATE);
+        final String functionName = System.getProperty(PROP_LAMBDA_FUNCTION_NAME);
 
         final String templateBody =
-                readCloudFormationTemplateAndSubstituteProperties(templateFile, bucketName, objectName);
+                readCloudFormationTemplateAndSubstituteProperties(templateFile, bucketName, objectName, functionName);
 
         // Note: We cannot create a new stack using SAM templates, since templates containing transform directives
         // must be introduced via change sets.
@@ -136,19 +139,6 @@ public class DeployToAwsLambda {
         checkForErrors(executeChangeSetResult, "execute change set");
 
         System.out.println("Created new CloudFormation stack with ID: " + changeSetResult.getStackId());
-
-        ListStackResourcesResult stackResources =
-                cloudFormationClient.listStackResources(new ListStackResourcesRequest().withStackName(stackName));
-
-        String awsRegion = System.getenv(PROP_AWS_REGION);
-
-        for (StackResourceSummary summary : stackResources.getStackResourceSummaries()) {
-            if (summary.getResourceType().equals("AWS::Lambda::Function")) {
-                System.out.println("\nPhysicalResourceId (functionName) of lambda function: " + summary.getPhysicalResourceId());
-                System.out.println("\n!!!IMPORTANT INFO BELOW!!!\n" +
-                        "Replace the lambdaFunctionName in pom.xml to update the function in the new stack.");
-            }
-        }
 
         Stack stack =
                 cloudFormationClient.describeStacks(new DescribeStacksRequest().withStackName(stackName)).getStacks().get(0);
@@ -244,6 +234,8 @@ public class DeployToAwsLambda {
                 switch (status) {
                     case CREATE_COMPLETE:
                     case FAILED:
+                        if (describeChangeSetResult.getStatusReason() != null)
+                            System.out.println("\n\tREASON: " + describeChangeSetResult.getStatusReason());
                         return status;
                 }
                 try {
@@ -260,7 +252,7 @@ public class DeployToAwsLambda {
     }
 
     private static String readCloudFormationTemplateAndSubstituteProperties(String templateFilename, String bucketName,
-                                                                            String objectName) {
+                                                                            String objectName, String functionName) {
         List<String> lines;
         try {
             lines = Files.readAllLines(Paths.get(templateFilename));
@@ -271,7 +263,8 @@ public class DeployToAwsLambda {
         StringBuilder b = new StringBuilder();
         for (String line : lines) {
             b.append(line.replaceFirst("\\$\\{" + PROP_BUCKET_NAME + "\\}", bucketName)
-                    .replaceFirst("\\$\\{" + PROP_OBJECT_NAME + "\\}", objectName));
+                    .replaceFirst("\\$\\{" + PROP_OBJECT_NAME + "\\}", objectName)
+                    .replaceFirst("\\$\\{" + PROP_LAMBDA_FUNCTION_NAME + "\\}", functionName));
             b.append('\n');
         }
         return b.toString();
@@ -313,6 +306,12 @@ public class DeployToAwsLambda {
             }
             throw e;
         }
+    }
+
+    private static boolean cloudFormationStackExists(AmazonCloudFormation cloudFormationClient, String stackName) {
+        ListStacksResult listStacks = cloudFormationClient.listStacks();
+        return listStacks.getStackSummaries().stream().anyMatch((stack) -> stack.getStackName().equals(stackName) &&
+            stack.getDeletionTime() == null);
     }
 
     private static boolean lambdaFunctionExistsAndUsesJava8Runtime(AWSLambda client, String functionName) {

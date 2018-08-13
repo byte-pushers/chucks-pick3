@@ -1,0 +1,55 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Select Day to Play</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="no-scroll">
+  <ion-grid>
+    <ion-row>
+      <ion-item>
+        <ion-label>Winning Number</ion-label>
+        <div item-content>{{item.winNumber}}</div>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label>{{item.winDrawTime | titlecase}} Drawing of</ion-label>
+        <div item-content>{{item.winDrawDate | date:'longDate'}}</div>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label>Future Draw Time</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedDrawTime">
+          <ion-option value="MORNING">Morning</ion-option>
+          <ion-option value="DAY">Day</ion-option>
+          <ion-option value="EVENING">Evening</ion-option>
+          <ion-option value="NIGHT">Night</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <ion-row height="100%">
+      <ion-item>
+        <ion-label>Future Date to Play</ion-label>
+        <ion-datetime displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY" [(ngModel)]="selectedDate"
+                      [min]="minDate" [max]="maxDate"></ion-datetime>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<ion-footer>
+  <button [disabled]="selectedDate == null || selectedDrawTime == null" ion-button block (click)='submit();'>
+    Submit
+  </button>
+</ion-footer>

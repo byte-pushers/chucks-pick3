@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Today's Pick 3 Drawing</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content scroll="false">
+  <section class="home-container">
+
+    <div class="row header">
+
+      <div class="col text-center">
+        [LOGO / HEADER]
+      </div>
+
+    </div>
+
+    <div class="row icon-row" *ngFor="let item of items" (click)="itemSelected(item)">
+
+      <div class="col text-center">
+        <div>{{ item.winDrawTime | titlecase }} Winning Number</div>
+        <div>{{ item.winNumber }}</div>
+      </div>
+
+    </div>
+  </section>
+
+</ion-content>

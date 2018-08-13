@@ -3,6 +3,10 @@
   "integrations": {
     "cordova": {}
   },
+  "proxies": [{
+    "path": "*/api",
+    "proxyUrl": "https://yxg83anxs5.execute-api.us-east-1.amazonaws.com/Prod/"
+  }],
   "type": "ionic-angular",
   "pro_id": "ac976762"
 }
