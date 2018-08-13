@@ -222,7 +222,8 @@
                 <configuration>
                     <jsonLibrary>jackson2</jsonLibrary>
                     <classes>
-                        <class>cz.habarta.typescript.generator.Person</class>
+                        <class>software.bytepushers.pick3.api.v1.DrawingTime</class>
+                        <class>software.bytepushers.pick3.api.v1.Pick3PlaysResponse</class>
                     </classes>
                     <outputKind>module</outputKind>
                 </configuration>
@@ -299,7 +300,7 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.lambdaFunctionName</key>
-                                    <value>bytepushers-pick3-sample-AwsApiGatewaySampleFuncti-1HIXWAK8SF7TH</value>
+                                    <value>bytepushers-chucksPick3-gateway</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.cloudFormationTemplate</key>

@@ -13,6 +13,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: s3://${bytepushers.deploy.s3BucketName}/${bytepushers.deploy.s3ObjectName}
+      FunctionName: ${bytepushers.deploy.lambdaFunctionName}
       Events:
         GetResource:
           Properties:
