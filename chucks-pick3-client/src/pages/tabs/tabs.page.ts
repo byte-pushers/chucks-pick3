@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { HistoryPage } from '../history/history';
-import { ContactPage } from '../contact/contact';
-import { TodayPage } from '../today/today';
+import { HistoryPage } from '../history/history.page';
+import { ContactPage } from '../contact/contact.page';
+import { TodayPage } from '../today/today.page';
 
 @Component({
   templateUrl: 'tabs.html'

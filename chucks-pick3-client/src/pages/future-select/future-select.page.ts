@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { PredictionPage } from "../prediction/prediction";
+import { PredictionPage } from "../prediction/prediction.page";
 
 @Component({
   selector: 'page-detail',
@@ -28,7 +28,7 @@ export class DetailPage {
   submit(): void {
     this.item['futureDrawDate'] = this.adjustForTimezone(this.selectedDate);
     this.item['futureDrawTime'] = this.selectedDrawTime;
-    this.navCtrl.push(PredictionPage, {
+    this.navCtrl.push('TodayPage', {
       item: this.item     // TODO: Type-safety
     });
   }

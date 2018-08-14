@@ -3,17 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HistoryPage } from '../pages/history/history';
-import { ContactPage } from '../pages/contact/contact';
-import { TodayPage } from '../pages/today/today';
-import { TabsPage } from '../pages/tabs/tabs';
-import { PredictionPage } from "../pages/prediction/prediction";
-import { DetailPage } from '../pages/future-select/future-select';
+import { HistoryPage } from '../pages/history/history.page';
+import { ContactPage } from '../pages/contact/contact.page';
+import { TabsPage } from '../pages/tabs/tabs.page';
+import { PredictionPage } from "../pages/prediction/prediction.page";
+import { DetailPage } from '../pages/future-select/future-select.page';
 
 import { HttpClientModule } from "@angular/common/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PredictionProvider } from "../providers/prediction/prediction";
+import { PredictionProvider } from "../providers/prediction/prediction.service";
 import { PipesModule } from "../pipes/pipes.module";
 
 @NgModule({
@@ -21,7 +20,6 @@ import { PipesModule } from "../pipes/pipes.module";
     MyApp,
     HistoryPage,
     ContactPage,
-    TodayPage,
     TabsPage,
     PredictionPage,
     DetailPage
@@ -34,13 +32,7 @@ import { PipesModule } from "../pipes/pipes.module";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HistoryPage,
-    ContactPage,
-    TodayPage,
-    TabsPage,
-    PredictionPage,
-    DetailPage
+    MyApp
   ],
   providers: [
     StatusBar,
