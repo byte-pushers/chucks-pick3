@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
 import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model';
 
-@IonicPage()
+@IonicPage({
+  segment: 'results'
+})
 @Component({
   selector: 'page-home',
   templateUrl: 'today.html'
@@ -20,8 +22,14 @@ export class TodayPage {
 
   public itemSelected(item:any):void {
     this.navCtrl.push('FutureSelectPage', {
-      item: item // TODO: Type-safety
+      drawDate: this.dateToUrlDate(item.winDrawDate),
+      drawTime: item.winDrawTime,
+      drawResult: item.winNumber
     });
+  }
+
+  private dateToUrlDate(d: Date): string {
+    return d.getFullYear() + "-" + (1 + d.getMonth()) + "-" + d.getDate();
   }
 
 }

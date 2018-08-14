@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import {Pick3PlaysResponse} from './api/v1/Pick3PlaysResponse.model';
 import {catchError} from 'rxjs/operators';
 
-import { API_URL } from '../../app/app.config';
+import { API_URL } from '../../app.config';
 import {Pick3PlaysRequest} from "./api/v1/Pick3PlaysRequest.model";
 
 @Injectable()

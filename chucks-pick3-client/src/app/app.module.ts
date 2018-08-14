@@ -6,8 +6,8 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PredictionProvider } from "../providers/prediction/prediction.service";
-import { PipesModule } from "../pipes/pipes.module";
+import { PredictionProvider } from "./providers/prediction/prediction.service";
+import { PipesModule } from "./pipes/pipes.module";
 
 @NgModule({
   declarations: [MyApp],
