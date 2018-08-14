@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PredictionProvider } from "../../providers/prediction/prediction.service";
 import { Pick3PlaysRequest } from "../../providers/prediction/api/v1/Pick3PlaysRequest.model";
 
@@ -9,6 +9,7 @@ import { Pick3PlaysRequest } from "../../providers/prediction/api/v1/Pick3PlaysR
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+@IonicPage()
 @Component({
   selector: 'page-prediction',
   templateUrl: 'prediction.html'

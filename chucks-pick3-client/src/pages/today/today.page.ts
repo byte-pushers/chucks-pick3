@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
-import { DetailPage } from '../future-select/future-select.page';
+import { IonicPage, NavController} from 'ionic-angular';
 import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model';
 
 @IonicPage()
@@ -20,7 +19,7 @@ export class TodayPage {
   }
 
   public itemSelected(item:any):void {
-    this.navCtrl.push(DetailPage, {
+    this.navCtrl.push('FutureSelectPage', {
       item: item // TODO: Type-safety
     });
   }

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { PredictionPage } from "../prediction/prediction.page";
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-detail',
   templateUrl: 'future-select.html',
 })
-export class DetailPage {
+export class FutureSelectPage {
   public item: any; // TODO: type-safety.
 
   private minDate: string;
@@ -28,8 +28,8 @@ export class DetailPage {
   submit(): void {
     this.item['futureDrawDate'] = this.adjustForTimezone(this.selectedDate);
     this.item['futureDrawTime'] = this.selectedDrawTime;
-    this.navCtrl.push('TodayPage', {
-      item: this.item     // TODO: Type-safety
+    this.navCtrl.push('PredictionPage', {
+      item: this.item
     });
   }
 
