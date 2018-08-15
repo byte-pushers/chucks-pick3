@@ -17,13 +17,13 @@
     <ion-row>
       <ion-item>
         <ion-label>Winning Number</ion-label>
-        <div item-content>{{item.winNumber}}</div>
+        <div item-content>{{drawResult}}</div>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
-        <ion-label>{{item.winDrawTime | titlecase}} Drawing of</ion-label>
-        <div item-content>{{item.winDrawDate | date:'longDate'}}</div>
+        <ion-label>{{drawTime | titlecase}} Drawing of</ion-label>
+        <div item-content>{{drawDate | date:'longDate'}}</div>
       </ion-item>
     </ion-row>
     <ion-row>

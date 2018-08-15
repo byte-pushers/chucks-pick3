@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
-import { DetailPage } from '../future-select/future-select';
+import { IonicPage, NavController} from 'ionic-angular';
 import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model';
 
+@IonicPage({
+  segment: 'results'
+})
 @Component({
   selector: 'page-home',
   templateUrl: 'today.html'
@@ -10,7 +12,7 @@ import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model
 export class TodayPage {
   items: any[] = [];
 
-  constructor(public navCtrl: NavController, public modalControl: ModalController) {
+  constructor(public navCtrl: NavController) {
     var date = new Date();
     this.items.push({winDrawDate: date, winDrawTime: DrawingTime.MORNING, winNumber: 355});
     this.items.push({winDrawDate: date, winDrawTime: DrawingTime.DAY, winNumber: 987});
@@ -19,9 +21,15 @@ export class TodayPage {
   }
 
   public itemSelected(item:any):void {
-    this.navCtrl.push(DetailPage, {
-      item: item // TODO: Type-safety
+    this.navCtrl.push('FutureSelectPage', {
+      drawDate: this.dateToUrlDate(item.winDrawDate),
+      drawTime: item.winDrawTime,
+      drawResult: item.winNumber
     });
+  }
+
+  private dateToUrlDate(d: Date): string {
+    return d.getFullYear() + "-" + (1 + d.getMonth()) + "-" + d.getDate();
   }
 
 }
