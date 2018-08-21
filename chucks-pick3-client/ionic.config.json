@@ -3,10 +3,16 @@
   "integrations": {
     "cordova": {}
   },
-  "proxies": [{
-    "path": "*/api",
-    "proxyUrl": "https://yxg83anxs5.execute-api.us-east-1.amazonaws.com/Prod/"
-  }],
+  "proxies": [
+    {
+      "path": "*/api",
+      "proxyUrl": "https://yxg83anxs5.execute-api.us-east-1.amazonaws.com/Prod/"
+    },
+    {
+      "path": "*/txPick3",
+      "proxyUrl": "https://www.txlottery.org/"
+    }
+  ],
   "type": "ionic-angular",
   "pro_id": "ac976762"
 }
