@@ -1,0 +1,13 @@
+<!-- Generated template for the DrawResultsComponent component -->
+<div>
+  <div class="row icon-row" *ngFor="let item of items" (click)="itemSelected(item)">
+
+    <div class="col text-center">
+      <div>{{ item.winDrawTime | titlecase }} Winning Number</div>
+      <div *ngIf="item.winNumber">{{ item.winNumber }}</div>
+      <div *ngIf="!item.winNumber">
+        <ion-spinner></ion-spinner>
+      </div>
+    </div>
+  </div>
+</div>
