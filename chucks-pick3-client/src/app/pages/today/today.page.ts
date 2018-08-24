@@ -7,7 +7,7 @@ import { DrawResultsComponent } from "../../components/draw-results/draw-results
   segment: 'results'
 })
 @Component({
-  selector: 'page-home',
+  selector: 'page-today',
   templateUrl: 'today.html'
 })
 export class TodayPage {
@@ -21,7 +21,6 @@ export class TodayPage {
   }
 
   public itemSelected(result: DrawingResult):void {
-    console.log(result);
     this.navCtrl.push('FutureSelectPage', result);
   }
 }

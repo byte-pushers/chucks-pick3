@@ -1,13 +1,11 @@
 draw-results {
-  li { height: 100%; list-style-type:none; display:inline-block; }
 
-  .icon-row {
-    -webkit-align-items: center;
-    border-bottom: 1px solid black;
+  .drawing-row {
+    min-height: 6rem;
+    max-height: 20%;
   }
 
-  .row {
-    -webkit-flex: 1;
-    border-bottom: 1px solid black;
+  .win-number {
+    font-size: 3rem;
   }
 }

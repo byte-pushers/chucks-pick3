@@ -1,11 +1,27 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Previous Pick 3 Drawings
+      {{date | date}} Drawings
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content scroll="false">
 
+  <ion-list-header no-padding ion-fixed>
+    <div class="col text-center">
+      [LOGO / HEADER]
+    </div>
+  </ion-list-header>
+
+  <draw-results class="col" ion-fixed #drawResults [date]="date" (selected)="itemSelected($event)"></draw-results>
+
+  <ion-footer no-padding ion-fixed margin text-center>
+    <button ion-button (click)="showPicker()">Change Date</button>
+  </ion-footer>
+
+  <ion-item hidden="true">
+    <ion-datetime #datePicker displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY"
+                  [(ngModel)]="selectedDate" [max]="maxDate" (ngModelChange)="fireScrape($event)"></ion-datetime>
+  </ion-item>
 </ion-content>
