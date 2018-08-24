@@ -14,13 +14,7 @@
 
 <ion-content padding>
   <div *ngIf="!requestSuccess && !requestFailed">
-    <ion-grid>
-      <ion-row align-items-center>
-        <ion-col align-self-center>
-          <ion-spinner></ion-spinner>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-spinner></ion-spinner>
   </div>
   <div *ngIf="requestSuccess">
     <ion-item>

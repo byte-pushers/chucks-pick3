@@ -20,7 +20,10 @@
 
       <div class="col text-center">
         <div>{{ item.winDrawTime | titlecase }} Winning Number</div>
-        <div>{{ item.winNumber }}</div>
+        <div *ngIf="item.winNumber">{{ item.winNumber }}</div>
+        <div *ngIf="!item.winNumber">
+          <ion-spinner></ion-spinner>
+        </div>
       </div>
 
     </div>
