@@ -11,7 +11,6 @@ import {Pick3PlaysRequest} from "./api/v1/Pick3PlaysRequest.model";
 export class PredictionProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello PredictionProvider Provider');
   }
 
   public getPredictions(request: Pick3PlaysRequest) {

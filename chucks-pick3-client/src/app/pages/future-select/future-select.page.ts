@@ -50,9 +50,4 @@ export class FutureSelectPage {
     var date: Date = new Date(d);
     return date.getUTCFullYear() + "-" + (1 + date.getUTCMonth()) + "-" + date.getUTCDate();
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailPage');
-  }
-
 }

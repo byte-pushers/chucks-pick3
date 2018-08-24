@@ -5,7 +5,8 @@ import {ScrapingProvider} from "../../../app/providers/web-scraping/scraping.ser
 
 import BytePushers from "@byte-pushers/pick3-lottery-web-scraper";
 import {DrawingResult} from "../../../app/model/DrawingResult.model";
-import {ViewController} from "ionic-angular";
+
+import {ToastController, ViewController} from "ionic-angular";
 
 @Component({
   selector: 'draw-results',
@@ -17,7 +18,7 @@ export class DrawResultsComponent {
   @Input() date: Date;
   @Output() selected = new EventEmitter<DrawingResult>();
 
-  constructor(public viewController: ViewController, public scraper: ScrapingProvider) {
+  constructor(public viewController: ViewController, public scraper: ScrapingProvider, public toast: ToastController) {
     this.items.push({winDrawTime: DrawingTime.MORNING, winNumber: null});
     this.items.push({winDrawTime: DrawingTime.DAY, winNumber: null});
     this.items.push({winDrawTime: DrawingTime.EVENING, winNumber: null});
@@ -26,51 +27,25 @@ export class DrawResultsComponent {
     viewController
   }
 
-  ngOnInit() {
-    this.scraper.scrapeResults(this.date, DrawingTime.MORNING)
-      .then((mornResult) => {
-          console.log("mornResult", mornResult);
-          this.items[0].winNumber = mornResult.number;
-        },
-        (error) => {
-          if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-            this.items[0].winNumber = "TBD";
-          }
-        });
-
-    this.scraper.scrapeResults(this.date, DrawingTime.DAY)
-      .then((dayResult)  => {
-          this.items[1].winNumber = dayResult.number;
-        },
-        (error) => {
-          if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-            this.items[1].winNumber = "TBD";
-          }
-        });
-
-    this.scraper.scrapeResults(this.date, DrawingTime.EVENING)
-      .then((dayResult)  => {
-          this.items[2].winNumber = dayResult.number;
-        },
-        (error) => {
-          if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-            this.items[2].winNumber = "TBD";
-          }
-        });
-
-    this.scraper.scrapeResults(this.date, DrawingTime.NIGHT)
-      .then((dayResult)  => {
-          this.items[3].winNumber = dayResult.number;
-        },
-        (error) => {
-          if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-            this.items[3].winNumber = "TBD";
-          }
-        });
+  ngOnChanges() {
+    if (!this.date) {
+      return;
+    }
+    this.items.forEach((item: any, idx: number) => {
+      item.winNumber = null;
+      this.scrapeTimeOfDay(item.winDrawTime, idx);
+    });
   }
 
   public itemSelected(item:any):void {
-    console.log(item);
+    if (item.winNumber == null) {
+      this.showAlert('Still gathering results for ' + item.winDrawTime.toLowerCase() + ' drawing.')
+      return
+    }
+    if (item.winNumber === "TBD") {
+      this.showAlert('Results for ' + item.winDrawTime.toLowerCase() + ' drawing are not yet available.')
+      return;
+    }
     this.selected.emit({
       drawDate: this.dateToUrlDate(this.date),
       drawTime: item.winDrawTime,
@@ -78,7 +53,27 @@ export class DrawResultsComponent {
     });
   }
 
+  private showAlert(msg: string) {
+    this.toast.create({
+      message: msg,
+      duration: 1500,
+      position: 'bottom'
+    }).present();
+  }
+
   private dateToUrlDate(d: Date): string {
     return d.getFullYear() + "-" + (1 + d.getMonth()) + "-" + d.getDate();
+  }
+
+  private scrapeTimeOfDay(time: DrawingTime, idx: number) {
+    this.scraper.scrapeResults(this.date, time)
+      .then((result) => {
+        this.items[idx].winNumber = result.number;
+      },
+      (error) => {
+        if (error instanceof BytePushers.DrawingTimeNotFoundException) {
+          this.items[idx].winNumber = "TBD"
+        }
+      });
   }
 }
