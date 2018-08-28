@@ -1,19 +1,19 @@
-<!--
-  Generated template for the DetailPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Select Day to Play</ion-title>
+    <ion-title>Chuck's Pick 3</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-<ion-content padding class="no-scroll">
-  <ion-grid>
+<ion-content scroll="false">
+  <ion-grid flex-no-padding ion-fixed style="height:100%;">
+    <ion-row>
+      <ion-col>
+        <ion-list-header no-lines>
+          <h1 class="page-title">Today's Drawings</h1>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-item>
         <ion-label>Winning Number</ion-label>
@@ -22,19 +22,14 @@
     </ion-row>
     <ion-row>
       <ion-item>
-        <ion-label>{{drawTime | titlecase}} Drawing of</ion-label>
+        <ion-label>{{drawTime | titlecase}}</ion-label>
         <div item-content>{{drawDate | date:'longDate'}}</div>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-item>
+      <ion-item (click)="presentTimeSelectedPopover($event)">
         <ion-label>Future Draw Time</ion-label>
-        <ion-select interface="popover" [(ngModel)]="selectedDrawTime">
-          <ion-option value="MORNING">Morning</ion-option>
-          <ion-option value="DAY">Day</ion-option>
-          <ion-option value="EVENING">Evening</ion-option>
-          <ion-option value="NIGHT">Night</ion-option>
-        </ion-select>
+        <ion-label [text]=""></ion-label>
       </ion-item>
     </ion-row>
     <ion-row height="100%">
@@ -48,7 +43,7 @@
 </ion-content>
 
 
-<ion-footer>
+<ion-footer no-lines>
   <button [disabled]="selectedDate == null || selectedDrawTime == null" ion-button block (click)='submit();'>
     Submit
   </button>

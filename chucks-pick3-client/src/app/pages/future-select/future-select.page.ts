@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {DrawingTime} from "../../providers/prediction/api/v1/DrawingTime.model";
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { DrawingTime } from "../../providers/prediction/api/v1/DrawingTime.model";
 
 @IonicPage({
   segment: 'predictFor/:drawDate/:drawTime/:drawResult'
@@ -10,6 +10,7 @@ import {DrawingTime} from "../../providers/prediction/api/v1/DrawingTime.model";
   templateUrl: 'future-select.html',
 })
 export class FutureSelectPage {
+
   private minDate: string;
   private maxDate: string;
 
@@ -20,7 +21,7 @@ export class FutureSelectPage {
   readonly drawTime: DrawingTime;
   readonly drawResult: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController) {
     this.drawDate = new Date(navParams.get('drawDate'));
     this.drawTime = navParams.get('drawTime');
     this.drawResult = navParams.get('drawResult');
@@ -40,6 +41,17 @@ export class FutureSelectPage {
       winDrawTime: this.drawTime,
       winNumber: this.drawResult
     });
+  }
+
+  public onDidDismiss(val: string) {
+    this.selectedDrawTime = val;
+  }
+
+  public presentTimeSelectedPopover(clickEvent) {
+    let popover = this.popoverCtrl.create('TimePopoverPage');
+    popover.present({
+      ev: clickEvent
+    })
   }
 
   private dateToUrlDate(d: Date): string {
