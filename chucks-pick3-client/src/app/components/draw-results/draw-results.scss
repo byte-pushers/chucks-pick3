@@ -4,6 +4,10 @@ draw-results {
   }
   .drawing-row {
     height: -webkit-fill-available;
+    flex-wrap: wrap;
+  }
+  .progress-container {
+    height: 0px;
   }
   .draw-time {
     font-size: 1.666666rem;

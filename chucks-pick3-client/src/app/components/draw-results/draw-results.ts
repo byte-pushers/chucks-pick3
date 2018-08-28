@@ -14,6 +14,7 @@ import {ToastController, ViewController} from "ionic-angular";
 })
 export class DrawResultsComponent {
   items: any[] = [];
+  loading: boolean = false;
 
   @Input() date: Date;
   @Output() selected = new EventEmitter<DrawingResult>();
@@ -29,6 +30,7 @@ export class DrawResultsComponent {
     if (!this.date) {
       return;
     }
+    this.loading = true;
     this.items.forEach((item: any, idx: number) => {
       item.winNumber = null;
       this.scrapeTimeOfDay(item.winDrawTime, idx);
