@@ -10,4 +10,11 @@ page-today {
   .scroll-content {
     overflow-y: hidden;
   }
+  ion-list-header {
+    text-align: center;
+    .page-title {
+      color: color($colors, primary);
+      font-weight: 500;
+    }
+  }
 }
