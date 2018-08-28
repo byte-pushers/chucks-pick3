@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import {DrawingTime} from "../../../app/providers/prediction/api/v1/DrawingTime.model";
-import {ScrapingProvider} from "../../../app/providers/web-scraping/scraping.service";
+import { DrawingTime } from "../../../app/providers/prediction/api/v1/DrawingTime.model";
+import { ScrapingProvider } from "../../../app/providers/web-scraping/scraping.service";
 
 import BytePushers from "@byte-pushers/pick3-lottery-web-scraper";
-import {DrawingResult} from "../../../app/model/DrawingResult.model";
+import { DrawingResult } from "../../../app/model/DrawingResult.model";
 
-import {ToastController, ViewController} from "ionic-angular";
+import { ToastController, ViewController } from "ionic-angular";
 
 @Component({
   selector: 'draw-results',
