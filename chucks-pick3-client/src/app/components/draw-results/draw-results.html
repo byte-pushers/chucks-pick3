@@ -1,12 +1,27 @@
-
-<ion-list>
-  <ion-item no-padding class="drawing-row" text-center *ngFor="let item of items" (click)="itemSelected(item)">
-    <div>{{ item.winDrawTime | titlecase }} Drawing</div>
-
-    <div class="win-number" *ngIf="item.winNumber">{{ item.winNumber.toString() | leftpad: 3:'0' }}</div>
-
-    <div *ngIf="!item.winNumber">
-      <ion-spinner class="win-number"></ion-spinner>
-    </div>
-  </ion-item>
-</ion-list>
+<ion-grid class="inherit-height">
+  <ng-container *ngFor="let item of items; let i = index">
+    <ion-row class="drawing-row" align-items-center justify-content-center no-padding class="drawing-row" text-center (click)="itemSelected(item)">
+      <ion-col col-1 text-end>
+        <ion-icon class="icon" [name]="item.icon" color="{{(item.winNumber && item.winNumber != 'N/A') ? 'primary' : 'primary-light'}}"></ion-icon>
+      </ion-col>
+      <ion-col col-4 text-start>
+        <div [class]="(item.winNumber && item.winNumber != 'N/A') ? 'text-enabled draw-time' : 'text-disabled draw-time'">
+          {{ item.winDrawTime | titlecase }}
+        </div>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <div class="win-number" [class]="(item.winNumber && item.winNumber != 'N/A') ? 'text-enabled win-number' : 'text-disabled win-number'">
+          {{ item.winNumber ? item.winNumber.toString() : '???' | leftpad: 3:'0' }}
+        </div>
+      </ion-col>
+      <ion-col col-1 text-center>
+        <ion-icon class="icon" name="ios-arrow-forward" color="{{(item.winNumber && item.winNumber != 'N/A') ? 'primary' : 'primary-light'}}"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-end class="progress-container">
+      <ion-col offset-3 class="progress-container">
+        <progress-indeterminate [hidden]="!loading || item.winNumber"></progress-indeterminate>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+</ion-grid>

@@ -1,18 +1,20 @@
-<ion-header class="header">
+<ion-header>
   <ion-navbar>
-    <ion-title>Today's Drawings</ion-title>
+    <ion-title>Chuck's Pick 3</ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content scroll="false">
-  <ion-list-header no-padding ion-fixed>
-
-    <div class="col text-center">
-      [LOGO / HEADER]
-    </div>
-
-  </ion-list-header>
-  <ion-item-divider></ion-item-divider>
-  <draw-results class="full-width" ion-fixed #drawResults [date]="date" (selected)="itemSelected($event)"></draw-results>
+  <ion-grid flex-no-padding ion-fixed style="height:100%;">
+    <ion-row>
+      <ion-col>
+        <ion-list-header no-lines>
+          <h1 class="page-title">Today's Drawings</h1>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
+    <ion-row class="draw-results-container">
+        <draw-results class="inherit-height" #drawResults [date]="date" (selected)="itemSelected($event)"></draw-results>
+    </ion-row>
+  </ion-grid>
 </ion-content>

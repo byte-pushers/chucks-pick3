@@ -1,5 +1,20 @@
 page-today {
-  .full-width {
-    width: 100%;
+  .draw-results-container{
+    display: flex;
+    flex-direction: column;
+    height: -webkit-fill-available;
+  }
+  .inherit-height {
+    height: inherit;
+  }
+  .scroll-content {
+    overflow-y: hidden;
+  }
+  ion-list-header {
+    text-align: center;
+    .page-title {
+      color: color($colors, primary);
+      font-weight: 500;
+    }
   }
 }

@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import {DrawingTime} from "../../../app/providers/prediction/api/v1/DrawingTime.model";
-import {ScrapingProvider} from "../../../app/providers/web-scraping/scraping.service";
+import { DrawingTime } from "../../../app/providers/prediction/api/v1/DrawingTime.model";
+import { ScrapingProvider } from "../../../app/providers/web-scraping/scraping.service";
 
 import BytePushers from "@byte-pushers/pick3-lottery-web-scraper";
-import {DrawingResult} from "../../../app/model/DrawingResult.model";
+import { DrawingResult } from "../../../app/model/DrawingResult.model";
 
-import {ToastController, ViewController} from "ionic-angular";
+import { ToastController, ViewController } from "ionic-angular";
 
 @Component({
   selector: 'draw-results',
@@ -14,23 +14,23 @@ import {ToastController, ViewController} from "ionic-angular";
 })
 export class DrawResultsComponent {
   items: any[] = [];
+  loading: boolean = false;
 
   @Input() date: Date;
   @Output() selected = new EventEmitter<DrawingResult>();
 
   constructor(public viewController: ViewController, public scraper: ScrapingProvider, public toast: ToastController) {
-    this.items.push({winDrawTime: DrawingTime.MORNING, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.DAY, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.EVENING, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.NIGHT, winNumber: null});
-
-    viewController
+    this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
+    this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
+    this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
+    this.items.push({icon: 'moon', winDrawTime: DrawingTime.NIGHT, winNumber: null});
   }
 
   ngOnChanges() {
     if (!this.date) {
       return;
     }
+    this.loading = true;
     this.items.forEach((item: any, idx: number) => {
       item.winNumber = null;
       this.scrapeTimeOfDay(item.winDrawTime, idx);
@@ -42,7 +42,7 @@ export class DrawResultsComponent {
       this.showAlert('Still gathering results for ' + item.winDrawTime.toLowerCase() + ' drawing.')
       return
     }
-    if (item.winNumber === "TBD") {
+    if (item.winNumber === "N/A") {
       this.showAlert('Results for ' + item.winDrawTime.toLowerCase() + ' drawing are not yet available.')
       return;
     }
@@ -72,7 +72,7 @@ export class DrawResultsComponent {
       },
       (error) => {
         if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-          this.items[idx].winNumber = "TBD"
+          this.items[idx].winNumber = "N/A"
         }
       });
   }

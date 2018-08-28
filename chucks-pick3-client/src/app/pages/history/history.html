@@ -1,25 +1,27 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      {{date | date}} Drawings
-    </ion-title>
+    <ion-title>Chuck's Pick 3</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="white" (click)="showPicker()">
+        <ion-icon name="calendar"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content scroll="false">
-
-  <ion-list-header no-padding ion-fixed>
-    <div class="col text-center">
-      [LOGO / HEADER]
-    </div>
-  </ion-list-header>
-
-  <draw-results class="col" ion-fixed #drawResults [date]="date" (selected)="itemSelected($event)"></draw-results>
-
-  <ion-footer no-padding ion-fixed margin text-center>
-    <button ion-button (click)="showPicker()">Change Date</button>
-  </ion-footer>
-
+  <ion-grid flex-no-padding ion-fixed style="height:100%;">
+    <ion-row>
+      <ion-col>
+        <ion-list-header no-lines>
+          <h1 class="page-title">Past Drawings</h1>
+        </ion-list-header>
+      </ion-col>
+    </ion-row>
+    <ion-row class="draw-results-container">
+      <draw-results class="inherit-height" #drawResults [date]="date" (selected)="itemSelected($event)"></draw-results>
+    </ion-row>
+  </ion-grid>
   <ion-item hidden="true">
     <ion-datetime #datePicker displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY"
                   [(ngModel)]="selectedDate" [max]="maxDate" (ngModelChange)="fireScrape($event)"></ion-datetime>

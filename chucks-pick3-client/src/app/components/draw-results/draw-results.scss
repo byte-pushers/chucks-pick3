@@ -1,11 +1,32 @@
 draw-results {
-
+  .inherit-height {
+    height: inherit;
+  }
   .drawing-row {
-    min-height: 6rem;
-    max-height: 20%;
+    height: -webkit-fill-available;
+    flex-wrap: wrap;
+  }
+  .progress-container {
+    height: 0px;
+  }
+  .draw-time {
+    font-size: 1.666666rem;
   }
 
   .win-number {
     font-size: 3rem;
+    font-weight: 500;
+  }
+
+  .text-enabled {
+    color: color($colors, primary-text);
+  }
+
+  .text-disabled {
+    color: color($colors, divider-color);
+  }
+
+  .icon {
+    font-size: 2rem;
   }
 }
