@@ -1,11 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Chuck's Pick 3</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only color="white" (click)="showPicker()">
-        <ion-icon name="calendar"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>
+      Past Drawings
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,9 +10,7 @@
   <ion-grid flex-no-padding ion-fixed style="height:100%;">
     <ion-row>
       <ion-col>
-        <ion-list-header no-lines>
-          <h1 class="page-title">Past Drawings</h1>
-        </ion-list-header>
+        <logo-splash></logo-splash>
       </ion-col>
     </ion-row>
     <ion-row class="draw-results-container">
@@ -27,3 +22,7 @@
                   [(ngModel)]="selectedDate" [max]="maxDate" (ngModelChange)="fireScrape($event)"></ion-datetime>
   </ion-item>
 </ion-content>
+
+<ion-footer padding text-right>
+  <button ion-button (click)="showPicker()">Change Date</button>
+</ion-footer>
