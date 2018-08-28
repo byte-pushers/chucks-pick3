@@ -1,5 +1,10 @@
 page-today {
-  .full-width {
-    width: 100%;
+  .draw-results-container{
+    display: flex;
+    flex-direction: column;
+    height: -webkit-fill-available;
+  }
+  .inherit-height {
+    height: inherit;
   }
 }

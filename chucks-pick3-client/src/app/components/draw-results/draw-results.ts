@@ -19,12 +19,10 @@ export class DrawResultsComponent {
   @Output() selected = new EventEmitter<DrawingResult>();
 
   constructor(public viewController: ViewController, public scraper: ScrapingProvider, public toast: ToastController) {
-    this.items.push({winDrawTime: DrawingTime.MORNING, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.DAY, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.EVENING, winNumber: null});
-    this.items.push({winDrawTime: DrawingTime.NIGHT, winNumber: null});
-
-    viewController
+    this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
+    this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
+    this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
+    this.items.push({icon: 'moon', winDrawTime: DrawingTime.NIGHT, winNumber: null});
   }
 
   ngOnChanges() {
@@ -42,7 +40,7 @@ export class DrawResultsComponent {
       this.showAlert('Still gathering results for ' + item.winDrawTime.toLowerCase() + ' drawing.')
       return
     }
-    if (item.winNumber === "TBD") {
+    if (item.winNumber === "N/A") {
       this.showAlert('Results for ' + item.winDrawTime.toLowerCase() + ' drawing are not yet available.')
       return;
     }
@@ -72,7 +70,7 @@ export class DrawResultsComponent {
       },
       (error) => {
         if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-          this.items[idx].winNumber = "TBD"
+          this.items[idx].winNumber = "N/A"
         }
       });
   }

@@ -1,12 +1,21 @@
 
-<ion-list>
-  <ion-item no-padding class="drawing-row" text-center *ngFor="let item of items" (click)="itemSelected(item)">
-    <div>{{ item.winDrawTime | titlecase }} Drawing</div>
-
-    <div class="win-number" *ngIf="item.winNumber">{{ item.winNumber.toString() | leftpad: 3:'0' }}</div>
-
-    <div *ngIf="!item.winNumber">
-      <ion-spinner class="win-number"></ion-spinner>
-    </div>
-  </ion-item>
-</ion-list>
+<ion-grid class="inherit-height">
+  <ion-row class="drawing-row" align-items-center justify-content-center no-padding class="drawing-row" text-center *ngFor="let item of items" (click)="itemSelected(item)">
+    <ion-col col-1 text-end>
+      <ion-icon class="icon" [name]="item.icon" color="{{item.winNumber ? 'primary' : 'secondary-text'}}"></ion-icon>
+    </ion-col>
+    <ion-col col-4 text-start>
+      <div [class]="item.winNumber ? 'text-enabled draw-time' : 'text-disabled draw-time'">
+        {{ item.winDrawTime | titlecase }}
+      </div>
+    </ion-col>
+    <ion-col col-6 text-center>
+      <div class="win-number" [class]="item.winNumber ? 'text-enabled win-number' : 'text-disabled win-number'">
+        {{ item.winNumber ? item.winNumber.toString() : '???' | leftpad: 3:'0' }}
+      </div>
+    </ion-col>
+    <ion-col col-1 text-center>
+      <ion-icon class="icon" name="ios-arrow-forward" color="{{item.winNumber ? 'primary' : 'secondary-text'}}"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>
