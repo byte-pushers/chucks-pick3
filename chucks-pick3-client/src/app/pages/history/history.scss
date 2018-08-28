@@ -1,5 +1,13 @@
 page-history {
-  .full-width {
-    max-width: 100%;
+  .draw-results-container{
+    display: flex;
+    flex-direction: column;
+    height: -webkit-fill-available;
+  }
+  .inherit-height {
+    height: inherit;
+  }
+  .scroll-content {
+    overflow-y: hidden;
   }
 }

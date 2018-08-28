@@ -7,4 +7,7 @@ page-today {
   .inherit-height {
     height: inherit;
   }
+  .scroll-content {
+    overflow-y: hidden;
+  }
 }
