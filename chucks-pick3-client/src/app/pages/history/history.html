@@ -3,6 +3,11 @@
     <ion-title>
       Past Drawings
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showPicker()">
+        <ion-icon name="calendar"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -22,7 +27,3 @@
                   [(ngModel)]="selectedDate" [max]="maxDate" (ngModelChange)="fireScrape($event)"></ion-datetime>
   </ion-item>
 </ion-content>
-
-<ion-footer padding text-right>
-  <button ion-button (click)="showPicker()">Change Date</button>
-</ion-footer>

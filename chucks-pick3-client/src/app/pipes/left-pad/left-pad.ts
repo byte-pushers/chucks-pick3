@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {ChangeDetectionStrategy, Pipe, PipeTransform} from '@angular/core';
 
 /**
  * Generated class for the LeftPadPipe pipe.
@@ -7,6 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  */
 @Pipe({
   name: 'leftpad',
+  pure: false,
 })
 export class LeftPadPipe implements PipeTransform {
   /**
@@ -16,6 +17,7 @@ export class LeftPadPipe implements PipeTransform {
     let length = parseInt(args[0]);
     let char = args[1].charAt(0);
 
+    console.log(value, length, char);
     return value.length > length ? value : char.repeat(length - value.length) + value;
   }
 }
