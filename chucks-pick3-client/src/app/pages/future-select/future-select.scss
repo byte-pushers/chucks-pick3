@@ -1,6 +1,35 @@
-page-detail {
+page-future-select {
   .no-scroll .scroll-content{
     overflow: hidden;
   }
+  .heading {
+    text-align: center;
+  }
+
+  .icon {
+    font-size: 28px;
+  }
+
+  .draw-result {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  .draw-time {
+    font-size: 2rem;
+  }
+
+  .draw-date {
+    font-size: 1.25rem;
+    color: color($colors, secondary-text)
+  }
+}
+
+.action-sheet-icon {
+  color: color($colors, primary);
+}
+
+.action-sheet-group {
+  overflow: auto !important;
 }
 
