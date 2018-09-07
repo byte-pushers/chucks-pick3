@@ -48,8 +48,9 @@ public class NumbersController {
         if (futureDrawDate.atStartOfDay().isBefore(LocalDate.now().atStartOfDay()))
             throw new MalformedRequestException("futureDrawDate cannot be a past date");
 
-        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(pick3PlaysService.getPick3Plays(winNumber,
-                winDrawDate, winDrawTime, futureDrawDate, futureDrawTime));
+        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(
+                pick3PlaysService.getPick3Plays(winNumber, winDrawDate, winDrawTime, futureDrawDate, futureDrawTime)
+        );
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

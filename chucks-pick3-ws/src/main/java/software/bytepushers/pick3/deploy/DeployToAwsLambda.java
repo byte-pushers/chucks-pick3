@@ -73,7 +73,6 @@ public class DeployToAwsLambda {
         final String stackName = System.getProperty(PROP_CLOUDFORMATION_STACK_NAME);
 
         if (!cloudFormationStackExists(cloudFormationClient, stackName)) {
-        //if (functionName == null || functionName.isEmpty()) {
             // Create a new cloud formation stack using the specified SAM template.
             createCloudFormationStack(cloudFormationClient, bucketName, objectName);
         } else {

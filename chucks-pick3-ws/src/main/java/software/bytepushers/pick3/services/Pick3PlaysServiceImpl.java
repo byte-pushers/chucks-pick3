@@ -1,6 +1,5 @@
 package software.bytepushers.pick3.services;
 
-
 import org.springframework.stereotype.Service;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.config.Pick3PlaysConfig;
@@ -31,7 +30,6 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
 
         result.setPlays(Arrays.stream(predictions)
                 .map(digits -> digits[0] * 100 + digits[1] * 10 + digits[2])
-                .map(Integer::valueOf)
                 .collect(Collectors.toList()));
 
         result.setDrawingDate(futureDrawDate);

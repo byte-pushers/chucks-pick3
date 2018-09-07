@@ -5,11 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import software.bytepushers.pick3.services.Pick3PredictionService;
 
-
 @Configuration
 @Profile("dev")
 public class DummyPredictionsConfig {
-
     @Bean
     Pick3PredictionService pick3PredictionService() {
         return (Pick3PredictionService) (winningNumber, winningDrawDate, winningDrawTime, futureDrawDate, futureDrawTime, numberOfPlaysToPredict) -> {
