@@ -7,6 +7,7 @@ import org.mockito.stubbing.Answer;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
+import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.util.Answers;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
@@ -71,6 +73,54 @@ public class NumbersControllerTest {
         assertThat(response.getDate()).isEqualTo(playDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         assertThat(response.getDrawingTime()).isEqualTo(DrawingTime.NIGHT.toString());
         assertThat(response.getPlays()).containsExactly(123, 234, 345);
+    }
+
+    @Test
+    public void testGetNumbersNegativeWinNumberThrowsMalformedRequestException() throws Exception {
+        answerWithGenericPlays();
+
+        assertThatThrownBy(() -> {
+            LocalDate winDate = LocalDate.now();
+            LocalDate playDate = LocalDate.now();
+
+            numbersController.getNumbers(-1, winDate, playDate, DrawingTime.DAY, DrawingTime.NIGHT);
+        }).hasSameClassAs(new MalformedRequestException());
+    }
+
+    @Test
+    public void testGetNumbersWinNumberGreaterThan999ThrowsMalformedRequestException() throws Exception {
+        answerWithGenericPlays();
+
+        assertThatThrownBy(() -> {
+            LocalDate winDate = LocalDate.now();
+            LocalDate playDate = LocalDate.now();
+
+            numbersController.getNumbers(1000, winDate, playDate, DrawingTime.DAY, DrawingTime.NIGHT);
+        }).hasSameClassAs(new MalformedRequestException());
+    }
+
+    @Test
+    public void testGetNumbersWinDateInFutureThrowsMalformedRequestException() throws Exception {
+        answerWithGenericPlays();
+
+        assertThatThrownBy(() -> {
+            LocalDate winDate = LocalDate.now().plusDays(2);
+            LocalDate playDate = LocalDate.now();
+
+            numbersController.getNumbers(623, winDate, playDate, DrawingTime.DAY, DrawingTime.NIGHT);
+        }).hasSameClassAs(new MalformedRequestException());
+    }
+
+    @Test
+    public void testGetNumbersPlayDateInPastThrowsMalformedRequestException() throws Exception {
+        answerWithGenericPlays();
+
+        assertThatThrownBy(() -> {
+            LocalDate winDate = LocalDate.now();
+            LocalDate playDate = LocalDate.now().minusDays(1);
+
+            numbersController.getNumbers(623, winDate, playDate, DrawingTime.DAY, DrawingTime.NIGHT);
+        }).hasSameClassAs(new MalformedRequestException());
     }
 
     private void answerWithGenericPlays() {
