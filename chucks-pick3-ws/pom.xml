@@ -199,6 +199,7 @@
                 <artifactId>clover-maven-plugin</artifactId>
                 <version>4.3.0</version>
                 <configuration>
+                    <skip>${skipTests}</skip>
                     <reportDescriptor>clover-report.xml</reportDescriptor>
                     <targetPercentage>80%</targetPercentage>
                     <excludes>
