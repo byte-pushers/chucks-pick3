@@ -7,37 +7,48 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Numbers to Play</ion-title>
+    <ion-title>Chuck's Pick 3</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="!requestSuccess && !requestFailed">
-    <ion-spinner></ion-spinner>
-  </div>
-  <div *ngIf="requestSuccess">
-    <ion-item>
-      <ion-label>
-        Play Date
-      </ion-label>
-      <div item-content>{{ response.date }}</div>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Play Time
-      </ion-label>
-      <div item-content>{{ response.drawingTime | titlecase }}</div>
-    </ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let play of response.plays" justify-content-start col-4 class="play">
-          <div item-content>{{ play.toString() | leftpad: 3:'0'}}</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <div *ngIf="requestFailed">
-    <ion-item>Request Failed!</ion-item>
-  </div>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-item>
+          <ion-icon item-start [name]="timeIcon(winDrawTime)" color="primary"></ion-icon>
+          <ion-label>
+            <span class="draw-time">{{winDrawTime | titlecase }}</span>
+          </ion-label>
+          <span item-end class="draw-result">
+            {{ winDrawDate | date:'longDate' }}
+          </span>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div *ngIf="!requestSuccess && !requestFailed">
+        <ion-grid>
+          <ion-row justify-content-center align-items-center>
+            <ion-col>
+              <ion-spinner color="primary"></ion-spinner>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div *ngIf="requestSuccess">
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let play of response.plays" justify-content-start col-4 class="play">
+              <div item-content>{{ play.toString() | leftpad: 3:'0'}}</div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div *ngIf="requestFailed">
+        <ion-item>Request Failed!</ion-item>
+      </div>
+    </ion-row>
+  </ion-grid>
 </ion-content>

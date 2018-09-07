@@ -7,49 +7,65 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Select Day to Play</ion-title>
+    <ion-title>Chuck's Pick 3</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding class="no-scroll">
   <ion-grid>
-    <ion-row>
-      <ion-item>
-        <ion-label>Winning Number</ion-label>
-        <div item-content>{{drawResult}}</div>
-      </ion-item>
+    <ion-row justify-content-center>
+      <ion-col>
+        <h1 class="heading">Get New Picks</h1>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-item>
-        <ion-label>{{drawTime | titlecase}} Drawing of</ion-label>
-        <div item-content>{{drawDate | date:'longDate'}}</div>
-      </ion-item>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-item>
+          <ion-icon item-start [name]="timeIcon(drawTime)" color="primary"></ion-icon>
+          <ion-label>
+            <span class="draw-time">{{drawTime | titlecase }}</span>
+            <br/>
+            <span class="draw-date">Winner for {{ drawDate | date:'mediumDate' }}</span>
+          </ion-label>
+          <span item-end class="draw-result">
+            {{ drawResult.toString() | leftpad: 3:'0' }}
+          </span>
+        </ion-item>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-item>
-        <ion-label>Future Draw Time</ion-label>
-        <ion-select interface="popover" [(ngModel)]="selectedDrawTime">
-          <ion-option value="MORNING">Morning</ion-option>
-          <ion-option value="DAY">Day</ion-option>
-          <ion-option value="EVENING">Evening</ion-option>
-          <ion-option value="NIGHT">Night</ion-option>
-        </ion-select>
-      </ion-item>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-item (click)="showPicker()">
+          <ion-icon item-start name="calendar" color="{{ selectedDate ? 'primary' : 'primary-light' }}"></ion-icon>
+          <ion-label color="{{ selectedDate != null ? 'primary-text' : 'divider-color' }}">
+            {{ selectedDate == null ? 'Select Day To Play' : selectedDate | date:'longDate' }}
+          </ion-label>
+          <ion-icon item-end name="ios-arrow-down" color="{{ selectedDate ? 'primary' : 'primary-light' }}"></ion-icon>
+        </ion-item>
+      </ion-col>
     </ion-row>
-    <ion-row height="100%">
-      <ion-item>
-        <ion-label>Future Date to Play</ion-label>
-        <ion-datetime displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY" [(ngModel)]="selectedDate"
-                      [min]="minDate" [max]="maxDate"></ion-datetime>
-      </ion-item>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-item (click)="showTimePicker($event)">
+          <ion-icon item-start [name]="timeIcon(selectedDrawTime)" color="{{ selectedDrawTime ? 'primary' : 'primary-light' }}"></ion-icon>
+          <ion-label color="{{ selectedDrawTime != null ? 'primary-text' : 'divider-color' }}">
+            {{ selectedDrawTime == null ? 'Select Time to Play' : selectedDrawTime | titlecase }}
+          </ion-label>
+          <ion-icon item-end name="ios-arrow-down" color="{{ selectedDrawTime ? 'primary' : 'primary-light' }}"></ion-icon>
+        </ion-item>
+      </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-item hidden="true">
+    <ion-datetime hidden #datePicker displayFormat="MMMM DD, YYYY" pickerFormat="MMMM DD, YYYY" [(ngModel)]="selectedDate"
+                  [min]="minDate" [max]="maxDate"></ion-datetime>
+  </ion-item>
 </ion-content>
 
 
-<ion-footer>
-  <button [disabled]="selectedDate == null || selectedDrawTime == null" ion-button block (click)='submit();'>
+<ion-footer text-right>
+  <button margin ion-button [disabled]="selectedDate == null || selectedDrawTime == null"  (click)='submit();'>
     Submit
   </button>
 </ion-footer>

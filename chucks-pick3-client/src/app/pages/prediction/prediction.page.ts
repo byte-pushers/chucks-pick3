@@ -64,4 +64,19 @@ export class PredictionPage {
       });
   }
 
+  public timeIcon(time: DrawingTime) {
+    switch(time) {
+      case DrawingTime.MORNING:
+        return 'ios-partly-sunny';
+      case DrawingTime.DAY:
+        return 'md-sunny';
+      case DrawingTime.EVENING:
+        return 'ios-cloudy-night';
+      case DrawingTime.NIGHT:
+        return 'moon';
+      default:
+        return 'time';
+    }
+  }
+
 }
