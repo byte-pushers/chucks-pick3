@@ -17,6 +17,7 @@
         <junit.version>4.12</junit.version>
         <log4j.version>2.8.2</log4j.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+        <surefireAndFailsafeReport.dir>target/test-report</surefireAndFailsafeReport.dir>
     </properties>
 
     <dependencyManagement>
@@ -194,6 +195,37 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <skip>${skipTests}</skip>
+                    <reportDescriptor>clover-report.xml</reportDescriptor>
+                    <targetPercentage>80%</targetPercentage>
+                    <excludes>
+                        <exclude>**/DeployToAwsLambda.java</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>setup</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>setup</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>aggregate and check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                            <goal>clover</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.0</version>
@@ -205,6 +237,17 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <reportsDirectory>${surefireAndFailsafeReport.dir}</reportsDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
+                <configuration>
+                    <reportsDirectory>${surefireAndFailsafeReport.dir}</reportsDirectory>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>cz.habarta.typescript-generator</groupId>
