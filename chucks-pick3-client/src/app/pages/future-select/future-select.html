@@ -29,7 +29,7 @@
             <span class="draw-date">Winner for {{ drawDate | date:'mediumDate' }}</span>
           </ion-label>
           <span item-end class="draw-result">
-            {{ drawResult }}
+            {{ drawResult.toString() | leftpad: 3:'0' }}
           </span>
         </ion-item>
       </ion-col>
