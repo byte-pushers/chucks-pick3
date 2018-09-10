@@ -1,0 +1,65 @@
+'use strict';
+
+import {PredictionProvider} from './prediction.service';
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
+import {DrawingTime} from './api/v1/DrawingTime.model';
+import {API_URL} from '../../app.config';
+import {Pick3PlaysResponse} from './api/v1/Pick3PlaysResponse.model';
+import {Pick3PlaysRequest} from './api/v1/Pick3PlaysRequest.model';
+
+describe('PredictionProvider', () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [PredictionProvider],
+      imports: [
+        HttpClientTestingModule,
+      ],
+    });
+  });
+
+  var pick3Request: Pick3PlaysRequest = {
+    winDrawDate: new Date(2018, 7, 31),   // n.b. months are zero-indexed
+    futureDrawDate: new Date(2018, 8, 1),
+    winDrawTime: DrawingTime.MORNING,
+    futureDrawTime: DrawingTime.EVENING,
+    winNumber: 123,
+  };
+
+  it('correctly maps prediction service requests and responses',
+     inject([HttpTestingController, PredictionProvider],
+            (httpMock: HttpTestingController, provider: PredictionProvider) => {
+      provider.getPredictions(pick3Request).subscribe((data: Pick3PlaysResponse) => {
+          expect(data.date).toEqual('2018-09-10');
+          expect(data.drawingTime).toEqual(DrawingTime.EVENING);
+          expect(data.plays).toEqual([123, 234, 345, 456, 567]);
+      });
+
+      const req: TestRequest = httpMock.expectOne(r => r.method === 'GET' && r.url === API_URL + '/numbers');
+      expect(req.request.params.get('winDrawDate')).toEqual('2018-08-31');
+      expect(req.request.params.get('futureDrawDate')).toEqual('2018-09-01');
+      expect(req.request.params.get('winDrawTime')).toEqual('MORNING');
+      expect(req.request.params.get('futureDrawTime')).toEqual('EVENING');
+      expect(req.request.params.get('winNumber')).toEqual('123');
+
+      // Hard-code a mock response
+      req.flush({
+        date: '2018-09-10',
+        drawingTime: DrawingTime.EVENING,
+        plays: [ 123, 234, 345, 456, 567],
+      });
+  }));
+
+  it('returns an error string on http errors',
+     inject([HttpTestingController, PredictionProvider],
+            (httpMock: HttpTestingController, provider: PredictionProvider) => {
+        provider.getPredictions(pick3Request).subscribe((data: string) => {
+          expect(data).toEqual('Something bad happened; please try again later.');
+        });
+
+        const req: TestRequest = httpMock.expectOne(r => r.method === 'GET' && r.url === API_URL + '/numbers');
+
+        req.error(new ErrorEvent('network error'));
+  }));
+});
