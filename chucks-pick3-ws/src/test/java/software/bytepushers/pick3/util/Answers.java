@@ -38,7 +38,7 @@ public abstract class Answers {
 
     public static Answer<int[][]> randomWinningNumberResponse() {
         return (InvocationOnMock ioc) -> {
-            int numResponses = ioc.getArgument(5);
+            int numResponses = 10; //ioc.getArgument(1);
             int[][] result = new int[numResponses][3];
             for (int i = 0; i < numResponses; ++i) {
                 result[i] = new int[] {(int)(10*Math.random()), (int)(10*Math.random()), (int)(10*Math.random()) };

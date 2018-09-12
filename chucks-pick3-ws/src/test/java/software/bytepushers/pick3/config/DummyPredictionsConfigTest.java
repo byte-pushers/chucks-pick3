@@ -23,9 +23,8 @@ public class DummyPredictionsConfigTest {
     public void testPredictionsServiceReturnsCorrectNumberOfPlays() {
         Pick3PredictionService dummySvc = underTest.pick3PredictionService();
 
-        int n = 30;
-        int[][] results = dummySvc.predictPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(),
-                DrawingTime.NIGHT, n);
+        int n = 35;
+        int[][] results = dummySvc.generatePredictions(123);
 
         assertThat(results).hasSize(n);
     }
@@ -34,9 +33,8 @@ public class DummyPredictionsConfigTest {
     public void testPredictionsServiceResultsAreAllInBounds() {
         Pick3PredictionService dummySvc = underTest.pick3PredictionService();
 
-        int n = 30;
-        int[][] results = dummySvc.predictPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(),
-                DrawingTime.NIGHT, n);
+        int n = 35;
+        int[][] results = dummySvc.generatePredictions(123);
 
         for (int i = 0; i < n; ++i) {
             assertThat(results[i]).hasSize(3);
