@@ -22,6 +22,9 @@ Resources:
           Type: Api
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
       MemorySize: 256
-      Policies: AWSLambdaBasicExecutionRole
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      - LambdaInvokePolicy:
+        FunctionName: ${bytepushers.deploy.peerName}
       Runtime: java8
       Timeout: 15

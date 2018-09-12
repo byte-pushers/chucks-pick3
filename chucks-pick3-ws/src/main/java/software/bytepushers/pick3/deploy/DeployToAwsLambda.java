@@ -300,7 +300,7 @@ public class DeployToAwsLambda {
             client.headBucket(new HeadBucketRequest(bucketName));
             return true; // if headBucket doesn't throw an exception, the bucket exists.
         } catch (AmazonServiceException e) {
-            if (e.getStatusCode() == 404) {
+            if (e.getStatusCode() != 200) {
                 return false;
             }
             throw e;

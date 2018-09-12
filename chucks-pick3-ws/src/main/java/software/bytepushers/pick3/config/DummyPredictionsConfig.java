@@ -10,12 +10,21 @@ import software.bytepushers.pick3.services.Pick3PredictionService;
 public class DummyPredictionsConfig {
     @Bean
     Pick3PredictionService pick3PredictionService() {
-        return (Pick3PredictionService) (winningNumber, winningDrawDate, winningDrawTime, futureDrawDate, futureDrawTime, numberOfPlaysToPredict) -> {
-            int[][] result = new int[numberOfPlaysToPredict][];
-            for (int i = 0; i < numberOfPlaysToPredict; ++i) {
-                result[i] = new int[] {(int)(10*Math.random()), (int)(10*Math.random()), (int)(10*Math.random())};
+        return new Pick3PredictionService() {
+            public int[][] generatePredictions(int winningNumber) {
+                int[][] result = getPredictions(35);
+                return result;
             }
-            return result;
+
+            int[][] getPredictions(int totalPredictions) {
+                int[][] result = new int[totalPredictions][];
+
+                for (int i = 0; i < totalPredictions; ++i) {
+                    result[i] = new int[]{(int) (10 * Math.random()), (int) (10 * Math.random()), (int) (10 * Math.random())};
+                }
+
+                return result;
+            }
         };
     }
 }
