@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform} from '@angular/core';
 
 /**
  * Generated class for the LeftPadPipe pipe.
