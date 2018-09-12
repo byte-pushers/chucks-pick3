@@ -9,13 +9,13 @@ describe('DrawingResult', () => {
     var underTest: DrawingResult = {
       drawDate: "2018-03-23",
       drawTime: DrawingTime.DAY,
-      winNumber: 123
+      drawResult: 123
     };
 
     expect({
-      drawDate: d1,
+      drawDate: "2018-03-23",
       drawTime: DrawingTime.DAY,
-      winNumber: 123
+      drawResult: 123
     }).toEqual(underTest);
   });
 
