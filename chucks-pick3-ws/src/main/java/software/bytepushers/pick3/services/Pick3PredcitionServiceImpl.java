@@ -9,9 +9,9 @@ public class Pick3PredcitionServiceImpl implements Pick3PredictionService {
 
     @Override
     public int[][] generatePredictions(int winningNumber) {
-        final Pick3PredictionService pick3PredictionService = LambdaInvokerFactory.builder()
+        final Pick3LottoSystemService pick3PredictionService = LambdaInvokerFactory.builder()
                 .lambdaClient(AWSLambdaClientBuilder.defaultClient())
-                .build(Pick3PredictionService.class);
+                .build(Pick3LottoSystemService.class);
 
         return pick3PredictionService.generatePredictions(winningNumber);
     }
