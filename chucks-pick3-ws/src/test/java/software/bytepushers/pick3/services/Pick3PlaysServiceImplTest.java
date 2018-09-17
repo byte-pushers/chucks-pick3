@@ -100,7 +100,5 @@ public class Pick3PlaysServiceImplTest {
 
 
         assertThat(integerCaptor.getAllValues()).containsExactly(123);
-        /*assertThat(dateCaptor.getAllValues()).containsExactly(date1, date2);
-        assertThat(drawTimeCaptor.getAllValues()).containsExactly(DrawingTime.DAY, DrawingTime.MORNING);*/
     }
 }
