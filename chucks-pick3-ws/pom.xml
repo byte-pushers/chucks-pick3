@@ -297,6 +297,9 @@
                                 </filter>
                                 <filter>
                                     <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
+                                    <excludes>
+                                        <exclude>software/bytepushers/pick3/deploy/**</exclude>
+                                    </excludes>
                                 </filter>
                             </filters>
                         </configuration>
