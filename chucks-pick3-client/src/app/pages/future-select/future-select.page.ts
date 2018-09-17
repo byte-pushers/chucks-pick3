@@ -26,6 +26,7 @@ export class FutureSelectPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionCtrl: ActionSheetController,
               public titlecase: TitleCasePipe) {
     this.drawDate = new Date(navParams.get('drawDate'));
+    this.drawDate.setHours(0, 0, 0, 0);
     this.drawTime = navParams.get('drawTime');
     this.drawResult = navParams.get('drawResult');
 

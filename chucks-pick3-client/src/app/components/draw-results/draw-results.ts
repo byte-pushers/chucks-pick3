@@ -47,7 +47,7 @@ export class DrawResultsComponent {
       return;
     }
     this.selected.emit({
-      drawDate: this.dateToUrlDate(this.date),
+      drawDate: this.formatDate(this.date),
       drawTime: item.winDrawTime,
       drawResult: item.winNumber
     });
@@ -61,8 +61,19 @@ export class DrawResultsComponent {
     }).present();
   }
 
+  private formatDate(d: Date): string {
+    var month: string = '' + (d.getMonth() + 1),
+      day: string = '' + d.getDate(),
+      year: number = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
   private dateToUrlDate(d: Date): string {
-    return d.getFullYear() + "-" + (1 + d.getMonth()) + "-" + d.getDate();
+    return d.getFullYear() + "-" +  (1 + d.getMonth()) + "-" + d.getDate();
   }
 
   private scrapeTimeOfDay(time: DrawingTime, idx: number) {
