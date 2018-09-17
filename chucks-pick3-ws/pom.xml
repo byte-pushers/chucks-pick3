@@ -189,7 +189,6 @@
             <version>1.16.20</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -207,20 +206,20 @@
                     </excludes>
                 </configuration>
                 <executions>
-                    <execution>
+                    <!--execution>
                         <id>setup</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>setup</goal>
                         </goals>
-                    </execution>
+                    </execution-->
                     <execution>
                         <id>aggregate and check</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>aggregate</goal>
-                            <goal>clover</goal>
+                            <goal>instrument</goal>
                             <goal>check</goal>
+                            <goal>clover</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -298,6 +297,9 @@
                                 </filter>
                                 <filter>
                                     <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
+                                    <excludes>
+                                        <exclude>software/bytepushers/pick3/deploy/**</exclude>
+                                    </excludes>
                                 </filter>
                             </filters>
                         </configuration>
@@ -327,11 +329,11 @@
                             <systemProperties>
                                 <systemProperty>
                                     <key>bytepushers.deploy.awsRegion</key>
-                                    <value>us-east-1</value>
+                                    <value>us-east-2</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3BucketName</key>
-                                    <value>jersey-sample-test-bucket</value>
+                                    <value>com.bytepushers.chucks-pick3.webservice</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3ObjectName</key>
@@ -343,7 +345,11 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.lambdaFunctionName</key>
-                                    <value>bytepushers-chucksPick3-gateway</value>
+                                    <value>bytepushers-chucks-pick3-ws</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.peerName</key>
+                                    <value>bytepushers-chucks-pick3-lotto-system</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.cloudFormationTemplate</key>
@@ -351,7 +357,7 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.cloudFormationStackName</key>
-                                    <value>bytepushers-pick3-sample</value>
+                                    <value>bytepushers-chucks-pick3-ws-</value>
                                 </systemProperty>
                             </systemProperties>
                         </configuration>
