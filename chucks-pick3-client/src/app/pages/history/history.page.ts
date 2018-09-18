@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
-import {DrawResultsComponent} from "../../components/draw-results/draw-results";
-import {DrawingResult} from "../../model/DrawingResult.model";
+import {DrawResultsComponent} from '../../components/draw-results/draw-results';
+import {DrawingResult} from '../../model/DrawingResult.model';
 
 @IonicPage({
   segment: 'show'
@@ -12,7 +12,7 @@ import {DrawingResult} from "../../model/DrawingResult.model";
 })
 export class HistoryPage {
 
-  @ViewChild("drawResults") drawResults: DrawResultsComponent;
+  @ViewChild('drawResults') drawResults: DrawResultsComponent;
 
   public date: Date
 
@@ -48,7 +48,8 @@ export class HistoryPage {
   }
 
   private adjustForTimezone(d: string): Date {
-    var date: Date = new Date(d);
-    return new Date(date.getUTCFullYear() + "-" + (1 + date.getUTCMonth()) + "-" + date.getUTCDate());
+    let
+      date: Date = new Date(d);
+    return new Date(date.getUTCFullYear() + '-' + (1 + date.getUTCMonth()) + '-' + date.getUTCDate());
   }
 }

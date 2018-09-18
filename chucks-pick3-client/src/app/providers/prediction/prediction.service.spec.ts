@@ -19,7 +19,7 @@ describe('PredictionProvider', () => {
     });
   });
 
-  var pick3Request: Pick3PlaysRequest = {
+  const pick3Request: Pick3PlaysRequest = {
     winDrawDate: new Date(2018, 7, 31),   // n.b. months are zero-indexed
     futureDrawDate: new Date(2018, 8, 1),
     winDrawTime: DrawingTime.MORNING,

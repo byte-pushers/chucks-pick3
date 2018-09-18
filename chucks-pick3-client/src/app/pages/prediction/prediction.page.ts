@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { PredictionProvider } from "../../providers/prediction/prediction.service";
-import { Pick3PlaysRequest } from "../../providers/prediction/api/v1/Pick3PlaysRequest.model";
-import { DrawingTime } from "../../providers/prediction/api/v1/DrawingTime.model";
+import { PredictionProvider } from '../../providers/prediction/prediction.service';
+import { Pick3PlaysRequest } from '../../providers/prediction/api/v1/Pick3PlaysRequest.model';
+import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model';
 
 /**
  * Generated class for the PredictionPage page.
@@ -40,7 +40,7 @@ export class PredictionPage {
   }
 
   ionViewDidLoad() {
-    var req: Pick3PlaysRequest =  {
+    let req: Pick3PlaysRequest =  {
       winNumber: this.winNumber,
       futureDrawTime: this.futureDrawTime,
       futureDrawDate: this.futureDrawDate,

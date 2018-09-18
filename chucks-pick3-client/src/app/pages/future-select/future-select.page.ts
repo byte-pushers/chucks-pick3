@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ActionSheetController, DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {DrawingTime} from "../../providers/prediction/api/v1/DrawingTime.model";
-import {TitleCasePipe} from "@angular/common";
+import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
+import {TitleCasePipe} from '@angular/common';
 
 @IonicPage({
   segment: 'predictFor/:drawDate/:drawTime/:drawResult'
@@ -30,7 +30,7 @@ export class FutureSelectPage {
     this.drawResult = navParams.get('drawResult');
 
     // Set min and max date to ensure user can only select from dates up to 100 years in the future.
-    var today = new Date();
+    let today = new Date();
     today.setFullYear(today.getFullYear() + 100, 12, 31);
     this.maxDate = today.toISOString();
   }
@@ -67,7 +67,7 @@ export class FutureSelectPage {
 
   public showTimePicker(clickEvent: any) {
     console.log(clickEvent);
-    var buttons = [DrawingTime.MORNING, DrawingTime.DAY, DrawingTime.EVENING, DrawingTime.NIGHT].map((time) => {
+    const buttons = [DrawingTime.MORNING, DrawingTime.DAY, DrawingTime.EVENING, DrawingTime.NIGHT].map((time) => {
       return {
         icon: this.timeIcon(time),
         text: this.titlecase.transform(time.toString()),
@@ -85,11 +85,11 @@ export class FutureSelectPage {
   }
 
   private dateToUrlDate(d: Date): string {
-    return d.getFullYear() + "-" + (1 + d.getMonth()) + "-" + d.getDate();
+    return d.getFullYear() + '-' + (1 + d.getMonth()) + '-' + d.getDate();
   }
 
   private adjustForTimezone(d: string): string {
-    var date: Date = new Date(d);
-    return date.getUTCFullYear() + "-" + (1 + date.getUTCMonth()) + "-" + date.getUTCDate();
+    const date: Date = new Date(d);
+    return date.getUTCFullYear() + '-' + (1 + date.getUTCMonth()) + '-' + date.getUTCDate();
   }
 }
