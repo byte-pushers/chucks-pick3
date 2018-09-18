@@ -11,9 +11,7 @@ import { DrawResultsComponent } from '../../components/draw-results/draw-results
   templateUrl: 'today.html'
 })
 export class TodayPage {
-
   @ViewChild('drawResults') drawResult: DrawResultsComponent;
-
   public date: Date;
 
   constructor(public navCtrl: NavController) {

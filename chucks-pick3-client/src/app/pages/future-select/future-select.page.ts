@@ -29,6 +29,8 @@ export class FutureSelectPage {
     this.drawTime = navParams.get('drawTime');
     this.drawResult = navParams.get('drawResult');
 
+    this.drawDate.setHours(0, 0, 0, 0);
+
     // Set min and max date to ensure user can only select from dates up to 100 years in the future.
     let today = new Date();
     today.setFullYear(today.getFullYear() + 100, 12, 31);
@@ -59,13 +61,13 @@ export class FutureSelectPage {
         return 'time';
     }
   }
-  public showPicker() {
+  public showPicker(): void {
     this.minDate = new Date().toISOString();
     this.datePicker.min = this.minDate;
     this.datePicker.open();
   }
 
-  public showTimePicker(clickEvent: any) {
+  public showTimePicker(clickEvent: any): void {
     console.log(clickEvent);
     const buttons = [DrawingTime.MORNING, DrawingTime.DAY, DrawingTime.EVENING, DrawingTime.NIGHT].map((time) => {
       return {

@@ -30,6 +30,7 @@ export class DrawResultsComponent implements OnChanges {
   }
 
   public ngOnChanges(): void {
+    console.log("ngOnChanges() method: date:" + this.date, this.date);
     if (!this.date) {
       return;
     }
@@ -75,11 +76,9 @@ export class DrawResultsComponent implements OnChanges {
     return [year, month, day].join('-');
   }
 
-  private dateToUrlDate(d: Date): string {
-    return d.getFullYear() + '-' + (1 + d.getMonth()) + '-' + d.getDate();
-  }
-
   private scrapeTimeOfDay(time: DrawingTime, idx: number): void {
+    console.log("scrapeTimeOfDay() method: date:" + this.date, this.date);
+    console.log("scrapeTimeOfDay() method: drawingTime:" + time, time);
     this.scraper.scrapeResults(this.date, time)
       .then((result) => {
         this.items[idx].winNumber = result.drawResult;
