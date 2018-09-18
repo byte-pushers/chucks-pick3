@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { DrawingResult } from "../../model/DrawingResult.model";
-import { DrawResultsComponent } from "../../components/draw-results/draw-results";
+import { DrawingResult } from '../../model/DrawingResult.model';
+import { DrawResultsComponent } from '../../components/draw-results/draw-results';
 
 @IonicPage({
   segment: 'results'
@@ -12,7 +12,7 @@ import { DrawResultsComponent } from "../../components/draw-results/draw-results
 })
 export class TodayPage {
 
-  @ViewChild("drawResults") drawResult: DrawResultsComponent;
+  @ViewChild('drawResults') drawResult: DrawResultsComponent;
 
   public date: Date;
 

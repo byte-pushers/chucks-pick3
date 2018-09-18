@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule} from 'ionic-angular';
 import { PredictionPage } from './prediction.page';
-import { PipesModule } from "../../pipes/pipes.module";
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [PredictionPage],

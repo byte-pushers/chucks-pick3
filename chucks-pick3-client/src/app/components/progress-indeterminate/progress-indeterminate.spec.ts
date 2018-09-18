@@ -1,9 +1,9 @@
 'use strict';
 
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ProgressIndeterminateComponent} from "./progress-indeterminate";
-import {By} from "@angular/platform-browser";
-import {DebugElement} from "@angular/core";
+import {ProgressIndeterminateComponent} from './progress-indeterminate';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
 describe('PredictionProvider', () => {
 
