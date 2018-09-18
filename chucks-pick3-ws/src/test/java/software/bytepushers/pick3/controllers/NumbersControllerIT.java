@@ -55,11 +55,10 @@ public class NumbersControllerIT {
     @Configuration
     public static class TestConfig {
         @Bean
-        Pick3PredictionService predictionService() {
+        Pick3PredictionService pick3PredictionService() {
             Pick3PredictionService svc = mock(Pick3PredictionService.class);
 
-            when(svc.predictPick3Plays(anyInt(), any(), any(), any(), any(), any()))
-                    .thenAnswer(Answers.randomWinningNumberResponse());
+            when(svc.generatePredictions(anyInt())).thenAnswer(Answers.randomWinningNumberResponse());
 
             return svc;
         }

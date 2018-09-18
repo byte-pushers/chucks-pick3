@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage} from "ionic-angular";
+import {IonicPage} from 'ionic-angular';
 
 @IonicPage({
   segment: 'tab'
@@ -9,12 +9,12 @@ import {IonicPage} from "ionic-angular";
 })
 export class TabsPage {
 
-  date: Date;
-  maxDate: Date;
+  public date: Date;
+  public maxDate: Date;
 
-  tab1Root:any = 'TodayPage';
-  tab2Root:any = 'HistoryPage';
-  tab3Root:any = 'ContactPage';
+  public tab1Root:any = 'TodayPage';
+  public tab2Root:any = 'HistoryPage';
+  public tab3Root:any = 'ContactPage';
 
   constructor() {
 

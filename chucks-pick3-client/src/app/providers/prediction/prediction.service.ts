@@ -39,7 +39,7 @@ export class PredictionProvider {
   }
 
   private formatDate(d: Date): string {
-    var month: string = '' + (d.getMonth() + 1),
+    let month: string = '' + (d.getMonth() + 1),
         day: string = '' + d.getDate(),
         year: number = d.getFullYear();
 
