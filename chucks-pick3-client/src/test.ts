@@ -10,7 +10,6 @@ import 'zone.js/dist/fake-async-test';
 import { FormsModule, ReactiveFormsModule }                           from '@angular/forms';
 import { getTestBed, TestBed }                                        from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { TranslateModule}                          from '@ngx-translate/core';
 import {
   App,
   Config,
@@ -22,8 +21,13 @@ import {
   MenuController,
   NavController,
   Platform,
-}                                   from 'ionic-angular';
-import { ConfigMock, PlatformMock } from 'ionic-mocks';
+  ViewController,
+  ToastController,
+} from 'ionic-angular';
+import {ConfigMock, PlatformMock, ToastControllerMock, ViewControllerMock} from 'ionic-mocks';
+import {ScrapingServiceMock} from "./app/providers/web-scraping/scraping.service.mock";
+import {ScrapingService} from "./app/providers/web-scraping/scraping.service.interface";
+import {PipesModule} from "./app/pipes/pipes.module";
 
 declare const require: any;
 
@@ -60,12 +64,15 @@ export class TestUtils {
         {provide: Platform, useFactory: () => PlatformMock.instance()},
         {provide: Config, useFactory: () => ConfigMock.instance()},
         {provide: DeepLinker, useFactory: () => ConfigMock.instance()},
+        {provide: ViewController, useFactory: () => ViewControllerMock.instance()},
+        {provide: ToastController, useFactory: () => ToastControllerMock.instance()},
+        {provide: ScrapingService, useClass: ScrapingServiceMock}
       ],
       imports: [
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
-        TranslateModule,
+        PipesModule,
       ],
     });
   }
