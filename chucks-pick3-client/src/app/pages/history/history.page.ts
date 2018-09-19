@@ -19,8 +19,6 @@ export class HistoryPage {
   public maxDate: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log('navParams:' + navParams, navParams);
-    console.log('navParams(date): ' + navParams.get('date'));
   }
 
   public ionViewWillEnter(): void {
@@ -40,16 +38,11 @@ export class HistoryPage {
   }
 
   public fireScrape(dateString: string): void {
-    console.log('fireScrape() method: selectedDate:' + this.selectedDate, this.selectedDate);
-    console.log('fireScrape() method: dateString:' + dateString, dateString);
     this.date = this.parseDate(dateString);
-    console.log('fireScrape() method: date:' + this.date, this.date);
     this.date.setHours(0, 0, 0, 0);
-    console.log('fireScrape() method: date:' + this.date, this.date);
   }
 
   public itemSelected(result: DrawingResult): void {
-    console.log('fireScrape() method: event:' + event, event);
     this.navCtrl.push('FutureSelectPage', result);
   }
 
