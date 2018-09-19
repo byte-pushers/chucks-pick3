@@ -17,7 +17,6 @@ export class LeftPadPipe implements PipeTransform {
     let length = parseInt(args[0]);
     let char = args[1].charAt(0);
 
-    console.log(value, length, char);
     return value.length > length ? value : char.repeat(length - value.length) + value;
   }
 }

@@ -75,10 +75,6 @@ export class DrawResultsComponent implements OnChanges {
     return [year, month, day].join('-');
   }
 
-  private dateToUrlDate(d: Date): string {
-    return d.getFullYear() + '-' + (1 + d.getMonth()) + '-' + d.getDate();
-  }
-
   private scrapeTimeOfDay(time: DrawingTime, idx: number): void {
     this.scraper.scrapeResults(this.date, time)
       .then((result) => {
