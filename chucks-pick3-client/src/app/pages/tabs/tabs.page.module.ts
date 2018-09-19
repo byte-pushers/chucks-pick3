@@ -11,8 +11,8 @@ import { ContactPageModule } from '../contact/contact.page.module';
     TodayPageModule,
     HistoryPageModule,
     ContactPageModule,
-    IonicPageModule.forChild(TabsPage)
+    IonicPageModule.forChild(TabsPage),
   ],
-  entryComponents: [TabsPage]
+  entryComponents: [TabsPage],
 })
 export class TabsPageModule { }

@@ -5,12 +5,12 @@ import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
-    HistoryPage
+    HistoryPage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(HistoryPage)
+    IonicPageModule.forChild(HistoryPage),
   ],
-  entryComponents: [HistoryPage]
+  entryComponents: [HistoryPage],
 })
 export class HistoryPageModule { }

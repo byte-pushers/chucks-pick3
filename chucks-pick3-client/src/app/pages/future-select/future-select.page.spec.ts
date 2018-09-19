@@ -1,7 +1,7 @@
-import {TestUtils} from "../../../test";
-import {FutureSelectPage} from "./future-select.page";
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {FutureSelectPageModule} from "./future-select.page.module";
+import {TestUtils} from '../../../test';
+import {FutureSelectPage} from './future-select.page';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FutureSelectPageModule} from './future-select.page.module';
 
 describe('FutureSelectPage', () => {
   let instance: FutureSelectPage = null;

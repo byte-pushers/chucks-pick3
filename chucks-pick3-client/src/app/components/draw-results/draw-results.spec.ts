@@ -1,12 +1,12 @@
 'use strict';
 
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
-import {By} from "@angular/platform-browser";
-import {DebugElement, SimpleChange} from "@angular/core";
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement, SimpleChange} from '@angular/core';
 import {DrawResultsComponent} from "./draw-results";
 import {TestUtils} from "../../../test";
 import {ProgressIndeterminateComponent} from "../progress-indeterminate/progress-indeterminate";
-import {ToastController} from "ionic-angular";
+import {ScrapingService} from "../../providers/web-scraping/scraping.service.interface";
 
 describe('DrawResultsComponent', () => {
   let morningRow: DebugElement;
@@ -93,30 +93,35 @@ describe('DrawResultsComponent', () => {
     });
   });
 
-  it('should update itself with the results of the scrape', () => {
+  it('should update itself with the results of the scrape', fakeAsync(() => {
     instance.date = new Date();
+
+    const scrapeSvc = TestBed.get(ScrapingService);
+    scrapeSvc.scrapeResults.and.returnValue(Promise.resolve({
+      drawResult: 123,
+      drawDate: instance.date,
+      drawTime: null,
+    }));
+
     instance.ngOnChanges({
       date: new SimpleChange(null, instance.date, false)
     });
     fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
 
     fixture.whenStable().then(() => {
-      // Have to wait for scrapeResults to finish.
-        setTimeout(()=> {
-          console.log(instance.items);
-          expect(instance.loading).toEqual(true);
-
-          expect(queryDescendentDom(morningRow).winNumber).toEqual('123');
-          expect(queryDescendentDom(dayRow).winNumber).toEqual('123');
-          expect(queryDescendentDom(eveningRow).winNumber).toEqual('123');
-          expect(queryDescendentDom(nightRow).winNumber).toEqual('123');
-
-        }, 2000);
-      });
-  });
+        expect(queryDescendentDom(morningRow).winNumber).toEqual('123');
+        expect(queryDescendentDom(dayRow).winNumber).toEqual('123');
+        expect(queryDescendentDom(eveningRow).winNumber).toEqual('123');
+        expect(queryDescendentDom(nightRow).winNumber).toEqual('123');
+      }).catch(() => {
+        fail();
+    });
+  }));
 
   function queryDescendentDom(row: DebugElement): any {
-    var result = {
+    let result = {
       winNumber: undefined,
       drawTime: undefined,
       icon: undefined,

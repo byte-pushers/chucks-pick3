@@ -27,10 +27,6 @@ export class HistoryPage {
     }
   }
 
-  public ionViewDidEnter(): void {
-    // this.showPicker();
-  }
-
   public showPicker(): void {
     this.maxDate = new Date().toISOString();
     this.datePicker.max = this.maxDate;

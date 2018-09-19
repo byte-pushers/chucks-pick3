@@ -6,12 +6,12 @@ import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
-    TodayPage
+    TodayPage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(TodayPage)
+    IonicPageModule.forChild(TodayPage),
   ],
-  entryComponents: [TodayPage]
+  entryComponents: [TodayPage],
 })
 export class TodayPageModule { }

@@ -1,20 +1,20 @@
 'use strict';
 
-import {Pick3PlaysRequest} from "./Pick3PlaysRequest.model";
-import {DrawingTime} from "./DrawingTime.model";
+import {Pick3PlaysRequest} from './Pick3PlaysRequest.model';
+import {DrawingTime} from './DrawingTime.model';
 
 describe('Pick3PlaysRequest', () => {
 
   it('equates with matching untyped object literals', () => {
-    var d1: Date = new Date(),
+    const d1: Date = new Date(),
         d2: Date = new Date();
 
-    var request: Pick3PlaysRequest = {
+    const request: Pick3PlaysRequest = {
       winDrawDate: d1,
       futureDrawDate: d2,
       winDrawTime: DrawingTime.DAY,
       futureDrawTime: DrawingTime.MORNING,
-      winNumber: 123
+      winNumber: 123,
     };
 
     expect({
@@ -22,7 +22,7 @@ describe('Pick3PlaysRequest', () => {
       futureDrawDate: d2,
       winDrawTime: DrawingTime.DAY,
       futureDrawTime: DrawingTime.MORNING,
-      winNumber: 123
+      winNumber: 123,
     }).toEqual(request);
   });
 

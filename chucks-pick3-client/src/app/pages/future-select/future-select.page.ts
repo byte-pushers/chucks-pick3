@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ActionSheetController, DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ActionSheet, ActionSheetController, DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
 import {TitleCasePipe} from '@angular/common';
 
@@ -17,9 +17,9 @@ export class FutureSelectPage {
   public selectedDate: string;
   public selectedDrawTime: DrawingTime;
 
-  readonly drawDate: Date;
-  readonly drawTime: DrawingTime;
-  readonly drawResult: number;
+  public readonly drawDate: Date;
+  public readonly drawTime: DrawingTime;
+  public readonly drawResult: number;
 
   @ViewChild('datePicker') datePicker: DateTime;
 
@@ -32,7 +32,7 @@ export class FutureSelectPage {
     this.drawDate.setHours(0, 0, 0, 0);
 
     // Set min and max date to ensure user can only select from dates up to 100 years in the future.
-    let today = new Date();
+    let today: Date = new Date();
     today.setFullYear(today.getFullYear() + 100, 12, 31);
     this.maxDate = today.toISOString();
   }
@@ -43,12 +43,12 @@ export class FutureSelectPage {
       futureDrawTime: this.selectedDrawTime,
       winDrawDate: this.dateToUrlDate(this.drawDate),
       winDrawTime: this.drawTime,
-      winNumber: this.drawResult
+      winNumber: this.drawResult,
     });
   }
 
-  public timeIcon(time: DrawingTime) {
-    switch(time) {
+  public timeIcon(time: DrawingTime): string {
+    switch (time) {
       case DrawingTime.MORNING:
         return 'ios-partly-sunny';
       case DrawingTime.DAY:
@@ -74,14 +74,14 @@ export class FutureSelectPage {
         icon: this.timeIcon(time),
         text: this.titlecase.transform(time.toString()),
         handler: () => {
-          this.selectedDrawTime = time
+          this.selectedDrawTime = time;
         }
       };
     });
 
-    let actionSheet = this.actionCtrl.create({
+    let actionSheet: ActionSheet = this.actionCtrl.create({
       title: 'Select time of drawing',
-      buttons: buttons
+      buttons: buttons,
     });
     actionSheet.present();
   }

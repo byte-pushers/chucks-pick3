@@ -10,7 +10,7 @@ import {PipesModule} from '../../pipes/pipes.module';
   providers: [ TitleCasePipe ],
   imports: [
     PipesModule,
-    IonicPageModule.forChild(FutureSelectPage)
-  ]
+    IonicPageModule.forChild(FutureSelectPage),
+  ],
 })
 export class FutureSelectPageModule { }

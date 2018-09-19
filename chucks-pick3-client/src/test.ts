@@ -32,10 +32,10 @@ import {
   ToastControllerMock,
   ViewControllerMock
 } from 'ionic-mocks';
-import {ScrapingServiceMock} from "./app/providers/web-scraping/scraping.service.mock";
 import {ScrapingService} from "./app/providers/web-scraping/scraping.service.interface";
 import {PipesModule} from "./app/pipes/pipes.module";
 import {TitleCasePipe} from "@angular/common";
+import {PredictionProvider} from "./app/providers/prediction/prediction.service";
 
 declare const require: any;
 
@@ -62,21 +62,24 @@ export class TestUtils {
       });
   }
 
-  public static configureIonicTestingModule(components: Array<any>, imports?: Array<any>): typeof TestBed {
+  public static configureIonicTestingModule(components: Array<any>, imports?: Array<any>, providers?: Array<any>): typeof TestBed {
     return TestBed.configureTestingModule({
       declarations: [
         ...components,
       ],
       providers: [
-        App, Form, Keyboard, DomController, MenuController, NavController, TitleCasePipe,
+        App, Form, Keyboard, DomController, MenuController, TitleCasePipe,
         {provide: ActionSheetController, useFactory: () => ActionSheetControllerMock.instance()},
-        {provide: NavParams, useFactory: () => NavParamsMock.instance()},
         {provide: Platform, useFactory: () => PlatformMock.instance()},
         {provide: Config, useFactory: () => ConfigMock.instance()},
         {provide: DeepLinker, useFactory: () => ConfigMock.instance()},
         {provide: ViewController, useFactory: () => ViewControllerMock.instance()},
         {provide: ToastController, useFactory: () => ToastControllerMock.instance()},
-        {provide: ScrapingService, useClass: ScrapingServiceMock},
+        {provide: ScrapingService, useValue: jasmine.createSpyObj('ScrapingService',['scrapeResults'])},
+        {provide: NavParams, useValue: jasmine.createSpyObj('NavParams', ['get'])},
+        {provide: NavController, useValue: jasmine.createSpyObj('NavController', ['push'])},
+        {provide: PredictionProvider, useValue: jasmine.createSpyObj('PredictionProvider', ['getPredictions'])},
+        ...(providers? providers : [])
       ],
       imports: [
         FormsModule,
