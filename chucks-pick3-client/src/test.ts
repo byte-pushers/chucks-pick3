@@ -22,12 +22,20 @@ import {
   NavController,
   Platform,
   ViewController,
-  ToastController,
+  ToastController, NavParams, ActionSheetController,
 } from 'ionic-angular';
-import {ConfigMock, PlatformMock, ToastControllerMock, ViewControllerMock} from 'ionic-mocks';
+import {
+  ActionSheetControllerMock,
+  ConfigMock,
+  NavParamsMock,
+  PlatformMock,
+  ToastControllerMock,
+  ViewControllerMock
+} from 'ionic-mocks';
 import {ScrapingServiceMock} from "./app/providers/web-scraping/scraping.service.mock";
 import {ScrapingService} from "./app/providers/web-scraping/scraping.service.interface";
 import {PipesModule} from "./app/pipes/pipes.module";
+import {TitleCasePipe} from "@angular/common";
 
 declare const require: any;
 
@@ -43,8 +51,8 @@ context.keys().map(context);
 
 export class TestUtils {
 
-  public static beforeEachCompiler(components: Array<any>): Promise<{fixture: any, instance: any}> {
-    return TestUtils.configureIonicTestingModule(components)
+  public static beforeEachCompiler(components: Array<any>, imports?: Array<any>): Promise<{fixture: any, instance: any}> {
+    return TestUtils.configureIonicTestingModule(components, imports)
       .compileComponents().then(() => {
         let fixture: any = TestBed.createComponent(components[0]);
         return {
@@ -54,25 +62,28 @@ export class TestUtils {
       });
   }
 
-  public static configureIonicTestingModule(components: Array<any>): typeof TestBed {
+  public static configureIonicTestingModule(components: Array<any>, imports?: Array<any>): typeof TestBed {
     return TestBed.configureTestingModule({
       declarations: [
         ...components,
       ],
       providers: [
-        App, Form, Keyboard, DomController, MenuController, NavController,
+        App, Form, Keyboard, DomController, MenuController, NavController, TitleCasePipe,
+        {provide: ActionSheetController, useFactory: () => ActionSheetControllerMock.instance()},
+        {provide: NavParams, useFactory: () => NavParamsMock.instance()},
         {provide: Platform, useFactory: () => PlatformMock.instance()},
         {provide: Config, useFactory: () => ConfigMock.instance()},
         {provide: DeepLinker, useFactory: () => ConfigMock.instance()},
         {provide: ViewController, useFactory: () => ViewControllerMock.instance()},
         {provide: ToastController, useFactory: () => ToastControllerMock.instance()},
-        {provide: ScrapingService, useClass: ScrapingServiceMock}
+        {provide: ScrapingService, useClass: ScrapingServiceMock},
       ],
       imports: [
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
         PipesModule,
+        ...(imports ? imports : [])
       ],
     });
   }

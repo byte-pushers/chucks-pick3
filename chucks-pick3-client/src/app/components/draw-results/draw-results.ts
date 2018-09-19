@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 import { DrawingTime } from '../../../app/providers/prediction/api/v1/DrawingTime.model';
-import { ScrapingProvider } from '../../../app/providers/web-scraping/scraping.service';
 
-import BytePushers from '@byte-pushers/pick3-lottery-web-scraper';
 import { DrawingResult } from '../../../app/model/DrawingResult.model';
 
 import { ToastController, ViewController } from 'ionic-angular';
@@ -22,22 +20,26 @@ export class DrawResultsComponent implements OnChanges {
   @Output()
   public selected: EventEmitter<DrawingResult> = new EventEmitter<DrawingResult>();
 
-  constructor(public viewController: ViewController, public scraper: ScrapingService, public toast: ToastController) {
+  constructor(public viewController: ViewController, public scraper: ScrapingService,
+              public toast: ToastController) {
     this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
     this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
     this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
     this.items.push({icon: 'moon', winDrawTime: DrawingTime.NIGHT, winNumber: null});
   }
 
-  public ngOnChanges(): void {
-    if (!this.date) {
-      return;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['date']) {
+      if (!this.date) {
+        return;
+      }
+      this.loading = true;
+      this.items.forEach((item: any, idx: number) => {
+        item.winNumber = null;
+        this.scrapeTimeOfDay(item.winDrawTime, idx);
+      });
     }
-    this.loading = true;
-    this.items.forEach((item: any, idx: number) => {
-      item.winNumber = null;
-      this.scrapeTimeOfDay(item.winDrawTime, idx);
-    });
   }
 
   public itemSelected(item: any): void {
