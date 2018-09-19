@@ -24,7 +24,7 @@ import { PipesModule } from './pipes/pipes.module';
     StatusBar,
     SplashScreen,
     PredictionProvider,
-    ScrapingProvider,
+    {provide: ScrapingService, useClass: ScrapingProvider},
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
 })

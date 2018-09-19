@@ -7,6 +7,7 @@ import BytePushers from '@byte-pushers/pick3-lottery-web-scraper';
 import { DrawingResult } from '../../../app/model/DrawingResult.model';
 
 import { ToastController, ViewController } from 'ionic-angular';
+import {ScrapingService} from '../../providers/web-scraping/scraping.service.interface';
 
 @Component({
   selector: 'draw-results',
@@ -21,7 +22,7 @@ export class DrawResultsComponent implements OnChanges {
   @Output()
   public selected: EventEmitter<DrawingResult> = new EventEmitter<DrawingResult>();
 
-  constructor(public viewController: ViewController, public scraper: ScrapingProvider, public toast: ToastController) {
+  constructor(public viewController: ViewController, public scraper: ScrapingService, public toast: ToastController) {
     this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
     this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
     this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
@@ -80,14 +81,11 @@ export class DrawResultsComponent implements OnChanges {
 
   private scrapeTimeOfDay(time: DrawingTime, idx: number): void {
     this.scraper.scrapeResults(this.date, time)
-      .then(
-        (result) => {
-          this.items[idx].winNumber = result.number;
-        },
-        (error) => {
-          if (error instanceof BytePushers.DrawingTimeNotFoundException) {
-            this.items[idx].winNumber = 'N/A';
-          }
-        });
+      .then((result) => {
+        this.items[idx].winNumber = result.drawResult;
+      },
+      () => {
+        this.items[idx].winNumber = "N/A"
+      });
   }
 }
