@@ -17,14 +17,14 @@ export class PredictionProvider {
 
   public getPredictions(request: Pick3PlaysRequest): Observable<string | Pick3PlaysResponse> {
     return this.http.get<Pick3PlaysResponse>(API_URL + '/numbers',
-      {
-        params: new HttpParams()
-          .append('winDrawDate', this.formatDate(request.winDrawDate))
-          .append('futureDrawDate', this.formatDate(request.futureDrawDate))
-          .append('winDrawTime', request.winDrawTime)
-          .append('futureDrawTime', request.futureDrawTime)
-          .append('winNumber', '' + request.winNumber),
-      }).pipe(catchError(this.handleError));
+                                             {
+                                               params: new HttpParams()
+                                                 .append('winDrawDate', this.formatDate(request.winDrawDate))
+                                                 .append('futureDrawDate', this.formatDate(request.futureDrawDate))
+                                                 .append('winDrawTime', request.winDrawTime)
+                                                 .append('futureDrawTime', request.futureDrawTime)
+                                                 .append('winNumber', '' + request.winNumber),
+                                             }).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse): Observable<string> {

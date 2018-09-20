@@ -24,12 +24,11 @@ export class DrawResultsComponent implements OnChanges {
               public toast: ToastController) {
     this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
     this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
-    this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
+    this.items.push({icon: 'ios-cloudy-nightpr', winDrawTime: DrawingTime.EVENING, winNumber: null});
     this.items.push({icon: 'moon', winDrawTime: DrawingTime.NIGHT, winNumber: null});
   }
 
-
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['date']) {
       if (!this.date) {
         return;
@@ -67,7 +66,7 @@ export class DrawResultsComponent implements OnChanges {
   }
 
   private formatDate(d: Date): string {
-    var month: string = '' + (d.getMonth() + 1),
+    let month: string = '' + (d.getMonth() + 1),
       day: string = '' + d.getDate(),
       year: number = d.getFullYear();
 
@@ -78,12 +77,13 @@ export class DrawResultsComponent implements OnChanges {
   }
 
   private scrapeTimeOfDay(time: DrawingTime, idx: number): void {
-    this.scraper.scrapeResults(this.date, time)
-      .then((result) => {
+    this.scraper.scrapeResults(this.date, time).then(
+      (result) => {
         this.items[idx].winNumber = result.drawResult;
       },
       () => {
-        this.items[idx].winNumber = "N/A"
-      });
+        this.items[idx].winNumber = 'N/A';
+      },
+    );
   }
 }

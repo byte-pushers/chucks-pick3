@@ -4,7 +4,7 @@ import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
 import {TitleCasePipe} from '@angular/common';
 
 @IonicPage({
-  segment: 'predictFor/:drawDate/:drawTime/:drawResult'
+  segment: 'predictFor/:drawDate/:drawTime/:drawResult',
 })
 @Component({
   selector: 'page-future-select',
@@ -21,7 +21,7 @@ export class FutureSelectPage {
   public readonly drawTime: DrawingTime;
   public readonly drawResult: number;
 
-  @ViewChild('datePicker') datePicker: DateTime;
+  @ViewChild('datePicker') public datePicker: DateTime;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionCtrl: ActionSheetController,
               public titlecase: TitleCasePipe) {
@@ -37,7 +37,7 @@ export class FutureSelectPage {
     this.maxDate = today.toISOString();
   }
 
-  submit(): void {
+  public submit(): void {
     this.navCtrl.push('PredictionPage', {
       futureDrawDate: this.adjustForTimezone(this.selectedDate),
       futureDrawTime: this.selectedDrawTime,
@@ -67,15 +67,14 @@ export class FutureSelectPage {
     this.datePicker.open();
   }
 
-  public showTimePicker(clickEvent: any): void {
-    console.log(clickEvent);
-    const buttons = [DrawingTime.MORNING, DrawingTime.DAY, DrawingTime.EVENING, DrawingTime.NIGHT].map((time) => {
+  public showTimePicker(): void {
+    const buttons: any[] = [DrawingTime.MORNING, DrawingTime.DAY, DrawingTime.EVENING, DrawingTime.NIGHT].map((time) => {
       return {
         icon: this.timeIcon(time),
         text: this.titlecase.transform(time.toString()),
         handler: () => {
           this.selectedDrawTime = time;
-        }
+        },
       };
     });
 

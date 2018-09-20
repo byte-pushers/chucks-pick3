@@ -27,15 +27,14 @@ import {
 import {
   ActionSheetControllerMock,
   ConfigMock,
-  NavParamsMock,
   PlatformMock,
   ToastControllerMock,
-  ViewControllerMock
+  ViewControllerMock,
 } from 'ionic-mocks';
-import {ScrapingService} from "./app/providers/web-scraping/scraping.service.interface";
-import {PipesModule} from "./app/pipes/pipes.module";
-import {TitleCasePipe} from "@angular/common";
-import {PredictionProvider} from "./app/providers/prediction/prediction.service";
+import {ScrapingService} from './app/providers/web-scraping/scraping.service.interface';
+import {PipesModule} from './app/pipes/pipes.module';
+import {TitleCasePipe} from '@angular/common';
+import {PredictionProvider} from './app/providers/prediction/prediction.service';
 
 declare const require: any;
 
@@ -75,18 +74,18 @@ export class TestUtils {
         {provide: DeepLinker, useFactory: () => ConfigMock.instance()},
         {provide: ViewController, useFactory: () => ViewControllerMock.instance()},
         {provide: ToastController, useFactory: () => ToastControllerMock.instance()},
-        {provide: ScrapingService, useValue: jasmine.createSpyObj('ScrapingService',['scrapeResults'])},
+        {provide: ScrapingService, useValue: jasmine.createSpyObj('ScrapingService', ['scrapeResults'])},
         {provide: NavParams, useValue: jasmine.createSpyObj('NavParams', ['get'])},
         {provide: NavController, useValue: jasmine.createSpyObj('NavController', ['push'])},
         {provide: PredictionProvider, useValue: jasmine.createSpyObj('PredictionProvider', ['getPredictions'])},
-        ...(providers? providers : [])
+        ...(providers ? providers : []),
       ],
       imports: [
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
         PipesModule,
-        ...(imports ? imports : [])
+        ...(imports ? imports : []),
       ],
     });
   }

@@ -34,7 +34,6 @@ describe('TodayPage', () => {
     fixture.whenStable().then(() => {
       let morningRow: DebugElement = fixture.debugElement.query(By.css('.drawing-row:nth-child(1)'));
 
-      console.log(instance.navCtrl);
       morningRow.triggerEventHandler('click', null);
 
       expect(instance.navCtrl.push).toHaveBeenCalledWith('FutureSelectPage', {

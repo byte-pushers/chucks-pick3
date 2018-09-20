@@ -20,8 +20,7 @@ describe('PredictionPage', () => {
   };
   let navParams: NavParams = new NavParams(data);
 
-  beforeEach(async(() => TestUtils.configureIonicTestingModule([], [PredictionPageModule],
-             [{provide: NavParams, useValue: navParams}]).compileComponents().then(() => {
+  beforeEach(async(() => TestUtils.configureIonicTestingModule([], [PredictionPageModule], [{provide: NavParams, useValue: navParams}]).compileComponents().then(() => {
     fixture = TestBed.createComponent(PredictionPage);
     instance = fixture.debugElement.componentInstance;
   })));

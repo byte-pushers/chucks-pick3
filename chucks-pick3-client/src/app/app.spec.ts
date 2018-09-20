@@ -1,9 +1,9 @@
 import { MyApp }                      from './app.component';
-import { MenuMock, PlatformMock, StatusBarMock, SplashScreenMock } from 'ionic-mocks';
+import { PlatformMock, StatusBarMock, SplashScreenMock } from 'ionic-mocks';
 
 let instance: MyApp = null;
 
-describe('ClickerApp', () => {
+describe('MyApp', () => {
 
   beforeEach(() => {
     instance = new MyApp(

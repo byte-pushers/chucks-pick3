@@ -13,9 +13,9 @@ export class LeftPadPipe implements PipeTransform {
   /**
    * Takes a value and pads it to the required length on the left
    */
-  transform(value: string, ...args) {
-    let length = parseInt(args[0]);
-    let char = args[1].charAt(0);
+  public transform(value: string, ...args: string[]): string {
+    let length: number = parseInt(args[0]);
+    let char: string = args[1].charAt(0);
 
     return value.length > length ? value : char.repeat(length - value.length) + value;
   }

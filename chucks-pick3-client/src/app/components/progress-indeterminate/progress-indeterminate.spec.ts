@@ -12,7 +12,7 @@ describe('ProgressIndeterminate', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgressIndeterminateComponent]
+      declarations: [ProgressIndeterminateComponent],
     });
 
     fixture = TestBed.createComponent(ProgressIndeterminateComponent);

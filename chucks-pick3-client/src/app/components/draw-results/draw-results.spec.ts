@@ -3,10 +3,10 @@
 import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement, SimpleChange} from '@angular/core';
-import {DrawResultsComponent} from "./draw-results";
-import {TestUtils} from "../../../test";
-import {ProgressIndeterminateComponent} from "../progress-indeterminate/progress-indeterminate";
-import {ScrapingService} from "../../providers/web-scraping/scraping.service.interface";
+import {DrawResultsComponent} from './draw-results';
+import {TestUtils} from '../../../test';
+import {ProgressIndeterminateComponent} from '../progress-indeterminate/progress-indeterminate';
+import {ScrapingService} from '../../providers/web-scraping/scraping.service.interface';
 
 describe('DrawResultsComponent', () => {
   let morningRow: DebugElement;
@@ -36,7 +36,7 @@ describe('DrawResultsComponent', () => {
     expect(instance).toBeTruthy();
   });
 
-  it('contains four rows',() => {
+  it('contains four rows', () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       expect(morningRow).toBeTruthy();
@@ -50,14 +50,13 @@ describe('DrawResultsComponent', () => {
     fixture.detectChanges();
 
     fixture.whenStable().then(() => {
-      const iconNames = new Set([]);
+      const iconNames: Set<String> = new Set([]);
 
       iconNames.add(queryDescendentDom(morningRow).icon);
       iconNames.add(queryDescendentDom(dayRow).icon);
       iconNames.add(queryDescendentDom(eveningRow).icon);
       iconNames.add(queryDescendentDom(nightRow).icon);
 
-      console.log("iconNames", iconNames);
       expect(iconNames.size).toEqual(4);
     });
   });
@@ -96,7 +95,7 @@ describe('DrawResultsComponent', () => {
   it('should update itself with the results of the scrape', fakeAsync(() => {
     instance.date = new Date();
 
-    const scrapeSvc = TestBed.get(ScrapingService);
+    const scrapeSvc: any = TestBed.get(ScrapingService);
     scrapeSvc.scrapeResults.and.returnValue(Promise.resolve({
       drawResult: 123,
       drawDate: instance.date,
@@ -104,7 +103,7 @@ describe('DrawResultsComponent', () => {
     }));
 
     instance.ngOnChanges({
-      date: new SimpleChange(null, instance.date, false)
+      date: new SimpleChange(null, instance.date, false),
     });
     fixture.detectChanges();
     tick();
@@ -121,7 +120,7 @@ describe('DrawResultsComponent', () => {
   }));
 
   function queryDescendentDom(row: DebugElement): any {
-    let result = {
+    let result: any = {
       winNumber: undefined,
       drawTime: undefined,
       icon: undefined,

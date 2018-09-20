@@ -46,7 +46,7 @@ export class PredictionPage {
       futureDrawDate: this.futureDrawDate,
       winDrawDate: this.winDrawDate,
       winDrawTime: this.winDrawTime,
-    }
+    };
 
     this.predictSvc.getPredictions(req)
       .subscribe(
@@ -63,7 +63,7 @@ export class PredictionPage {
             position: 'bot',
            });
           t.present();
-        }
+        },
       );
   }
 
