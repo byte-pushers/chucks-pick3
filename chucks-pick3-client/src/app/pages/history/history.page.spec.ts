@@ -45,6 +45,22 @@ describe('HistoryPage', () => {
     });
   }));
 
+  it('should show the date picker on enter', () => {
+    spyOn(instance, 'showPicker').and.callFake(() => {});
+    instance.ionViewWillEnter();
+
+    expect(instance.showPicker).toHaveBeenCalled();
+  });
+
+  it('showPicker() should open the date picker and set maxDate', () => {
+    instance.datePicker = jasmine.createSpyObj('DateName', ['open']);
+    instance.datePicker.max = null;
+
+    instance.showPicker();
+    expect(instance.datePicker.open).toHaveBeenCalled();
+    expect(instance.datePicker.max).toBeTruthy();
+  });
+
   it('should have a heading of "Get New Picks"', () => {
     let title: DebugElement = fixture.debugElement.query(By.css('.heading'));
     expect(title.nativeElement.textContent).toBe('Get New Picks');
