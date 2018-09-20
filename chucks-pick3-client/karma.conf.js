@@ -46,7 +46,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['ChromeHeadless'], /// ChromeHeadless in CI
+    browsers: ['ChromeTravisCi'], /// ChromeHeadless in CI
     singleRun: true,              /// true in CI
     junitReporter: {
       outputDir: process.env.JUNIT_REPORT_PATH,
@@ -54,9 +54,9 @@ module.exports = function (config) {
       useBrowserName: false
     },
     customLaunchers: {
-      ChromeNoSandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
+      ChromeTravisCi: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
       }
     }
   });

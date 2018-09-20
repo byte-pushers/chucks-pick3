@@ -1,18 +1,37 @@
-language: java
-jdk: oraclejdk8
-dist: trusty
-addons:
-  chrome: stable
-cache:
-  directories:
-  - "$HOME/.m2"
-deploy:
-  provider: script
-  script: mvn deploy
-  on:
-    branch: master
-env:
-  global:
-  - secure: Nj7TjJn/+huVeE28t3wV67PDSjX68KrGmWCRbnQAvpxIAJdp11g4ppNS/mbpyZp5ibCqN8dcdI6vSXhhofBEf+drUIVHdFkeUaklKAsExZg3EmL3pxYxWWswnBvbUxJU5RlKTQDpzCmaBDDkedP4Qjbo860SVAQgkD10ojvT4eIHbbvIFJDa10RykC5S+Aex1XRQwtN6Z7EbeWql+V5b8ORnpbAdKY7GG8/Y4EPo/yTRTu/qFTtxfaU2UsYK5bH9Xv0lr5cAfDOFn8gfL3Blo738DEcsRBietoHpWbX4xNrjNzbi3wOfXr+t8Z8DAEnp1U789MU4NOA07LPBdWF2BT/tqkIKDe0uBwgxUmQiO8sozNcpn9dEEb9NgOSxP3uZ0fh9gOjvMGuIAuqFlJIYRT8AV3J6h5Z/eY/6qbXoHbAYw/9UFFDyuFLdPywcJn2s2hLaHISIGZYhekR9gOoXCQnUXyWFjsHFIKXIynKrgGFXGEjYdHyX7FflcWPOq3YSHE1SXqITPDaahqyFwOxMMpYEOoshvJT3oH03oYyrj+lHEAggqYz5+T02S82XOg569nOgFtosoMJ4qf7mcP6GCzOFldUlgaDjk8X3v1tU6O/iakLzFnbdxU67CVDg20zzClN5bTSsg5MuPviHmsGesNucoaiFJmjDWAXOdXIbyvw=
-  - secure: uIPG7qjPw+eSnXJl1MplwfbOrOBGihn+UfLy7HgMcKGhvdyE9wHfh+lrSYJPJPhpWW74Ky5Nt/GYzEZoKcticPrF17XBuXH30JcK4OrxVSyO5uvgSZF9I0JWEGoplmb9R+D6vBQFv++8b4laXHafvIzF9mZ/2eoPKjy4PuN9+A94gO83m8i5DQouwDhs9OWHtEBiF4k/tr3fObta9+qqa2vBKpG+91ww154oCn/9uiX6Wy2v+ZwrJoB6TdLTpOF+cXuYnZ4aYTdf7du1Whl0Sp9Glb4B9XSgva0taWDm49yIDiqRTVCcYA+eDikF9ibG8mXzzU+tnw1Mk92YK/fpQqRVw63WEMtuk+foc7ScK/VF8+MoDZzKq9mYvJCo+BSDZKwIRsuvPQUJLwb5TkpRy03wG+W/Hhvq1YzLrO4GY55D4rJyQlAdPzpxeCT6aY85Ok3EpRbRJV7QqB08ZmIsYxY4DTuk7LzDGZxqRegfAFHZkIaiOcNYXQHL+LP83VGBWYhj8+78Uhig8yKVlbEEMiCou05iekwNjjF9sIXkIAGtNeZx3mjX9cP+kYCgXXvIjoWm68MRo1Y83IOtZTEyNZLy9DC2tkFFAeCx222Z14nvUPA0OcQi0E+EE+1WwnsN2fYgQs17IAsvIDxtlpvSoGXSc6lYdVST4Af9PHz2BPg=
-  - secure: bBmquLkb59FYWKo9Ho3dMVvt28NXAdBNy2deg/oi8bfc74FW7VNsFFnFGS8hJMDEBNH9AJuCH9MdYdfenT55nv6nwAWB6PzUveRRF0YtYQQ42VfF4HcgyBbIaFLG82KU5mhbWhVgrvQdnMxf7RT9KaJHuFEfSh2CxeElgfk9pynjeXGiIPpxc5zzeHDluBywZpYmGXWGdlZVhRTy4mzsNiBaypBakt9McervDWd7zjfn4v+MOLO0mBFrzXRb8664XPDJhNTofd/nsBUmQV0DDI54yv5mnzyuHvD409CJprAjlgyLFXPFkRtxuV/dNX0Uz2xHhj5yVivmQZ2gf1smFu6uVzxxnr6mx7L6OBsWxHQPkuTj8olSAFhCRL11wFCB6u9ypSV4sUTmSNJpND9xKSL5s4uaocJgGK2gyPbpImPJ2mdOpbui0tMeHH7+tjiwYyY2gOvSHHocWsZgfFT3vjoUrrj0RPtJlap2G7vF+yTSs8jNCX4b7VoeNlJL1r2AxtO94utE/e72B4C/2zNiv2CpW+8eznHAPlcEUecslWLLDJslY7L0wedeV78cvu5tek4S/FoGL6bW69e1X99Iv7h5EjHzQdCL33omETuK1GR3+PPlLw6fiFpr2l1Qr7zZ7DInpIO09jLx9qb0Ym/TMKZDbTltGbW9yW9jAv0ZxKI=
+matrix:
+  include:
+  - language: java
+    jdk: oraclejdk8
+    cache:
+      directories:
+      - "$HOME/.m2"
+    deploy:
+      provider: script
+      script: mvn deploy
+      on:
+        branch: master
+    env:
+      global:
+      - secure: Nj7TjJn/+huVeE28t3wV67PDSjX68KrGmWCRbnQAvpxIAJdp11g4ppNS/mbpyZp5ibCqN8dcdI6vSXhhofBEf+drUIVHdFkeUaklKAsExZg3EmL3pxYxWWswnBvbUxJU5RlKTQDpzCmaBDDkedP4Qjbo860SVAQgkD10ojvT4eIHbbvIFJDa10RykC5S+Aex1XRQwtN6Z7EbeWql+V5b8ORnpbAdKY7GG8/Y4EPo/yTRTu/qFTtxfaU2UsYK5bH9Xv0lr5cAfDOFn8gfL3Blo738DEcsRBietoHpWbX4xNrjNzbi3wOfXr+t8Z8DAEnp1U789MU4NOA07LPBdWF2BT/tqkIKDe0uBwgxUmQiO8sozNcpn9dEEb9NgOSxP3uZ0fh9gOjvMGuIAuqFlJIYRT8AV3J6h5Z/eY/6qbXoHbAYw/9UFFDyuFLdPywcJn2s2hLaHISIGZYhekR9gOoXCQnUXyWFjsHFIKXIynKrgGFXGEjYdHyX7FflcWPOq3YSHE1SXqITPDaahqyFwOxMMpYEOoshvJT3oH03oYyrj+lHEAggqYz5+T02S82XOg569nOgFtosoMJ4qf7mcP6GCzOFldUlgaDjk8X3v1tU6O/iakLzFnbdxU67CVDg20zzClN5bTSsg5MuPviHmsGesNucoaiFJmjDWAXOdXIbyvw=
+      - secure: uIPG7qjPw+eSnXJl1MplwfbOrOBGihn+UfLy7HgMcKGhvdyE9wHfh+lrSYJPJPhpWW74Ky5Nt/GYzEZoKcticPrF17XBuXH30JcK4OrxVSyO5uvgSZF9I0JWEGoplmb9R+D6vBQFv++8b4laXHafvIzF9mZ/2eoPKjy4PuN9+A94gO83m8i5DQouwDhs9OWHtEBiF4k/tr3fObta9+qqa2vBKpG+91ww154oCn/9uiX6Wy2v+ZwrJoB6TdLTpOF+cXuYnZ4aYTdf7du1Whl0Sp9Glb4B9XSgva0taWDm49yIDiqRTVCcYA+eDikF9ibG8mXzzU+tnw1Mk92YK/fpQqRVw63WEMtuk+foc7ScK/VF8+MoDZzKq9mYvJCo+BSDZKwIRsuvPQUJLwb5TkpRy03wG+W/Hhvq1YzLrO4GY55D4rJyQlAdPzpxeCT6aY85Ok3EpRbRJV7QqB08ZmIsYxY4DTuk7LzDGZxqRegfAFHZkIaiOcNYXQHL+LP83VGBWYhj8+78Uhig8yKVlbEEMiCou05iekwNjjF9sIXkIAGtNeZx3mjX9cP+kYCgXXvIjoWm68MRo1Y83IOtZTEyNZLy9DC2tkFFAeCx222Z14nvUPA0OcQi0E+EE+1WwnsN2fYgQs17IAsvIDxtlpvSoGXSc6lYdVST4Af9PHz2BPg=
+  - language: node_js
+    node_js:
+    - "7"
+    dist: trusty
+    addons:
+      chrome: stable
+    cache:
+      directories:
+        - "chucks-pick3-client/node_modules"
+    before_install:
+    - cd chucks-pick3-client
+    - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> .npmrc
+    - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
+    - npm install -g cordova ionic
+    install:
+    - npm install
+    script:
+    - npm run lint && ionic build && karma start --single-run --browsers ChromeTravisCi
+    env:
+      global:
+      - secure: bBmquLkb59FYWKo9Ho3dMVvt28NXAdBNy2deg/oi8bfc74FW7VNsFFnFGS8hJMDEBNH9AJuCH9MdYdfenT55nv6nwAWB6PzUveRRF0YtYQQ42VfF4HcgyBbIaFLG82KU5mhbWhVgrvQdnMxf7RT9KaJHuFEfSh2CxeElgfk9pynjeXGiIPpxc5zzeHDluBywZpYmGXWGdlZVhRTy4mzsNiBaypBakt9McervDWd7zjfn4v+MOLO0mBFrzXRb8664XPDJhNTofd/nsBUmQV0DDI54yv5mnzyuHvD409CJprAjlgyLFXPFkRtxuV/dNX0Uz2xHhj5yVivmQZ2gf1smFu6uVzxxnr6mx7L6OBsWxHQPkuTj8olSAFhCRL11wFCB6u9ypSV4sUTmSNJpND9xKSL5s4uaocJgGK2gyPbpImPJ2mdOpbui0tMeHH7+tjiwYyY2gOvSHHocWsZgfFT3vjoUrrj0RPtJlap2G7vF+yTSs8jNCX4b7VoeNlJL1r2AxtO94utE/e72B4C/2zNiv2CpW+8eznHAPlcEUecslWLLDJslY7L0wedeV78cvu5tek4S/FoGL6bW69e1X99Iv7h5EjHzQdCL33omETuK1GR3+PPlLw6fiFpr2l1Qr7zZ7DInpIO09jLx9qb0Ym/TMKZDbTltGbW9yW9jAv0ZxKI=
