@@ -107,7 +107,7 @@ describe('DrawResultsComponent', () => {
     fixture.whenStable().then(() => {
       morningRow.triggerEventHandler('click', null);
       expect(instance.toast.create).toHaveBeenCalled();
-    }).catch(()=> {
+    }).catch(() => {
       fail();
     });
   }));
@@ -129,11 +129,10 @@ describe('DrawResultsComponent', () => {
       expect(queryDescendentDom(dayRow).winNumber).toEqual('N/A');
       expect(queryDescendentDom(eveningRow).winNumber).toEqual('N/A');
       expect(queryDescendentDom(nightRow).winNumber).toEqual('N/A');
-    }).catch(()=> {
+    }).catch(() => {
       fail();
     });
   }));
-
 
   it('should update itself with the results of the scrape', fakeAsync(() => {
     instance.date = new Date('2018-09-01');

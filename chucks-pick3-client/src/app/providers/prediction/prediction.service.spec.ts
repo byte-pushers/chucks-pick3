@@ -29,7 +29,7 @@ describe('PredictionProvider', () => {
 
   it('correctly maps prediction service requests and responses',
      fakeAsync(inject([HttpTestingController, PredictionProvider],
-            (httpMock: HttpTestingController, provider: PredictionProvider) => {
+               (httpMock: HttpTestingController, provider: PredictionProvider) => {
       provider.getPredictions(pick3Request).subscribe((data: Pick3PlaysResponse) => {
           expect(data.date).toEqual('2018-09-01');
           expect(data.drawingTime).toEqual(DrawingTime.EVENING);
