@@ -18,6 +18,7 @@
     <module>chucks-pick3-api</module>
     <module>chucks-pick3-core</module>
     <module>chucks-pick3-model</module>
+    <module>chucks-pick3-client</module>
   </modules>
 
   <name>chucks-pick-3</name>
