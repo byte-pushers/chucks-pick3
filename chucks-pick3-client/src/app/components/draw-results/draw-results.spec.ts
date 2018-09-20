@@ -92,8 +92,51 @@ describe('DrawResultsComponent', () => {
     });
   });
 
-  it('should update itself with the results of the scrape', fakeAsync(() => {
+  it('itemSelected() should show a toast when clicking on an element with no results', fakeAsync(() => {
     instance.date = new Date();
+
+    const scrapeSvc: any = TestBed.get(ScrapingService);
+    scrapeSvc.scrapeResults.and.returnValue(Promise.reject('Some reason'));
+    instance.ngOnChanges({
+      date: new SimpleChange(null, instance.date, false),
+    });
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      morningRow.triggerEventHandler('click', null);
+      expect(instance.toast.create).toHaveBeenCalled();
+    }).catch(()=> {
+      fail();
+    });
+  }));
+
+  it('itemSelected() should show N/A if no response is available', fakeAsync(() => {
+    instance.date = new Date('2018-10-12');
+
+    const scrapeSvc: any = TestBed.get(ScrapingService);
+    scrapeSvc.scrapeResults.and.returnValue(Promise.reject('Some reason'));
+    instance.ngOnChanges({
+      date: new SimpleChange(null, instance.date, false),
+    });
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+      expect(queryDescendentDom(morningRow).winNumber).toEqual('N/A');
+      expect(queryDescendentDom(dayRow).winNumber).toEqual('N/A');
+      expect(queryDescendentDom(eveningRow).winNumber).toEqual('N/A');
+      expect(queryDescendentDom(nightRow).winNumber).toEqual('N/A');
+    }).catch(()=> {
+      fail();
+    });
+  }));
+
+
+  it('should update itself with the results of the scrape', fakeAsync(() => {
+    instance.date = new Date('2018-09-01');
 
     const scrapeSvc: any = TestBed.get(ScrapingService);
     scrapeSvc.scrapeResults.and.returnValue(Promise.resolve({

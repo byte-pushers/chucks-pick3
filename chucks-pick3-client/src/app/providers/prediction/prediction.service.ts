@@ -29,10 +29,8 @@ export class PredictionProvider {
 
   private handleError(error: HttpErrorResponse): Observable<string> {
     if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
+        `Returned code ${error.status}, ` +
         `body was: ${JSON.stringify(error.error)}`);
     }
     return of('Something bad happened; please try again later.');

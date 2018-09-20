@@ -7,6 +7,7 @@ import {PredictionProvider} from '../../providers/prediction/prediction.service'
 import {of} from 'rxjs/observable/of';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
+import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
 
 describe('PredictionPage', () => {
   let instance: PredictionPage = null;
@@ -15,7 +16,7 @@ describe('PredictionPage', () => {
     winDrawTime: 'MORNING',
     futureDrawTime: 'EVENING',
     winDrawDate: '2018-06-02',
-    futureDrawDate: formatDate(new Date()),
+    futureDrawDate: formatDate(new Date('2018-11-12')),
     winNumber: 123,
   };
   let navParams: NavParams = new NavParams(data);
@@ -87,6 +88,17 @@ describe('PredictionPage', () => {
   it('should be titled "Chuck\'s Pick 3"', () => {
     let title: DebugElement = fixture.debugElement.query(By.css('ion-title'));
     expect(title.nativeElement.textContent).toBe('Chuck\'s Pick 3');
+  });
+
+  it('should display four distinct icons for each time of day', () => {
+    const iconNames: Set<String> = new Set([]);
+
+    iconNames.add(instance.timeIcon(DrawingTime.MORNING));
+    iconNames.add(instance.timeIcon(DrawingTime.DAY));
+    iconNames.add(instance.timeIcon(DrawingTime.EVENING));
+    iconNames.add(instance.timeIcon(DrawingTime.NIGHT));
+
+    expect(iconNames.size).toBe(4);
   });
 
   function formatDate(d: Date): string {

@@ -30,9 +30,6 @@ export class DrawResultsComponent implements OnChanges {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['date']) {
-      if (!this.date) {
-        return;
-      }
       this.loading = true;
       this.items.forEach((item: any, idx: number) => {
         item.winNumber = null;
