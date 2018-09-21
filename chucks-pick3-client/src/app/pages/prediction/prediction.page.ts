@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, Toast, ToastController} from 'ionic
 import { PredictionProvider } from '../../providers/prediction/prediction.service';
 import { Pick3PlaysRequest } from '../../providers/prediction/api/v1/Pick3PlaysRequest.model';
 import { DrawingTime } from '../../providers/prediction/api/v1/DrawingTime.model';
+import {DateUtil} from '../../model/DateUtil';
 
 /**
  * Generated class for the PredictionPage page.
@@ -33,9 +34,9 @@ export class PredictionPage {
   constructor(public navCtrl: NavController, public toast: ToastController, public navParams: NavParams,
               public predictSvc: PredictionProvider) {
     this.winDrawTime = navParams.get('winDrawTime');
-    this.winDrawDate = new Date(navParams.get('winDrawDate'));
+    this.winDrawDate = DateUtil.stringToDate(navParams.get('winDrawDate'));
     this.winNumber = navParams.get('winNumber');
-    this.futureDrawDate = new Date(navParams.get('futureDrawDate'));
+    this.futureDrawDate = DateUtil.stringToDate(navParams.get('futureDrawDate'));
     this.futureDrawTime = navParams.get('futureDrawTime');
   }
 

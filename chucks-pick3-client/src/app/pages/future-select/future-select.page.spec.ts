@@ -42,7 +42,7 @@ describe('FutureSelectPage', () => {
     expect(fixture.debugElement.query(By.css('.draw-time')).nativeElement.textContent.trim())
       .toBe('Morning');
     expect(fixture.debugElement.query(By.css('.draw-date')).nativeElement.textContent.trim())
-      .toBe('Winner for Jun 1, 2018');
+      .toBe('Winner for Jun 2, 2018');
     expect(fixture.debugElement.query(By.css('.draw-result')).nativeElement.textContent.trim())
       .toBe('023');
   });

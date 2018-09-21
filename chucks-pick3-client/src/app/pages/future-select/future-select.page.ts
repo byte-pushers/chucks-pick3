@@ -26,7 +26,7 @@ export class FutureSelectPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionCtrl: ActionSheetController,
               public titlecase: TitleCasePipe) {
-    this.drawDate = new Date(navParams.get('drawDate'));
+    this.drawDate = DateUtil.stringToDate(navParams.get('drawDate'));
     this.drawTime = navParams.get('drawTime');
     this.drawResult = navParams.get('drawResult');
 
@@ -34,7 +34,7 @@ export class FutureSelectPage {
 
     // Set min and max date to ensure user can only select from dates up to 100 years in the future.
     let today: Date = new Date();
-    today.setFullYear(today.getFullYear() + 100, 12, 31);
+    today.setFullYear(today.getFullYear() + 100, 11, 31);
     this.maxDate = today.toISOString();
   }
 
@@ -42,7 +42,7 @@ export class FutureSelectPage {
     this.navCtrl.push('PredictionPage', {
       futureDrawDate: this.selectedDate,
       futureDrawTime: this.selectedDrawTime,
-      winDrawDate: this.dateToUrlDate(this.drawDate),
+      winDrawDate: DateUtil.dateToString(this.drawDate),
       winDrawTime: this.drawTime,
       winNumber: this.drawResult,
     });
