@@ -5,14 +5,14 @@ import {ProgressIndeterminateComponent} from './progress-indeterminate';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-describe('PredictionProvider', () => {
+describe('ProgressIndeterminate', () => {
 
   let root: DebugElement;
   let fixture: ComponentFixture<ProgressIndeterminateComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgressIndeterminateComponent]
+      declarations: [ProgressIndeterminateComponent],
     });
 
     fixture = TestBed.createComponent(ProgressIndeterminateComponent);

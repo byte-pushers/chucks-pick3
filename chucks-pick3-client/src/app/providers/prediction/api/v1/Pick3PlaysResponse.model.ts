@@ -1,4 +1,4 @@
-import { DrawingTime} from "./DrawingTime.model";
+import { DrawingTime} from './DrawingTime.model';
 
 export interface Pick3PlaysResponse {
   date: string;

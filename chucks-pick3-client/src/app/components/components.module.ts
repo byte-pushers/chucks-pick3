@@ -10,8 +10,8 @@ import {PipesModule} from '../pipes/pipes.module';
 
 @NgModule({
   imports: [ PipesModule, CommonModule, IonicModule ],
-	declarations: [ DrawResultsComponent, ProgressIndeterminateComponent, LogoSplashComponent ],
-	exports: [ DrawResultsComponent, ProgressIndeterminateComponent, LogoSplashComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  declarations: [ DrawResultsComponent, ProgressIndeterminateComponent, LogoSplashComponent ],
+  exports: [ DrawResultsComponent, ProgressIndeterminateComponent, LogoSplashComponent ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class ComponentsModule {}

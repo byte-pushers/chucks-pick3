@@ -36,7 +36,7 @@
     </ion-row>
     <ion-row align-items-center>
       <ion-col>
-        <ion-item (click)="showPicker()">
+        <ion-item id="select-day"(click)="showPicker()">
           <ion-icon item-start name="calendar" color="{{ selectedDate ? 'primary' : 'primary-light' }}"></ion-icon>
           <ion-label color="{{ selectedDate != null ? 'primary-text' : 'divider-color' }}">
             {{ selectedDate == null ? 'Select Day To Play' : selectedDate | date:'longDate' }}
@@ -47,7 +47,7 @@
     </ion-row>
     <ion-row align-items-center>
       <ion-col>
-        <ion-item (click)="showTimePicker($event)">
+        <ion-item id="select-time" (click)="showTimePicker($event)">
           <ion-icon item-start [name]="timeIcon(selectedDrawTime)" color="{{ selectedDrawTime ? 'primary' : 'primary-light' }}"></ion-icon>
           <ion-label color="{{ selectedDrawTime != null ? 'primary-text' : 'divider-color' }}">
             {{ selectedDrawTime == null ? 'Select Time to Play' : selectedDrawTime | titlecase }}

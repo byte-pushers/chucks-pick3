@@ -6,7 +6,7 @@ import { ContactPage } from './contact.page';
 @NgModule({
   declarations: [ContactPage],
   imports: [
-    IonicPageModule.forChild(ContactPage)
-  ]
+    IonicPageModule.forChild(ContactPage),
+  ],
 })
 export class ContactPageModule { }

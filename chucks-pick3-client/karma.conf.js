@@ -26,8 +26,17 @@ module.exports = function (config) {
       'text/x-typescript': ['ts','tsx']
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
+      reports: [ 'html', 'lcovonly', 'text-summary' ],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        emitWarning: false,
+        global: {
+          statements: 80,
+          lines: 80,
+          branches: 80,
+          functions: 80
+        }
+      }
     },
     angularCli: {
       environment: 'dev'
@@ -36,18 +45,18 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['ChromeNoSandbox'],
-    singleRun: false,
+    autoWatch: false,
+    browsers: ['ChromeTravisCi'], /// ChromeHeadless in CI
+    singleRun: true,              /// true in CI
     junitReporter: {
       outputDir: process.env.JUNIT_REPORT_PATH,
       outputFile: process.env.JUNIT_REPORT_NAME,
       useBrowserName: false
     },
     customLaunchers: {
-      ChromeNoSandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
+      ChromeTravisCi: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
       }
     }
   });

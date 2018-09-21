@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "deploy": "ngh --dir www --no-silent",
+    "deploy": "ng --dir www --no-silent",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
@@ -51,7 +51,7 @@
     "zone.js": "0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.4",
+    "@angular/cli": "^1.6.4",
     "@ionic/app-scripts": "3.1.6",
     "@types/jasmine": "2.8.4",
     "@types/jasminewd2": "2.0.3",

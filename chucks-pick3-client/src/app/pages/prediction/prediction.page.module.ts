@@ -7,7 +7,7 @@ import { PipesModule } from '../../pipes/pipes.module';
   declarations: [PredictionPage],
   imports: [
     PipesModule,
-    IonicPageModule.forChild(PredictionPage)
-  ]
+    IonicPageModule.forChild(PredictionPage),
+  ],
 })
 export class PredictionPageModule { }

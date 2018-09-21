@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
 import {DrawResultsComponent} from '../../components/draw-results/draw-results';
 import {DrawingResult} from '../../model/DrawingResult.model';
+import {DateUtil} from '../../model/DateUtil';
 
 @IonicPage({
   segment: 'show',
@@ -27,10 +28,6 @@ export class HistoryPage {
     }
   }
 
-  public ionViewDidEnter(): void {
-    // this.showPicker();
-  }
-
   public showPicker(): void {
     this.maxDate = new Date().toISOString();
     this.datePicker.max = this.maxDate;
@@ -38,16 +35,10 @@ export class HistoryPage {
   }
 
   public fireScrape(dateString: string): void {
-    this.date = this.parseDate(dateString);
-    this.date.setHours(0, 0, 0, 0);
+    this.date = DateUtil.stringToDate(dateString);
   }
 
   public itemSelected(result: DrawingResult): void {
     this.navCtrl.push('FutureSelectPage', result);
-  }
-
-  private parseDate(d: string): Date {
-    let parts: any = d.match(/(\d+)/g);
-    return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
   }
 }

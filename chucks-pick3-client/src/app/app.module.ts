@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PredictionProvider } from './providers/prediction/prediction.service';
 import { ScrapingProvider } from './providers/web-scraping/scraping.service';
 import { PipesModule } from './pipes/pipes.module';
+import {ScrapingService} from './providers/web-scraping/scraping.service.interface';
 
 @NgModule({
   declarations: [MyApp],
@@ -16,7 +17,7 @@ import { PipesModule } from './pipes/pipes.module';
     BrowserModule,
     HttpClientModule,
     PipesModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],
@@ -25,7 +26,7 @@ import { PipesModule } from './pipes/pipes.module';
     SplashScreen,
     PredictionProvider,
     {provide: ScrapingService, useClass: ScrapingProvider},
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ],
 })
 export class AppModule {}
