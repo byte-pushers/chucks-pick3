@@ -1,44 +1,59 @@
+'use strict';
+
 import { browser, element, by } from 'protractor';
 
-describe('ClickerApp', () => {
+describe('Chucks Pick 3', () => {
 
   beforeEach(() => {
     browser.get('');
   });
 
   it('should have a title', () => {
-    browser.getTitle().then(title => expect(title).toEqual('Clickers'));
+    expect(browser.getTitle()).toEqual('Chuck\'s Pick 3');
   });
 
-  it('should have {nav}', () => {
-    element(by.css('ion-navbar')).isPresent().then(present => expect(present).toEqual(true));
+  it('should load up the tabs page', () => {
+    expect(element(by.tagName('ion-nav')).isPresent()).toEqual(true);
   });
 
-  it('should have correct nav text for Home', () => {
-    expect(element(by.css('ion-navbar:first-child')).getText()).toContain('Clickers');
+  it('should include tabs named "Today", "History", and "About"', () => {
+    expect(element(by.tagName('ion-tabs')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="Today"]')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="History"]')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="About"]')).isPresent()).toEqual(true);
   });
 
-  it('has a menu button that displays the left menu', () => {
-    element(by.css('.bar-button-menutoggle')).click()
-      .then(() => {
-        browser.driver.sleep(2000); // wait for the animation
-        element.all(by.css('.toolbar-title')).first().getText().then(text => expect(text).toEqual('Pages'));
+  it('should start on the today page', () => {
+    expect(element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent()).toEqual(true);
+  });
+
+  it('should present tab buttons laid out in order of "Today", "History" and "About"', () => {
+    expect(element.all(by.css('a.tab-button')).get(0).element(by.css('.tab-button-text')).getText()).toEqual('Today');
+    expect(element.all(by.css('a.tab-button')).get(1).element(by.css('.tab-button-text')).getText()).toEqual('History');
+    expect(element.all(by.css('a.tab-button')).get(2).element(by.css('.tab-button-text')).getText()).toEqual('About');
+  });
+
+  it('should navigate to the "History" page when History button is clicked', () => {
+    element.all(by.css('a.tab-button')).get(1).click().then(() => {
+      expect(element(by.css('ion-tab[tabtitle="History"].show-tab')).isPresent()).toEqual(true);
+    });
+  });
+
+  it('should navigate to the "About" page when About button is clicked', () => {
+    element.all(by.css('a.tab-button')).get(2).click().then(() => {
+      expect(element(by.css('ion-tab[tabtitle="About"].show-tab')).isPresent()).toEqual(true);
+    });
+  });
+
+  it('should navigate back to the "Today" page when Today button is clicked', () => {
+    // First change to "About"
+    element.all(by.css('a.tab-button')).get(2).click().then(() => {
+      // Then change to "Today"
+      element.all(by.css('a.tab-button')).get(0).click().then(() => {
+        // Ensure the "Today" tab is showing.
+        expect(element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent()).toEqual(true);
       });
+    });
   });
 
-  it('the left menu has a link with title Clickers', () => {
-    element(by.css('.bar-button-menutoggle')).click()
-      .then(() => {
-        browser.driver.sleep(2000); // wait for the animation
-        element.all(by.css('ion-label')).first().getText().then(text => expect(text).toEqual('Clickers'));
-      });
-  });
-
-  it('the left menu has a link with title Goodbye Ionic', () => {
-    element(by.css('.bar-button-menutoggle')).click()
-      .then(() => {
-        browser.driver.sleep(2000); // wait for the animation
-        element.all(by.css('ion-label')).last().getText().then(text => expect(text).toEqual('Goodbye Ionic'));
-      });
-  });
 });
