@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ActionSheet, ActionSheetController, DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
 import {TitleCasePipe} from '@angular/common';
+import {DateUtil} from '../../model/DateUtil';
 
 @IonicPage({
   segment: 'predictFor/:drawDate/:drawTime/:drawResult',
@@ -39,7 +40,7 @@ export class FutureSelectPage {
 
   public submit(): void {
     this.navCtrl.push('PredictionPage', {
-      futureDrawDate: this.adjustForTimezone(this.selectedDate),
+      futureDrawDate: this.selectedDate,
       futureDrawTime: this.selectedDrawTime,
       winDrawDate: this.dateToUrlDate(this.drawDate),
       winDrawTime: this.drawTime,
@@ -86,11 +87,6 @@ export class FutureSelectPage {
   }
 
   private dateToUrlDate(d: Date): string {
-    return d.getFullYear() + '-' + (1 + d.getMonth()) + '-' + d.getDate();
-  }
-
-  private adjustForTimezone(d: string): string {
-    const date: Date = new Date(d);
-    return date.getUTCFullYear() + '-' + (1 + date.getUTCMonth()) + '-' + date.getUTCDate();
+    return DateUtil.dateToString(d);
   }
 }

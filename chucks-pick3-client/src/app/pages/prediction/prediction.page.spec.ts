@@ -8,6 +8,7 @@ import {of} from 'rxjs/observable/of';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {DrawingTime} from '../../providers/prediction/api/v1/DrawingTime.model';
+import {DateUtil} from '../../model/DateUtil';
 
 describe('PredictionPage', () => {
   let instance: PredictionPage = null;
@@ -16,7 +17,7 @@ describe('PredictionPage', () => {
     winDrawTime: 'MORNING',
     futureDrawTime: 'EVENING',
     winDrawDate: '2018-06-02',
-    futureDrawDate: formatDate(new Date('2018-11-12')),
+    futureDrawDate: DateUtil.dateToString(new Date('2018-11-12')),
     winNumber: 123,
   };
   let navParams: NavParams = new NavParams(data);
@@ -100,16 +101,5 @@ describe('PredictionPage', () => {
 
     expect(iconNames.size).toBe(4);
   });
-
-  function formatDate(d: Date): string {
-    let month: string = '' + (d.getMonth() + 1),
-      day: string     = '' + d.getDate(),
-      year: number    = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
 
 });

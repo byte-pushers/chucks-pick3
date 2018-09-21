@@ -6,6 +6,7 @@ import { DrawingResult } from '../../../app/model/DrawingResult.model';
 
 import { ToastController, ViewController } from 'ionic-angular';
 import {ScrapingService} from '../../providers/web-scraping/scraping.service.interface';
+import {DateUtil} from '../../model/DateUtil';
 
 @Component({
   selector: 'draw-results',
@@ -48,7 +49,7 @@ export class DrawResultsComponent implements OnChanges {
       return;
     }
     this.selected.emit({
-      drawDate: this.formatDate(this.date),
+      drawDate: DateUtil.dateToString(this.date),
       drawTime: item.winDrawTime,
       drawResult: item.winNumber,
     });
@@ -60,17 +61,6 @@ export class DrawResultsComponent implements OnChanges {
       duration: 1500,
       position: 'bottom',
     }).present();
-  }
-
-  private formatDate(d: Date): string {
-    let month: string = '' + (d.getMonth() + 1),
-      day: string = '' + d.getDate(),
-      year: number = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
   }
 
   private scrapeTimeOfDay(time: DrawingTime, idx: number): void {

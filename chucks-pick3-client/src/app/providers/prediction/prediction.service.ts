@@ -8,6 +8,7 @@ import { API_URL } from '../../app.config';
 import {Pick3PlaysRequest} from './api/v1/Pick3PlaysRequest.model';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
+import {DateUtil} from '../../model/DateUtil';
 
 @Injectable()
 export class PredictionProvider {
@@ -19,8 +20,8 @@ export class PredictionProvider {
     return this.http.get<Pick3PlaysResponse>(API_URL + '/numbers',
                                              {
                                                params: new HttpParams()
-                                                 .append('winDrawDate', this.formatDate(request.winDrawDate))
-                                                 .append('futureDrawDate', this.formatDate(request.futureDrawDate))
+                                                 .append('winDrawDate', DateUtil.dateToString(request.winDrawDate))
+                                                 .append('futureDrawDate', DateUtil.dateToString(request.futureDrawDate))
                                                  .append('winDrawTime', request.winDrawTime)
                                                  .append('futureDrawTime', request.futureDrawTime)
                                                  .append('winNumber', '' + request.winNumber),
@@ -35,16 +36,4 @@ export class PredictionProvider {
     }
     return of('Something bad happened; please try again later.');
   }
-
-  private formatDate(d: Date): string {
-    let month: string = '' + (d.getMonth() + 1),
-        day: string = '' + d.getDate(),
-        year: number = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-
 }

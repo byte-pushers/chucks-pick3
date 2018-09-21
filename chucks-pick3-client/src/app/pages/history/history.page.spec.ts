@@ -5,6 +5,7 @@ import {HistoryPageModule} from './history.page.module';
 import {ScrapingService} from '../../providers/web-scraping/scraping.service.interface';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
+import {DateUtil} from '../../model/DateUtil';
 
 describe('HistoryPage', () => {
   let instance: HistoryPage = null;
@@ -38,7 +39,7 @@ describe('HistoryPage', () => {
       morningRow.triggerEventHandler('click', null);
 
       expect(instance.navCtrl.push).toHaveBeenCalledWith('FutureSelectPage', {
-        drawDate: formatDate(instance.date),
+        drawDate: DateUtil.dateToString(instance.date),
         drawTime: 'MORNING',
         drawResult: 123,
       });
@@ -70,15 +71,4 @@ describe('HistoryPage', () => {
     let title: DebugElement = fixture.debugElement.query(By.css('ion-title'));
     expect(title.nativeElement.textContent.trim()).toBe('Chuck\'s Pick 3');
   });
-
-  function formatDate(d: Date): string {
-    let month: string = '' + (d.getMonth() + 1),
-      day: string = '' + d.getDate(),
-      year: number = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
 });

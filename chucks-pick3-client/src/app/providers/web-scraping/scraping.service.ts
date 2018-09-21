@@ -5,6 +5,7 @@ import { TX_PICK3_URL } from '../../app.config';
 import BytePushers from '@byte-pushers/pick3-lottery-web-scraper';
 import {DrawingResult} from '../../model/DrawingResult.model';
 import {ScrapingService} from './scraping.service.interface';
+import {DateUtil} from '../../model/DateUtil';
 
 @Injectable()
 export class ScrapingProvider extends ScrapingService {
@@ -19,7 +20,7 @@ export class ScrapingProvider extends ScrapingService {
     return this.service.retrieveWinningNumber('TX', drawingDate, drawingTime)
       .then((data) => {
         return {
-          drawDate: new Date(data.date),
+          drawDate: DateUtil.stringToDate(data.date),
           drawTime: data.time,
           drawResult: data.number,
         };
