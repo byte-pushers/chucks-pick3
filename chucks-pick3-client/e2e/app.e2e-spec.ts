@@ -1,3 +1,5 @@
+'use strict';
+
 import { browser, element, by } from 'protractor';
 
 describe('Chucks Pick 3', () => {
