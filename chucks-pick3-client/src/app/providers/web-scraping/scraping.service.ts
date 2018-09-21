@@ -20,7 +20,7 @@ export class ScrapingProvider extends ScrapingService {
     return this.service.retrieveWinningNumber('TX', drawingDate, drawingTime)
       .then((data) => {
         return {
-          drawDate: DateUtil.stringToDate(data.date),
+          drawDate: data.date,
           drawTime: data.time,
           drawResult: data.number,
         };
