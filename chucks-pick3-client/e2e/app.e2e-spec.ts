@@ -9,22 +9,22 @@ describe('Chucks Pick 3', () => {
   });
 
   it('should have a title', () => {
-    browser.getTitle().then(title => expect(title).toEqual('Chuck\'s Pick 3'));
+    expect(browser.getTitle()).toEqual('Chuck\'s Pick 3');
   });
 
   it('should load up the tabs page', () => {
-    element(by.tagName('ion-nav')).isPresent().then(present => expect(present).toEqual(true));
+    expect(element(by.tagName('ion-nav')).isPresent()).toEqual(true);
   });
 
   it('should include tabs named "Today", "History", and "About"', () => {
-    element(by.tagName('ion-tabs')).isPresent().then(present => expect(present).toEqual(true));
-    element(by.css('ion-tab[tabtitle="Today"]')).isPresent().then(present => expect(present).toEqual(true));
-    element(by.css('ion-tab[tabtitle="History"]')).isPresent().then(present => expect(present).toEqual(true));
-    element(by.css('ion-tab[tabtitle="About"]')).isPresent().then(present => expect(present).toEqual(true));
+    expect(element(by.tagName('ion-tabs')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="Today"]')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="History"]')).isPresent()).toEqual(true);
+    expect(element(by.css('ion-tab[tabtitle="About"]')).isPresent()).toEqual(true);
   });
 
   it('should start on the today page', () => {
-    element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent().then(present => expect(present).toEqual(true));
+    expect(element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent()).toEqual(true);
   });
 
   it('should present tab buttons laid out in order of "Today", "History" and "About"', () => {
@@ -35,13 +35,13 @@ describe('Chucks Pick 3', () => {
 
   it('should navigate to the "History" page when History button is clicked', () => {
     element.all(by.css('a.tab-button')).get(1).click().then(() => {
-      element(by.css('ion-tab[tabtitle="History"].show-tab')).isPresent().then(present => expect(present).toEqual(true));
+      expect(element(by.css('ion-tab[tabtitle="History"].show-tab')).isPresent()).toEqual(true);
     });
   });
 
   it('should navigate to the "About" page when About button is clicked', () => {
     element.all(by.css('a.tab-button')).get(2).click().then(() => {
-      element(by.css('ion-tab[tabtitle="About"].show-tab')).isPresent().then(present => expect(present).toEqual(true));
+      expect(element(by.css('ion-tab[tabtitle="About"].show-tab')).isPresent()).toEqual(true);
     });
   });
 
@@ -51,7 +51,7 @@ describe('Chucks Pick 3', () => {
       // Then change to "Today"
       element.all(by.css('a.tab-button')).get(0).click().then(() => {
         // Ensure the "Today" tab is showing.
-        element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent().then(present => expect(present).toEqual(true));
+        expect(element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent()).toEqual(true);
       });
     });
   });
