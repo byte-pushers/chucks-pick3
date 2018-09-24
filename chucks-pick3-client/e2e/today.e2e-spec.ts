@@ -22,7 +22,6 @@ describe('Today Page', () => {
         els = element.all(by.className('win-number'));
     for (let i = 0; i < expected.length; ++i) {
       expect(els.get(i).getText()).toEqual(expected[i], i + 'th win-number was not equal to ' + expected[i]);
-      console.log(els.get(i).getText());
     }
   });
 
