@@ -25,13 +25,14 @@ export class DrawResultsComponent implements OnChanges {
               public toast: ToastController) {
     this.items.push({icon: 'ios-partly-sunny', winDrawTime: DrawingTime.MORNING, winNumber: null});
     this.items.push({icon: 'md-sunny', winDrawTime: DrawingTime.DAY, winNumber: null});
-    this.items.push({icon: 'ios-cloudy-nightpr', winDrawTime: DrawingTime.EVENING, winNumber: null});
+    this.items.push({icon: 'ios-cloudy-night', winDrawTime: DrawingTime.EVENING, winNumber: null});
     this.items.push({icon: 'moon', winDrawTime: DrawingTime.NIGHT, winNumber: null});
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes['date']) {
       this.loading = true;
+      this.date = changes['date'].currentValue;
       this.items.forEach((item: any, idx: number) => {
         item.winNumber = null;
         this.scrapeTimeOfDay(item.winDrawTime, idx);
