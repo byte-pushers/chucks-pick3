@@ -5,7 +5,7 @@ import { DrawResultsComponent } from '../../components/draw-results/draw-results
 import {DateUtil} from '../../model/DateUtil';
 
 @IonicPage({
-  segment: 'results/:resultDate',
+  segment: 'results/:todayDate',
 })
 @Component({
   selector: 'page-today',
@@ -17,8 +17,7 @@ export class TodayPage {
   public date: Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    debugger;
-    this.date = DateUtil.stringToDate(navParams.get('resultDate'));
+    this.date = DateUtil.stringToDate(navParams.get('todayDate'));
   }
 
   public itemSelected(result: DrawingResult): void {

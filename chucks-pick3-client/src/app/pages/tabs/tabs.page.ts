@@ -17,8 +17,8 @@ export class TabsPage {
 
   constructor(navParams: NavParams) {
     this.todayData = navParams.data
-    if(this.todayData['resultDate'] === undefined) {
-      this.todayData['resultDate'] = DateUtil.dateToString(new Date());
+    if(this.todayData['todayDate'] === undefined) {
+      this.todayData['todayDate'] = DateUtil.dateToString(new Date());
     }
   }
 }
