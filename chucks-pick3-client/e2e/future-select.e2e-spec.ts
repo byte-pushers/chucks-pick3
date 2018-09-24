@@ -2,7 +2,7 @@
 
 import {browser, element, by} from 'protractor';
 
-describe('Today Tab', () => {
+describe('Future Select Page', () => {
 
   beforeEach(async () => {
     await browser.get('#/tab/today/predictFor/2008-09-19/DAY/468')
@@ -21,7 +21,7 @@ describe('Today Tab', () => {
     selectTime();
     expect(element(by.cssContainingText('button', 'Submit')).isEnabled()).toEqual(true, "submit button not enabled after selecting date and time");
 
-    element(by.cssContainingText('button', 'Submit')).click();
+    element(by.buttonText('Submit')).click();
 
     browser.driver.sleep(2000);
     expect(browser.getCurrentUrl()).toMatch(/.*numbers\/2008-09-19\/DAY\/468\/\d{4}-\d{2}-\d{2}\/NIGHT/, 'URL params not correct');
@@ -44,7 +44,7 @@ describe('Today Tab', () => {
     expect(element(by.tagName('ion-action-sheet')).isPresent()).toEqual(true, 'action sheet not present 300ms after clicking "select-time" widget');
     expect(element(by.className('action-sheet-title')).getText()).toEqual('Select time of drawing');
 
-    element(by.cssContainingText('button', 'Night')).click();
+    element(by.buttonText('Night')).click();
     browser.driver.sleep(1000);
     expect(element(by.tagName('ion-action-sheet')).isPresent()).toEqual(false);
     expect(element(by.id('select-time')).$('ion-label').getText()).toEqual('Night');

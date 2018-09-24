@@ -2,7 +2,7 @@
 
 import {browser, element, by} from 'protractor';
 
-describe('Today Tab', () => {
+describe('Today Page', () => {
 
   beforeEach(async () => {
     await browser.get('#/tab/today/results/2008-09-19') // using a past date to ensure determinism
@@ -14,10 +14,6 @@ describe('Today Tab', () => {
 
   it('should load the today page', () => {
     expect(element(by.css('ion-tab[tabtitle="Today"].show-tab')).isPresent()).toEqual(true, 'today tab not shown');
-  });
-
-  it('should show progress bars', () => {
-    expect(element(by.tagName('progress-indeterminate')).isDisplayed()).toEqual(true, 'progress-indeterminate not displayed on page load');
   });
 
   it('should correctly report the draw results for 2008-09-19', () => {
@@ -37,7 +33,7 @@ describe('Today Tab', () => {
 
   it('should take the user to the prediction page when an available drawing is clicked', () => {
     element.all(by.className('drawing-row')).get(1).click();
-    browser.driver.sleep(1000);
+    browser.driver.sleep(5000);
     expect(browser.getCurrentUrl()).toMatch(/.*predictFor\/2008-09-19\/DAY\/468.*/);
   });
 });

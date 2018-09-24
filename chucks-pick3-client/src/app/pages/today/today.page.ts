@@ -17,7 +17,11 @@ export class TodayPage {
   public date: Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.date = DateUtil.stringToDate(navParams.get('todayDate'));
+    if (this.navParams.get('todayDate')) {
+      this.date = DateUtil.stringToDate(navParams.get('todayDate'));
+    } else {
+      this.date = new Date();
+    }
   }
 
   public itemSelected(result: DrawingResult): void {
