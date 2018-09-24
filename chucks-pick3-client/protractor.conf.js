@@ -1,3 +1,5 @@
+require('protractor/built/logger').Logger.prototype.info = () => {};
+
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
@@ -6,7 +8,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-      args: ['--no-sandbox', '--headless', '--disable-gpu'],
+      args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-web-security'],
     }
   },
   directConnect: true,
