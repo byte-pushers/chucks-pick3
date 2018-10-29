@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { TX_PICK3_URL } from '../../app.config';
 
-import { BytePushers } from '@byte-pushers/pick3-lottery-web-scraper';
+import BytePushers from '@byte-pushers/pick3-lottery-web-scraper';
 import { DrawingResult} from '../../model/DrawingResult.model';
 import { ScrapingService } from './scraping.service.interface';
 
