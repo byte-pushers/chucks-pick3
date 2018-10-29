@@ -47,7 +47,7 @@ describe('HistoryPage', () => {
   }));
 
   it('should show the date picker on enter', () => {
-    spyOn(instance, 'showPicker').and.callFake(() => {});
+    spyOn(instance, 'showPicker').and.callFake(() => {return {}; });
     instance.ionViewWillEnter();
 
     expect(instance.showPicker).toHaveBeenCalled();
