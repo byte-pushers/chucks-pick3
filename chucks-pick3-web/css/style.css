@@ -11,7 +11,7 @@ html, body {
     position: center;
     float: left;
     display:table-cell;
-    vertical-align:middle;
+    vertical-align: baseline;
     text-align:center;
     height:auto;
     width:100%;
@@ -23,12 +23,12 @@ html, body {
 .splash-logo-container {
     position: center;
     display: block;
-    vertical-align:middle;
+    vertical-align: baseline;
     text-align:center;
     height:auto;
     width: 100%;
 
-    margin-top:50px;
+    margin-top:10%;
 
 }
 
