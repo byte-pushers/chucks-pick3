@@ -1,0 +1,43 @@
+
+html, body {
+    background: #F2F2F2;
+    padding: 0px;
+    margin: 0px;
+
+    overflow: hidden;
+}
+
+.splash-container {
+    position: center;
+    float: left;
+    display:table-cell;
+    vertical-align: baseline;
+    text-align:center;
+    height:auto;
+    width:100%;
+
+    margin-top:50px;
+
+}
+
+.splash-logo-container {
+    position: center;
+    display: block;
+    vertical-align: baseline;
+    text-align:center;
+    height:auto;
+    width: 100%;
+
+    margin-top:10%;
+
+}
+
+
+
+.link-container {
+
+
+    text-align: center;
+    cursor: crosshair;
+    margin-top:50px;
+}
