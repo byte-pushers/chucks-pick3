@@ -1,0 +1,32 @@
+#nav-left{
+    margin: 0;
+    list-style: none;
+    border:  solid darkblue;
+    padding: 10px 10px;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+#nav-left li{
+    float: left;
+    list-style: none;
+
+}
+#nav-left a{
+    color: darkgrey;
+    padding: 10px;
+}
+#nav-right{
+    float: right;
+    padding: 10px 10px;
+    color: darkgrey;
+    border:  solid lightseagreen;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+#nav-right,#nav-left{
+    font-size: 25px;
+    display: inline-block;
+    align-items: center;
+}
