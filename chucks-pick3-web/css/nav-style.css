@@ -1,4 +1,10 @@
-#nav-left{
+
+.navbar-left-container {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#nav-left {
     margin: 0;
     list-style: none;
     border:  solid darkblue;
@@ -7,25 +13,45 @@
     left: 0;
     z-index: 9999;
 }
-#nav-left li{
+#nav-left li {
     float: left;
     list-style: none;
-
+    padding: 1px 46px;
 }
-#nav-left a{
+li a:hover {
+    background-color: sienna;
+}
+#nav-left a {
     color: darkgrey;
     padding: 10px;
 }
-#nav-right{
+.navbar-right-container {
     float: right;
-    padding: 10px 10px;
+    margin: 0;
+    padding: 0;
+    margin-top: -24px;
+}
+#nav-right {
+    float: right;
+    padding: 10px 16px;
     color: darkgrey;
     border:  solid lightseagreen;
     top: 0;
     left: 0;
     z-index: 9999;
 }
-#nav-right,#nav-left{
+#nav-right li {
+    float: right;
+    list-style: none;
+    padding: 1px 46px;
+}
+
+#nav-right a {
+    color: darkgrey;
+    padding: 10px;
+}
+
+#nav-right,#nav-left {
     font-size: 25px;
     display: inline-block;
     align-items: center;
