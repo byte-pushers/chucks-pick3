@@ -1,44 +1,37 @@
-.navbar-wrapper {
-
+#navbar-wrapper {
     border : 2px solid #C8E6C9;
-    overflow: hidden;
-
+    overflow: hidden; /*TODO: David showed me benefits of overflow hidden */
+    display: flex;
+}
+/*TODO: I have to have a container around everything*/
+/*TODO: Create a div for all containers */
+/*TODO: use flex to minimize */
+#navbar-wrapper > div { /* TODO: select every div element within container*/
+    display: flex;
 }
 
-.navbar-wrapper div {
-    min-height: 200px;
-    padding: 10px;
+#navbar-wrapper #nav-left div,
+#navbar-wrapper #nav-right div {
+    flex-grow: 1;
 }
+
 #nav-left {
     background-color: blue;
-    float:left;
-    margin-right:20px;
-    border-right:2px solid #000;
+    border-right: 2px solid #000;
+    flex-grow: 3; /*TODO: looking for a way to space out nav ids I found flex grow*/
+    justify-content: space-around; /*TODO: looking for a way to space out I found this using dev tools*/
 }
 
 #nav-right {
     background-color: white;
     overflow:hidden;
-    margin:10px;
     border:2px dashed #ccc;
     min-height:170px;
     padding-right: 10px;
+    flex-grow: 1; /*TODO:  child container is also less then parent in most cases*/
 }
 
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 1px 179px;
-    overflow: hidden;
-
-}
-
-li {
-    float: left;
-}
-
-li a {
+#navbar-wrapper a {
     display: block;
     color: white;
     text-align: center;
@@ -46,16 +39,18 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+#navbar-wrapper a:hover {
     background-color: #111;
 }
 
 @media screen and (max-width: 400px) {
+    #navbar-wrapper {
+        flex-direction: column
+
+    }
+
     #nav-left {
-        float: none;
-        margin-right:0;
-        width:auto;
-        border:0;
+        border-right:0;
         border-bottom:2px solid #000;
     }
 }
