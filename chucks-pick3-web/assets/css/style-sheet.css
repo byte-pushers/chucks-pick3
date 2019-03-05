@@ -208,6 +208,27 @@ h1 {
     }
 }
 
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .input-form {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 10%;
+        margin-bottom: 1%;
+        margin-inside: .5;
+    }
+
+    @-moz-document url-prefix() {
+        .input-form {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50%;
+            margin-bottom: 1%;
+            margin-inside: .5;
+        }
+    }
+}
 .fill-form {
     width: 100%;
     height: 100%;
