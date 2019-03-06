@@ -257,3 +257,55 @@ select {
     margin-top: 10%;
 }
 
+
+
+link-container {
+    display: block;
+    background-color: #354bee;
+    width: 100%;
+    height: 48%;
+    padding: 0px;
+    margin-top: 5%;
+    position: center;
+    float: right;
+
+}
+
+.how-to-container {
+    display: block;
+    background-color: #a9c0ee;
+    width: 33.33%;
+    height: 300px;
+    padding: 0px;
+    margin: auto;
+    position: center;
+    float: left;
+
+
+}
+
+.demo-container {
+    display: block;
+    background-color: #9e67ee;
+    width: 33.33%;
+    height: 300px;
+    padding: 0px;
+    margin: auto;
+    position: center;
+    float: left;
+
+
+}
+
+.sign-up-container {
+    display: block;
+    background-color: #5beea6;
+    width: 33.33%;
+    height: 300px;
+    padding: 0px;
+    margin: auto;
+    position: center;
+    float: left;
+
+}
+
