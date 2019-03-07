@@ -22,7 +22,7 @@
     <title>Bootstrap Form</title>
 </head>
 <body>
-<form>
+<form class="needs-validation" novalidate>"
 <div class="row">
     <div class="col-5 mx-auto text-left">
         <p class="h4 mb-4">Sign up </p>
@@ -35,24 +35,48 @@
 
                 <div class="col-6">
                 <label class="text-left" for="defaultRegisterFormFirstName">First Name</label>
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-            </div>
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This field is required!
+                    </div>
+                </div>
 
                 <div class="col-6 mb-sm-1">
                     <!-- Last name -->
                     <label for="defaultRegisterFormLastName">Last Name</label>
-                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This field is required!
+                    </div>
                 </div>
 
                 <div class="col-6">
                     <!-- Email -->
                     <label for="defaultRegisterFormEmail">Email</label>
-                    <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email">
+                    <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid e-mail address!
+                    </div>
                 </div>
                 <div class="col-6 mb-sm-4">
                     <!-- Phone -->
                     <label for="defaultRegisterFormPhone">Phone</label>
                     <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid phone number!
+                    </div>
                 </div>
 
                 <div class="w-100"></div>
@@ -71,6 +95,12 @@
                     <!-- Email -->
                     <label for="defaultRegisterFormZip">Zip</label>
                     <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Input is Empty!
+                    </div>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6 mb-sm-4">
@@ -106,6 +136,7 @@
                 </div>
             </div>
 
+
             <button type="submit" class="btn btn-success ">Submit </button>
 
     </div>                </div>
@@ -114,6 +145,8 @@
 <div class="footer">
 
 </div>
+
+<script src="lib/bootstrapFormVal.js"></script>
 
 
 
