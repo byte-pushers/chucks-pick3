@@ -10,6 +10,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <title>Bootstrap Form</title>
 </head>
 <body>
@@ -64,18 +73,36 @@
                     <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
                 </div>
                 <div class="w-100"></div>
-                <div class="col-6">
+                <div class="col-6 mb-sm-4">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="phone-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Type of Phone
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="phone-type">
+                            <a class="dropdown-item" href="#">Iphone</a>
+                            <a class="dropdown-item" href="#">Android</a>
 
+                        </div>
+                    </div>
                     <!-- Phone -->
-                    <label for="defaultRegisterFormTypePhone">Type of Phone</label>
-                    <input type="text" id="defaultRegisterFormTypePhone" class="form-control" placeholder="Type of Phone">
+
                 </div>
 
 
                 <div class="col-6">
                     <!-- Phone -->
-                    <label for="defaultRegisterFormHowOften">How Often</label>
-                    <input type="text" id="defaultRegisterFormHowOften" class="form-control" placeholder="How Often">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="how-often" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            How Often
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="how-often">
+                            <a class="dropdown-item" href="#">Never</a>
+                            <a class="dropdown-item" href="#">Sometimes</a>
+                            <a class="dropdown-item" href="#">All The Time</a>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
