@@ -13,7 +13,7 @@
     <title>Bootstrap Form</title>
 </head>
 <body>
-<form>
+<form class="needs-validation" novalidate>"
 <div class="row">
     <div class="col-5 mx-auto text-left">
         <p class="h4 mb-4">Sign up </p>
@@ -26,24 +26,48 @@
 
                 <div class="col-6">
                 <label class="text-left" for="defaultRegisterFormFirstName">First Name</label>
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-            </div>
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This field is required!
+                    </div>
+                </div>
 
                 <div class="col-6 mb-sm-1">
                     <!-- Last name -->
                     <label for="defaultRegisterFormLastName">Last Name</label>
-                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        This field is required!
+                    </div>
                 </div>
 
                 <div class="col-6">
                     <!-- Email -->
                     <label for="defaultRegisterFormEmail">Email</label>
-                    <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email">
+                    <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email" required="required">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid e-mail address!
+                    </div>
                 </div>
                 <div class="col-6 mb-sm-4">
                     <!-- Phone -->
                     <label for="defaultRegisterFormPhone">Phone</label>
                     <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid phone number!
+                    </div>
                 </div>
 
                 <div class="w-100"></div>
@@ -62,6 +86,12 @@
                     <!-- Email -->
                     <label for="defaultRegisterFormZip">Zip</label>
                     <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Input is Empty!
+                    </div>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6">
@@ -69,6 +99,12 @@
                     <!-- Phone -->
                     <label for="defaultRegisterFormTypePhone">Type of Phone</label>
                     <input type="text" id="defaultRegisterFormTypePhone" class="form-control" placeholder="Type of Phone">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Input is Empty!
+                    </div>
                 </div>
 
 
@@ -88,6 +124,10 @@
 
 </div>
 
+<script src="lib/bootstrapFormVal.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 </body>

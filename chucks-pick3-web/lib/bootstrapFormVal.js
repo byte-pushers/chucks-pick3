@@ -7,6 +7,24 @@
 
 (function () {
     'use strict';
+
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+
+
+
     /****************************************************************************************************
      * BEGIN String Extensions */
     /**
@@ -73,17 +91,22 @@
      */
 
     String.prototype.isEmpty = function () {
-        //return this.toString().length === 0 || /^\s*$/.test();
-        var isEmptyString = false;
-        //TODO: Check if isEmptyString contains only whitespace, if that is the case set isEmptyString value to true
-        var trimmedString = this.trim();
 
 
-        //TODO: Check length if length is 0 then string is empty, if that's the case set isEmptyString value to true
-        if (trimmedString.length === 0) {
-            isEmptyString = true;
-        }
-        return isEmptyString;
+
+            //return this.toString().length === 0 || /^\s*$/.test();
+            var isEmptyString = false;
+            //TODO: Check if isEmptyString contains only whitespace, if that is the case set isEmptyString value to true
+            var trimmedString = this.trim();
+
+
+            //TODO: Check length if length is 0 then string is empty, if that's the case set isEmptyString value to true
+            if (trimmedString.length === 0) {
+                isEmptyString = true;
+            }
+            return isEmptyString;
+
+
     };
 
     /**
@@ -177,20 +200,15 @@
 
 
     function isNumeric(str) {
-                ///var that split
-                 //made array
 
-                 str = str.split("");
+        return(/\d/).test(str);
+        ///Works/////
+    }
 
-                 for (i = 0; i < str.length; i++) {
-                     if (!isNaN(parseInt(str[i]))) {
-                        return true
-                     }
-                 }
-                return false;
-             }
+    isNumeric("Hello people 123");
 
-             isNumeric("what what no numbers in this string 1223");
+
+
     /**
      * <p>Function that is used to turn a string that is in camel case format to a Normal sentence format. (e.g. helloWorld => Hello World)</p>
      * @function
