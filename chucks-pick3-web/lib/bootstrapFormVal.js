@@ -7,21 +7,48 @@
 
 (function () {
     'use strict';
+//TODO: Add default bootstrap 4 form validation
+//TODO: How to link window.addEventListener first ?
+//TODO: How to link function to form to see if it works
+//TODO: Where to add console.log to test
+//TODO: Run test on first name for empty, numeric, alphanumeric, whitespace, copy and paste.
+//TODO: Run test on last name for empty, numeric, alphanumeric, whitespace, copy and paste.
 
-    window.addEventListener('load', function() {
+
+    window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
+
                 }
+                var fName1 = document.getElementById("defaultRegisterFormFirstName").value;
+                if(!fName1.isAlphabetical() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+
+                }
+                //var fName2 = document.getElementById("defaultRegisterFormFirstName").value;
+                //if (fName2.trim() === false){
+                //}
+                //var fName3 = document.getElementById("defaultRegisterFormFirstName").value;
+                ////(fName3.isEmpty() === false) {
+                //}
+
+                // add you checks he
+
                 form.classList.add('was-validated');
             }, false);
         });
     }, false);
+
+
 
 
 
@@ -54,7 +81,7 @@
      * <p>Function that is used to determine if a string includes a certain character or string.</p>
      * @function
      * @param <a href="http://www.w3schools.com/jsref/jsref_obj_string.asp">String</a> The string we are checking if is included.
-     * @return <a href="http://www.w3schools.com/jsref/jsref_obj_boolean.asp">Boolean</a> True of the string is included, otherwise false.
+     * @return <a href="http://www.w3schools.com                                                                                                                                                                                                                                /jsref/jsref_obj_boolean.asp">Boolean</a> True of the string is included, otherwise false.
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     if (!String.prototype.match) {
