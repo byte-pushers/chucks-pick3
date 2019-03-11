@@ -8,146 +8,244 @@
     <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
 
     <!-- Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
     <title>Bootstrap Form</title>
 </head>
 <body>
-<form class="needs-validation" novalidate>"
-<div class="row">
-    <div class="col-5 mx-auto text-left">
-        <p class="h4 mb-4">Sign up </p>
-        <div class="info-form">
+<form class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-3 mx-auto text-left">
+            <p class="h4 mb-4">Sign up </p>
+            <div class="info-form">
 
-            <div class="form-row mb-3">
 
-                <!-- <div class="col">
-                  First name -->
 
-                <div class="col-6">
-                <label class="text-left" for="defaultRegisterFormFirstName">First Name</label>
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" required="required">
-                    <div class="valid-feedback">
-                        Looks good!
+                    <!-- <div class="col">
+                      First name -->
+
+                    <div class="form-row">
+
+                    <label   for="defaultRegisterFormFirstName">First Name</label>
+
+
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                               placeholder="First name" required="required">
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            This field is required!
+                        </div>
                     </div>
-                    <div class="invalid-feedback">
-                        This field is required!
-                    </div>
-                </div>
 
-                <div class="col-6 mb-sm-1">
+
                     <!-- Last name -->
+                <br>
+                <div class="form-row">
                     <label for="defaultRegisterFormLastName">Last Name</label>
-                    <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" required="required">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        This field is required!
+
+
+                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name"
+                               required="required">
+                        <div class="valid-feedback">
+                            Looks good!
+
+                        <div class="invalid-feedback">
+                            This field is required!
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-6">
-                    <!-- Email -->
+<br>
+
+                <!-- Email -->
+                <div class="form-row">
+
                     <label for="defaultRegisterFormEmail">Email</label>
-                    <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email" required="required">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter a valid e-mail address!
-                    </div>
-                </div>
-                <div class="col-6 mb-sm-4">
-                    <!-- Phone -->
-                    <label for="defaultRegisterFormPhone">Phone</label>
-                    <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter a valid phone number!
-                    </div>
+
+
+                        <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email"
+                               required="required">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid e-mail address!
+                        </div>
+
+
+                <!-- Phone -->
+                    <br>
+
+                    <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
+
+
+                        <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid phone number!
+                        </div>
+
                 </div>
 
-                <div class="w-100"></div>
-                <div class="col-6 mb-sm-1">
+                <br>
+                <div class="form-row">
                     <!-- First name -->
-                    <label class="text-left" for="defaultRegisterFormCity">City</label>
-                    <input type="text" id="defaultRegisterFormCity" class="form-control" placeholder="City">
-                </div>
-                <div class="col-6">
-                    <!-- Last name -->
-                    <label for="defaultRegisterFormState">State</label>
-                    <input type="text" id="defaultRegisterFormState" class="form-control" placeholder="State">
-                </div>
 
-                <div class="col-6 mb-sm-4">
-                    <!-- Email -->
+                    <label  for="defaultRegisterFormCity">City</label>
+
+
+                        <input type="text" id="defaultRegisterFormCity" class="form-control" placeholder="City">
+
+                </div>
+<br>
+                <div class="form-row">
+                    <label  for="defaultRegisterFormCity">State</label>
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">State <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                            <li><a class="dropdown-item" href="#">Alabama</a></li>
+                            <li><a class="dropdown-item" href="#">Alaska</a></li>
+                            <li><a class="dropdown-item" href="#">Arizona</a></li>
+                            <li><a class="dropdown-item" href="#">Arkansas</a></li>
+                            <li><a class="dropdown-item" href="#">California</a></li>
+                            <li><a class="dropdown-item" href="#">Colorado</a></li>
+                            <li><a class="dropdown-item" href="#">Connecticut</a></li>
+                            <li><a class="dropdown-item" href="#">Delaware</a></li>
+                            <li><a class="dropdown-item" href="#">District Of Columbia</a></li>
+                            <li><a class="dropdown-item" href="#">Florida</a></li>
+                            <li><a class="dropdown-item" href="#">Georgia</a></li>
+                            <li><a class="dropdown-item" href="#">Hawaii</a></li>
+                            <li><a class="dropdown-item" href="#">Idaho</a></li>
+                            <li><a class="dropdown-item" href="#">Illinois</a></li>
+                            <li><a class="dropdown-item" href="#">Indiana</a></li>
+                            <li><a class="dropdown-item" href="#">Iowa</a></li>
+                            <li><a class="dropdown-item" href="#">Kansas</a></li>
+                            <li><a class="dropdown-item" href="#">Kentucky</a></li>
+                            <li><a class="dropdown-item" href="#">Louisiana</a></li>
+                            <li><a class="dropdown-item" href="#">Maine</a></li>
+                            <li><a class="dropdown-item" href="#">Maryland</a></li>
+                            <li><a class="dropdown-item" href="#">Massachusetts</a></li>
+                            <li><a class="dropdown-item" href="#">Michigan</a></li>
+                            <li><a class="dropdown-item" href="#">Minnesota</a></li>
+                            <li><a class="dropdown-item" href="#">Mississippi</a></li>
+                            <li><a class="dropdown-item" href="#">Missouri</a></li>
+                            <li><a class="dropdown-item" href="#">Montana</a></li>
+                            <li><a class="dropdown-item" href="#">Nebraska</a></li>
+                            <li><a class="dropdown-item" href="#">Nevada</a></li>
+                            <li><a class="dropdown-item" href="#">New Hampshire</a></li>
+                            <li><a class="dropdown-item" href="#">New Jersey</a></li>
+                            <li><a class="dropdown-item" href="#">New Mexico</a></li>
+                            <li><a class="dropdown-item" href="#">New York</a></li>
+                            <li><a class="dropdown-item" href="#">North Carolina</a></li>
+                            <li><a class="dropdown-item" href="#">North Dakota</a></li>
+                            <li><a class="dropdown-item" href="#">Ohio</a></li>
+                            <li><a class="dropdown-item" href="#">Oklahoma</a></li>
+                            <li><a class="dropdown-item" href="#">Oregon</a></li>
+                            <li><a class="dropdown-item" href="#">Pennsylvania</a></li>
+                            <li><a class="dropdown-item" href="#">Rhode Island</a></li>
+                            <li><a class="dropdown-item" href="#">South Carolina</a></li>
+                            <li><a class="dropdown-item" href="#">South Dakota</a></li>
+                            <li><a class="dropdown-item" href="#">Tennessee</a></li>
+                            <li><a class="dropdown-item" href="#">Texas</a></li>
+                            <li><a class="dropdown-item" href="#">Utah</a></li>
+                            <li><a class="dropdown-item" href="#">Vermont</a></li>
+                            <li><a class="dropdown-item" href="#">Virginia</a></li>
+                            <li><a class="dropdown-item" href="#">Washington</a></li>
+                            <li><a class="dropdown-item" href="#">West Virginia</a></li>
+                            <li><a class="dropdown-item" href="#">Wisconsin</a></li>
+                            <li><a class="dropdown-item" href="#">Wyoming</a></li>
+                        </ul>
+
+                    </div>
+<br>
+                <!-- Email -->
+                <div class="form-row">
+
                     <label for="defaultRegisterFormZip">Zip</label>
-                    <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Input is Empty!
-                    </div>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-6 mb-sm-4">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="phone-type" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Type of Phone
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="phone-type">
-                            <a class="dropdown-item" href="#">Iphone</a>
-                            <a class="dropdown-item" href="#">Android</a>
 
+
+                        <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Input is Empty!
                         </div>
                     </div>
-                    <!-- Phone -->
+
+                <br>
+
+
+                <!-- Phone -->
+                <div class="form-row">
+                    <!-- First name -->
+
+
+                    <label  for="defaultRegisterFormCity">Type of Phone</label>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type of Phone<span
+                            class="caret"></span></button>
+                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                        <li><a class="dropdown-item" href="#">iPhone</a></li>
+                        <li><a class="dropdown-item" href="#">Android</a></li>
+
+                    </ul>
+
+                </div>
+<br>
+                <div class="form-row">
+                    <!-- First name -->
+
+
+                    <label  for="defaultRegisterFormCity">How Often Do You Play?</label>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">How Often Do You Play?<span
+                            class="caret"></span></button>
+                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                        <li><a class="dropdown-item" href="#">Never</a></li>
+                        <li><a class="dropdown-item" href="#">Sometimes</a></li>
+                        <li><a class="dropdown-item" href="#">Always</a></li>
+
+                    </ul>
 
                 </div>
 
 
-                <div class="col-6">
-                    <!-- Phone -->
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="how-often" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            How Often
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="how-often">
-                            <a class="dropdown-item" href="#">Never</a>
-                            <a class="dropdown-item" href="#">Sometimes</a>
-                            <a class="dropdown-item" href="#">All The Time</a>
+                <!-- Phone -->
 
 
-                        </div>
-                    </div>
-                </div>
+                <br>
+
+                <button type="submit" class="btn btn-success ">Submit</button>
+
             </div>
-
-
-            <button type="submit" class="btn btn-success ">Submit </button>
-
-    </div>                </div>
-</div>
+        </div>
+    </div>
 </form>
 <div class="footer">
 
 </div>
 
 <script src="lib/bootstrapFormVal.js"></script>
-
 
 
 </body>
