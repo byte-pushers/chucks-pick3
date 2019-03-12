@@ -48,11 +48,17 @@
                         <input type="text" id="defaultRegisterFormFirstName" class="form-control"
                                placeholder="First name" required="required">
 
-                        <div class="valid-feedback">
+                        <div class="valid-feedback" id="name-correct">
                             Looks good!
                         </div>
-                        <div class="invalid-feedback">
-                            This field is required!
+                        <div class="invalid-feedback" id="name-error">
+                            Please do not use special characters or numbers!
+                        </div>
+                        <div class="invalid-feedback" id="name-error-numeric">
+                            Please do not use numbers!
+                        </div>
+                        <div class="invalid-feedback" id="name-error-empty">
+                            Please enter a name!
                         </div>
                     </div>
 

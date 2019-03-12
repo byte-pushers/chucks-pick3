@@ -1,3 +1,4 @@
+
 /**
  * Created by tonte on 10/4/17.
  */
@@ -7,12 +8,13 @@
 
 (function () {
     'use strict';
-//TODO: Add default bootstrap 4 form validation
-//TODO: How to link window.addEventListener first ?
-//TODO: How to link function to form to see if it works
-//TODO: Where to add console.log to test
+//TODO: Add default bootstrap 4 form validation ***DONE***
+//TODO: How to link window.addEventListener first ***DONE***
+//TODO: How to link function to form to see if it works ***DONE***
+//TODO: Where to add console.log to test ***DONE**
 //TODO: Run test on first name for empty, numeric, alphanumeric, whitespace, copy and paste.
 //TODO: Run test on last name for empty, numeric, alphanumeric, whitespace, copy and paste.
+//TODO: Figure out how to add error messages for first name
 
 
     window.addEventListener('load', function () {
@@ -21,37 +23,102 @@
         // Loop over them and prevent submission
         var validation = Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
+
+                var fName3 = document.getElementById("defaultRegisterFormFirstName").innerHTML = "please enter your first name";
+                if (fName3.isEmpty() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                var fName2 = document.getElementById("defaultRegisterFormFirstName").value;
+                if (fName2.isNumeric() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                /*if (!fName2.isAlphabetical() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }*/
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-
                 }
-                var fName1 = document.getElementById("defaultRegisterFormFirstName").value;
-                if(!fName1.isAlphabetical() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-
-
+                /*var isValidNameAlpNum = fName2.isAlphanumeric();
+                console.log('isValidNameAlpNum', isValidNameAlpNum);
+                //TODO: I want to display error message if not alphanumeric
+                document.querySelector('#name-error').style.display = 'block';
+                if (!fName2) {
+                    return 'block';
+                } else if (!fName2)
+                {
+                    return 'none';
                 }
-                //var fName2 = document.getElementById("defaultRegisterFormFirstName").value;
-                //if (fName2.trim() === false){
-                //}
-                //var fName3 = document.getElementById("defaultRegisterFormFirstName").value;
-                ////(fName3.isEmpty() === false) {
-                //}
+                //TODO: I want to display correct message if alphabet
+                document.querySelector('#name-correct').style.display = 'none';
+                if (fName2) {
+                    return 'block';
+                } else if (fName2)
+                {
+                    return 'none';
+                }*/
 
-                // add you checks he
+                var isValidName = fName3.isAlphanumeric();
 
+                console.log('isValidName', isValidName);
+
+                document.querySelector('#name-error').style.display = (!isValidName
+
+                    ? 'none'
+                    : 'none');
+
+
+
+                document.querySelector('#name-correct').style.display = (isValidName
+
+                    ? 'none'
+                    : 'block');
+
+                /*var isValidNameAlpha = fName3.isAlphabetical();
+                console.log('isValidNameAlpha', isValidNameAlpha);
+                //TODO: I want to display error message if not alphabet
+                document.querySelector('#name-error-AlphaNum').style.display = 'block';
+
+                if (!fName3.isAlphabetical()) {
+                    return 'block';
+
+                } else if (!fName3.isAlphabetical())
+                {
+                    return 'none';
+                }
+                //TODO: I want to display correct message if alphabet
+                document.querySelector('#name-correct').style.display = 'none';
+                if (fName2) {
+                    return 'none';
+                } else if (fName2)
+                {
+                    return'block'
+                }*/
+                /*var isValidNameNumeric = fName2.isNumeric();
+                console.log('isValidNameNumeric', isValidNameNumeric);
+                //TODO: I want to display error message if input includes numbers
+                document.querySelector('#name-error-numeric').style.display = 'block';
+                if (!fName2) {
+                    return 'block';
+                } else if (!fName2)
+                {
+                    return document.querySelector('#name-correct').style.display = 'block';
+                }
+                //TODO: I want to display correct message does not include numbers
+                document.querySelector('#name-correct').style.display = 'block';
+                if (fName2) {
+                    return 'block';
+                } else if (fName2)
+                {
+                    return document.querySelector('#name-error-numeric').style.display = 'block';
+                }*/
                 form.classList.add('was-validated');
             }, false);
         });
     }, false);
-
-
-
-
-
     /****************************************************************************************************
      * BEGIN String Extensions */
     /**
@@ -116,9 +183,9 @@
      The length of an empty string is 0..
      * @author <a href="mailto:anthony.gamble@bytepushers.sotfware.com">Anthony; Gamble</a>
      */
+    if(!String.prototype.isEmpty){
 
-    String.prototype.isEmpty = function () {
-
+        String.prototype.isEmpty = function () {
 
 
             //return this.toString().length === 0 || /^\s*$/.test();
@@ -129,12 +196,20 @@
 
             //TODO: Check length if length is 0 then string is empty, if that's the case set isEmptyString value to true
             if (trimmedString.length === 0) {
+
+//                 alert("Please Fill All Required Field");
+                /*document.getElementById("firstNameError").innerHTML = "You must enter a first name";*/
+                console.log('trimmedString "' + trimmedString + '" is empty');
                 isEmptyString = true;
+
             }
+            /*if(!isEmpty.includes(trimmedString)) {
+                isEmpty = false;
+                console.log('invalid input');
+            }*/
             return isEmptyString;
-
-
-    };
+        };
+    }
 
     /**
      *  <p> Function that is used to read only letters in a string.</p>
@@ -164,12 +239,20 @@
 
                     console.log('Character "' + character + '" is an alphabet');
                     isAlphabetical = true;
-                } else if (this !== trueAlphabet) {
+
+                }
+                if (this !== trueAlphabet) {
 
                     console.log('Character "' + character + '" is not alphabet');
                     isAlphabetical = false;
                     break;
                 }
+
+                /*if(!trueAlphabet.includes(character)) {
+                    isAlphabetical = false;
+                    console.log('invalid input');
+                    break;
+                }*/
             }
             return isAlphabetical;
 
@@ -183,38 +266,45 @@
      *  @author <a <a href="mailto:david.ocampo@bytepushers.software">David Ocampo</a>
      */
 
-    if (!String.prototype.isAlphanumeric) {
 
-        String.prototype.isAlphanumeric = function () {
-            //return this.replace(/[0-9]/g, '').split('').sort().join('');
-            var isAlphanumeric = false;
-            var trueAlphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
-            //var i;
+    String.prototype.isAlphanumeric = function () {
+        //return this.replace(/[0-9]/g, '').split('').sort().join('');
+        var isAlphanumeric = true;
+        var trueAlphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456".split('');
+        //var i;
 
-            // Note: the key word this represents the string that calls this isAlphabetical() method.
-            // TODO: split the string into array and assign to a variable.
-            var charactersArray = this.replace(/ /g,'').split('');
-            // TODO: loop through the newly created array.
-            for (var i=0; i < charactersArray.length; i++){
-                // TODO: get each element out of newly created array
-                var character = charactersArray[i];
-                // TODO: determine if the true alphabet includes element.
-                //if (this.includes(trueAlphabet[i])){
-                if (trueAlphanumeric.includes(character)) { //TODO
+        // Note: the key word this represents the string that calls this isAlphabetical() method.
+        // TODO: split the string into array and assign to a variable.
+        var charactersArray = this.replace(/ /g,'').split('');
+        // TODO: loop through the newly created array.
+        for (var i=0; i < charactersArray.length; i++){
+            // TODO: get each element out of newly created array
+            var character = charactersArray[i];
+            // TODO: determine if the true alphabet includes element.
+            //if (this.includes(trueAlphabet[i])){
 
-                    console.log('Character "' + character + '" is alphanumeric');
-                    isAlphanumeric = true;
-                } else if (this !== trueAlphanumeric) {
+            /*if (trueAlphanumeric.includes(character)) { //TODO
 
-                    console.log('Character "' + character + '" is not alphanumeric');
-                    isAlphanumeric = false;
-                    break;
-                }
+                alert("Please only use letters");
+                console.log('Character "' + character + '" is alphanumeric');
+                isAlphanumeric = true;
+            } else if (this !== trueAlphanumeric) {
+
+                console.log('Character "' + character + '" is not alphanumeric');
+                isAlphanumeric = false;
+                break;
+            }*/
+
+            if(!trueAlphanumeric.includes(character)) {
+                isAlphanumeric = false;
+                console.log('invalid input');
+                break;
             }
-            return isAlphanumeric;
+        }
 
-        };
-    }
+        return isAlphanumeric;
+    };
+
     /**
      * <p>Convenience function that will return true if string includes numbers.</p>
      * @static
@@ -224,17 +314,45 @@
      The length of an empty string is 0..
      * @author <a href="mailto:anthony.gamble@bytepushers.sotfware.com">Anthony; Gamble</a>
      */
+    if (!String.prototype.isNumeric) {
 
+        String.prototype.isNumeric = function () {
+            //return this.replace(/[0-9]/g, '').split('').sort().join('');
+            var isNumeric = false;
+            var trueNumeric = '0123456789'.split('');
+            //var i;
 
-    function isNumeric(str) {
+            // Note: the key word this represents the string that calls this isAlphabetical() method.
+            // TODO: split the string into array and assign to a variable.
+            var numbersArray = this.replace(/ /g,'').split('');
+            // TODO: loop through the newly created array.
+            for (var i=0; i < numbersArray.length; i++){
+                // TODO: get each element out of newly created array
+                var numBer = numbersArray[i];
+                // TODO: determine if the true alphabet includes element.
+                //if (this.includes(trueNumeric[i])){
+                /*if (trueNumeric.includes(numBer)) { //TODO
 
-        return(/\d/).test(str);
-        ///Works/////
+                    // alert("Please do not include numbers");
+                    console.log('NumBer "' + numBer + '" is an number');
+                    isNumeric = true;
+
+                } else if (this !== trueNumeric) {
+
+                    console.log('Character "' + numBer + '" is not number');
+                    isNumeric = false;
+                    break;
+                }*/
+                /*if(!trueNumeric.includes(numBer)) {
+                    isNumeric = false;
+                    console.log('invalid input');
+                    break;
+                }*/
+            }
+            return isNumeric;
+
+        };
     }
-
-    isNumeric("Hello people 123");
-
-
 
     /**
      * <p>Function that is used to turn a string that is in camel case format to a Normal sentence format. (e.g. helloWorld => Hello World)</p>
@@ -247,7 +365,6 @@
             return str.toUpperCase();
         });
     };
-
 
 
 
@@ -314,158 +431,3 @@
     }
     /* END String Extensions *****************************************************************************************************/
 }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function vaiidate() {
-
-    var formContent = document.getElementById("formContent");
-    var fName = document.getElementById("fName").value;
-
-    if (fName === "" ) {
-        formContent.innerHTML = "Please fill in all required field";
-    } else if (fName.lenght < 3) {
-        formContent.innerHTML = "Your name is to short";
-    }
-
-
-}
-
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var formContent = document.getElementsByClassName('formContent');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-// perform this operation on button click
-
-$("#MyBtn").click(function(){
-
-  // create and set a variable to keep count of the elements that have a value
-  var count = 0;
-
-  // count how many input elements are on page (makes it dynamic)
-  var inputCount = $("#input-container input").length;
-
-  // loop through each of the input elements
-  $("#input-container input").each(function(index, item){
-
-    // if 'item' doesn't have value add 1 to 'count'
-    if(item.value === "")
-    	count = count + 1;
-
-  });
-
-  // if count is less than how many inputs are on form then at least one input has a value... else none of the inputs have a value
-
-  // here is where you could put a required field on one of the fields or whatever
-
-
-/*<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-
-
-
-var myTextbox = document.getElementById('my-textbox');
-myTextbox.addEventListener('keypress', checkName, isEmpty, isAlphaNumeric, false);
-function checkName(evt) {
-  var charCode = evt.charCode;
-  if (charCode != 0) {
-    if (charCode < 97 || charCode > 122) {
-      evt.preventDefault();
-      displayWarning(
-        "Please use lowercase letters only."
-        + "\n" + "charCode: " + charCode + "\n"
-      );
-    }
-  }
-}
-function isEmpty(evt) {
-  var emptyInput = evt.length;
-  if (length != 0) {
-    if (length < 3 || length > 122) {
-      evt.preventDefault();
-      displayWarning(
-        "Please add more letters."
-
-      );
-    }
-  }
-}
-var warningTimeout;
-var warningBox = document.createElement("div");
-warningBox.className = "warning";
-
-function displayWarning(msg) {
-  warningBox.innerHTML = msg;
-
-  if (document.body.contains(warningBox)) {
-    window.clearTimeout(warningTimeout);
-  } else {
-    // insert warningBox after myTextbox
-    myTextbox.parentNode.insertBefore(warningBox, myTextbox.nextSibling);
-  }
-
-  warningTimeout = window.setTimeout(function() {
-      warningBox.parentNode.removeChild(warningBox);
-      warningTimeout = -1;
-    }, 2000);
-}
-*/
