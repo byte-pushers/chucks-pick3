@@ -1,7 +1,21 @@
 <html>
 <title>Info Page</title>
 
+
+
 <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
+<head>
+
+
+</head>
+<!-- Latest compiled and minified Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+    body {
+        padding-top: 1em;
+    }
+</style>
 
 <body>
 
@@ -15,13 +29,22 @@
 
 
         <div class="how-to-container">
-
+            <div class="title">
+            <a name="top"></a>
                     <img src="assets/img/Info page -09.png" alt="Title" style="width:800px">
-
         </div>
+<div class="scrollable">
+            <ul>
+                <li><a class="active" href="#top">To Top</a></li>
+                <li><a href="#needed">Requirements</a></li>
+                <li><a href="#interface">Interface</a></li>
+                <li><a href="#generate">Generate Picks</a></li>
+                <li><a href="#generated-picks">View Picks</a></li>
 
-
+            </ul>
+</div>
             <div class="what-you-need">
+                <a name="needed"></a>
                 <H1>What You'll Need:</H1>
                 <div class="row">
                     <div class="column">
@@ -30,7 +53,9 @@
                 </div>
             </div>
             <div class="interface">
+                <a name="interface"></a>
                 <H1>Interface:</H1>
+
                 <div class="row">
                 <div class="column">
                     <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
@@ -48,6 +73,7 @@
         </div>
     </div>
             <div class="how-to-generate">
+                <a name="generate"></a>
                 <H1>How to Generate:</H1>
                 <div class="row">
                     <div class="column">
@@ -64,6 +90,7 @@
                 </div>
 
             <div class="how-to-view">
+                <a name="generated-picks"></a>
                 <H1>How to View Generated Picks:</H1>
                 <div class="row">
                     <div class="column">
@@ -72,15 +99,40 @@
                 </div>
             </div>
 
+g
 
-
-
+<!-- TODO
+    -Find way to get navbar to scroll
+    -Find way to get it to stop after a certain distance
+    -->
 
         <div class="demo-container"><p>demo container</p></div>
         <div class="sign-up-container"><p>sign up container</p></div>
 
     </div>
 </div>
+</div>
 
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Initialize Bootstrap functionality -->
+<script>
+    // Initialize tooltip component
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    // Initialize popover component
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
 </body>
 </html>
