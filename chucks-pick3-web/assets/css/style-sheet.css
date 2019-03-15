@@ -200,38 +200,43 @@ h1 {
     padding-left: 20px;
 }
 
-.scrollable{
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#navbar {
     overflow: hidden;
-    background-color: #BDBDBD;
-    top: 0;
+    background-color: #333;
 }
 
-li {
+
+#navbar a {
     float: left;
-}
-
-li a {
     display: block;
-    color: white;
+    color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px;
     text-decoration: none;
-
 }
-
-li a:hover {
+#navbar a:hover {
     background-color: #69BF68;
+    color: black;
 }
 
-.active {
+#navbar a.active {
     background-color: #69BF68;
+    color: #69BF68;
 }
 
 
+.content {
+    padding: 16px;
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+.sticky + .content {
+    padding-top: 60px;
+}

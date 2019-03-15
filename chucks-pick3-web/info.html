@@ -33,19 +33,21 @@
             <a name="top"></a>
                     <img src="assets/img/Info page -09.png" alt="Title" style="width:800px">
         </div>
-<div class="scrollable">
-            <ul>
-                <li><a class="active" href="#top">To Top</a></li>
-                <li><a href="#needed">Requirements</a></li>
-                <li><a href="#interface">Interface</a></li>
-                <li><a href="#generate">Generate Picks</a></li>
-                <li><a href="#generated-picks">View Picks</a></li>
+        </div>
+            <div id="navbar">
+                <a href="#top">Top</a>
+               <a href="#needed">Requirements</a>
+                <a href="#interface">Interface</a>
+                <a href="#generate">Generate Picks</a>
+                <a href="#generated-picks">View Picks</a>
 
-            </ul>
-</div>
+            </div>
+            <br>
+
+
             <div class="what-you-need">
                 <a name="needed"></a>
-                <H1>What You'll Need:</H1>
+                <H1>Requirements:</H1>
                 <div class="row">
                     <div class="column">
                         <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
@@ -74,7 +76,7 @@
     </div>
             <div class="how-to-generate">
                 <a name="generate"></a>
-                <H1>How to Generate:</H1>
+                <H1>How to Generate Picks:</H1>
                 <div class="row">
                     <div class="column">
                         <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
@@ -99,7 +101,7 @@
                 </div>
             </div>
 
-g
+
 
 <!-- TODO
     -Find way to get navbar to scroll
@@ -133,6 +135,35 @@ g
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
+</script>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
 </script>
 </body>
 </html>
