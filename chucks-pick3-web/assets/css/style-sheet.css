@@ -1,3 +1,7 @@
+.css-selector {
+    font-family: 'Lato', serif;
+}
+
 .main-container {
     background-color: #fafafa;
     width: 100%;
@@ -80,10 +84,12 @@
 .link-container {
     display: block;
     background-color: #354bee;
+    border-style: solid;
+    width: 918px;
+    height: 420px;
 
-    padding: 0px;
     margin: 0 auto;
-    position: center;
+
 
 
 }
@@ -171,7 +177,7 @@
 
 .sign-up-container {
     display: block;
-    background-image: url("../img/webpage_button-01.png");
+    background-image: url("../img/webpage_button-03.png");
     background-size: 300px  420px;
     border-style: solid;
     width: 300px;
@@ -186,7 +192,7 @@
 
 .text {
     margin: auto;
-    padding-top: 99%;
+    padding-top: 105%;
     padding-left: 5%;
     position: center;
     vertical-align: bottom;
@@ -214,8 +220,8 @@
     display: table;
 }
 
-h1 {
-    font-family: Lato;
+h2 {
+font-family: 'Lato', serif;
     padding-left: 20px;
 }
 
