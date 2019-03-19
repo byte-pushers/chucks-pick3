@@ -78,25 +78,30 @@
 }
 
 .link-container {
+
     display: block;
     background-color: #354bee;
-    width: 100%;
-    height: 48%;
-    padding: 0px;
-    margin-top: 5%;
-    position: center;
-    float: right;
+    border-style: solid;
+    width: 918px;
+    height: 420px;
+
+    margin: 0 auto;
+
+
+
 
 }
 
 .how-to-container {
     display: block;
-    background-color: #a9c0ee;
-    width: 33.33%;
-    height: 300px;
+    background-image: url("../img/web-pages-02 copy.png");
+    background-size: 300px  420px;
+    border-style: solid;
+    width: 300px;
+    height: 420px;
     padding: 0px;
-    margin: auto;
-    position: center;
+    margin-right: auto;
+
     float: left;
 
 
@@ -104,9 +109,11 @@
 
 .demo-container {
     display: block;
-    background-color: #9e67ee;
-    width: 33.33%;
-    height: 300px;
+    background-image: url("../img/web-pages-01 copy.png");
+    background-size: 300px  420px;
+    border-style: solid;
+    width: 300px;
+    height: 420px;
     padding: 0px;
     margin: auto;
     position: center;
@@ -117,9 +124,11 @@
 
 .sign-up-container {
     display: block;
-    background-color: #5beea6;
-    width: 33.33%;
-    height: 300px;
+    background-image: url("../img/web-pages-03 copy.png");
+    background-size: 300px  420px;
+    border-style: solid;
+    width: 300px;
+    height: 420.5px;
     padding: 0px;
     margin: auto;
     position: center;
@@ -127,6 +136,16 @@
 
 }
 
+
+.text {
+    margin: auto;
+    padding-top: 99%;
+    padding-left: 5%;
+    position: center;
+    vertical-align: bottom;
+
+
+}
 
 
 
