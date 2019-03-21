@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- javascript -->
+    <script src="lib/bootstrapFormVal.js"></script>
+    <script type="text/javascript" src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -42,24 +46,11 @@
 
                     <div class="form-row">
 
-                    <label   for="defaultRegisterFormFirstName">First Name</label>
+                    <label for="defaultRegisterFormFirstName">First Name</label>
+                        <input type="text" minlength="4" name="first-name" maxlength="25" id="defaultRegisterFormFirstName" class="form-control"
+                               placeholder="First name" onchange="checkFirstName(this);"  required="required">
 
-
-                        <input type="text" id="defaultRegisterFormFirstName" class="form-control"
-                               placeholder="First name" required="required">
-
-                        <div class="valid-feedback" id="name-correct">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback" id="name-error">
-                            Please do not use special characters or numbers!
-                        </div>
-                        <div class="invalid-feedback" id="name-error-numeric">
-                            Please do not use numbers!
-                        </div>
-                        <div class="invalid-feedback" id="name-error-empty">
-                            Please enter a name!
-                        </div>
+                        <div class="invalid-feedback first-name"></div>
                     </div>
 
 
@@ -69,14 +60,13 @@
                     <label for="defaultRegisterFormLastName">Last Name</label>
 
 
-                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name"
+                        <input type="text" minlength="4" name="last-name" maxlength="30" id="defaultRegisterFormLastName" oninput="checkLastName(this);" class="form-control" placeholder="Last name"
                                required="required">
-                        <div class="valid-feedback">
-                            Looks good!
+                    <div class="invalid-feedback "></div>
 
-                        <div class="invalid-feedback">
-                            This field is required!
-                        </div>
+
+
+
                     </div>
                 </div>
 
@@ -88,14 +78,10 @@
                     <label for="defaultRegisterFormEmail">Email</label>
 
 
-                        <input type="text" id="defaultRegisterFormEmail" class="form-control" placeholder="Email"
+                        <input type="text"  minlength="4" name="email" maxlength="15" oninput="checkEmail(this)"  id="defaultRegisterFormEmail" class="form-control" placeholder="Email"
                                required="required">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Please enter a valid e-mail address!
-                        </div>
+                    <div class="invalid-feedback "> </div>
+
 
 
                 <!-- Phone -->
@@ -105,19 +91,13 @@
 
 
                         <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Please enter a valid phone number!
-                        </div>
+
+
 
                 </div>
 
                 <br>
                 <div class="form-row">
-                    <!-- First name -->
-
                     <label  for="defaultRegisterFormCity">City</label>
 
 
@@ -192,12 +172,7 @@
 
 
                         <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Input is Empty!
-                        </div>
+
                     </div>
 
                 <br>
@@ -205,8 +180,6 @@
 
                 <!-- Phone -->
                 <div class="form-row">
-                    <!-- First name -->
-
 
                     <label  for="defaultRegisterFormCity">Type of Phone</label>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type of Phone<span
@@ -220,7 +193,6 @@
                 </div>
 <br>
                 <div class="form-row">
-                    <!-- First name -->
 
 
                     <label  for="defaultRegisterFormCity">How Often Do You Play?</label>
@@ -251,8 +223,13 @@
 
 </div>
 
-<script src="lib/bootstrapFormVal.js"></script>
 
+<!--
+
+add bytepushers code to html file/ via script
+
+
+//-->
 
 </body>
 </html>
