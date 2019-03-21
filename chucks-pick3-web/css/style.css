@@ -5,6 +5,7 @@ html, body {
     margin: 0px;
     overflow: hidden;
 }
+
 .splash-container {
     position: center;
     /*float: left;
@@ -16,7 +17,9 @@ html, body {
 
 
     margin-top:50px;
+
 }
+
 .splash-logo-container {
     position: center;
     padding-top: 10px;
@@ -28,6 +31,7 @@ html, body {
 
 
     margin-top:10%;
+
 }
 
 a:link {
@@ -38,6 +42,8 @@ a:link {
 }
 
 .link-container {
+
+
     text-align: center;
     cursor: crosshair;
     margin-top:50px;
