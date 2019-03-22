@@ -20,26 +20,39 @@
 
 }());
 
-
+// we created new function to group both checkFirstName and checkLastName then we changed error message
+// to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
+// then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 function checkFirstName(input) { // create a function for first name // use input parameter
+checkName(input);
+}
 
+function checkLastName(input) { // create a function for first name // use input parameter
+    checkName(input);
+}
+
+function checkName(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
         if (input.required === true) { // the input is required if not show error message // must have required as a input field
             if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkFirstNameValidity(input);
+                checkNameValidity(input);
             } else {
-                setErrorMessage(".invalid-feedback." + input.name, "First Name is required and can not be empty", input);
+                setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty", input);
             }
         } else {
             if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkFirstNameValidity(input);
+                checkNameValidity(input);
             }
         }
     }
+
 }
+
+
+
 
 function hasData(input) {
     let hasDataResult = false;
@@ -62,7 +75,8 @@ function setErrorMessage(querySelector, errorMessage, input) { //function named 
 }
 
 
-function checkFirstNameValidity(input) {
+function checkNameValidity(input) {
+    const errorFieldName = input.value.toNormalCase();
     const minLength = input.minLength; //create variable for min and max add to the input
     const maxLength = input.maxLength; //create variable for min and max add to the input
 
@@ -70,28 +84,28 @@ function checkFirstNameValidity(input) {
         // if statement for max length and min length make sure not null or undefined
         if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
             if (input.value.isAlphabetical() === false) {
-                setErrorMessage(".invalid-feedback." + input.name, "First Name can only contain alpha characters.", input);
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length < minLength) {
-            setErrorMessage(".invalid-feedback." + input.name, "First Name must be greater than " + minLength + " characters.", input);
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
         } else if (input.value.length > maxLength) {
-            setErrorMessage(".invalid-feedback." + input.name, "First Name must be less than " + maxLength + " characters.", input);
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
     } else if (minLength !== null && minLength !== undefined) {
         if (input.value.length >= minLength) {
             if (input.value.isAlphabetical() === false) {
-                setErrorMessage(".invalid-feedback." + input.name, "First Name can only contain alpha characters.", input);
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length < minLength) {
-            setErrorMessage(".invalid-feedback." + input.name, "First Name must be greater than " + minLength + " characters.", input);
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
         }
     } else if (maxLength !== null && maxLength !== undefined) {
         if (input.value.length <= maxLength) {
             if (input.value.isAlphabetical() === false) {
-                setErrorMessage(".invalid-feedback." + input.name, "First Name can only contain alpha characters.", input);
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length > maxLength) {
-            setErrorMessage(".invalid-feedback." + input.name, "First Name must be less than " + maxLength + " characters.", input);
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
     }
 }
