@@ -52,19 +52,13 @@ function checkName(input) {
 
 function checkEmail(input) {
     if (input !== null && input !== undefined) {
-
-
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
             // do nothing
         } else {
             // setErrorMessage
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
-
         }
-
     }
-
-
 }
 
 function checkPhoneNumber(input) {
@@ -80,6 +74,10 @@ function checkPhoneNumber(input) {
         }
 
     }
+}
+
+function checkCity(input) {
+    checkName(input);
 }
 
 

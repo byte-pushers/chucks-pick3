@@ -96,14 +96,14 @@
 
 
                 </div>
-
+                <!--City -->
                 <br>
                 <div class="form-row">
                     <label  for="defaultRegisterFormCity">City</label>
 
 
-                        <input type="text" id="defaultRegisterFormCity" class="form-control" placeholder="City">
-
+                        <input type="text" minlength="3" name="cityName" maxlength="30" onchange="checkCity(this)"  id="defaultRegisterFormCity" class="form-control" placeholder="City" required>
+                    <div class="invalid-feedback cityName "> </div>
                 </div>
 <br>
                 <div class="form-row">
