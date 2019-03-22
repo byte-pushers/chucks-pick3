@@ -1,61 +1,79 @@
-.navbar-wrapper {
-
+#navbar-wrapper {
     border : 2px solid #C8E6C9;
-    overflow: hidden;
-
+    overflow: hidden; /*TODO: David showed me benefits of overflow hidden */
+    display: flex;
+}
+/*TODO: I have to have a container around everything*/
+/*TODO: Create a div for all containers */
+/*TODO: use flex to minimize */
+#navbar-wrapper > div { /* TODO: select every div element within container*/
+    display: flex;
 }
 
-.navbar-wrapper div {
-    min-height: 200px;
-    padding: 10px;
+#navbar-wrapper #nav-left div,
+#navbar-wrapper #nav-right div {
+    flex-grow: 1;
 }
+
 #nav-left {
     background-color: blue;
-    float:left;
-    margin-right:20px;
-    border-right:2px solid #000;
+    border-right: 2px solid #5beea6;
+    flex-grow: 3; /*TODO: looking for a way to space out nav ids I found flex grow*/
+    justify-content: space-around; /*TODO: looking for a way to space out I found this using dev tools*/
 }
 
-#nav-right {
+/*#nav-right {
     background-color: white;
-    overflow:hidden;
-    margin:10px;
-    border:2px dashed #ccc;
-    min-height:170px;
-    padding-right: 10px;
-}
-
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 1px 179px;
     overflow: hidden;
+    border: 2px dashed #ccc;
+    min-height: 170px;
+    padding-right: 10px;
+    flex-grow: 1; /*TODO:  child container is also less then parent in most cases*/
+
+
+#signup-container{
+    display: inline-flex;
+    flex-grow: 1;
+    background-color: red;
+    border: 2px solid #BDBDBD;
+
 
 }
 
-li {
-    float: left;
-}
+#login-container{
+    display: inline-flex;
+    flex-grow: 1;
+    background-color:green;
+    justify-content: flex-end;
+    border: 2px solid #ff5260;
 
-li a {
+
+}
+#navbar-wrapper a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 89px;
     text-decoration: none;
 }
 
-li a:hover {
+#navbar-wrapper a:hover {
     background-color: #111;
 }
 
-@media screen and (max-width: 400px) {
+@media screen  and (max-width:980px)  {
+    #navbar-wrapper >div {
+     padding: 1px  10px;
+        text-align:center;
+
+        display: block;
+
+
+    }
+
     #nav-left {
-        float: none;
-        margin-right:0;
-        width:auto;
-        border:0;
+        border-right: 0;
         border-bottom:2px solid #000;
+        width: 60%;
     }
 }
