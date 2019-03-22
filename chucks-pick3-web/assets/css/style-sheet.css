@@ -7,7 +7,9 @@
     width: 100%;
     height: 100%;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
 
 
 }
@@ -18,7 +20,7 @@
     width: 100%;
     height: 20%;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
 
 
 }
@@ -29,7 +31,7 @@
     width: 20%;
     height: 200px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     float: left;
 
 
@@ -52,55 +54,43 @@
     background-color: #fff059;
     width: 80%;
     height: 50px;
-    padding: 0px;
-    margin: auto;
+    padding: 0;
+    margin: 0 auto;
     float: right;
 
 
 }
 
 .body-container {
-    display: block;
+
     background-color: #ff5cbd;
     width: 100%;
     height: 100%;
-    padding: 0px;
-    margin: auto;
-
+    padding: 0;
+    margin: 0 auto;
 
 }
 
 .main-content-container {
-    display: block;
+
     background-color: #eea53a;
     width: 100%;
     height: 100%;
     padding: 0px;
     margin: auto;
-    position: center;
+    text-align: center;
+    display: inline-block;
 
 }
 
-.link-container {
-    display: block;
-    background-color: #354bee;
-    border-style: solid;
-    width: 918px;
-    height: 420px;
-
-    margin: 0 auto;
-
-
-
-}
 
 .how-to-container {
-    display: block;
+    display: inline-block;
     background-color: #fafafa;
     width: 100%;
     height: 40%;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
 
     float: left;
 
@@ -113,8 +103,8 @@
     width: 100%;
         height: 500px;
         padding: 0px;
-    margin: auto;
-    position: center;
+    margin: 0 auto;
+
     float: left;
 
 
@@ -126,7 +116,7 @@
     width: 100%;
     height: 500px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     position: center;
     float: left;
 
@@ -139,10 +129,9 @@
     width: 100%;
     height: 500px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     position: center;
     float: left;
-
 
 }
 
@@ -152,51 +141,70 @@
     width: 100%;
     height: 500px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     position: center;
     float: left;
 
+
+}
+
+.link-container {
+
+
+    width: 100%;
+    height: 420px;
+    margin: 0 auto;
+
+    display: inline-block;
 
 }
 
 
 .demo-container {
-    display: block;
+    display: table;
     background-image: url("../img/webpage_button-02.png");
-    background-size: 300px  420px;
+    background-size: 532px  420px;
     border-style: solid;
-    width: 300px;
+    width: 29%;
     height: 420px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     position: center;
     float: left;
+
+
+}
+
+.demo-container p {
+    display: table-cell;
+    vertical-align: bottom;
+   padding-bottom: 5% ;
+    padding-left: 5%;
+    padding-right: 5%;
 
 
 }
 
 .sign-up-container {
-    display: block;
+    display: table;
     background-image: url("../img/webpage_button-03.png");
-    background-size: 300px  420px;
+    background-size: 532px  420px;
     border-style: solid;
-    width: 300px;
+    width: 29%;
     height: 420.5px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     position: center;
     float: left;
 
 }
 
-
-.text {
-    margin: auto;
-    padding-top: 105%;
-    padding-left: 5%;
-    position: center;
+.sign-up-container p {
+display: table-cell;
     vertical-align: bottom;
-
+    padding-bottom: 5% ;
+    padding-left: 5%;
+    padding-right: 5%;
 
 }
 
@@ -205,20 +213,7 @@
 
 
 
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-.column {
 
-    width: 50.00%;
-    padding: 10px;
-    margin: 0 auto;
-}
-
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
 
 h2 {
 font-family: 'Lato', serif;
@@ -229,7 +224,47 @@ font-family: 'Lato', serif;
     overflow: hidden;
     background-color: #333;
 }
+.how-to-nav {
+    display: block;
+text-align: center;
+    width: 80%;
+    height: 5%;
+    padding: 0px;
 
+
+    float: right;
+
+
+}
+
+.Title {
+    display: table;
+    text-align: center;
+    background-color: #f2f2f2;
+
+
+    width: 20%;
+    height: 45px;
+
+    float: left;
+
+font-family:'Lato', serif;
+
+
+
+    text-decoration: none;
+
+
+}
+.Title p{
+    display: inline-block;
+    vertical-align: center;
+
+
+
+
+
+}
 
 #navbar a {
     float: left;
@@ -238,6 +273,7 @@ font-family: 'Lato', serif;
     text-align: center;
     padding: 10px;
     text-decoration: none;
+'Lato', serif;
 }
 #navbar a:hover {
     background-color: #69BF68;
