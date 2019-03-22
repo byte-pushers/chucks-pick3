@@ -78,9 +78,8 @@
                     <label for="defaultRegisterFormEmail">Email</label>
 
 
-                        <input type="text"  minlength="4" name="email" maxlength="15" oninput="checkEmail(this)"  id="defaultRegisterFormEmail" class="form-control" placeholder="Email"
-                               required="required">
-                    <div class="invalid-feedback "> </div>
+                        <input type="email"   name="email"  onchange="checkEmail(this)"  id="defaultRegisterFormEmail" class="form-control" placeholder="Email">
+                    <div class="invalid-feedback email "> </div>
 
 
 
