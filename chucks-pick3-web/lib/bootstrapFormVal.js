@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -25,7 +24,7 @@
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 function checkFirstName(input) { // create a function for first name // use input parameter
-checkName(input);
+    checkName(input);
 }
 
 function checkLastName(input) { // create a function for first name // use input parameter
@@ -55,8 +54,7 @@ function checkEmail(input) {
     if (input !== null && input !== undefined) {
 
 
-
-        if(input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
+        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
             // do nothing
         } else {
             // setErrorMessage
@@ -69,7 +67,20 @@ function checkEmail(input) {
 
 }
 
+function checkPhoneNumber(input) {
+    if (input !== null && input !== undefined) {
 
+
+        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
+            // do nothing
+        } else {
+            // setErrorMessage
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
+
+        }
+
+    }
+}
 
 
 function hasData(input) {
@@ -84,6 +95,7 @@ function hasData(input) {
 
     return hasDataResult;
 }
+
 //function setErrorMessage(e,t,r){document.querySelector(e).innerHTML=t,r.setCustomValidity(t)}
 
 function setErrorMessage(querySelector, errorMessage, input) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
@@ -91,8 +103,6 @@ function setErrorMessage(querySelector, errorMessage, input) { //function named 
     input.setCustomValidity(errorMessage);
 
 }
-
-
 
 
 function checkNameValidity(input) {
@@ -129,6 +139,4 @@ function checkNameValidity(input) {
         }
     }
 }
-
-
 

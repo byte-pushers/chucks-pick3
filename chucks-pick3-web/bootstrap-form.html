@@ -89,7 +89,9 @@
                     <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
 
 
-                        <input type="text" id="defaultRegisterFormPhone" class="form-control" placeholder="Phone">
+                        <input type="number" name="phoneNumber" min="10"  max="10"  onchange="checkPhoneNumber(this)" class="form-control" placeholder="1234567890"
+                               required >
+                    <div class="invalid-feedback phoneNumber "> </div>
 
 
 
