@@ -76,7 +76,8 @@
     background-color: #eea53a;
     width: 100%;
     height: 100%;
-    padding: 0px;
+    padding-left: 10%;
+    padding-right: 10%;
     margin: auto;
     text-align: center;
     display: inline-block;
@@ -342,59 +343,54 @@ select {
 
     width: 100%;
     height: 420px;
-    margin: 0 auto;
-
-    display: inline-block;
+    padding: 40px;
+    text-align: center;
 
 }
 
 
 .demo-container {
-    display: table;
     background-image: url("../img/webpage_button-02.png");
     background-size: 532px  420px;
     border-style: solid;
-    width: 29%;
+    width: 33.3%;
     height: 420px;
-    padding: 0px;
-    margin: 0 auto;
-    position: center;
-    float: left;
-
 
 }
 
 .demo-container p {
-    display: table-cell;
-    vertical-align: bottom;
+
    padding-bottom: 5% ;
     padding-left: 5%;
     padding-right: 5%;
+    text-align: left;
 
 
 }
 
 .sign-up-container {
-    display: table;
     background-image: url("../img/webpage_button-03.png");
     background-size: 532px  420px;
     border-style: solid;
-    width: 29%;
-    height: 420.5px;
-    padding: 0px;
-    margin: 0 auto;
-    position: center;
-    float: left;
+    width: 33.3%;
+    height: 420px;
+
 
 }
 
 .sign-up-container p {
-display: table-cell;
     vertical-align: bottom;
     padding-bottom: 5% ;
     padding-left: 5%;
     padding-right: 5%;
+    text-align: left;
 
+}
+
+.demo-container, .sign-up-container {
+
+    display: inline-block;
+    padding: 20px;
 }
 
 
