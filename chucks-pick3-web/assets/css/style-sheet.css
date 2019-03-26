@@ -28,7 +28,7 @@
 
 .logo-container {
     display: block;
-    background-color: #7876ff;
+    background-image: url("../img/webpage_button-03.png");
     width: 20%;
     height: 200px;
     padding: 0px;
@@ -148,7 +148,7 @@
     background-color: #fafafa;
     width: 100%;
     height: 500px;
-    padding: 0px;
+    padding: 0;
     margin: 0 auto;
     position: center;
     float: left;
@@ -343,7 +343,7 @@ select {
 
     width: 100%;
     height: 420px;
-    padding: 40px;
+    padding:30px;
     text-align: center;
 
 }
@@ -352,7 +352,10 @@ select {
 .demo-container {
     background-image: url("../img/webpage_button-02.png");
     background-size: 532px  420px;
-    border-style: solid;
+    border-top-style: solid;
+    border-right-style:none;
+    border-bottom-style: solid;
+    border-left-style: solid;
     width: 33.3%;
     height: 420px;
 
@@ -371,7 +374,10 @@ select {
 .sign-up-container {
     background-image: url("../img/webpage_button-03.png");
     background-size: 532px  420px;
-    border-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: none;
     width: 33.3%;
     height: 420px;
 
@@ -444,12 +450,8 @@ font-family:'Lato', serif;
 .Title p{
     display: inline-block;
     vertical-align: center;
-
-
-
-
-
-}
+    position:relative;
+    top:10px}
 
 #navbar a {
     float: left;
