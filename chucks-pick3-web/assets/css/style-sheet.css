@@ -376,7 +376,7 @@ select {
     background-size: 532px  420px;
     border-top-style: solid;
     border-right-style: solid;
-    border-bottom-style: solid;
+    border-bottom-style: none;
     border-left-style: none;
     width: 33.3%;
     height: 420px;
