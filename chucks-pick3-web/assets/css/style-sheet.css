@@ -367,8 +367,8 @@ select {
     padding-left: 5%;
     padding-right: 5%;
     text-align: left;
-
-
+    position:relative;
+    top:82%;
 }
 
 .sign-up-container {
@@ -390,7 +390,8 @@ select {
     padding-left: 5%;
     padding-right: 5%;
     text-align: left;
-
+    position:relative;
+    top:82%;
 }
 
 .demo-container, .sign-up-container {
@@ -421,7 +422,8 @@ text-align: center;
     width: 80%;
     height: 5%;
     padding: 0px;
-
+    position:relative;
+    left:22%;
 
     float: right;
 
@@ -451,7 +453,8 @@ font-family:'Lato', serif;
     display: inline-block;
     vertical-align: center;
     position:relative;
-    top:10px}
+    top:10px;
+}
 
 #navbar a {
     float: left;
