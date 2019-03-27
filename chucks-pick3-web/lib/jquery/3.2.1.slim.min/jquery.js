@@ -19,7 +19,8 @@ $(function(){
         $(this).parents('.dropdown-menu').siblings('.btn').text($(this).text());
         $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
         $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
-        $("#button").prop('required', true);
+        return false;
+
     });
 });
 

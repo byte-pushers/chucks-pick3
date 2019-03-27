@@ -52,6 +52,8 @@ function checkName(input) {
 
 function checkEmail(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
+
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
             // do nothing
         } else {
@@ -63,6 +65,7 @@ function checkEmail(input) {
 
 function checkPhoneNumber(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
 
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
@@ -82,6 +85,7 @@ function checkCity(input) {
 
 function checkZipCode(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
 
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
