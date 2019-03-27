@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -84,14 +85,15 @@
 
 
                 <!-- Phone -->
-                    <br>
+                <br>
 
-                    <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
+                <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
 
 
-                        <input type="number" name="phoneNumber" min="10"  max="10"  onchange="checkPhoneNumber(this)" class="form-control" placeholder="1234567890"
-                               required >
-                    <div class="invalid-feedback phoneNumber "> </div>
+                <input type="number" name="phoneNumber" maxlength="10" onchange="checkPhoneNumber(this)"
+                       class="form-control" placeholder="1234567890"
+                       required>
+                <div class="invalid-feedback phoneNumber "></div>
 
                 </div>
                 <!--City -->
@@ -107,7 +109,7 @@
 
                 <div class="form-row">
                     <label  for="defaultRegisterFormCity">State</label>
-                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropDown" aria-haspopup="true" aria-expanded="false"  data-toggle="dropdown">State <span
+                        <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="true" required   data-toggle="dropdown">State <span
                                 class="caret" ></span></button>
                         <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
                             <li><a class="dropdown-item" href="#">Alabama</a></li>
@@ -171,7 +173,8 @@
                     <label for="defaultRegisterFormZip">Zip</label>
 
 
-                        <input type="number" name="zipCode" min="5"  max="5" id="defaultRegisterFormZip" class="form-control"  onchange="checkZipCode(this)" placeholder="Zip" required>
+                        <input type="number" name="zipCode"   maxlength="5"
+                       id="defaultRegisterFormZip" class="form-control"  onchange="checkZipCode(this)" placeholder="Zip" required>
                     <div class="invalid-feedback zipCode "> </div>
                     </div>
 
@@ -183,7 +186,7 @@
                 <div class="form-row">
 
                     <label  for="defaultRegisterFormCity">Type of Phone</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type of Phone<span
+                    <button type="button" class="btn btn-primary dropdown-toggle" required data-toggle="dropdown">Type of Phone<span
                             class="caret"></span></button>
                     <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">iPhone</a></li>
@@ -197,7 +200,7 @@
 
 
                     <label  for="defaultRegisterFormCity">How Often Do You Play?</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">How Often Do You Play?<span
+                    <button type="button" class="btn btn-primary dropdown-toggle" required data-toggle="dropdown">How Often Do You Play?<span
                             class="caret"></span></button>
                     <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">Never</a></li>
