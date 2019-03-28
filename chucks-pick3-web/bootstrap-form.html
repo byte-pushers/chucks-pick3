@@ -107,10 +107,11 @@
 <br>
 
                 <div class="form-row">
+
                     <label  for="defaultRegisterFormCity">State</label>
-                        <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="true" required   data-toggle="dropdown">State <span
+                        <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="true" id="dropDown" data-display="static"  data-toggle="dropdown">State <span
                                 class="caret" ></span></button>
-                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                        <ul class="dropdown-menu scrollable-menu w-100" aria-labelledby="menu">
                             <li><a class="dropdown-item" href="#">Alabama</a></li>
                             <li><a class="dropdown-item" href="#">Alaska</a></li>
                             <li><a class="dropdown-item" href="#">Arizona</a></li>
@@ -163,6 +164,7 @@
                             <li><a class="dropdown-item" href="#">Wisconsin</a></li>
                             <li><a class="dropdown-item" href="#">Wyoming</a></li>
                         </ul>
+                    <div class="invalid-feedback dropDown"> </div>
 
                     </div>
 <br>
@@ -185,29 +187,29 @@
                 <div class="form-row">
 
                     <label  for="defaultRegisterFormCity">Type of Phone</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" required data-toggle="dropdown">Type of Phone<span
+                    <button type="button" class="btn btn-primary dropdown-toggle w-100"     data-display="static"  required data-toggle="dropdown">Type of Phone<span
                             class="caret"></span></button>
-                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                    <ul class="dropdown-menu w-100" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">iPhone</a></li>
                         <li><a class="dropdown-item" href="#">Android</a></li>
 
                     </ul>
-
+                    <div class="invalid-feedback"> </div>
                 </div>
 <br>
                 <div class="form-row">
 
 
                     <label  for="defaultRegisterFormCity">How Often Do You Play?</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" required data-toggle="dropdown">How Often Do You Play?<span
+                    <button type="button" class="btn btn-primary dropdown-toggle"  data-display="static" required data-toggle="dropdown">How Often Do You Play?<span
                             class="caret"></span></button>
-                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                    <ul class="dropdown-menu w-100" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">Never</a></li>
                         <li><a class="dropdown-item" href="#">Sometimes</a></li>
                         <li><a class="dropdown-item" href="#">Always</a></li>
 
                     </ul>
-
+                    <div class="invalid-feedback"> </div>
                 </div>
 
 
@@ -216,11 +218,10 @@
 
                 <br>
 
-                <button type="submit" class="btn btn-success ">Submit</button>
+                <button type="submit" value="Validate" onclick="return checkStateButton()"   class="btn btn-success ">Submit</button>
 
             </div>
         </div>
-    </div>
 </form>
 <div class="footer">
 

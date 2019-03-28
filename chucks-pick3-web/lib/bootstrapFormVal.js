@@ -83,6 +83,16 @@ function checkCity(input) {
     checkName(input);
 }
 
+function checkStateButton() {
+    var stateCheck = document.getElementById("dropDown");
+    if (dropDown.value === "") {
+        //If the "Please Select" option is selected display error.
+        alert("Please select an option!");
+        return false;
+    }
+    return true;
+}
+
 function checkZipCode(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
@@ -155,4 +165,6 @@ function checkNameValidity(input) {
         }
     }
 }
+
+
 
