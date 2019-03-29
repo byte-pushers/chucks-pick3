@@ -93,8 +93,6 @@
                                required >
                     <div class="invalid-feedback phoneNumber "> </div>
 
-
-
                 </div>
                 <!--City -->
                 <br>
@@ -106,10 +104,11 @@
                     <div class="invalid-feedback cityName "> </div>
                 </div>
 <br>
+
                 <div class="form-row">
                     <label  for="defaultRegisterFormCity">State</label>
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">State <span
-                                class="caret"></span></button>
+                        <button type="button" class="btn btn-primary dropdown-toggle" id="dropDown" aria-haspopup="true" aria-expanded="false"  data-toggle="dropdown">State <span
+                                class="caret" ></span></button>
                         <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
                             <li><a class="dropdown-item" href="#">Alabama</a></li>
                             <li><a class="dropdown-item" href="#">Alaska</a></li>
@@ -172,9 +171,10 @@
                     <label for="defaultRegisterFormZip">Zip</label>
 
 
-                        <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
-
+                        <input type="number" name="zipCode" min="5"  max="5" id="defaultRegisterFormZip" class="form-control"  onchange="checkZipCode(this)" placeholder="Zip" required>
+                    <div class="invalid-feedback zipCode "> </div>
                     </div>
+
 
                 <br>
 
