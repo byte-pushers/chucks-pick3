@@ -1,9 +1,15 @@
+.css-selector {
+    font-family: 'Lato', serif;
+}
+
 .main-container {
-    background-color: aquamarine;
+    background-color: #fafafa;
     width: 100%;
     height: 100%;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
 
 
 }
@@ -15,18 +21,18 @@
     width: 100%;
     height: 20%;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
 
 
 }
 
 .logo-container {
     display: block;
-    background-color: #7876ff;
+    background-image: url("../img/webpage_button-03.png");
     width: 20%;
     height: 200px;
     padding: 0px;
-    margin: auto;
+    margin: 0 auto;
     float: left;
 
 
@@ -49,8 +55,8 @@
     background-color: #fff059;
     width: 80%;
     height: 50px;
-    padding: 0px;
-    margin: auto;
+    padding: 0;
+    margin: 0 auto;
     float: right;
 
 }
@@ -60,9 +66,34 @@
     background-color: #ffffff;
     width: 100%;
     height: 100%;
-    padding: 0px;
+    padding: 0;
+    margin: 0 auto;
+
+}
+
+.main-content-container {
+
+    background-color: #eea53a;
+    width: 100%;
+    height: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
     margin: auto;
-    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+
+}
+
+
+.how-to-container {
+    display: inline-block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 40%;
+    padding: 0px;
+    margin: 0 auto;
+
+    float: left;
 
 }
 
@@ -73,6 +104,32 @@
     flex-flow: row wrap;
     justify-content: space-around;
     align-content: center;
+}
+
+.what-you-need {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+        height: 500px;
+        padding: 0px;
+    margin: 0 auto;
+
+    float: left;
+
+
+}
+
+.interface {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+
 }
 
 .fill-container {
@@ -86,6 +143,30 @@
 
 }
 
+.how-to-generate {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+}
+
+.how-to-view {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+
+}
 
 * {
     margin-inside: .5;
@@ -257,68 +338,156 @@ select {
 }
 
 
+.link-container {
 
-link-container {
-    display: block;
-    background-color: #354bee;
+
     width: 100%;
-    height: 48%;
-    padding: 0px;
-    margin-top: 5%;
-    position: center;
-    float: right;
+    height: 420px;
+    padding:30px;
+    text-align: center;
 
 }
 
-.how-to-container {
-    display: block;
-    background-color: #a9c0ee;
-    width: 33.33%;
-    height: 300px;
-    padding: 0px;
-    margin: auto;
-    position: center;
-    float: left;
-
-
-}
 
 .demo-container {
-    display: block;
-    background-color: #9e67ee;
-    width: 33.33%;
-    height: 300px;
-    padding: 0px;
-    margin: auto;
-    position: center;
-    float: left;
+    background-image: url("../img/webpage_button-02.png");
+    background-size: 532px  420px;
+    border-top-style: solid;
+    border-right-style:none;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    width: 33.3%;
+    height: 420px;
 
+}
 
+.demo-container p {
+
+   padding-bottom: 5% ;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+    position:relative;
+    top:82%;
 }
 
 .sign-up-container {
+    background-image: url("../img/webpage_button-03.png");
+    background-size: 532px  420px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: none;
+    border-left-style: none;
+    width: 33.3%;
+    height: 420px;
+
+
+}
+
+.sign-up-container p {
+    vertical-align: bottom;
+    padding-bottom: 5% ;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+    position:relative;
+    top:82%;
+}
+
+.demo-container, .sign-up-container {
+
+    display: inline-block;
+    padding: 20px;
+}
+
+
+
+
+
+
+
+
+h2 {
+font-family: 'Lato', serif;
+    padding-left: 20px;
+}
+
+#navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+.how-to-nav {
     display: block;
-    background-color: #5beea6;
-    width: 33.33%;
-    height: 300px;
+text-align: center;
+    width: 80%;
+    height: 5%;
     padding: 0px;
-    margin: auto;
-    position: center;
+    position:relative;
+    left:22%;
+
+    float: right;
+
+
+}
+
+.Title {
+    display: table;
+    text-align: center;
+    background-color: #f2f2f2;
+
+
+    width: 20%;
+    height: 45px;
+
     float: left;
 
+font-family:'Lato', serif;
+
+
+
+    text-decoration: none;
+
+
+}
+.Title p{
+    display: inline-block;
+    vertical-align: center;
+    position:relative;
+    top:10px;
 }
 
-.scrollable-menu {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
-}
-
-.footer {
+#navbar a {
+    float: left;
     display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+'Lato', serif;
+}
+#navbar a:hover {
+    background-color: #69BF68;
+    color: black;
+}
+
+#navbar a.active {
+    background-color: #69BF68;
+    color: #69BF68;
+}
+
+
+.content {
+    padding: 16px;
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 100px;
-    padding: 0px;
-    margin: auto;
-    float: right;
+}
+
+
+.sticky + .content {
+    padding-top: 60px;
 }
