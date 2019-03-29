@@ -52,6 +52,8 @@ function checkName(input) {
 
 function checkEmail(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
+
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
             // do nothing
         } else {
@@ -63,6 +65,7 @@ function checkEmail(input) {
 
 function checkPhoneNumber(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
 
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
@@ -80,8 +83,19 @@ function checkCity(input) {
     checkName(input);
 }
 
+function checkStateButton() {
+    var stateCheck = document.getElementById("dropDown");
+    if (dropDown.value === "") {
+        //If the "Please Select" option is selected display error.
+        alert("Please select an option!");
+        return false;
+    }
+    return true;
+}
+
 function checkZipCode(input) {
     if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
 
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
@@ -151,4 +165,6 @@ function checkNameValidity(input) {
         }
     }
 }
+
+
 
