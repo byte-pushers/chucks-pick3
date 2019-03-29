@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -78,23 +79,21 @@
                     <label for="defaultRegisterFormEmail">Email</label>
 
 
-                        <input type="email"   name="email"  onchange="checkEmail(this)"  id="defaultRegisterFormEmail" class="form-control" placeholder="Email">
-                    <div class="invalid-feedback email "> </div>
+                        <input type="email"   name="email"  onchange="checkEmail(this)"  id="defaultRegisterFormEmail" class="form-control" placeholder="Email" required >
+                    <div class="invalid-feedback email ">
+                    </div>
 
 
 
                 <!-- Phone -->
-                    <br>
+                <br>
 
-                    <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
-
-
-                        <input type="number" name="phoneNumber" min="10"  max="10"  onchange="checkPhoneNumber(this)" class="form-control" placeholder="1234567890"
-                               required >
-                    <div class="invalid-feedback phoneNumber "> </div>
+                <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
 
 
-
+                <input type="number" name="phoneNumber" max="10" onchange="checkPhoneNumber(this)"
+                       class="form-control" placeholder="123 456 7890" required>
+                <div class="invalid-feedback phoneNumber "></div>
                 </div>
                 <!--City -->
                 <br>
@@ -106,11 +105,13 @@
                     <div class="invalid-feedback cityName "> </div>
                 </div>
 <br>
+
                 <div class="form-row">
+
                     <label  for="defaultRegisterFormCity">State</label>
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">State <span
-                                class="caret"></span></button>
-                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                        <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="true" id="dropDown" data-display="static"  data-toggle="dropdown">State <span
+                                class="caret" ></span></button>
+                        <ul class="dropdown-menu scrollable-menu w-100" aria-labelledby="menu">
                             <li><a class="dropdown-item" href="#">Alabama</a></li>
                             <li><a class="dropdown-item" href="#">Alaska</a></li>
                             <li><a class="dropdown-item" href="#">Arizona</a></li>
@@ -163,6 +164,7 @@
                             <li><a class="dropdown-item" href="#">Wisconsin</a></li>
                             <li><a class="dropdown-item" href="#">Wyoming</a></li>
                         </ul>
+                    <div class="invalid-feedback dropDown"> </div>
 
                     </div>
 <br>
@@ -172,9 +174,11 @@
                     <label for="defaultRegisterFormZip">Zip</label>
 
 
-                        <input type="text" id="defaultRegisterFormZip" class="form-control" placeholder="Zip">
-
+                        <input type="number" name="zipCode"  max="5"
+                       id="defaultRegisterFormZip" class="form-control"  onchange="checkZipCode(this)" placeholder="Zip" required>
+                    <div class="invalid-feedback zipCode "> </div>
                     </div>
+
 
                 <br>
 
@@ -183,29 +187,29 @@
                 <div class="form-row">
 
                     <label  for="defaultRegisterFormCity">Type of Phone</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type of Phone<span
+                    <button type="button" class="btn btn-primary dropdown-toggle w-100"     data-display="static"  required data-toggle="dropdown">Type of Phone<span
                             class="caret"></span></button>
-                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                    <ul class="dropdown-menu w-100" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">iPhone</a></li>
                         <li><a class="dropdown-item" href="#">Android</a></li>
 
                     </ul>
-
+                    <div class="invalid-feedback"> </div>
                 </div>
 <br>
                 <div class="form-row">
 
 
                     <label  for="defaultRegisterFormCity">How Often Do You Play?</label>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">How Often Do You Play?<span
+                    <button type="button" class="btn btn-primary dropdown-toggle"  data-display="static" required data-toggle="dropdown">How Often Do You Play?<span
                             class="caret"></span></button>
-                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="menu">
+                    <ul class="dropdown-menu w-100" aria-labelledby="menu">
                         <li><a class="dropdown-item" href="#">Never</a></li>
                         <li><a class="dropdown-item" href="#">Sometimes</a></li>
                         <li><a class="dropdown-item" href="#">Always</a></li>
 
                     </ul>
-
+                    <div class="invalid-feedback"> </div>
                 </div>
 
 
@@ -214,11 +218,10 @@
 
                 <br>
 
-                <button type="submit" class="btn btn-success ">Submit</button>
+                <button type="submit" value="Validate" onclick="return checkStateButton()"   class="btn btn-success ">Submit</button>
 
             </div>
         </div>
-    </div>
 </form>
 <div class="footer">
 
