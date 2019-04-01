@@ -71,6 +71,26 @@
 
 }
 
+.log-in{
+    display: none;
+    width: 0%;
+    height: 100%;
+    background-color: darkcyan;
+    float: right;
+}
+
+.side-nav {
+    display: none;
+    background-color: #ff0023;
+    width: 0%;
+    height: 50px;
+
+    padding: 0;
+    margin: 0 auto;
+    float: right;
+
+}
+
 /* FOR DESKTOP---------------------------------- */
 
 
@@ -103,12 +123,54 @@
 /* FOR DESKTOP & IPAD ---------------------------------- */
 
 /* FOR IPHONE 6/7/8---------------------------------- */
+
+@media screen and (max-width: 750px) {
+    .side-nav  {
+        display: block;
+        width: 25%;
+        height: 100%;
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .home {
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-color: #f9aea6;
+        float: left;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 750px) {
+    .sign-up {
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-color: darkcyan;
+        float: right;
+    }
+}
+@media screen and (max-width: 750px) {
+    .log-in {
+        display: block;
+        width: 37.5%;
+        height: 100%;
+        background-color: darkcyan;
+        float: right;
+    }
+}
+
+
 @media screen and (max-width: 750px) {
     .header-container  {
         display: block;
         height: 20%; /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
+
+
 
 @media screen and (max-width: 750px) {
     .navbar-home-container  {
@@ -117,6 +179,8 @@
         height: 30%;
     }
 }
+
+
 
 @media screen and (max-width: 750px) {
     .navbar-container  {
@@ -571,3 +635,55 @@ font-family:'Lato', serif;
 .sticky + .content {
     padding-top: 60px;
 }
+
+/* -------------- SIDE BAR ------------- */
+
+body {
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+}
+.nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    opacity: .9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.7s;
+
+
+}
+.nav a {
+    display: block;
+    padding: 20px 30px;
+    font-size: 25px;
+    text-decoration: none;
+    color: #ccc;
+}
+.nav a:hover {
+    color: #fff;
+    transition: 0.4s;
+}
+.nav .close {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    margin-left: 50px;
+    font-size: 30px
+}
+.slide a {
+    color: #000;
+    font-size: 36px;
+}
+#content {
+    padding: 0px;
+    transition: margin-left 0.7s;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+

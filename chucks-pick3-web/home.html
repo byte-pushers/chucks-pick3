@@ -4,14 +4,62 @@
 <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<script>
+    function openSlideMenu(){
+        document.getElementById('menu').style.width = '250px';
+        document.getElementById('content').style.marginRight = '250px';
+    }
+    function closeSlideMenu(){
+        document.getElementById('menu').style.width = '0';
+        document.getElementById('content').style.marginRight = '0';
+    }
+</script>
 <body>
 
 <div class="main-container">
     <div class="header-container">
         <div class="logo-container"><p>insert image here</p></div>
         <div class="header-img-container"><p>header image here</p></div>
-        <div class="navbar-home-container"><p>nav-bar here</p></div>
-        <div class="navbar-container"><p>nav-bar here</p></div>
+        <div class="navbar-home-container"><div class="home">
+            <h9>Home</h9>
+        </div>
+
+
+            <div class="sign-up">
+
+        <p>Sign Up</p></div></div>
+        <div class="navbar-container">
+            <div class=" sign up">
+
+            </div>
+            <div class="side-nav">
+                <div id="content">
+
+    <span class="slide">
+      <a href="#" onclick="openSlideMenu()">
+        <i class="fas fa-bars"></i>
+      </a>
+    </span>
+
+                    <div id="menu" class="nav">
+                        <a href="#" class="close" onclick="closeSlideMenu()">
+                            <i class="fas fa-times"></i>
+                        </a>
+
+                        <a href="#">How To</a>
+                        <a href="#">Demo</a>
+                        <a href="#">Sign Up</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="log-in">
+                <p>Log In</p>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -19,5 +67,7 @@
 
 
 </div>
+
+
 </body>
 </html>
