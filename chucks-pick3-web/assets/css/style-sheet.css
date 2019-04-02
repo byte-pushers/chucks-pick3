@@ -143,10 +143,19 @@
         margin: 0 auto;
     }
 }
+
+@media screen and (max-width: 750px) {
+    .home  h9 {
+        display: block;
+        background-color: #f9aea6;
+        margin: 0 auto;
+        padding-top: 17%;
+    }
+}
 @media screen and (max-width: 750px) {
     .sign-up {
-        display: block;
-        width: 50%;
+        display: block;.
+        width: 35%;
         height: 100%;
         background-color: darkcyan;
         float: right;
@@ -659,8 +668,8 @@ body {
 }
 .nav a {
     display: block;
-    padding: 20px 30px;
-    font-size: 25px;
+    padding: 5px;
+    font-size: 18px;
     text-decoration: none;
     color: #ccc;
 }
@@ -670,14 +679,31 @@ body {
 }
 .nav .close {
     position: absolute;
-    top: 0;
-    right: 22px;
+    top: 5px;
+    right: 5px;
     margin-left: 50px;
-    font-size: 30px
+    font-size: 30px;
+}
+
+.nav h2 {
+
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    margin-left: 30px;
+    font-size: 30px;
+    color: white;
 }
 .slide a {
     color: #000;
-    font-size: 36px;
+
+    font-size: 24px;
+
+    top: 16%;
+
+    position: absolute;
+
+    right: 5%;
 }
 #content {
     padding: 0px;
