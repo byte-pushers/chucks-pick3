@@ -658,7 +658,7 @@ body {
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 20.5%;
     right: 0;
     background-color: #111;
     opacity: .9;
