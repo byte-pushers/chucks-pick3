@@ -154,13 +154,15 @@
 }
 @media screen and (max-width: 750px) {
     .sign-up {
-        display: block;.
-        width: 35%;
+        display: block;
+        width: 37.5%;
         height: 100%;
         background-color: darkcyan;
         float: right;
     }
 }
+
+
 @media screen and (max-width: 750px) {
     .log-in {
         display: block;
