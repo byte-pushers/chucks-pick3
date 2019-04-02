@@ -1,3 +1,4 @@
+
 .css-selector {
     font-family: 'Lato', serif;
 }
@@ -110,8 +111,8 @@
     display: block;
     background-color: #fafafa;
     width: 100%;
-        height: 500px;
-        padding: 0px;
+    height: 500px;
+    padding: 0px;
     margin: 0 auto;
 
     float: left;
@@ -363,7 +364,7 @@ select {
 
 .demo-container p {
 
-   padding-bottom: 5% ;
+    padding-bottom: 5% ;
     padding-left: 5%;
     padding-right: 5%;
     text-align: left;
@@ -408,7 +409,7 @@ select {
 
 
 h2 {
-font-family: 'Lato', serif;
+    font-family: 'Lato', serif;
     padding-left: 20px;
 }
 
@@ -418,7 +419,7 @@ font-family: 'Lato', serif;
 }
 .how-to-nav {
     display: block;
-text-align: center;
+    text-align: center;
     width: 80%;
     height: 5%;
     padding: 0px;
@@ -441,7 +442,7 @@ text-align: center;
 
     float: left;
 
-font-family:'Lato', serif;
+    font-family:'Lato', serif;
 
 
 
@@ -461,7 +462,7 @@ font-family:'Lato', serif;
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 10px;
+    padding: 14px;
     text-decoration: none;
 'Lato', serif;
 }
@@ -490,4 +491,120 @@ font-family:'Lato', serif;
 
 .sticky + .content {
     padding-top: 60px;
+}
+
+
+
+
+
+
+.nav-wrapper {
+    margin: 0;
+    padding: 0;
+    border: 2px solid #C8E6C9;
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
+
+.nav-home {
+    background-color: blue;
+    border-right: 2px solid #5beea6;
+}
+
+.nav-howto {
+    background-color: red;
+    border-right: 2px solid #5beea6;
+
+}
+
+.nav-demo {
+
+    background-color: blue;
+    border-right: 2px solid #5beea6;
+}
+
+.nav-right {
+    background-color: green;
+    border-right: 2px solid #F2F2F2;
+}
+
+
+.nav-home a {
+    float: left;
+    color: white;
+    padding: 17px ;
+    margin-top: -17px;
+    text-decoration: none;
+    width: 25%; /* Four links of equal widths */
+    text-align: center;
+}
+
+
+.nav-howto a {
+
+    float: left;
+    color: white;
+    padding: 17px ;
+    margin-top: -17px;
+    text-decoration: none;
+    width: 25%; /* Four links of equal widths */
+    text-align: center;
+}
+
+
+.nav-demo a {
+
+    float: left;
+    color: white;
+    padding: 17px ;
+    margin-top: -17px;
+    text-decoration: none;
+    width: 25%; /* Four links of equal widths */
+    text-align: center;
+}
+
+
+.nav-right a {
+
+    float: right;
+    color: white;
+    padding: 17px ;
+    margin-top: -17px;
+    text-decoration: none;
+    width: 12.5%; /* Four links of equal widths */
+    text-align: center;
+}
+
+
+.nav-home a:hover {
+    background-color: #000;
+}
+
+.nav-howto a:hover {
+    background-color: #000;
+}
+
+.nav-demo a:hover {
+    background-color: #000;
+}
+
+.nav-right a:hover {
+    background-color: #000;
+}
+
+.nav-home a.active {
+    background-color: #4CAF50;
+}
+
+.nav-howto a.active {
+    background-color: #4CAF50;
+}
+
+.nav-demo a.active {
+    background-color: #4CAF50;
+}
+
+.nav-right a.active {
+    background-color: #4CAF50;
 }
