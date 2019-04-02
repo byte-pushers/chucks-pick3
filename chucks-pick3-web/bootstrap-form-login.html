@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- javascript -->
-    <script src="lib/bootstrapFormVal.js"></script>
+    <script src="lib/bootstrapFormValLogin.js"></script>
     <script type="text/javascript"
             src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
 
@@ -52,7 +51,7 @@
                     <label for="defaultRegisterFormUserName">Username</label>
                     <input type="text" minlength="4" name="username" maxlength="25" id="defaultRegisterFormUserName"
                            class="form-control"
-                           placeholder="Username" onchange="checkUserName(this);" required="required">
+                           placeholder="Username" onsubmit="checkUserName(this);" required="required">
 
                     <div class="invalid-feedback username"></div>
                 </div>
@@ -66,7 +65,7 @@
                     <label for="defaultRegisterFormPassword">Password</label>
 
 
-                    <input type="password" name="password" onchange="checkPassword(this)"
+                    <input type="password" name="password" onsubmit="checkPassword(this)"
                            id="defaultRegisterFormPassword" class="form-control" placeholder="Password" required>
                     <div class="invalid-feedback password ">
                     </div>
@@ -81,7 +80,7 @@
 
                     <br>
 
-                    <button type="submit" value="Validate" onclick="return checkStateButton()" class="btn btn-success ">
+                    <button type="submit" value="Validate" onsubmit="checkedUserName(this)" class="btn btn-success ">
                         Submit
                     </button>
 
