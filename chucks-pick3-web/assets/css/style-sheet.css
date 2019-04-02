@@ -576,6 +576,13 @@ h2 {
 }
 
 
+.text {
+    margin: auto;
+    padding-top: 60%;
+    padding-left: 5%;
+    position: center;
+    vertical-align: bottom;
+}
 .nav-home a:hover {
     background-color: #000;
 }
