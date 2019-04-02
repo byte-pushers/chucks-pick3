@@ -674,7 +674,8 @@ body {
     color: #ccc;
 }
 .nav a:hover {
-    color: #fff;
+    color: black;
+    background-color: white;
     transition: 0.4s;
 }
 .nav .close {
