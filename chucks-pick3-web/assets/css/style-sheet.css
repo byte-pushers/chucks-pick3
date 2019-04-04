@@ -599,6 +599,10 @@ h2 {
     position: center;
     vertical-align: bottom;
 }
+
+.nav-right .current {
+    background-color: red;
+}
 .nav-home a:hover {
     background-color: #000;
 }
