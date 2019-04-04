@@ -509,10 +509,6 @@ h2 {
 }
 
 
-
-
-
-
 .nav-wrapper {
     margin: 0;
     padding: 0;
@@ -582,7 +578,7 @@ h2 {
 
 .nav-right a {
 
-    float: left;
+    float: right;
     color: white;
     padding: 17px ;
     margin-top: -17px;
@@ -590,7 +586,6 @@ h2 {
     width: 12.5%; /* Four links of equal widths */
     text-align: center;
 }
-
 
 .text {
     margin: auto;
@@ -600,7 +595,7 @@ h2 {
     vertical-align: bottom;
 }
 
-.nav-home .current {
+.nav-howto .current {
     background-color: red;
 }
 
@@ -608,6 +603,8 @@ h2 {
 .nav-right .current {
     background-color: red;
 }
+
+
 .nav-home a:hover {
     background-color: #000;
 }
