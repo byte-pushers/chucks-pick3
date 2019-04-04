@@ -9,7 +9,7 @@
     padding: 0px;
     margin: 0 auto;
     text-align: center;
-    display: inline-block;
+    display: block;
 
 
 }
@@ -75,12 +75,13 @@
 
     background-color: #eea53a;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding-left: 10%;
     padding-right: 10%;
     margin: auto;
     text-align: center;
     display: inline-block;
+    overflow: scroll;
 
 }
 
@@ -508,10 +509,6 @@ h2 {
 }
 
 
-
-
-
-
 .nav-wrapper {
     margin: 0;
     padding: 0;
@@ -590,11 +587,6 @@ h2 {
     text-align: center;
 }
 
-.nav-home .current {
-    background-color: red;
-}
-
-
 .text {
     margin: auto;
     padding-top: 60%;
@@ -602,6 +594,17 @@ h2 {
     position: center;
     vertical-align: bottom;
 }
+
+.nav-howto .current {
+    background-color: red;
+}
+
+
+.nav-right .current {
+    background-color: red;
+}
+
+
 .nav-home a:hover {
     background-color: #000;
 }
