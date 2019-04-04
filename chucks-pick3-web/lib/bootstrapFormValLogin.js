@@ -23,34 +23,46 @@
 // to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
-function checkFirstName(input) { // create a function for first name // use input parameter
-    checkName(input);
-}
 
-function checkLastName(input) { // create a function for first name // use input parameter
-    checkName(input);
-}
 
-function checkName(input) {
+function checkedUserName(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
         if (input.required === true) { // the input is required if not show error message // must have required as a input field
             if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkNameValidity(input);
+                checkUserNameValidity(input);
             } else {
                 setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty", input);
             }
         } else {
             if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkNameValidity(input);
+                checkUserNameValidity(input);
             }
         }
     }
 
 }
 
-function checkEmail(input) {
+
+
+//*********************LOGIN USERNAME & PASSWORD VALIDATION**************************
+
+
+function checkUserName(input) { // create a function for first name // use input parameter
+    checkedUserName(input);
+}
+
+
+
+//TODO: Must not be null or undefined or empty or contain whitespace
+//TODO: Must include one capital letter
+//TODO: Must include one lowercase letter
+//TODO: Must inlcude one number
+//TODO: Must include one special character
+//TODO: May have to loop thru, may have to use search,contain or includes or match test all.
+
+function checkPassword(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
@@ -60,53 +72,40 @@ function checkEmail(input) {
             // setErrorMessage
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
         }
-    }
-}
+        if (input !== input.value.toUpperCase()) {
 
-function checkPhoneNumber(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
-
-
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
         } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
+
+        }
+        if (input !== input.toLowerCase()) {
+
+        } else {
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
+
+        }
+        if (input.value === input.value.isNumeric()) {
+
+        } else {
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
+
+        }
+        if (input.value.includes(input.value.toUpperCase)) {
+
+        } else {
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
+
+
+        }
+        if (input.value.includes(input.value.toLowerCase)) {
+
+        } else {
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
 
         }
 
     }
-}
 
-function checkCity(input) {
-    checkName(input);
-}
-
-function checkStateButton() {
-    var stateCheck = document.getElementById("dropDown");
-    if (dropDown.value === "") {
-        //If the "Please Select" option is selected display error.
-        alert("Please select an option!");
-        return false;
-    }
-    return true;
-}
-
-function checkZipCode(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
-
-
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
-
-        }
-
-    }
 }
 
 
@@ -134,7 +133,7 @@ function setErrorMessage(querySelector, errorMessage, input) { //function named 
 }
 
 
-function checkNameValidity(input) {
+function checkUserNameValidity(input) {
     const errorFieldName = input.value.toNormalCase();
     const minLength = input.minLength; //create variable for min and max add to the input
     const maxLength = input.maxLength; //create variable for min and max add to the input
@@ -142,8 +141,8 @@ function checkNameValidity(input) {
     if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
         // if statement for max length and min length make sure not null or undefined
         if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
-            if (input.value.isAlphabetical() === false) {
-                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
+            if (input.value.isAlphanumeric() === false) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha and numeric characters.", input);
             }
         } else if (input.value.length < minLength) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
@@ -152,7 +151,7 @@ function checkNameValidity(input) {
         }
     } else if (minLength !== null && minLength !== undefined) {
         if (input.value.length >= minLength) {
-            if (input.value.isAlphabetical() === false) {
+            if (input.value.isAlphanumeric() === false) {
                 setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length < minLength) {
@@ -160,14 +159,18 @@ function checkNameValidity(input) {
         }
     } else if (maxLength !== null && maxLength !== undefined) {
         if (input.value.length <= maxLength) {
-            if (input.value.isAlphabetical() === false) {
+            if (input.value.isAlphanumeric() === false) {
                 setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length > maxLength) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
     }
+
 }
+
+
+
 
 
 
