@@ -32,6 +32,9 @@ $(function(){
 });
 
 
+
+
+
 /*var clickedButton = $(".dropdown-menu a").length;
 
 if (clickedButton === '') { // if clicked and a value is not selected

@@ -575,6 +575,10 @@ h2 {
     text-align: center;
 }
 
+.nav-home .current {
+    background-color: red;
+}
+
 
 .nav-home a:hover {
     background-color: #000;
