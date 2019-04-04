@@ -9,7 +9,7 @@
     padding: 0px;
     margin: 0 auto;
     text-align: center;
-    display: inline-block;
+    display: block;
 
 
 }
@@ -75,12 +75,13 @@
 
     background-color: #eea53a;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding-left: 10%;
     padding-right: 10%;
     margin: auto;
     text-align: center;
     display: inline-block;
+    overflow: scroll;
 
 }
 
@@ -581,17 +582,13 @@ h2 {
 
 .nav-right a {
 
-    float: right;
+    float: left;
     color: white;
     padding: 17px ;
     margin-top: -17px;
     text-decoration: none;
     width: 12.5%; /* Four links of equal widths */
     text-align: center;
-}
-
-.nav-home .current {
-    background-color: red;
 }
 
 
@@ -601,6 +598,15 @@ h2 {
     padding-left: 5%;
     position: center;
     vertical-align: bottom;
+}
+
+.nav-home .current {
+    background-color: red;
+}
+
+
+.nav-right .current {
+    background-color: red;
 }
 .nav-home a:hover {
     background-color: #000;
