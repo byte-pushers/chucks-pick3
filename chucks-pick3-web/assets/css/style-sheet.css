@@ -336,9 +336,9 @@ select {
 
 }
 /* used to center into body*/
-/*.row {
+.row {
     margin-top: 10%;
-}*/
+}
 
 
 .link-container {
@@ -599,6 +599,11 @@ h2 {
     position: center;
     vertical-align: bottom;
 }
+
+.nav-home .current {
+    background-color: red;
+}
+
 
 .nav-right .current {
     background-color: red;
