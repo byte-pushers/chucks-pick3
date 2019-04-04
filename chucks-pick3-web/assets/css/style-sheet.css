@@ -60,6 +60,7 @@
     float: right;
 
 }
+
 .navbar-home-container {
     display: none;
     background-color: #00d7ff;
@@ -71,7 +72,7 @@
 
 }
 
-.log-in{
+.log-in {
     display: none;
     width: 0%;
     height: 100%;
@@ -91,41 +92,162 @@
 
 }
 
+.link-container {
+
+
+    width: 100%;
+    height: 420px;
+    margin: 0 auto;
+    padding-left: 15%;
+    display: block;
+
+}
+
+
+.demo-container {
+    display: table;
+    background-image: url("../img/webpage_button-02.png");
+    background-size: 532px 420px;
+    border-style: solid;
+    width: 29%;
+    height: 420px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+
+}
+
+.demo-container p {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+
+}
+
+.how-to-container p {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+
+}
+
+.sign-up-container {
+    display: table;
+    background-image: url("../img/webpage_button-03.png");
+    background-size: 532px 420px;
+    border-style: solid;
+    width: 29%;
+    height: 420.5px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+}
+
+.sign-up-container p {
+    display: table-cell;
+    vertical-align: bottom;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+}
+
+.how-to-container {
+    display: table;
+    background-image: url("../img/webpage_button-03.png");
+    background-size: 532px 420px;
+    border-style: solid;
+    width: 29%;
+    height: 420.5px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+}
+
 /* FOR DESKTOP---------------------------------- */
 
 
 @media screen and (max-width: 800px) {
-    .header-container  {
+    .header-container {
         display: block;
         height: 20%; /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
 
 @media screen and (max-width: 800px) {
-    .navbar-container  {
+    .navbar-container {
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
 
 
 @media screen and (max-width: 800px) {
-   .logo-container  {
+    .logo-container {
         width: 20%; /* The width is 100%, when the viewport is 800px or smaller */
-       height: 65%;
+        height: 65%;
     }
 }
 
 @media screen and (max-width: 800px) {
-    .header-img-container  {
+    .header-img-container {
         width: 80%; /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
+
+@media screen and (max-width: 800px) {
+    .link-container {
+        display: block;
+        width: 100%;
+        height: 420px;
+        padding: 0;
+
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .how-to-container {
+        display: table;
+        width: 33.3%;
+        height: 420px;
+
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .demo-container {
+        display: table;
+        width: 33.3%;
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .sign-up-container {
+        display: table;
+        width: 33.3%;
+        height: 420px;
+
+    }
+}
+
 /* FOR DESKTOP & IPAD ---------------------------------- */
 
 /* FOR IPHONE 6/7/8---------------------------------- */
 
 @media screen and (max-width: 750px) {
-    .side-nav  {
+    .side-nav {
         display: block;
         width: 25%;
         height: 100%;
@@ -145,13 +267,14 @@
 }
 
 @media screen and (max-width: 750px) {
-    .home  h9 {
+    .home h9 {
         display: block;
         background-color: #f9aea6;
         margin: 0 auto;
         padding-top: 17%;
     }
 }
+
 @media screen and (max-width: 750px) {
     .sign-up {
         display: block;
@@ -175,16 +298,15 @@
 
 
 @media screen and (max-width: 750px) {
-    .header-container  {
+    .header-container {
         display: block;
         height: 20%; /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
 
 
-
 @media screen and (max-width: 750px) {
-    .navbar-home-container  {
+    .navbar-home-container {
         display: block;
         width: 50%;
         height: 30%;
@@ -192,9 +314,8 @@
 }
 
 
-
 @media screen and (max-width: 750px) {
-    .navbar-container  {
+    .navbar-container {
         width: 50%;
         height: 30%;
     }
@@ -202,7 +323,7 @@
 
 
 @media screen and (max-width: 750px) {
-    .logo-container  {
+    .logo-container {
         width: 30%; /* The width is 100%, when the viewport is 800px or smaller */
         height: 70%;
 
@@ -210,11 +331,48 @@
 }
 
 @media screen and (max-width: 750px) {
-    .header-img-container  {
+    .header-img-container {
         width: 70%; /* The width is 100%, when the viewport is 800px or smaller */
         height: 70%;
     }
 }
+
+@media screen and (max-width: 750px) {
+    .link-container {
+        display: block;
+        width: 100%;
+        height: 420px;
+        padding: 0;
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .how-to-container {
+        display: table;
+        width: 100%;
+        height: 420px;
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .demo-container {
+        display: table;
+        width: 100%;
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sign-up-container {
+       display:  table;
+        width: 100%;
+        height: 420px;
+
+    }
+}
+
 /* FOR IPHONE 6/7/8---------------------------------- */
 .body-container {
     display: block;
@@ -239,18 +397,6 @@
 }
 
 
-.how-to-container {
-    display: inline-block;
-    background-color: #fafafa;
-    width: 100%;
-    height: 40%;
-    padding: 0px;
-    margin: 0 auto;
-
-    float: left;
-
-}
-
 .form-container {
     display: flex;
     flex-direction: row;
@@ -264,8 +410,8 @@
     display: block;
     background-color: #fafafa;
     width: 100%;
-        height: 500px;
-        padding: 0px;
+    height: 500px;
+    padding: 0px;
     margin: 0 auto;
 
     float: left;
@@ -388,6 +534,7 @@ h1 {
 
 
 }
+
 /* To align each section of the form properly*/
 .location {
     margin-top: 7%;
@@ -401,6 +548,7 @@ h1 {
     width: 100%;
     margin-bottom: 20px;
 }
+
 /* For actual form input*/
 .input > input {
     border: 1px;
@@ -429,7 +577,6 @@ h1 {
 }
 
 
-
 /* for screen to remain responsive at phone size*/
 @media screen and (max-width: 640px) {
     .input-form {
@@ -442,7 +589,7 @@ h1 {
     }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0){
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
     .input-form {
         display: flex;
         justify-content: space-between;
@@ -463,6 +610,7 @@ h1 {
         }
     }
 }
+
 .fill-form {
     width: 100%;
     height: 100%;
@@ -486,81 +634,14 @@ select {
     border-style: solid;
 
 }
+
 /* used to center into body*/
 .row {
     margin-top: 10%;
 }
 
-
-.link-container {
-
-
-    width: 100%;
-    height: 420px;
-    margin: 0 auto;
-
-    display: inline-block;
-
-}
-
-
-.demo-container {
-    display: table;
-    background-image: url("../img/webpage_button-02.png");
-    background-size: 532px  420px;
-    border-style: solid;
-    width: 29%;
-    height: 420px;
-    padding: 0px;
-    margin: 0 auto;
-    position: center;
-    float: left;
-
-
-}
-
-.demo-container p {
-    display: table-cell;
-    vertical-align: bottom;
-   padding-bottom: 5% ;
-    padding-left: 5%;
-    padding-right: 5%;
-
-
-}
-
-.sign-up-container {
-    display: table;
-    background-image: url("../img/webpage_button-03.png");
-    background-size: 532px  420px;
-    border-style: solid;
-    width: 29%;
-    height: 420.5px;
-    padding: 0px;
-    margin: 0 auto;
-    position: center;
-    float: left;
-
-}
-
-.sign-up-container p {
-display: table-cell;
-    vertical-align: bottom;
-    padding-bottom: 5% ;
-    padding-left: 5%;
-    padding-right: 5%;
-
-}
-
-
-
-
-
-
-
-
 h2 {
-font-family: 'Lato', serif;
+    font-family: 'Lato', serif;
     padding-left: 20px;
 }
 
@@ -568,9 +649,10 @@ font-family: 'Lato', serif;
     overflow: hidden;
     background-color: #333;
 }
+
 .how-to-nav {
     display: block;
-text-align: center;
+    text-align: center;
     width: 80%;
     height: 5%;
     padding: 0px;
@@ -593,20 +675,17 @@ text-align: center;
 
     float: left;
 
-font-family:'Lato', serif;
-
+    font-family: 'Lato', serif;
 
 
     text-decoration: none;
 
 
 }
-.Title p{
+
+.Title p {
     display: inline-block;
     vertical-align: center;
-
-
-
 
 
 }
@@ -620,6 +699,7 @@ font-family:'Lato', serif;
     text-decoration: none;
 'Lato', serif;
 }
+
 #navbar a:hover {
     background-color: #69BF68;
     color: black;
@@ -653,6 +733,7 @@ body {
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
 }
+
 .nav {
     height: 100%;
     width: 0;
@@ -668,6 +749,7 @@ body {
 
 
 }
+
 .nav a {
     display: block;
     padding: 5px;
@@ -675,11 +757,13 @@ body {
     text-decoration: none;
     color: #ccc;
 }
+
 .nav a:hover {
     color: black;
     background-color: white;
     transition: 0.4s;
 }
+
 .nav .close {
     position: absolute;
     top: 5px;
@@ -697,6 +781,7 @@ body {
     font-size: 30px;
     color: white;
 }
+
 .slide a {
     color: #000;
 
@@ -708,6 +793,7 @@ body {
 
     right: 5%;
 }
+
 #content {
     padding: 0px;
     transition: margin-left 0.7s;
