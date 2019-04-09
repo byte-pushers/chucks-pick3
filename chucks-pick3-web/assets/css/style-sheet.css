@@ -484,7 +484,7 @@ h2 {
 #navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: black;
     text-align: center;
     padding: 0px 35px;
     height: 51px;
@@ -555,7 +555,7 @@ h2 {
 
 .nav-home a {
     float: left;
-    color: white;
+    color: black;
     height: 51px;
     line-height: 3.225em;
     margin-top: -17px;
@@ -568,7 +568,7 @@ h2 {
 .nav-howto a {
 
     float: left;
-    color: white;
+    color: black;
     height: 51px;
     line-height: 3.225em;
     margin-top: -17px;
@@ -581,7 +581,7 @@ h2 {
 .nav-demo a {
 
     float: left;
-    color: white;
+    color: black;
     height: 51px;
     line-height: 3.225em;
     margin-top: -17px;
@@ -612,33 +612,33 @@ h2 {
     vertical-align: bottom;
 }
 .nav-home .current {
-    background-color: red;
+    background-color: gray;
     text-decoration: none;
 }
 
 .nav-howto .current {
-    background-color: red;
+    background-color: gray;
     text-decoration: none;
 }
 
 
 .nav-right .current {
-    background-color: red;
+    background-color: gray;
 }
 
 
 .nav-home a:hover {
-    background-color: #000;
+    background-color: black;
     text-decoration: none;
 }
 
 .nav-howto a:hover {
-    background-color: #000;
+    background-color: black;
     text-decoration: none;
 }
 
 .nav-demo a:hover {
-    background-color: #000;
+    background-color: black;
     text-decoration: none;
 }
 
