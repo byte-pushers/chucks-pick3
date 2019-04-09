@@ -597,6 +597,9 @@ h2 {
     position: center;
     vertical-align: bottom;
 }
+.nav-home .current {
+    background-color: red;
+}
 
 .nav-howto .current {
     background-color: red;
