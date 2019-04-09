@@ -2,7 +2,19 @@
 
 <html>
 <title>Home Page</title>
+<style>
+body {
+margin-top: 0px;
 
+margin-right: 0px;
+
+margin-bottom: 0px;
+
+margin-left: 0px;
+background-color: #fafafa;
+font-family: 'Lato', serif;
+}
+</style>
 <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -17,6 +29,11 @@
     }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
+
 <body>
 
 <div class="main-container">
@@ -29,25 +46,28 @@
                 <div class="nav-home">
                     <!--navigation for left content-->
                     <ul>
-                        <a href="home.html">Home</a>
+                        <a class="current" href="home.html">Home</a>
                     </ul>
                 </div>
 
                 <div class="nav-howto">
+
                     <ul>
                         <a href="info.html">How To</a>
                     </ul>
                 </div>
                 <div class="nav-demo">
                     <ul>
-                        <a href="info.html">Demo</a>
+                        <a href="info.html#demo">Demo</a>
                     </ul>
                 </div>
                 <div class="nav-right">
                     <!--navigation for right content-->
                     <ul>
-                        <a href="bootstrap-form.html">Sign up</a>
-                        <a href="bootstrap-form-login.html">Login</a>
+                        
+                        <a href="login.html">Login</a>
+                        <a href="sign-up.html">Sign up</a>
+
                     </ul>
                 </div>
             </div>

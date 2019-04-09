@@ -9,7 +9,8 @@
     padding: 0px;
     margin: 0 auto;
     text-align: center;
-    display: inline-block;
+    display: block;
+
 
 
 }
@@ -19,7 +20,7 @@
     display: block;
     background-color: #ffd7f7;
     width: 100%;
-    height: 20%;
+    height: auto;
     padding: 0px;
     margin: 0 auto;
 
@@ -28,7 +29,7 @@
 
 .logo-container {
     display: block;
-    background-image: url("../img/webpage_button-03.png");
+    background-color: blueviolet;
     width: 20%;
     height: 200px;
     padding: 0px;
@@ -75,12 +76,13 @@
 
     background-color: #eea53a;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding-left: 10%;
     padding-right: 10%;
     margin: auto;
     text-align: center;
     display: inline-block;
+
 
 }
 
@@ -113,8 +115,8 @@
     display: block;
     background-color: #fafafa;
     width: 100%;
-    height: 500px;
-    padding: 0px;
+    height: 800px;
+    padding-top: 24%;
     margin: 0 auto;
 
     float: left;
@@ -430,8 +432,12 @@ h2 {
 }
 
 #navbar {
-    overflow: hidden;
+
     background-color: #333;
+    position: fixed;
+    width: 100%;
+
+
 }
 .how-to-nav {
     display: block;
@@ -454,7 +460,7 @@ h2 {
 
 
     width: 20%;
-    height: 45px;
+    height: 51.5px;
 
     float: left;
 
@@ -478,7 +484,9 @@ h2 {
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px;
+    padding: 0%;
+    height: 51px;
+    line-height: 3.225em;
     text-decoration: none;
 'Lato', serif;
 }
@@ -494,24 +502,16 @@ h2 {
 
 
 .content {
-    padding: 16px;
+    padding: 0px;
 }
 
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
+
 
 
 .sticky + .content {
-    padding-top: 60px;
+    padding-top: 0px;
 }
-
-
-
-
 
 
 .nav-wrapper {
@@ -529,7 +529,7 @@ h2 {
 }
 
 .nav-howto {
-    background-color: red;
+    background-color: blue;
     border-right: 2px solid #5beea6;
 
 }
@@ -592,7 +592,6 @@ h2 {
     text-align: center;
 }
 
-
 .text {
     margin: auto;
     padding-top: 60%;
@@ -600,6 +599,20 @@ h2 {
     position: center;
     vertical-align: bottom;
 }
+.nav-home .current {
+    background-color: red;
+}
+
+.nav-howto .current {
+    background-color: red;
+}
+
+
+.nav-right .current {
+    background-color: red;
+}
+
+
 .nav-home a:hover {
     background-color: #000;
 }
@@ -620,13 +633,6 @@ h2 {
     background-color: #4CAF50;
 }
 
-.nav-howto a.active {
-    background-color: #4CAF50;
-}
-
-.nav-demo a.active {
-    background-color: #4CAF50;
-}
 
 .nav-right a.active {
     background-color: #4CAF50;
