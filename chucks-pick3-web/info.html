@@ -12,8 +12,9 @@
 
 </head>
 <!-- Latest compiled and minified Bootstrap CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <style>
     body {
@@ -25,21 +26,23 @@
 
 <body>
 
-
+<div class="main-container">
 <div id="navbar">
     <div class="logo-container"><p>insert image here</p></div>
     <div class="header-img-container"><p>header image here</p></div>
-    <div class="navbar-container">
+    <div class="navbar-container" style="background-color: white">
         <div id="navbar-wrapper">
             <div class="nav-home">
                 <!--navigation for left content-->
                 <ul>
-                    <a href="home.html">Home</a>
+                    <a class="current" href="home.html">Home</a>
                 </ul>
             </div>
+
             <div class="nav-howto">
+
                 <ul>
-                    <a class="current" href="info.html">How To</a>
+                    <a href="info.html">How To</a>
                 </ul>
             </div>
             <div class="nav-demo">
@@ -59,16 +62,39 @@
     <div class="Title">
         <div><p><b>How To Play</b></p></div>
     </div>
-    <div class="how-to-nav">
-        <a href="#requirements">Requirements</a>
-        <a href="#interface">Interface</a>
-        <a href="#generate">Generate Picks</a>
-        <a href="#generated-picks">View Picks</a>
+    <div class="navbar-container" style="background-color: black">
+        <div id="navbar-wrapper"   >
+            <div class="nav-home">
+                <!--navigation for left content-->
+                <ul>
+                    <a nohref>&nbsp;</a>
+                </ul>
+            </div>
+            <div class="nav-right">
+
+                <ul>
+                    <a href="#requirements" style="color: white">Requirements</a>
+                    <a href="#interface" style="color: white">Interface</a>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <a href="#generate" style="color: white">Generate Picks</a>
+                    <a href="#generated-picks" style="color: white">View Picks</a>
+                </ul>
+            </div>
+            <div class="nav-demo">
+                <!--navigation for right content-->
+                <ul>
+                    <a nohref>&nbsp;</a>
+                </ul>
+            </div>
+        </div>
     </div>
 
 </div>
 
-<div class="main-container">
+
 
 
     <div class="what-you-need">
