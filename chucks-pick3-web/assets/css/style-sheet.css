@@ -436,6 +436,7 @@ h2 {
     background-color: #333;
     position: fixed;
     width: 100%;
+    text-decoration: none;
 
 
 }
@@ -445,6 +446,7 @@ h2 {
     width: 80%;
     height: 5%;
     padding: 0px;
+    justify-content: space-evenly;
     position:relative;
     left:22%;
 
@@ -482,9 +484,9 @@ h2 {
 #navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: black;
     text-align: center;
-    padding: 0%;
+    padding: 0px 35px;
     height: 51px;
     line-height: 3.225em;
     text-decoration: none;
@@ -493,11 +495,13 @@ h2 {
 #navbar a:hover {
     background-color: #69BF68;
     color: black;
+    text-decoration: none;
 }
 
 #navbar a.active {
     background-color: #69BF68;
     color: #69BF68;
+    text-decoration: none;
 }
 
 
@@ -521,16 +525,19 @@ h2 {
     width: 100%;
     background-color: #555;
     overflow: auto;
+    text-decoration: none;
 }
 
 .nav-home {
     background-color: blue;
     border-right: 2px solid #5beea6;
+    text-decoration: none;
 }
 
 .nav-howto {
     background-color: blue;
     border-right: 2px solid #5beea6;
+    text-decoration: none;
 
 }
 
@@ -548,8 +555,9 @@ h2 {
 
 .nav-home a {
     float: left;
-    color: white;
-    padding: 17px ;
+    color: black;
+    height: 51px;
+    line-height: 3.225em;
     margin-top: -17px;
     text-decoration: none;
     width: 25%; /* Four links of equal widths */
@@ -560,8 +568,9 @@ h2 {
 .nav-howto a {
 
     float: left;
-    color: white;
-    padding: 17px ;
+    color: black;
+    height: 51px;
+    line-height: 3.225em;
     margin-top: -17px;
     text-decoration: none;
     width: 25%; /* Four links of equal widths */
@@ -572,8 +581,9 @@ h2 {
 .nav-demo a {
 
     float: left;
-    color: white;
-    padding: 17px ;
+    color: black;
+    height: 51px;
+    line-height: 3.225em;
     margin-top: -17px;
     text-decoration: none;
     width: 25%; /* Four links of equal widths */
@@ -585,7 +595,9 @@ h2 {
 
     float: right;
     color: white;
-    padding: 17px ;
+
+    height: 51px;
+    line-height: 3.225em;
     margin-top: -17px;
     text-decoration: none;
     width: 12.5%; /* Four links of equal widths */
@@ -600,33 +612,39 @@ h2 {
     vertical-align: bottom;
 }
 .nav-home .current {
-    background-color: red;
+    background-color: gray;
+    text-decoration: none;
 }
 
 .nav-howto .current {
-    background-color: red;
+    background-color: gray;
+    text-decoration: none;
 }
 
 
 .nav-right .current {
-    background-color: red;
+    background-color: gray;
 }
 
 
 .nav-home a:hover {
-    background-color: #000;
+    background-color: black;
+    text-decoration: none;
 }
 
 .nav-howto a:hover {
-    background-color: #000;
+    background-color: black;
+    text-decoration: none;
 }
 
 .nav-demo a:hover {
-    background-color: #000;
+    background-color: black;
+    text-decoration: none;
 }
 
 .nav-right a:hover {
     background-color: #000;
+    text-decoration: none;
 }
 
 .nav-home a.active {

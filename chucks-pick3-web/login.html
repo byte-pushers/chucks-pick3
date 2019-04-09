@@ -1,38 +1,43 @@
-<html>
-<title>Home Page</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!--CSS-->
-<link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
 
+
+<html>
+<head>
+<title>Home Page</title>
+<style>
+    body {
+        margin-top: 0px;
+
+        margin-right: 0px;
+
+        margin-bottom: 0px;
+
+        margin-left: 0px;
+        background-color: #fafafa;
+        font-family: 'Lato', serif;
+    }
+</style>
+
+
+<link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato">
+
+
+
+
+<!-- Latest compiled and minified Bootstrap CSS -->
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!-- javascript -->
-<script src="lib/bootstrapFormVal.js"></script>
-<script type="text/javascript"
-        src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+<style>
+    body {
 
-<!-- jQuery library -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
-
-<!-- Popper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
-<link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
-
+        background-color: #fafafa;
+        font-family: 'Lato', serif;
+    }
+</style>
+</head>
 <body>
 
 <div class="main-container">
@@ -50,6 +55,7 @@
                 </div>
 
                 <div class="nav-howto">
+
                     <ul>
                         <a href="info.html">How To</a>
                     </ul>
@@ -62,13 +68,16 @@
                 <div class="nav-right">
                     <!--navigation for right content-->
                     <ul>
+
                         <a class="current" href="login.html">Login</a>
                         <a href="sign-up.html">Sign up</a>
+
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="body-container">
         <div class="main-content-container">
             <form class="needs-validation" novalidate>
@@ -100,10 +109,58 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
             </form>
-            <div class="footer">
-            </div>
         </div>
     </div>
+</div>
+
+
+
+
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Initialize Bootstrap functionality -->
+<script>
+    // Initialize tooltip component
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    // Initialize popover component
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+
+
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
 </body>
 </html>
