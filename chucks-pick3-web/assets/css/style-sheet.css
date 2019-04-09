@@ -20,7 +20,7 @@
     display: block;
     background-color: #ffd7f7;
     width: 100%;
-    height: 20%;
+    height: auto;
     padding: 0px;
     margin: 0 auto;
 
@@ -29,7 +29,7 @@
 
 .logo-container {
     display: block;
-    background-image: url("../img/webpage_button-03.png");
+    background-color: blueviolet;
     width: 20%;
     height: 200px;
     padding: 0px;
@@ -82,7 +82,7 @@
     margin: auto;
     text-align: center;
     display: inline-block;
-    overflow: scroll;
+
 
 }
 
