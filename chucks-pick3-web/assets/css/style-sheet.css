@@ -26,12 +26,15 @@
 
 
 }
+p {
 
+    text-align: left;
+}
 .logo-container {
     display: block;
     background-color: blueviolet;
     width: 20%;
-    height: 23%;
+    height: 30.6%;
     padding: 0px;
     margin: 0 auto;
     float: left;
@@ -54,7 +57,7 @@
 .navbar-container {
     display: block;
     background-color: #fff059;
-    width: 100%;
+    width: 80%;
     height: 50px;
     padding: 0;
     margin: 0 auto;
@@ -84,9 +87,9 @@
 
 .main-content-container {
 
-    background-color: #eea53a;
+    background-color: #fafafa;
     width: 100%;
-    min-height: 100%;
+    min-height: 25%;
     padding-left: 10%;
     padding-right: 10%;
     margin: auto;
@@ -100,12 +103,13 @@
 .how-to-container {
     display: inline-block;
     background-image: url("../img/screens-02.png");
-    background-size: 410px  420px;
+    background-size: 420px  420px;
     border-top-style: solid;
     border-right-style:solid;
     border-bottom-style: none;
     border-left-style: none;
-    width: 33.2%;
+    border-width: 1px;
+    width: 33.3%;
     height: 420px;
     border-color: #BDBDBD;
 
@@ -367,12 +371,13 @@ select {
 .demo-container {
     display: inline-block;
     background-image: url("../img/screens-01.png");
-    background-size: 410px  420px;
+    background-size: 420px  420px;
     border-top-style: solid;
     border-right-style:solid;
     border-bottom-style: none;
     border-left-style: none;
-    width: 33.2%;
+    border-width: 1px;
+    width: 33.3%;
     height: 420px;
     margin-left:-4px;
     border-color: #BDBDBD;
@@ -391,11 +396,12 @@ select {
 .sign-up-container {
     display: inline-block;
     background-image: url("../img/screens-03.png");
-    background-size: 410px  420px;
+    background-size: 423px  420px;
     border-top-style: solid;
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
+    border-width: 1px;
     width: 33.2%;
     height: 420px;
     margin-left:-4px;
@@ -604,7 +610,7 @@ h2 {
 .nav-right a {
 
     float: right;
-    color: white;
+    color: black;
 
     height: 51px;
     line-height: 3.225em;
@@ -640,21 +646,25 @@ h2 {
 .nav-home a:hover {
     background-color: black;
     text-decoration: none;
+    color: white;
 }
 
 .nav-howto a:hover {
     background-color: black;
     text-decoration: none;
+    color: white;
 }
 
 .nav-demo a:hover {
     background-color: black;
     text-decoration: none;
+    color: white;
 }
 
 .nav-right a:hover {
     background-color: #000;
     text-decoration: none;
+    color: white;
 }
 
 .nav-home a.active {
@@ -754,6 +764,8 @@ h2 {
 
     }
 }
+
+
     /* FOR DESKTOP & IPAD ---------------------------------- */
 
     /* FOR IPHONE 6/7/8---------------------------------- */
@@ -889,6 +901,7 @@ h2 {
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+        border-width: 1px;
     }
 }
 
@@ -900,6 +913,8 @@ h2 {
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+
+        border-width: 1px;
     }
 }
 
@@ -911,6 +926,7 @@ h2 {
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+        border-width: 1px;
     }
 }
 /* FOR IPHONE 6/7/8---------------------------------- */
@@ -919,11 +935,14 @@ h2 {
     .demo-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+        border-width: 1px;
+
     }
 }
 
@@ -931,10 +950,13 @@ h2 {
     .how-to-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        background-image: url("../img/screens-05.png");
+        background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+        border-width: 1px;
     }
 }
 
@@ -942,10 +964,13 @@ h2 {
     .sign-up-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        background-image: url("../img/screens-06.png");
+        background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
         border-left-style: solid;
+        border-width: 1px;
     }
 }
 
