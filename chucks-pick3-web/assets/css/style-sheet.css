@@ -26,7 +26,10 @@
 
 
 }
+p {
 
+    text-align: left;
+}
 .logo-container {
     display: block;
     background-color: blueviolet;
