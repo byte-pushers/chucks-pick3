@@ -1,6 +1,12 @@
-
-
 .nav-bar-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.main-nav-bar-container {
 
     width: 80%;
     background-color: white;
@@ -9,7 +15,11 @@
     padding: 5px;*/
     height: 50px;
 
+}
 
+.main-nav-bar-container a:hover {
+    text-decoration: none;
+    color: black;
 }
 
 .nav-bar-col-25 {
@@ -51,16 +61,18 @@
 
 }
 
-.nav-bar-container .nav-bar-col-25.allow-hover:hover {
+.main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
     background-color: green;
+    cursor: pointer;
 }
 
-.nav-bar-container .nav-bar-col-25.active {
+.main-nav-bar-container .nav-bar-col-25.active {
     background-color: gray;
 }
 
-.nav-bar-container .nav-bar-col-50.allow-hover:hover {
+.main-nav-bar-container .nav-bar-col-50.allow-hover:hover {
     background-color: green;
+    cursor: pointer;
 }
 
 
@@ -70,15 +82,16 @@
 /***************************************/
 
 .sub-nav-bar-container {
-
-    width: 100%;
+    width: 80%;
+    height: 50px;
     background-color: black;
-
+    float:right;
     /*border: 2px solid black;
     padding: 5px;*/
-
-
-
+}
+.sub-nav-bar-container a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .sub-nav-bar-col-25 {
@@ -86,7 +99,7 @@
     float: left;
     line-height: 3em;
     text-align: center;
-    width: 20%;
+    width: 25%;
     /*border: 2px solid blue;*/
     height: 100%;
 
@@ -96,7 +109,6 @@
     list-style-type: none;
     font-size: 17px;
     color: white;
-    background-color: black;
 
 
 }
@@ -106,7 +118,6 @@
     width: 50%;
     /*border: 1px solid red;*/
     height: 100%;
-    background-color: black;
 
 
 }
@@ -115,12 +126,12 @@
     color: white;
     text-decoration: none;
     font-size: 17px;
-    background-color: black;
 }
 
 
 .sub-nav-bar-container .sub-nav-bar-col-50.allow-hover:hover {
     background-color: green;
+    cursor: pointer;
 }
 
 .sub-nav-bar-container .sub-nav-bar-col-50.active {

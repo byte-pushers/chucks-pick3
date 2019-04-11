@@ -54,7 +54,7 @@ p {
 
 }
 
-.navbar-container {
+/*.navbar-container {
     display: block;
 
     width: 100%;
@@ -63,9 +63,9 @@ p {
     margin: 0 auto;
 
 
-}
+}*/
 
-.navbar-how-to-container {
+/*.navbar-how-to-container {
     display: block;
     background-color: #fff059;
     width: 80%;
@@ -74,7 +74,7 @@ p {
     margin: 0 auto;
     float: right;
 
-}
+}*/
 .body-container {
     display: block;
     background-color: #ffffff;
@@ -447,7 +447,7 @@ h2 {
     padding-left: 20px;
 }
 
-#navbar {
+/*#navbar {
 
     background-color: #333;
     position: fixed;
@@ -456,7 +456,7 @@ h2 {
     text-decoration: none;
 
 
-}
+}*/
 .how-to-nav {
     display: block;
     text-align: center;
@@ -472,40 +472,24 @@ h2 {
 
 }
 
-.Title {
-    display: table;
+.sub-nav-bar-title-container {
+    display: inline-block;
     text-align: center;
     background-color: #f2f2f2;
-
-
     width: 20%;
-    height: 51.5px;
-
     float: left;
-
-    font-family:'Lato', serif;
-
-
-
-    text-decoration: none;
-
-
-}
-.Title p{
-    display: inline-block;
-    vertical-align: center;
-    position:relative;
-    top:10px;
+    height: 50px;
+    line-height: 3em;
 }
 
-#navbar a {
-    /*float: left;*/
+/*#navbar a {
+    !*float: left;*!
     display: block;
 
     text-align: center;
     padding: 0px 35px;
     height: 51px;
-    /*line-height: 3.225em;*/
+    !*line-height: 3.225em;*!
     text-decoration: none;
 'Lato', serif;
 }
@@ -517,7 +501,7 @@ h2 {
 #navbar a.active {
 
     text-decoration: none;
-}
+}*/
 
 
 .content {
@@ -574,12 +558,12 @@ h2 {
         }
     }
 
-    @media screen and (max-width: 805px) {
-        .navbar-container  {
+    /*@media screen and (max-width: 805px) {
+        .nav-bar-container  {
             display: block;
             width: 100%;
         }
-    }
+    }*/
 
 
     @media screen and (max-width: 805px) {
@@ -596,13 +580,13 @@ h2 {
             width: 80%;
         }
     }
-@media screen and (max-width: 805px) {
+/*@media screen and (max-width: 805px) {
     #navbar-wrapper  {
         display: block;
 
 
     }
-}
+}*/
 
 @media screen and (max-width: 770px) {
     .header-container  {
@@ -636,6 +620,7 @@ h2 {
     /* FOR DESKTOP & IPAD ---------------------------------- */
 
     /* FOR IPHONE 6/7/8---------------------------------- */
+/*
 @media screen and (max-width: 750px) {
     #navbar-wrapper  {
         display: none;
@@ -643,6 +628,7 @@ h2 {
 
     }
 }
+*/
 
 @media screen and (max-width: 750px) {
     .slide a {
@@ -652,14 +638,14 @@ h2 {
     }
 }
 
-    @media screen and (max-width: 750px) {
-        .side-nav  {
-            display: block;
-            width: 15%;
-            height: 100%;
+@media screen and (max-width: 750px) {
+    .side-nav  {
+        display: block;
+        width: 15%;
+        height: 100%;
 
-        }
     }
+}
 @media screen and (max-width: 750px) {
     .side-menu  {
         display: block;
@@ -671,24 +657,24 @@ h2 {
 }
 
 
-    @media screen and (max-width: 750px) {
-        .home {
-            display: block;
-            width: 20%;
-            height: 100%;
-            background-color: #1704f9;
-            float: left;
-            margin: 0 auto;
-        }
+@media screen and (max-width: 750px) {
+    .home {
+        display: block;
+        width: 20%;
+        height: 100%;
+        background-color: #1704f9;
+        float: left;
+        margin: 0 auto;
     }
+}
 
-    @media screen and (max-width: 750px) {
-        .home  h9 {
-            display: block;
-            margin: 0 auto;
-            padding-top: 17%;
-        }
+@media screen and (max-width: 750px) {
+    .home  h9 {
+        display: block;
+        margin: 0 auto;
+        padding-top: 17%;
     }
+}
 @media screen and (max-width: 750px) {
     .log-in {
         display: block;
@@ -723,8 +709,8 @@ h2 {
 
 
 
-    @media screen and (max-width: 750px) {
-        .navbar-home-container  {
+    /*@media screen and (max-width: 750px) {
+        .nav-bar-home-container  {
             display: block;
             width: 50%;
             height: 30%;
@@ -734,12 +720,12 @@ h2 {
 
 
     @media screen and (max-width: 750px) {
-        .navbar-container  {
+        .nav-bar-container  {
             display: block;
             width: 100%;
             height: 30%;
         }
-    }
+    }*/
 
 
     @media screen and (max-width: 750px) {
@@ -848,7 +834,7 @@ body {
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
 }
-.nav {
+/*.nav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -891,7 +877,7 @@ body {
     margin-left: 30px;
     font-size: 30px;
     color: white;
-}
+}*/
 .slide a {
     color: #000;
 
