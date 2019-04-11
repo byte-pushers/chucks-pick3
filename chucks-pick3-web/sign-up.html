@@ -1,6 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Home Page</title>
+    <title>Sign Up Page</title>
     <style>
         body {
             margin-top: 0px;
@@ -16,20 +17,63 @@
     </style>
     <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
     <link href="assets/css/navbar.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Lato">
-
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        body {
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-            background-color: #fafafa;
-            font-family: 'Lato', serif;
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- Initialize Bootstrap functionality -->
+    <script>
+        // Initialize tooltip component
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        // Initialize popover component
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
         }
-    </style>
+
+        function openSlideMenu() {
+            document.getElementById('menu').style.width = '250px';
+            document.getElementById('content').style.marginRight = '250px';
+        }
+
+        function closeSlideMenu() {
+            document.getElementById('menu').style.width = '0';
+            document.getElementById('content').style.marginRight = '0';
+        }
+    </script>
 </head>
 <body>
 
@@ -39,33 +83,27 @@
         <div class="header-img-container"><p>header image here</p></div>
         <div class="nav-bar-container">
             <div class="main-nav-bar-container">
-                <div class="nav-bar-col-25  allow-hover active">
+                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
                     <a href="home.html">Home</a>
                 </div>
 
-                <div class="nav-bar-col-25 allow-hover" >
-
+                <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover">
                     <a href="info.html">How To</a>
                 </div>
 
-                <div class="nav-bar-col-25 allow-hover">
+                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
                     <a href="info.html">Demo</a>
                 </div>
 
                 <div class="nav-bar-col-25">
-
-                    <div class="nav-bar-col-50 allow-hover">
+                    <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
                         <a href="login.html">Login</a>
                     </div>
-
-                    <div class="nav-bar-col-50 allow-hover">
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover active">
                         <a href="sign-up.html">Sign Up</a>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 
@@ -76,8 +114,7 @@
                     <div class="col-3 mx-auto text-left">
                         <p class="h4 mb-4 c text-center">Sign up </p>
                         <div class="info-form">
-                            <!-- <div class="col">
-                              First name -->
+
                             <div class="form-row">
                                 <label for="defaultRegisterFormFirstName">First Name</label>
                                 <input type="text" minlength="4" name="firstName" maxlength="25"
@@ -86,7 +123,7 @@
 
                                 <div class="invalid-feedback firstName"></div>
                             </div>
-                            <!-- Last name -->
+
                             <br>
                             <div class="form-row">
                                 <label for="defaultRegisterFormLastName">Last Name</label>
@@ -98,34 +135,23 @@
                             </div>
                         </div>
                         <br>
-                        <!-- Email -->
+
                         <div class="form-row">
 
                             <label for="defaultRegisterFormEmail">Email</label>
-
-
                             <input type="email" name="email" onchange="checkEmail(this)" id="defaultRegisterFormEmail"
                                    class="form-control" placeholder="Email" required>
-                            <div class="invalid-feedback email ">
-                            </div>
-
-
-                            <!-- Phone -->
+                            <div class="invalid-feedback email "></div>
                             <br>
-
-                            <label class="col-xs-3 col-form-label mr-2" for="defaultRegisterFormPhone">Phone</label>
-
-
-                            <input type="number" name="phoneNumber" max="10" onchange="checkPhoneNumber(this)"
+                            <label for="defaultRegisterFormPhone" class="col-xs-3 col-form-label mr-2">Phone</label>
+                            <input type="number" id="defaultRegisterFormPhone" name="phoneNumber" max="10"
+                                   onchange="checkPhoneNumber(this)"
                                    class="form-control" placeholder="123 456 7890" required>
                             <div class="invalid-feedback phoneNumber "></div>
                         </div>
-                        <!--City -->
                         <br>
                         <div class="form-row">
                             <label for="defaultRegisterFormCity">City</label>
-
-
                             <input type="text" minlength="3" name="cityName" maxlength="30" onchange="checkCity(this)"
                                    id="defaultRegisterFormCity" class="form-control" placeholder="City" required>
                             <div class="invalid-feedback cityName "></div>
@@ -137,8 +163,7 @@
                             <label for="defaultRegisterFormCity">State</label>
                             <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true"
                                     aria-expanded="true" id="dropDown" data-display="static" data-toggle="dropdown">
-                                State <span
-                                    class="caret"></span></button>
+                                State<span class="caret"></span></button>
                             <ul class="dropdown-menu scrollable-menu w-100" aria-labelledby="menu">
                                 <li><a class="dropdown-item" href="#">Alabama</a></li>
                                 <li><a class="dropdown-item" href="#">Alaska</a></li>
@@ -193,10 +218,8 @@
                                 <li><a class="dropdown-item" href="#">Wyoming</a></li>
                             </ul>
                             <div class="invalid-feedback dropDown"></div>
-
                         </div>
                         <br>
-                        <!-- Email -->
                         <div class="form-row">
                             <label for="defaultRegisterFormZip">Zip</label>
                             <input type="number" name="zipCode" max="5"
@@ -205,7 +228,6 @@
                             <div class="invalid-feedback zipCode "></div>
                         </div>
                         <br>
-                        <!-- Phone -->
                         <div class="form-row">
 
                             <label for="defaultRegisterFormCity">Type of Phone</label>
@@ -229,40 +251,37 @@
                                 <li><a class="dropdown-item" href="#">Never</a></li>
                                 <li><a class="dropdown-item" href="#">Sometimes</a></li>
                                 <li><a class="dropdown-item" href="#">Always</a></li>
-
                             </ul>
                             <div class="invalid-feedback"></div>
                         </div>
-                        <!-- Phone -->
                         <br>
                         <button type="submit" value="Validate" onclick="return checkStateButton()"
                                 class="btn btn-success ">Submit
                         </button>
                     </div>
+                    <br>
                 </div>
             </form>
-            <div class="footer">
-            </div>
+            <div class="footer"></div>
         </div>
     </div>
 
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
 
-<!-- jQuery library -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
 
-<!-- Popper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
-<!-- Initialize Bootstrap functionality -->
+    <!-- Initialize Bootstrap functionality -->
 
 </body>
 </html>
