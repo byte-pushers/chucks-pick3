@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
     <title>Info Page</title>
     <style>
@@ -65,113 +64,114 @@
             }
         }
 
-        function openSlideMenu(){
+        function openSlideMenu() {
             document.getElementById('menu').style.width = '250px';
             document.getElementById('content').style.marginRight = '250px';
         }
-        function closeSlideMenu(){
+
+        function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
         }
     </script>
 </head>
 <body>
-    <div class="main-container">
-        <div class="header-container">
-            <!--<div id="navbar">-->
-                <div class="logo-container"><p>insert image here</p></div>
-                <div class="header-img-container"><p>header image here</p></div>
-                <div class="nav-bar-container">
+<div class="main-container">
+    <div class="header-container">
+        <!--<div id="navbar">-->
+        <div class="logo-container"><p>insert image here</p></div>
+        <div class="header-img-container"><p>header image here</p></div>
+        <div class="nav-bar-container">
 
-                    <div class="main-nav-bar-container">
-                        <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover active">
-                            <a href="home.html">Home</a>
-                        </div>
+            <div class="main-nav-bar-container">
+                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
+                    <a href="home.html">Home</a>
+                </div>
 
-                        <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover" >
-                            <a href="info.html">How To</a>
-                        </div>
+                <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover active ">
+                    <a href="info.html">How To</a>
+                </div>
 
-                        <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
-                            <a href="info.html">Demo</a>
-                        </div>
+                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover  ">
+                    <a  href="info.html">Demo</a>
+                </div>
 
-                        <div class="nav-bar-col-25">
-                            <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
-                                <a href="login.html">Login</a>
-                            </div>
-                            <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
-                                <a href="sign-up.html">Sign Up</a>
-                            </div>
-                        </div>
+                <div class="nav-bar-col-25">
+                    <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
+                        <a href="login.html">Login</a>
                     </div>
-
-                    <div class="sub-nav-bar-title-container">
-                        <div><span><b>How To Play</b></span></div>
-                    </div>
-
-                    <div class="sub-nav-bar-container">
-                        <div class="sub-nav-bar-col-25">
-                            <span>&nbsp;</span>
-                        </div>
-
-                        <div class="sub-nav-bar-col-25">
-                            <div class="sub-nav-bar-col-50 allow-hover active">
-                                <a href="Signup.html">Requirements</a>
-                            </div>
-
-                            <div class="sub-nav-bar-col-50 allow-hover ">
-                                <a href="Login.html">Interface</a>
-                            </div>
-                        </div>
-
-                        <div class="sub-nav-bar-col-25">
-                            <div class="sub-nav-bar-col-50 allow-hover">
-                                <a href="signup.html">Generate</a>
-                            </div>
-
-                            <div class="sub-nav-bar-col-50 allow-hover">
-                                <a href="login.html">View Picks</a>
-                            </div>
-                        </div>
-
-                        <div class="sub-nav-bar-col-25 ">
-                            <span>&nbsp;</span>
-                        </div>
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
+                        <a href="sign-up.html">Sign Up</a>
                     </div>
                 </div>
-            <!--</div>-->
+            </div>
+
+            <div class="sub-nav-bar-title-container">
+                <div><span><b>How To Play</b></span></div>
+            </div>
+
+            <div class="sub-nav-bar-container">
+                <div class="sub-nav-bar-col-25">
+                    <span>&nbsp;</span>
+                </div>
+
+                <div class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#requirements'" class="sub-nav-bar-col-50 allow-hover ">
+                        <a href="#requirements">Requirements</a>
+                    </div>
+
+                    <div onClick="document.location='#interface'" class="sub-nav-bar-col-50 allow-hover ">
+                        <a href="#interface">Interface</a>
+                    </div>
+                </div>
+
+                <div class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#generate'" class="sub-nav-bar-col-50 allow-hover">
+                        <a href="#generate">Generate</a>
+                    </div>
+
+                    <div onClick="document.location='#generated-picks'" class="sub-nav-bar-col-50 allow-hover">
+                        <a href="#generated-picks">View Picks</a>
+                    </div>
+                </div>
+
+                <div class="sub-nav-bar-col-25 ">
+                    <span>&nbsp;</span>
+                </div>
+            </div>
         </div>
-        <div class="body-container">
-            <div class="what-you-need">
-                <H2 id="requirements">Requirements:</H2>
-                <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
-            </div>
+        <!--</div>-->
+    </div>
+    <div class="body-container">
+        <div class="what-you-need" id="howto">
+            <H2 id="requirements">Requirements:</H2>
+            <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
+        </div>
 
-            <div class="interface">
-                <H2 id="interface">Interface:</H2>
-                <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
-            </div>
-            <br>
-            <br>
-            <div class="interface">
-                <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
-            </div>
+        <div class="interface">
+            <H2 id="interface">Interface:</H2>
+            <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
+        </div>
+        <br>
+        <br>
+        <div class="interface">
+            <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
+        </div>
 
-            <div class="how-to-generate">
-                <H2 id="generate">How to Generate Picks:</H2>
-                <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
-            </div>
+        <div class="how-to-generate" id="demo">
+            <H2 id="generate">How to Generate Picks:</H2>
+            <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
+        </div>
 
-            <div class="how-to-generate">
-                <img src="assets/img/Info page -13.png" alt="Generate" style="width:700px" align="center">
-            </div>
+        <div class="how-to-generate">
+            <img src="assets/img/Info page -13.png" alt="Generate" style="width:700px" align="center">
+        </div>
 
-            <div class="how-to-view">
-                <H2 id="generated-picks">How to View Generated Picks:</H2>
-                <img src="assets/img/Info page -14.png" alt="Generate" style="width:700px" align="center">
-            </div>
+        <div class="how-to-view">
+            <H2 id="generated-picks">How to View Generated Picks:</H2>
+            <img src="assets/img/Info page -14.png" alt="Generate" style="width:700px" align="center">
         </div>
     </div>
+</div>
 </body>
 </html>
