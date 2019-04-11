@@ -1,43 +1,79 @@
-
-
-<html>
+<!Doctype html>
+<html lang="en">
 <head>
-<title>Home Page</title>
-<style>
-    body {
-        margin-top: 0px;
+    <title>Login Page</title>
+    <style>
+        body {
+            margin-top: 0px;
 
-        margin-right: 0px;
+            margin-right: 0px;
 
-        margin-bottom: 0px;
+            margin-bottom: 0px;
 
-        margin-left: 0px;
-        background-color: #fafafa;
-        font-family: 'Lato', serif;
-    }
-</style>
-
-
-<link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
+            margin-left: 0px;
+            background-color: #fafafa;
+            font-family: 'Lato', serif;
+        }
+    </style>
+    <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
     <link href="assets/css/navbar.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
 
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
 
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-<!-- Latest compiled and minified Bootstrap CSS -->
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Initialize Bootstrap functionality -->
+    <script>
+        // Initialize tooltip component
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        // Initialize popover component
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
 
-<style>
-    body {
+        window.onscroll = function () {
+            myFunction()
+        };
 
-        background-color: #fafafa;
-        font-family: 'Lato', serif;
-    }
-</style>
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        function openSlideMenu() {
+            document.getElementById('menu').style.width = '250px';
+            document.getElementById('content').style.marginRight = '250px';
+        }
+
+        function closeSlideMenu() {
+            document.getElementById('menu').style.width = '0';
+            document.getElementById('content').style.marginRight = '0';
+        }
+    </script>
 </head>
 <body>
 
@@ -47,30 +83,26 @@
         <div class="header-img-container"><p>header image here</p></div>
         <div class="nav-bar-container">
             <div class="main-nav-bar-container">
-                <div class="nav-bar-col-25  allow-hover active">
+                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
                     <a href="home.html">Home</a>
                 </div>
 
-                <div class="nav-bar-col-25 allow-hover" >
-
+                <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover">
                     <a href="info.html">How To</a>
                 </div>
 
-                <div class="nav-bar-col-25 allow-hover">
+                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
                     <a href="info.html">Demo</a>
                 </div>
 
                 <div class="nav-bar-col-25">
-
-                    <div class="nav-bar-col-50 allow-hover">
+                    <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover active">
                         <a href="login.html">Login</a>
                     </div>
-
-                    <div class="nav-bar-col-50 allow-hover">
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
                         <a href="sign-up.html">Sign Up</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -104,6 +136,8 @@
                                 <button type="submit" value="Validate" onclick="return checkStateButton()"
                                         class="btn btn-success ">Submit
                                 </button>
+
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -112,9 +146,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <!-- jQuery library -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
