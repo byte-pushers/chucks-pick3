@@ -2,7 +2,7 @@
 
 .nav-bar-container {
 
-    width: 100%;
+    width: 80%;
     background-color: white;
     float: right;
     /*border: 2px solid black;
@@ -96,6 +96,7 @@
     list-style-type: none;
     font-size: 17px;
     color: white;
+    background-color: black;
 
 
 }
@@ -105,6 +106,7 @@
     width: 50%;
     /*border: 1px solid red;*/
     height: 100%;
+    background-color: black;
 
 
 }
@@ -113,6 +115,7 @@
     color: white;
     text-decoration: none;
     font-size: 17px;
+    background-color: black;
 }
 
 
