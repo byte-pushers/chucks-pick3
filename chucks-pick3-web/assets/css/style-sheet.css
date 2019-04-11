@@ -102,7 +102,7 @@ p {
 
 .how-to-container {
     display: inline-block;
-    background-image: url("../img/screens-02.png");
+    background-image: url("../img/screens-07.png");
     background-size: 420px  420px;
     border-top-style: solid;
     border-right-style:solid;
@@ -370,7 +370,7 @@ select {
 
 .demo-container {
     display: inline-block;
-    background-image: url("../img/screens-01.png");
+    background-image: url("../img/screens-07.png");
     background-size: 420px  420px;
     border-top-style: solid;
     border-right-style:solid;
@@ -395,7 +395,7 @@ select {
 
 .sign-up-container {
     display: inline-block;
-    background-image: url("../img/screens-03.png");
+    background-image: url("../img/screens-07.png");
     background-size: 423px  420px;
     border-top-style: solid;
     border-right-style: none;
@@ -788,7 +788,7 @@ h2 {
     .demo-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-04.png");
+        background-image: url("../img/screens-07.png");
         background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
@@ -803,7 +803,7 @@ h2 {
     .how-to-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-05.png");
+        background-image: url("../img/screens-07.png");
         background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
@@ -817,7 +817,7 @@ h2 {
     .sign-up-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-06.png");
+        background-image: url("../img/screens-07.png");
         background-size: 100%  420px;
         border-top-style: solid;
         border-right-style:solid;
