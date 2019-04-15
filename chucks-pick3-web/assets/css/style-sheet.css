@@ -1,7 +1,7 @@
 .css-selector {
     font-family: 'Lato', serif;
 }
-
+/*-----Global--------*/
 .main-container {
     background-color: #fafafa;
     width: 100%;
@@ -51,7 +51,7 @@ p {
     margin: auto;
     float: right;
 
-
+    /*-----Global--------*/
 }
 
 /*.navbar-container {
@@ -75,6 +75,8 @@ p {
     float: right;
 
 }*/
+
+/*-----Global--------*/
 .body-container {
     display: block;
     background-color: #ffffff;
@@ -98,10 +100,11 @@ p {
 
 
 }
+/*-----Global--------*/
 
+/*-----Ad Containers--------*/
 
 .how-to-container {
-    display: inline-block;
     background-image: url("../img/screens-04.png");
     background-size: 420px  350px;
     border-top-style: solid;
@@ -115,6 +118,7 @@ p {
 
 
 }
+/*-----Ad Containers--------*/
 
 .form-container {
     display: flex;
@@ -125,6 +129,7 @@ p {
     align-content: center;
 }
 
+/*-----How To Containers------*/
 .what-you-need {
     display: block;
     background-color: #fafafa;
@@ -150,7 +155,7 @@ p {
 
 
 }
-
+/*-----How To Containers------*/
 .fill-container {
     display: block;
     background-color: #eea53a;
@@ -186,7 +191,7 @@ p {
 
 
 }
-
+/*-----How To Containers------*/
 * {
     margin-inside: .5;
     padding: 0;
@@ -356,7 +361,7 @@ select {
     margin-top: 10%;
 }
 
-
+/*---Ad Container-----*/
 .link-container {
 
 
@@ -406,9 +411,6 @@ margin: 5%;
 border-color: #BDBDBD;
 
 }
-#signUpImg{
-
-}
 
 .sign-up-container p {
     vertical-align: bottom;
@@ -426,11 +428,12 @@ border-color: #BDBDBD;
 
 }
 
-.demo-container, .sign-up-container {
+.demo-container, .sign-up-container, .how-to-container {
 
     display: inline-block;
 
 }
+/*---Ad Container-----*/
 
 
 
@@ -454,6 +457,8 @@ h2 {
 
 
 }*/
+
+/*-----How To Containers------*/
 .how-to-nav {
     display: block;
     text-align: center;
@@ -468,6 +473,7 @@ h2 {
 
 
 }
+/*-----How To Containers------*/
 
 .sub-nav-bar-title-container {
     display: inline-block;
@@ -827,10 +833,7 @@ h2 {
 /* FOR TABLET---------*/
 /* -------------- SIDE BAR ------------- */
 
-body {
-    font-family: 'Lato', sans-serif;
-    overflow-x: hidden;
-}
+
 /*.nav {
     height: 100%;
     width: 0;
