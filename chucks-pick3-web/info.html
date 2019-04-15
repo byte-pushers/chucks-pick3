@@ -38,10 +38,16 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
     <!-- Initialize Bootstrap functionality -->
+
     <script>
+
         // Initialize tooltip component
-        $(function () {
+        /*$(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
         // Initialize popover component
@@ -72,7 +78,7 @@
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
-        }
+        }*/
     </script>
 </head>
 <body>
@@ -88,12 +94,12 @@
                     <a href="home.html">Home</a>
                 </div>
 
-                <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover active ">
-                    <a href="info.html">How To</a>
+                <div onClick="document.location='info.html#howto'"  class="nav-bar-col-25 allow-hover ">
+                    <a href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover  ">
-                    <a  href="info.html">Demo</a>
+                <div onClick="document.location='info.html#demo'"  class="nav-bar-col-25 allow-hover ">
+                    <a  href="info.html#demo">Demo</a>
                 </div>
 
                 <div class="nav-bar-col-25">
@@ -173,5 +179,36 @@
         </div>
     </div>
 </div>
+<script>
+
+
+    function toggleHash(grabHash) { //create a function with a parameter to pass
+        for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
+            grabHash[i].addEventListener("click", function(e) { // looking for the click event on parameter .. e equals event
+                var current = this; //In an event, this refers to the element that received the event.
+                for (var i = 0; i < grabHash.length; i++) { //loop thru
+                    if (current !== grabHash[i]) {  // conditional var should equal the click
+                        grabHash[i].classList.remove('active');  //The classList property returns the class name(s) of an element, as a DOMTokenList object. This property is useful to add, remove and toggle CSS classes on an element.The classList property is read-only, however, you can modify it by using the add() and remove() methods.
+                    } else if (current.classList.contains('active') === true) {
+                        current.classList.remove('active');
+                    } else {
+                        current.classList.add('active')
+                    }
+                }
+                e.preventDefault();   // prevent default behaviour if needed
+            });
+        }
+    }
+    toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
+
+
+
+
+
+
+
+</script>
+
+
 </body>
 </html>
