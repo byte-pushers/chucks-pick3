@@ -112,7 +112,7 @@ p {
     border-bottom-style: none;
     border-left-style: none;
     border-width: 1px;
-    width: 33.3%;
+    width: 33%;
     height: 350px;
     border-color: #BDBDBD;
 
@@ -384,7 +384,7 @@ select {
     border-width: 1px;
     width: 33.3%;
     height: 350px;
-    margin-left:-4px;
+    margin-left:-6px;
     border-color: #BDBDBD;
 }
 
