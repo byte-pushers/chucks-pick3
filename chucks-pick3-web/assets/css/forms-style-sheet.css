@@ -1,0 +1,143 @@
+.address {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: #a9aacd;
+    margin-bottom: 50px;
+}
+
+.inner-address p {
+    font-size: 12px;
+}
+
+.inner-address .fas {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+
+}
+
+.form-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: center;
+}
+
+.input-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1%;
+    margin-inside: .5;
+
+
+}
+/* To align each section of the form properly*/
+.location {
+    margin-top: 7%;
+}
+
+.phone {
+    margin-top: 7%;
+}
+
+.inner-msg {
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* For actual form input*/
+.input > input {
+    border: 1px;
+    width: 100%;
+    height: 80%;
+    padding: 10px 20px;
+    outline: none;
+    border-style: solid;
+}
+
+
+.btn {
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    color: #9d9d9d;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #000000;
+}
+
+
+
+/* for screen to remain responsive at phone size*/
+@media screen and (max-width: 640px) {
+    .input-form {
+        flex-direction: column;
+    }
+
+
+    .form .input > input {
+        width: 100% !important;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .input-form {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 10%;
+        margin-bottom: 1%;
+        margin-inside: .5;
+    }
+
+    @-moz-document url-prefix() {
+        .input-form {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50%;
+            margin-bottom: 1%;
+            margin-inside: .5;
+        }
+    }
+}
+.fill-form {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 15%;
+    box-sizing: border-box;
+    align-content: center;
+
+
+}
+
+
+select {
+    background: #ffffff;
+    border: 1px;
+    height: 80%;
+    width: 100%;
+    float: right;
+    padding: 10px 20px;
+    outline: none;
+    border-style: solid;
+
+}
+/* used to center into body*/
+.row {
+    margin-top: 10%;
+}
