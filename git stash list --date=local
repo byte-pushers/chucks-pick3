@@ -1,0 +1,25 @@
+stash@{0}: WIP on features/add-js-info: 0cd8620 updated info page then functional event listener for active link to howto and demo on navbar, left comments
+stash@{1}: WIP on features/info-cleanup: 813631a updated navbar on home and info with most recent template
+stash@{2}: WIP on features/info-cleanup: 17f5242 Merge pull request #87 from byte-pushers/features/correct-navbar
+stash@{3}: WIP on develop: 17f5242 Merge pull request #87 from byte-pushers/features/correct-navbar
+stash@{4}: WIP on features/navbar-cleanedup: e4880e8 updated cleaned up navbar got rid of padding
+stash@{5}: WIP on features/home-linked: a2eafe4 Merge pull request #68 from byte-pushers/features/info-page
+stash@{6}: WIP on features/home: a2eafe4 Merge pull request #68 from byte-pushers/features/info-page
+stash@{7}: WIP on features/home: 17863f2 update
+stash@{8}: WIP on develop: a2eafe4 Merge pull request #68 from byte-pushers/features/info-page
+stash@{9}: WIP on features/info-page: ac8a0c9 Merge branch 'develop' into features/info-page
+stash@{10}: WIP on features/bootstrap-form-state: ebe78d3 updated dropdown to show alert and resize selected items to be same width as parent still working on alert to reflect bootstrap validation
+stash@{11}: WIP on features/home: 3b1b2ed updated links
+stash@{12}: WIP on features/navbarlinked-page: b78394a updated navbar to reflect changes made to home templete
+stash@{13}: WIP on features/bootstrap-form-state: 92df894 intial commit added jquery for all buttons to show selection
+stash@{14}: WIP on features/bootstrap-form-zipcode: 1c2a3f4 intial commit for zipcode validation
+stash@{15}: WIP on features/bootstrap-form-zipcode: 3cee8cf Merge pull request #55 from byte-pushers/features/bootstrap-form-phonenumber
+stash@{16}: WIP on features/bootstrap-form-phonenumber: 3cee8cf Merge pull request #55 from byte-pushers/features/bootstrap-form-phonenumber
+stash@{17}: WIP on features/bootstrap-form-page: 4be71ef full update first name input
+stash@{18}: WIP on features/bootstrap-form-page: ddbe929 updated first name to check for all errors, empty , numbers and special characters
+stash@{19}: WIP on features/bootstrap-form-page: 82d731c Merge branch 'develop' of https://github.com/byte-pushers/chucks-pick3 into features/bootstrap-form-page
+stash@{20}: WIP on features/bootstrap-form-page: adc4656 got a default isEmpty and is Alphabet to work 50%
+stash@{21}: WIP on features/bootstrap-form-page: 1f0dce9 intial commit for first last name form validation
+stash@{22}: WIP on features/navbar-page: 877006e updated after review
+stash@{23}: WIP on features/splash-page: 654dc69 update vertical-align
+stash@{24}: WIP on features/thankyou-page: 958c51a intial commit

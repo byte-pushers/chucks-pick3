@@ -22,15 +22,21 @@ $("State").click(function() {
 //TODO: Prevent Form from moving when dropdown value is selected ##DONE
 //TODO: Make Dropdown selection for all required
 //TODO: Link bootstrap validation to jquery for error messages
-$(function(){
+/*$(function(){
     $(".dropdown-menu a").click(function(){
         $(this).parents('.dropdown-menu').siblings('.btn').text($(this).text());
         $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
         $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
-        return false;
-    });
-});
 
+    });
+});*/
+
+$(".dropdown-menu a").click(function(){
+
+    $(this).parents(".dropdown-menu").find('.selection').text($(this).text());
+    $(this).parents(".dropdown-menu").find('.selection').val($(this).text());
+
+});
 
 
 
@@ -104,4 +110,9 @@ $('#buttonSubmit').on('click', function() {
 /*$('#dropdown').find('.dropDown').find('.dropdown-menu scrollable-menu').on('click', '.dropdown-item', function(){
     $('#dropdown').find('.dropdown-toggle').text($(this)[0].value);
     $('#dropdown').find('.dropdown-toggle').dropdown('show');
-})*/
+})
+
+
+$('.dropdown-menu li a').on('click', function(){  // create function on click link to drop down class
+    $('.dropdown-toggle').html($(this).html());  // toggle selected item
+});*/

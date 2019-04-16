@@ -85,7 +85,7 @@ function checkCity(input) {
 
 function checkStateButton() {
     var stateCheck = document.getElementById("dropDown");
-    if (dropDown.value === "") {
+    if (stateCheck.value === "") {
         //If the "Please Select" option is selected display error.
         alert("Please select an option!");
         return false;

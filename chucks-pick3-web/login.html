@@ -1,7 +1,7 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login Page</title>
+    <title>Login</title>
     <style>
         body {
             margin-top: 0px;
@@ -21,6 +21,12 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <script src="lib/bootstrapFormVal.js"></script>
+    <script type="text/javascript" src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- jQuery library -->
@@ -34,14 +40,12 @@
             crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- Initialize Bootstrap functionality -->
     <script>
         // Initialize tooltip component
-        $(function () {
+        /*$(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
         // Initialize popover component
@@ -72,7 +76,7 @@
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
-        }
+        }*/
     </script>
 </head>
 <body>
@@ -133,7 +137,7 @@
                                 </div>
                                 <br>
                                 <br>
-                                <button type="submit" value="Validate" onclick="return checkStateButton()"
+                                <button type="submit" value="Validate"
                                         class="btn btn-success ">Submit
                                 </button>
 
@@ -162,33 +166,10 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-<!-- Initialize Bootstrap functionality -->
-<script>
-    // Initialize tooltip component
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-    // Initialize popover component
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })
-</script>
 
 
-<script>
-    window.onscroll = function () {
-        myFunction()
-    };
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+    <script src="lib/bootstrapFormValLogin.js"></script>
+<script type="text/javascript" src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
 
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
-</script>
 </body>
 </html>

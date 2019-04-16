@@ -3,6 +3,7 @@
 
 
     window.addEventListener('load', function () {
+
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
@@ -24,16 +25,25 @@
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 
+function submitForm() {
+    const getUsernameInput = document.getElementById('defaultLoginFormUserName');
+    console.log(getUsernameInput);
+    const getPasswordInput = document.getElementById('defaultLoginFormPassword');
+    checkUserName(getUsernameInput);
+    checkPassword(getPasswordInput);
+}
 
-function checkedUserName(input) {
+function checkUserName(input) {
+    console.log(input);
+    setErrorMessage(".invalid-feedback.username", "whats up", input);
     if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
         if (input.required === true) { // the input is required if not show error message // must have required as a input field
             if (hasData(input)) { // input can not be null or undefined it will throw a error
                 checkUserNameValidity(input);
             } else {
-                setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty", input);
+                setErrorMessage(".invalid-feedback." + input.name, input.name.toLowerCase() + " is required and can not be empty", input);
+                console.log(setErrorMessage);
             }
         } else {
             if (hasData(input)) { // input can not be null or undefined it will throw a error
@@ -47,12 +57,6 @@ function checkedUserName(input) {
 
 
 //*********************LOGIN USERNAME & PASSWORD VALIDATION**************************
-
-
-function checkUserName(input) { // create a function for first name // use input parameter
-    checkedUserName(input);
-}
-
 
 
 //TODO: Must not be null or undefined or empty or contain whitespace
@@ -73,18 +77,19 @@ function checkPassword(input) {
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
         }
         if (input !== input.value.toUpperCase()) {
+            console.log(input);
 
         } else {
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
 
         }
-        if (input !== input.toLowerCase()) {
+        if (input !== input.value.toLowerCase()) {
 
         } else {
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
 
         }
-        if (input.value === input.value.isNumeric()) {
+        if (input.value === isNaN(input.value)) {
 
         } else {
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
@@ -116,7 +121,7 @@ function hasData(input) {
 
     if (input.value !== null && input.value !== undefined) { // input can not be null or undefined it will throw a error
         input.value = input.value.trim(); // trim whitespace for input
-        if (input.value.isEmpty() !== true) { //make sure input is not empty value
+        if (input.value.length) { //make sure input is not empty value
             hasDataResult = true;
         }
     }
@@ -138,10 +143,11 @@ function checkUserNameValidity(input) {
     const minLength = input.minLength; //create variable for min and max add to the input
     const maxLength = input.maxLength; //create variable for min and max add to the input
 
+    //setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha and numeric characters.", input);
     if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
         // if statement for max length and min length make sure not null or undefined
         if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
-            if (input.value.isAlphanumeric() === false) {
+            if (input.value.isAlphabetical() === false) {
                 setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha and numeric characters.", input);
             }
         } else if (input.value.length < minLength) {
@@ -151,7 +157,7 @@ function checkUserNameValidity(input) {
         }
     } else if (minLength !== null && minLength !== undefined) {
         if (input.value.length >= minLength) {
-            if (input.value.isAlphanumeric() === false) {
+            if (input.value.isAlphabetical() === false) {
                 setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length < minLength) {
@@ -159,7 +165,7 @@ function checkUserNameValidity(input) {
         }
     } else if (maxLength !== null && maxLength !== undefined) {
         if (input.value.length <= maxLength) {
-            if (input.value.isAlphanumeric() === false) {
+            if (input.value.isAlphabetical() === false) {
                 setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain alpha characters.", input);
             }
         } else if (input.value.length > maxLength) {
@@ -168,9 +174,3 @@ function checkUserNameValidity(input) {
     }
 
 }
-
-
-
-
-
-
