@@ -18,7 +18,7 @@
 
 .header-container {
     display: block;
-    background-color: #ffd7f7;
+    background-color: #ffffff;
     width: 100%;
     height: 150px;
     padding: 0px;
@@ -32,7 +32,7 @@ p {
 }
 .logo-container {
     display: block;
-    background-color: blueviolet;
+    background-color: rgb(0, 0, 0);
     width: 20%;
     height: 100%;
     padding: 0px;
@@ -44,7 +44,7 @@ p {
 
 .header-img-container {
     display: block;
-    background-color: rgb(69, 232, 122);
+    background-color: rgb(126, 187, 86);
     width: 80%;
     height: 100px;
     padding: 0px;
@@ -102,15 +102,15 @@ p {
 
 .how-to-container {
     display: inline-block;
-    background-image: url("../img/screens-07.png");
-    background-size: 420px  420px;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
     border-top-style: solid;
     border-right-style:solid;
     border-bottom-style: none;
     border-left-style: none;
     border-width: 1px;
     width: 33.3%;
-    height: 420px;
+    height: 350px;
     border-color: #BDBDBD;
 
 
@@ -370,63 +370,60 @@ select {
 
 .demo-container {
     display: inline-block;
-    background-image: url("../img/screens-07.png");
-    background-size: 420px  420px;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
     border-top-style: solid;
     border-right-style:solid;
     border-bottom-style: none;
-    border-left-style: none;
+    border-left-style: solid;
     border-width: 1px;
     width: 33.3%;
-    height: 420px;
+    height: 350px;
     margin-left:-4px;
     border-color: #BDBDBD;
 }
 
 .demo-container p {
 
-    padding-bottom: 5% ;
-    padding-left: 5%;
-    padding-right: 5%;
+margin: 5%;
     text-align: left;
     position:relative;
-    top:82%;
+
 }
 
 .sign-up-container {
     display: inline-block;
-    background-image: url("../img/screens-07.png");
-    background-size: 423px  420px;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
     border-top-style: solid;
     border-right-style: none;
     border-bottom-style: none;
     border-left-style: none;
     border-width: 1px;
     width: 33.2%;
-    height: 420px;
+    height: 350px;
     margin-left:-4px;
 border-color: #BDBDBD;
+
+}
+#signUpImg{
 
 }
 
 .sign-up-container p {
     vertical-align: bottom;
-    padding-bottom: 5% ;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin: 5%;
     text-align: left;
     position:relative;
-    top:82%;
+
 }
 
 .how-to-container p {
     vertical-align: bottom;
-    padding-bottom: 5% ;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin: 5%;
     text-align: left;
     position:relative;
-    top:82%;
+
 }
 
 .demo-container, .sign-up-container {
@@ -788,8 +785,8 @@ h2 {
     .demo-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-07.png");
-        background-size: 100%  420px;
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
@@ -802,9 +799,9 @@ h2 {
 @media screen and (max-width: 800px) {
     .how-to-container  {
         display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-07.png");
-        background-size: 100%  420px;
+        width: 100%;
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
@@ -817,8 +814,8 @@ h2 {
     .sign-up-container  {
         display: block;
         width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-07.png");
-        background-size: 100%  420px;
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
         border-top-style: solid;
         border-right-style:solid;
         border-bottom-style: solid;
