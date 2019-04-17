@@ -94,7 +94,7 @@
         <div class="nav-bar-container">
 
             <div class="main-nav-bar-container">
-                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
+                <div id="main-nav-bar-item-#home" onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
                     <a href="home.html">Home</a>
                 </div>
 
@@ -257,28 +257,27 @@
      }*/
 
 
-    // TODO: step.1 When page first loads get website url
-
-    var infoUrl= window.location.href;
-
     // TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
     var urlWithHash = window.location.hash.substr(1);
+
     // TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
     // TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
-    // TODO:        call showSubNavBar() method.
-
-
     if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
-        showSubNavBar(urlWithHash);
+        // TODO:        call showSubNavBar() method.
+        showSubNavBar();
+        // TODO: IF hashurl equals '#HOWTO', set main nav bar active for how to id.
+        // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
+        // TODO: IF hashurl equals '#HOWTO', set main nav bar active for demo id.
+        // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
+
+        // TODO: IF hashurl equals any of the subnavbar IDs, set sub nav bar active for demo id.
+        // setSubBarItemActive("sub-nav-bar-item-" + urlWithHash.value);
     }
     else if (urlWithHash.value ==="#demo") {
+            // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
             hideSubNavBar(urlWithHash);
     }
-    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
 
-
-    // TODO: step.6 setMainNavBarItemActive() method that sets one main-nav-bar item active and all other main nav bar items not active.
-    // TODO: step.7 setSubNavBarItemActive() method that sets one sub-nav-bar item active and all other main nav bar items not active.
 
     function toggleHash(grabHash) { //create a function with a parameter to pass
         for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
@@ -300,6 +299,14 @@
     }
     //toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
 
+    // TODO: step.6 setMainNavBarItemActive(mainNavBarItemId) method that sets one main-nav-bar item active and all other main nav bar items not active.
+    function setMainNavBarItemActive(mainNavBarItemId) {
+
+    }
+    // TODO: step.7 setSubNavBarItemActive(subNavBarItemId) method that sets one sub-nav-bar item active and all other main nav bar items not active.
+    function setSubNavBarItemActive(subNavBarItemId){
+
+    }
 
     function myFunction() {
 
