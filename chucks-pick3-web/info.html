@@ -186,6 +186,13 @@
 </div>
 <script>
 
+    // TODO: step.1 When page first loads get webstie url
+    // TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
+    // TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
+    // TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
+    // TODO:        call showSubNavBar() method.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+
 
     function toggleHash(grabHash) { //create a function with a parameter to pass
         for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
@@ -205,7 +212,7 @@
             });
         }
     }
-    toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
+    //toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
 
 
     function myFunction() {
