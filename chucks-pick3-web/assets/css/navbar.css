@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .nav-bar-container {
     display: block;
     width: 100%;
@@ -151,4 +155,43 @@
 .sub-nav-bar-container .sub-nav-bar-col-50.active {
     background-color: gray;
 }
+
+/* Responsive Set Up------- */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 760px) {
+
+.main-nav-bar-container{
+    width: 100%;
+/*expands to 100% width */
+}
+
+.logo-container {
+    width: 20%;
+    height: 75px;
+
+/* stays at 20% width, takes on height of header-img */
+}
+
+.header-img-container {
+    width: 80%;
+    height: 75px;
+/* stays at 80% width */
+}
+
+    .info {
+      display: none;
+
+    }
+
+[class*="nav-bar-col-25"] {
+width: 30%
+
+}
+}
+
 
