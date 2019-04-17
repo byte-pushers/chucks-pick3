@@ -102,7 +102,8 @@
                     <a href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo'"  class="nav-bar-col-25 allow-hover ">
+                <div onClick="document.location='info.html#demo'"  onclick="myFunction()"
+                 class="nav-bar-col-25 allow-hover ">
                     <a  href="info.html#demo">Demo</a>
                 </div>
 
@@ -188,7 +189,8 @@
 
     function toggleHash(grabHash) { //create a function with a parameter to pass
         for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
-            grabHash[i].addEventListener("click", function(e) { // looking for the click event on parameter .. e equals event
+            grabHash[i].addEventListener("click", function(e)
+            { // looking for the click event on parameter .. e equals event
                 var current = this; //In an event, this refers to the element that received the event.
                 for (var i = 0; i < grabHash.length; i++) { //loop thru
                     if (current !== grabHash[i]) {  // conditional var should equal the click
@@ -206,8 +208,105 @@
     toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
 
 
+    function myFunction() {
+
+        window.location.hash = '#demo';
+        var noSub = document.getElementById(window.location.hash.substring(1));
+        if ( noSub.style.display === "none") {
+            noSub.style.display = "block";
+        } else {
+            noSub.style.display = "none";
+        }
+    }
+
+    /*function noSubNav() {
+
+        window.location.hash = '#demo';
+
+        var noSub = document.getElementById(window.location.hash.substring(1));
+        if (noSub) noSub.style.display = 'block'; {
+
+        }
+
+    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function myFunction(e) {
+        if (document.querySelector('.nav-bar-col-25 .active') !== null) {
+            document.querySelector('sub-nav-bar-col-25').classList.add('.active');
+        }
+        e.target.className = "active";
+    }
+
+
+
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
+
+
+    var noSubforDemo = document.querySelectorAll("#demo");
+
+    for (var i = 0, l = noSubforDemo.length; i < l; i++) {
+        var blockSub = noSubforDemo[i];
+        blockSub.innerHTML = blockSub.innerHTML.replace('');
+    }
+
+
+
+
+
+
+    // Listen to all clicks on the document
+    document.addEventListener('click', function (event) {
+
+        // If the event target doesn't match bail
+        if (!event.target.hasAttribute('#')) {
+
+        }
+
+        // Otherwise, run your code...
+
+    }, false);
+
+    document.addEventListener('click', function (event) {
+
+        // If the event target doesn't match bail
+        if (!event.target.matches('.active')) return;
+
+        // Otherwise, run your code...
+
+    }, false);*/
 
 
 
