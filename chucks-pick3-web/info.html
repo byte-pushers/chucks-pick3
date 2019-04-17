@@ -186,11 +186,94 @@
 </div>
 <script>
 
-    // TODO: step.1 When page first loads get webstie url
+    /*step.1 page first loads get webstie url
+
+      var infoUrl= window.location.href;
+
+     step.2 determine what page it is pointing to, by seeing if url contains info.html string
+
+
+      var findHash= (window.location.href);
+
+
+
+
+     step.3 if url does contain info.html proceed with getting hash tag value at end of url
+
+      document.getElementById(location.hash.substring(1)).style.display = 'block'
+
+      var type = window.location.hash.substr(1);
+
+
+
+     step.4 if has tag value is equal to howto set active class on to howto and remove active class from demo
+
+    if (location.hash === "#howto") {
+         return addClassName('.active');
+             }
+
+               if (location.hash !== '#howto') {
+                 location.hash.classList.add('active')
+             } else if (current.classList.contains('active') === true) {
+                 current.classList.remove('active');
+             } else {
+                 current.classList.add('active')
+             }
+
+             function myFunction(e) {
+                 var elems = document.querySelectorAll(".active");
+                                  [].forEach.call(elems, function(el) {
+                                         el.classList.remove("active");
+                                         });
+                                     e.target.className = "active";
+                                              }
+
+     step.4 if has tag value is equal to demo set active class on to demo and remove actvie class from howto
+
+
+
+
+     var infoUrl= window.location.href; // TODO:  Page first loads get webstie url
+     console.log(infoUrl);
+     var findHash= (window.location.href);
+     //TODO: determine what page it is pointing to, by seeing if url contains info.html#howto string
+     console.log(findHash);
+
+     var url = window.location.href;
+     var hash = url.substring(url.indexOf('#')+1);
+
+     function toggleBar() {
+         var url = window.location.href;
+         var hash = url.substring(url.indexOf('#') + 1);
+         for (var i = 0; i < hash.length; i++) {
+             if (hash === true) {  //TODO: NOT SURE IF THATS TRUE
+                 console.log(hash);
+                 hash[i].addClassName = ".active";
+                 console.log(hash);
+             }
+
+         }
+
+     }*/
+
+
+    // TODO: step.1 When page first loads get website url
+
+    var infoUrl= window.location.href;
+
     // TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
+    var urlWithHash = window.location.hash.substr(1);
     // TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
     // TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
     // TODO:        call showSubNavBar() method.
+
+
+    if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
+        showSubNavBar(urlWithHash);
+    }
+    else if (urlWithHash.value ==="#demo") {
+            hideSubNavBar(urlWithHash);
+    }
     // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
 
 
