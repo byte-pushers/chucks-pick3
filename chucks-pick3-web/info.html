@@ -102,7 +102,7 @@
                     <a href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo'"  onclick="myFunction()"
+                <div onClick="document.location='info.html#demo';hideSubNavBar();"
                  class="nav-bar-col-25 allow-hover ">
                     <a  href="info.html#demo">Demo</a>
                 </div>
@@ -218,6 +218,13 @@
             noSub.style.display = "none";
         }
     }
+
+    function hideSubNavBar() {
+        document.querySelector(".sub-nav-bar-container").style.display = "none";
+        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
+    }
+
+
 
     /*function noSubNav() {
 
