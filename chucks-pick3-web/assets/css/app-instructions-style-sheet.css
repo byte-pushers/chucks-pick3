@@ -48,3 +48,13 @@
 
 
 }
+
+.sub-nav-bar-title-container {
+    display: inline-block;
+    text-align: center;
+    background-color: #f2f2f2;
+    width: 20%;
+    float: left;
+    height: 50px;
+    line-height: 3em;
+}
