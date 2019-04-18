@@ -113,7 +113,51 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mobile-nav-bar-container">
+
+                    <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover active ">
+                        <a href="home.html">Home</a>
+                    </div>
+
+                    <div class=" nav-bar-col-25 allow-hover mobile">
+
+                        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+                    <div class="side-nav-stick">
+
+                        <div id="side-nav-bar" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <h1>Menu </h1>
+                            <h5 class="menu-option"> How To</h5>
+                            <a href="info.html#howto" class="how-to-option">Requirements</a>
+                            <a href="info.html#interface" class="how-to-option">Interface</a>
+                            <a href="info.html#generate" class="how-to-option">Generate</a>
+                            <a href="info.html#generated-picks" class="how-to-option">View Picks</a>
+
+                            <h5><a href="info.html#demo">Demo</a></h5>
+
+                        </div>
+                    </div>
+                    </div>
+
+
+                    <div onClick="document.location='login.html'" class="nav-bar-col-25 allow-hover mobile">
+                        <a href="login.html">Login</a>
+                    </div>
+
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-25 allow-hover mobile">
+                        <a href="sign-up.html">Sign Up</a>
+                    </div>
+
+
             </div>
+
+
+
+            </div>
+
+
             <!--<div class="home">
                 <h9>Home</h9>
             </div>
@@ -179,5 +223,32 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        function openNav() {
+            document.getElementById("side-nav-bar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("side-nav-bar").style.width = "0";
+        }
+    </script>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("side-nav-bar");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+    </script>
 </body>
 </html>

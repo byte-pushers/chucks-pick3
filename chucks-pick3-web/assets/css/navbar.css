@@ -150,6 +150,7 @@
 .sub-nav-bar-container .sub-nav-bar-col-50.allow-hover:hover {
     background-color: green;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .sub-nav-bar-container .sub-nav-bar-col-50.active {
@@ -158,17 +159,42 @@
 
 /* Responsive Set Up------- */
 
+
+
+
 img {
     max-width: 100%;
     height: auto;
+}
+.mobile-nav-bar-container {
+    display: none;
 }
 
 @media only screen and (max-width: 760px) {
 
 .main-nav-bar-container{
+    display: none;
+}
+
+    .mobile {
+        float: right;
+    }
+
+.mobile-nav-bar-container{
+    display: block;
     width: 100%;
 /*expands to 100% width */
 }
+
+    .mobile-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+        background-color: green;
+        cursor: pointer;
+    }
+    .mobile-nav-bar-container a:hover {
+        text-decoration: none;
+        color: black;
+    }
+
 
 .logo-container {
     width: 20%;
@@ -183,15 +209,117 @@ img {
 /* stays at 80% width */
 }
 
-    .info {
-      display: none;
 
-    }
 
 [class*="nav-bar-col-25"] {
-width: 30%
+width: 20%
 
 }
+}
+
+/*---Hamburger Menu----*/
+
+
+
+.side-nav-stick{
+    position: inherit;
+    top: 124px;
+}
+
+.sidenav {
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    background-color: rgba(0,0,0,0.85);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+}
+.sidenav h1 {
+    padding: 0px 10px 20px 20px;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+}
+.sidenav h5 {
+    padding: 0px 0px 5px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.menu-option{
+    margin-left: 45px;
+}
+
+
+.how-to-option:hover {
+    background-color: white;
+    color: black !important;
+
+}
+
+.sidenav h5 a {
+    padding: 15px 0px 10px 45px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.sidenav h5 a:hover {
+    background-color: green;
+    color: white;
+}
+
+.sidenav a {
+    padding: 3px 0px 3px 75px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: left;
+}
+
+
+
+
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.closebtn:hover{
+   color: white !important;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 70%;
 }
 
 
