@@ -170,13 +170,21 @@ img {
     display: none;
 }
 
+.mobile-sub-nav-bar-title-container {
+    display: none;
+}
+
+.mobile-sub-nav-bar-container {
+    display: none;
+}
 
 
 @media only screen and (max-width: 760px) {
+    /*---main-nav-bar----*/
+    .main-nav-bar-container {
+        display: none;
+    }
 
-.main-nav-bar-container{
-    display: none;
-}
     .sub-nav-bar-container {
         display: none;
     }
@@ -189,43 +197,89 @@ img {
         float: right;
     }
 
-.mobile-nav-bar-container{
-    display: block;
-    width: 100%;
-    height: 50px;
-/*expands to 100% width */
-}
+    /*----main--nav-bar-----*/
+    /*------sub-nav-bar-----*/
+    [class*="sub-nav-bar-col-25"] {
+        width: 25%
+
+    }
+    .mobile-sub-nav-bar-title-container {
+        display: block;
+        width: 100%;
+        font-size: 12px ;
+        text-align: center;
+        line-height: 3em;
+    }
+    .mobile-sub-nav-bar-container {
+
+        display: block;
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        color: white;
+        float:right;
+        /*border: 2px solid black;
+        padding: 5px;*/
+    }
+
+
+
+
+
+
+
+
+
+
+    .mobile-sub-nav-bar-container .sub-nav-bar-col-25.allow-hover:hover {
+        background-color: green;
+
+        cursor: pointer;
+        text-decoration: none;
+
+    }
+
+
+    /*------sub-nav-bar-----*/
+    /*--- main-mobile-nav-bar----*/
+    .mobile-nav-bar-container {
+        display: block;
+        width: 100%;
+        height: 50px;
+        /*expands to 100% width */
+    }
 
     .mobile-nav-bar-container .nav-bar-col-25.allow-hover:hover {
         background-color: green;
         cursor: pointer;
     }
+
     .mobile-nav-bar-container a:hover {
         text-decoration: none;
         color: black;
     }
 
 
-.logo-container {
-    width: 20%;
-    height: 75px;
+    .logo-container {
+        width: 20%;
+        height: 75px;
 
-/* stays at 20% width, takes on height of header-img */
+        /* stays at 20% width, takes on height of header-img */
+    }
+
+    .header-img-container {
+        width: 80%;
+        height: 75px;
+        /* stays at 80% width */
+    }
+
+
+    [class*="mobile-nav-bar-col-25"] {
+        width: 20%
+
+    }
 }
 
-.header-img-container {
-    width: 80%;
-    height: 75px;
-/* stays at 80% width */
-}
-
-
-
-[class*="nav-bar-col-25"] {
-width: 20%
-
-}
-}
 
 /*---Hamburger Menu----*/
 
