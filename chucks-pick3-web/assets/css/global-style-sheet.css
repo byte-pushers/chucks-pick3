@@ -141,3 +141,7 @@ h1 {
     text-align: center;
 
 }
+
+.body-container {
+    z-index: 1;
+}

@@ -170,13 +170,22 @@ img {
     display: none;
 }
 
+
+
 @media only screen and (max-width: 760px) {
 
 .main-nav-bar-container{
     display: none;
 }
+    .sub-nav-bar-container {
+        display: none;
+    }
 
-    .mobile {
+    .sub-nav-bar-title-container {
+        display: none;
+    }
+
+    .float-right {
         float: right;
     }
 
@@ -232,7 +241,7 @@ width: 20%
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     right: 0;
     background-color: rgba(0,0,0,0.85);
     overflow-x: hidden;
