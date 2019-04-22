@@ -156,7 +156,8 @@
                 </div>
             </div>
             <div class="mobile-nav-bar-container">
-
+                <div class="sub-side-nav-stick">
+                    <div id="sub-scroll-nav" class="subsidenav">
                 <div class="mobile-sub-nav-bar-title-container">
                     <div><span><b>How To Play</b></span></div>
                 </div>
@@ -186,12 +187,13 @@
 
 
 
-
+</div>
                 </div>
 
 
 
 
+            </div>
             </div>
         </div>
         <!--</div>-->
@@ -256,31 +258,41 @@
 
 
 </script>
-
-<script>
-    function openNav() {
-        document.getElementById("side-nav-bar").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("side-nav-bar").style.width = "0";
-    }
-</script>
+<!--JS for info-nav-->
 
 <script>
     window.onscroll = function() {myFunction()};
 
-    var header = document.getElementById("side-nav-bar");
+    var header = document.getElementById("sub-scroll-nav");
     var sticky = header.offsetTop;
 
     function myFunction() {
         if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
+            header.classList.add("sub-sticky");
         } else {
-            header.classList.remove("sticky");
+            header.classList.remove("sub-sticky");
         }
     }
 </script>
 
+
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("sub-scroll-nav");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sub-sticky");
+        } else {
+            header.classList.remove("sub-sticky");
+        }
+    }
+</script>
+
+
+<!--JS for info-nav-->
 </body>
 </html>

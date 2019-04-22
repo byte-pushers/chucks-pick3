@@ -209,6 +209,7 @@ img {
         font-size: 12px ;
         text-align: center;
         line-height: 3em;
+        background-color: white;
     }
     .mobile-sub-nav-bar-container {
 
@@ -223,9 +224,19 @@ img {
     }
 
 
+    .instructions-offset {
+        position: absolute;
+        margin-top: 150px;
+        width: 100%;
+        z-index: 0;
+    }
 
-
-
+    .sub-side-nav-stick{
+        position: fixed;
+        top: 76px;
+        width: 100%;
+        z-index: 2;
+    }
 
 
 
@@ -238,7 +249,32 @@ img {
         text-decoration: none;
 
     }
+    .sub-sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        bottom: 80px    ;
 
+    }
+
+    .sub-side-nav-stick{
+        position: fixed;
+        top: 76px;
+        width: 100%;
+
+    }
+
+    .subsidenav {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 2;
+        overflow-x: hidden;
+        transition: 0.5s;
+        margin-bottom: 20px;
+
+    }
 
     /*------sub-nav-bar-----*/
     /*--- main-mobile-nav-bar----*/
@@ -287,7 +323,8 @@ img {
 
 .side-nav-stick{
     position: fixed;
-    top: 124px;
+    top: 100px;
+    width: 100%;
 }
 
 .sidenav {
