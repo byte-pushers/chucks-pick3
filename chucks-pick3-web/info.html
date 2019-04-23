@@ -204,6 +204,15 @@
 </div>
 <script>
 
+    var navBarHashTag = window.location.hash.substr(1);
+
+    if ( navBarHashTag === 'howto') {
+        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+    } else if (navBarHashTag === 'demo') {
+        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+        hideSubNavBar();
+    }
+
     function hideSubNavBar() {
         document.querySelector(".sub-nav-bar-container").style.display = "none";
         document.querySelector(".sub-nav-bar-title-container").style.display = "none";
@@ -215,6 +224,7 @@
     }
 
     function setMainNavBarItemActive(id) {
+
         var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover");
         for (var i = 0; i < setActiveNav.length; ++i) {
             var activeItem = setActiveNav[i];
