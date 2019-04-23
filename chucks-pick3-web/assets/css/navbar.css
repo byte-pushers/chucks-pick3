@@ -38,6 +38,13 @@
 
 }
 
+
+.nav-bar-col-20 {
+    display: none;
+
+
+}
+
 .nav-bar-col-25 a {
     list-style-type: none;
     font-size: 17px;
@@ -180,6 +187,25 @@ img {
     .sub-nav-bar-container {
         display: none;
     }
+    .nav-bar-col-20 {
+        display: inline-block;
+        float: left;
+        line-height: 3em;
+        text-align: center;
+        width: 20%;
+        /*border: 2px solid blue;*/
+        height: 100%;
+
+
+    }
+
+    .nav-bar-col-20 a {
+        list-style-type: none;
+        font-size: 17px;
+        text-decoration: none;
+        color: black;
+
+    }
 
     .sub-nav-bar-title-container {
         display: none;
@@ -196,7 +222,7 @@ img {
 /*expands to 100% width */
 }
 
-    .mobile-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+    .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
         background-color: green;
         cursor: pointer;
     }
@@ -221,10 +247,7 @@ img {
 
 
 
-[class*="nav-bar-col-25"] {
-width: 20%
 
-}
 }
 
 /*---Hamburger Menu----*/
