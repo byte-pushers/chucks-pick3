@@ -167,17 +167,17 @@
 
 
                         <div onClick="document.location='#requirements'" class="sub-nav-bar-col-25 allow-hover ">
-                            <a href="#requirements">Needed</a>
+                            <a href="#requirements-mobile">Needed</a>
                         </div>
 
                         <div onClick="document.location='#interface'" class="sub-nav-bar-col-25 allow-hover ">
-                            <a href="#interface">UI</a>
+                            <a href="#interface-mobile">UI</a>
                         </div>
 
 
 
                         <div onClick="document.location='#generate'" class=" sub-nav-bar-col-25 allow-hover">
-                            <a href="#generate">Gen</a>
+                            <a href="#generate-mobile">Gen</a>
                         </div>
 
                         <div onClick="document.location='#generated-picks'" class=" sub-nav-bar-col-25 allow-hover">
@@ -199,13 +199,27 @@
         <!--</div>-->
     </div>
     <div class="body-container">
+        <br id="requirements-mobile">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
         <div class="what-you-need" id="howto">
             <H2 id="requirements">Requirements:</H2>
             <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
         </div>
 
+        <br id="interface-mobile">
+        <br>
+        <br>
+        <br>
+
         <div class="interface">
-            <H2 id="interface">Interface:</H2>
+            <H2 class="interface">Interface:</H2>
             <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
         </div>
         <br>
@@ -213,6 +227,11 @@
         <div class="interface">
             <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
         </div>
+
+        <br id="generate-mobile">
+        <br>
+        <br>
+        <br>
 
         <div class="how-to-generate" id="demo">
             <H2 id="generate">How to Generate Picks:</H2>
@@ -222,6 +241,10 @@
         <div class="how-to-generate">
             <img src="assets/img/Info page -13.png" alt="Generate" style="width:700px" align="center">
         </div>
+
+        <br id="generated-picks-mobile">
+        <br>
+
 
         <div class="how-to-view">
             <H2 id="generated-picks">How to View Generated Picks:</H2>
@@ -275,7 +298,20 @@
     }
 </script>
 
+<script>
+    window.onscroll = function() {myFunction()};
 
+    var header = document.getElementById("sub-scroll-nav");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sub-sticky");
+        } else {
+            header.classList.remove("sub-sticky");
+        }
+    }
+</script>
 
 <script>
     window.onscroll = function() {myFunction()};
@@ -292,7 +328,20 @@
     }
 </script>
 
+<script>
+    window.onscroll = function() {myFunction()};
 
+    var header = document.getElementById("sub-scroll-nav");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sub-sticky");
+        } else {
+            header.classList.remove("sub-sticky");
+        }
+    }
+</script>
 <!--JS for info-nav-->
 </body>
 </html>

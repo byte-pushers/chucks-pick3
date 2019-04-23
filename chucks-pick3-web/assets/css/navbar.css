@@ -224,12 +224,7 @@ img {
     }
 
 
-    .instructions-offset {
-        position: absolute;
-        margin-top: 150px;
-        width: 100%;
-        z-index: 0;
-    }
+
 
     .sub-side-nav-stick{
         position: fixed;
