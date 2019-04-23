@@ -98,14 +98,14 @@
                     <a href="home.html">Home</a>
                 </div>
 
-                <div id="main-nav-bar-item-howto"  onClick="document.location='info.html#howto';showSubNavBar();
+                <div id="main-nav-bar-item-howto"  onClick="document.location='info.html#howto'; showSubNavBar();
                     setMainNavBarItemActive(this.id);"
                      class="nav-bar-col-25 allow-hover">
                     <a href="info.html#howto">How To</a>
                 </div>
 
 
-                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo' ;showSubNavBar(); setMainNavBarItemActive(this.id);" class="nav-bar-col-25 allow-hover">
+                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo'; hideSubNavBar(); setMainNavBarItemActive(this.id);" class="nav-bar-col-25 allow-hover">
                     <a  href="info.html#demo">Demo</a>
                 </div>
 
@@ -128,28 +128,28 @@
                     <span>&nbsp;</span>
                 </div>
 
-                <div id="sub-nav-bar-item" class="sub-nav-bar-col-25">
+                <div id="sub-nav-bar-item-requ" class="sub-nav-bar-col-25">
                     <div onClick="document.location='#requirements';
-                        setMainNavBarItemActive(this.id);"
+                        setSubNavBarItemActive(this.id);"
                          class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#requirements">Requirements</a>
                     </div>
 
-                    <div id="sub-nav-bar-item" onClick="document.location='#interface';
-                        setMainNavBarItemActive(this.id);"
+                    <div id="sub-nav-bar-item-inter" onClick="document.location='#interface';
+                        setSubNavBarItemActive(this.id);"
                          class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#interface">Interface</a>
                     </div>
                 </div>
 
-                <div id="sub-nav-bar-item-#gener" class="sub-nav-bar-col-25">
-                    <div onClick="document.location='#generate';  setMainNavBarItemActive(this.id);"
+                <div id="sub-nav-bar-item-gener" class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#generate';  setSubNavBarItemActive(this.id);"
                          class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generate">Generate</a>
                     </div>
 
-                    <div id="sub-nav-bar-item-#generpic" onClick="document.location='#generated-picks';
-                        setMainNavBarItemActive(this.id);"
+                    <div id="sub-nav-bar-item-generpic" onClick="document.location='#generated-picks';
+                        setSubNavBarItemActive(this.id);"
                          class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generated-picks">View Picks</a>
                     </div>
@@ -212,36 +212,81 @@
     // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
 
 
-    var urlWithHash = window.location.hash.substr(1);
+    /*var urlWithHash = window.location.hash.substr(1);
 
     if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
         showSubNavBar();
     }
     else if (urlWithHash.value ==="#demo") {
         hideSubNavBar();
-    }
+    }*/
 
 
-    function showSubNavBar () {
+    /*function showSubNavBar () {
         document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
         document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
-    }
+    }*/
 
     function hideSubNavBar () {
         document.querySelector(".sub-nav-bar-container").style.display = "none";
         document.querySelector(".sub-nav-bar-title-container").style.display = "none";
     }
 
-    function setMainNavBarItemActive(id) {
-        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover" );
-        for (var i = 0; i < setActiveNav.length; ++i) {
-            var activeItem = setActiveNav[i];
-            activeItem.style.backgroundColor = (activeItem.id === id) ? "red" : "initial";
-        }
+    function showSubNavBar () {
+               document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
+               document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
+           }
 
+   function setMainNavBarItemActive(id) {
+
+       var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover");
+       for (var i = 0; i < setActiveNav.length; ++i) {
+           var activeItem = setActiveNav[i];
+           activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+
+           var urlWithHash = window.location.hash.substr(1);
+
+           if (urlWithHash.value ==="#demo") {
+               hideSubNavBar();
+           }
+           if (urlWithHash.value ==="#howto") {
+               showSubNavBar();
+           }
+
+
+           /*function showSubNavBar () {
+               document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
+               document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
+           }
+
+           function hideSubNavBar () {
+               document.querySelector(".sub-nav-bar-container").style.display = "none";
+               document.querySelector(".sub-nav-bar-title-container").style.display = "none";
+           }*/
+
+        }
     }
 
 
+    function setSubNavBarItemActive(id) {
+
+        var setActiveNav = document.getElementsByClassName("sub-nav-bar-col-50 allow-hover" );
+        for (var i = 0; i < setActiveNav.length; ++i) {
+            var activeItem = setActiveNav[i];
+            activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+
+
+        }
+    }
+
+
+
+    /*if (setActiveNav === "main-nav-bar-item-demo" ) {
+        hideSubNavBar();
+
+    } else if (setActiveNav === "sub-nav-bar-col-50 allow-hover ") {
+        activeItem.style.backgroundColor = (activeItem.id === id) ? "red" : "initial";
+    }*/
 
 
 
