@@ -94,15 +94,18 @@
         <div class="nav-bar-container">
 
             <div class="main-nav-bar-container">
-                <div id="main-nav-bar-item-#home" onClick="document.location='home.html';showSubNavBar();" class="nav-bar-col-25  allow-hover ">
+                <div  onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
                     <a href="home.html">Home</a>
                 </div>
 
-                <div id="main-nav-bar-item-#howto" onClick="document.location='info.html#howto';setActive(); hideSubNavBar();" class="nav-bar-col-25 allow-hover">
+                <div id="main-nav-bar-item-howto"  onClick="document.location='info.html#howto';showSubNavBar();
+                    setMainNavBarItemActive(this.id);"
+                     class="nav-bar-col-25 allow-hover">
                     <a href="info.html#howto">How To</a>
                 </div>
 
-                <div id="main-nav-bar-item-#demo" onClick="document.location='info.html#demo';setActive(); hideSubNavBar();"
+                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo';hideSubNavBar();
+                    setMainNavBarItemActive(this.id);"
                      class="nav-bar-col-25 allow-hover ">
                     <a  href="info.html#demo">Demo</a>
                 </div>
@@ -126,22 +129,29 @@
                     <span>&nbsp;</span>
                 </div>
 
-                <div class="sub-nav-bar-col-25">
-                    <div id="sub-nav-bar-item-req" onClick="document.location='#requirements';setActive();" class="sub-nav-bar-col-50 allow-hover ">
+                <div id="sub-nav-bar-item" class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#requirements';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#requirements">Requirements</a>
                     </div>
 
-                    <div id="sub-nav-bar-item-inter" onClick="document.location='#interface';setActive();" class="sub-nav-bar-col-50 allow-hover ">
+                    <div id="sub-nav-bar-item" onClick="document.location='#interface';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#interface">Interface</a>
                     </div>
                 </div>
 
-                <div class="sub-nav-bar-col-25">
-                    <div id="sub-nav-bar-item-gener" onClick="document.location='#generate';setActive();" class="sub-nav-bar-col-50 allow-hover">
+                <div id="sub-nav-bar-item-#gener" class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#generate';  setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generate">Generate</a>
                     </div>
 
-                    <div id="sub-nav-bar-item-generpic" onClick="document.location='#generated-picks';setActive();" class="sub-nav-bar-col-50 allow-hover">
+                    <div id="sub-nav-bar-item-#generpic" onClick="document.location='#generated-picks';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generated-picks">View Picks</a>
                     </div>
                 </div>
@@ -184,223 +194,43 @@
         </div>
     </div>
 </div>
-
 <script>
 
 
 
-
-
-
-
-
-
-/*TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
-
-    var urlWithHash = window.location.hash.substr(1);
-
-
-
-// TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
-
-
-// TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
-
-    if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks") {
-
-// TODO:call showSubNavBar() method.
-
-    showSubNavBar();
-
-    }
-
-// TODO: IF hashurl equals '#HOWTO', set main nav bar active for howto id.
-    // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
-        else if (("main-nav-bar-item-#howto" + urlWithHash.value)) {
-        setActive();
-
-    }
-        //var setActiveHowtoId = document.getElementById("main-nav-bar-item-#howto");
-        //setActiveHowtoId.onclick = setActive();
-
-// TODO: IF hashurl equals '#DEMO', set main nav bar active for demo id.
-    // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
-
-    else if ("main-nav-bar-item-#demo") {
-        setActive();
-
-    }
-        //var setActiveDemoId = document.getElementById("main-nav-bar-item-#demo");
-        //setActiveDemoId.onclick = setActive();
-// TODO: IF hashurl equals any of the subnavbar IDs, set sub nav bar active for howto and subnavbar id.
-    // setSubBarItemActive("sub-nav-bar-item-" + urlWithHash.value);
-
-    var setActiveSubId = document.querySelectorAll("#sub-nav-bar-reg", "#sub-nav-bar-item-gener", "sub-nav-bar-item-inter", "#sub-nav-bar-item-generpic");
-    var allActive = setActiveSubId + urlWithHash.value;
-
-    else if (allActive) {
-        setActive();
-
-        //var setActiveSubId = document.querySelectorAll("#sub-nav-bar-reg", "#sub-nav-bar-item-gener", "sub-nav-bar-item-inter", "#sub-nav-bar-item-generpic");
-        //setActiveSubIdId.onclick = setActive();
-    }
-
-// TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
-
-    else if (urlWithHash.value ==="#demo") {
-    hideSubNavBar();
-    }
-
-
-
-
-
-    function toggleHash(grabHash) { //create a function with a parameter to pass
-        for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
-            grabHash[i].addEventListener("click", function(e)
-            { // looking for the click event on parameter .. e equals event
-                var current = this; //In an event, this refers to the element that received the event.
-                for (var i = 0; i < grabHash.length; i++) { //loop thru
-                    if (current !== grabHash[i]) {  // conditional var should equal the click
-                        grabHash[i].classList.remove('active');  //The classList property returns the class name(s) of an element, as a DOMTokenList object. This property is useful to add, remove and toggle CSS classes on an element.The classList property is read-only, however, you can modify it by using the add() and remove() methods.
-                    } else if (current.classList.contains('active') === true) {
-                        current.classList.remove('active');
-                    } else {
-                        current.classList.add('active')
-                    }
-                }
-                e.preventDefault();   // prevent default behaviour if needed
-            });
-        }
-    }
-    //toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
-
-// TODO: step.6 setMainNavBarItemActive(mainNavBarItemId) method that sets one main-nav-bar item active and all other main nav bar items not active.
-    //function setMainNavBarItemActive(mainNavBarItemId) {
-
-    //mainNavBarItemId.classList.add('active');
-        //return false;
-
-    //}
-
-    function setActive() {
-        this.classList.add('active');
-        return false;
-    }
+    // TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
+    // TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
+    // TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
+    // TODO: call showSubNavBar() method.
+    // TODO: IF hashurl equals '#HOWTO', set main nav bar active for how to id.
+    // TODO: IF hashurl equals '#HOWTO', set main nav bar active for demo id.
+    // TODO: IF hashurl equals any of the subnavbar IDs, set sub nav bar active for demo id.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.6 setMainNavBarItemActive(mainNavBarItemId) method that sets one main-nav-bar item active and all other main nav bar items not active.
     // TODO: step.7 setSubNavBarItemActive(subNavBarItemId) method that sets one sub-nav-bar item active and all other main nav bar items not active.
-    //function setSubNavBarItemActive(subNavBarItemId){
-
-    //}
-
-    /*function myFunction() {
-
-        window.location.hash = '#demo';
-        var noSub = document.getElementById(window.location.hash.substring(1));
-        if ( noSub.style.display === "none") {
-            noSub.style.display = "block";
-        } else {
-            noSub.style.display = "none";
-        }
-    }
-
-
-
-     function showSubNavBar () {
-         document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
-         document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
-     }
-
-    function hideSubNavBar () {
-        document.querySelector(".sub-nav-bar-container").style.display = "none";
-        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
-    }
-
-
-
-    /*function noSubNav() {
-
-        window.location.hash = '#demo';
-
-        var noSub = document.getElementById(window.location.hash.substring(1));
-        if (noSub) noSub.style.display = 'block'; {
-
-        }
-
-    }*/
-
-
-
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
 
 
     var urlWithHash = window.location.hash.substr(1);
-    var setActiveSubId = document.querySelectorAll("#sub-nav-bar-reg", "#sub-nav-bar-item-gener", "sub-nav-bar-item-inter", "#sub-nav-bar-item-generpic");
-    var allActive = setActiveSubId + urlWithHash.value;
 
-
-/*for (var i = 0; i < allActive.length; i++) {
-    allActive[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "");
-        }
-        this.className += " active";
-    });
-}*/
-    allActive.addEventListener('click', function() {
-        if (urlWithHash.value === "#howto" || "#generate" || "#requirements" || "#interface" || "#generated-picks") {
-            showSubNavBar();
-            if ("main-nav-bar-item-#demo") {
-                setActive();
-                if (allActive === true) {
-                    setActive();
-                    if (urlWithHash.value === "#demo") {
-                        hideSubNavBar();
-
-                    }
-
-                }
-
-            }
-        }
-
-    });
-
-function setActive() {
-    allActive.classList.add('active');
-}
-
-function showSubNavBar () {
-    document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
-    document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
-}
-
-function hideSubNavBar () {
-    document.querySelector(".sub-nav-bar-container").style.display = "none";
-    document.querySelector(".sub-nav-bar-title-container").style.display = "none";
-}
-
-
-
-   /* function toggleHash(grabHash) { //create a function with a parameter to pass
-        for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
-            grabHash[i].addEventListener("click", function(e)
-            { // looking for the click event on parameter .. e equals event
-                var current = this; //In an event, this refers to the element that received the event.
-                for (var i = 0; i < grabHash.length; i++) { //loop thru
-                    if (current !== grabHash[i]) {  // conditional var should equal the click
-                        grabHash[i].classList.remove('active');  //The classList property returns the class name(s) of an element, as a DOMTokenList object. This property is useful to add, remove and toggle CSS classes on an element.The classList property is read-only, however, you can modify it by using the add() and remove() methods.
-                    } else if (current.classList.contains('active') === true) {
-                        current.classList.remove('active');
-                    } else {
-                        current.classList.add('active')
-                    }
-                }
-                e.preventDefault();   // prevent default behaviour if needed
-            });
-        }
+    if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
+        showSubNavBar();
     }
-    toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav*/
+    else if (urlWithHash.value ==="#demo") {
+        // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+        hideSubNavBar(urlWithHash);
+    }
 
+    function setMainNavBarItemActive(id) {
+        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover" + "sub-nav-bar-col-50 allow-hover");
+        for (var i = 0; i < setActiveNav.length; ++i) {
+            var activeItem = setActiveNav[i];
+            activeItem.style.backgroundColor = (activeItem.id === id) ? "red" : "initial";
+        }
+
+    }
 
 </script>
 
