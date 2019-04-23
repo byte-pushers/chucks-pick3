@@ -104,9 +104,8 @@
                     <a href="info.html#howto">How To</a>
                 </div>
 
-                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo';hideSubNavBar();
-                    setMainNavBarItemActive(this.id);"
-                     class="nav-bar-col-25 allow-hover ">
+
+                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo' ;showSubNavBar(); setMainNavBarItemActive(this.id);" class="nav-bar-col-25 allow-hover">
                     <a  href="info.html#demo">Demo</a>
                 </div>
 
@@ -219,18 +218,32 @@
         showSubNavBar();
     }
     else if (urlWithHash.value ==="#demo") {
-        // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
-        hideSubNavBar(urlWithHash);
+        hideSubNavBar();
+    }
+
+
+    function showSubNavBar () {
+        document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
+        document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
+    }
+
+    function hideSubNavBar () {
+        document.querySelector(".sub-nav-bar-container").style.display = "none";
+        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
     }
 
     function setMainNavBarItemActive(id) {
-        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover" + "sub-nav-bar-col-50 allow-hover");
+        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover" );
         for (var i = 0; i < setActiveNav.length; ++i) {
             var activeItem = setActiveNav[i];
             activeItem.style.backgroundColor = (activeItem.id === id) ? "red" : "initial";
         }
 
     }
+
+
+
+
 
 </script>
 
