@@ -94,15 +94,18 @@
         <div class="nav-bar-container">
 
             <div class="main-nav-bar-container">
-                <div id="main-nav-bar-item-#home" onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
+                <div  onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
                     <a href="home.html">Home</a>
                 </div>
 
-                <div onClick="document.location='info.html#howto';showSubNavBar();"  class="nav-bar-col-25 allow-hover ">
+                <div id="main-nav-bar-item-howto"  onClick="document.location='info.html#howto';showSubNavBar();
+                    setMainNavBarItemActive(this.id);"
+                     class="nav-bar-col-25 allow-hover">
                     <a href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo';hideSubNavBar();"
+                <div id="main-nav-bar-item-demo" onClick="document.location='info.html#demo';hideSubNavBar();
+                    setMainNavBarItemActive(this.id);"
                      class="nav-bar-col-25 allow-hover ">
                     <a  href="info.html#demo">Demo</a>
                 </div>
@@ -126,22 +129,29 @@
                     <span>&nbsp;</span>
                 </div>
 
-                <div class="sub-nav-bar-col-25">
-                    <div onClick="document.location='#requirements'" class="sub-nav-bar-col-50 allow-hover ">
+                <div id="sub-nav-bar-item" class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#requirements';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#requirements">Requirements</a>
                     </div>
 
-                    <div onClick="document.location='#interface'" class="sub-nav-bar-col-50 allow-hover ">
+                    <div id="sub-nav-bar-item" onClick="document.location='#interface';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#interface">Interface</a>
                     </div>
                 </div>
 
-                <div class="sub-nav-bar-col-25">
-                    <div onClick="document.location='#generate'" class="sub-nav-bar-col-50 allow-hover">
+                <div id="sub-nav-bar-item-#gener" class="sub-nav-bar-col-25">
+                    <div onClick="document.location='#generate';  setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generate">Generate</a>
                     </div>
 
-                    <div onClick="document.location='#generated-picks'" class="sub-nav-bar-col-50 allow-hover">
+                    <div id="sub-nav-bar-item-#generpic" onClick="document.location='#generated-picks';
+                        setMainNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generated-picks">View Picks</a>
                     </div>
                 </div>
@@ -186,243 +196,41 @@
 </div>
 <script>
 
-    /*step.1 page first loads get webstie url
-
-      var infoUrl= window.location.href;
-
-     step.2 determine what page it is pointing to, by seeing if url contains info.html string
-
-
-      var findHash= (window.location.href);
-
-
-
-
-     step.3 if url does contain info.html proceed with getting hash tag value at end of url
-
-      document.getElementById(location.hash.substring(1)).style.display = 'block'
-
-      var type = window.location.hash.substr(1);
-
-
-
-     step.4 if has tag value is equal to howto set active class on to howto and remove active class from demo
-
-    if (location.hash === "#howto") {
-         return addClassName('.active');
-             }
-
-               if (location.hash !== '#howto') {
-                 location.hash.classList.add('active')
-             } else if (current.classList.contains('active') === true) {
-                 current.classList.remove('active');
-             } else {
-                 current.classList.add('active')
-             }
-
-             function myFunction(e) {
-                 var elems = document.querySelectorAll(".active");
-                                  [].forEach.call(elems, function(el) {
-                                         el.classList.remove("active");
-                                         });
-                                     e.target.className = "active";
-                                              }
-
-     step.4 if has tag value is equal to demo set active class on to demo and remove actvie class from howto
-
-
-
-
-     var infoUrl= window.location.href; // TODO:  Page first loads get webstie url
-     console.log(infoUrl);
-     var findHash= (window.location.href);
-     //TODO: determine what page it is pointing to, by seeing if url contains info.html#howto string
-     console.log(findHash);
-
-     var url = window.location.href;
-     var hash = url.substring(url.indexOf('#')+1);
-
-     function toggleBar() {
-         var url = window.location.href;
-         var hash = url.substring(url.indexOf('#') + 1);
-         for (var i = 0; i < hash.length; i++) {
-             if (hash === true) {  //TODO: NOT SURE IF THATS TRUE
-                 console.log(hash);
-                 hash[i].addClassName = ".active";
-                 console.log(hash);
-             }
-
-         }
-
-     }*/
 
 
     // TODO: step.2 determine if current page being displayed is the info.html page, by seeing if url contains info.html string
-    var urlWithHash = window.location.hash.substr(1);
-
     // TODO: step.3 if url does contain info.html proceed with getting hash tag value at end of url
     // TODO: step.4 if url ends with hash tag value equal to #howto, #requirements, #interface, #generate, or #generated-picks,
-    if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
-        // TODO:        call showSubNavBar() method.
-        showSubNavBar();
-        // TODO: IF hashurl equals '#HOWTO', set main nav bar active for how to id.
-        // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
-        // TODO: IF hashurl equals '#HOWTO', set main nav bar active for demo id.
-        // setMainNavBarItemActive("main-nav-bar-item-" + urlWithHash.value);
+    // TODO: call showSubNavBar() method.
+    // TODO: IF hashurl equals '#HOWTO', set main nav bar active for how to id.
+    // TODO: IF hashurl equals '#HOWTO', set main nav bar active for demo id.
+    // TODO: IF hashurl equals any of the subnavbar IDs, set sub nav bar active for demo id.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.6 setMainNavBarItemActive(mainNavBarItemId) method that sets one main-nav-bar item active and all other main nav bar items not active.
+    // TODO: step.7 setSubNavBarItemActive(subNavBarItemId) method that sets one sub-nav-bar item active and all other main nav bar items not active.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+    // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
 
-        // TODO: IF hashurl equals any of the subnavbar IDs, set sub nav bar active for demo id.
-        // setSubBarItemActive("sub-nav-bar-item-" + urlWithHash.value);
+
+    var urlWithHash = window.location.hash.substr(1);
+
+    if (urlWithHash.value ==="#howto"||"#generate"||"#requirements"||"#interface"||"#generated-picks"){
+        showSubNavBar();
     }
     else if (urlWithHash.value ==="#demo") {
-            // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
-            hideSubNavBar(urlWithHash);
+        // TODO: step.5 if url ends with hash tag value equal to #demo, call hideSubNavBar() method.
+        hideSubNavBar(urlWithHash);
     }
 
-
-    function toggleHash(grabHash) { //create a function with a parameter to pass
-        for (var i = 0; i < grabHash.length; i++) { // loop thru parameter
-            grabHash[i].addEventListener("click", function(e)
-            { // looking for the click event on parameter .. e equals event
-                var current = this; //In an event, this refers to the element that received the event.
-                for (var i = 0; i < grabHash.length; i++) { //loop thru
-                    if (current !== grabHash[i]) {  // conditional var should equal the click
-                        grabHash[i].classList.remove('active');  //The classList property returns the class name(s) of an element, as a DOMTokenList object. This property is useful to add, remove and toggle CSS classes on an element.The classList property is read-only, however, you can modify it by using the add() and remove() methods.
-                    } else if (current.classList.contains('active') === true) {
-                        current.classList.remove('active');
-                    } else {
-                        current.classList.add('active')
-                    }
-                }
-                e.preventDefault();   // prevent default behaviour if needed
-            });
-        }
-    }
-    //toggleHash(document.querySelectorAll('.nav-bar-col-25')); // connecting to only inner main nav
-
-    // TODO: step.6 setMainNavBarItemActive(mainNavBarItemId) method that sets one main-nav-bar item active and all other main nav bar items not active.
-    function setMainNavBarItemActive(mainNavBarItemId) {
-
-    }
-    // TODO: step.7 setSubNavBarItemActive(subNavBarItemId) method that sets one sub-nav-bar item active and all other main nav bar items not active.
-    function setSubNavBarItemActive(subNavBarItemId){
-
-    }
-
-    function myFunction() {
-
-        window.location.hash = '#demo';
-        var noSub = document.getElementById(window.location.hash.substring(1));
-        if ( noSub.style.display === "none") {
-            noSub.style.display = "block";
-        } else {
-            noSub.style.display = "none";
-        }
-    }
-
-
-
-     function showSubNavBar () {
-         document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
-         document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
-     }
-
-    function hideSubNavBar () {
-        document.querySelector(".sub-nav-bar-container").style.display = "none";
-        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
-    }
-
-
-
-    /*function noSubNav() {
-
-        window.location.hash = '#demo';
-
-        var noSub = document.getElementById(window.location.hash.substring(1));
-        if (noSub) noSub.style.display = 'block'; {
-
+    function setMainNavBarItemActive(id) {
+        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover" + "sub-nav-bar-col-50 allow-hover");
+        for (var i = 0; i < setActiveNav.length; ++i) {
+            var activeItem = setActiveNav[i];
+            activeItem.style.backgroundColor = (activeItem.id === id) ? "red" : "initial";
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function myFunction(e) {
-        if (document.querySelector('.nav-bar-col-25 .active') !== null) {
-            document.querySelector('sub-nav-bar-col-25').classList.add('.active');
-        }
-        e.target.className = "active";
-    }
-
-
-
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
-
-
-    var noSubforDemo = document.querySelectorAll("#demo");
-
-    for (var i = 0, l = noSubforDemo.length; i < l; i++) {
-        var blockSub = noSubforDemo[i];
-        blockSub.innerHTML = blockSub.innerHTML.replace('');
-    }
-
-
-
-
-
-
-    // Listen to all clicks on the document
-    document.addEventListener('click', function (event) {
-
-        // If the event target doesn't match bail
-        if (!event.target.hasAttribute('#')) {
-
-        }
-
-        // Otherwise, run your code...
-
-    }, false);
-
-    document.addEventListener('click', function (event) {
-
-        // If the event target doesn't match bail
-        if (!event.target.matches('.active')) return;
-
-        // Otherwise, run your code...
-
-    }, false);*/
-
-
 
 </script>
 
