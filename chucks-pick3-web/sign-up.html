@@ -33,15 +33,24 @@
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
 
+
+
+    <script src="lib/bootstrapFormVal.js"></script>
+    <script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
+
+
+
+
+
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+
 
     <!-- Initialize Bootstrap functionality -->
     <script>
@@ -240,7 +249,7 @@
                             <div class="invalid-feedback email "></div>
                             <br>
                             <label for="defaultRegisterFormPhone" class="col-xs-3 col-form-label mr-2">Phone</label>
-                            <input type="number" id="defaultRegisterFormPhone" name="phoneNumber" max="10"
+                            <input type="text" id="defaultRegisterFormPhone" name="phoneNumber" minlength="9" maxlength="10"
                                    onchange="checkPhoneNumber(this)"
                                    class="form-control" placeholder="123 456 7890" required>
                             <div class="invalid-feedback phoneNumber "></div>
@@ -254,104 +263,108 @@
                         </div>
                         <br>
 
-                        <div class="form-row">
 
-                            <label for="defaultRegisterFormCity">State</label>
-                            <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true"
-                                    aria-expanded="true" id="dropDown" data-display="static" data-toggle="dropdown">
-                                State<span class="caret"></span></button>
-                            <ul class="dropdown-menu scrollable-menu w-100" aria-labelledby="menu">
-                                <li><a class="dropdown-item" href="#">Alabama</a></li>
-                                <li><a class="dropdown-item" href="#">Alaska</a></li>
-                                <li><a class="dropdown-item" href="#">Arizona</a></li>
-                                <li><a class="dropdown-item" href="#">Arkansas</a></li>
-                                <li><a class="dropdown-item" href="#">California</a></li>
-                                <li><a class="dropdown-item" href="#">Colorado</a></li>
-                                <li><a class="dropdown-item" href="#">Connecticut</a></li>
-                                <li><a class="dropdown-item" href="#">Delaware</a></li>
-                                <li><a class="dropdown-item" href="#">District Of Columbia</a></li>
-                                <li><a class="dropdown-item" href="#">Florida</a></li>
-                                <li><a class="dropdown-item" href="#">Georgia</a></li>
-                                <li><a class="dropdown-item" href="#">Hawaii</a></li>
-                                <li><a class="dropdown-item" href="#">Idaho</a></li>
-                                <li><a class="dropdown-item" href="#">Illinois</a></li>
-                                <li><a class="dropdown-item" href="#">Indiana</a></li>
-                                <li><a class="dropdown-item" href="#">Iowa</a></li>
-                                <li><a class="dropdown-item" href="#">Kansas</a></li>
-                                <li><a class="dropdown-item" href="#">Kentucky</a></li>
-                                <li><a class="dropdown-item" href="#">Louisiana</a></li>
-                                <li><a class="dropdown-item" href="#">Maine</a></li>
-                                <li><a class="dropdown-item" href="#">Maryland</a></li>
-                                <li><a class="dropdown-item" href="#">Massachusetts</a></li>
-                                <li><a class="dropdown-item" href="#">Michigan</a></li>
-                                <li><a class="dropdown-item" href="#">Minnesota</a></li>
-                                <li><a class="dropdown-item" href="#">Mississippi</a></li>
-                                <li><a class="dropdown-item" href="#">Missouri</a></li>
-                                <li><a class="dropdown-item" href="#">Montana</a></li>
-                                <li><a class="dropdown-item" href="#">Nebraska</a></li>
-                                <li><a class="dropdown-item" href="#">Nevada</a></li>
-                                <li><a class="dropdown-item" href="#">New Hampshire</a></li>
-                                <li><a class="dropdown-item" href="#">New Jersey</a></li>
-                                <li><a class="dropdown-item" href="#">New Mexico</a></li>
-                                <li><a class="dropdown-item" href="#">New York</a></li>
-                                <li><a class="dropdown-item" href="#">North Carolina</a></li>
-                                <li><a class="dropdown-item" href="#">North Dakota</a></li>
-                                <li><a class="dropdown-item" href="#">Ohio</a></li>
-                                <li><a class="dropdown-item" href="#">Oklahoma</a></li>
-                                <li><a class="dropdown-item" href="#">Oregon</a></li>
-                                <li><a class="dropdown-item" href="#">Pennsylvania</a></li>
-                                <li><a class="dropdown-item" href="#">Rhode Island</a></li>
-                                <li><a class="dropdown-item" href="#">South Carolina</a></li>
-                                <li><a class="dropdown-item" href="#">South Dakota</a></li>
-                                <li><a class="dropdown-item" href="#">Tennessee</a></li>
-                                <li><a class="dropdown-item" href="#">Texas</a></li>
-                                <li><a class="dropdown-item" href="#">Utah</a></li>
-                                <li><a class="dropdown-item" href="#">Vermont</a></li>
-                                <li><a class="dropdown-item" href="#">Virginia</a></li>
-                                <li><a class="dropdown-item" href="#">Washington</a></li>
-                                <li><a class="dropdown-item" href="#">West Virginia</a></li>
-                                <li><a class="dropdown-item" href="#">Wisconsin</a></li>
-                                <li><a class="dropdown-item" href="#">Wyoming</a></li>
-                            </ul>
-                            <div class="invalid-feedback dropDown"></div>
-                        </div>
+                            <div class="dropdown">
+                                <label for="defaultRegisterFormCity">State</label>
+                                <button class="btn btn-primary dropdown-toggle w-100" type="button" name="dropDown" id="dropDownStateButton"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" required="required"><span
+                                        class="caret"></span>
+                                    Choose a State
+                                </button>
+                                <div class="dropdown-menu scrollable-menu w-100"   aria-labelledby="dropDownStateButton" required>
+                                    <a class="dropdown-item" href="#">Alabama</a>
+                                    <a class="dropdown-item" href="#">Alaska</a>
+                                    <a class="dropdown-item" href="#">Arizona</a>
+                                    <a class="dropdown-item" href="#">Arkansas</a>
+                                    <a class="dropdown-item" href="#">California</a>
+                                    <a class="dropdown-item" href="#">Colorado</a>
+                                    <a class="dropdown-item" href="#">Connecticut</a>
+                                    <a class="dropdown-item" href="#">Delaware</a>
+                                    <a class="dropdown-item" href="#">District Of Columbia</a>
+                                    <a class="dropdown-item" href="#">Florida</a>
+                                    <a class="dropdown-item" href="#">Georgia</a>
+                                    <a class="dropdown-item" href="#">Hawaii</a>
+                                    <a class="dropdown-item" href="#">Idaho</a>
+                                    <a class="dropdown-item" href="#">Illinois</a>
+                                    <a class="dropdown-item" href="#">Indiana</a>
+                                    <a class="dropdown-item" href="#">Iowa</a>
+                                    <a class="dropdown-item" href="#">Kansas</a>
+                                    <a class="dropdown-item" href="#">Kentucky</a>
+                                    <a class="dropdown-item" href="#">Louisiana</a>
+                                    <a class="dropdown-item" href="#">Maine</a>
+                                    <a class="dropdown-item" href="#">Maryland</a>
+                                    <a class="dropdown-item" href="#">Massachusetts</a>
+                                    <a class="dropdown-item" href="#">Michigan</a>
+                                    <a class="dropdown-item" href="#">Minnesota</a>
+                                    <a class="dropdown-item" href="#">Mississippi</a>
+                                    <a class="dropdown-item" href="#">Missouri</a>
+                                    <a class="dropdown-item" href="#">Montana</a>
+                                    <a class="dropdown-item" href="#">Nebraska</a>
+                                    <a class="dropdown-item" href="#">Nevada</a>
+                                    <a class="dropdown-item" href="#">New Hampshire</a>
+                                    <a class="dropdown-item" href="#">New Jersey</a>
+                                    <a class="dropdown-item" href="#">New Mexico</a>
+                                    <a class="dropdown-item" href="#">New York</a>
+                                    <a class="dropdown-item" href="#">North Carolina</a>
+                                    <a class="dropdown-item" href="#">North Dakota</a>
+                                    <a class="dropdown-item" href="#">Ohio</a>
+                                    <a class="dropdown-item" href="#">Oklahoma</a>
+                                    <a class="dropdown-item" href="#">Oregon</a>
+                                    <a class="dropdown-item" href="#">Pennsylvania</a>
+                                    <a class="dropdown-item" href="#">Rhode Island</a>
+                                    <a class="dropdown-item" href="#">South Carolina</a>
+                                    <a class="dropdown-item" href="#">South Dakota</a>
+                                    <a class="dropdown-item" href="#">Tennessee</a>
+                                    <a class="dropdown-item" href="#">Texas</a>
+                                    <a class="dropdown-item" href="#">Utah</a>
+                                    <a class="dropdown-item" href="#">Vermont</a>
+                                    <a class="dropdown-item" href="#">Virginia</a>
+                                    <a class="dropdown-item" href="#">Washington</a>
+                                    <a class="dropdown-item" href="#">West Virginia</a>
+                                    <a class="dropdown-item" href="#">Wisconsin</a>
+                                    <a class="dropdown-item" href="#">Wyoming</a>
+
+                                    <div class="invalid-feedback dropDown"></div>
+                                </div>
+                            </div>
                         <br>
+
+
                         <div class="form-row">
                             <label for="defaultRegisterFormZip">Zip</label>
-                            <input type="number" name="zipCode" max="5"
+                            <input type="text" name="zipCode" minlength="4" maxlength="5"
                                    id="defaultRegisterFormZip" class="form-control" onchange="checkZipCode(this)"
                                    placeholder="Zip" required>
                             <div class="invalid-feedback zipCode "></div>
                         </div>
                         <br>
-                        <div class="form-row">
 
-                            <label for="defaultRegisterFormCity">Type of Phone</label>
-                            <button type="button" class="btn btn-primary dropdown-toggle w-100" data-display="static"
-                                    required data-toggle="dropdown">Type of Phone<span
-                                    class="caret"></span></button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="menu">
-                                <li><a class="dropdown-item" href="#">iPhone</a></li>
-                                <li><a class="dropdown-item" href="#">Android</a></li>
-                            </ul>
-                            <div class="invalid-feedback"></div>
-                        </div>
+                            <div class="dropdown">
+                                <label for="defaultRegisterFormCity">Type of Phone</label>
+                                <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropDownTypeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span
+                                        class="caret"></span>
+                                    Type of Phone
+                                </button>
+                                <div class="dropdown-menu scrollable-menu w-100" aria-labelledby="dropDownTypeButton">
+                                    <a class="dropdown-item" href="#">iPhone</a>
+                                    <a class="dropdown-item" href="#">Android</a>
+                                </div>
+                            </div>
                         <br>
-                        <div class="form-row">
-
+                        <div class="dropdown">
                             <label for="defaultRegisterFormCity">How Often Do You Play?</label>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-display="static" required
-                                    data-toggle="dropdown">How Often Do You Play?<span
-                                    class="caret"></span></button>
-                            <ul class="dropdown-menu w-100" aria-labelledby="menu">
-                                <li><a class="dropdown-item" href="#">Never</a></li>
-                                <li><a class="dropdown-item" href="#">Sometimes</a></li>
-                                <li><a class="dropdown-item" href="#">Always</a></li>
-                            </ul>
-                            <div class="invalid-feedback"></div>
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button"name="dropDownPlay" id="dropDownHowOftenButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span
+                                    class="caret"></span>
+                                How Often Do You Play?
+                            </button>
+                            <div class="dropdown-menu scrollable-menu w-100"  aria-labelledby="dropDownHowOftenButton">
+                                <a class="dropdown-item" href="#">Never</a>
+                                <a class="dropdown-item" href="#">Sometimes</a>
+                                <a class="dropdown-item" href="#">Often</a>
+                            </div>
+                            <div class="invalid-feedback dropDownPlay "></div>
                         </div>
                         <br>
-                        <button type="submit" value="Validate" onclick="return checkStateButton()"
+                        <button type="submit" value="Validate" onsubmit="checkPlayButton()"
                                 class="btn btn-success ">Submit
                         </button>
                     </div>
@@ -373,9 +386,14 @@
             crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <script src="lib/bootstrapFormVal.js"></script>
+    <script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
     <!-- Initialize Bootstrap functionality -->
 <script>

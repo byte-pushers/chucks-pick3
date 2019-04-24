@@ -22,16 +22,56 @@ $("State").click(function() {
 //TODO: Prevent Form from moving when dropdown value is selected ##DONE
 //TODO: Make Dropdown selection for all required
 //TODO: Link bootstrap validation to jquery for error messages
-$(function(){
-    $(".dropdown-menu a").click(function(){
-        $(this).parents('.dropdown-menu').siblings('.btn').text($(this).text());
-        $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
-        $(this).parents('.dropdown-menu').siblings('.btn').val($(this).text());
+/*$(function(){
+    $(".dropdown-menu a ").click(function(){
+        $(this).parents('.dropdown').siblings('.btn').text($(this).text());
+        $(this).parents('.dropdown').siblings('.btn').val($(this).text());
+        $(this).parents('.dropdown').siblings('.btn').val($(this).text());
         return false;
     });
+});*/
+
+
+
+
+
+$(".dropdown-menu a").click(function(e){
+
+    var selText = $(this).text();
+    $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+    e.preventDefault();
+    return true;
+
+
+    //optional store val in hidden input
+
 });
 
 
+
+
+
+/*$('#dropDownStateButton').click(function() {
+    $(this).parents('.dropdown').find('.button  btn-primary dropdown-toggle').dropdown('toggle')
+});
+
+$('#dropDownStateButton .dropdown-menu').on({
+    "click":function(e) {
+        $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+        e.stopPropagation();
+    }
+});*/
+
+
+/*$('#myDropdown .dropdown-menu').on({
+    "click":function(e) {
+        e.stopPropagation();
+    }
+});/*
+/*$(".dropdown-menu li a").click(function(){
+$(this).parents(".form-row").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+$(this).parents(".form-row").find('.btn').val($(this).data('value'));
+});*/
 
 
 

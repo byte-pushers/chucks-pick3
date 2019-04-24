@@ -64,36 +64,82 @@ function checkEmail(input) {
 }
 
 function checkPhoneNumber(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
+    const errorFieldOtherName = input.value.toNormalCase();
+    const minLength = input.minLength;
+    //create variable for min and max add to the input
+    const maxLength = input.maxLength;
 
+    if (input.required === true) {
 
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
-
+        if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
+            // if statement for max length and min length make sure not null or undefined
+            if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
+        } else if (minLength !== null && minLength !== undefined) {
+            if (input.value.length >= minLength) {
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            }
+        } else if (maxLength !== null && maxLength !== undefined) {
+            if (input.value.length <= maxLength) {
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
         }
-
     }
 }
+
+
+
+
 
 function checkCity(input) {
     checkName(input);
 }
 
-function checkStateButton() {
-    var stateCheck = document.getElementById("dropDown");
-    if (dropDown.value === "") {
-        //If the "Please Select" option is selected display error.
-        alert("Please select an option!");
-        return false;
+
+function checkPlayButton() {
+    var playDropdown = document.getElementsByClassName("dropdown-menu");
+    if (playDropdown !== undefined) {
+        this.setCustomValidity("Hello")
+
     }
-    return true;
+
 }
 
-function checkZipCode(input) {
+    function checkStateButton() {
+        var stateDropdown = document.getElementsByClassName("dropdown-menu");
+        if (stateDropdown !== undefined) {
+            this.setCustomValidity("Hello")
+
+        }
+    }
+
+        function checkTypeButton() {
+            var typeDropdown = document.getElementsByClassName("dropdown-menu");
+            if (typeDropdown !== undefined) {
+                this.setCustomValidity("Hello")
+
+            }
+
+        }
+
+
+
+/*function checkStateButton(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
@@ -108,6 +154,58 @@ function checkZipCode(input) {
 
     }
 }
+
+document.getElementById('button').onclick = function() {
+    alert("button was clicked");
+};*/
+//TODO: First is the button clicked
+//TODO: If clicked is a state slected second click
+//TODO: if state selected do nothing
+//TODO: if not selected return error message
+
+
+
+function checkZipCode(input) {
+    const errorFieldOtherName = input.value.toNormalCase();
+    const minLength = input.minLength;
+    //create variable for min and max add to the input
+    const maxLength = input.maxLength;
+
+    if (input.required === true) {
+
+        if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
+            // if statement for max length and min length make sure not null or undefined
+            if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
+        } else if (minLength !== null && minLength !== undefined) {
+            if (input.value.length >= minLength) {
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            }
+        } else if (maxLength !== null && maxLength !== undefined) {
+            if (input.value.length <= maxLength) {
+                if (input.value.isAlphabetical() === true) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
+        }
+    }
+}
+
+
+
 
 
 
@@ -167,7 +265,9 @@ function checkNameValidity(input) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
     }
+
 }
+
 
 
 
