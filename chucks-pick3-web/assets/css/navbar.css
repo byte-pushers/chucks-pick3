@@ -260,28 +260,25 @@ img {
 }
 
 .sidenav {
-    display: inline-block;
+    display: block;
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 2;
     right: 0;
     background-color: rgba(0,0,0,0.85);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+
 
 }
 
-.menu-option-link {
-    color: #b8b8b8 !important;
-}
 
-.menu-option-link:hover {
-    color: #ffffff !important;
-}
+
+
 .sidenav h1 {
-    padding: 0px 10px 20px 20px;
+    position: absolute;
+    top: 1.5em;
+    left: 1em;
     text-decoration: none;
     font-size: 30px;
     color: white;
@@ -290,7 +287,9 @@ img {
     text-align: left;
 }
 .sidenav h5 {
-    padding: 0px 0px 5px 0px;
+    position: absolute;
+    top: 3.5em;
+    left: 2em;
     text-decoration: none;
     font-size: 25px;
     color: white;
@@ -299,19 +298,69 @@ img {
     text-align: left;
 }
 
-.menu-option{
-    margin-left: 45px;
+
+.side-menu-option-align {
+    position: absolute;
+    display: block;
+    top: 20em;
+
+
+    width: 100%;
+
 }
 
 
-.how-to-option:hover {
-    background-color: white;
+
+.side-menu-option-link {
+    display: block;
+    width: 100%;
+    color: #8d8d8d !important;
+    text-align: left;
+    font-size: 25px !important;
+    padding-left: 2em;
+
+}
+
+.side-menu-option-link:hover {
+    color: white !important;
+}
+
+.side-menu-option-align:hover {
+    background-color: green !important;
+
+}
+.side-how-to-option {
+    display: block;
+    top: 10em;
+    width: 100%;
+    color: #d5d5d5 !important;
+    padding-left: 4em;
+    text-align: left;
+
+}
+
+.side-how-to-option-align {
+
+    position: absolute;
+
+    top: 7.5em;
+
+
+    width: 100%;
+
+}
+
+
+
+.side-how-to-option:hover {
+    background-color: white !important;
     color: black !important;
 
 }
 
 .sidenav h5 a {
-    padding: 15px 0px 10px 45px;
+    position: absolute;
+    top: 10em;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -320,19 +369,16 @@ img {
     text-align: left;
 }
 
-.sidenav h5 a:hover {
-    background-color: green;
-    color: white;
-}
 
-.sidenav a {
-    padding: 3px 0px 3px 75px;
+
+.sidenav .side-how-to-option a {
     text-decoration: none;
     font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
     text-align: left;
+    padding-left: 3em;
 }
 
 
@@ -342,9 +388,9 @@ img {
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    right: 1em;
+    font-size: 2em;
+    color: gray;
 }
 
 .closebtn:hover{
