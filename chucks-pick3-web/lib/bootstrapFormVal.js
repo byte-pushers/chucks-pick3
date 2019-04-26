@@ -23,6 +23,39 @@
 // to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
+/*let grabIdButton = document.getElementById("dropDownStateButton");
+let grabDivId = document.getElementById("dropDown");
+
+let outputBox = document.getElementById("output");
+
+grabIdButton.addEventListener("click", function() {
+    let collection = grabDivId.selectedOptions;
+    let output = "";
+
+    for (let i = 0; i < collection.length; i++) {
+        if (output === "") {
+            output = setErrorMessage(".invalid-feedback." + input.name, errorFieldForButtonName + " can only contain numbers.", input);
+        }
+
+    }
+    if (output === "") {
+        output = "You didn't order anything!";
+    }
+
+    outputBox.innerHTML = output;
+}, false);*/
+
+
+
+
+
+
+
+
+
+
+
+
 function checkFirstName(input) { // create a function for first name // use input parameter
     checkName(input);
 }
@@ -64,109 +97,61 @@ function checkEmail(input) {
 }
 
 function checkPhoneNumber(input) {
-    const errorFieldOtherName = input.value.toNormalCase();
-    const minLength = input.minLength;
-    //create variable for min and max add to the input
-    const maxLength = input.maxLength;
+    checkZipCode(input);
 
-    if (input.required === true) {
-
-        if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
-            // if statement for max length and min length make sure not null or undefined
-            if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
-                if (input.value.isAlphabetical() === true) {
-                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
-                }
-            } else if (input.value.length < minLength) {
-                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
-            } else if (input.value.length > maxLength) {
-                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
-            }
-        } else if (minLength !== null && minLength !== undefined) {
-            if (input.value.length >= minLength) {
-                if (input.value.isAlphabetical() === true) {
-                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
-                }
-            } else if (input.value.length < minLength) {
-                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
-            }
-        } else if (maxLength !== null && maxLength !== undefined) {
-            if (input.value.length <= maxLength) {
-                if (input.value.isAlphabetical() === true) {
-                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
-                }
-            } else if (input.value.length > maxLength) {
-                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
-            }
-        }
-    }
 }
-
-
-
 
 
 function checkCity(input) {
     checkName(input);
-}
-
-
-function checkPlayButton() {
-    var playDropdown = document.getElementsByClassName("dropdown-menu");
-    if (playDropdown !== undefined) {
-        this.setCustomValidity("Hello")
-
-    }
 
 }
 
-    function checkStateButton() {
-        var stateDropdown = document.getElementsByClassName("dropdown-menu");
-        if (stateDropdown !== undefined) {
-            this.setCustomValidity("Hello")
-
-        }
-    }
-
-        function checkTypeButton() {
-            var typeDropdown = document.getElementsByClassName("dropdown-menu");
-            if (typeDropdown !== undefined) {
-                this.setCustomValidity("Hello")
-
-            }
-
-        }
+//TODO: Get value of button selected
+//TODO: If that button is selected and equals null or undefined or State return error
+//TODO: If that button returns a state return true
 
 
 
-/*function checkStateButton(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
 
 
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
 
-        }
 
-    }
+/*var selectButton = document.getElementById("dropDownStateButton");
+
+
+// When a new <option> is selected
+selectButton.addEventListener('change', function() {
+    var index = selectButton.selectedIndex;
+    // Add that data to the <p>
+
+    console.log(index);
+});
+
+
+
+
+function checkStateDupButton() {
+    var btn = document.getElementsByTagName("BUTTON")[0];
+    var buttonTClick = btn.attributes[0].value;
+    document.getElementById("dropDownStateButton").innerHTML = buttonTClick;
+    alert(buttonTClick);
 }
 
-document.getElementById('button').onclick = function() {
-    alert("button was clicked");
-};*/
-//TODO: First is the button clicked
-//TODO: If clicked is a state slected second click
-//TODO: if state selected do nothing
-//TODO: if not selected return error message
 
+function checkStateButton() {
+    var stateCheck = document.getElementById("dropDownStateButton");
+    if (dropDownStateButton.value === "") {
+        //If the "Please Select" option is selected display error.
+        alert("Please select an option!");
+        return false;
+    }
+    return true;
+}*/
 
 
 function checkZipCode(input) {
-    const errorFieldOtherName = input.value.toNormalCase();
+    const errorFieldName = input.value.toNormalCase();
     const minLength = input.minLength;
     //create variable for min and max add to the input
     const maxLength = input.maxLength;
@@ -176,7 +161,7 @@ function checkZipCode(input) {
         if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
             // if statement for max length and min length make sure not null or undefined
             if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
-                if (input.value.isAlphabetical() === true) {
+                if (input.value.isNumeric() === false) {
                     setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
                 }
             } else if (input.value.length < minLength) {
@@ -186,7 +171,7 @@ function checkZipCode(input) {
             }
         } else if (minLength !== null && minLength !== undefined) {
             if (input.value.length >= minLength) {
-                if (input.value.isAlphabetical() === true) {
+                if (input.value.isNumeric() === false) {
                     setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
                 }
             } else if (input.value.length < minLength) {
@@ -194,7 +179,7 @@ function checkZipCode(input) {
             }
         } else if (maxLength !== null && maxLength !== undefined) {
             if (input.value.length <= maxLength) {
-                if (input.value.isAlphabetical() === true) {
+                if (input.value.isNumeric() === false) {
                     setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
                 }
             } else if (input.value.length > maxLength) {
@@ -203,11 +188,6 @@ function checkZipCode(input) {
         }
     }
 }
-
-
-
-
-
 
 
 function hasData(input) {

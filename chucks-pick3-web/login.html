@@ -32,6 +32,13 @@
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
 
+
+    <script src="lib/bootstrapFormValLogin.js"></script>
+    <script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
+
+
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -208,24 +215,25 @@
                         <div class="info-form">
                             <div class="form-row">
                                 <label for="defaultRegisterFormUserName">Username</label>
-                                <input type="text" minlength="4" name="username" maxlength="25"
+                                <input type="text" minlength="4" name="userName" maxlength="25"
                                        id="defaultRegisterFormUserName"
                                        class="form-control"
-                                       placeholder="Username" onsubmit="checkUserName(this);" required="required">
-                                <div class="invalid-feedback username"></div>
+                                       placeholder="Username" onchange="checkedUserName(this)" required="required">
+                                <div class="invalid-feedback userName"></div>
                             </div>
                             <br>
                             <!-- Password -->
                             <div class="form-row">
                                 <label for="defaultRegisterFormPassword">Password</label>
-                                <input type="password" name="password" onsubmit="checkPassword(this)"
+                                <input type="password" minlength="6" maxlength="25" name="passWord"
+                                       onchange="checkPassword(this)"
                                        id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                                       required>
-                                <div class="invalid-feedback password ">
+                                       required="required">
+                                <div class="invalid-feedback passWord ">
                                 </div>
                                 <br>
                                 <br>
-                                <button type="submit" value="Validate" onclick="return checkStateButton()"
+                                <button type="submit" value="Validate"
                                         class="btn btn-success ">Submit
                                 </button>
 
@@ -239,6 +247,7 @@
     </div>
 </div>
 
+
 <!-- jQuery library -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -250,9 +259,16 @@
         crossorigin="anonymous"></script>
 
 <!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+<script src="lib/bootstrapFormVal.js"></script>
+<script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
+<script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
 <!-- Initialize Bootstrap functionality -->
 
