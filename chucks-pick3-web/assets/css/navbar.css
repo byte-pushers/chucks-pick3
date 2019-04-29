@@ -441,9 +441,20 @@ color: #ffffff;
 
 .hamburger-menu-section-3 {
     width: 100%;
-    height: 6%;
+    height: 8%;
 
 }
+
+
+.hamburger-menu-section-3:hover{
+    background-color: white;
+}
+.hamburger-menu-section-3:hover   a {
+
+    color: black;
+}
+
+
 .demo {
     display: inline-block ;
 
@@ -453,14 +464,14 @@ color: #ffffff;
     float: right;
 
 }
-.demo:hover {
-    background-color: white;
+
+
+
+.demo a h5{
+    line-height: 3em;
+    color: white;
 }
 
-.demo:hover a {
+.demo a h5:hover{
     color: black;
-}
-.demo a h5{
-    line-height: 2em;
-    color: white;
 }
