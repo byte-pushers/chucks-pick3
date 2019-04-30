@@ -187,11 +187,12 @@ img {
 
 
 @media only screen and (max-width: 760px) {
-    /*---main-nav-bar----*/
-    .main-nav-bar-container {
-        display: none;
-    }
-
+.col-3 {
+    position: inherit !important;
+}
+.main-nav-bar-container{
+    display: none;
+}
     .sub-nav-bar-container {
         display: none;
     }
