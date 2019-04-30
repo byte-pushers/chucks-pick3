@@ -38,6 +38,13 @@
 
 }
 
+
+.nav-bar-col-20 {
+    display: none;
+
+
+}
+
 .nav-bar-col-25 a {
     list-style-type: none;
     font-size: 17px;
@@ -188,6 +195,25 @@ img {
     .sub-nav-bar-container {
         display: none;
     }
+    .nav-bar-col-20 {
+        display: inline-block;
+        float: left;
+        line-height: 3em;
+        text-align: center;
+        width: 20%;
+        /*border: 2px solid blue;*/
+        height: 100%;
+
+
+    }
+
+    .nav-bar-col-20 a {
+        list-style-type: none;
+        font-size: 17px;
+        text-decoration: none;
+        color: black;
+
+    }
 
     .sub-nav-bar-title-container {
         display: none;
@@ -196,8 +222,6 @@ img {
     .float-right {
         float: right;
     }
-
-    /*----main--nav-bar-----*/
     /*------sub-nav-bar-----*/
     [class*="sub-nav-bar-col-25"] {
         width: 25%
@@ -272,15 +296,14 @@ img {
     }
 
     /*------sub-nav-bar-----*/
-    /*--- main-mobile-nav-bar----*/
-    .mobile-nav-bar-container {
-        display: block;
-        width: 100%;
-        height: 50px;
-        /*expands to 100% width */
-    }
+.mobile-nav-bar-container{
+    display: block;
+    width: 100%;
 
-    .mobile-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+/*expands to 100% width */
+}
+
+    .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
         background-color: green;
         cursor: pointer;
     }
@@ -291,128 +314,79 @@ img {
     }
 
 
-    .logo-container {
-        width: 20%;
-        height: 75px;
+.logo-container {
+    width: 20%;
+    height: 75px;
 
-        /* stays at 20% width, takes on height of header-img */
-    }
-
-    .header-img-container {
-        width: 80%;
-        height: 75px;
-        /* stays at 80% width */
-    }
-
-
-    [class*="mobile-nav-bar-col-25"] {
-        width: 20%
-
-    }
+/* stays at 20% width, takes on height of header-img */
 }
 
+.header-img-container {
+    width: 80%;
+    height: 75px;
+/* stays at 80% width */
+}
+
+
+
+
+}
 
 /*---Hamburger Menu----*/
 
 
 
 .side-nav-stick{
-    position: fixed;
-    top: 100px;
-    width: 100%;
+    display: inline-block;
+    position: relative;
+    top: .85em;
 }
 
 .sidenav {
-    display: inline-block;
+    display: block;
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 2;
     right: 0;
     background-color: rgba(0,0,0,0.85);
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
-
-}
-
-.menu-option-link {
-    color: #b8b8b8 !important;
-}
-
-.menu-option-link:hover {
-    color: #ffffff !important;
-}
-.sidenav h1 {
-    padding: 0px 10px 20px 20px;
-    text-decoration: none;
-    font-size: 30px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-    text-align: left;
-}
-.sidenav h5 {
-    padding: 0px 0px 5px 0px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-    text-align: left;
-}
-
-.menu-option{
-    margin-left: 45px;
-}
 
 
-.how-to-option:hover {
-    background-color: white;
-    color: black !important;
-
-}
-
-.sidenav h5 a {
-    padding: 15px 0px 10px 45px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-    text-align: left;
-}
-
-.sidenav h5 a:hover {
-    background-color: green;
-    color: white;
-}
-
-.sidenav a {
-    padding: 3px 0px 3px 75px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-    text-align: left;
 }
 
 
 
 
 
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
 
-.closebtn:hover{
-   color: white !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -426,4 +400,160 @@ img {
     width: 70%;
 }
 
+/*------implement and erase --*/
 
+.menu {
+    display: inline-block;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    min-height: 700px;
+
+}
+
+.end {
+    display: inline-block;
+    width: 100%;
+    height: 5%;
+    padding-right: 10px;
+
+}
+.end a {
+   float: right;
+    line-height: 1em;
+color: #ffffff;
+    font-size: 40px;
+
+}
+
+.menu-title {
+    display: inline-block;
+
+    width: 100%;
+    height: 6%;
+    vertical-align: middle;
+
+
+
+}
+
+.menu-title h2{
+    position: relative;
+   color: white;
+    text-align: left;
+    left:10px;
+
+
+
+}
+
+.hamburger-menu-section-1 {
+    width: 100%;
+    height: 6%;
+
+}
+.hamburger-menu-indent {
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+
+.how {
+    display: inline-block;
+
+    width: 90%;
+    height: 100%;
+    float: right;
+}
+
+.how h5 {
+    line-height: 2em;
+    text-align: left;
+    color: white;
+}
+
+
+.hamburger-menu-section-2 {
+    width: 100%;
+    height: 30%;
+
+}
+
+.options {
+    display: inline-block;
+
+    width: 100%;
+    height: 25%;
+
+
+}
+.options:hover{
+    background-color: white;
+}
+.options:hover   a {
+
+    color: black;
+}
+
+.options a{
+    font-size: 17px;
+    font-family: 'Lato', sans-serif;
+    color: gray;
+}
+
+
+
+.option-indent {
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+
+
+
+
+.block {
+
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.hamburger-menu-section-3 {
+    width: 100%;
+    height: 8%;
+
+}
+
+
+.hamburger-menu-section-3:hover{
+    background-color: white;
+}
+.hamburger-menu-section-3:hover   a {
+
+    color: black;
+}
+
+
+.demo {
+    display: inline-block ;
+
+    width: 90%;
+    height: 100%;
+    text-align: left;
+    float: right;
+
+}
+
+
+
+.demo a h5{
+    line-height: 3em;
+    color: white;
+}
+
+.demo a h5:hover{
+    color: black;
+}
