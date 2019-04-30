@@ -108,7 +108,95 @@
                     </div>
                 </div>
             </div>
+            <div class="mobile-nav-bar-container">
+
+                <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
+                    <a href="home.html">Home</a>
+                </div>
+
+                <div class=" nav-bar-col-20 allow-hover float-right">
+
+                    <span style="font-size:35px;" onclick="openNav()">&#9776;</span>
+
+                    <div class="side-nav-stick">
+
+                        <div id="side-nav-bar" class="sidenav">
+                            <div class="menu">
+                                <div class="end">
+                                    <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+                                </div>
+                                <div class="menu-title">
+                                    <h2><b>Menu</b> </h2>
+                                </div>
+
+                                <div class="hamburger-menu-section-1">
+                                    <div class="hamburger-menu-indent">
+                                    </div>
+                                    <div class="how">
+                                        <h5><b> How To</b></h5>
+                                    </div>
+                                </div>
+                                <div class="hamburger-menu-section-2">
+                                    <div class="options">
+                                        <div class="hamburger-menu-indent">
+                                        </div>
+                                        <div class="option-indent">
+                                        </div>
+                                        <div class="block">
+                                            <a href="info.html#howto">Requirements</a>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="hamburger-menu-indent">
+                                        </div>
+                                        <div class="option-indent">
+                                        </div>
+                                        <div class="block">
+                                            <a href="info.html#interface">Interface</a>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="hamburger-menu-indent">
+                                        </div>
+                                        <div class="option-indent">
+                                        </div>
+                                        <div class="block">
+                                            <a href="info.html#generate">Generate</a>
+                                        </div>
+                                    </div>
+                                    <div class="options">
+                                        <div class="hamburger-menu-indent">
+                                        </div>
+                                        <div class="option-indent">
+                                        </div>
+                                        <div class="block">
+                                            <a href="info.html#generated-picks">View Picks</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hamburger-menu-section-3">
+                                    <div class="hamburger-menu-indent">
+                                    </div>
+                                    <div class="demo">
+                                        <a href="info.html#demo"><h5><b>Demo</b></h5></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
+                    <a href="login.html">Login</a>
+                </div>
+
+                <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
+                    <a href="sign-up.html">Sign Up</a>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
 
     <div class="body-container">
@@ -167,32 +255,30 @@
         crossorigin="anonymous"></script>
 
 <!-- Initialize Bootstrap functionality -->
+
 <script>
-    // Initialize tooltip component
-    /*$(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-    // Initialize popover component
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })*/
+    function openNav() {
+        document.getElementById("side-nav-bar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("side-nav-bar").style.width = "0";
+    }
 </script>
 
-
 <script>
-    /*window.onscroll = function () {
-        myFunction()
-    };
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("side-nav-bar");
+    var sticky = header.offsetTop;
 
     function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
         } else {
-            navbar.classList.remove("sticky");
+            header.classList.remove("sticky");
         }
-    }*/
+    }
 </script>
 </body>
 </html>
