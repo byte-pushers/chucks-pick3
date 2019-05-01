@@ -187,6 +187,11 @@ img {
 
 
 @media only screen and (max-width: 760px) {
+    .mobile-spacing {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
 .col-3 {
     position: inherit !important;
 }
@@ -235,6 +240,7 @@ img {
         text-align: center;
         line-height: 3em;
         background-color: white;
+        float: right;
     }
     .mobile-sub-nav-bar-container {
 
@@ -252,10 +258,9 @@ img {
 
 
     .sub-side-nav-stick{
-        position: fixed;
-        top: 76px;
-        width: 100%;
-        z-index: 2;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
     }
 
 
@@ -279,7 +284,7 @@ img {
 
     .sub-side-nav-stick{
         position: fixed;
-        top: 120px;
+        top: 10em;
         width: 100%;
 
     }
@@ -288,8 +293,6 @@ img {
         display: block;
         height: 100%;
         width: 100%;
-        position: fixed;
-        z-index: 2;
         overflow-x: hidden;
         transition: 0.5s;
         margin-bottom: 20px;

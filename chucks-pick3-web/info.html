@@ -176,30 +176,28 @@
 
                 <div class="sub-side-nav-stick">
                     <div id="sub-scroll-nav" class="subsidenav">
-                        <div class="mobile-sub-nav-bar-title-container">
-                            <div><span><b>How To Play</b></span></div>
-                        </div>
+
 
                         <div class="mobile-sub-nav-bar-container">
 
 
 
-                            <div onClick="document.location='#requirements'" class="sub-nav-bar-col-25 allow-hover ">
+                            <div onClick="document.location='#requirements-mobile'" class="sub-nav-bar-col-25 allow-hover ">
                                 <a href="#requirements-mobile">Needed</a>
                             </div>
 
-                            <div onClick="document.location='#interface'" class="sub-nav-bar-col-25 allow-hover ">
+                            <div onClick="document.location='#interface-mobile'" class="sub-nav-bar-col-25 allow-hover ">
                                 <a href="#interface-mobile">UI</a>
                             </div>
 
 
 
-                            <div onClick="document.location='#generate'" class=" sub-nav-bar-col-25 allow-hover">
+                            <div onClick="document.location='#generate-mobile'" class=" sub-nav-bar-col-25 allow-hover">
                                 <a href="#generate-mobile">Gen</a>
                             </div>
 
-                            <div onClick="document.location='#generated-picks'" class=" sub-nav-bar-col-25 allow-hover">
-                                <a href="#generated-picks">View</a>
+                            <div onClick="document.location='#view-picks-mobile'" class=" sub-nav-bar-col-25 allow-hover">
+                                <a href="#view-picks-mobile">View</a>
                             </div>
 
 
@@ -228,12 +226,22 @@
         </div>
         <!--</div>-->
     </div>
+    <div class="mobile-sub-nav-bar-title-container">
+    <div><span><b>How To Play</b></span></div>
+</div>
     <div class="body-container">
+
+        <div id="requirements-mobile" class="mobile-spacing">
+    </div>
         <div class="what-you-need" id="howto">
+
+
             <H2 id="requirements">Requirements:</H2>
+
             <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
         </div>
-
+        <div id="interface-mobile" class="mobile-spacing">
+        </div>
         <div class="interface">
             <H2 id="interface">Interface:</H2>
             <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
@@ -243,7 +251,8 @@
         <div class="interface">
             <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
         </div>
-
+        <div id="generate-mobile" class="mobile-spacing">
+        </div>
         <div class="how-to-generate" id="demo">
             <H2 id="generate">How to Generate Picks:</H2>
             <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
@@ -254,11 +263,13 @@
         </div>
 
         <div class="how-to-view">
+            <div id="view-picks-mobile" class="mobile-spacing">
+            </div>
             <H2 id="generated-picks">How to View Generated Picks:</H2>
-            <img src="assets/img/Info page -14.png" alt="Generate" style="width:700px" align="center">
+            <img src="assets/img/Info page -14.png" alt="ViewGenerated" style="width:700px" align="center">
         </div>
     </div>
-</div>
+
 <script>
 
     var navBarHashTag = window.location.hash.substr(1);
