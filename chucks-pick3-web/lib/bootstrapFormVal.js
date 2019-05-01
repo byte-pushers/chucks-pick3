@@ -23,27 +23,6 @@
 // to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
-/*let grabIdButton = document.getElementById("dropDownStateButton");
-let grabDivId = document.getElementById("dropDown");
-
-let outputBox = document.getElementById("output");
-
-grabIdButton.addEventListener("click", function() {
-    let collection = grabDivId.selectedOptions;
-    let output = "";
-
-    for (let i = 0; i < collection.length; i++) {
-        if (output === "") {
-            output = setErrorMessage(".invalid-feedback." + input.name, errorFieldForButtonName + " can only contain numbers.", input);
-        }
-
-    }
-    if (output === "") {
-        output = "You didn't order anything!";
-    }
-
-    outputBox.innerHTML = output;
-}, false);*/
 
 
 
@@ -107,47 +86,37 @@ function checkCity(input) {
 
 }
 
-//TODO: Get value of button selected
-//TODO: If that button is selected and equals null or undefined or State return error
-//TODO: If that button returns a state return true
 
+/*function validateHowOftenDropDown(select) {
+    if(select.value === "How Often Do You Play?") {
+        setErrorMessage(".invalid-feedback." + select.name, "HELLO", select);
+        return false;
+    }
 
+    return true;
 
+}*/
 
+function validateHowOftenDropDown(select) {
+    var howOftenDropDownChecked = select.options[select.selectedIndex].text;
 
-
-
-/*var selectButton = document.getElementById("dropDownStateButton");
-
-
-// When a new <option> is selected
-selectButton.addEventListener('change', function() {
-    var index = selectButton.selectedIndex;
-    // Add that data to the <p>
-
-    console.log(index);
-});
-
-
-
-
-function checkStateDupButton() {
-    var btn = document.getElementsByTagName("BUTTON")[0];
-    var buttonTClick = btn.attributes[0].value;
-    document.getElementById("dropDownStateButton").innerHTML = buttonTClick;
-    alert(buttonTClick);
-}
-
-
-function checkStateButton() {
-    var stateCheck = document.getElementById("dropDownStateButton");
-    if (dropDownStateButton.value === "") {
-        //If the "Please Select" option is selected display error.
-        alert("Please select an option!");
+    if (howOftenDropDownChecked === "How Often Do You Play?") {
+        setErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
         return false;
     }
     return true;
-}*/
+
+}
+
+
+
+function setDropDownErrorMessage(querySelector, errorMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+    document.querySelector(querySelector).innerHTML = errorMessage;
+    select.setCustomValidity(errorMessage);
+
+}
+
+
 
 
 function checkZipCode(input) {
