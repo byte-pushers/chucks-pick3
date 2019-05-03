@@ -192,6 +192,13 @@ img {
         height: 100px;
         display: inline-block;
     }
+
+    .main-content-container{
+        display: inline-block;
+        height: 250px;
+        width: 70%;
+        margin-left: 15%;
+    }
 .col-3 {
     position: inherit !important;
 }
@@ -262,9 +269,38 @@ img {
         position: sticky;
         top: 0;
     }
+    .mobile-space {
+        display: inline-block;
+        height: 50px;
+        width: 100%;
 
+    }
 
+    .mobile-container {
+        display: block;
+        height: 250px;
+        background-image: url("../img/screens-04.png");
+        background-size: 250px  350px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
 
+    }
+    .mobile-space {
+        display: inline-block;
+        height: 50px;
+        width: 100%;
+
+    }
+    .break-line {
+        display: inline-block;
+        height: 3px;
+        width: 80%;
+        background-color: gray;
+        margin-top: 1.4em;
+        margin-left: 2.3em;
+        align-content: center;
+    }
 
 
     .mobile-sub-nav-bar-container .sub-nav-bar-col-25.allow-hover:hover {
@@ -319,15 +355,15 @@ img {
 
 
 .logo-container {
-    width: 20%;
-    height: 75px;
+    height: 135px;
+    width: 30%;
 
 /* stays at 20% width, takes on height of header-img */
 }
 
 .header-img-container {
-    width: 80%;
-    height: 75px;
+    height: 135px;
+    width: 70%;
 /* stays at 80% width */
 }
 

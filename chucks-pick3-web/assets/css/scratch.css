@@ -1,44 +1,61 @@
-.mobile-nav-logo {
-    display: inline-block;
-    height: 135px;
-    width: 30%;
-    background-color: blue;
-    float: left;
-}
-.mobile-about {
-    display: inline-block;
-    height: 250px;
-    width:70%;
+@media only screen and (max-width: 760px) {
+    .mobile-nav-logo {
+        display: inline-block;
+        height: 135px;
+        width: 30%;
+        background-color: blue;
+        float: left;
+    }
 
-    background-color: green;
-   margin-left: 15%;
-}
-.mobile-nav-header {
-    display: inline-block;
-    height: 135px;
-    width: 70%;
-    background-color: beige;
-    float: right;
-}
+    .mobile-about {
+        display: inline-block;
+        height: 250px;
+        width: 70%;
 
-.mobile-nav-links {
-    display: inline-block;
-    height: 60px;
-    width: 100%;
-    background-color: red;
-    float: right;
-}
+        background-color: green;
+        margin-left: 15%;
+    }
 
-.mobile-space {
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: #7EBB56;
-}
-.mobile-container {
-    display: block;
-    height: 250px;
-    width:70%;
-    margin: 0 auto;
-    background-color: cyan;
+    .mobile-nav-header {
+        display: inline-block;
+        height: 135px;
+        width: 70%;
+        background-color: beige;
+        float: right;
+    }
+
+    .mobile-nav-links {
+        display: inline-block;
+        height: 60px;
+        width: 100%;
+        background-color: red;
+        float: right;
+    }
+
+    .mobile-space {
+        display: inline-block;
+        height: 50px;
+        width: 100%;
+
+    }
+
+    .mobile-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        background-color: cyan;
+        border-bottom: black;
+
+    }
+
+    .break-line {
+        display: inline-block;
+        height: 3px;
+        width: 80%;
+        background-color: gray;
+        margin-top: 1.4em;
+        margin-left: 2.3em;
+        align-content: center;
+    }
 }
