@@ -102,6 +102,35 @@
 }
 */
 
+@media only screen and (max-width: 760px) {
+    .how-to-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+        background-size: 261.5px 249px;
+    }
+
+
+    .demo-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+        background-size: 261.5px 249px;
+    }
+
+    .sign-up-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+        background-size: 261.5px 249px;
+    }
+}
 @media screen and (max-width: 750px) {
     .slide a {
         display: block;
@@ -217,86 +246,11 @@
     }
 }
 
-@media screen and (max-width: 750px) {
-    .demo-container  {
-        display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
 
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 1px;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .how-to-container  {
-        display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-
-        border-width: 1px;
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .sign-up-container  {
-        display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 1px;
-    }
-}
 /* FOR IPHONE 6/7/8---------------------------------- */
 /* FOR TABLET---------*/
-@media screen and (max-width: 800px) {
-    .demo-container  {
-        display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-04.png");
-        background-size: 100%  350px;
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 1px;
 
-    }
-}
 
-@media screen and (max-width: 800px) {
-    .how-to-container  {
-        display: block;
-        width: 100%;
-        background-image: url("../img/screens-04.png");
-        background-size: 100%  350px;
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 1px;
-    }
-}
 
-@media screen and (max-width: 800px) {
-    .sign-up-container  {
-        display: block;
-        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-        background-image: url("../img/screens-04.png");
-        background-size: 100%  350px;
-        border-top-style: solid;
-        border-right-style:solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 1px;
-    }
-}
 
 /* FOR TABLET---------*/

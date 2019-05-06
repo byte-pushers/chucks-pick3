@@ -164,6 +164,27 @@
     background-color: gray;
 }
 
+/*---- Alignment for link containers ------*/
+.link-container-img {
+    display: inline-block;
+    height: 70%;
+    width: 100%;
+    float: left;
+}
+.link-container-img img {
+   display: inline-block;
+    vertical-align: bottom;
+}
+
+.link-container-text {
+    display: inline-block;
+    height: 30%;
+    width: 100%;
+    float: right;
+}
+.link-container-text p{
+    top: 0;
+}
 /* Responsive Set Up------- */
 
 
@@ -184,9 +205,12 @@ img {
 .mobile-sub-nav-bar-container {
     display: none;
 }
-
+.mobile-spacing {
+    display: none;
+}
 
 @media only screen and (max-width: 760px) {
+
     .mobile-spacing {
         width: 100px;
         height: 100px;
@@ -198,6 +222,7 @@ img {
         height: 250px;
         width: 70%;
         margin-left: 15%;
+        font-size: 11px;
     }
 .col-3 {
     position: inherit !important;
@@ -276,16 +301,7 @@ img {
 
     }
 
-    .mobile-container {
-        display: block;
-        height: 250px;
-        background-image: url("../img/screens-04.png");
-        background-size: 250px  350px;
-        width: 70%;
-        margin: 0 auto;
-        border-bottom: black;
 
-    }
     .mobile-space {
         display: inline-block;
         height: 50px;
@@ -298,7 +314,6 @@ img {
         width: 80%;
         background-color: gray;
         margin-top: 1.4em;
-        margin-left: 2.3em;
         align-content: center;
     }
 

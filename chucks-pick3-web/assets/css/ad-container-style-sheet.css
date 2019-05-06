@@ -84,4 +84,28 @@
 
 }
 
+@media only screen and (max-width: 760px) {
+    .how-to-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
 
+    .demo-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
+
+    .sign-up-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
+}
