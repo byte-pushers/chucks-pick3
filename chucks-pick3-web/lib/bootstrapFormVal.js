@@ -76,14 +76,13 @@ function checkCity(input) {
 }
 
 
-
 function validateHowOftenDropDown(select) {
 
     var selectedDropDownMenuOptionId = document.getElementById("howOftenId").selectedIndex;
     var selectedDropDownMenuTagName = document.getElementsByTagName("option");
 
-    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
-        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please tell us how often you play", select);
 
     } else {
         select.setCustomValidity('');
@@ -92,39 +91,31 @@ function validateHowOftenDropDown(select) {
 }
 
 function validateStateDropDown(select) {
-
     var selectedDropDownMenuOptionId = document.getElementById("stateDropDownId").selectedIndex;
     var selectedDropDownMenuTagName = document.getElementsByTagName("option");
 
-    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
-        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a state selection", select);
 
     } else {
         select.setCustomValidity('');
     }
-
-
 }
-
-
 
 function validateTypeOfPhoneDropDown(select) {
 
     var selectedDropDownMenuOptionId = document.getElementById("typeOfPhoneId").selectedIndex;
     var selectedDropDownMenuTagName = document.getElementsByTagName("option");
 
-    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
-        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, " Please make a phone selection", select);
 
     } else {
         select.setCustomValidity('');
     }
 
 
-
 }
-
-
 
 
 function setDropDownErrorMessage(querySelector, errorMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
