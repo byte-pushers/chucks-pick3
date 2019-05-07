@@ -24,17 +24,6 @@
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 
-
-
-
-
-
-
-
-
-
-
-
 function checkFirstName(input) { // create a function for first name // use input parameter
     checkName(input);
 }
@@ -98,16 +87,68 @@ function checkCity(input) {
 }*/
 
 function validateHowOftenDropDown(select) {
-    var howOftenDropDownChecked = select.options[select.selectedIndex].text;
+    if (select.value.required === true) {
 
-    if (howOftenDropDownChecked === "How Often Do You Play?") {
-        setErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
-        return false;
     }
-    return true;
+    var selectedDropDownMenuOptionId = document.getElementById("howOftenId");
+    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
+
+
+    if (selectedValueAndId === "How Often Do You Play?") {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+
+    } else if (selectedValueAndId === "Often") {
+        select.setCustomValidity('');
+
+    } else if (selectedValueAndId === "Sometimes") {
+        select.setCustomValidity('');
+
+    } else if (selectedValueAndId === "Never") {
+        select.setCustomValidity('');
+    }
+
 
 }
 
+function validateStateDropDown(select) {
+    var selectedDropDownMenuOptionId = document.getElementById("stateDropDownId");
+    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
+    if (selectedValueAndId === "Select a State") {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+
+    } else {
+        select.setCustomValidity('');
+    }
+
+
+}
+
+
+function validateTypeOfPhoneDropDown(select) {
+
+    if (select.value.required === true) {
+
+    }
+    var selectedDropDownMenuOptionId = document.getElementById("typeOfPhoneId");
+    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
+
+
+    if (selectedValueAndId === "select") {
+
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
+        return false;
+
+
+    } else if (selectedValueAndId === "Iphone") {
+        select.setCustomValidity('');
+
+    } else if (selectedValueAndId === "Android") {
+        select.setCustomValidity('');
+
+    }
+
+
+}
 
 
 function setDropDownErrorMessage(querySelector, errorMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
@@ -116,7 +157,11 @@ function setDropDownErrorMessage(querySelector, errorMessage, select) { //functi
 
 }
 
+/*function setDropDownSuccessMessage(querySelector, successMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+    document.querySelector(querySelector).innerHTML = successMessage;
+    select.setCustomValidity(successMessage);
 
+}*/
 
 
 function checkZipCode(input) {
