@@ -76,44 +76,27 @@ function checkCity(input) {
 }
 
 
-/*function validateHowOftenDropDown(select) {
-    if(select.value === "How Often Do You Play?") {
-        setErrorMessage(".invalid-feedback." + select.name, "HELLO", select);
-        return false;
-    }
-
-    return true;
-
-}*/
 
 function validateHowOftenDropDown(select) {
-    if (select.value.required === true) {
 
-    }
-    var selectedDropDownMenuOptionId = document.getElementById("howOftenId");
-    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
+    var selectedDropDownMenuOptionId = document.getElementById("howOftenId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
 
-
-    if (selectedValueAndId === "How Often Do You Play?") {
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
         setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
 
-    } else if (selectedValueAndId === "Often") {
-        select.setCustomValidity('');
-
-    } else if (selectedValueAndId === "Sometimes") {
-        select.setCustomValidity('');
-
-    } else if (selectedValueAndId === "Never") {
+    } else {
         select.setCustomValidity('');
     }
-
 
 }
 
 function validateStateDropDown(select) {
-    var selectedDropDownMenuOptionId = document.getElementById("stateDropDownId");
-    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
-    if (selectedValueAndId === "Select a State") {
+
+    var selectedDropDownMenuOptionId = document.getElementById("stateDropDownId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
+
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
         setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
 
     } else {
@@ -124,31 +107,24 @@ function validateStateDropDown(select) {
 }
 
 
+
 function validateTypeOfPhoneDropDown(select) {
 
-    if (select.value.required === true) {
+    var selectedDropDownMenuOptionId = document.getElementById("typeOfPhoneId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
 
-    }
-    var selectedDropDownMenuOptionId = document.getElementById("typeOfPhoneId");
-    var selectedValueAndId = selectedDropDownMenuOptionId.options[selectedDropDownMenuOptionId.selectedIndex].value;
-
-
-    if (selectedValueAndId === "select") {
-
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true){
         setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a selection", select);
-        return false;
 
-
-    } else if (selectedValueAndId === "Iphone") {
+    } else {
         select.setCustomValidity('');
-
-    } else if (selectedValueAndId === "Android") {
-        select.setCustomValidity('');
-
     }
+
 
 
 }
+
+
 
 
 function setDropDownErrorMessage(querySelector, errorMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
