@@ -213,20 +213,19 @@
                         <div class="info-form">
                             <div class="form-row">
                                 <label for="defaultRegisterFormUserName">Username</label>
-                                <input type="text" minlength="4" name="userName" maxlength="25"
+                                <input type="text" minlength="4" name="userName" maxlength="15"
                                        id="defaultRegisterFormUserName"
                                        class="form-control"
-                                       placeholder="Username" onchange="checkedUserName(this)" required="required">
+                                       placeholder="Username" onclick="checkUserName(this);"  required>
                                 <div class="invalid-feedback userName"></div>
                             </div>
                             <br>
                             <!-- Password -->
                             <div class="form-row">
                                 <label for="defaultRegisterFormPassword">Password</label>
-                                <input type="password" minlength="6" maxlength="25" name="passWord"
-                                       onchange="checkPassword(this)"
+                                <input type="password" minlength="8" maxlength="9" name="passWord" onchange="checkPassWord(this)"
                                        id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                                       required="required">
+                                       required>
                                 <div class="invalid-feedback passWord ">
                                 </div>
                                 <br>
@@ -242,11 +241,8 @@
                 </div>
             </form>
         </div>
-
-
     </div>
 </div>
-
 
 <!-- jQuery library -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
