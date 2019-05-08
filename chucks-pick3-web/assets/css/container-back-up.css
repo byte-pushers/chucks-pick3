@@ -5,83 +5,95 @@
 
 }
 
-.text {
-    margin: auto;
-    padding-top: 60%;
-    padding-left: 5%;
-    position: center;
-    vertical-align: bottom;
-}
+
 
 .how-to-container {
     background-image: url("../img/screens-04.png");
     background-size: 420px  350px;
-    border-top-style: solid;
-    border-right-style:solid;
-    border-bottom-style: none;
-    border-left-style: none;
+border-bottom: solid;
     border-width: 1px;
-    width: 33.3%;
-    height: 350px;
     border-color: #BDBDBD;
+    width: 33.4%;
+    height: 350px;
+
+    float: left;
 
 
 }
 
-.how-to-container p {
-    vertical-align: bottom;
-    margin: 5%;
-    text-align: left;
-    position:relative;
 
-}
 
 
 .demo-container {
     display: inline-block;
     background-image: url("../img/screens-04.png");
     background-size: 420px  350px;
-    border-top-style: solid;
+    border-top-style: none;
     border-right-style:solid;
-    border-bottom-style: none;
+    border-bottom-style: solid;
     border-left-style: solid;
     border-width: 1px;
-    width: 33.3%;
+    width: 33.4%;
     height: 350px;
-    margin-left:-6px;
     border-color: #BDBDBD;
+    float: left;
 }
 
-.demo-container p {
 
-    margin: 5%;
-    text-align: left;
-    position:relative;
-
-}
 
 .sign-up-container {
     display: inline-block;
     background-image: url("../img/screens-04.png");
     background-size: 420px  350px;
-    border-top-style: solid;
+    border-top-style: none;
     border-right-style: none;
-    border-bottom-style: none;
+    border-bottom-style: solid;
     border-left-style: none;
     border-width: 1px;
     width: 33.2%;
     height: 350px;
-    margin-left:-4px;
     border-color: #BDBDBD;
+    float: right;
 
 }
+@media only screen and (min-width: 800px) {
+    .container-spacing {
+        height: 2.4em;
+        width: 100%;
+        display: inline-block;
+        float: left;
+    }
 
-.sign-up-container p {
-    vertical-align: bottom;
-    margin: 5%;
-    text-align: left;
-    position:relative;
+    .container-spacing-sign-up {
+        height: 2.3em;
+        width: 100%;
+        display: inline-block;
+        float: left;
+    }
 
+    .link-container-img {
+        display: inline-block;
+        height: 230px;
+        width: 100%;
+        float: left;
+    }
+
+
+    .link-container-text {
+        display: inline-block;
+        height: 75px;
+        width: 100%;
+        float: right;
+        padding: 11px;
+        font-size: 11px;
+    }
+
+    .link-container-text-sign-up {
+        display: inline-block;
+        height: 75px;
+        width: 100%;
+        float: right;
+        padding: 17px;
+        font-size: 11px;
+    }
 }
-
-

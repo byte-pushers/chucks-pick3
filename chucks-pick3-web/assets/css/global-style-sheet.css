@@ -123,6 +123,11 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.normal-space {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+}
 h1 {
     text-align: center;
     text-transform: uppercase;
@@ -136,7 +141,7 @@ h1 {
 
 
     width: 100%;
-    height: 420px;
+    height: 380px;
     padding-top:30px;
     text-align: center;
 
