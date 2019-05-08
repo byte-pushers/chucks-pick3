@@ -8,6 +8,25 @@
         // Loop over them and prevent submission
         var validation = Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
+                var formElements = form.elements;
+                for (var i = 0; i < formElements.length; i++) {
+                    var aElement = formElements[i];
+                    if (aElement.name === "firstName" || aElement.name === "lastName" || aElement.name === "email" ||
+                        aElement.name === "cityName" || aElement.name === "phoneNumber" || aElement.name === "stateDropDownInputName" || aElement.name === "zipCode" ||
+                        aElement.name ==="dropDownTypeOfPhoneName"|| aElement.name === "dropDownHowOftenName") {
+
+                        checkFirstName(aElement);
+                        checkLastName(aElement);
+                        checkEmail(aElement);
+                        checkPhoneNumber(aElement);
+                        checkCity(aElement);
+                        validateStateDropDown(aElement);
+                        validateTypeOfPhoneDropDown(aElement);
+                        validateHowOftenDropDown(aElement)
+                    }
+
+                }
+
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -18,10 +37,6 @@
     }, false);
 
 }());
-
-// we created new function to group both checkFirstName and checkLastName then we changed error message
-// to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
-// then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 
 function checkFirstName(input) { // create a function for first name // use input parameter
@@ -228,7 +243,5 @@ function checkNameValidity(input) {
     }
 
 }
-
-
 
 
