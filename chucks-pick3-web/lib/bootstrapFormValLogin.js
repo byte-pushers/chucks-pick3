@@ -11,8 +11,9 @@
                 var formElements = form.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];
-                    if (aElement.name === "userName") {
+                    if (aElement.name === "userName"  ) {
                         checkUserName(aElement);
+
                     }
                     if (aElement.name === "passWord") {
                         checkPassWord(aElement);
@@ -33,38 +34,6 @@
 }());
 
 
-function checkUserName(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
-
-        if (input.required === true) { // the input is required if not show error message // must have required as a input field
-            if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkUserNameValidity(input);
-            } else {
-                setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty", input);
-            }
-        } else {
-            if (hasData(input)) { // input can not be null or undefined it will throw a error
-                checkUserNameValidity(input);
-            }
-        }
-    }
-
-}
-function checkUserNameValidity(input) {
-    const errorFieldName = input.value.toNormalCase();
-
-
-    if (!input.value.length >= 4) {
-        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Username must contain 4 characters", input);
-        return false;
-
-
-    }
-
-
-
-}
 
 
 function checkPassWord(input) {
@@ -116,6 +85,36 @@ function checkPassWord(input) {
             return false;
         }
 }
+
+
+function checkUserName(input) {
+
+    if (input !== null && input !== undefined) {
+        setErrorMessage(".invalid-feedback." + input.name, "", input);
+
+        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
+            // do nothing
+        } else {
+            // setErrorMessage
+            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
+        }
+    }
+
+
+
+}
+
+
+/*function checkUserNameValidity(input) {
+    const errorFieldName = input.value.toNormalCase();
+
+
+    if (!input.value.length >= 4) {
+        console.log(input.value.length);
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain 4 characters", input);
+        return false;
+    }
+}*/
 
 
 function hasData(input) {

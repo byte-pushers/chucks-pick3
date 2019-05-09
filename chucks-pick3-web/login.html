@@ -118,12 +118,11 @@
                     <div class="col-3 mx-auto text-left">
                         <p class="h4 mb-4 c text-center">Login </p>
                         <div class="info-form">
+                            <!-- Username -->
                             <div class="form-row">
                                 <label for="defaultRegisterFormUserName">Username</label>
-                                <input type="text" minlength="4" name="userName" maxlength="15"
-                                       id="defaultRegisterFormUserName"
-                                       class="form-control"
-                                       placeholder="Username" onclick="checkUserName(this);"  required>
+                                <input type="text" minlength="4"  maxlength="15" name="userName" onchange="checkUserName(this)"
+                                       id="defaultRegisterFormUserName" class="form-control" placeholder="Username"  required>
                                 <div class="invalid-feedback userName"></div>
                             </div>
                             <br>
@@ -133,8 +132,8 @@
                                 <input type="password" minlength="8" maxlength="9" name="passWord" onchange="checkPassWord(this)"
                                        id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
                                        required>
-                                <div class="invalid-feedback passWord ">
-                                </div>
+                                <div class="invalid-feedback passWord"></div>
+                            </div>
                                 <br>
                                 <br>
                                 <button type="submit" value="Validate"
@@ -142,7 +141,6 @@
                                 </button>
 
                                 <br>
-                            </div>
                         </div>
                     </div>
                 </div>
