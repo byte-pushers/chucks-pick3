@@ -60,83 +60,89 @@
     display: inline-block;
     width: 100%;
     height: 250px;
-    background-color: #8BC34A;
 }
 
 .selection-title {
     display: inline-block;
     width: 100%;
     height: 50px;
-    background-color: #eea53a;
+    background-color: black;
 
+}
+.selection-title h3 {
+    line-height: 1.7em;
+    color: white;
+    padding-left: 10px;
 }
 
 .appleOS {
     display: inline-block;
     width: 50%;
     height: 200px;
-    background-color: #1704f9;
     float: left;
+    margin: auto;
+
+
 }
 
 .androidOS {
     display: inline-block;
     width: 50%;
     height: 200px;
-    background-color: #212121;
+    align-content: center;
 }
 
 .select-apple-device {
     display: inline-block;
     width: 100%;
     height: 250px;
-    background-color: #8BC34A;
+    align-content: center;
 }
 
 .iphone {
     display: inline-block;
     width: 33.3%;
     height: 200px;
-    background-color: red;
     float: left;
+    align-content: center;
 }
 
 .iphoneX {
     display: inline-block;
     width: 33.3%;
     height: 200px;
-    background-color: blue;
     float: left;
+    align-content: center;
 }
 
 .ipad {
     display:inline-block;
     width: 33.4%;
     height: 200px;
-    background-color: green;
     float: right;
+    align-content: center;
 }
 
 .select-android-device {
     display: inline-block;
     width: 100%;
     height: 250px;
-    background-color: #8BC34A;
+    align-content: center;
 }
 
 .android-phone {
     display: inline-block;
     width: 50%;
     height: 200px;
-    background-color: red;
     float: left;
+    align-content: center;
 }
 
 .android-tablet {
     display: inline-block;
     width: 50%;
     height: 200px;
-    background-color: blue;
     float: left;
+    align-content: center;
 }
 
