@@ -1,0 +1,50 @@
+
+h2.success{
+    font-size:22px;
+    color:#8F9945;
+    font-weight:lighter;
+}
+
+p{
+    font-size:14px;
+    color:#666;
+    line-height:16px;
+}
+.clear{clear:both;}
+.main-container{
+    background-color:#E6E6E6;
+    font-family:Helvetica,Arial,sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px beige;
+
+
+}
+.message-box-container{
+    background:#fff  no-repeat top left;
+    position:absolute;
+
+
+}
+.message-shadow-container{
+    background:transparent  no-repeat center top;
+    height:24px;
+    clear:both;
+}
+.message-icon-container{
+    float:left;
+    width:80px;
+    display:inline;
+
+}
+.message-content-container{
+    float:left;
+    display:inline;
+    width: 30%;
+}
+.logo-container{
+    width: 20%;
+
+    height: 20%;
+}
