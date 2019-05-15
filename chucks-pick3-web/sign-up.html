@@ -46,45 +46,7 @@
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
 
-    <!-- Latest compiled and minified Bootstrap JavaScript -->
 
-
-    <!-- Initialize Bootstrap functionality -->
-    <script>
-        // Initialize tooltip component
-        /*$(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-        // Initialize popover component
-        $(function () {
-            $('[data-toggle="popover"]').popover()
-        });
-
-        window.onscroll = function () {
-            myFunction()
-        };
-
-        var navbar = document.getElementById("navbar");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-
-        function openSlideMenu() {
-            document.getElementById('menu').style.width = '250px';
-            document.getElementById('content').style.marginRight = '250px';
-        }
-
-        function closeSlideMenu() {
-            document.getElementById('menu').style.width = '0';
-            document.getElementById('content').style.marginRight = '0';
-        }*/
-    </script>
 </head>
 <body>
 
@@ -131,10 +93,10 @@
                         <div id="side-nav-bar" class="sidenav">
                             <div class="menu">
                                 <div class="end">
-                                    <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+                                    <a href="javascript:void(0)" onclick="closeNav()">&times;</a>
                                 </div>
                                 <div class="menu-title">
-                                    <h2><b>Menu</b> </h2>
+                                    <h2><b>Menu</b></h2>
                                 </div>
 
                                 <div class="hamburger-menu-section-1">
@@ -202,12 +164,7 @@
                 </div>
             </div>
         </div>
-
-
-
-        </div>
     </div>
-</div>
 
     <div class="body-container">
         <div class="main-content-container">
@@ -255,69 +212,63 @@
                             <div class="invalid-feedback cityName "></div>
                         </div>
                         <br>
-
-                            <br>
-
-                            <br>
-
-
                         <div class="form-row">
                             <label for="defaultRegisterFormCity">State</label>
-                                <select required class="custom-select" id="stateDropDownId" name="stateDropDownInputName"
-                                        onclick="validateStateDropDown(this)">
-                                    <option value="" selected>Select a State</option>
-                                    <option value="Alabama">Alabama</option>
-                                    <option value="Alaska">Alaska</option>
-                                    <option value="Arizona">Arizona</option>
-                                    <option value="Arkansas">Arkansas</option>
-                                    <option value="5">California</option>
-                                    <option value="6">Colorado</option>
-                                    <option value="7">Connecticut</option>
-                                    <option value="8">Delaware</option>
-                                    <option value="1">District Of Columbia</option>
-                                    <option value="1">Florida</option>
-                                    <option value="1">Georgia</option>
-                                    <option value="1">Hawaii</option>
-                                    <option value="1">Idaho</option>
-                                    <option value="1">Illinois</option>
-                                    <option value="1">Indiana</option>
-                                    <option value="1">Iowa</option>
-                                    <option value="1">Kansas</option>
-                                    <option value="1">Kentucky</option>
-                                    <option value="1">Louisiana</option>
-                                    <option value="1">Maine</option>
-                                    <option value="1">Maryland</option>
-                                    <option value="1">Massachusetts</option>
-                                    <option value="1">Michigan</option>
-                                    <option value="1">Minnesota</option>
-                                    <option value="1">Mississippi</option>
-                                    <option value="1">Missouri</option>
-                                    <option value="1">Montana</option>
-                                    <option value="1">Nebraska</option>
-                                    <option value="1">Nevada</option>
-                                    <option value="1">New Hampshire</option>
-                                    <option value="1">New Jersey</option>
-                                    <option value="1">New Mexico</option>
-                                    <option value="1">New York</option>
-                                    <option value="1">North Carolina</option>
-                                    <option value="1">North Dakota</option>
-                                    <option value="1">Ohio</option>
-                                    <option value="1">Oklahoma</option>
-                                    <option value="1">Oregon</option>
-                                    <option value="1">Pennsylvania</option>
-                                    <option value="1">Rhode Island</option>
-                                    <option value="1">South Carolina</option>
-                                    <option value="1">South Dakota</option>
-                                    <option value="1">Tennessee</option>
-                                    <option value="1">Texas</option>
-                                    <option value="1">Utah</option>
-                                    <option value="1">Vermont</option>
-                                    <option value="1">Virginia</option>
-                                    <option value="1">Washington</option>
-                                    <option value="1">West Virginia</option>
-                                    <option value="1">Wisconsin</option>
-                                    <option value="1">Wyoming</option>
-                                </select>
+                            <select required class="custom-select" id="stateDropDownId" name="stateDropDownInputName"
+                                    onclick="validateStateDropDown(this)">
+                                <option value="" selected>Select a State</option>
+                                <option value="Alabama">Alabama</option>
+                                <option value="Alaska">Alaska</option>
+                                <option value="Arizona">Arizona</option>
+                                <option value="Arkansas">Arkansas</option>
+                                <option value="5">California</option>
+                                <option value="6">Colorado</option>
+                                <option value="7">Connecticut</option>
+                                <option value="8">Delaware</option>
+                                <option value="1">District Of Columbia</option>
+                                <option value="1">Florida</option>
+                                <option value="1">Georgia</option>
+                                <option value="1">Hawaii</option>
+                                <option value="1">Idaho</option>
+                                <option value="1">Illinois</option>
+                                <option value="1">Indiana</option>
+                                <option value="1">Iowa</option>
+                                <option value="1">Kansas</option>
+                                <option value="1">Kentucky</option>
+                                <option value="1">Louisiana</option>
+                                <option value="1">Maine</option>
+                                <option value="1">Maryland</option>
+                                <option value="1">Massachusetts</option>
+                                <option value="1">Michigan</option>
+                                <option value="1">Minnesota</option>
+                                <option value="1">Mississippi</option>
+                                <option value="1">Missouri</option>
+                                <option value="1">Montana</option>
+                                <option value="1">Nebraska</option>
+                                <option value="1">Nevada</option>
+                                <option value="1">New Hampshire</option>
+                                <option value="1">New Jersey</option>
+                                <option value="1">New Mexico</option>
+                                <option value="1">New York</option>
+                                <option value="1">North Carolina</option>
+                                <option value="1">North Dakota</option>
+                                <option value="1">Ohio</option>
+                                <option value="1">Oklahoma</option>
+                                <option value="1">Oregon</option>
+                                <option value="1">Pennsylvania</option>
+                                <option value="1">Rhode Island</option>
+                                <option value="1">South Carolina</option>
+                                <option value="1">South Dakota</option>
+                                <option value="1">Tennessee</option>
+                                <option value="1">Texas</option>
+                                <option value="1">Utah</option>
+                                <option value="1">Vermont</option>
+                                <option value="1">Virginia</option>
+                                <option value="1">Washington</option>
+                                <option value="1">West Virginia</option>
+                                <option value="1">Wisconsin</option>
+                                <option value="1">Wyoming</option>
+                            </select>
                             <div class="invalid-feedback stateDropDownInputName"></div>
                         </div>
                         <br>
@@ -329,30 +280,15 @@
                             <div class="invalid-feedback zipCode "></div>
                         </div>
                         <br>
-                        <br>
                         <div class="form-row">
                             <label for="defaultRegisterFormCity">Type Of Phone</label>
                             <select class="custom-select" id="typeOfPhoneId" name="dropDownTypeOfPhoneName"
-                                    onclick="validateTypeOfPhoneDropDown(this)"
+                                    onblur="validateTypeOfPhoneDropDown(this)"
                                     required>
                                 <option value="" selected>Type Of Phone</option>
                                 <option value="Iphone">Iphone</option>
                                 <option value="Android">Android</option>
                             </select>
-
-                               <br>
-
-                                <br>
-                            <div class="form-row">
-                                    <label for="defaultRegisterFormCity">Type Of Phone</label>
-                                    <select class="custom-select" id="typeOfPhoneId"  name="dropDownTypeOfPhoneName"
-                                            onblur="validateTypeOfPhoneDropDown(this)"
-                                            required>
-                                        <option value="" selected>Type Of Phone</option>
-                                        <option value="Iphone">Iphone</option>
-                                        <option value="Android">Android</option>
-                                    </select>
-
                             <div class="invalid-feedback dropDownTypeOfPhoneName"></div>
                         </div>
                         <br>
@@ -366,14 +302,9 @@
                                 <option value="Sometimes">Sometimes</option>
                                 <option value="Never">Never</option>
                             </select>
-
                             <div class="invalid-feedback dropDownHowOftenName"></div>
-
-
                             <br>
-
                             <br>
-
                             <button type="submit" value='submit' onClick="parent.location='signup-confirmation.html'"
                                     class="btnSubmit btn btn-success ">Submit
                             </button>
@@ -389,32 +320,33 @@
             <br>
         </div>
     </div>
+</div>
 
-    <!-- jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 
-    <!-- Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 
-    <!-- Latest compiled and minified Bootstrap JavaScript -->
+<!-- Latest compiled and minified Bootstrap JavaScript -->
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
-    <script src="lib/bootstrapFormVal.js"></script>
-    <script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+<script src="lib/bootstrapFormVal.js"></script>
+<script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
 
-    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
+<script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
-    <!-- Initialize Bootstrap functionality -->
 <!-- Initialize Bootstrap functionality -->
-    <!-- Initialize Bootstrap functionality -->
+<!-- Initialize Bootstrap functionality -->
+<!-- Initialize Bootstrap functionality -->
 <script>
     function openNav() {
         document.getElementById("side-nav-bar").style.width = "250px";
@@ -426,7 +358,9 @@
 </script>
 
 <script>
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function () {
+        myFunction()
+    };
 
     var header = document.getElementById("side-nav-bar");
     var sticky = header.offsetTop;
