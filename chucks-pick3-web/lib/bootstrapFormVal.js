@@ -11,26 +11,42 @@
                 var formElements = form.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];
-                    if(aElement.name === "firstName") {
+
+                    if (aElement.name === "firstName") {
                         checkFirstName(aElement);
-                    } else if (aElement.name === "lastName") {
-                        checkLastName(aElement);
-                    } else if (aElement.name === "email") {
-                        checkEmail(aElement);
-                    } else if (aElement.name === "cityName") {
-                        checkCity(aElement);
-                    } else if (aElement.name === "phoneNumber") {
-                        checkPhoneNumber(aElement);
-                    } else if (aElement.name === "stateDropDownInputName") {
-                        validateStateDropDown(aElement);
-                    } else if (aElement.name === "zipCode") {
-                        checkZipCode(aElement);
-                    } else if (aElement.name === "dropDownTypeOfPhoneName") {
-                        validateTypeOfPhoneDropDown(aElement);
-                    } else if (aElement.name === "dropDownHowOftenName") {
-                        validateHowOftenDropDown(aElement);
                     }
 
+                    if (aElement.name === "lastName") {
+                        checkLastName(aElement);
+                    }
+
+                    if (aElement.name === "email") {
+                        checkEmail(aElement);
+                    }
+
+                    if (aElement.name === "cityName") {
+                        checkCity(aElement);
+                    }
+
+                    if (aElement.name === "phoneNumber") {
+                        checkPhoneNumber(aElement);
+                    }
+
+                    if (aElement.name === "stateDropDownInputName") {
+                        validateStateDropDown(aElement);
+                    }
+
+                    if (aElement.name === "zipCode") {
+                        checkZipCode(aElement);
+                    }
+
+                    if (aElement.name === "dropDownTypeOfPhoneName") {
+                        validateTypeOfPhoneDropDown(aElement);
+                    }
+
+                    if (aElement.name === "dropDownHowOftenName") {
+                        validateHowOftenDropDown(aElement);
+                    }
                 }
 
                 if (form.checkValidity() === false) {
