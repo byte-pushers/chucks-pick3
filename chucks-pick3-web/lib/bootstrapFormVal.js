@@ -11,18 +11,24 @@
                 var formElements = form.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];
-                    if (aElement.name === "firstName" || aElement.name === "lastName" || aElement.name === "email" ||
-                        aElement.name === "cityName" || aElement.name === "phoneNumber" || aElement.name === "stateDropDownInputName" || aElement.name === "zipCode" ||
-                        aElement.name ==="dropDownTypeOfPhoneName"|| aElement.name === "dropDownHowOftenName") {
-
+                    if(aElement.name === "firstName") {
                         checkFirstName(aElement);
+                    } else if (aElement.name === "lastName") {
                         checkLastName(aElement);
+                    } else if (aElement.name === "email") {
                         checkEmail(aElement);
-                        checkPhoneNumber(aElement);
+                    } else if (aElement.name === "cityName") {
                         checkCity(aElement);
+                    } else if (aElement.name === "phoneNumber") {
+                        checkPhoneNumber(aElement);
+                    } else if (aElement.name === "stateDropDownInputName") {
                         validateStateDropDown(aElement);
+                    } else if (aElement.name === "zipCode") {
+                        checkZipCode(aElement);
+                    } else if (aElement.name === "dropDownTypeOfPhoneName") {
                         validateTypeOfPhoneDropDown(aElement);
-                        validateHowOftenDropDown(aElement)
+                    } else if (aElement.name === "dropDownHowOftenName") {
+                        validateHowOftenDropDown(aElement);
                     }
 
                 }
