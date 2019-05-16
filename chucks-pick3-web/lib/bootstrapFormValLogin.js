@@ -24,7 +24,6 @@
 // then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 
-
 function checkedUserName(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
@@ -42,73 +41,56 @@ function checkedUserName(input) {
         }
     }
 
-}
 
+
+}
 
 
 //*********************LOGIN USERNAME & PASSWORD VALIDATION**************************
 
-
-function checkUserName(input) { // create a function for first name // use input parameter
-    checkedUserName(input);
-}
 
 
 
 //TODO: Must not be null or undefined or empty or contain whitespace
 //TODO: Must include one capital letter
 //TODO: Must include one lowercase letter
-//TODO: Must inlcude one number
+//TODO: Must include one number
 //TODO: Must include one special character
 //TODO: May have to loop thru, may have to use search,contain or includes or match test all.
 
 function checkPassword(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
+    hasData(input);
 
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
+
+
+    const errorFieldName = input.value.toNormalCase();
+    const minLength = input.minLength; //create variable for min and max add to the input
+    const maxLength = input.maxLength; //create variable for min and max add to the input
+
+
+    if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
+        // if statement for max length and min length make sure not null or undefined
+        if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Must contain characters.", input);
+        } else if (input.value.length < minLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+        } else if (input.value.length > maxLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
-        if (input !== input.value.toUpperCase()) {
+    } else if (minLength !== null && minLength !== undefined) {
+        if (input.value.length >= minLength) {
 
-        } else {
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
-
+    } else if (input.value.length < minLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
         }
-        if (input !== input.toLowerCase()) {
-
-        } else {
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
-
+        } else if (maxLength !== null && maxLength !== undefined) {
+        if (input.value.length <= maxLength) {
+        } else if (input.value.length > maxLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
-        if (input.value === input.value.isNumeric()) {
-
-        } else {
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
-
-        }
-        if (input.value.includes(input.value.toUpperCase)) {
-
-        } else {
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
-
-
-        }
-        if (input.value.includes(input.value.toLowerCase)) {
-
-        } else {
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input);
-
-        }
-
     }
 
 }
-
-
 
 
 function hasData(input) {

@@ -129,6 +129,51 @@
         };
     }
 
+
+    /**
+     *  <p> Function that is used to read numbers in a string.</p>
+     *  @function
+     *  @return <a href="https://www.w3schools.com/jsref/jsref_includes.asp ">Includes</a> Checks to see if a variable includes another variable.
+     *  @author <a <a href="mailto:anthony.gamble@bytepushers.software">Anthony Gamble</a>
+     */
+
+    if (!String.prototype.isNumeric) {
+
+        String.prototype.isNumeric = function () {
+            //return this.replace(/[0-9]/g, '').split('').sort().join('');
+            var isNumeric = false;
+            var trueNumeric = "0123456789".split('');
+            //var i;
+
+            // Note: the key word this represents the string that calls this isNumeric() method.
+            // TODO: split the string into array and assign to a variable.
+            var numbersArray = this.replace(/ /g,'').split('');
+            // TODO: loop through the newly created array.
+            for (var i=0; i < numbersArray.length; i++){
+                // TODO: get each element out of newly created array
+                var numbers = numbersArray[i];
+                // TODO: determine if the true alphabet includes element.
+                //if (this.includes(trueNumeric[i])){
+                if (trueNumeric.includes(numbers)) { //TODO
+
+                    console.log('Character "' + numbers + '" is Number');
+                    isNumeric = true;
+                } else if (this !== trueNumeric) {
+
+                    console.log('Character "' + numbers + '" is not a Number');
+                    isNumeric = false;
+                    break;
+                }
+            }
+            return isNumeric;
+
+        };
+    }
+
+
+
+
+
     /**
      *  <p> Function that is used to read both letters and numbers in a string.</p>
      *  @function
