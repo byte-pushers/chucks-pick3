@@ -106,8 +106,8 @@ a:hover .appleOS {
     padding-bottom: 6%;
 }
 
-.select-apple-device {
-    display: inline-block;
+#select-apple-device {
+    display: none;
     width: 100%;
     height: 300px;
     align-content: center;
@@ -149,8 +149,8 @@ a:hover .appleOS {
     padding-bottom: 5.3%;
 }
 
-.select-android-device {
-    display: inline-block;
+#select-android-device {
+    display: none;
     width: 100%;
     height: 300px;
     align-content: center;

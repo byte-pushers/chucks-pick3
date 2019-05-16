@@ -269,29 +269,40 @@
         <div class="how-to-view">
             <div id="view-picks-mobile" class="mobile-spacing">
             </div>
-            <H2 id="demo">How to View Generated Picks:</H2>
+            <H2 id="generated-picks">How to View Generated Picks:</H2>
             <img src="assets/img/Info page -14.png" alt="ViewGenerated" style="width:700px" align="center">
         </div>
     </div>
         <div class="normal-space"></div>
 <div class="demo-section">
-    <h2 id="generated-picks"><b>Try out Chuck's Pick 3:</b></h2>
+
+    <h2  id="demo"><b>Try out Chuck's Pick 3:</b></h2>
+    <div class="demo-paragraph"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+        Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+    <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+            Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+            Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+        <br>
+    </div>
     <div class="select-os">
         <div class="selection-title">
             <h3><b>Select OS</b></h3>
         </div>
 
-            <div onClick="document.location='home.html'" class="allow-hover ">
-                <a href="home.html">  <div class = "appleOS">
+            <div onClick=" appleFunction(); document.location='#select-apple-device';"  class="allow-hover ">
+                 <div class = "appleOS">
                     <img src="assets/img/Apple%20Icon.png" alt="appleIcon" style="width:130px" >
-                </div></a>
+                </div>
             </div>
 
 
-        <div onClick="document.location='home.html'" class="allow-hover ">
-            <a href="home.html">   <div class = "androidOS">
+        <div  onclick="androidFunction()" class="allow-hover ">
+           <div class = "androidOS" onClick="document.location='#select-android-device'">
                 <img src="assets/img/Android%20Icon.png" alt="androidIcon" style="width:130px" >
-            </div></a>
+            </div>
         </div>
 
           <div class="demo-label-os">
@@ -305,13 +316,14 @@
 
     </div>
     <div class="normal-space"></div>
-    <div class="select-apple-device">
+    <div id="select-apple-device">
         <div class="selection-title">
             <h3><b>Select Device</b></h3>
         </div>
+        <a href="https://invis.io/Z5S2CIT7SJ2">
         <div class="iphone">
             <img src="assets/img/Apple%20Devices-02.png" alt="iphoneX" style="width:130px" >
-        </div>
+        </div> </a>
         <div class="iphoneX">
             <img src="assets/img/Apple%20Devices-01.png" alt="iphone" style="width:130px" >
         </div>
@@ -330,10 +342,11 @@
     </div>
     <div class="normal-space"></div>
 
-    <div class="select-android-device">
+    <div id="select-android-device">
         <div class="selection-title">
             <h3><b>Select Device</b></h3>
         </div>
+
         <div class="android-phone">
             <img src="assets/img/Android%20Devices-01.png" alt="androidPhone" style="width:90px" >
         </div>
@@ -435,6 +448,27 @@
             header.classList.add("sub-sticky");
         } else {
             header.classList.remove("sub-sticky");
+        }
+    }
+</script>
+<script>
+    function appleFunction() {
+        var x = document.getElementById("select-apple-device");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function androidFunction() {
+        var x = document.getElementById("select-android-device");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
         }
     }
 </script>
