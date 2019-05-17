@@ -1,3 +1,8 @@
+html {
+    height:100%;
+}
+
+
 .main-container {
     background-color: #fafafa;
     width: 100%;
@@ -58,6 +63,7 @@ p {
     padding: 0;
     margin: 0 auto;
 
+
 }
 
 .main-content-container {
@@ -104,6 +110,8 @@ p {
 body {
     font-family: 'Lato', sans-serif;
     overflow-x: hidden;
+    height:100%;
+    border: 3px solid black !important;
 }
 
 * {
@@ -144,5 +152,17 @@ h1 {
     height: 380px;
     padding-top:30px;
     text-align: center;
+
+}
+
+#container-jumbotron {
+    line-height:4.5em;
+    height:100%;
+
+
+}
+
+.jumbotron {
+line-height:4.5em;
 
 }
