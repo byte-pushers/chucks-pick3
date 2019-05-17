@@ -35,8 +35,12 @@
 
 
 
+<<<<<<< HEAD
 
 function checkPassWord(input) {
+=======
+function checkedUserName(input) {
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
@@ -53,15 +57,19 @@ function checkPassWord(input) {
         }
     }
 
-}
 
 
+<<<<<<< HEAD
     function checkPassValidity(input) {
         const errorFieldName = input.value.toNormalCase();
         var PasswordContainsUpperCase = /[A-Z]/g;//test for uppercase letter
         var PasswordContainsLowerCase = /[a-z]/g; //test for lowercase letter
         var PasswordContainsNumber = /[0-9]/g; //test for number
         var PasswordContainsSpecialChar = /\W/g; //test for special character
+=======
+}
+
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
 
         if(!input.value.match(PasswordContainsUpperCase)) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a Uppercase letter", input);
@@ -71,6 +79,7 @@ function checkPassWord(input) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a number", input);
             return false;
 
+<<<<<<< HEAD
         }
         if(!input.value.match(PasswordContainsLowerCase)) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a lowercase character", input);
@@ -86,9 +95,12 @@ function checkPassWord(input) {
         }
 }
 
+=======
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
 
 function checkUserName(input) {
 
+<<<<<<< HEAD
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
@@ -115,6 +127,48 @@ function checkUserName(input) {
         return false;
     }
 }*/
+=======
+//TODO: Must not be null or undefined or empty or contain whitespace
+//TODO: Must include one capital letter
+//TODO: Must include one lowercase letter
+//TODO: Must include one number
+//TODO: Must include one special character
+//TODO: May have to loop thru, may have to use search,contain or includes or match test all.
+
+function checkPassword(input) {
+    hasData(input);
+
+
+
+    const errorFieldName = input.value.toNormalCase();
+    const minLength = input.minLength; //create variable for min and max add to the input
+    const maxLength = input.maxLength; //create variable for min and max add to the input
+
+
+    if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
+        // if statement for max length and min length make sure not null or undefined
+        if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Must contain characters.", input);
+        } else if (input.value.length < minLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+        } else if (input.value.length > maxLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+        }
+    } else if (minLength !== null && minLength !== undefined) {
+        if (input.value.length >= minLength) {
+
+    } else if (input.value.length < minLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+        }
+        } else if (maxLength !== null && maxLength !== undefined) {
+        if (input.value.length <= maxLength) {
+        } else if (input.value.length > maxLength) {
+            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+        }
+    }
+
+}
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
 
 
 function hasData(input) {

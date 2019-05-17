@@ -8,6 +8,47 @@
         // Loop over them and prevent submission
         var validation = Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
+                var formElements = form.elements;
+                for (var i = 0; i < formElements.length; i++) {
+                    var aElement = formElements[i];
+
+                    if (aElement.name === "firstName") {
+                        checkFirstName(aElement);
+                    }
+
+                    if (aElement.name === "lastName") {
+                        checkLastName(aElement);
+                    }
+
+                    if (aElement.name === "email") {
+                        checkEmail(aElement);
+                    }
+
+                    if (aElement.name === "cityName") {
+                        checkCity(aElement);
+                    }
+
+                    if (aElement.name === "phoneNumber") {
+                        checkPhoneNumber(aElement);
+                    }
+
+                    if (aElement.name === "stateDropDownInputName") {
+                        validateStateDropDown(aElement);
+                    }
+
+                    if (aElement.name === "zipCode") {
+                        checkZipCode(aElement);
+                    }
+
+                    if (aElement.name === "dropDownTypeOfPhoneName") {
+                        validateTypeOfPhoneDropDown(aElement);
+                    }
+
+                    if (aElement.name === "dropDownHowOftenName") {
+                        validateHowOftenDropDown(aElement);
+                    }
+                }
+
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -19,9 +60,6 @@
 
 }());
 
-// we created new function to group both checkFirstName and checkLastName then we changed error message
-// to be more general for both by pulling normal case method then changed hasData function to a general name check name for validity ,
-// then erase  checkFirstName and checkLastName function data and invoked checkedName function in both or just change oninput to checkName(this)
 
 function checkFirstName(input) { // create a function for first name // use input parameter
     checkName(input);
@@ -64,52 +102,119 @@ function checkEmail(input) {
 }
 
 function checkPhoneNumber(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
+    checkZipCode(input);
 
-
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
-
-        }
-
-    }
 }
+
 
 function checkCity(input) {
     checkName(input);
+
 }
 
+<<<<<<< HEAD
 function checkStateButton() {
     var stateCheck = document.getElementById("dropDown");
     if (stateCheck.value === "") {
         //If the "Please Select" option is selected display error.
         alert("Please select an option!");
         return false;
+=======
+
+function validateHowOftenDropDown(select) {
+
+    var selectedDropDownMenuOptionId = document.getElementById("howOftenId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
+
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please tell us how often you play", select);
+
+    } else {
+        select.setCustomValidity('');
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
     }
-    return true;
+
 }
+
+function validateStateDropDown(select) {
+    var selectedDropDownMenuOptionId = document.getElementById("stateDropDownId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
+
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, "Please make a state selection", select);
+
+    } else {
+        select.setCustomValidity('');
+    }
+}
+
+function validateTypeOfPhoneDropDown(select) {
+
+    var selectedDropDownMenuOptionId = document.getElementById("typeOfPhoneId").selectedIndex;
+    var selectedDropDownMenuTagName = document.getElementsByTagName("option");
+
+    if (selectedDropDownMenuTagName[selectedDropDownMenuOptionId].defaultSelected === true) {
+        setDropDownErrorMessage(".invalid-feedback." + select.name, " Please make a phone selection", select);
+
+    } else {
+        select.setCustomValidity('');
+    }
+
+
+}
+
+
+function setDropDownErrorMessage(querySelector, errorMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+    document.querySelector(querySelector).innerHTML = errorMessage;
+    select.setCustomValidity(errorMessage);
+
+}
+
+/*function setDropDownSuccessMessage(querySelector, successMessage, select) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+    document.querySelector(querySelector).innerHTML = successMessage;
+    select.setCustomValidity(successMessage);
+
+}*/
+
 
 function checkZipCode(input) {
-    if (input !== null && input !== undefined) {
-        setErrorMessage(".invalid-feedback." + input.name, "", input);
+    const errorFieldName = input.value.toNormalCase();
+    const minLength = input.minLength;
+    //create variable for min and max add to the input
+    const maxLength = input.maxLength;
 
+    if (input.required === true) {
 
-        if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
-            // do nothing
-        } else {
-            // setErrorMessage
-            setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
-
+        if (minLength !== null && minLength !== undefined && maxLength !== null && maxLength !== undefined) {//  min can not be or equal null or undefined same as max
+            // if statement for max length and min length make sure not null or undefined
+            if (input.value.length >= minLength && input.value.length <= maxLength) { // if statement for min and max if greater or equal to and lesser or equal to
+                if (input.value.isNumeric() === false) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
+        } else if (minLength !== null && minLength !== undefined) {
+            if (input.value.length >= minLength) {
+                if (input.value.isNumeric() === false) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length < minLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be greater than " + minLength + " characters.", input);
+            }
+        } else if (maxLength !== null && maxLength !== undefined) {
+            if (input.value.length <= maxLength) {
+                if (input.value.isNumeric() === false) {
+                    setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " can only contain numbers.", input);
+                }
+            } else if (input.value.length > maxLength) {
+                setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
+            }
         }
-
     }
 }
-
-
 
 
 function hasData(input) {
@@ -167,7 +272,7 @@ function checkNameValidity(input) {
             setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " must be less than " + maxLength + " characters.", input);
         }
     }
-}
 
+}
 
 

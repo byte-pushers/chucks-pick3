@@ -15,8 +15,14 @@
             font-family: 'Lato', serif;
         }
     </style>
-    <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/navbar.css" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/global-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/ad-container-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/app-instructions-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/container-back-up.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/navbar.css" rel="stylesheet" title="main" type="text/css">
+    <!--<link href="assets/css/style-sheet.css" title="sub" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,10 +44,16 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
     <!-- Initialize Bootstrap functionality -->
+
     <script>
+
         // Initialize tooltip component
-        $(function () {
+        /*$(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
         // Initialize popover component
@@ -72,7 +84,7 @@
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
-        }
+        }*/
     </script>
 </head>
 <body>
@@ -80,10 +92,10 @@
     <div class="header-container">
         <!--<div id="navbar">-->
         <div class="logo-container">
-            <img src="assets/img/chucks-pick3_splash-page_logo.png"  width="150px" height="150px">
+            <img src="assets/img/chucks-pick3_splash-page_logo.png" width="150px" height="150px">
         </div>
         <div class="header-img-container">
-            <img src="assets/img/Chucks-Pick-3-Header-01.png"  width="1012px" height="100px">
+            <img src="assets/img/Chucks-Pick-3-Header-01.png" width="1012px" height="100px">
         </div>
         <div class="nav-bar-container">
 
@@ -92,12 +104,17 @@
                     <a href="home.html">Home</a>
                 </div>
 
-                <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover active ">
-                    <a href="info.html">How To</a>
+                <div id="main-nav-bar-item-howto" onClick="document.location='info.html#howto'; showSubNavBar();
+                    setMainNavBarItemActive(this.id);"
+                     class="nav-bar-col-25 allow-hover">
+                    <a href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover  ">
-                    <a  href="info.html">Demo</a>
+
+                <div id="main-nav-bar-item-demo"
+                     onClick="document.location='info.html#demo'; hideSubNavBar(); setMainNavBarItemActive(this.id);"
+                     class="nav-bar-col-25 allow-hover">
+                    <a href="info.html#demo">Demo</a>
                 </div>
 
                 <div class="nav-bar-col-25">
@@ -120,21 +137,29 @@
                 </div>
 
                 <div class="sub-nav-bar-col-25">
-                    <div onClick="document.location='#requirements'" class="sub-nav-bar-col-50 allow-hover ">
+                    <div id="sub-nav-bar-item-require" onClick="document.location='#requirements';
+                        setSubNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#requirements">Requirements</a>
                     </div>
 
-                    <div onClick="document.location='#interface'" class="sub-nav-bar-col-50 allow-hover ">
+                    <div id="sub-nav-bar-item-inter"
+                         onClick="document.location='#interface'; setSubNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover ">
                         <a href="#interface">Interface</a>
                     </div>
                 </div>
 
                 <div class="sub-nav-bar-col-25">
-                    <div onClick="document.location='#generate'" class="sub-nav-bar-col-50 allow-hover">
+                    <div id="sub-nav-bar-item-generate"
+                         onClick="document.location='#generate';  setSubNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generate">Generate</a>
                     </div>
 
-                    <div onClick="document.location='#generated-picks'" class="sub-nav-bar-col-50 allow-hover">
+                    <div id="sub-nav-bar-item-generate-pic" onClick="document.location='#generated-picks';
+                        setSubNavBarItemActive(this.id);"
+                         class="sub-nav-bar-col-50 allow-hover">
                         <a href="#generated-picks">View Picks</a>
                     </div>
                 </div>
@@ -143,15 +168,80 @@
                     <span>&nbsp;</span>
                 </div>
             </div>
+            <div class="mobile-nav-bar-container">
+
+                <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
+                    <a href="home.html">Home</a>
+                </div>
+
+                <div class="sub-side-nav-stick">
+                    <div id="sub-scroll-nav" class="subsidenav">
+
+
+                        <div class="mobile-sub-nav-bar-container">
+
+
+
+                            <div onClick="document.location='#requirements-mobile'" class="sub-nav-bar-col-25 allow-hover ">
+                                <a href="#requirements-mobile">Needed</a>
+                            </div>
+
+                            <div onClick="document.location='#interface-mobile'" class="sub-nav-bar-col-25 allow-hover ">
+                                <a href="#interface-mobile">UI</a>
+                            </div>
+
+
+
+                            <div onClick="document.location='#generate-mobile'" class=" sub-nav-bar-col-25 allow-hover">
+                                <a href="#generate-mobile">Gen</a>
+                            </div>
+
+                            <div onClick="document.location='#view-picks-mobile'" class=" sub-nav-bar-col-25 allow-hover">
+                                <a href="#view-picks-mobile">View</a>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
+                    <a href="login.html">Login</a>
+                </div>
+
+                <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
+                    <a href="sign-up.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+
+
+
         </div>
         <!--</div>-->
     </div>
+    <div class="mobile-sub-nav-bar-title-container">
+    <div><span><b>How To Play</b></span></div>
+</div>
     <div class="body-container">
+
+        <div id="requirements-mobile" class="mobile-spacing">
+    </div>
         <div class="what-you-need" id="howto">
+
+
             <H2 id="requirements">Requirements:</H2>
+
             <img src="assets/img/Info page -11.png" alt="IPhone" style="width:700px">
         </div>
-
+        <div id="interface-mobile" class="mobile-spacing">
+        </div>
         <div class="interface">
             <H2 id="interface">Interface:</H2>
             <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
@@ -161,7 +251,8 @@
         <div class="interface">
             <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
         </div>
-
+        <div id="generate-mobile" class="mobile-spacing">
+        </div>
         <div class="how-to-generate" id="demo">
             <H2 id="generate">How to Generate Picks:</H2>
             <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
@@ -172,10 +263,96 @@
         </div>
 
         <div class="how-to-view">
+            <div id="view-picks-mobile" class="mobile-spacing">
+            </div>
             <H2 id="generated-picks">How to View Generated Picks:</H2>
-            <img src="assets/img/Info page -14.png" alt="Generate" style="width:700px" align="center">
+            <img src="assets/img/Info page -14.png" alt="ViewGenerated" style="width:700px" align="center">
         </div>
     </div>
-</div>
+
+<script>
+
+    var navBarHashTag = window.location.hash.substr(1);
+
+    if ( navBarHashTag === 'howto') {
+        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+    } else if (navBarHashTag === 'demo') {
+        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+        hideSubNavBar();
+    }
+
+    function hideSubNavBar() {
+        document.querySelector(".sub-nav-bar-container").style.display = "none";
+        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
+    }
+
+    function showSubNavBar() {
+        document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
+        document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
+    }
+
+    function setMainNavBarItemActive(id) {
+
+        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover");
+        for (var i = 0; i < setActiveNav.length; ++i) {
+            var activeItem = setActiveNav[i];
+            activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+            var urlWithHash = window.location.hash.substr(1);
+            if (urlWithHash.value === "#demo") {
+                hideSubNavBar();
+            }
+            if (urlWithHash.value === "#howto") {
+                showSubNavBar();
+            }
+        }
+    }
+
+    function setSubNavBarItemActive(id) {
+        var setActiveNav = document.getElementsByClassName("sub-nav-bar-col-50 allow-hover");
+        for (var i = 0; i < setActiveNav.length; ++i) {
+            var activeItem = setActiveNav[i];
+            activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+        }
+    }
+</script>
+
+<script>
+    function openNav() {
+        document.getElementById("side-nav-bar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("side-nav-bar").style.width = "0";
+    }
+</script>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("side-nav-bar");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("sub-scroll-nav");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sub-sticky");
+        } else {
+            header.classList.remove("sub-sticky");
+        }
+    }
+</script>
 </body>
 </html>

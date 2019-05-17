@@ -1,0 +1,111 @@
+
+.demo-container, .sign-up-container, .how-to-container {
+
+    display: inline-block;
+
+}
+
+.text {
+    margin: auto;
+    padding-top: 60%;
+    padding-left: 5%;
+    position: center;
+    vertical-align: bottom;
+}
+
+.how-to-container {
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style:solid;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-width: 1px;
+    width: 33.3%;
+    height: 350px;
+    border-color: #BDBDBD;
+
+
+}
+
+.how-to-container p {
+    vertical-align: bottom;
+    margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+
+.demo-container {
+    display: inline-block;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style:solid;
+    border-bottom-style: none;
+    border-left-style: solid;
+    border-width: 1px;
+    width: 33.3%;
+    height: 350px;
+    margin-left:-6px;
+    border-color: #BDBDBD;
+}
+
+.demo-container p {
+
+    margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+.sign-up-container {
+    display: inline-block;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-width: 1px;
+    width: 33.2%;
+    height: 350px;
+    margin-left:-4px;
+    border-color: #BDBDBD;
+
+}
+
+.sign-up-container p {
+    vertical-align: bottom;
+    margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+@media only screen and (max-width: 760px) {
+    .how-to-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
+
+    .demo-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
+
+    .sign-up-container {
+        display: block;
+        height: 250px;
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: black;
+    }
+}

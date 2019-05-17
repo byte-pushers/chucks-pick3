@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <title>Home Page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin-top: 0px;
@@ -15,12 +18,15 @@
             font-family: 'Lato', serif;
         }
     </style>
-    <link href="assets/css/style-sheet.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/navbar.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/global-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/ad-container-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/container-back-up.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/navbar.css" rel="stylesheet" title="main" type="text/css">
+    <!--<link href="assets/css/style-sheet.css" title="sub" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- jQuery library -->
@@ -41,7 +47,7 @@
     <!-- Initialize Bootstrap functionality -->
     <script>
         // Initialize tooltip component
-        $(function () {
+        /*$(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
         // Initialize popover component
@@ -72,7 +78,7 @@
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
-        }
+        }*/
     </script>
 </head>
 <body>
@@ -86,16 +92,16 @@
             </div>
             <div class="nav-bar-container"><!--style="background-color: white"//-->
                 <div class="main-nav-bar-container">
-                    <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover active">
+                    <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover active ">
                         <a href="home.html">Home</a>
                     </div>
 
-                    <div onClick="document.location='info.html#how-to'" class="nav-bar-col-25 allow-hover">
-                        <a href="info.html">How To</a>
+                    <div onClick="document.location='info.html#howto'" class="nav-bar-col-25 allow-hover">
+                        <a href="info.html#howto" class="info">How To</a>
                     </div>
 
                     <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
-                        <a href="info.html">Demo</a>
+                        <a href="info.html#demo" class="info">Demo</a>
                     </div>
 
                     <div class="nav-bar-col-25">
@@ -107,7 +113,105 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mobile-nav-bar-container">
+
+                    <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
+                        <a href="home.html">Home</a>
+                    </div>
+
+                    <div class=" nav-bar-col-20 allow-hover float-right">
+
+                        <span style="font-size:35px;" onclick="openNav()">&#9776;</span>
+
+                    <div class="side-nav-stick">
+
+                        <div id="side-nav-bar" class="sidenav">
+                         <div class="menu">
+                             <div class="end">
+                                 <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+                             </div>
+                             <div class="menu-title">
+                                 <h2><b>Menu</b> </h2>
+                             </div>
+
+                             <div class="hamburger-menu-section-1">
+                                 <div class="hamburger-menu-indent">
+                                 </div>
+                             <div class="how">
+                                 <h5><b> How To</b></h5>
+                             </div>
+                             </div>
+                             <div class="hamburger-menu-section-2">
+                             <div class="options">
+                                 <div class="hamburger-menu-indent">
+                                 </div>
+                                 <div class="option-indent">
+                                 </div>
+                                 <div class="block">
+                                     <a href="info.html#howto">Requirements</a>
+                                 </div>
+                             </div>
+                                 <div class="options">
+                                     <div class="hamburger-menu-indent">
+                                     </div>
+                                     <div class="option-indent">
+                                     </div>
+                                 <div class="block">
+                                     <a href="info.html#interface">Interface</a>
+                                 </div>
+                                 </div>
+                                 <div class="options">
+                                     <div class="hamburger-menu-indent">
+                                     </div>
+                                     <div class="option-indent">
+                                     </div>
+                                 <div class="block">
+                                     <a href="info.html#generate">Generate</a>
+                                 </div>
+                                 </div>
+                                 <div class="options">
+                                     <div class="hamburger-menu-indent">
+                                     </div>
+                                     <div class="option-indent">
+                                     </div>
+                                 <div class="block">
+                                     <a href="info.html#generated-picks">View Picks</a>
+                                 </div>
+                                 </div>
+                             </div>
+                            <div class="hamburger-menu-section-3">
+                            <div class="hamburger-menu-indent">
+                            </div>
+                             <div class="demo">
+                                 <a href="info.html#demo"><h5><b>Demo</b></h5></a>
+                             </div>
+                            </div>
+                         </div>
+                             </div>
+                         </div>
+                        </div>
+                    <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
+                        <a href="login.html">Login</a>
+                    </div>
+
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
+                        <a href="sign-up.html">Sign Up</a>
+                    </div>
+                    </div>
+                    </div>
+
+
+
+
+
             </div>
+
+
+
+            </div>
+
+
             <!--<div class="home">
                 <h9>Home</h9>
             </div>
@@ -144,8 +248,9 @@
     </div>
 
     <div class="body-container">
+        <div class="mobile-space"></div>
+        <div class ="normal-space"></div>
         <div class="main-content-container">
-            <br>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
                 tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin sollicitudin
                 venenatis gravida. In non velit at felis iaculis dignissim nec sed lectus. Integer dignissim tempor risus ac
@@ -156,22 +261,60 @@
             </p>
 
         </div>
+        <div class ="normal-space"></div>
 
         <div class="link-container">
             <div class="how-to-container">
+<div class="container-spacing"></div>
+                <div class="link-container-img">
                 <img src="assets/img/screens-02.png"  width="410" height="265px">
-                <p>how to container</p>
-            </div>
-            <div class="demo-container">
-                <img src="assets/img/screens-01.png"  width="410" height="265px">
-                <p>demo container</p>
-            </div>
-            <div class="sign-up-container">
+                </div>
 
+                <div class="link-container-text">
+                <p>how to container</p>
+                </div>
+
+
+            </div>
+            <div class="mobile-space">
+                <div class="break-line"></div>
+            </div>
+            <div class="demo-container mobile-container">
+                <div class="container-spacing"></div>
+                <div class="link-container-img">
+                <img src="assets/img/screens-01.png"  width="410" height="265px">
+                </div>
+                <div class="link-container-text">
+                <p>demo container</p>
+                </div>
+            </div>
+            <div class="mobile-space">
+                <div class="break-line"></div>
+            </div>
+            <div class="sign-up-container mobile-container">
+                <div class="container-spacing-sign-up"></div>
+                <div class="link-container-img">
                 <img src="assets/img/screens_Artboard 1-03.png" alt="signUpImg" width="410px" height="265px" style="float:left;margin:21px 0 0 0;">
+                </div>
+                <div class="link-container-text-sign-up">
                 <p>sign up container</p>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        function openNav() {
+            document.getElementById("side-nav-bar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("side-nav-bar").style.width = "0";
+        }
+    </script>
+
+
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/thankyou-style.css">
+    <link rel="stylesheet" href="assets/css/thankyou-style.css">
 
 
     <title>ThankYou Page</title>
@@ -23,6 +23,30 @@
     </div>
 
 </div>
+<script>
+    function openNav() {
+        document.getElementById("side-nav-bar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("side-nav-bar").style.width = "0";
+    }
+</script>
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("side-nav-bar");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
 </body>
-</html>>
+</html>
 
