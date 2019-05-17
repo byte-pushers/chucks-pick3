@@ -229,7 +229,11 @@
     <div class="mobile-sub-nav-bar-title-container">
     <div><span><b>How To Play</b></span></div>
 </div>
+<div class="normal-space"></div>
+<div class="web-margin"></div>
     <div class="body-container">
+
+        <div class="how-to-section">
 
         <div id="requirements-mobile" class="mobile-spacing">
     </div>
@@ -244,16 +248,16 @@
         </div>
         <div class="interface">
             <H2 id="interface">Interface:</H2>
-            <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="center">
+            <img src="assets/img/Info page -04.png" alt="Interface" style="width:700px" align="middle">
         </div>
         <br>
         <br>
         <div class="interface">
-            <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="center">
+            <img src="assets/img/Info page -15.png" alt="Interface" style="width:700px" align="middle">
         </div>
         <div id="generate-mobile" class="mobile-spacing">
         </div>
-        <div class="how-to-generate" id="demo">
+        <div class="how-to-generate">
             <H2 id="generate">How to Generate Picks:</H2>
             <img src="assets/img/Info page -12.png" alt="Generate" style="width:700px" align="center">
         </div>
@@ -269,7 +273,100 @@
             <img src="assets/img/Info page -14.png" alt="ViewGenerated" style="width:700px" align="center">
         </div>
     </div>
+        <div class="normal-space"></div>
+<div class="demo-section">
 
+    <h2  id="demo"><b>Try out Chuck's Pick 3:</b></h2>
+    <div class="demo-paragraph"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+        Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+    <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+            Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+            Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
+        <br>
+    </div>
+    <div class="select-os">
+        <div class="selection-title">
+            <h3><b>Select OS</b></h3>
+        </div>
+
+            <div onClick=" appleFunction(); document.location='#select-apple-device';"  class="allow-hover ">
+                 <div class = "appleOS">
+                    <img src="assets/img/Apple%20Icon.png" alt="appleIcon" style="width:130px" >
+                </div>
+            </div>
+
+
+        <div  onclick="androidFunction()" class="allow-hover ">
+           <div class = "androidOS" onClick="document.location='#select-android-device'">
+                <img src="assets/img/Android%20Icon.png" alt="androidIcon" style="width:130px" >
+            </div>
+        </div>
+
+          <div class="demo-label-os">
+                <h3>Apple</h3>
+            </div>
+
+
+        <div class="demo-label-os">
+            <h3>Android</h3>
+        </div>
+
+    </div>
+    <div class="normal-space"></div>
+    <div id="select-apple-device">
+        <div class="selection-title">
+            <h3><b>Select Device</b></h3>
+        </div>
+        <a href="https://invis.io/Z5S2CIT7SJ2">
+        <div class="iphone">
+            <img src="assets/img/Apple%20Devices-02.png" alt="iphoneX" style="width:130px" >
+        </div> </a>
+        <div class="iphoneX">
+            <img src="assets/img/Apple%20Devices-01.png" alt="iphone" style="width:130px" >
+        </div>
+        <div class="ipad">
+            <img src="assets/img/Apple%20Devices-03.png" alt="ipad" style="width:130px" >
+        </div>
+        <div class="demo-label-apple-device">
+            <h3>iPhone 6/7/8</h3>
+        </div>
+        <div class="demo-label-apple-device">
+            <h3>iPhone 6+/7+/8+/X</h3>
+        </div>
+        <div class="demo-label-apple-device">
+            <h3>iPad</h3>
+        </div>
+    </div>
+    <div class="normal-space"></div>
+
+    <div id="select-android-device">
+        <div class="selection-title">
+            <h3><b>Select Device</b></h3>
+        </div>
+
+        <div class="android-phone">
+            <img src="assets/img/Android%20Devices-01.png" alt="androidPhone" style="width:90px" >
+        </div>
+        <div class="android-tablet">
+            <img src="assets/img/Android%20Devices-02.png" alt="androidTablet" style="width:130px" >
+        </div>
+        <div class="demo-label-os">
+            <h3>Android Phone</h3>
+        </div>
+        <div class="demo-label-os">
+            <h3>Android Tablet</h3>
+        </div>
+        <div class="normal-space"></div>
+    </div>
+
+
+
+</div>
+    </div>
+<div class="web-margin"></div>
 <script>
 
     var navBarHashTag = window.location.hash.substr(1);
@@ -351,6 +448,27 @@
             header.classList.add("sub-sticky");
         } else {
             header.classList.remove("sub-sticky");
+        }
+    }
+</script>
+<script>
+    function appleFunction() {
+        var x = document.getElementById("select-apple-device");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function androidFunction() {
+        var x = document.getElementById("select-android-device");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
         }
     }
 </script>
