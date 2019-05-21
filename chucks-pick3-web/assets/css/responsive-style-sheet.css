@@ -288,9 +288,9 @@
         align-content: center;
         float: none;
     }
-    .normal-space {
+    /*.normal-space {
         display: none;
-    }
+    }*/
     .sign-up-container {
         display: block;
         height: 250px;
