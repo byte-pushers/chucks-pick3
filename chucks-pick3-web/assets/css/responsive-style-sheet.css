@@ -243,14 +243,21 @@
         float: none;
     }
     .container-spacing {
-        height: 45px;
+        height: 102px;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 140px;
+        height: 90px;
+        width: 100%;
+        float: left;
+    }
+
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 90px;
         width: 100%;
         float: left;
     }
@@ -299,7 +306,7 @@
         float: none;
     }
     .container-spacing-sign-up {
-        height: 35px;
+        height: 87px;
         width: 100%;
         display: inline-block;
         float: right;
@@ -331,14 +338,21 @@
         float: none;
     }
     .container-spacing {
-        height: 29px;
+        height: 93px;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 155px;
+        height: 90px;
+        width: 100%;
+        float: left;
+    }
+
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 95px;
         width: 100%;
         float: left;
     }
@@ -384,7 +398,7 @@
         border-width: 1px;
     }
     .container-spacing-sign-up {
-        height: 20px;
+        height: 80px;
         width: 100%;
         display: inline-block;
         float: right;
@@ -412,19 +426,24 @@
         float: none;
     }
     .container-spacing {
-        height: 50px;
+        height: 105px;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 140px;
+        height: 90px;
         width: 100%;
         float: left;
     }
 
-
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 87px;
+        width: 100%;
+        float: left;
+    }
     .link-container-text {
         display: inline-block;
         height: 75px;
@@ -457,7 +476,7 @@
         float: none;
     }
     .container-spacing-sign-up {
-        height: 40px;
+        height: 92px;
         width: 100%;
         display: inline-block;
         float: right;
@@ -506,20 +525,27 @@
     }
 
     .container-spacing {
-        height: 7.7em;
+        height: 11.2em;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .container-spacing-sign-up {
-        height: 7.1em;
+        height: 10.3em;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 140px;
+        height: 83px;
+        width: 100%;
+        float: left;
+    }
+
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 90px;
         width: 100%;
         float: left;
     }
@@ -527,7 +553,7 @@
 
     .link-container-text {
         display: inline-block;
-        height: 75px;
+        height: 80px;
         width: 100%;
         float: right;
         padding: 11px;
@@ -536,7 +562,7 @@
 
     .link-container-text-sign-up {
         display: inline-block;
-        height: 75px;
+        height:90px;
         width: 100%;
         float: right;
         padding: 17px;
@@ -564,7 +590,7 @@
     }
 
     .container-spacing {
-        height: 7.3em;
+        height: 11em;
         width: 100%;
         display: inline-block;
         float: left;
@@ -576,18 +602,23 @@
         border-color: #BDBDBD;
     }
     .container-spacing-sign-up {
-        height: 6.8em;
+        height: 10.1em;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 150px;
+        height: 90px;
         width: 100%;
         float: left;
     }
-
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 97px;
+        width: 100%;
+        float: left;
+    }
 
     .link-container-text {
         display: inline-block;
@@ -605,5 +636,115 @@
         float: right;
         padding: 17px;
         font-size: 11px;
+    }
+}
+.header-image-3 {
+    display: none;
+}
+
+/*----------------------------- Header and Logo Responsiveness -------------------------*/
+
+@media only screen and (min-width: 360px) and (min-height: 740px) {
+    .header-image-1 {
+        display: none;
+        padding-top: 20px;
+    }
+
+
+.logo-container img {
+padding-top: 15px;
+}
+    .header-image-3 {
+        display: block;
+        margin-left: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 1024px) {
+    .header-image-1 {
+        display: block;
+       margin-top: 15px;
+    }
+
+
+
+    .header-image-3 {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 1024px) {
+    .header-image-1 {
+        display: block;
+        margin-top: 15px;
+    }
+
+
+
+    .header-image-3 {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 375px) and (min-height: 667px) {
+    .header-image-1 {
+        display: none;
+
+    }
+
+
+.logo-container img {
+    margin-top: 10px;
+}
+    .header-image-3 {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 375px) and (min-height: 812px) {
+    .header-image-1 {
+        display: none;
+
+    }
+
+
+    .logo-container img {
+        margin-top: 10px;
+        padding-top: 0 !important;
+    }
+    .header-image-3 {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 414px) and (min-height: 736px) {
+    .header-image-1 {
+        display: none;
+
+    }
+
+
+    .logo-container img {
+        margin-top: 5px;
+    }
+    .header-image-3 {
+        display: block;
+        margin-left: 15px;
+    }
+}
+@media only screen and (min-width: 768px) and (min-height: 1024px) {
+    .header-image-1 {
+        display: block;
+        padding-top: 0 !important;
+
+    }
+
+
+    .logo-container img {
+     padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .header-image-3 {
+        display: none;
     }
 }
