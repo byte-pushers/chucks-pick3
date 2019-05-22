@@ -61,8 +61,29 @@ function checkEmail(input) {
 }
 
 function checkPhoneNumber(input) {
+<<<<<<< HEAD
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
+=======
+    checkZipCode(input);
+
+}
+
+
+function checkCity(input) {
+    checkName(input);
+
+}
+
+<<<<<<< HEAD
+function checkStateButton() {
+    var stateCheck = document.getElementById("dropDown");
+    if (stateCheck.value === "") {
+        //If the "Please Select" option is selected display error.
+        alert("Please select an option!");
+        return false;
+=======
+>>>>>>> a3193c02280359f4b52b8cdfc87634ded99ab89e
 
 
         if (input.validity.valid) { // use html 5 form validation error codes / use element.validity.valid
@@ -73,6 +94,12 @@ function checkPhoneNumber(input) {
 
         }
 
+<<<<<<< HEAD
+=======
+    } else {
+        select.setCustomValidity('');
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
+>>>>>>> a3193c02280359f4b52b8cdfc87634ded99ab89e
     }
 }
 
