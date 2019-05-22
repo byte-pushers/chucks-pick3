@@ -73,7 +73,7 @@
 }
 
 .main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
-    background-color: green;
+    background-color: green !important;
     cursor: pointer;
 }
 
