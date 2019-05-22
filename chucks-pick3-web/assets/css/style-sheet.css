@@ -116,8 +116,6 @@ p {
     width: 33%;
     height: 350px;
     border-color: #BDBDBD;
-
-
 }
 /*-----Ad Containers--------*/
 
@@ -142,14 +140,16 @@ p {
 }
 
 .interface {
+
     display: block;
-    background-color: #fafafa;
     width: 100%;
-    height: 500px;
-    padding: 0px;
+    height: 300px;
+    padding: 0;
     margin: 0 auto;
     position: center;
     float: left;
+    border: 5px solid pink;
+
 
 
 }

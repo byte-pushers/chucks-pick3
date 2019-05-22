@@ -2,6 +2,8 @@ html {
     height:100%;
 }
 
+.scale-down {object-fit: scale-down;}
+
 
 .main-container {
     width: 100%;
@@ -61,6 +63,7 @@ p {
     padding: 0;
     margin: 0 auto;
     margin-top: 20px;
+    border: 5px solid blue;
 
 
 }
@@ -163,6 +166,7 @@ h1 {
     display: block;
     float: left;
     margin-top: 20px;
+    border: 5px solid yellow;
 
 }
 .demo-section {
@@ -170,7 +174,8 @@ h1 {
     height: 100%;
     display: block;
     float: left;
-    margin-top: 15px;
+    margin-top: 20px;
+    border: 5px solid darkorchid;
 }
 .link-container {
 
