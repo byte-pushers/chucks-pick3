@@ -2,6 +2,8 @@
 .demo-container, .sign-up-container, .how-to-container {
 
     display: inline-block;
+    text-decoration: none;
+    color: #000;
 
 }
 
