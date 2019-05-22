@@ -58,14 +58,14 @@ border-bottom: solid;
 }
 @media only screen and (min-width: 800px) {
     .container-spacing {
-        height: 2.4em;
+        height: 7.3em;
         width: 100%;
         display: inline-block;
         float: left;
     }
 
     .container-spacing-sign-up {
-        height: 2.3em;
+        height: 6.7em;
         width: 100%;
         display: inline-block;
         float: left;
@@ -73,7 +73,14 @@ border-bottom: solid;
 
     .link-container-img {
         display: inline-block;
-        height: 230px;
+        height: 145px;
+        width: 100%;
+        float: left;
+    }
+
+    .link-container-img-sign-up {
+        display: inline-block;
+        height: 150px;
         width: 100%;
         float: left;
     }
