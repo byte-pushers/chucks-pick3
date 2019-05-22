@@ -11,17 +11,13 @@
                 var formElements = form.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];
-                    if (aElement.name === "userName"  ) {
+                    if (aElement.name === "userName") {
                         checkUserName(aElement);
-
                     }
                     if (aElement.name === "passWord") {
                         checkPassWord(aElement);
-
                     }
-
                 }
-
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -32,8 +28,6 @@
     }, false);
 
 }());
-
-
 
 
 function checkPassWord(input) {
@@ -52,40 +46,35 @@ function checkPassWord(input) {
             }
         }
     }
-
 }
+function checkPassValidity(input) {
+    const errorFieldName = input.value.toNormalCase();
+    var passwordContainsUpperCase = /[A-Z]/g;//test for uppercase letter
+    var passwordContainsLowerCase = /[a-z]/g; //test for lowercase letter
+    var passwordContainsNumber = /[0-9]/g; //test for number
+    var passwordContainsSpecialChar = /\W/g; //test for special character
 
-
-    function checkPassValidity(input) {
-        const errorFieldName = input.value.toNormalCase();
-        var PasswordContainsUpperCase = /[A-Z]/g;//test for uppercase letter
-        var PasswordContainsLowerCase = /[a-z]/g; //test for lowercase letter
-        var PasswordContainsNumber = /[0-9]/g; //test for number
-        var PasswordContainsSpecialChar = /\W/g; //test for special character
-
-        if(!input.value.match(PasswordContainsUpperCase)) {
-            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a Uppercase letter", input);
-            return false;
-        }
-        if(!input.value.match(PasswordContainsNumber)) {
-            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a number", input);
-            return false;
-
-        }
-        if(!input.value.match(PasswordContainsLowerCase)) {
-            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a lowercase character", input);
-            return false;
-        }
-        if(!input.value.match(PasswordContainsSpecialChar)) {
-            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a special character", input);
-            return false;
-        }
-        if (!input.value.length >= 8) {
-            setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain 8 characters", input);
-            return false;
-        }
+    if (!input.value.match(passwordContainsUpperCase)) {
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a Uppercase letter", input);
+        return false;
+    }
+    if (!input.value.match(passwordContainsNumber)) {
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a number", input);
+        return false;
+    }
+    if (!input.value.match(passwordContainsLowerCase)) {
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a lowercase character", input);
+        return false;
+    }
+    if (!input.value.match(passwordContainsSpecialChar)) {
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain a special character", input);
+        return false;
+    }
+    if (!input.value.length >= 8) {
+        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain 8 characters", input);
+        return false;
+    }
 }
-
 
 function checkUserName(input) {
 
@@ -99,24 +88,7 @@ function checkUserName(input) {
             setErrorMessage(".invalid-feedback." + input.name, input.validationMessage, input); //use setErrorMessage and add where the validation message displays in devtools and pull that message in setErrorMessage function
         }
     }
-
-
-
 }
-
-
-/*function checkUserNameValidity(input) {
-    const errorFieldName = input.value.toNormalCase();
-
-
-    if (!input.value.length >= 4) {
-        console.log(input.value.length);
-        setErrorMessage(".invalid-feedback." + input.name, errorFieldName + " Password must contain 4 characters", input);
-        return false;
-    }
-}*/
-
-
 function hasData(input) {
     let hasDataResult = false;
 
@@ -126,15 +98,11 @@ function hasData(input) {
             hasDataResult = true;
         }
     }
-
     return hasDataResult;
 }
-
-
 function setErrorMessage(querySelector, errorMessage, input) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
     document.querySelector(querySelector).innerHTML = errorMessage;
     input.setCustomValidity(errorMessage);
-
 }
 
 
