@@ -226,7 +226,7 @@
 
 /*-------------------------------Responsive Containers-----------------------------------*/
 /*---Iphone 6/7/8 and X---*/
-@media only screen and (max-width: 375px) and (max-height: 680pt) {
+@media only screen and (max-width: 375px) {
     .how-to-container {
         display: block;
         height: 250px;
@@ -237,7 +237,7 @@
         border-bottom: solid;
         border-color: gray;
         border-width: thin;
-        line-height: 1px;
+
         background-size: 261.5px 249px;
         align-content: center;
         float: none;
@@ -269,7 +269,7 @@
         width: 100%;
         float: right;
         padding: 11px;
-        font-size: 11px;
+        font-size: 7px;
     }
 
 
@@ -283,7 +283,7 @@
         border-bottom: solid;
         border-color: gray;
         border-width: thin;
-        line-height: 1px;
+
         background-size: 261.5px 249px;
         align-content: center;
         float: none;
@@ -317,13 +317,13 @@
         width: 100%;
         float: right;
         padding-left: 11px;
-        font-size: 11px;
-        padding-top: 2em;
+        font-size: 7px;
+        padding-top: 2.7em;
     }
 }
 
 /*--------------Iphone +-----------*/
-@media only screen and (min-width: 410px) and (min-height: 730px) {
+@media only screen and (min-width: 410px)  {
     .normal-space {
         display: none;
     }
@@ -364,7 +364,7 @@
         width: 100%;
         float: right;
         padding: 11px;
-        font-size: 11px;
+        font-size: 7px;
     }
 
 
@@ -409,12 +409,12 @@
         width: 100%;
         float: right;
         padding-left: 11px;
-        font-size: 11px;
-        padding-top: 2.2em;
+        font-size: 7px;
+        padding-top: 3em;
     }
 }
 /*----------Android------------*/
-@media only screen and (max-width: 365px) and (max-height: 750px) {
+@media only screen and (max-width: 365px) {
     .how-to-container {
         display: block;
         height: 250px;
@@ -503,7 +503,7 @@
     }
 }
 /* FOR TABLET (Ipad and Kindle)---------*/
-@media only screen and (min-width: 760px) and (min-height: 1020px) {    /*---ipad---*/
+@media only screen and (min-width: 760px)  {    /*---ipad---*/
     .normal-space {
         display: inline-block;
         height: 50px;
@@ -557,7 +557,7 @@
         width: 100%;
         float: right;
         padding: 11px;
-        font-size: 11px;
+        font-size: 8px;
     }
 
     .link-container-text-sign-up {
@@ -566,10 +566,10 @@
         width: 100%;
         float: right;
         padding: 17px;
-        font-size: 11px;
+        font-size: 8px;
     }
 }
-@media only screen and (min-width: 799px) and (min-height: 1279px) {    /*---kindle---*/
+@media only screen and (min-width: 799px){    /*---kindle---*/
     .how-to-container, .sign-up-container, .demo-container{
         width: 33.3%;
         height: 350px;
@@ -590,7 +590,7 @@
     }
 
     .container-spacing {
-        height: 11em;
+        height: 7.2em;
         width: 100%;
         display: inline-block;
         float: left;
@@ -602,20 +602,20 @@
         border-color: #BDBDBD;
     }
     .container-spacing-sign-up {
-        height: 10.1em;
+        height: 6.7em;
         width: 100%;
         display: inline-block;
         float: left;
     }
     .link-container-img {
         display: inline-block;
-        height: 90px;
+        height: 150px;
         width: 100%;
         float: left;
     }
     .link-container-img-sign-up {
         display: inline-block;
-        height: 97px;
+        height: 150px;
         width: 100%;
         float: left;
     }
@@ -626,7 +626,7 @@
         width: 100%;
         float: right;
         padding: 11px;
-        font-size: 11px;
+        font-size: 7px;
     }
 
     .link-container-text-sign-up {
@@ -635,7 +635,7 @@
         width: 100%;
         float: right;
         padding: 17px;
-        font-size: 11px;
+        font-size: 7px;
     }
 }
 .header-image-3 {
@@ -644,15 +644,15 @@
 
 /*----------------------------- Header and Logo Responsiveness -------------------------*/
 
-@media only screen and (min-width: 360px) and (min-height: 740px) {
+@media only screen and (max-width: 740px)  {
     .header-image-1 {
         display: none;
-        padding-top: 20px;
+
     }
 
 
 .logo-container img {
-padding-top: 15px;
+
 }
     .header-image-3 {
         display: block;
@@ -660,7 +660,7 @@ padding-top: 15px;
     }
 }
 
-@media only screen and (min-width: 768px) and (min-height: 1024px) {
+@media only screen and (max-width: 768px) {
     .header-image-1 {
         display: block;
        margin-top: 15px;
@@ -673,7 +673,7 @@ padding-top: 15px;
     }
 }
 
-@media only screen and (min-width: 768px) and (min-height: 1024px) {
+@media only screen and (max-width: 768px) {
     .header-image-1 {
         display: block;
         margin-top: 15px;
@@ -686,7 +686,7 @@ padding-top: 15px;
     }
 }
 
-@media only screen and (min-width: 375px) and (min-height: 667px) {
+@media only screen and (max-width: 375px){
     .header-image-1 {
         display: none;
 
@@ -701,9 +701,9 @@ padding-top: 15px;
     }
 }
 
-@media only screen and (min-width: 375px) and (min-height: 812px) {
+@media only screen and (max-width: 375px){
     .header-image-1 {
-        display: none;
+        display: none !important;
 
     }
 
@@ -713,38 +713,48 @@ padding-top: 15px;
         padding-top: 0 !important;
     }
     .header-image-3 {
-        display: block;
+        display: block !important;
     }
 }
 
-@media only screen and (min-width: 414px) and (min-height: 736px) {
+@media only screen and (max-width: 414px) {
     .header-image-1 {
-        display: none;
+        display: none !important;
 
     }
 
 
     .logo-container img {
-        margin-top: 5px;
+        margin-top: 5px !important;
     }
     .header-image-3 {
-        display: block;
+        display: block !important;
         margin-left: 15px;
     }
 }
-@media only screen and (min-width: 768px) and (min-height: 1024px) {
+@media only screen and (max-width: 768px)  {
     .header-image-1 {
         display: block;
-        padding-top: 0 !important;
+
+    }
+
+
+
+    .header-image-3 {
+        display: none;
+    }
+}
+
+
+    .header-image-1 {
+        display: block;
 
     }
 
 
     .logo-container img {
-     padding-top: 0 !important;
-        margin-top: 0 !important;
+
     }
     .header-image-3 {
         display: none;
     }
-}
