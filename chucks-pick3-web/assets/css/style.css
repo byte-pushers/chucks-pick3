@@ -40,13 +40,6 @@ a:link {
     background-color: transparent;
     text-decoration: none;
 }
-a:hover {
-    font-size: 35px;
-    color: green;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
 
 .link-container {
 

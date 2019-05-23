@@ -283,10 +283,8 @@
                             <input type="email" name="email" onchange="checkEmail(this)" id="defaultRegisterFormEmail"
                                    class="form-control" placeholder="Email" required>
                             <div class="invalid-feedback email "></div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                            <label for="defaultRegisterFormPhone" >Phone</label>
+                            <br>
+                            <label for="defaultRegisterFormPhone" class="col-xs-3 col-form-label mr-2">Phone</label>
                             <input type="text" id="defaultRegisterFormPhone" name="phoneNumber" minlength="9"
                                    maxlength="10"
                                    onchange="checkPhoneNumber(this)"
@@ -452,7 +450,6 @@
                                 <option value="Never">Never</option>
                             </select>
                             <div class="invalid-feedback dropDownHowOftenName"></div>
-                            <br>
                             <br>
                             <br>
                             <button type="submit" value='submit' onClick="parent.location='signup-confirmation.html'"
