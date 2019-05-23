@@ -176,6 +176,7 @@ p {
     margin: 0 auto;
     position: center;
     float: left;
+    border: 3px solid green;
 
 }
 

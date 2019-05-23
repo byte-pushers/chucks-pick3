@@ -65,7 +65,7 @@ p {
     height: 90%;
     padding: 0;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 30px;
 
 
 }
@@ -158,6 +158,7 @@ h1 {
     height: 100%;
     display: block;
     float: left;
+    margin-bottom: 20px;
 
 }
 .demo-section {
@@ -165,6 +166,7 @@ h1 {
     height: 100%;
     display: block;
     float: left;
+
 }
 .link-container {
 
