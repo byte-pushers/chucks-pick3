@@ -1,53 +1,52 @@
-<!Doctype html>
+
+
+<!doctype html>
 <html lang="en">
 <head>
-    <title>Login Page</title>
+    <title>Login</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <style>
         body {
             margin-top: 0px;
-
             margin-right: 0px;
-
             margin-bottom: 0px;
-
             margin-left: 0px;
             background-color: #fafafa;
             font-family: 'Lato', serif;
         }
     </style>
-    <link href="assets/css/global-style-sheet.css" title="main" rel="stylesheet" type="text/css">
-    <link href="assets/css/ad-container-style-sheet.css" title="main" rel="stylesheet" type="text/css">
-    <link href="assets/css/forms-style-sheet.css" title="main" rel="stylesheet" type="text/css">
-    <link href="assets/css/container-back-up.css" title="main" rel="stylesheet" type="text/css">
-    <link href="assets/css/responsive-style-sheet.css" title="main" rel="stylesheet" type="text/css">
+    <link href="assets/css/global-style-sheet.css" rel="stylesheet" title="main" type="text/css">
+    <link href="assets/css/ad-container-style-sheet.css" rel="stylesheet" title="main" type="text/css">
+    <link href="assets/css/container-back-up.css" rel="stylesheet" title="main" type="text/css">
+    <link href="assets/css/responsive-style-sheet.css" rel="stylesheet" title="main" type="text/css">
     <link href="assets/css/navbar.css" rel="stylesheet" title="main" type="text/css">
+    <!--<link href="assets/css/style-sheet.css" title="sub" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <script crossorigin="anonymous"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
+    <!-- Popper -->
+    <script crossorigin="anonymous"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script crossorigin="anonymous"
+            integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
     <script src="lib/bootstrapFormValLogin.js"></script>
     <script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
 
     <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
-
-
-    <!-- Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-
-    <!-- Latest compiled and minified Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
 
     <!-- Initialize Bootstrap functionality -->
     <script>
@@ -59,14 +58,11 @@
         $(function () {
             $('[data-toggle="popover"]').popover()
         });
-
         window.onscroll = function () {
             myFunction()
         };
-
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
-
         function myFunction() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky")
@@ -74,12 +70,10 @@
                 navbar.classList.remove("sticky");
             }
         }
-
         function openSlideMenu() {
             document.getElementById('menu').style.width = '250px';
             document.getElementById('content').style.marginRight = '250px';
         }
-
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
@@ -87,58 +81,58 @@
     </script>
 </head>
 <body>
-
 <div class="main-container">
     <div class="header-container">
         <div class="logo-container">
-            <img src="assets/img/chucks-pick3_splash-page_logo.png" width="150px" height="150px">
+            <img height="150px" src="assets/img/chucks-pick3_splash-page_logo.png" width="150px">
         </div>
         <div class="header-img-container">
-            <img src="assets/img/Chucks-Pick-3-Header-01.png"  width="1012px" height="100px" class="header-image-1"/>
-            <img src="assets/img/Chucks-Pick-3-Header-03.png"  width="252.5px" height="135px" class="header-image-3"/>
+            <img class="header-image-1"  height="100px" src="assets/img/Chucks-Pick-3-Header-01.png" width="1012px"/>
+            <img class="header-image-3"  height="135px" src="assets/img/Chucks-Pick-3-Header-03.png" width="252.5px"/>
         </div>
-        <div class="nav-bar-container">
+        <div class="nav-bar-container"><!--style="background-color: white"//-->
             <div class="main-nav-bar-container">
-                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
+                <div class="nav-bar-col-25  allow-hover " onClick="document.location='home.html'">
                     <a href="home.html">Home</a>
                 </div>
 
-                <div onClick="document.location='info.html#howto'" class="nav-bar-col-25 allow-hover">
-                    <a href="info.html#howto">How To</a>
+                <div class="nav-bar-col-25 allow-hover" onClick="document.location='info.html#howto'">
+                    <a class="info" href="info.html#howto">How To</a>
                 </div>
 
-                <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
-                    <a href="info.html#demo">Demo</a>
+                <div class="nav-bar-col-25 allow-hover" onClick="document.location='info.html#demo'">
+                    <a class="info" href="info.html#demo">Demo</a>
                 </div>
 
                 <div class="nav-bar-col-25">
-                    <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover active">
+                    <div class="nav-bar-col-50 allow-hover active" onClick="document.location='login.html'">
                         <a href="login.html">Login</a>
                     </div>
-                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
+                    <div class="nav-bar-col-50 allow-hover" onClick="document.location='sign-up.html'">
                         <a href="sign-up.html">Sign Up</a>
                     </div>
                 </div>
             </div>
+
             <div class="mobile-nav-bar-container">
 
-                <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
+                <div class="nav-bar-col-20  allow-hover active " onClick="document.location='home.html'">
                     <a href="home.html">Home</a>
                 </div>
 
                 <div class=" nav-bar-col-20 allow-hover float-right">
 
-                    <span style="font-size:35px;" onclick="openNav()">&#9776;</span>
+                    <span onclick="openNav()" style="font-size:35px;">&#9776;</span>
 
                     <div class="side-nav-stick">
 
-                        <div id="side-nav-bar" class="sidenav">
+                        <div class="sidenav" id="side-nav-bar">
                             <div class="menu">
                                 <div class="end">
-                                    <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+                                    <a href="javascript:void(0)" onclick="closeNav()">&times;</a>
                                 </div>
                                 <div class="menu-title">
-                                    <h2><b>Menu</b> </h2>
+                                    <h2><b>Menu</b></h2>
                                 </div>
 
                                 <div class="hamburger-menu-section-1">
@@ -197,111 +191,63 @@
                         </div>
                     </div>
                 </div>
-                <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
+                <div class="nav-bar-col-20 allow-hover float-right" onClick="document.location='login.html'">
                     <a href="login.html">Login</a>
                 </div>
 
-                <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
+                <div class="nav-bar-col-20 allow-hover float-right" onClick="document.location='sign-up.html'">
                     <a href="sign-up.html">Sign Up</a>
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
     <div class="body-container">
+        <br>
+        <br>
         <div class="main-content-container">
             <form class="needs-validation" novalidate>
                 <div class="row">
-                    <div class="col-3 mx-auto text-left">
+                    <div class="col-4 mx-auto text-left">
                         <p class="h4 mb-4 c text-center">Login </p>
                         <div class="info-form">
+                            <!-- Username -->
                             <div class="form-row">
                                 <label for="defaultRegisterFormUserName">Username</label>
-                                <input type="text" minlength="4" name="userName" maxlength="25"
-                                       id="defaultRegisterFormUserName"
-                                       class="form-control"
-                                       placeholder="Username" onchange="checkedUserName(this)" required="required">
+                                <input class="form-control" id="defaultRegisterFormUserName"  maxlength="15" minlength="4" name="userName"
+                                       onchange="checkUserName(this)" placeholder="Username" required  type="text">
                                 <div class="invalid-feedback userName"></div>
                             </div>
                             <br>
                             <!-- Password -->
                             <div class="form-row">
                                 <label for="defaultRegisterFormPassword">Password</label>
-                                <input type="password" minlength="6" maxlength="25" name="passWord"
-                                       onchange="checkPassword(this)"
-                                       id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                                       required="required">
-                                <div class="invalid-feedback passWord ">
-                                </div>
-                                <br>
-                                <br>
-                                <button type="submit" value="Validate"
-                                        class="btn btn-success ">Submit
-                                </button>
-
-                                <br>
+                                <input class="form-control" id="defaultRegisterFormPassword" maxlength="9" minlength="8" name="passWord"
+                                       onchange="checkPassWord(this)" placeholder="Password" required
+                                       type="password">
+                                <div class="invalid-feedback passWord"></div>
                             </div>
+                            <br>
+                            <button type="submit" value='submit' onClick="parent.location='login-success.html'"
+                                    class="btn btn btn-success btn-lg btn-block ">Submit
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-
-
     </div>
 </div>
-
-
-<!-- jQuery library -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-
-<!-- Popper -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-
-<script src="lib/bootstrapFormVal.js"></script>
-<script src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
-
-<script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
-
-<!-- Initialize Bootstrap functionality -->
-
 <script>
     function openNav() {
         document.getElementById("side-nav-bar").style.width = "250px";
     }
-
     function closeNav() {
         document.getElementById("side-nav-bar").style.width = "0";
     }
 </script>
-
-<script>
-    window.onscroll = function() {myFunction()};
-
-    var header = document.getElementById("side-nav-bar");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
-        }
-    }
-</script>
 </body>
 </html>
+
+
+
+
+

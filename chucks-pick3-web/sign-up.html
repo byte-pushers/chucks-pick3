@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,16 +26,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
+
+
+    <!-- javascript -->
+    <script src="lib/bootstrapFormVal.js"></script>
+    <script type="text/javascript" src="lib/bytepushers-js-string-extensions/dist/software.bytepushers.string.extensions-0.0.8.js"></script>
+
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
+    <script src="lib/jquery/3.2.1.slim.min/jquery.js"></script>
 
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
     <!-- Latest compiled and minified Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
             integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
@@ -73,11 +80,54 @@
             document.getElementById('menu').style.width = '250px';
             document.getElementById('content').style.marginRight = '250px';
         }
+=======
+<<<<<<< HEAD
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script>
+        // Initialize tooltip component
+        /*$(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+        // Initialize popover component
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        function openSlideMenu() {
+            document.getElementById('menu').style.width = '250px';
+            document.getElementById('content').style.marginRight = '250px';
+        }
+
+>>>>>>> a3193c02280359f4b52b8cdfc87634ded99ab89e
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
         }*/
     </script>
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
+>>>>>>> a3193c02280359f4b52b8cdfc87634ded99ab89e
 </head>
 <body>
 <div class="main-container">
@@ -251,6 +301,65 @@
                         <br>
                         <div class="form-row">
                             <label for="defaultRegisterFormCity">State</label>
+<<<<<<< HEAD
+                            <button type="button" class="btn btn-primary dropdown-toggle" aria-haspopup="true"
+                                    aria-expanded="true" id="dropDown" data-display="static" data-toggle="dropdown">
+                                <span class="selection">State</span><span class="caret"></span>
+                            <ul class="dropdown-menu scrollable-menu w-100" aria-labelledby="menu">
+                                <li><a class="dropdown-item" href="#">Alabama</a></li>
+                                <li><a class="dropdown-item" href="#">Alaska</a></li>
+                                <li><a class="dropdown-item" href="#">Arizona</a></li>
+                                <li><a class="dropdown-item" href="#">Arkansas</a></li>
+                                <li><a class="dropdown-item" href="#">California</a></li>
+                                <li><a class="dropdown-item" href="#">Colorado</a></li>
+                                <li><a class="dropdown-item" href="#">Connecticut</a></li>
+                                <li><a class="dropdown-item" href="#">Delaware</a></li>
+                                <li><a class="dropdown-item" href="#">District Of Columbia</a></li>
+                                <li><a class="dropdown-item" href="#">Florida</a></li>
+                                <li><a class="dropdown-item" href="#">Georgia</a></li>
+                                <li><a class="dropdown-item" href="#">Hawaii</a></li>
+                                <li><a class="dropdown-item" href="#">Idaho</a></li>
+                                <li><a class="dropdown-item" href="#">Illinois</a></li>
+                                <li><a class="dropdown-item" href="#">Indiana</a></li>
+                                <li><a class="dropdown-item" href="#">Iowa</a></li>
+                                <li><a class="dropdown-item" href="#">Kansas</a></li>
+                                <li><a class="dropdown-item" href="#">Kentucky</a></li>
+                                <li><a class="dropdown-item" href="#">Louisiana</a></li>
+                                <li><a class="dropdown-item" href="#">Maine</a></li>
+                                <li><a class="dropdown-item" href="#">Maryland</a></li>
+                                <li><a class="dropdown-item" href="#">Massachusetts</a></li>
+                                <li><a class="dropdown-item" href="#">Michigan</a></li>
+                                <li><a class="dropdown-item" href="#">Minnesota</a></li>
+                                <li><a class="dropdown-item" href="#">Mississippi</a></li>
+                                <li><a class="dropdown-item" href="#">Missouri</a></li>
+                                <li><a class="dropdown-item" href="#">Montana</a></li>
+                                <li><a class="dropdown-item" href="#">Nebraska</a></li>
+                                <li><a class="dropdown-item" href="#">Nevada</a></li>
+                                <li><a class="dropdown-item" href="#">New Hampshire</a></li>
+                                <li><a class="dropdown-item" href="#">New Jersey</a></li>
+                                <li><a class="dropdown-item" href="#">New Mexico</a></li>
+                                <li><a class="dropdown-item" href="#">New York</a></li>
+                                <li><a class="dropdown-item" href="#">North Carolina</a></li>
+                                <li><a class="dropdown-item" href="#">North Dakota</a></li>
+                                <li><a class="dropdown-item" href="#">Ohio</a></li>
+                                <li><a class="dropdown-item" href="#">Oklahoma</a></li>
+                                <li><a class="dropdown-item" href="#">Oregon</a></li>
+                                <li><a class="dropdown-item" href="#">Pennsylvania</a></li>
+                                <li><a class="dropdown-item" href="#">Rhode Island</a></li>
+                                <li><a class="dropdown-item" href="#">South Carolina</a></li>
+                                <li><a class="dropdown-item" href="#">South Dakota</a></li>
+                                <li><a class="dropdown-item" href="#">Tennessee</a></li>
+                                <li><a class="dropdown-item" href="#">Texas</a></li>
+                                <li><a class="dropdown-item" href="#">Utah</a></li>
+                                <li><a class="dropdown-item" href="#">Vermont</a></li>
+                                <li><a class="dropdown-item" href="#">Virginia</a></li>
+                                <li><a class="dropdown-item" href="#">Washington</a></li>
+                                <li><a class="dropdown-item" href="#">West Virginia</a></li>
+                                <li><a class="dropdown-item" href="#">Wisconsin</a></li>
+                                <li><a class="dropdown-item" href="#">Wyoming</a></li>
+                            </ul>
+                            <div class="invalid-feedback dropDown"></div>
+=======
                             <select required class="custom-select" id="stateDropDownId" name="stateDropDownInputName"
                                     onclick="validateStateDropDown(this)">
                                 <option value="" selected>Select a State</option>
@@ -307,6 +416,7 @@
                                 <option value="1">Wyoming</option>
                             </select>
                             <div class="invalid-feedback stateDropDownInputName"></div>
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
                         </div>
                         <br>
                         <div class="form-row">
@@ -358,6 +468,30 @@
 
         </div>
     </div>
+<<<<<<< HEAD
+=======
+</div>
+
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<<<<<<< HEAD
+
+=======
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+>>>>>>> 889aa67190330482f559c395c9a4a39b72cb8007
+>>>>>>> a3193c02280359f4b52b8cdfc87634ded99ab89e
 
 </div>
 
