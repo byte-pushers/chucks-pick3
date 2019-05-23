@@ -41,7 +41,11 @@ p {
 
 
 }
-
+.logo-container img {
+    display: block;
+    margin: auto;
+    width: 150px;
+}
 .header-img-container {
     display: block;
     background-color: rgb(126, 187, 86);
