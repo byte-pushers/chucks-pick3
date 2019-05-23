@@ -17,7 +17,8 @@
     float: right;
     /*border: 2px solid black;
     padding: 5px;*/
-    height: 50px;
+    height: 51px;
+    border-bottom: 1px solid black;
 
 }
 
@@ -93,9 +94,9 @@
 
 
 .active{
-     background-color: gray;
-     border-color: gray;
- }
+    background-color: gray;
+    border-color: gray;
+}
 
 
 
@@ -205,12 +206,12 @@ img {
         margin-left: 15%;
         font-size: 11px;
     }
-.col-3 {
-    position: inherit !important;
-}
-.main-nav-bar-container{
-    display: none;
-}
+    .col-3 {
+        position: inherit !important;
+    }
+    .main-nav-bar-container{
+        display: none;
+    }
     .sub-nav-bar-container {
         display: none;
     }
@@ -332,12 +333,12 @@ img {
     }
 
     /*------sub-nav-bar-----*/
-.mobile-nav-bar-container{
-    display: block;
-    width: 100%;
+    .mobile-nav-bar-container{
+        display: block;
+        width: 100%;
 
-/*expands to 100% width */
-}
+        /*expands to 100% width */
+    }
 
     .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
         background-color: green;
@@ -350,18 +351,18 @@ img {
     }
 
 
-.logo-container {
-    height: 135px;
-    width: 30%;
+    .logo-container {
+        height: 135px;
+        width: 30%;
 
-/* stays at 20% width, takes on height of header-img */
-}
+        /* stays at 20% width, takes on height of header-img */
+    }
 
-.header-img-container {
-    height: 135px;
-    width: 70%;
-/* stays at 80% width */
-}
+    .header-img-container {
+        height: 135px;
+        width: 70%;
+        /* stays at 80% width */
+    }
 
 
 
@@ -455,9 +456,9 @@ img {
 
 }
 .end a {
-   float: right;
+    float: right;
     line-height: 1em;
-color: #ffffff;
+    color: #ffffff;
     font-size: 40px;
 
 }
@@ -475,7 +476,7 @@ color: #ffffff;
 
 .menu-title h2{
     position: relative;
-   color: white;
+    color: white;
     text-align: left;
     left:10px;
 
