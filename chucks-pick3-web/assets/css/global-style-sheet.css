@@ -47,16 +47,16 @@ p {
     width: 150px;
 }
 .header-img-container {
-    display: block;
-    background-color: rgb(126, 187, 86);
-    width: 80%;
-    height: 100px;
-    padding: 0px;
-    margin: auto;
-    float: right;
+     display: block;
+     background-color: rgb(126, 187, 86);
+     width: 80%;
+     height: 100px;
+     padding: 0px;
+     margin: auto;
+     float: right;
 
 
-}
+ }
 
 .body-container {
     display: block;

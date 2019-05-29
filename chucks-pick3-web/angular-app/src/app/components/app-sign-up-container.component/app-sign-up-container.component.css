@@ -1,0 +1,47 @@
+.sign-up-container {
+
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+
+}
+
+
+.sign-up-container {
+  display: inline-block;
+/*  background-image: url("../img/screens-04.png");*/
+  background-size: 420px  350px;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-width: 1px;
+  width: 33.2%;
+  height: 350px;
+  border-color: #BDBDBD;
+  float: right;
+
+}
+
+.container-spacing-sign-up {
+  height: 6.7em;
+  width: 100%;
+  display: inline-block;
+  float: left;
+}
+
+.link-container-img-sign-up {
+  display: inline-block;
+  height: 150px;
+  width: 100%;
+  float: left;
+}
+
+.link-container-text-sign-up {
+  display: inline-block;
+  height: 75px;
+  width: 100%;
+  float: right;
+  padding: 17px;
+  font-size: 11px;
+}
