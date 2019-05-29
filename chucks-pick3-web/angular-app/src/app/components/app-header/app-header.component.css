@@ -1,0 +1,165 @@
+.header-container {
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+  height: 150px;
+  padding: 0px;
+  margin: 0 auto;
+
+
+}
+
+.logo-container {
+  display: block;
+  background-color: rgb(0, 0, 0);
+  width: 20%;
+  height: 151px;
+  padding: 0px;
+  margin: 0 auto;
+  float: left;
+
+
+}
+
+.nav-bar-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.main-nav-bar-container {
+
+  width: 80%;
+  background-color: white;
+  float: right;
+  /*border: 2px solid black;
+  padding: 5px;*/
+  height: 51px;
+  border-bottom: 1px solid black;
+
+}
+
+.main-nav-bar-container a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar-col-25 {
+  display: inline-block;
+  float: left;
+  line-height: 3em;
+  text-align: center;
+  width: 25%;
+  /*border: 2px solid blue;*/
+  height: 100%;
+
+
+}
+
+
+.nav-bar-col-20 {
+  display: none;
+
+
+}
+
+.nav-bar-col-25 a {
+  list-style-type: none;
+  font-size: 17px;
+  text-decoration: none;
+  color: black;
+
+}
+
+.nav-bar-col-50 {
+  float: right;
+
+  width: 50%;
+  /*border: 1px solid red;*/
+  height: 100%;
+
+
+}
+
+.nav-bar-col-50 a {
+
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+
+
+}
+
+.main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+  background-color: green !important;
+  cursor: pointer;
+}
+
+
+.main-nav-bar-container .nav-bar-col-50.active {
+  background-color: gray;
+}
+
+.main-nav-bar-container .nav-bar-col-50.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+
+
+
+.active{
+  background-color: gray;
+  border-color: gray;
+}
+
+
+
+
+
+.sub-nav-bar-col-50 {
+  float: left;
+  width: 50%;
+  /*border: 1px solid red;*/
+  height: 100%;
+
+
+}
+
+.sub-nav-bar-col-50 a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.sub-nav-bar-container .sub-nav-bar-col-50.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sub-nav-bar-container .sub-nav-bar-col-50.active {
+  background-color: gray;
+}
+
+.logo-container img {
+  display: block;
+  margin: auto;
+  width: 150px;
+}
+
+.header-img-container {
+  display: block;
+  background-color: rgb(126, 187, 86);
+  width: 80%;
+  height: 100px;
+  padding: 0px;
+  margin: auto;
+  float: right;
+
+
+}
+
