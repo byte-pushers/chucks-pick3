@@ -7,25 +7,37 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover active ">
-        <a href="home.html">Home</a>
+      <a routerLink="/home">
+      <div class="nav-bar-col-25  allow-hover active ">
+       Home
       </div>
+      </a>
 
-      <div onClick="document.location='info.html#howto'" class="nav-bar-col-25 allow-hover">
-        <a href="info.html#howto" class="info">How To</a>
+      <a routerLink="/how-to"  class="info">
+      <div  class="nav-bar-col-25 allow-hover">
+      How To
       </div>
+      </a>
+      <a routerLink="/demo" class="info">
+      <div  class="nav-bar-col-25 allow-hover">
+        Demo
+      </div>
+      </a>
 
-      <div onClick="document.location='info.html#demo'" class="nav-bar-col-25 allow-hover">
-        <a href="info.html#demo" class="info">Demo</a>
-      </div>
 
       <div class="nav-bar-col-25">
-        <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
-          <a href="login.html">Login</a>
+        <a routerLink="/log-in" >
+        <div  class="nav-bar-col-50 allow-hover">
+          Login
         </div>
-        <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
-          <a href="sign-up.html">Sign Up</a>
+      </a>
+      <a routerLink="/sign-up" >
+        <div class="nav-bar-col-50 allow-hover">
+          Sign Up
         </div>
+      </a>
+
+
       </div>
     </div>
 

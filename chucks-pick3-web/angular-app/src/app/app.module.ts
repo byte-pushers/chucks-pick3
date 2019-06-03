@@ -13,6 +13,8 @@ import {AppInfoContentComponent} from './components/app-info-content.component/a
 import {AppDemoContentComponent} from './components/app-demo-content.component/app-demo-content.component';
 import {AppSignUpContentComponent} from './components/app-sign-up-content.component/app-sign-up-content.component';
 import {AppLogInContentContainer} from './components/app-log-in-content-container/app-log-in-content-container';
+import {AppRoutingModule, routingComponents} from './components/app-routing/app-routing.component';
+import {AppHomeContentComponent} from "./components/app-home-content.component/app-home-content.component";
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import {AppLogInContentContainer} from './components/app-log-in-content-containe
     AppInfoContentComponent,
     AppDemoContentComponent,
     AppSignUpContentComponent,
-    AppLogInContentContainer
+    AppLogInContentContainer,
+    AppHomeContentComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

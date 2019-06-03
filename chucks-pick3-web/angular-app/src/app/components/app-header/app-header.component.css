@@ -40,7 +40,10 @@
   border-bottom: 1px solid black;
 
 }
-
+.main-nav-bar-container a {
+  text-decoration: none;
+  color: black;
+}
 .main-nav-bar-container a:hover {
   text-decoration: none;
   color: black;
