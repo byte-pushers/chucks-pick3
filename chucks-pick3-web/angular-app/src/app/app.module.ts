@@ -14,7 +14,7 @@ import {AppDemoContentComponent} from './components/app-demo-content.component/a
 import {AppSignUpContentComponent} from './components/app-sign-up-content.component/app-sign-up-content.component';
 import {AppLogInContentContainer} from './components/app-log-in-content-container/app-log-in-content-container';
 import {AppRoutingModule, routingComponents} from './components/app-routing/app-routing.component';
-import {AppHomeContentComponent} from "./components/app-home-content.component/app-home-content.component";
+import {AppHomeContentComponent} from './components/app-home-content.component/app-home-content.component';
 
 @NgModule({
   declarations: [
