@@ -9,6 +9,12 @@ import {AppLinkContainerComponent} from './components/app-link-container/app-lin
 import {AppHowToContainerComponent} from './components/app-how-to-container.component/app-how-to-container.component';
 import {AppDemoContainerComponent} from './components/app-demo-container.component/app-demo-container.component';
 import {AppSignUpContainerComponent} from './components/app-sign-up-container.component/app-sign-up-container.component';
+import {AppInfoContentComponent} from './components/app-info-content.component/app-info-content.component';
+import {AppDemoContentComponent} from './components/app-demo-content.component/app-demo-content.component';
+import {AppSignUpContentComponent} from './components/app-sign-up-content.component/app-sign-up-content.component';
+import {AppLogInContentContainer} from './components/app-log-in-content-container/app-log-in-content-container';
+import {AppRoutingModule, routingComponents} from './components/app-routing/app-routing.component';
+import {AppHomeContentComponent} from "./components/app-home-content.component/app-home-content.component";
 
 @NgModule({
   declarations: [
@@ -19,11 +25,17 @@ import {AppSignUpContainerComponent} from './components/app-sign-up-container.co
     AppLinkContainerComponent,
     AppHowToContainerComponent,
     AppDemoContainerComponent,
-    AppSignUpContainerComponent
+    AppSignUpContainerComponent,
+    AppInfoContentComponent,
+    AppDemoContentComponent,
+    AppSignUpContentComponent,
+    AppLogInContentContainer,
+    AppHomeContentComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
