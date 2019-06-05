@@ -1,1 +1,156 @@
-<p>Sign up Content here</p>
+<div class="main-content-container-fluid">
+  <form class="needs-validation" novalidate>
+    <div class="row">
+      <div class="col-4 mx-auto text-left ">
+        <p class="h4 mb-4 c text-center">Sign up </p>
+        <div class="info-form">
+          <div class="form-row">
+            <label for="defaultRegisterFormFirstName">First Name</label>
+            <input type="text" minlength="4" name="firstName" maxlength="25"
+                   id="defaultRegisterFormFirstName" class="form-control"
+                   placeholder="First name" onchange="checkFirstName(this);" required="required">
+            <div class="invalid-feedback firstName"></div>
+          </div>
+          <br>
+          <div class="form-row">
+            <label for="defaultRegisterFormLastName">Last Name</label>
+            <input type="text" minlength="4" name="lastName" maxlength="30"
+                   id="defaultRegisterFormLastName" onchange="checkLastName(this);"
+                   class="form-control" placeholder="Last name"
+                   required="required">
+            <div class="invalid-feedback  lastName "></div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormEmail">Email</label>
+          <input type="email" name="email" onchange="checkEmail(this)" id="defaultRegisterFormEmail"
+                 class="form-control" placeholder="Email" required>
+          <div class="invalid-feedback email "></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormPhone">Phone</label>
+          <input type="text" id="defaultRegisterFormPhone" name="phoneNumber" minlength="9"
+                 maxlength="10"
+                 onchange="checkPhoneNumber(this)"
+                 class="form-control" placeholder="Phone Number" required>
+          <div class="invalid-feedback phoneNumber "></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">City</label>
+          <input type="text" minlength="3" name="cityName" maxlength="30" onchange="checkCity(this)"
+                 id="defaultRegisterFormCity" class="form-control" placeholder="City" required>
+          <div class="invalid-feedback cityName "></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">State</label>
+          <select required class="custom-select" id="stateDropDownId" name="stateDropDownInputName"
+                  onclick="validateStateDropDown(this)">
+            <option value="" selected>Select a State</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="5">California</option>
+            <option value="6">Colorado</option>
+            <option value="7">Connecticut</option>
+            <option value="8">Delaware</option>
+            <option value="1">District Of Columbia</option>
+            <option value="1">Florida</option>
+            <option value="1">Georgia</option>
+            <option value="1">Hawaii</option>
+            <option value="1">Idaho</option>
+            <option value="1">Illinois</option>
+            <option value="1">Indiana</option>
+            <option value="1">Iowa</option>
+            <option value="1">Kansas</option>
+            <option value="1">Kentucky</option>
+            <option value="1">Louisiana</option>
+            <option value="1">Maine</option>
+            <option value="1">Maryland</option>
+            <option value="1">Massachusetts</option>
+            <option value="1">Michigan</option>
+            <option value="1">Minnesota</option>
+            <option value="1">Mississippi</option>
+            <option value="1">Missouri</option>
+            <option value="1">Montana</option>
+            <option value="1">Nebraska</option>
+            <option value="1">Nevada</option>
+            <option value="1">New Hampshire</option>
+            <option value="1">New Jersey</option>
+            <option value="1">New Mexico</option>
+            <option value="1">New York</option>
+            <option value="1">North Carolina</option>
+            <option value="1">North Dakota</option>
+            <option value="1">Ohio</option>
+            <option value="1">Oklahoma</option>
+            <option value="1">Oregon</option>
+            <option value="1">Pennsylvania</option>
+            <option value="1">Rhode Island</option>
+            <option value="1">South Carolina</option>
+            <option value="1">South Dakota</option>
+            <option value="1">Tennessee</option>
+            <option value="1">Texas</option>
+            <option value="1">Utah</option>
+            <option value="1">Vermont</option>
+            <option value="1">Virginia</option>
+            <option value="1">Washington</option>
+            <option value="1">West Virginia</option>
+            <option value="1">Wisconsin</option>
+            <option value="1">Wyoming</option>
+          </select>
+          <div class="invalid-feedback stateDropDownInputName"></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormZip">Zip</label>
+          <input type="text" name="zipCode" minlength="4" maxlength="5"
+                 id="defaultRegisterFormZip" class="form-control" onchange="checkZipCode(this)"
+                 placeholder="Zip" required>
+          <div class="invalid-feedback zipCode "></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">Type Of Phone</label>
+          <select class="custom-select" id="typeOfPhoneId" name="dropDownTypeOfPhoneName"
+                  onblur="validateTypeOfPhoneDropDown(this)"
+                  required>
+            <option value="" selected>Type Of Phone</option>
+            <option value="Iphone">Iphone</option>
+            <option value="Android">Android</option>
+          </select>
+          <div class="invalid-feedback dropDownTypeOfPhoneName"></div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">How Often Do You Play?</label>
+          <select class="custom-select" id="howOftenId" name="dropDownHowOftenName"
+                  onclick="validateHowOftenDropDown(this)"
+                  required>
+            <option value="" selected>How Often Do You Play?</option>
+            <option value="Often">Often</option>
+            <option value="Sometimes">Sometimes</option>
+            <option value="Never">Never</option>
+          </select>
+          <div class="invalid-feedback dropDownHowOftenName"></div>
+          <br>
+          <br>
+          <br>
+          <button type="submit" value='submit' onClick="parent.location='signup-confirmation.html'"
+                  class="btn btn btn-success btn-lg btn-block ">Submit
+          </button>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+    <br>
+  </form>
+  <br>
+  <div class="footer"></div>
+  <br>
+
+</div>
