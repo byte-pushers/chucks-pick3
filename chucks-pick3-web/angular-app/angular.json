@@ -26,7 +26,6 @@
               "src/assets/scss/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/scss/app-instructions-style-sheet.css",
-
               "src/assets/scss/global-style-sheet.css",
               "src/assets/scss/navbar.css",
               "src/assets/scss/responsive-style-sheet.css"
