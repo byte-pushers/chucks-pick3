@@ -1,1 +1,36 @@
-<p>log in content here</p>
+<form class="needs-validation" novalidate>
+  <div class="row">
+    <div class="col-4 mx-auto text-left">
+      <p class="h4 mb-4 c text-center">Login </p>
+      <div class="info-form">
+        <div class="form-row">
+          <label for="defaultRegisterFormUserName">Username</label>
+          <input type="text" minlength="4" name="userName" maxlength="25"
+                 id="defaultRegisterFormUserName"
+                 class="form-control"
+                 placeholder="Username" onchange="checkedUserName(this)" required="required">
+          <div class="invalid-feedback userName"></div>
+        </div>
+        <br>
+        <!-- Password -->
+        <div class="form-row">
+          <label for="defaultRegisterFormPassword">Password</label>
+          <input type="password" minlength="6" maxlength="25" name="passWord"
+                 onchange="checkPassword(this)"
+                 id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+                 required="required">
+          <div class="invalid-feedback passWord ">
+          </div>
+          <br>
+          <br>
+          <br>
+          <button type="submit" value='submit' onSubmit="parent.location='login-success.html'"
+                  class="btn btn btn-success btn-lg btn-block ">Submit
+          </button>
+
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
