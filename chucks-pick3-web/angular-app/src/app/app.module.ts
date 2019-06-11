@@ -15,6 +15,7 @@ import {AppSignUpContentComponent} from './components/app-sign-up-content.compon
 import {AppLogInContentContainer} from './components/app-log-in-content-container/app-log-in-content-container';
 import {AppRoutingModule, routingComponents} from './components/app-routing/app-routing.component';
 import {AppHomeContentComponent} from './components/app-home-content.component/app-home-content.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {AppHomeContentComponent} from './components/app-home-content.component/a
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

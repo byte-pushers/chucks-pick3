@@ -1,54 +1,77 @@
 <div class="main-content-container-fluid">
-  <form class="needs-validation" novalidate>
+  <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
     <div class="row">
       <div class="col-4 mx-auto text-left ">
         <p class="h4 mb-4 c text-center">Sign up </p>
         <div class="info-form">
           <div class="form-row">
             <label for="defaultRegisterFormFirstName">First Name</label>
-            <input type="text" minlength="4" name="firstName" maxlength="25"
+            <input required ngModel name="firstName"  #firstName="ngModel" (change)="log(firstName)"
+                   type="text" pattern="[a-zA-Z ]+" minlength="2"  maxlength="25"
                    id="defaultRegisterFormFirstName" class="form-control"
-                   placeholder="First name" onchange="checkFirstName(this);" required="required">
-            <div class="invalid-feedback firstName"></div>
+                   placeholder="First name">
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+              <div *ngIf="firstName.errors.required">- First name is required.</div>
+              <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
+              <div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>
+            </div>
           </div>
           <br>
           <div class="form-row">
             <label for="defaultRegisterFormLastName">Last Name</label>
-            <input type="text" minlength="4" name="lastName" maxlength="30"
-                   id="defaultRegisterFormLastName" onchange="checkLastName(this);"
-                   class="form-control" placeholder="Last name"
-                   required="required">
-            <div class="invalid-feedback  lastName "></div>
+            <input required ngModel name="lastName" #lastName="ngModel" (change)="log(lastName)" type="text"
+                   pattern="[a-zA-Z ]+" minlength="2"  maxlength="30"
+                   id="defaultRegisterFormLastName"
+                   class="form-control" placeholder="Last name">
+            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+              <div *ngIf="lastName.errors.required">- Last name is required.</div>
+              <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
+              <div *ngIf="lastName.errors.pattern">- May only use alphabetical characters.</div>
+            </div>
+
           </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormEmail">Email</label>
-          <input type="email" name="email" onchange="checkEmail(this)" id="defaultRegisterFormEmail"
-                 class="form-control" placeholder="Email" required>
-          <div class="invalid-feedback email "></div>
+          <input  required type="email" ngModel name="email" email #email="ngModel" (change)="log(email)" id="defaultRegisterFormEmail"
+                   class="form-control" placeholder="Email">
+          <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+            <div *ngIf="email.errors.required">- Email is required.</div>
+            <div *ngIf="email.errors.email">- Email is not valid.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormPhone">Phone</label>
-          <input type="text" id="defaultRegisterFormPhone" name="phoneNumber" minlength="9"
-                 maxlength="10"
-                 onchange="checkPhoneNumber(this)"
-                 class="form-control" placeholder="Phone Number" required>
-          <div class="invalid-feedback phoneNumber "></div>
+          <input required type="text" ngModel name="phoneNumber" #phoneNumber="ngModel" (change)="log(phoneNumber)" id="defaultRegisterFormPhone"
+                 minlength="9"  maxlength="10"
+                 pattern="[0-9 ]+"  class="form-control" placeholder="Phone Number">
+          <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
+          <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
+          <div *ngIf="phoneNumber.errors.pattern">- Phone number must only contain numeric characters.</div>
+            <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
+            <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">City</label>
-          <input type="text" minlength="3" name="cityName" maxlength="30" onchange="checkCity(this)"
-                 id="defaultRegisterFormCity" class="form-control" placeholder="City" required>
-          <div class="invalid-feedback cityName "></div>
+          <input required ngModel  name="cityName" #cityName="ngModel" (change)="log(cityName)" type="text"
+                 pattern="[a-zA-Z ]+" minlength="2" maxlength="30"
+                 id="defaultRegisterFormCity" class="form-control" placeholder="City">
+          <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
+            <div *ngIf="cityName.errors.required">- City name is required.</div>
+            <div *ngIf="cityName.errors.pattern">- City name must only contain alphabetical characters.</div>
+            <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">State</label>
-          <select required class="custom-select" id="stateDropDownId" name="stateDropDownInputName"
-                  onclick="validateStateDropDown(this)">
+          <label for="stateDropDownId"></label>
+          <select required ngModel #stateDropDownInputName="ngModel" (change)="log(stateDropDownInputName)"
+                  name="stateDropDownInputName" class="custom-select" id="stateDropDownId">
             <option value="" selected>Select a State</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
@@ -102,46 +125,57 @@
             <option value="1">Wisconsin</option>
             <option value="1">Wyoming</option>
           </select>
-          <div class="invalid-feedback stateDropDownInputName"></div>
+
+          <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
+            <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormZip">Zip</label>
-          <input type="text" name="zipCode" minlength="4" maxlength="5"
+          <input required ngModel  name="zipCode" #zipCode="ngModel" (change)="log(zipCode)" type="text"
+                 pattern="[0-9]+" minlength="4" maxlength="5"
                  id="defaultRegisterFormZip" class="form-control" onchange="checkZipCode(this)"
-                 placeholder="Zip" required>
-          <div class="invalid-feedback zipCode "></div>
+                 placeholder="Zip">
+          <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
+            <div *ngIf="zipCode.errors.required">- Zip code is required.</div>
+            <div *ngIf="zipCode.errors.pattern">- Zip code must only contain numeric characters.</div>
+            <div *ngIf="zipCode.errors.minlength">- Zip code is invalid.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">Type Of Phone</label>
-          <select class="custom-select" id="typeOfPhoneId" name="dropDownTypeOfPhoneName"
-                  onblur="validateTypeOfPhoneDropDown(this)"
-                  required>
+          <label for="typeOfPhoneId"></label>
+          <select required ngModel #dropDownTypeOfPhoneName="ngModel" name="dropDownTypeOfPhoneName" (change)="log(dropDownTypeOfPhoneName)"
+                  class="custom-select" id="typeOfPhoneId">
             <option value="" selected>Type Of Phone</option>
             <option value="Iphone">Iphone</option>
             <option value="Android">Android</option>
           </select>
-          <div class="invalid-feedback dropDownTypeOfPhoneName"></div>
+          <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
+            <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
+          </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">How Often Do You Play?</label>
-          <select class="custom-select" id="howOftenId" name="dropDownHowOftenName"
-                  onclick="validateHowOftenDropDown(this)"
-                  required>
+          <label for="howOftenId"></label>
+          <select required ngModel #dropDownHowOftenName="ngModel" name="dropDownHowOftenName" (change)="log(dropDownHowOftenName)"
+            class="custom-select" id="howOftenId">
             <option value="" selected>How Often Do You Play?</option>
             <option value="Often">Often</option>
             <option value="Sometimes">Sometimes</option>
             <option value="Never">Never</option>
           </select>
-          <div class="invalid-feedback dropDownHowOftenName"></div>
+          <div class="alert alert-danger" *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
+            <div *ngIf="dropDownHowOftenName.errors.required">- Selection is required.</div>
+          </div>
           <br>
           <br>
           <br>
-          <button type="submit" value='submit' onClick="parent.location='signup-confirmation.html'"
-                  class="btn btn btn-success btn-lg btn-block ">Submit
-          </button>
+          <button type="submit" class="btn btn btn-success btn-lg btn-block" [disabled]="!signUpForm.form.valid">Submit</button>
+
         </div>
       </div>
       <br>

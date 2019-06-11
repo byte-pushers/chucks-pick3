@@ -6,11 +6,8 @@ import {Component, OnInit } from '@angular/core';
   styleUrls: ['./app-sign-up-content.component.css']
 })
 
-export class AppSignUpContentComponent implements OnInit {
-  constructor() {
+export class AppSignUpContentComponent  {
+log(x) {console.log(x); }
   }
 
-  ngOnInit() {
 
-  }
-}
