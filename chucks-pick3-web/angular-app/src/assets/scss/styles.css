@@ -2,7 +2,9 @@
 html {
   height:100%;
 }
-
+.form-control.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
 
 .main-container {
   width: 100%;
@@ -11,9 +13,6 @@ html {
   margin: 0 auto;
   text-align: center;
   display: block;
-
-
-
 }
 
 
