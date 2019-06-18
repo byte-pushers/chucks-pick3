@@ -6,7 +6,7 @@
         <div class="info-form">
           <div class="form-row">
             <label for="defaultRegisterFormFirstName">First Name</label>
-            <input required ngModel name="firstName"  #firstName="ngModel" (change)="log(firstName)"
+            <input required ngModel name="firstName"  #firstName="ngModel" (change)="checkFirstName(firstName.value);"
                    type="text" pattern="[a-zA-Z ]+" minlength="2"  maxlength="25"
                    id="defaultRegisterFormFirstName" class="form-control"
                    placeholder="First name">

@@ -16,6 +16,8 @@ import {AppLogInContentContainer} from './components/app-log-in-content-containe
 import {AppRoutingModule, routingComponents} from './components/app-routing/app-routing.component';
 import {AppHomeContentComponent} from './components/app-home-content.component/app-home-content.component';
 import {FormsModule} from '@angular/forms';
+import { CheckFirstNameService } from 'src/app/services/check-first-name.service/check-first-name.service';
+import {HasDataService} from 'src/app/services/has-data.service/has-data.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CheckFirstNameService,
+    HasDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
