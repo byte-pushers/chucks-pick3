@@ -6,7 +6,7 @@
         <div class="info-form">
           <div class="form-row">
             <label for="defaultRegisterFormFirstName">First Name</label>
-            <input required ngModel name="firstName"  #firstName="ngModel" (change)="checkFirstName(firstName.value);"
+            <input required ngModel name="firstName" firstnamevalid #firstName="ngModel" (change)="checkFirstName(firstName.value);"
                    type="text" pattern="[a-zA-Z ]+" minlength="2"  maxlength="25"
                    id="defaultRegisterFormFirstName" class="form-control"
                    placeholder="First name">
@@ -14,6 +14,7 @@
               <div *ngIf="firstName.errors.required">- First name is required.</div>
               <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
               <div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>
+              <div *ngIf="firstName.errors.firstnamevalid">- May only use alphabetical characters.</div>
             </div>
           </div>
           <br>
