@@ -6,37 +6,43 @@
         <div class="info-form">
           <div class="form-row">
             <label for="defaultRegisterFormFirstName">First Name</label>
-            <input required ngModel name="firstName" firstnamevalid #firstName="ngModel" (change)="checkFirstName(firstName.value);"
-                   type="text" pattern="[a-zA-Z ]+" minlength="2"  maxlength="25"
-                   id="defaultRegisterFormFirstName" class="form-control"
-                   placeholder="First name">
-            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <input id="defaultRegisterFormFirstName"
+                   name="firstName"
+                   class="form-control"
+                   placeholder="First name"
+                   #firstName="ngModel"
+                   type="text"
+                   minlength="2"
+                   maxlength="25"
+                   required ngModel nameValidator>
+            <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched || form.submitted)">
               <div *ngIf="firstName.errors.required">- First name is required.</div>
               <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
-              <div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>
-              <div *ngIf="firstName.errors.firstnamevalid">- May only use alphabetical characters.</div>
+              <!--<div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>-->
+              <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
             </div>
           </div>
-          <br>
-          <div class="form-row">
-            <label for="defaultRegisterFormLastName">Last Name</label>
-            <input required ngModel name="lastName" #lastName="ngModel" (change)="log(lastName)" type="text"
-                   pattern="[a-zA-Z ]+" minlength="2"  maxlength="30"
-                   id="defaultRegisterFormLastName"
-                   class="form-control" placeholder="Last name">
-            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
-              <div *ngIf="lastName.errors.required">- Last name is required.</div>
-              <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
-              <div *ngIf="lastName.errors.pattern">- May only use alphabetical characters.</div>
-            </div>
+          <!-- <br>
+           <div class="form-row">
+             <label for="defaultRegisterFormLastName">Last Name</label>
+             <input required ngModel name="lastName" #lastName="ngModel" (change)="log(lastName)" type="text"
+                    pattern="[a-zA-Z ]+" minlength="2"  maxlength="30"
+                    id="defaultRegisterFormLastName"
+                    class="form-control" placeholder="Last name">
+             <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+               <div *ngIf="lastName.errors.required">- Last name is required.</div>
+               <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
+               <div *ngIf="lastName.errors.pattern">- May only use alphabetical characters.</div>
+             </div>
 
-          </div>
-        </div>
+           </div>-->
+        </div><!--
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormEmail">Email</label>
-          <input  required type="email" ngModel name="email" email #email="ngModel" (change)="log(email)" id="defaultRegisterFormEmail"
-                   class="form-control" placeholder="Email">
+          <input required type="email" ngModel name="email" email #email="ngModel" (change)="log(email)"
+                 id="defaultRegisterFormEmail"
+                 class="form-control" placeholder="Email">
           <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
             <div *ngIf="email.errors.required">- Email is required.</div>
             <div *ngIf="email.errors.email">- Email is not valid.</div>
@@ -45,12 +51,13 @@
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormPhone">Phone</label>
-          <input required type="text" ngModel name="phoneNumber" #phoneNumber="ngModel" (change)="log(phoneNumber)" id="defaultRegisterFormPhone"
-                 minlength="9"  maxlength="10"
-                 pattern="[0-9 ]+"  class="form-control" placeholder="Phone Number">
+          <input required type="text" ngModel name="phoneNumber" #phoneNumber="ngModel" (change)="log(phoneNumber)"
+                 id="defaultRegisterFormPhone"
+                 minlength="9" maxlength="10"
+                 pattern="[0-9 ]+" class="form-control" placeholder="Phone Number">
           <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
-          <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
-          <div *ngIf="phoneNumber.errors.pattern">- Phone number must only contain numeric characters.</div>
+            <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
+            <div *ngIf="phoneNumber.errors.pattern">- Phone number must only contain numeric characters.</div>
             <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
             <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>
           </div>
@@ -58,7 +65,7 @@
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">City</label>
-          <input required ngModel  name="cityName" #cityName="ngModel" (change)="log(cityName)" type="text"
+          <input required ngModel name="cityName" #cityName="ngModel" (change)="log(cityName)" type="text"
                  pattern="[a-zA-Z ]+" minlength="2" maxlength="30"
                  id="defaultRegisterFormCity" class="form-control" placeholder="City">
           <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
@@ -134,7 +141,7 @@
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormZip">Zip</label>
-          <input required ngModel  name="zipCode" #zipCode="ngModel" (change)="log(zipCode)" type="text"
+          <input required ngModel name="zipCode" #zipCode="ngModel" (change)="log(zipCode)" type="text"
                  pattern="[0-9]+" minlength="4" maxlength="5"
                  id="defaultRegisterFormZip" class="form-control" onchange="checkZipCode(this)"
                  placeholder="Zip">
@@ -148,7 +155,8 @@
         <div class="form-row">
           <label for="defaultRegisterFormCity">Type Of Phone</label>
           <label for="typeOfPhoneId"></label>
-          <select required ngModel #dropDownTypeOfPhoneName="ngModel" name="dropDownTypeOfPhoneName" (change)="log(dropDownTypeOfPhoneName)"
+          <select required ngModel #dropDownTypeOfPhoneName="ngModel" name="dropDownTypeOfPhoneName"
+                  (change)="log(dropDownTypeOfPhoneName)"
                   class="custom-select" id="typeOfPhoneId">
             <option value="" selected>Type Of Phone</option>
             <option value="Iphone">Iphone</option>
@@ -162,8 +170,9 @@
         <div class="form-row">
           <label for="defaultRegisterFormCity">How Often Do You Play?</label>
           <label for="howOftenId"></label>
-          <select required ngModel #dropDownHowOftenName="ngModel" name="dropDownHowOftenName" (change)="log(dropDownHowOftenName)"
-            class="custom-select" id="howOftenId">
+          <select required ngModel #dropDownHowOftenName="ngModel" name="dropDownHowOftenName"
+                  (change)="log(dropDownHowOftenName)"
+                  class="custom-select" id="howOftenId">
             <option value="" selected>How Often Do You Play?</option>
             <option value="Often">Often</option>
             <option value="Sometimes">Sometimes</option>
@@ -175,9 +184,11 @@
           <br>
           <br>
           <br>
-          <button type="submit" class="btn btn btn-success btn-lg btn-block" [disabled]="!signUpForm.form.valid">Submit</button>
+          <button type="submit" class="btn btn btn-success btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+            Submit
+          </button>
 
-        </div>
+        </div>-->
       </div>
       <br>
       <br>
