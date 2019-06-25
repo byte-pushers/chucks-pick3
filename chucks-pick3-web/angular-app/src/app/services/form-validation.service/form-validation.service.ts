@@ -3,11 +3,11 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckFirstNameService {
+export class FormValidationService {
   constructor() {
   }
 
-  private hasData(input: string): boolean {  // create a function for first name // use input parameter
+  public hasData(input: string): boolean {  // create a function for first name // use input parameter
     let hasDataResult = false;
 
     if (input !== null && input !== undefined) { // input can not be null or undefined it will throw a error
@@ -51,13 +51,13 @@ export class CheckFirstNameService {
     return alphabetical;
   }
 
-  public isFirstNameValid(firstName: string): boolean { // create a function for first name // use input parameter
-    let firstNameIsValid = false;
+  public isNameValid(firstName: string): boolean { // create a function for first name // use input parameter
+    let NameIsValid = false;
 
     if (this.hasData(firstName)) {
-      firstNameIsValid = this.isAlphabetical(firstName);
+      NameIsValid = this.isAlphabetical(firstName);
     }
 
-    return firstNameIsValid;
+    return NameIsValid;
   }
 }

@@ -1,8 +1,9 @@
 import { NG_VALIDATORS, FormControl, ValidatorFn, Validator } from '@angular/forms';
-import { CheckFirstNameService }  from '../services/check-first-name.service/check-first-name.service';
+import { FormValidationService } from '../services/form-validation.service/form-validation.service';
 import { Directive } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[nameValidator] [ngModel]',
   providers: [
     {
@@ -15,7 +16,7 @@ import { Directive } from '@angular/core';
 export class NameValidator implements Validator {
   public validator: ValidatorFn;
 
-  constructor(private checkFirstNameService: CheckFirstNameService) {
+  constructor(private formValidationService: FormValidationService) {
     this.validator = this.nameValidator();
   }
 
@@ -25,11 +26,11 @@ export class NameValidator implements Validator {
 
   public nameValidator(): ValidatorFn {
     return (c: FormControl) => {
-        if (this.checkFirstNameService.isFirstNameValid(c.value)) {
+        if (this.formValidationService.isNameValid(c.value)) {
           return null;
         } else {
           return {
-            emailvalidator: {
+            nameValidator: {
               valid: false
             }
           };

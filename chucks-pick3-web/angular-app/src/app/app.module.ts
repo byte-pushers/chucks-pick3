@@ -16,9 +16,10 @@ import { AppLogInContentContainer } from './components/app-log-in-content-contai
 import { AppRoutingModule, routingComponents } from './components/app-routing/app-routing.component';
 import { AppHomeContentComponent } from './components/app-home-content.component/app-home-content.component';
 import { FormsModule } from '@angular/forms';
-import { CheckFirstNameService } from 'src/app/services/check-first-name.service/check-first-name.service';
+import { FormValidationService } from 'src/app/services/form-validation.service/form-validation.service';
 import { HasDataService } from 'src/app/services/has-data.service/has-data.service';
-import { NameValidator } from "src/app/directives/name-validator.directive";
+import { NameValidator } from 'src/app/directives/name-validator.directive';
+import {DataValidator} from './directives/data-validator.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NameValidator } from "src/app/directives/name-validator.directive";
     AppSignUpContentComponent,
     AppLogInContentContainer,
     AppHomeContentComponent,
-    NameValidator
+    NameValidator,
+    DataValidator
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { NameValidator } from "src/app/directives/name-validator.directive";
     FormsModule
   ],
   providers: [
-    CheckFirstNameService,
+    FormValidationService,
     HasDataService
   ],
   bootstrap: [AppComponent]

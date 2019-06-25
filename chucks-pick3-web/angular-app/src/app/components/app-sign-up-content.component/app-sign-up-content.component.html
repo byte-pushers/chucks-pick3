@@ -14,12 +14,13 @@
                    type="text"
                    minlength="2"
                    maxlength="25"
-                   required ngModel nameValidator>
-            <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched || form.submitted)">
-              <div *ngIf="firstName.errors.required">- First name is required.</div>
-              <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
+                   required ngModel nameValidator dataValidator>
+            <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+            <div *ngIf="firstName.errors.dataValidator">- First name is required.</div>
+              <!--<div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>&ndash;&gt;-->
               <!--<div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>-->
               <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
+
             </div>
           </div>
           <!-- <br>
