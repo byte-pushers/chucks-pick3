@@ -20,6 +20,7 @@ import { FormValidationService } from 'src/app/services/form-validation.service/
 import { HasDataService } from 'src/app/services/has-data.service/has-data.service';
 import { NameValidator } from 'src/app/directives/name-validator.directive';
 import {DataValidator} from './directives/data-validator.directive';
+import {MinLengthValidator} from './directives/min-length-validator.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {DataValidator} from './directives/data-validator.directive';
     AppLogInContentContainer,
     AppHomeContentComponent,
     NameValidator,
-    DataValidator
+    DataValidator,
+    MinLengthValidator
   ],
   imports: [
     BrowserModule,

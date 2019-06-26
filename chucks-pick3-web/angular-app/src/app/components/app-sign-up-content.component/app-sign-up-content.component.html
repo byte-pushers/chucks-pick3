@@ -12,33 +12,33 @@
                    placeholder="First name"
                    #firstName="ngModel"
                    type="text"
-                   minlength="2"
-                   maxlength="25"
-                   required ngModel nameValidator dataValidator>
+                   required ngModel nameValidator minLengthValidator dataValidator>
             <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-            <div *ngIf="firstName.errors.dataValidator">- First name is required.</div>
-              <!--<div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>&ndash;&gt;-->
+              <div *ngIf="firstName.errors.dataValidator">- First name is required.</div>
+              <div *ngIf="firstName.errors.minLengthValidator">- First name should have minimum 2 characters.</div>
               <!--<div *ngIf="firstName.errors.pattern">- May only use alphabetical characters.</div>-->
               <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
 
             </div>
           </div>
-          <!-- <br>
-           <div class="form-row">
-             <label for="defaultRegisterFormLastName">Last Name</label>
-             <input required ngModel name="lastName" #lastName="ngModel" (change)="log(lastName)" type="text"
-                    pattern="[a-zA-Z ]+" minlength="2"  maxlength="30"
-                    id="defaultRegisterFormLastName"
-                    class="form-control" placeholder="Last name">
-             <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
-               <div *ngIf="lastName.errors.required">- Last name is required.</div>
-               <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
-               <div *ngIf="lastName.errors.pattern">- May only use alphabetical characters.</div>
-             </div>
+          <br>
+          <div class="form-row">
+            <label for="defaultRegisterFormLastName">Last Name</label>
+            <input id="defaultRegisterFormLastName"
+                   name="lastName"
+                   #lastName="ngModel"
+                   type="text"
+                   class="form-control" placeholder="Last name"
+                   required ngModel nameValidator dataValidator minLengthValidator>
+            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+              <div *ngIf="lastName.errors.dataValidator">- Last name is required.</div>
+              <div *ngIf="lastName.errors.minLengthValidator">- Last name should have minimum 2 characters.</div>
+              <div *ngIf="lastName.errors.nameValidator">- May only use alphabetical characters.</div>
+            </div>
 
-           </div>-->
-        </div><!--
-        <br>
+          </div>
+        </div>
+        <!-- <br>
         <div class="form-row">
           <label for="defaultRegisterFormEmail">Email</label>
           <input required type="email" ngModel name="email" email #email="ngModel" (change)="log(email)"

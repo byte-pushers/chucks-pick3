@@ -6,6 +6,16 @@ import {Injectable} from '@angular/core';
 export class FormValidationService {
   constructor() {
   }
+public minLength(input: string): boolean {
+  let minLength = false;
+  if (input !== null && input !== undefined) {
+    input = input.trim();
+    if (input.length >= 2) {
+      minLength = true;
+    }
+  }
+  return minLength;
+}
 
   public hasData(input: string): boolean {  // create a function for first name // use input parameter
     let hasDataResult = false;
