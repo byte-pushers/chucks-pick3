@@ -17,6 +17,7 @@ public minLength(input: string): boolean {
   return minLength;
 }
 
+
   public hasData(input: string): boolean {  // create a function for first name // use input parameter
     let hasDataResult = false;
 
@@ -29,7 +30,22 @@ public minLength(input: string): boolean {
 
     return hasDataResult;
   }
-
+private isNumeric(input: string): boolean {
+    let numeric = false;
+    const numChars = '0123456789'.split('');
+    const numArray = input.replace(/ /g, '').split('');
+    for (const numbers of numArray) {
+      console.log(numbers);
+      if (numChars.includes(numbers)) {
+        numeric = true;
+      } else {
+        numeric = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return numeric;
+}
   private isAlphabetical(input: string): boolean {
     let alphabetical = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -61,13 +77,20 @@ public minLength(input: string): boolean {
     return alphabetical;
   }
 
-  public isNameValid(firstName: string): boolean { // create a function for first name // use input parameter
+  public isNameValid(input: string): boolean { // create a function for first name // use input parameter
     let NameIsValid = false;
 
-    if (this.hasData(firstName)) {
-      NameIsValid = this.isAlphabetical(firstName);
+    if (this.hasData(input)) {
+      NameIsValid = this.isAlphabetical(input);
     }
 
     return NameIsValid;
+  }
+  public isPhoneNumberValid(input: string): boolean {
+    let NumberisValid = false;
+    if (this.hasData(input)) {
+      NumberisValid = this.isNumeric(input);
+    }
+    return NumberisValid;
   }
 }

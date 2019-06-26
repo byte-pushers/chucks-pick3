@@ -21,6 +21,8 @@ import { HasDataService } from 'src/app/services/has-data.service/has-data.servi
 import { NameValidator } from 'src/app/directives/name-validator.directive';
 import {DataValidator} from './directives/data-validator.directive';
 import {MinLengthValidator} from './directives/min-length-validator.directive';
+import {EmailValidator} from './directives/email-validator.directive';
+import {NumberValidator} from './directives/number-validator.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {MinLengthValidator} from './directives/min-length-validator.directive';
     AppHomeContentComponent,
     NameValidator,
     DataValidator,
-    MinLengthValidator
+    MinLengthValidator,
+    EmailValidator,
+    NumberValidator
   ],
   imports: [
     BrowserModule,

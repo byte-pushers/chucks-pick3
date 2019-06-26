@@ -38,33 +38,37 @@
 
           </div>
         </div>
-        <!-- <br>
+         <br>
         <div class="form-row">
           <label for="defaultRegisterFormEmail">Email</label>
-          <input required type="email" ngModel name="email" email #email="ngModel" (change)="log(email)"
+          <input
+                 type="email"  name="email" email #email="ngModel"
                  id="defaultRegisterFormEmail"
-                 class="form-control" placeholder="Email">
+                 class="form-control" placeholder="Email"
+          required ngModel dataValidator emailValidator>
           <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
-            <div *ngIf="email.errors.required">- Email is required.</div>
-            <div *ngIf="email.errors.email">- Email is not valid.</div>
+            <div *ngIf="email.errors.dataValidator">- Email is required.</div>
+            <div *ngIf="email.errors.emailValidator">- Email is not valid.</div>
           </div>
         </div>
         <br>
-        <div class="form-row">
+     <div class="form-row">
           <label for="defaultRegisterFormPhone">Phone</label>
-          <input required type="text" ngModel name="phoneNumber" #phoneNumber="ngModel" (change)="log(phoneNumber)"
+          <input type="text"  name="phoneNumber"
+                 #phoneNumber="ngModel"
                  id="defaultRegisterFormPhone"
-                 minlength="9" maxlength="10"
-                 pattern="[0-9 ]+" class="form-control" placeholder="Phone Number">
+                class="form-control"
+                 placeholder="Phone Number"
+                 required ngModel dataValidator numberValidator>
           <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
-            <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
-            <div *ngIf="phoneNumber.errors.pattern">- Phone number must only contain numeric characters.</div>
-            <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
-            <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>
+            <div *ngIf="phoneNumber.errors.dataValidator">- Phone number is required.</div>
+            <div *ngIf="phoneNumber.errors.numberValidator">- Phone number must only contain numeric characters.</div>
+           <!-- <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
+            <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>-->
           </div>
         </div>
         <br>
-        <div class="form-row">
+        <!-- <div class="form-row">
           <label for="defaultRegisterFormCity">City</label>
           <input required ngModel name="cityName" #cityName="ngModel" (change)="log(cityName)" type="text"
                  pattern="[a-zA-Z ]+" minlength="2" maxlength="30"
