@@ -4,7 +4,7 @@ import {
   ValidatorFn,
   Validator
 } from '@angular/forms';
-import { Directive } from '@angular/core';
+import {Directive} from '@angular/core';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
