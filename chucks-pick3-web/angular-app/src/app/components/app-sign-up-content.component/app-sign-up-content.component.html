@@ -55,19 +55,21 @@
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormPhone">Phone</label>
-          <input type="number" name="phoneNumber"
+          <input type="tel" name="phoneNumber"
                  #phoneNumber="ngModel"
                  id="defaultRegisterFormPhone"
                  class="form-control"
-                 minlength="10"
-                 maxlength="11"
+                 minlength="12"
+                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                  placeholder="Phone Number"
                  required ngModel numberValidator>
           <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
             <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
-            <div *ngIf="phoneNumber.errors.numberValidator">- Phone number must only contain numeric characters.</div>
-            <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
-            <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>
+            <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
+            <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
+            <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
+
+
 
           </div>
         </div>
@@ -158,7 +160,7 @@
           <label for="defaultRegisterFormZip">Zip</label>
           <input name="zipCode"
                  #zipCode="ngModel"
-                 type="number"
+                 type="text"
                  minlength="4"
                  maxlength="5"
                  id="defaultRegisterFormZip" class="form-control"

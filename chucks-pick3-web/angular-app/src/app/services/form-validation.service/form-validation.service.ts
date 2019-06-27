@@ -8,7 +8,7 @@ export class FormValidationService {
   }
 
 
-  public hasData(input: string): boolean {
+  private hasData(input: string): boolean {
     let hasDataResult = false;
 
     if (input !== null && input !== undefined) {
@@ -22,7 +22,7 @@ export class FormValidationService {
 
   private isNumeric(input: string): boolean {
     let numeric = false;
-    const numChars = '0123456789'.split('');
+    const numChars = '0123456789-'.split('');
     const numArray = input.replace(/ /g, '').split('');
     for (const numbers of numArray) {
       console.log(numbers);
