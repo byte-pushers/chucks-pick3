@@ -30,7 +30,9 @@
               "src/assets/scss/navbar.css",
               "src/assets/scss/responsive-style-sheet.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bytepushers-js-string-extensions/release/bytepushers-js-string-extensions.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

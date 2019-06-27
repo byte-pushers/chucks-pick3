@@ -5,9 +5,18 @@ import {Component, OnInit } from '@angular/core';
   templateUrl: './app-sign-up-content.component.html',
   styleUrls: ['./app-sign-up-content.component.css']
 })
+export class AppSignUpContentComponent implements OnInit {
 
-export class AppSignUpContentComponent  {
-log(x) {console.log(x); }
+  constructor() {
+
   }
+
+  ngOnInit() {
+
+  }
+
+}
+
+
 
 
