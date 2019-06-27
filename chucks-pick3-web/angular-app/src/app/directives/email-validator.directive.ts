@@ -32,7 +32,7 @@ export class EmailValidator implements Validator {
 
   emailValidator(): ValidatorFn {
     return (c: FormControl) => {
-      let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(c.value);
+      let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,30})$/.test(c.value);
       if (isValid) {
         return null;
       } else {

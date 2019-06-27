@@ -30,7 +30,7 @@ public minLength(input: string): boolean {
     let phoneMinLength = false;
     if (input !== null && input !== undefined) {
       input = input.trim();
-      if (input.length >= 9 && input.length <= 10) {
+      if (input.length >= 9 && input.length <= 11) {
         phoneMinLength = true;
       }
     }
