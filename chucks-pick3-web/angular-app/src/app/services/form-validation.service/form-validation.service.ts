@@ -16,7 +16,26 @@ public minLength(input: string): boolean {
   }
   return minLength;
 }
-
+  public zipMinLength(input: string): boolean {
+    let zipMinLength = false;
+    if (input !== null && input !== undefined) {
+      input = input.trim();
+      if (input.length >= 4 && input.length <= 5) {
+        zipMinLength = true;
+      }
+    }
+    return zipMinLength;
+  }
+  public phoneMinLength(input: string): boolean {
+    let phoneMinLength = false;
+    if (input !== null && input !== undefined) {
+      input = input.trim();
+      if (input.length >= 9 && input.length <= 10) {
+        phoneMinLength = true;
+      }
+    }
+    return phoneMinLength;
+  }
 
   public hasData(input: string): boolean {  // create a function for first name // use input parameter
     let hasDataResult = false;

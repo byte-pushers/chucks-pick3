@@ -20,9 +20,11 @@ import { FormValidationService } from 'src/app/services/form-validation.service/
 import { HasDataService } from 'src/app/services/has-data.service/has-data.service';
 import { NameValidator } from 'src/app/directives/name-validator.directive';
 import {DataValidator} from './directives/data-validator.directive';
-import {MinLengthValidator} from './directives/min-length-validator.directive';
+import {NameMinLengthValidator} from './directives/name-min-length-validator.directive';
 import {EmailValidator} from './directives/email-validator.directive';
 import {NumberValidator} from './directives/number-validator.directive';
+import {PhoneNumberMinLengthValidator} from './directives/phone-number-min-length-validator.directive';
+import {ZipMinLengthValidator} from './directives/zip-min-length-validator.directive';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,11 @@ import {NumberValidator} from './directives/number-validator.directive';
     AppHomeContentComponent,
     NameValidator,
     DataValidator,
-    MinLengthValidator,
+    NameMinLengthValidator,
     EmailValidator,
-    NumberValidator
+    NumberValidator,
+    PhoneNumberMinLengthValidator,
+    ZipMinLengthValidator
   ],
   imports: [
     BrowserModule,

@@ -59,32 +59,37 @@
                  id="defaultRegisterFormPhone"
                 class="form-control"
                  placeholder="Phone Number"
-                 required ngModel dataValidator numberValidator>
+                 required ngModel dataValidator numberValidator phoneNumberMinLengthValidator>
           <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
             <div *ngIf="phoneNumber.errors.dataValidator">- Phone number is required.</div>
             <div *ngIf="phoneNumber.errors.numberValidator">- Phone number must only contain numeric characters.</div>
-           <!-- <div *ngIf="phoneNumber.errors.minlength">- Phone number is invalid.</div>
-            <div *ngIf="phoneNumber.errors.maxlength">- Phone number is invalid.</div>-->
+          <div *ngIf="phoneNumber.errors.phoneNumberMinLengthValidator">- Phone number is invalid.</div>
+
           </div>
         </div>
         <br>
-        <!-- <div class="form-row">
+        <div class="form-row">
           <label for="defaultRegisterFormCity">City</label>
-          <input required ngModel name="cityName" #cityName="ngModel" (change)="log(cityName)" type="text"
-                 pattern="[a-zA-Z ]+" minlength="2" maxlength="30"
-                 id="defaultRegisterFormCity" class="form-control" placeholder="City">
+          <input  name="cityName" #cityName="ngModel"
+                  type="text"
+                 id="defaultRegisterFormCity"
+                  class="form-control"
+                  placeholder="City"
+                  required ngModel dataValidator nameValidator minLengthValidator>
           <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
-            <div *ngIf="cityName.errors.required">- City name is required.</div>
-            <div *ngIf="cityName.errors.pattern">- City name must only contain alphabetical characters.</div>
-            <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
+            <div *ngIf="cityName.errors.dataValidator">- City name is required.</div>
+            <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical characters.</div>
+            <div *ngIf="cityName.errors.minLengthValidator">- City name is invalid.</div>
           </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">State</label>
           <label for="stateDropDownId"></label>
-          <select required ngModel #stateDropDownInputName="ngModel" (change)="log(stateDropDownInputName)"
-                  name="stateDropDownInputName" class="custom-select" id="stateDropDownId">
+          <select #stateDropDownInputName="ngModel"
+                  name="stateDropDownInputName"
+                  class="custom-select" id="stateDropDownId"
+                  required ngModel dataValidator>
             <option value="" selected>Select a State</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
@@ -140,51 +145,56 @@
           </select>
 
           <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
-            <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
+            <div *ngIf="stateDropDownInputName.errors.dataValidator">- State selection is required.</div>
           </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormZip">Zip</label>
-          <input required ngModel name="zipCode" #zipCode="ngModel" (change)="log(zipCode)" type="text"
-                 pattern="[0-9]+" minlength="4" maxlength="5"
-                 id="defaultRegisterFormZip" class="form-control" onchange="checkZipCode(this)"
-                 placeholder="Zip">
+          <input name="zipCode"
+                 #zipCode="ngModel"
+                 type="text"
+                 id="defaultRegisterFormZip" class="form-control"
+                 placeholder="Zip"
+                 required ngModel dataValidator numberValidator zipLengthValidator>
           <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
-            <div *ngIf="zipCode.errors.required">- Zip code is required.</div>
-            <div *ngIf="zipCode.errors.pattern">- Zip code must only contain numeric characters.</div>
-            <div *ngIf="zipCode.errors.minlength">- Zip code is invalid.</div>
+            <div *ngIf="zipCode.errors.dataValidator">- Zip code is required.</div>
+            <div *ngIf="zipCode.errors.numberValidator">- Zip code must only contain numeric characters.</div>
+            <div *ngIf="zipCode.errors.zipLengthValidator">- Zip code is invalid.</div>
           </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">Type Of Phone</label>
           <label for="typeOfPhoneId"></label>
-          <select required ngModel #dropDownTypeOfPhoneName="ngModel" name="dropDownTypeOfPhoneName"
-                  (change)="log(dropDownTypeOfPhoneName)"
-                  class="custom-select" id="typeOfPhoneId">
+          <select #dropDownTypeOfPhoneName="ngModel"
+                  name="dropDownTypeOfPhoneName"
+                  class="custom-select"
+                  id="typeOfPhoneId"
+                  required ngModel dataValidator>
             <option value="" selected>Type Of Phone</option>
             <option value="Iphone">Iphone</option>
             <option value="Android">Android</option>
           </select>
           <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
-            <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
+            <div *ngIf="dropDownTypeOfPhoneName.errors.dataValidator">- Selection is required.</div>
           </div>
         </div>
         <br>
         <div class="form-row">
           <label for="defaultRegisterFormCity">How Often Do You Play?</label>
           <label for="howOftenId"></label>
-          <select required ngModel #dropDownHowOftenName="ngModel" name="dropDownHowOftenName"
-                  (change)="log(dropDownHowOftenName)"
-                  class="custom-select" id="howOftenId">
+          <select  #dropDownHowOftenName="ngModel"
+                   name="dropDownHowOftenName"
+                  class="custom-select" id="howOftenId"
+                   required ngModel dataValidator>
             <option value="" selected>How Often Do You Play?</option>
             <option value="Often">Often</option>
             <option value="Sometimes">Sometimes</option>
             <option value="Never">Never</option>
           </select>
           <div class="alert alert-danger" *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
-            <div *ngIf="dropDownHowOftenName.errors.required">- Selection is required.</div>
+            <div *ngIf="dropDownHowOftenName.errors.dataValidator">- Selection is required.</div>
           </div>
           <br>
           <br>
@@ -193,7 +203,7 @@
             Submit
           </button>
 
-        </div>-->
+        </div>
       </div>
       <br>
       <br>

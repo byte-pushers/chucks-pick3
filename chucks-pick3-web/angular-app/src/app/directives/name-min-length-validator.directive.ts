@@ -9,12 +9,12 @@ import { Directive } from '@angular/core';
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: MinLengthValidator,
+      useExisting: NameMinLengthValidator,
       multi: true
     }
   ]
 })
-export class MinLengthValidator implements Validator {
+export class NameMinLengthValidator implements Validator {
   public validator: ValidatorFn;
 
   constructor(private formValidationService: FormValidationService) {
