@@ -6,52 +6,23 @@ import {Injectable} from '@angular/core';
 export class FormValidationService {
   constructor() {
   }
-public minLength(input: string): boolean {
-  let minLength = false;
-  if (input !== null && input !== undefined) {
-    input = input.trim();
-    if (input.length >= 2) {
-      minLength = true;
-    }
-  }
-  return minLength;
-}
-  public zipMinLength(input: string): boolean {
-    let zipMinLength = false;
-    if (input !== null && input !== undefined) {
-      input = input.trim();
-      if (input.length >= 4 && input.length <= 5) {
-        zipMinLength = true;
-      }
-    }
-    return zipMinLength;
-  }
-  public phoneMinLength(input: string): boolean {
-    let phoneMinLength = false;
-    if (input !== null && input !== undefined) {
-      input = input.trim();
-      if (input.length >= 9 && input.length <= 11) {
-        phoneMinLength = true;
-      }
-    }
-    return phoneMinLength;
-  }
 
-  public hasData(input: string): boolean {  // create a function for first name // use input parameter
+
+  private hasData(input: string): boolean {
     let hasDataResult = false;
 
-    if (input !== null && input !== undefined) { // input can not be null or undefined it will throw a error
-      input = input.trim(); // trim whitespace for input
-      if (input.length > 0) { // make sure input is not empty value
+    if (input !== null && input !== undefined) {
+      input = input.trim();
+      if (input.length > 0) {
         hasDataResult = true;
       }
     }
-
     return hasDataResult;
   }
-private isNumeric(input: string): boolean {
+
+  private isNumeric(input: string): boolean {
     let numeric = false;
-    const numChars = '0123456789'.split('');
+    const numChars = '0123456789-'.split('');
     const numArray = input.replace(/ /g, '').split('');
     for (const numbers of numArray) {
       console.log(numbers);
@@ -64,7 +35,8 @@ private isNumeric(input: string): boolean {
       }
     }
     return numeric;
-}
+  }
+
   private isAlphabetical(input: string): boolean {
     let alphabetical = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -73,30 +45,17 @@ private isNumeric(input: string): boolean {
       console.log(character);
       if (alphaChars.includes(character)) {
         alphabetical = true;
-        // console.log (' a-okay!');
+
       } else {
         alphabetical = false;
         console.log('character not valid');
         break;
       }
     }
-    /*for (let i = 0; i < charactersArray.length; i++) {
-      const character = charactersArray[i];
-      if (alphaChars.includes(character)) {
-        alphabetical = true;
-        // console.log (' a-okay!');
-      } else {
-        alphabetical = false;
-        console.log('character not valid');
-        break;
-      }
-    }*/
-
-
     return alphabetical;
   }
 
-  public isNameValid(input: string): boolean { // create a function for first name // use input parameter
+  public isNameValid(input: string): boolean {
     let NameIsValid = false;
 
     if (this.hasData(input)) {
@@ -105,6 +64,7 @@ private isNumeric(input: string): boolean {
 
     return NameIsValid;
   }
+
   public isPhoneNumberValid(input: string): boolean {
     let NumberisValid = false;
     if (this.hasData(input)) {

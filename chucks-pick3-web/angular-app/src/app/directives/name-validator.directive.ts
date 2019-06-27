@@ -1,6 +1,6 @@
-import { NG_VALIDATORS, FormControl, ValidatorFn, Validator } from '@angular/forms';
-import { FormValidationService } from '../services/form-validation.service/form-validation.service';
-import { Directive } from '@angular/core';
+import {NG_VALIDATORS, FormControl, ValidatorFn, Validator} from '@angular/forms';
+import {FormValidationService} from '../services/form-validation.service/form-validation.service';
+import {Directive} from '@angular/core';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
@@ -11,7 +11,7 @@ import { Directive } from '@angular/core';
       useExisting: NameValidator,
       multi: true
     }
-]
+  ]
 })
 export class NameValidator implements Validator {
   public validator: ValidatorFn;
@@ -26,15 +26,15 @@ export class NameValidator implements Validator {
 
   public nameValidator(): ValidatorFn {
     return (c: FormControl) => {
-        if (this.formValidationService.isNameValid(c.value)) {
-          return null;
-        } else {
-          return {
-            nameValidator: {
-              valid: false
-            }
-          };
-        }
+      if (this.formValidationService.isNameValid(c.value)) {
+        return null;
+      } else {
+        return {
+          nameValidator: {
+            valid: false
+          }
+        };
+      }
     };
   }
 }
