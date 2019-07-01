@@ -11,6 +11,24 @@
 
 
 }
+a {
+  color: #000000;
+  text-decoration: none;
+}
+.how-to-container {
+  background-image: url("/assets/images/screens-04.png");
+  background-size: 420px  350px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #BDBDBD;
+  width: 33.4%;
+  height: 350px;
+  text-decoration: none;
+
+  float: left;
+
+
+}
 .link-container {
 
 
@@ -31,7 +49,7 @@
 
 .demo-container {
   display: inline-block;
-  /*background-image: url("../img/screens-04.png");*/
+  background-image: url("/assets/images/screens-04.png");
   background-size: 420px  350px;
   border-top-style: none;
   border-right-style:solid;
@@ -66,6 +84,7 @@
   float: right;
   padding: 11px;
   font-size: 11px;
+  text-decoration: none;
 }
 .sign-up-container {
 
@@ -78,7 +97,7 @@
 
 .sign-up-container {
   display: inline-block;
-  /*  background-image: url("../img/screens-04.png");*/
+   background-image: url("/assets/images/screens-04.png");
   background-size: 420px  350px;
   border-top-style: none;
   border-right-style: none;
