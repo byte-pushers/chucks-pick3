@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sign up Error Page</title>
+    <title>Login Confirmation</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             margin-top: 0px;
-
             margin-right: 0px;
-
             margin-bottom: 0px;
-
             margin-left: 0px;
             background-color: #fafafa;
             font-family: 'Lato', serif;
@@ -54,14 +51,11 @@
         $(function () {
             $('[data-toggle="popover"]').popover()
         });
-
         window.onscroll = function () {
             myFunction()
         };
-
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
-
         function myFunction() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky")
@@ -69,12 +63,10 @@
                 navbar.classList.remove("sticky");
             }
         }
-
         function openSlideMenu() {
             document.getElementById('menu').style.width = '250px';
             document.getElementById('content').style.marginRight = '250px';
         }
-
         function closeSlideMenu() {
             document.getElementById('menu').style.width = '0';
             document.getElementById('content').style.marginRight = '0';
@@ -88,8 +80,8 @@
             <img src="assets/img/chucks-pick3_splash-page_logo.png" width="150px" height="150px">
         </div>
         <div class="header-img-container">
-            <img src="assets/img/Chucks-Pick-3-Header-01.png"  width="1012px" height="100px" class="header-image-1"/>
-            <img src="assets/img/Chucks-Pick-3-Header-03.png"  width="252.5px" height="135px" class="header-image-3"/>
+            <img src="assets/img/Chucks-Pick-3-Header-01.png" width="1012px" height="100px" class="header-image-1"/>
+            <img src="assets/img/Chucks-Pick-3-Header-03.png" width="252.5px" height="135px" class="header-image-3"/>
         </div>
         <div class="nav-bar-container"><!--style="background-color: white"//-->
             <div class="main-nav-bar-container">
@@ -205,7 +197,7 @@
     <div class="body-container">
         <div class="container d-flex justify-content-center align-items-center" id="container-jumbotron">
             <div class=" jumbotron jumbotron-fluid w-50 p-3">
-                <h1 class="display-5 text-danger">ERROR!</h1>
+                <h1 class="display-5 text-success">Successful Login!</h1>
                 <hr>
                 <p>Reached this page in error? <a href="">Click Here</a></p>
                 <p><a class="btn btn-primary btn-sm" href="home.html" role="button">Continue to Home
@@ -214,6 +206,8 @@
             </div>
         </div>
     </div>
+
+
 
 
 </div>
