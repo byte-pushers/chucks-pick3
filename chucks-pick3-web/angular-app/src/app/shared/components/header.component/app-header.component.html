@@ -7,18 +7,18 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <a routerLink="/home">
+      <a [routerLink]="[{outlets: {body: ['home']}}]">
       <div class="nav-bar-col-25  allow-hover active ">
        Home
       </div>
       </a>
 
-      <a routerLink="/how-to"  class="info">
+      <a [routerLink]="[{outlets: {body: ['info']}}]"  class="info">
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
       </a>
-      <a routerLink="/demo" class="info">
+     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info">
       <div  class="nav-bar-col-25 allow-hover">
         Demo
       </div>
@@ -26,12 +26,12 @@
 
 
       <div class="nav-bar-col-25">
-        <a routerLink="/log-in" >
+        <a [routerLink]="[{outlets: {body: ['log-in']}}]">
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a routerLink="/sign-up" >
+      <a [routerLink]="[{outlets: {body: ['sign-up']}}]" >
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
