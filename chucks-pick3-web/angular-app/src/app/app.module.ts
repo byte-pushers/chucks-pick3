@@ -12,7 +12,6 @@ import {LogInComponent} from './components/log-in.component/log-in.component';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import {FormValidationService} from 'src/app/services/form-validation.service/form-validation.service';
-import {HasDataService} from 'src/app/services/has-data.service/has-data.service';
 import {NameValidator} from 'src/app/directives/name-validator.directive';
 import {EmailValidator} from './directives/email-validator.directive';
 import {NumberValidator} from './directives/number-validator.directive';
@@ -38,8 +37,7 @@ import {NumberValidator} from './directives/number-validator.directive';
     FormsModule
   ],
   providers: [
-    FormValidationService,
-    HasDataService
+    FormValidationService
   ],
   bootstrap: [AppComponent]
 })
