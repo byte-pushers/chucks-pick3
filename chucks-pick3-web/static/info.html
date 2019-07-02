@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Info Page</title>
     <style>
@@ -29,29 +30,28 @@
     <!--<link href="assets/css/style-sheet.css" title="sub" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 
     <!-- Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 
     <script src="https://code.jquery.com/jquery-2.2.4.js"
-            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-            crossorigin="anonymous"></script>
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <!-- Initialize Bootstrap functionality -->
 
     <script>
@@ -91,325 +91,350 @@
         }*/
     </script>
 </head>
+
 <body>
-<div class="main-container">
-    <div class="header-container">
-        <!--<div id="navbar">-->
-        <div class="logo-container">
-            <img src="assets/img/chucks-pick3_splash-page_logo.png" width="150px" height="150px">
-        </div>
-        <div class="header-img-container">
-            <img src="assets/img/Chucks-Pick-3-Header-01.png" width="1012px" height="100px" class="header-image-1"/>
-            <img src="assets/img/Chucks-Pick-3-Header-03.png" width="252.5px" height="135px" class="header-image-3"/>
-        </div>
-        <div class="nav-bar-container">
+    <div class="main-container">
+        <div class="header-container">
+            <!--<div id="navbar">-->
+            <div class="logo-container">
+                <img src="assets/img/chucks-pick3_splash-page_logo.png" width="150px" height="150px">
+            </div>
+            <div class="header-img-container">
+                <img src="assets/img/Chucks-Pick-3-Header-01.png" width="1012px" height="100px"
+                    class="header-image-1" />
+                <img src="assets/img/Chucks-Pick-3-Header-03.png" width="252.5px" height="135px"
+                    class="header-image-3" />
+            </div>
+            <div class="nav-bar-container">
 
-            <div class="main-nav-bar-container">
-                <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
-                    <a href="home.html">Home</a>
+                <div class="main-nav-bar-container">
+                    <div onClick="document.location='home.html'" class="nav-bar-col-25  allow-hover ">
+                        <a href="home.html">Home</a>
+                    </div>
+
+                    <div id="main-nav-bar-item-howto" onClick="document.location='info.html#howto'; showSubNavBar();
+                    setMainNavBarItemActive(this.id);" class="nav-bar-col-25 allow-hover">
+                        <a href="info.html#howto">How To</a>
+                    </div>
+
+
+                    <div id="main-nav-bar-item-demo"
+                        onClick="document.location='info.html#demo'; hideSubNavBar(); setMainNavBarItemActive(this.id);"
+                        class="nav-bar-col-25 allow-hover">
+                        <a href="info.html#demo">Demo</a>
+                    </div>
+
+                    <div class="nav-bar-col-25">
+                        <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
+                            <a href="login.html">Login</a>
+                        </div>
+                        <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
+                            <a href="sign-up.html">Sign Up</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="main-nav-bar-item-howto" onClick="document.location='info.html#howto'; showSubNavBar();
-                    setMainNavBarItemActive(this.id);"
-                     class="nav-bar-col-25 allow-hover">
-                    <a href="info.html#howto">How To</a>
+                <div class="sub-nav-bar-title-container">
+                    <div><span><b>How To Play</b></span></div>
                 </div>
 
+                <div class="sub-nav-bar-container">
+                    <div class="sub-nav-bar-col-25">
+                        <span>&nbsp;</span>
+                    </div>
 
-                <div id="main-nav-bar-item-demo"
-                     onClick="document.location='info.html#demo'; hideSubNavBar(); setMainNavBarItemActive(this.id);"
-                     class="nav-bar-col-25 allow-hover">
-                    <a href="info.html#demo">Demo</a>
+                    <div class="sub-nav-bar-col-25">
+                        <div id="sub-nav-bar-item-require" onClick="document.location='#requirements';
+                        setSubNavBarItemActive(this.id);" class="sub-nav-bar-col-50 allow-hover ">
+                            <a href="#requirements">Requirements</a>
+                        </div>
+
+                        <div id="sub-nav-bar-item-inter"
+                            onClick="document.location='#interface'; setSubNavBarItemActive(this.id);"
+                            class="sub-nav-bar-col-50 allow-hover ">
+                            <a href="#interface">Interface</a>
+                        </div>
+                    </div>
+
+                    <div class="sub-nav-bar-col-25">
+                        <div id="sub-nav-bar-item-generate"
+                            onClick="document.location='#generate';  setSubNavBarItemActive(this.id);"
+                            class="sub-nav-bar-col-50 allow-hover">
+                            <a href="#generate">Generate</a>
+                        </div>
+
+                        <div id="sub-nav-bar-item-generate-pic" onClick="document.location='#generated-picks';
+                        setSubNavBarItemActive(this.id);" class="sub-nav-bar-col-50 allow-hover">
+                            <a href="#generated-picks">View Picks</a>
+                        </div>
+                    </div>
+
+                    <div class="sub-nav-bar-col-25 ">
+                        <span>&nbsp;</span>
+                    </div>
                 </div>
+                <div class="mobile-nav-bar-container">
 
-                <div class="nav-bar-col-25">
-                    <div onClick="document.location='login.html'" class="nav-bar-col-50 allow-hover">
+                    <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
+                        <a href="home.html">Home</a>
+                    </div>
+
+                    <div class="sub-side-nav-stick">
+                        <div id="sub-scroll-nav" class="subsidenav">
+
+
+                            <div class="mobile-sub-nav-bar-container">
+
+
+
+                                <div onClick="document.location='#requirements-mobile'"
+                                    class="sub-nav-bar-col-25 allow-hover ">
+                                    <a href="#requirements-mobile">Needed</a>
+                                </div>
+
+                                <div onClick="document.location='#interface-mobile'"
+                                    class="sub-nav-bar-col-25 allow-hover ">
+                                    <a href="#interface-mobile">UI</a>
+                                </div>
+
+
+
+                                <div onClick="document.location='#generate-mobile'"
+                                    class=" sub-nav-bar-col-25 allow-hover">
+                                    <a href="#generate-mobile">Gen</a>
+                                </div>
+
+                                <div onClick="document.location='#view-picks-mobile'"
+                                    class=" sub-nav-bar-col-25 allow-hover">
+                                    <a href="#view-picks-mobile">View</a>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
                         <a href="login.html">Login</a>
                     </div>
-                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-50 allow-hover">
+
+                    <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
                         <a href="sign-up.html">Sign Up</a>
                     </div>
                 </div>
             </div>
-
-            <div class="sub-nav-bar-title-container">
-                <div><span><b>How To Play</b></span></div>
-            </div>
-
-            <div class="sub-nav-bar-container">
-                <div class="sub-nav-bar-col-25">
-                    <span>&nbsp;</span>
-                </div>
-
-                <div class="sub-nav-bar-col-25">
-                    <div id="sub-nav-bar-item-require" onClick="document.location='#requirements';
-                        setSubNavBarItemActive(this.id);"
-                         class="sub-nav-bar-col-50 allow-hover ">
-                        <a href="#requirements">Requirements</a>
-                    </div>
-
-                    <div id="sub-nav-bar-item-inter"
-                         onClick="document.location='#interface'; setSubNavBarItemActive(this.id);"
-                         class="sub-nav-bar-col-50 allow-hover ">
-                        <a href="#interface">Interface</a>
-                    </div>
-                </div>
-
-                <div class="sub-nav-bar-col-25">
-                    <div id="sub-nav-bar-item-generate"
-                         onClick="document.location='#generate';  setSubNavBarItemActive(this.id);"
-                         class="sub-nav-bar-col-50 allow-hover">
-                        <a href="#generate">Generate</a>
-                    </div>
-
-                    <div id="sub-nav-bar-item-generate-pic" onClick="document.location='#generated-picks';
-                        setSubNavBarItemActive(this.id);"
-                         class="sub-nav-bar-col-50 allow-hover">
-                        <a href="#generated-picks">View Picks</a>
-                    </div>
-                </div>
-
-                <div class="sub-nav-bar-col-25 ">
-                    <span>&nbsp;</span>
-                </div>
-            </div>
-            <div class="mobile-nav-bar-container">
-
-                <div onClick="document.location='home.html'" class="nav-bar-col-20  allow-hover active ">
-                    <a href="home.html">Home</a>
-                </div>
-
-                <div class="sub-side-nav-stick">
-                    <div id="sub-scroll-nav" class="subsidenav">
-
-
-                        <div class="mobile-sub-nav-bar-container">
-
-
-
-                            <div onClick="document.location='#requirements-mobile'" class="sub-nav-bar-col-25 allow-hover ">
-                                <a href="#requirements-mobile">Needed</a>
-                            </div>
-
-                            <div onClick="document.location='#interface-mobile'" class="sub-nav-bar-col-25 allow-hover ">
-                                <a href="#interface-mobile">UI</a>
-                            </div>
-
-
-
-                            <div onClick="document.location='#generate-mobile'" class=" sub-nav-bar-col-25 allow-hover">
-                                <a href="#generate-mobile">Gen</a>
-                            </div>
-
-                            <div onClick="document.location='#view-picks-mobile'" class=" sub-nav-bar-col-25 allow-hover">
-                                <a href="#view-picks-mobile">View</a>
-                            </div>
-
-
-
-
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-
-                <div onClick="document.location='login.html'" class="nav-bar-col-20 allow-hover float-right">
-                    <a href="login.html">Login</a>
-                </div>
-
-                <div onClick="document.location='sign-up.html'" class="nav-bar-col-20 allow-hover float-right">
-                    <a href="sign-up.html">Sign Up</a>
-                </div>
-            </div>
-        </div>
 
 
 
         </div>
         <!--</div>-->
 
-    <div class="mobile-sub-nav-bar-title-container">
-    <div ><span><b>How To Play</b></span></div>
-</div>
-<div class="web-margin"></div>
-    <div class="body-container">
-
-        <div class="how-to-section" id="requirements" >
-
-        <div id="requirements-mobile" class="mobile-spacing">
-    </div>
-
-        <div class="what-you-need">
-
-
-            <H2 style="margin-top: 30px" >Requirements:</H2>
-
-            <img src="assets/img/Info%20page%20-11.png" alt="IPhone" style="width:700px">
+        <div class="mobile-sub-nav-bar-title-container">
+            <div><span><b>How To Play</b></span></div>
         </div>
+        <div class="web-margin"></div>
+        <div class="body-container">
 
-        <div id="interface-mobile" class="mobile-spacing">
-        </div>
-        <div class="interface" id="interface">
-            <H2 style="margin-top: 10px">Interface:</H2>
-            <img src="assets/img/Info%20page%20-04.png" alt="Interface" style="width:700px" align="middle">
-        </div>
-        <br>
-        <br>
-        <div class="interface">
-            <img src="assets/img/Info%20page%20-15.png" alt="Interface" style="width:700px" align="middle">
-        </div>
-        <div id="generate-mobile" class="mobile-spacing">
-        </div>
-        <div class="how-to-generate" id="generate">
-            <H2  >How to Generate Picks:</H2>
-            <img src="assets/img/Info%20page%20-12.png" alt="Generate" style="width:700px" align="center">
-        </div>
+            <div class="how-to-section" id="requirements">
 
-        <div class="how-to-generate">
-            <img src="assets/img/Info%20page%20-13.png" alt="Generate" style="width:700px" align="center">
-        </div>
-        <div class="how-to-view" id="generated-picks">
-            <div id="view-picks-mobile" class="mobile-spacing">
+                <div id="requirements-mobile" class="mobile-spacing">
+                </div>
+
+                <div class="what-you-need">
+
+
+                    <H2>Requirements:</H2>
+
+                    <img src="assets/img/Info%20page%20-11.png" alt="IPhone" style="width:700px">
+                </div>
+
+                <div id="interface-mobile" class="mobile-spacing">
+                </div>
+                <div class="interface" id="interface">
+                    <H2 style="margin-top: 10px">Interface:</H2>
+                    <img src="assets/img/Info%20page%20-04.png" alt="Interface" style="width:700px" align="middle">
+                </div>
+                <br>
+                <br>
+                <div class="interface">
+                    <img src="assets/img/Info%20page%20-15.png" alt="Interface" style="width:700px" align="middle">
+                </div>
+                <div id="generate-mobile" class="mobile-spacing">
+                </div>
+                <div class="how-to-generate" id="generate">
+                    <H2>How to Generate Picks:</H2>
+                    <img src="assets/img/Info%20page%20-12.png" alt="Generate" style="width:700px" align="center">
+                </div>
+
+                <div class="how-to-generate">
+                    <img src="assets/img/Info%20page%20-13.png" alt="Generate" style="width:700px" align="center">
+                </div>
+                <div class="how-to-view" id="generated-picks">
+                    <div id="view-picks-mobile" class="mobile-spacing">
+                    </div>
+                    <H2>How to View Generated Picks:</H2>
+                    <img src="assets/img/Info%20page%20-14.png" alt="ViewGenerated" style="width:700px" align="center">
+                </div>
             </div>
-            <H2 >How to View Generated Picks:</H2>
-            <img src="assets/img/Info%20page%20-14.png" alt="ViewGenerated" style="width:700px" align="center">
+
+            <div class="demo-section" id="demo">
+                <h2><b>Try out Chuck's Pick 3:</b></h2>
+                <br>
+                <div class="demo-paragraph">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida
+                        erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit
+                        ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+                        Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula.
+                    </p>
+                    <br>
+                    <h4> Morning Demo:</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida
+                        erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit
+                        ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+                        Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula.
+                    </p>
+                    <br>
+                    <h4> Night Demo:</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida
+                        erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit
+                        ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+                        Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula.
+                    </p>
+                    <br>
+                    <h4> History Demo:</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida
+                        erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit
+                        ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
+                        Nulla quis varius mauris. <Pra></Pra>esent id massa lobortis, molestie nulla vitae, ultrices
+                        ligula. </p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <a href="https://invis.io/UJS18HQTEKB" style="text-decoration: none">
+                    <div class="demo-button">
+                        <h4>Begin Demo</h4>
+                    </div>
+                </a>
+                <br>
+                <br>
+                <br>
+            </div>
         </div>
     </div>
+    <div class="web-margin"></div>
 
-    <div class="demo-section" id="demo">
-        <h2 ><b>Try out Chuck's Pick 3:</b></h2>
-        <br>
-        <div class="demo-paragraph"> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
-            Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
-        <br>
-            <h4> Morning Demo:</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
-                Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
-            <br>
-            <h4> Night Demo:</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
-                Nulla quis varius mauris. Praesent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
-            <br>
-            <h4> History Demo:</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed porta risus. Mauris gravida erat ipsum, non mollis nibh consectetur vel. Nullam sed nisi ante. Cras in arcu sit amet velit ultrices commodo. Quisque eu lectus nec risus placerat mattis quis dapibus mi.
-                Nulla quis varius mauris. <Pra></Pra>esent id massa lobortis, molestie nulla vitae, ultrices ligula. </p>
-        </div>
-        <br>
-        <br>
-        <br>
-        <a href="https://invis.io/UJS18HQTEKB" style="text-decoration: none"><div class = "demo-button"><h4>Begin Demo</h4></div></a>
-        <br>
-        <br>
-        <br>
-    </div>
-    </div>
-    </div>
-<div class="web-margin" ></div>
+    <script>
 
-<script>
+        var navBarHashTag = window.location.hash.substr(1);
 
-    var navBarHashTag = window.location.hash.substr(1);
+        if (navBarHashTag === 'howto') {
+            setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+        } else if (navBarHashTag === 'demo') {
+            setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
+            hideSubNavBar();
+        }
 
-    if ( navBarHashTag === 'howto') {
-        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
-    } else if (navBarHashTag === 'demo') {
-        setMainNavBarItemActive("main-nav-bar-item-" + navBarHashTag);
-        hideSubNavBar();
-    }
+        function hideSubNavBar() {
+            document.querySelector(".sub-nav-bar-container").style.display = "none";
+            document.querySelector(".sub-nav-bar-title-container").style.display = "none";
+        }
 
-    function hideSubNavBar() {
-        document.querySelector(".sub-nav-bar-container").style.display = "none";
-        document.querySelector(".sub-nav-bar-title-container").style.display = "none";
-    }
+        function showSubNavBar() {
+            document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
+            document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
+        }
 
-    function showSubNavBar() {
-        document.querySelector(".sub-nav-bar-container").style.display = "inline-block";
-        document.querySelector(".sub-nav-bar-title-container").style.display = "inline-block";
-    }
+        function setMainNavBarItemActive(id) {
 
-    function setMainNavBarItemActive(id) {
-
-        var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover");
-        for (var i = 0; i < setActiveNav.length; ++i) {
-            var activeItem = setActiveNav[i];
-            activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
-            var urlWithHash = window.location.hash.substr(1);
-            if (urlWithHash.value === "#demo") {
-                hideSubNavBar();
-            }
-            if (urlWithHash.value === "#howto") {
-                showSubNavBar();
+            var setActiveNav = document.getElementsByClassName("nav-bar-col-25 allow-hover");
+            for (var i = 0; i < setActiveNav.length; ++i) {
+                var activeItem = setActiveNav[i];
+                activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+                var urlWithHash = window.location.hash.substr(1);
+                if (urlWithHash.value === "#demo") {
+                    hideSubNavBar();
+                }
+                if (urlWithHash.value === "#howto") {
+                    showSubNavBar();
+                }
             }
         }
-    }
 
-    function setSubNavBarItemActive(id) {
-        var setActiveNav = document.getElementsByClassName("sub-nav-bar-col-50 allow-hover");
-        for (var i = 0; i < setActiveNav.length; ++i) {
-            var activeItem = setActiveNav[i];
-            activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+        function setSubNavBarItemActive(id) {
+            var setActiveNav = document.getElementsByClassName("sub-nav-bar-col-50 allow-hover");
+            for (var i = 0; i < setActiveNav.length; ++i) {
+                var activeItem = setActiveNav[i];
+                activeItem.style.backgroundColor = (activeItem.id === id) ? "gray" : "initial";
+            }
         }
-    }
-</script>
+    </script>
 
-<script>
-    function openNav() {
-        document.getElementById("side-nav-bar").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("side-nav-bar").style.width = "0";
-    }
-</script>
-
-<script>
-    window.onscroll = function() {myFunction()};
-
-    var header = document.getElementById("side-nav-bar");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-        } else {
-            header.classList.remove("sticky");
+    <script>
+        function openNav() {
+            document.getElementById("side-nav-bar").style.width = "250px";
         }
-    }
-</script>
-<script>
-    window.onscroll = function() {myFunction()};
 
-    var header = document.getElementById("sub-scroll-nav");
-    var sticky = header.offsetTop;
+        function closeNav() {
+            document.getElementById("side-nav-bar").style.width = "0";
+        }
+    </script>
 
-    function myFunction() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sub-sticky");
-        } else {
-            header.classList.remove("sub-sticky");
-        }
-    }
-</script>
-<script>
-    function appleFunction() {
-        var x = document.getElementById("select-apple-device");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+    <script>
+        window.onscroll = function () { myFunction() };
 
-<script>
-    function androidFunction() {
-        var x = document.getElementById("select-android-device");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+        var header = document.getElementById("side-nav-bar");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
         }
-    }
-</script>
+    </script>
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("sub-scroll-nav");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sub-sticky");
+            } else {
+                header.classList.remove("sub-sticky");
+            }
+        }
+    </script>
+    <script>
+        function appleFunction() {
+            var x = document.getElementById("select-apple-device");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        function androidFunction() {
+            var x = document.getElementById("select-android-device");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 </body>
+
 </html>

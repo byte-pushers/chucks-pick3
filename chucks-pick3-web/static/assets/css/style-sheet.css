@@ -142,7 +142,14 @@ p {
 
 
 }
-
+.what-you-need h2 {
+    margin-top: 30px;
+    font-size: 24px;
+    font-family: arial;
+    border-bottom: solid 1px #9d9d9d;
+    padding: 0 0 5px 0;
+    color: #4d4d4d;
+}
 .interface {
     display: block;
     background-color: #fafafa;
