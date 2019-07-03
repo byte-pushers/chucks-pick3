@@ -1,3 +1,4 @@
+
 <div class="header-container">
   <div class="logo-container">
 
@@ -40,7 +41,91 @@
 
       </div>
     </div>
+    <div class="mobile-nav-bar-container">
 
+      <div [routerLink]="[{outlets: {body: ['home']}}]" class="nav-bar-col-20  allow-hover active ">
+        <a  [routerLink]="[{outlets: {body: ['home']}}]">Home</a>
+      </div>
+
+      <div class=" nav-bar-col-20 allow-hover float-right">
+
+        <span style="font-size:35px;" onclick="openNav()">&#9776;</span>
+
+        <div class="side-nav-stick">
+
+          <div id="side-nav-bar" class="sidenav">
+            <div class="menu">
+              <div class="end">
+                <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+              </div>
+              <div class="menu-title">
+                <h2><b>Menu</b> </h2>
+              </div>
+
+              <div class="hamburger-menu-section-1">
+                <div class="hamburger-menu-indent">
+                </div>
+                <div class="how">
+                  <h5><b> How To</b></h5>
+                </div>
+              </div>
+              <div class="hamburger-menu-section-2">
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block">
+                    <a [routerLink]="[{outlets: {body: ['info']}}]">Requirements</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block">
+                    <a href="info.html#interface">Interface</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block">
+                    <a href="info.html#generate">Generate</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block">
+                    <a href="info.html#generated-picks">View Picks</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hamburger-menu-section-3">
+                <div class="hamburger-menu-indent">
+                </div>
+                <div class="demo">
+                  <a href="demo.html"><h5><b>Demo</b></h5></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [routerLink]="[{outlets: {body: ['log-in']}}]" class="nav-bar-col-20 allow-hover float-right">
+        <a [routerLink]="[{outlets: {body: ['log-in']}}]">Login</a>
+      </div>
+
+      <div [routerLink]="[{outlets: {body: ['sign-up']}}]" class="nav-bar-col-20 allow-hover float-right">
+        <a [routerLink]="[{outlets: {body: ['sign-up']}}]">Sign Up</a>
+      </div>
+    </div>
 
   </div>
 
