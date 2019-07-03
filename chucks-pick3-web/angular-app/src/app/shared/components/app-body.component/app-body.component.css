@@ -9,3 +9,17 @@
 
 
 }
+/*****Responsive Design*****/
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  .body-container {
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+    height: 90%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+
+
+  }
+}

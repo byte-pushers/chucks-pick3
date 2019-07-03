@@ -24,3 +24,17 @@
  text-align: center;
 
 }
+/****Responsive Design****/
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  p {
+    font-size: 9px;
+    text-align: left;
+  }
+  .demo-button {
+    width: 100%;
+  }
+  .demo-button h4 {
+    font-size: 22px;
+    line-height: 2.2em;
+  }
+}
