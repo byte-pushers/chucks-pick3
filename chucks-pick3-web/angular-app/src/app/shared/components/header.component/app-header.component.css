@@ -585,35 +585,110 @@ img {
 .demo a h5:hover {
   color: black;
 }
+.desktopHeader {
+  display: block;
+}
+.tabletHeader {
+  display: none;
+}
+.mobileHeader {
+  display: none;
+}
 
 /**RESPONSIVE IMAGES ***/
 /**IPHONE 678 & X**/
 @media only screen and (max-width: 375px) {
-
+  .mobileHeader {
+    display: block;
+    margin-top: 15%;
+    align-content: center;
+  }
+  .desktopHeader {
+display: none;
+  }
+  .tabletHeader {
+    display: none;
+  }
 }
 /**IPHONE +**/
 @media only screen and (min-width: 410px) {
-
+  .mobileHeader {
+    display: block;
+    margin-top: 12%;
+    align-content: center;
+  }
+  .desktopHeader {
+    display: none;
+  }
+  .tabletHeader {
+    display: none;
+  }
 }
 /**ANDROID**/
 @media only screen and (max-width: 365px) {
-
+  .mobileHeader {
+    display: block;
+    margin-top: 15%;
+    align-content: center;
+  }
+  .desktopHeader {
+    display: none;
+  }
+  .tabletHeader {
+    display: none;
+  }
 }
 /**ANDROID**/
 @media only screen and (max-width: 360px) {
-
+  .mobileHeader {
+    display: block;
+  }
+  .desktopHeader {
+    display: none;
+  }
+  .tabletHeader {
+    display: none;
+  }
 }
 /**IPHONE 5**/
 @media only screen and (max-width: 320px) {
-
+  .mobileHeader {
+    display: block;
+    margin-top: 17%;
+    align-content: center;
+  }
+  .desktopHeader {
+    display: none;
+  }
+  .tabletHeader {
+    display: none;
+  }
 }
 /**IPAD**/
 @media only screen and (min-width: 760px) {
-
+  .tabletHeader {
+    display: block;
+  }
+  .desktopHeader {
+    display: none;
+  }
+  .mobileHeader {
+    display: none;
+  }
 }
 /**KINDLE**/
 @media only screen and (min-width: 799px) {
-
+  .tabletHeader {
+    display: none;
+  }
+  .desktopHeader {
+    display: block;
+    align-content: center;
+    margin: auto;
+  }
+  .mobileHeader {
+    display: none;
+  }
 }
 
 
