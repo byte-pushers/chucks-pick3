@@ -135,7 +135,7 @@ p {
     background-color: #fafafa;
     width: 100%;
     height: 800px;
-    padding-top: 24%;
+    padding-top:15px;
     margin: 0 auto;
 
     float: left;
@@ -143,9 +143,9 @@ p {
 
 }
 h2 {
-    margin-top: 30px;
-    font-size: 24px;
-    font-family: arial;
+    margin-top: 0px !important;
+    font-size: 24px !important;
+    font-family: arial !important;
     border-bottom: solid 1px #9d9d9d;
     padding: 0 0 5px 0;
     color: #4d4d4d;
