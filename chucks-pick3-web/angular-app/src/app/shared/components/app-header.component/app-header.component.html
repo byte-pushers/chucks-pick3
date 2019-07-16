@@ -16,7 +16,7 @@
       </div>
       </a>
 
-      <a [routerLink]="[{outlets: {body: ['info']}}]" class="info"  (click)="showSubNav()">
+      <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info"  (click)="showSubNav()">
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
@@ -140,32 +140,34 @@
     <span>&nbsp;</span>
   </div>
 
-  <div class="sub-nav-bar-col-25">
-    <div id="sub-nav-bar-item-require" onClick="document.location='#requirements';
-                        setSubNavBarItemActive(this.id);"
-         class="sub-nav-bar-col-50 allow-hover ">
-      <a href="#requirements">Requirements</a>
+  <<div class="sub-nav-bar-col-25">
+  <a [routerLink]="[{outlets: {body: ['requirements']}}]">
+    <div id="sub-nav-bar-item-require"
+         class="sub-nav-bar-col-50 allow-hover " >
+      Requirements
     </div>
-
+  </a>
+  <a [routerLink]="[{outlets: {body: ['interface']}}]">
     <div id="sub-nav-bar-item-inter"
-         onClick="document.location='#interface'; setSubNavBarItemActive(this.id);"
          class="sub-nav-bar-col-50 allow-hover ">
-      <a href="#interface">Interface</a>
+      Interface
     </div>
+  </a>
   </div>
 
   <div class="sub-nav-bar-col-25">
+    <a [routerLink]="[{outlets: {body: ['generate']}}]">
     <div id="sub-nav-bar-item-generate"
-         onClick="document.location='#generate';  setSubNavBarItemActive(this.id);"
          class="sub-nav-bar-col-50 allow-hover">
-      <a href="#generate">Generate</a>
+     Generate
     </div>
-
-    <div id="sub-nav-bar-item-generate-pic" onClick="document.location='#generated-picks';
-                        setSubNavBarItemActive(this.id);"
+    </a>
+    <a [routerLink]="[{outlets: {body: ['view']}}]">
+    <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
-      <a href="#generated-picks">View Picks</a>
+      View Picks
     </div>
+    </a>
   </div>
 
   <div class="sub-nav-bar-col-25 ">

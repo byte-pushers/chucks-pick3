@@ -20,7 +20,9 @@
 
 
 }
-
+#showNav {
+  display: none;
+}
 
 .nav-bar-container {
   display: block;
