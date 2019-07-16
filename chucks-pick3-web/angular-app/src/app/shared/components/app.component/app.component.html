@@ -1,5 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-header></app-header>
-<app-body-container></app-body-container>
+<div *ngIf="showSplashPage === false">
+  <app-header></app-header>
+  <app-body-container></app-body-container>
+</div>
 
+<div *ngIf="showSplashPage === true">
+  <div class= "splash-container">
+    <div class="splash-logo-container">
+      <img src="assets/images/chucksPickThreeLogo.png" alt="logo" width="300px" height="300px"/>
+    </div>
+  </div>
+  <div class=" link-container">
+    <span><a href="home.html" (click)="showSplashPage=false">LEARN MORE</a></span>
+  </div>
+</div>
 
