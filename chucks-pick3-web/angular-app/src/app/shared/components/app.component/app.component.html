@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="showSplashPage === false">
+<div *ngIf="showSplashPage=== false">
   <app-header></app-header>
   <app-body-container></app-body-container>
 </div>
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class=" link-container">
-    <span><a href="home.html" (click)="showSplashPage=false">LEARN MORE</a></span>
+    <span><a [routerLink]="[{outlets: {body: ['home']}}]" (click)="showSplashView(false)">LEARN MORE</a></span>
   </div>
 </div>
 

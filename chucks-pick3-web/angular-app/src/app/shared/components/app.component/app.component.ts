@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-app';
   public showSplashPage = true;
+
+  public showSplashView (showStatus: boolean): void {
+    this.showSplashPage = showStatus;
+  }
 }
