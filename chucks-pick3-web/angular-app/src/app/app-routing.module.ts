@@ -8,9 +8,10 @@ import {AppInfoComponent} from './components/app-info.component/app-info.compone
 import {DemoComponent} from './components/demo.component/demo.component';
 import {SignUpComponent} from './components/sign-up.component/sign-up.component';
 import {LogInComponent} from './components/log-in.component/log-in.component';
+import {SplashPageComponent} from './components/splash-page.component/splash-page.component';
 
 const routes: Routes = [
-  { path: '', component: AppHomeComponent, outlet: 'body'},
+  { path: '', component: SplashPageComponent, outlet: 'body'},
   { path: 'home', component: AppHomeComponent, outlet: 'body'},
   { path: 'info', component: AppInfoComponent, outlet: 'body'},
   { path: 'demo', component: DemoComponent, outlet: 'body'},

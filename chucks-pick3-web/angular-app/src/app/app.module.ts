@@ -15,6 +15,7 @@ import {FormValidationService} from 'src/app/services/form-validation.service/fo
 import {NameValidator} from 'src/app/directives/name-validator.directive';
 import {EmailValidator} from './directives/email-validator.directive';
 import {NumberValidator} from './directives/number-validator.directive';
+import {SplashPageComponent} from './components/splash-page.component/splash-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NumberValidator} from './directives/number-validator.directive';
     LogInComponent,
     NameValidator,
     EmailValidator,
-    NumberValidator
+    NumberValidator,
+    SplashPageComponent
   ],
   imports: [
     BrowserModule,
