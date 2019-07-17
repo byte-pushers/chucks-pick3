@@ -12,21 +12,7 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  public showSubNav() {
-    const nav = document.getElementById('showNav');
-    if (nav.style.display === 'none') {
-      nav.style.display = 'block';
-    } else {
-      nav.style.display = 'block';
-    }
-  }
-  public hideSubNav() {
-    const nav = document.getElementById('showNav');
-    if (nav.style.display === 'block') {
-      nav.style.display = 'none';
-    } else {
-      nav.style.display = 'none';
-    }
+  public showSubNav(showStatus: boolean): void {
+    this.showStatus
   }
 }
