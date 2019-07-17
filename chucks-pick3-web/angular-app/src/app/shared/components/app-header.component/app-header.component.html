@@ -52,14 +52,14 @@
 
       <div class=" nav-bar-col-20 allow-hover float-right">
 
-        <span style="font-size:35px;" onclick="openNav()">&#9776;</span>
+        <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
 
         <div class="side-nav-stick">
 
           <div id="side-nav-bar" class="sidenav">
             <div class="menu">
               <div class="end">
-                <a href="javascript:void(0)"  onclick="closeNav()">&times;</a>
+                <a href="javascript:void(0)"  (click)="closeNav()">&times;</a>
               </div>
               <div class="menu-title">
                 <h2><b>Menu</b> </h2>
@@ -79,7 +79,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block">
-                    <a [routerLink]="[{outlets: {body: ['info']}}]">Requirements</a>
+                    <a [routerLink]="[{outlets: {body: ['requirements']}}]">Requirements</a>
                   </div>
                 </div>
                 <div class="options">
@@ -88,7 +88,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block">
-                    <a href="info.html#interface">Interface</a>
+                    <a [routerLink]="[{outlets: {body: ['interface']}}]">Interface</a>
                   </div>
                 </div>
                 <div class="options">
@@ -97,7 +97,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block">
-                    <a href="info.html#generate">Generate</a>
+                    <a [routerLink]="[{outlets: {body: ['generate']}}]">Generate</a>
                   </div>
                 </div>
                 <div class="options">
@@ -106,7 +106,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block">
-                    <a href="info.html#generated-picks">View Picks</a>
+                    <a [routerLink]="[{outlets: {body: ['view']}}]">View Picks</a>
                   </div>
                 </div>
               </div>
