@@ -10,31 +10,32 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="hideSubNav()">
+      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="showSubNav(true)">
       <div class="nav-bar-col-25  allow-hover active ">
        Home
       </div>
       </a>
 
-      <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info"  (click)="showSubNav()">
+
+        <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info" (click)="showSubNav(false)" >
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
       </a>
-     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" >
-      <div  class="nav-bar-col-25 allow-hover" (click)="hideSubNav()">
+     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" (click)="showSubNav(true)">
+      <div  class="nav-bar-col-25 allow-hover" >
         Demo
       </div>
       </a>
 
 
       <div class="nav-bar-col-25">
-        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="hideSubNav()">
+        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="showSubNav(true)">
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a [routerLink]="[{outlets: {body: ['sign-up']}}]" (click)="hideSubNav()" >
+      <a [routerLink]="[{outlets: {body: ['sign-up']}}]"  (click)="showSubNav(true)">
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
@@ -131,7 +132,7 @@
 
   </div>
 </div>
-<div id="showNav">
+<div *ngIf="showNav === false">
 <div class="sub-nav-bar-title-container">
   <div><span><b>How To Play</b></span></div>
 </div>
