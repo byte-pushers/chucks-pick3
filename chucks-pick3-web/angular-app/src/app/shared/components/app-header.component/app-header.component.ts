@@ -9,12 +9,12 @@ import {Component, OnInit } from '@angular/core';
 export class AppHeaderComponent implements OnInit {
   constructor() {
   }
+  public showNav = true;
 
   ngOnInit() {
   }
-  public showStatus = true;
 
   public showSubNav(showStatus: boolean): void {
-    this.showStatus;
+    this.showNav = showStatus;
   }
 }
