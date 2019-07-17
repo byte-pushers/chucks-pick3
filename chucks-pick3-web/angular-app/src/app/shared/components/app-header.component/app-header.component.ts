@@ -17,4 +17,12 @@ export class AppHeaderComponent implements OnInit {
   public showSubNav(showStatus: boolean): void {
     this.showNav = showStatus;
   }
+
+  public openNav() {
+    document.getElementById('side-nav-bar').style.width = '250px';
+  }
+
+  public closeNav() {
+    document.getElementById('side-nav-bar').style.width = '0';
+  }
 }

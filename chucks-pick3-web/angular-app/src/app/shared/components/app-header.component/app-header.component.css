@@ -695,3 +695,225 @@ display: none;
 }
 
 
+/*******************SIDE NAV***********************/
+.side-nav-stick{
+  display: inline-block;
+  position: relative;
+  top: .85em;
+}
+
+.sidenav {
+  display: block;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  right: 0;
+  background-color: rgba(0,0,0,0.85);
+  overflow-x: hidden;
+  transition: 0.5s;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 70%;
+}
+
+/*------implement and erase --*/
+
+.menu {
+  display: inline-block;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+
+}
+
+.end {
+  display: inline-block;
+  width: 100%;
+  height: 5%;
+  padding-right: 10px;
+
+}
+.end a {
+  float: right;
+  line-height: 1em;
+  color: #ffffff;
+  font-size: 40px;
+
+}
+
+.menu-title {
+  display: inline-block;
+
+  width: 100%;
+  height: 6%;
+  vertical-align: middle;
+
+
+
+}
+
+.menu-title h2{
+  position: relative;
+  color: white;
+  text-align: left;
+  left:10px;
+
+
+
+}
+
+.hamburger-menu-section-1 {
+  width: 100%;
+  height: 6%;
+
+}
+.hamburger-menu-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+.how {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  float: right;
+}
+
+.how h5 {
+  line-height: 2em;
+  text-align: left;
+  color: white;
+}
+
+
+.hamburger-menu-section-2 {
+  width: 100%;
+  height: 30%;
+
+}
+
+.options {
+  display: inline-block;
+
+  width: 100%;
+  height: 25%;
+
+
+}
+.options:hover{
+  background-color: white;
+}
+.options:hover   a {
+
+  color: black;
+}
+
+.options a{
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  color: gray;
+}
+
+
+
+.option-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+
+
+
+.block {
+
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.hamburger-menu-section-3 {
+  width: 100%;
+  height: 8%;
+
+}
+
+
+.hamburger-menu-section-3:hover{
+  background-color: white;
+}
+.hamburger-menu-section-3:hover   a {
+
+  color: black;
+}
+
+
+.demo {
+  display: inline-block ;
+
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  float: right;
+
+}
+
+
+
+.demo a h5{
+  line-height: 3em;
+  color: white;
+}
+
+.demo a h5:hover {
+  color: black;
+}
