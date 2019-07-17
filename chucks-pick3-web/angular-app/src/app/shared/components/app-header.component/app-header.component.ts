@@ -12,7 +12,9 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  public showStatus = true;
+
   public showSubNav(showStatus: boolean): void {
-    this.showStatus
+    this.showStatus;
   }
 }

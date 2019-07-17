@@ -10,12 +10,12 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <div *ngIf=""
-      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="hideSubNav()">
+      <a [routerLink]="[{outlets: {body: ['home']}}]">
       <div class="nav-bar-col-25  allow-hover active ">
        Home
       </div>
       </a>
+
 
       <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info"  (click)="showSubNav()">
       <div  class="nav-bar-col-25 allow-hover">
@@ -23,19 +23,19 @@
       </div>
       </a>
      <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" >
-      <div  class="nav-bar-col-25 allow-hover" (click)="hideSubNav()">
+      <div  class="nav-bar-col-25 allow-hover" >
         Demo
       </div>
       </a>
 
 
       <div class="nav-bar-col-25">
-        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="hideSubNav()">
+        <a [routerLink]="[{outlets: {body: ['log-in']}}]" >
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a [routerLink]="[{outlets: {body: ['sign-up']}}]" (click)="hideSubNav()" >
+      <a [routerLink]="[{outlets: {body: ['sign-up']}}]" >
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
@@ -132,7 +132,7 @@
 
   </div>
 </div>
-<div id="showNav">
+<div *ngIf="showSubNav === false">
 <div class="sub-nav-bar-title-container">
   <div><span><b>How To Play</b></span></div>
 </div>
