@@ -9,7 +9,7 @@ import {Component, OnInit } from '@angular/core';
 export class AppHeaderComponent implements OnInit {
   constructor() {
   }
-  public showNav = true;
+  public showNav = false;
 
   ngOnInit() {
   }
