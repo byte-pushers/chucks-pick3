@@ -12,7 +12,7 @@
 <div class ="normal-space"></div>
 
 <div class="link-container">
-  <a href="info.html#howto">
+  <a [routerLink]="[{outlets: {body: ['requirements']}}]">
     <div class="how-to-container">
       <div class="container-spacing"></div>
       <div class="link-container-img">
@@ -30,7 +30,7 @@
   <div class="mobile-space">
     <div class="break-line"></div>
   </div>
-  <a href="info.html#demo">
+  <a [routerLink]="[{outlets: {body: ['demo']}}]">
     <div class="demo-container mobile-container">
       <div class="container-spacing"></div>
       <div class="link-container-img">
@@ -45,7 +45,7 @@
   <div class="mobile-space">
     <div class="break-line"></div>
   </div>
-  <a href="sign-up.html">
+  <a [routerLink]="[{outlets: {body: ['sign-up']}}]">
 
     <div class="sign-up-container mobile-container">
       <div class="container-spacing-sign-up"></div>
