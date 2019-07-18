@@ -373,6 +373,7 @@ img {
   display: inline-block;
   position: relative;
   top: .85em;
+  z-index: 7!important;
 }
 
 .sidenav {
