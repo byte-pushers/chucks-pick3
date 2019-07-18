@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +7,15 @@ import {Component, OnInit } from '@angular/core';
 })
 
 export class AppHeaderComponent implements OnInit {
+  public showSubNavBarStatus = false;
+
   constructor() {
   }
-  public showNav = false;
-
   ngOnInit() {
   }
 
-  public showSubNav(showStatus: boolean): void {
-    this.showNav = showStatus;
+  public showSubNavBar(showSubNavBarStatus: boolean): void {
+    this.showSubNavBarStatus = showSubNavBarStatus;
   }
 
   public openNav() {

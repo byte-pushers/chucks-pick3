@@ -10,19 +10,19 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="showSubNav(true)">
+      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="showSubNavBar(false)">
       <div class="nav-bar-col-25  allow-hover active ">
        Home
       </div>
       </a>
 
 
-        <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info" (click)="showSubNav(false)" >
+        <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info" (click)="showSubNavBar(true)" >
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
       </a>
-     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" (click)="showSubNav(true)">
+     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" (click)="showSubNavBar(false)">
       <div  class="nav-bar-col-25 allow-hover" >
         Demo
       </div>
@@ -30,12 +30,12 @@
 
 
       <div class="nav-bar-col-25">
-        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="showSubNav(true)">
+        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="showSubNavBar(false)">
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a [routerLink]="[{outlets: {body: ['sign-up']}}]"  (click)="showSubNav(true)">
+      <a [routerLink]="[{outlets: {body: ['sign-up']}}]"  (click)="showSubNavBar(false)">
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
@@ -78,8 +78,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block">
-                    <a [routerLink]="[{outlets: {body: ['requirements']}}]">Requirements</a>
+                  <div class="block" [routerLink]="[{outlets: {body: ['requirements']}}]" (click)="closeNav()">
+                    <a [routerLink]="[{outlets: {body: ['requirements']}}]" (click)="closeNav()">Requirements</a>
                   </div>
                 </div>
                 <div class="options">
@@ -87,8 +87,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block">
-                    <a [routerLink]="[{outlets: {body: ['interface']}}]">Interface</a>
+                  <div class="block" [routerLink]="[{outlets: {body: ['interface']}}]" (click)="closeNav()">
+                    <a [routerLink]="[{outlets: {body: ['interface']}}]" (click)="closeNav()">Interface</a>
                   </div>
                 </div>
                 <div class="options">
@@ -96,8 +96,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block">
-                    <a [routerLink]="[{outlets: {body: ['generate']}}]">Generate</a>
+                  <div class="block" [routerLink]="[{outlets: {body: ['generate']}}]" (click)="closeNav()">
+                    <a [routerLink]="[{outlets: {body: ['generate']}}]" (click)="closeNav()">Generate</a>
                   </div>
                 </div>
                 <div class="options">
@@ -105,16 +105,16 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block">
-                    <a [routerLink]="[{outlets: {body: ['view']}}]">View Picks</a>
+                  <div class="block" [routerLink]="[{outlets: {body: ['view']}}]" (click)="closeNav()">
+                    <a [routerLink]="[{outlets: {body: ['view']}}]" (click)="closeNav()">View Picks</a>
                   </div>
                 </div>
               </div>
               <div class="hamburger-menu-section-3">
                 <div class="hamburger-menu-indent">
                 </div>
-                <div class="demo">
-                  <a [routerLink]="[{outlets: {body: ['demo']}}]"><h5><b>Demo</b></h5></a>
+                <div class="demo" [routerLink]="[{outlets: {body: ['demo']}}]" (click)="closeNav()">
+                  <a [routerLink]="[{outlets: {body: ['demo']}}]" (click)="closeNav()"><h5><b>Demo</b></h5></a>
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@
 
   </div>
 </div>
-<div *ngIf="showNav === false">
+<div *ngIf="showSubNavBarStatus === true">
 <div class="sub-nav-bar-title-container">
   <div><span><b>How To Play</b></span></div>
 </div>
