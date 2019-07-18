@@ -46,7 +46,7 @@
     </div>
     <div class="mobile-nav-bar-container">
 
-      <div [routerLink]="[{outlets: {body: ['home']}}]" class="nav-bar-col-20  allow-hover active ">
+      <div [routerLink]="[{outlets: {body: ['home']}}]" class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
         <a  [routerLink]="[{outlets: {body: ['home']}}]">Home</a>
       </div>
 
@@ -121,11 +121,11 @@
           </div>
         </div>
       </div>
-      <div [routerLink]="[{outlets: {body: ['log-in']}}]" class="nav-bar-col-20 allow-hover float-right">
+      <div [routerLink]="[{outlets: {body: ['log-in']}}]" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
         <a [routerLink]="[{outlets: {body: ['log-in']}}]">Login</a>
       </div>
 
-      <div [routerLink]="[{outlets: {body: ['sign-up']}}]" class="nav-bar-col-20 allow-hover float-right">
+      <div [routerLink]="[{outlets: {body: ['sign-up']}}]" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
         <a [routerLink]="[{outlets: {body: ['sign-up']}}]">Sign Up</a>
       </div>
     </div>
