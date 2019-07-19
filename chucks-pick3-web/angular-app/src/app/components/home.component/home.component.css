@@ -224,9 +224,9 @@ a {
     height: 75px;
     width: 100%;
     float: right;
-    padding-left: 11px;
-    font-size: 9px;
-    padding-top: 2.7em;
+    padding-left: 12px;
+    font-size: 10px;
+    padding-top: 15px;
   }
 }
 
@@ -271,12 +271,12 @@ a {
     height: 75px;
     width: 100%;
     float: right;
-    padding-top: 11px;
-    padding-left: 11px;
-    padding-right: 11px;
+    padding-top: 5px;
+    padding-left: 9px;
+    padding-right: 9px;
     padding-bottom: 0px;
 
-    font-size: 7px;
+    font-size: 10.5px;
   }
 
 
@@ -320,9 +320,12 @@ a {
     height: 75px;
     width: 100%;
     float: right;
-    padding-left: 11px;
-    font-size: 7px;
-    padding-top: 3em;
+    padding-top: 15px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-bottom: 0px;
+    font-size: 10.5px;
+
   }
 }
 /*----------Android------------*/
@@ -539,8 +542,8 @@ a {
     height: 75px;
     width: 100%;
     float: right;
-    padding: 11px;
-    font-size: 9px;
+    padding: 14px;
+    font-size: 8px;
   }
 
 
@@ -578,7 +581,7 @@ a {
     float: right;
     padding-left: 11px;
     font-size: 9px;
-    padding-top: 2em;
+    padding-top: 1.5em;
   }
   .normal-space {
     display: none;
@@ -646,7 +649,7 @@ a {
     height: 80px;
     width: 100%;
     float: right;
-    padding: 11px;
+    padding: 11.5px;
     font-size: 8px;
   }
 
@@ -705,7 +708,7 @@ a {
   }
   .link-container-img-sign-up {
     display: inline-block;
-    height: 150px;
+    height: 160px;
     width: 100%;
     float: left;
   }
@@ -716,7 +719,7 @@ a {
     width: 100%;
     float: right;
     padding: 11px;
-    font-size: 7px;
+    font-size: 10.5px;
   }
 
   .link-container-text-sign-up {
@@ -724,8 +727,8 @@ a {
     height: 75px;
     width: 100%;
     float: right;
-    padding: 17px;
-    font-size: 7px;
+    padding: 11px;
+    font-size: 10.5px;
   }
 }
 .header-image-3 {
