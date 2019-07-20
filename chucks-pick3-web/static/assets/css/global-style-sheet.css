@@ -10,9 +10,6 @@ html {
     margin: 0 auto;
     text-align: center;
     display: block;
-
-
-
 }
 
 
@@ -23,8 +20,6 @@ html {
     height: 150px;
     padding: 0px;
     margin: 0 auto;
-
-
 }
 p {
 
@@ -58,7 +53,7 @@ p {
 
  }
 
-.body-container {
+.container {
     display: block;
     background-color: #ffffff;
     width: 60%;
@@ -66,8 +61,6 @@ p {
     padding: 0;
     margin: 0 auto;
     margin-top: 30px;
-
-
 }
 
 .main-content-container {
@@ -168,7 +161,7 @@ h1 {
     float: left;
 
 }
-.link-container {
+/* .link-container {
 
 
     width: 100%;
@@ -176,7 +169,7 @@ h1 {
     padding-top:30px;
     text-align: center;
 
-}
+} */
 
 #container-jumbotron {
     line-height:4.5em;

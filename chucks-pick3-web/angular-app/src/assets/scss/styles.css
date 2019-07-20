@@ -160,13 +160,23 @@ h1 {
   float: left;
 
 }
+ h2 {
+  margin-top: 30px !important;
+  font-size: 24px !important;
+  font-family: arial;
+  border-bottom: solid 1px #9d9d9d;
+  padding: 0 0 5px 0;
+  color: #4d4d4d;
+  float: left;
+    width: 100%;
+}
 .demo-section {
   width: 100%;
   height: 100%;
   display: block;
   float: left;
 }
-.link-container {
+/* .link-container {
 
 
   width: 100%;
@@ -174,7 +184,7 @@ h1 {
   padding-top:30px;
   text-align: center;
 
-}
+} */
 
 #container-jumbotron {
   line-height:4.5em;
@@ -186,4 +196,7 @@ h1 {
 .jumbotron {
   line-height:4.5em;
 
+}
+.alert-danger {
+  width: 100%;
 }
