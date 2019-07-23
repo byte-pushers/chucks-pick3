@@ -14,16 +14,16 @@ import {InfoRequirementsComponent} from './components/info-requirements.componen
 import {InfoViewComponent} from './components/info-view.component/info-view.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, outlet: 'body'},
-  { path: 'home', component: HomeComponent, outlet: 'body'},
-  { path: 'info', component: InfoComponent, outlet: 'body'},
-  { path: 'demo', component: DemoComponent, outlet: 'body'},
-  { path: 'sign-up', component: SignUpComponent, outlet: 'body'},
-  { path: 'log-in', component: LogInComponent, outlet: 'body'},
-  { path: 'generate', component: InfoGenerateComponent, outlet: 'body'},
-  { path: 'interface', component: InfoInterfaceComponent, outlet: 'body'},
-  { path: 'requirements', component: InfoRequirementsComponent, outlet: 'body'},
-  { path: 'view', component: InfoViewComponent, outlet: 'body'}
+  { path: '', component: HomeComponent},
+  { path: 'home', component: HomeComponent},
+  { path: 'info', component: InfoComponent},
+  { path: 'demo', component: DemoComponent},
+  { path: 'sign-up', component: SignUpComponent},
+  { path: 'log-in', component: LogInComponent},
+  { path: 'generate', component: InfoGenerateComponent},
+  { path: 'interface', component: InfoInterfaceComponent},
+  { path: 'requirements', component: InfoRequirementsComponent},
+  { path: 'view', component: InfoViewComponent}
 ];
 
 @NgModule({
