@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './shared/components/app.component/app.component';
 import {AppHeaderComponent} from './shared/components/app-header.component/app-header.component';
@@ -47,7 +48,8 @@ import { ClickOutsideModule } from 'ng-click-outside';
     ClickOutsideModule
   ],
   providers: [
-    FormValidationService
+    FormValidationService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
