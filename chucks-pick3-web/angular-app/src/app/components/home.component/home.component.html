@@ -9,7 +9,7 @@
 
 
 <div class="link-container">
-  <a [routerLink]="[{outlets: {body: ['requirements']}}]">
+  <a [routerLink]="'../requirements'" >
     <div class="how-to-container">
       <div class="container-spacing"></div>
       <div class="link-container-img">
@@ -20,14 +20,12 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
           tincidunt lectus vel volutpat.</p>
       </div>
-
-
     </div>
   </a>
   <div class="mobile-space">
     <div class="break-line"></div>
   </div>
-  <a [routerLink]="[{outlets: {body: ['/demo']}}]" class="info" (click)="showSubNavBar(false)">
+  <a [routerLink]="'../demo'" class="info" >
     <div class="demo-container mobile-container">
       <div class="container-spacing"></div>
       <div class="link-container-img">
@@ -42,7 +40,7 @@
   <div class="mobile-space">
     <div class="break-line"></div>
   </div>
-  <a [routerLink]="[{outlets: {body: ['sign-up']}}]"  (click)="showSubNavBar(false)">
+  <a [routerLink]="'../sign-up'"  >
 
     <div class="sign-up-container mobile-container">
       <div class="container-spacing"></div>

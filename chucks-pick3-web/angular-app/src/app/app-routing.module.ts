@@ -16,9 +16,6 @@ import {InfoViewComponent} from './components/info-view.component/info-view.comp
 const routes: Routes = [
   { path: '', component: HomeComponent, outlet: 'body'},
   { path: 'home', component: HomeComponent, outlet: 'body'},
-  { path: 'home/:requirements', component: InfoRequirementsComponent, outlet: 'body'},
-  { path: 'home/:demo', component: DemoComponent, outlet: 'body'},
-  { path: 'home/:sign-up', component: SignUpComponent, outlet: 'body'},
   { path: 'info', component: InfoComponent, outlet: 'body'},
   { path: 'demo', component: DemoComponent, outlet: 'body'},
   { path: 'sign-up', component: SignUpComponent, outlet: 'body'},

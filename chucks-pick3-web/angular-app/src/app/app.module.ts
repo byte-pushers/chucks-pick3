@@ -19,7 +19,7 @@ import {InfoViewComponent} from './components/info-view.component/info-view.comp
 import {InfoInterfaceComponent} from './components/info-interface.component/info-interface.component';
 import {InfoGenerateComponent} from './components/info-generate.component/info-generate.component';
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
-import {ClickOutsideModule} from 'ng-click-outside';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [
