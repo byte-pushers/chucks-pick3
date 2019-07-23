@@ -29,4 +29,7 @@ export class AppHeaderComponent implements OnInit {
   onClickedOutside(e: Event) {
     document.getElementById('side-nav-bar').style.width = '0';
   }
+  handleScroll(e: Event) {
+    document.getElementById('side-nav-bar').style.width = '0';
+  }
 }
