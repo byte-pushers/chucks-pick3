@@ -25,4 +25,8 @@ export class AppHeaderComponent implements OnInit {
   public closeNav() {
     document.getElementById('side-nav-bar').style.width = '0';
   }
+
+  onClickedOutside(e: Event) {
+    document.getElementById('side-nav-bar').style.width = '0';
+  }
 }
