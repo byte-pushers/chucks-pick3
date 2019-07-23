@@ -24,6 +24,7 @@
     "bytepushers-js-string-extensions": "0.0.8",
     "core-js": "^2.6.9",
     "ng-click-outside": "^4.0.0",
+    "ngx-scroll-event": "^1.0.8",
     "rxjs": "~6.3.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.8.26"
