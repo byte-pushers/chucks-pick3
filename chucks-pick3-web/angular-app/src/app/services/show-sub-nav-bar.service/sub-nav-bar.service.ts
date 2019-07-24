@@ -4,17 +4,16 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class SubNavBarService {
-  public showSubNavBarStatus = false;
+  private subNavBarVisible = false;
 
   constructor() {
   }
 
-  public showSubNavBar(showSubNavBarStatus: boolean): void {
-    this.showSubNavBarStatus = showSubNavBarStatus;
+  public setSubNavBarVisibility(subNavBarVisible: boolean): void {
+    this.subNavBarVisible = subNavBarVisible;
+  }
+  public getSubNavBarVisibility(): boolean {
+    return this.subNavBarVisible;
   }
 
-  public getShowSubNavBarStatus(): boolean {
-    return this.subnavbarservice.getShowSubNavBarStatus();
-
-  }
 }
