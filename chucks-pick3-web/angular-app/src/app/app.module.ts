@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './shared/components/app.component/app.component';
 import {AppHeaderComponent} from './shared/components/app-header.component/app-header.component';
@@ -19,6 +20,8 @@ import {InfoViewComponent} from './components/info-view.component/info-view.comp
 import {InfoInterfaceComponent} from './components/info-interface.component/info-interface.component';
 import {InfoGenerateComponent} from './components/info-generate.component/info-generate.component';
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+import {ScrollEventModule} from 'ngx-scroll-event';
 
 @NgModule({
   declarations: [
@@ -42,10 +45,13 @@ import {InfoRequirementsComponent} from './components/info-requirements.componen
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ClickOutsideModule,
+    ScrollEventModule
   ],
   providers: [
-    FormValidationService
+    FormValidationService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

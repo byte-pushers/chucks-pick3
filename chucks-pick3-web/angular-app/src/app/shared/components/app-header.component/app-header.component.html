@@ -1,5 +1,5 @@
 
-<div class="header-container">
+<div class="header-container" (clickOutside)="onClickedOutside($event)" detect-scroll (onScroll)="handleScroll($event)">
   <div class="logo-container">
     <img src="/assets/images/chucksPickThreeLogo.png" alt="logo" width="50px" height="50px">
   </div>
@@ -10,19 +10,19 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <a [routerLink]="[{outlets: {body: ['home']}}]" (click)="showSubNavBar(false)">
+      <a [routerLink]="'/home'" (click)="showSubNavBar(false)">
       <div class="nav-bar-col-25  allow-hover active ">
        Home
       </div>
       </a>
 
 
-        <a [routerLink]="[{outlets: {body: ['requirements']}}]" class="info" (click)="showSubNavBar(true)" >
+        <a [routerLink]="'/requirements'" class="info" (click)="showSubNavBar(true)" >
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
       </a>
-     <a [routerLink]="[{outlets: {body: ['demo']}}]" class="info" (click)="showSubNavBar(false)">
+     <a [routerLink]="'/demo'" class="info" (click)="showSubNavBar(false)">
       <div  class="nav-bar-col-25 allow-hover" >
         Demo
       </div>
@@ -30,12 +30,12 @@
 
 
       <div class="nav-bar-col-25">
-        <a [routerLink]="[{outlets: {body: ['log-in']}}]" (click)="showSubNavBar(false)">
+        <a [routerLink]="'/log-in'" (click)="showSubNavBar(false)">
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a [routerLink]="[{outlets: {body: ['sign-up']}}]"  (click)="showSubNavBar(false)">
+      <a [routerLink]="'/sign-up'"  (click)="showSubNavBar(false)">
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
@@ -46,15 +46,15 @@
     </div>
     <div class="mobile-nav-bar-container">
 
-      <div [routerLink]="[{outlets: {body: ['home']}}]" class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
-        <a  [routerLink]="[{outlets: {body: ['home']}}]">Home</a>
+      <div [routerLink]="'/home'" class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
+        <a  [routerLink]="'/home'">Home</a>
       </div>
 
       <div class=" nav-bar-col-20 allow-hover float-right">
 
         <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
 
-        <div class="side-nav-stick">
+        <div class="side-nav-stick" >
 
           <div id="side-nav-bar" class="sidenav">
             <div class="menu">
@@ -78,8 +78,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block" [routerLink]="[{outlets: {body: ['requirements']}}]" (click)="closeNav()">
-                    <a [routerLink]="[{outlets: {body: ['requirements']}}]" (click)="closeNav()">Requirements</a>
+                  <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
+                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
                   </div>
                 </div>
                 <div class="options">
@@ -87,8 +87,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block" [routerLink]="[{outlets: {body: ['interface']}}]" (click)="closeNav()">
-                    <a [routerLink]="[{outlets: {body: ['interface']}}]" (click)="closeNav()">Interface</a>
+                  <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
+                    <a [routerLink]="'/interface'" (click)="closeNav()">Interface</a>
                   </div>
                 </div>
                 <div class="options">
@@ -96,8 +96,8 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block" [routerLink]="[{outlets: {body: ['generate']}}]" (click)="closeNav()">
-                    <a [routerLink]="[{outlets: {body: ['generate']}}]" (click)="closeNav()">Generate</a>
+                  <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
+                    <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
                   </div>
                 </div>
                 <div class="options">
@@ -105,28 +105,28 @@
                   </div>
                   <div class="option-indent">
                   </div>
-                  <div class="block" [routerLink]="[{outlets: {body: ['view']}}]" (click)="closeNav()">
-                    <a [routerLink]="[{outlets: {body: ['view']}}]" (click)="closeNav()">View Picks</a>
+                  <div class="block" [routerLink]="'/view'" (click)="closeNav()">
+                    <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
                   </div>
                 </div>
               </div>
               <div class="hamburger-menu-section-3">
                 <div class="hamburger-menu-indent">
                 </div>
-                <div class="demo" [routerLink]="[{outlets: {body: ['demo']}}]" (click)="closeNav()">
-                  <a [routerLink]="[{outlets: {body: ['demo']}}]" (click)="closeNav()"><h5><b>Demo</b></h5></a>
+                <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
+                  <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div [routerLink]="[{outlets: {body: ['log-in']}}]" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
-        <a [routerLink]="[{outlets: {body: ['log-in']}}]">Login</a>
+      <div [routerLink]="'/log-in'" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
+        <a [routerLink]="'/log-in'">Login</a>
       </div>
 
-      <div [routerLink]="[{outlets: {body: ['sign-up']}}]" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
-        <a [routerLink]="[{outlets: {body: ['sign-up']}}]">Sign Up</a>
+      <div [routerLink]="'/sign-up'" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
+        <a [routerLink]="'/sign-up'">Sign Up</a>
       </div>
     </div>
 
@@ -142,13 +142,13 @@
   </div>
 
   <<div class="sub-nav-bar-col-25">
-  <a [routerLink]="[{outlets: {body: ['requirements']}}]">
+  <a [routerLink]="'/requirements'">
     <div id="sub-nav-bar-item-require"
          class="sub-nav-bar-col-50 allow-hover " >
       Requirements
     </div>
   </a>
-  <a [routerLink]="[{outlets: {body: ['interface']}}]">
+  <a [routerLink]="'/interface'">
     <div id="sub-nav-bar-item-inter"
          class="sub-nav-bar-col-50 allow-hover ">
       Interface
@@ -157,13 +157,13 @@
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="[{outlets: {body: ['generate']}}]">
+    <a [routerLink]="'/generate'">
     <div id="sub-nav-bar-item-generate"
          class="sub-nav-bar-col-50 allow-hover">
      Generate
     </div>
     </a>
-    <a [routerLink]="[{outlets: {body: ['view']}}]">
+    <a [routerLink]="'/view'">
     <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
       View Picks
