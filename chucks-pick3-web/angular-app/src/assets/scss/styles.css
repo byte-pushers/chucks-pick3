@@ -201,3 +201,44 @@ h1 {
 .alert-danger {
   width: 100%;
 }
+
+.grediant {
+  height: 300px;
+  /* background:rgb(201, 201, 201); */
+  border-bottom: solid 2px #000;
+  position: relative;
+  background-image: linear-gradient(#fff, #fff, #d2d3d3);
+}
+.grediant img {
+  position: absolute;
+  bottom: -17px;
+  /* margin: 0px auto; */
+  left: 10px;
+}
+.grediant img.signup {
+  bottom: -28px;
+}
+.greenpatch {
+  background: #7ebd56;
+  padding: 15px;
+  font-size: 12px;
+  text-align: left;
+  margin: 0 0 15px 0;
+}
+.middlebdr {
+  border-left: solid 1px #bdbdbd !important;
+  border-right: solid 1px #bdbdbd !important;
+}
+.no-pad {
+  padding: 0px !important;
+}
+.no-pad-left {
+  padding-left: 0px !important;
+}
+.no-pad-right {
+  padding-right: 0px !important;
+}
+.forsignup {
+  padding-top: 25px;
+padding-bottom: 5px;
+}
