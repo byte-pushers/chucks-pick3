@@ -166,7 +166,7 @@ h1 {
     display: block;
     float: left;
 }
-.link-container {
+/* .link-container {
 
 
     width: 100%;
@@ -174,7 +174,7 @@ h1 {
     padding-top:30px;
     text-align: center;
 
-}
+} */
 
 #container-jumbotron {
     line-height:4.5em;
