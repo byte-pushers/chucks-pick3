@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
+import index from "@angular/cli/lib/cli";
 
 @Component({
   selector: 'app-header',
@@ -7,15 +9,20 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class AppHeaderComponent implements OnInit {
-  public showSubNavBarStatus = false;
 
-  constructor() {
+
+  constructor(private subNavBarService: SubNavBarService) {
   }
+
   ngOnInit() {
   }
 
+  public isSubNavBarVisible(): boolean {
+    return this.subNavBarService.getSubNavBarVisibility();
+  }
+
   public showSubNavBar(showSubNavBarStatus: boolean): void {
-    this.showSubNavBarStatus = showSubNavBarStatus;
+    this.subNavBarService.setSubNavBarVisibility(showSubNavBarStatus);
   }
 
   public openNav() {
@@ -29,6 +36,7 @@ export class AppHeaderComponent implements OnInit {
   onClickedOutside(e: Event) {
     document.getElementById('side-nav-bar').style.width = '0';
   }
+
   handleScroll(e: Event) {
     document.getElementById('side-nav-bar').style.width = '0';
   }

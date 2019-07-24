@@ -22,6 +22,7 @@ import {InfoGenerateComponent} from './components/info-generate.component/info-g
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
+import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.service";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {ScrollEventModule} from 'ngx-scroll-event';
     ScrollEventModule
   ],
   providers: [
+    SubNavBarService,
     FormValidationService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
