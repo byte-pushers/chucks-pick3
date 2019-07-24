@@ -1,4 +1,4 @@
-
+/* 
 .demo-paragraph h4 {
   text-align: left;
 }
@@ -23,9 +23,9 @@
   line-height: 2em;
  text-align: center;
 
-}
+} */
 /****Responsive Design****/
-@media screen and (max-device-width: 480px) and (orientation: portrait){
+/* @media screen and (max-device-width: 480px) and (orientation: portrait){
   p {
     font-size: 9px;
     text-align: left;
@@ -37,4 +37,4 @@
     font-size: 22px;
     line-height: 2.2em;
   }
-}
+} */

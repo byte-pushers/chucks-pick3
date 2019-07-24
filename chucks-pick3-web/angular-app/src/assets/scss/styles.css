@@ -160,13 +160,24 @@ h1 {
   float: left;
 
 }
+ h2 {
+  margin-top: 30px !important;
+  font-size: 24px !important;
+  font-family: arial;
+  border-bottom: solid 1px #9d9d9d;
+  padding: 0 0 5px 0;
+  color: #4d4d4d;
+  float: left;
+  text-align: left;
+    width: 100%;
+}
 .demo-section {
   width: 100%;
   height: 100%;
   display: block;
   float: left;
 }
-.link-container {
+/* .link-container {
 
 
   width: 100%;
@@ -174,7 +185,7 @@ h1 {
   padding-top:30px;
   text-align: center;
 
-}
+} */
 
 #container-jumbotron {
   line-height:4.5em;
@@ -186,4 +197,48 @@ h1 {
 .jumbotron {
   line-height:4.5em;
 
+}
+.alert-danger {
+  width: 100%;
+}
+
+.grediant {
+  height: 300px;
+  /* background:rgb(201, 201, 201); */
+  border-bottom: solid 2px #000;
+  position: relative;
+  background-image: linear-gradient(#fff, #fff, #d2d3d3);
+}
+.grediant img {
+  position: absolute;
+  bottom: -17px;
+  /* margin: 0px auto; */
+  left: 10px;
+}
+.grediant img.signup {
+  bottom: -28px;
+}
+.greenpatch {
+  background: #7ebd56;
+  padding: 15px;
+  font-size: 12px;
+  text-align: left;
+  margin: 0 0 15px 0;
+}
+.middlebdr {
+  border-left: solid 1px #bdbdbd !important;
+  border-right: solid 1px #bdbdbd !important;
+}
+.no-pad {
+  padding: 0px !important;
+}
+.no-pad-left {
+  padding-left: 0px !important;
+}
+.no-pad-right {
+  padding-right: 0px !important;
+}
+.forsignup {
+  padding-top: 25px;
+padding-bottom: 5px;
 }
