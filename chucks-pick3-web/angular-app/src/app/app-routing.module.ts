@@ -20,10 +20,10 @@ const routes: Routes = [
   { path: 'demo', component: DemoComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: 'log-in', component: LogInComponent},
-  { path: 'generate/:subNavBarVisible', component: InfoGenerateComponent},
-  { path: 'interface/:subNavBarVisible', component: InfoInterfaceComponent},
-  { path: 'requirements/:subNavBarVisible', component: InfoRequirementsComponent},
-  { path: 'view/:subNavBarVisible', component: InfoViewComponent}
+  { path: 'generate', component: InfoGenerateComponent},
+  { path: 'interface', component: InfoInterfaceComponent},
+  { path: 'requirements', component: InfoRequirementsComponent},
+  { path: 'view', component: InfoViewComponent}
 ];
 
 @NgModule({

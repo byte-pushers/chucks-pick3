@@ -1,4 +1,5 @@
 import {Component, OnInit } from '@angular/core';
+import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
 
 @Component({
   selector: 'app-info-requirements',
@@ -7,11 +8,13 @@ import {Component, OnInit } from '@angular/core';
 })
 
 export class InfoRequirementsComponent implements OnInit {
-  constructor() {
+  private isSubNavBarVisible = true;
+  constructor(private subNavBarService: SubNavBarService) {
   }
 
   ngOnInit() {
-
+    const subNavBarVisible = this.isSubNavBarVisible;
+    return this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
   }
 }
 
