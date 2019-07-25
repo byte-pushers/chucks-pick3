@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 
 @Component({
@@ -11,10 +12,14 @@ import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-n
 export class AppHeaderComponent implements OnInit {
 
 
-  constructor(private subNavBarService: SubNavBarService) {
+  constructor(private subNavBarService: SubNavBarService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.subNavBarService.setSubNavBarVisibility(params.showSubNavBar);
+    });
   }
 
   public isSubNavBarVisible(): boolean {

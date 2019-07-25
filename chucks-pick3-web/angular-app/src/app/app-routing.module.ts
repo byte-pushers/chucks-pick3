@@ -16,14 +16,14 @@ import {InfoViewComponent} from './components/info-view.component/info-view.comp
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'info', component: InfoComponent},
+  { path: 'info/:showSubNavBar', component: InfoComponent},
+  { path: 'generate/:showSubNavBar', component: InfoGenerateComponent},
+  { path: 'interface/:showSubNavBar', component: InfoInterfaceComponent},
+  { path: 'requirements;showSubNavBar', component: InfoRequirementsComponent},
+  { path: 'view/:showSubNavBar', component: InfoViewComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'sign-up', component: SignUpComponent},
-  { path: 'log-in', component: LogInComponent},
-  { path: 'generate', component: InfoGenerateComponent},
-  { path: 'interface', component: InfoInterfaceComponent},
-  { path: 'requirements', component: InfoRequirementsComponent},
-  { path: 'view', component: InfoViewComponent}
+  { path: 'log-in', component: LogInComponent}
 ];
 
 @NgModule({

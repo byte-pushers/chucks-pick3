@@ -1,7 +1,6 @@
 import {Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
