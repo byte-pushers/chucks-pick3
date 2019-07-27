@@ -10,38 +10,32 @@
   </div>
   <div class="nav-bar-container"><!--style="background-color: white"//-->
     <div class="main-nav-bar-container">
-      <a [routerLink]="'/home'" (click)="showSubNavBar(false)">
-      <div class="nav-bar-col-25  allow-hover active ">
+      <a [routerLink]="'/home'" routerLinkActive="active" (click)="showSubNavBar(false)">
+      <div class="nav-bar-col-25  allow-hover">
        Home
       </div>
       </a>
-
-
-        <a [routerLink]="'/requirements'" class="info" (click)="showSubNavBar(true)" >
+        <a [routerLink]="'/requirements'" routerLinkActive="active" class="info" (click)="showSubNavBar(true)" >
       <div  class="nav-bar-col-25 allow-hover">
       How To
       </div>
       </a>
-     <a [routerLink]="'/demo'" class="info" (click)="showSubNavBar(false)">
+     <a [routerLink]="'/demo'" class="info" routerLinkActive="active" (click)="showSubNavBar(false)">
       <div  class="nav-bar-col-25 allow-hover" >
         Demo
       </div>
       </a>
-
-
       <div class="nav-bar-col-25">
-        <a [routerLink]="'/log-in'" (click)="showSubNavBar(false)">
+        <a [routerLink]="'/log-in'" routerLinkActive="active" (click)="showSubNavBar(false)">
         <div  class="nav-bar-col-50 allow-hover">
           Login
         </div>
       </a>
-      <a [routerLink]="'/sign-up'"  (click)="showSubNavBar(false)">
+      <a [routerLink]="'/sign-up'" routerLinkActive="active"  (click)="showSubNavBar(false)">
         <div class="nav-bar-col-50 allow-hover">
           Sign Up
         </div>
       </a>
-
-
       </div>
     </div>
     <div class="mobile-nav-bar-container">
@@ -142,13 +136,13 @@
   </div>
 
   <<div class="sub-nav-bar-col-25">
-  <a [routerLink]="'/requirements'">
+  <a [routerLink]="'/requirements'" routerLinkActive="active">
     <div id="sub-nav-bar-item-require"
          class="sub-nav-bar-col-50 allow-hover " >
       Requirements
     </div>
   </a>
-  <a [routerLink]="'/interface'">
+  <a [routerLink]="'/interface'" routerLinkActive="active">
     <div id="sub-nav-bar-item-inter"
          class="sub-nav-bar-col-50 allow-hover ">
       Interface
@@ -157,13 +151,13 @@
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="'/generate'">
+    <a [routerLink]="'/generate'" routerLinkActive="active">
     <div id="sub-nav-bar-item-generate"
          class="sub-nav-bar-col-50 allow-hover">
      Generate
     </div>
     </a>
-    <a [routerLink]="'/view'">
+    <a [routerLink]="'/view'" routerLinkActive="active">
     <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
       View Picks
