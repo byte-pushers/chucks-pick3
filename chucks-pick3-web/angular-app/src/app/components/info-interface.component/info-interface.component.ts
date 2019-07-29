@@ -8,13 +8,13 @@ import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-
 })
 
 export class InfoInterfaceComponent implements OnInit {
-  private isSubNavBarVisible = true;
+  // private isSubNavBarVisible = true;
   constructor(private subNavBarService: SubNavBarService) {
   }
 
   ngOnInit() {
-    const subNavBarVisible = this.isSubNavBarVisible;
-    return this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+    //const subNavBarVisible = this.isSubNavBarVisible;
+    //this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
   }
 }
 
