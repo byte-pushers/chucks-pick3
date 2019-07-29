@@ -18,7 +18,7 @@
     </a>
   </div>
   <div class="col-md-4 middlebdr no-pad">
-    <a [routerLink]="'/demo'">
+    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
       <div class="grediant">
         <img src="assets/images/screens-01.png">
       </div>
@@ -29,7 +29,7 @@
     </a>
   </div>
   <div class="col-md-4 no-pad-left">
-    <a [routerLink]="'/sign-up'">
+    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
       <div class="grediant">
         <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up" />
       </div>

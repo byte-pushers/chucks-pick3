@@ -142,13 +142,13 @@
   </div>
 
   <<div class="sub-nav-bar-col-25">
-  <a [routerLink]="'/requirements'">
+  <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-require"
          class="sub-nav-bar-col-50 allow-hover " >
       Requirements
     </div>
   </a>
-  <a [routerLink]="'/interface'">
+  <a [routerLink]="['/interface']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-inter"
          class="sub-nav-bar-col-50 allow-hover ">
       Interface
@@ -157,13 +157,13 @@
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="'/generate'">
+    <a [routerLink]="['/generate']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-generate"
          class="sub-nav-bar-col-50 allow-hover">
      Generate
     </div>
     </a>
-    <a [routerLink]="'/info/view'">
+    <a [routerLink]="['/view']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
       View Picks
