@@ -74,7 +74,7 @@
 }
 
 .main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
-    background-color: green !important;
+    background-color: green ;
     cursor: pointer;
 }
 
@@ -82,7 +82,8 @@
      background-color: gray;
  }*/
 .main-nav-bar-container .nav-bar-col-50.active {
-    background-color: gray;
+  background-color: #d0d0d0;
+  text-decoration: none;
 }
 
 .main-nav-bar-container .nav-bar-col-50.allow-hover:hover {

@@ -228,7 +228,32 @@ h1 {
 .middlebdr {
   border-left: solid 1px #bdbdbd !important;
   border-right: solid 1px #bdbdbd !important;
+  height: 402px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .middlebdr {
+    border-left: solid 1px #bdbdbd !important;
+    border-right: solid 1px #bdbdbd !important;
+    height: 420px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .middlebdr {
+    border-left: solid 1px #bdbdbd !important;
+    border-right: solid 1px #bdbdbd !important;
+    height: 491.5px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .middlebdr {
+    border-left: solid 1px #bdbdbd !important;
+    border-right: solid 1px #bdbdbd !important;
+    height: 365px;
+  }
+}
+
 .no-pad {
   padding: 0px !important;
 }
@@ -241,4 +266,8 @@ h1 {
 .forsignup {
   padding-top: 25px;
 padding-bottom: 5px;
+}
+
+* {
+  font-family: 'Lato', sans-serif!important;
 }
