@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
-import index from "@angular/cli/lib/cli";
+import {ActivatedRoute, Params} from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,15 @@ import index from "@angular/cli/lib/cli";
 export class AppHeaderComponent implements OnInit {
 
 
-  constructor(private subNavBarService: SubNavBarService) {
+  constructor(private subNavBarService: SubNavBarService,
+              private route: ActivatedRoute,
+              public params: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.subNavBarService.setSubNavBarVisibility(params.showSubNavBar);
+    });
   }
 
   public isSubNavBarVisible(): boolean {
@@ -24,7 +30,7 @@ export class AppHeaderComponent implements OnInit {
   public showSubNavBar(showSubNavBarStatus: boolean): void {
     this.subNavBarService.setSubNavBarVisibility(showSubNavBarStatus);
   }
-
+/*Side Nav Bar Mobile*/
   public openNav() {
     document.getElementById('side-nav-bar').style.width = '250px';
   }

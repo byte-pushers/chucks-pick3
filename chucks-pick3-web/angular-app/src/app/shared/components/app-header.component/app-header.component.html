@@ -82,7 +82,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
-                    <a [routerLink]="'/interface'" (click)="closeNav()">Interface</a>
+                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
                   </div>
                 </div>
                 <div class="options">
@@ -136,13 +136,13 @@
   </div>
 
   <<div class="sub-nav-bar-col-25">
-  <a [routerLink]="'/requirements'" routerLinkActive="active">
+  <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-require"
          class="sub-nav-bar-col-50 allow-hover " >
       <b>Requirements</b>
     </div>
   </a>
-  <a [routerLink]="'/interface'" routerLinkActive="active">
+  <a [routerLink]="['/interface']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-inter"
          class="sub-nav-bar-col-50 allow-hover ">
       <b>Interface</b>
@@ -151,13 +151,13 @@
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="'/generate'" routerLinkActive="active">
+    <a [routerLink]="['/generate']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-generate"
          class="sub-nav-bar-col-50 allow-hover">
       <b>Generate</b>
     </div>
     </a>
-    <a [routerLink]="'/view'" routerLinkActive="active">
+    <a [routerLink]="['/view']" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
       <b>View Picks</b>
