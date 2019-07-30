@@ -918,3 +918,7 @@ display: none;
 .demo a h5:hover {
   color: black;
 }
+.active .allow-hover {
+  background-color: gray !important;
+
+}
