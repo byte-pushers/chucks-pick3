@@ -15,23 +15,23 @@
       <b>Home</b>
       </div>
       </a>
-        <a [routerLink]="'/requirements'" routerLinkActive="active" class="info" (click)="showSubNavBar(true)" >
+        <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}" >
       <div  class="nav-bar-col-25 allow-hover">
         <b>How To</b>
       </div>
       </a>
-     <a [routerLink]="'/demo'" class="info" routerLinkActive="active" (click)="showSubNavBar(false)">
+     <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
       <div  class="nav-bar-col-25 allow-hover" >
         <b>Demo</b>
       </div>
       </a>
       <div class="nav-bar-col-25">
-        <a [routerLink]="'/log-in'" routerLinkActive="active" (click)="showSubNavBar(false)">
+        <a [routerLink]="['/log-in']" [queryParams]="{showSubNavBar: false}">
         <div  class="nav-bar-col-50 allow-hover">
           <b>Log-In</b>
         </div>
       </a>
-      <a [routerLink]="'/sign-up'" routerLinkActive="active"  (click)="showSubNavBar(false)">
+      <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
         <div class="nav-bar-col-50 allow-hover">
           <b>Sign-Up</b>
         </div>
