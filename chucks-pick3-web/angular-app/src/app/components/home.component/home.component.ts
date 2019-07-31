@@ -18,17 +18,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-      if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null) {
-        stop();
+    if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null || undefined) {
+      stop();
 
 
-      } else {
-        this.route.queryParamMap.pipe(map(params => {
+    } else {
+      this.route.queryParamMap.pipe(map(params => {
         return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;
 
-    })).subscribe(subNavBarVisible => {this.subNavBarService.setSubNavBarVisibility(subNavBarVisible); });
+      })).subscribe(subNavBarVisible => {
+        this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+      });
+    }
   }
-}}
+}
 
 /*  // TODO: before using params, check to make sure it is not null or undefined.
   // TODO: After calling params.get('showSubNavBar') set return value to variable and check to make sure it is not null or undefined.
