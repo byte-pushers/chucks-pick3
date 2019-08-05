@@ -10,24 +10,22 @@ import {ActivatedRoute} from '@angular/router';
 })
 
 export class InfoComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService,
-              private route: ActivatedRoute) {
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.queryParamMap.pipe(map(params => {
+      if (params !== null && params !== undefined) {
+        const showSubNavBarStatus = params.get('showSubNavBar');
 
-    if (this.route.params === null || this.route.params === undefined)  {
-      stop();
-    } else if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null ||
-      this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
-      stop();
-    } else {
-      this.route.queryParamMap.pipe(map(params => {
-        return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;
+        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
+          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
+        }
+      }
 
-      })).subscribe(subNavBarVisible => {
-        this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
-      });
-    }
+      return false;
+    })).subscribe(subNavBarVisible => {
+      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+    });
   }
 }
