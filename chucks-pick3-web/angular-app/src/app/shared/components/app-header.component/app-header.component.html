@@ -16,7 +16,7 @@
       </div>
       </a>
         <a [routerLink]="'/requirements'" routerLinkActive="active" class="info" (click)="showSubNavBar(true)" >
-      <div  class="nav-bar-col-25 allow-hover">
+      <div  class="nav-bar-col-25 allow-hover" id="howTo">
         <b>How To</b>
       </div>
       </a>
@@ -142,7 +142,7 @@
       <b>Requirements</b>
     </div>
   </a>
-  <a [routerLink]="['/interface']" [queryParams]="{showSubNavBar: true}">
+  <a [routerLink]="['/interface']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-inter"
          class="sub-nav-bar-col-50 allow-hover ">
       <b>Interface</b>
@@ -151,13 +151,13 @@
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="['/generate']" [queryParams]="{showSubNavBar: true}">
+    <a [routerLink]="['/generate']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-generate"
          class="sub-nav-bar-col-50 allow-hover">
       <b>Generate</b>
     </div>
     </a>
-    <a [routerLink]="['/view']" [queryParams]="{showSubNavBar: true}">
+    <a [routerLink]="['/view']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-generate-pic"
          class="sub-nav-bar-col-50 allow-hover">
       <b>View Picks</b>

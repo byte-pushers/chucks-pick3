@@ -15,10 +15,13 @@ export class InfoGenerateComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
+    document.getElementById('howTo').style.color = 'gray';
     // Capture the showSubNavBar if available
     // tslint:disable-next-line:max-line-length
     this.route.queryParamMap.pipe(map(params => params.get('showSubNavBar').toLowerCase() === 'true' ? true : false)).subscribe(subNavBarVisible => {
       this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+
     });
   }
 

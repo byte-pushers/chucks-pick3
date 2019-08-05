@@ -11,6 +11,7 @@ export class DemoComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    document.getElementById('howTo').style.backgroundColor = '#fff';
+    document.getElementById('howTo').style.color = '#212529';
   }
 }

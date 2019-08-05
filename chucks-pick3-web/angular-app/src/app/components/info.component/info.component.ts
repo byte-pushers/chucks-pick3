@@ -19,6 +19,8 @@ export class InfoComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.route.queryParamMap.pipe(map(params => params.get('showSubNavBar').toLowerCase() === 'true' ? true : false)).subscribe(subNavBarVisible => {
       this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+      document.getElementById('howTo').style.backgroundColor = '#fff';
+      document.getElementById('howTo').style.color = '#212529';
     });
   }
 }

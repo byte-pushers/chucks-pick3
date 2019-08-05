@@ -46,4 +46,9 @@ export class AppHeaderComponent implements OnInit {
   handleScroll(e: Event) {
     document.getElementById('side-nav-bar').style.width = '0';
   }
+
+  public howToActive() {
+    document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
+    document.getElementById('howTo').style.color = 'gray';
+  }
 }
