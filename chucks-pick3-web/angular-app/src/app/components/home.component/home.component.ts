@@ -12,28 +12,25 @@ import {map} from 'rxjs/operators';
 
 // tslint:disable-next-line:component-class-suffix
 export class HomeComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute,
-              private params: ActivatedRoute) {
-  }
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.queryParamMap.pipe(map(params => {
+      if (params !== null && params !== undefined) {
+        const showSubNavBarStatus = params.get('showSubNavBar');
 
-    if (this.route.params === null || this.route.params === undefined)  {
-      return;
-    } else if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null ||
-      this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
-      return;
-    } else {
-      this.route.queryParamMap.pipe(map(params => {
-        return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;
+        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
+          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
+        }
+      }
 
-      })).subscribe(subNavBarVisible => {
-        this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
-      });
-    }
+      return false;
+    })).subscribe(subNavBarVisible => {
+      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+    });
   }
 }
 
-/*  // TODO: before using params, check to make sure it is not null or undefined.
-  // TODO: After calling params.get('showSubNavBar') set return value to variable and check to make sure it is not null or undefined.
-  // TODO: HINT: You only can call toLowerCase() method on a string.*/
+// TODO: before using params, check to make sure it is not null or undefined.
+// TODO: After calling params.get('showSubNavBar') set return value to variable and check to make sure it is not null or undefined.
+// TODO: HINT: You only can call toLowerCase() method on a string.*/
