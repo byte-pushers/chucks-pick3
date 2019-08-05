@@ -17,10 +17,11 @@ export class InfoInterfaceComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null || undefined) {
+    if (this.route.params === null || this.route.params === undefined)  {
       stop();
-
-
+    } else if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null ||
+      this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
+      stop();
     } else {
       this.route.queryParamMap.pipe(map(params => {
         return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {map} from 'rxjs/operators';
-import {isLineBreak} from "codelyzer/angular/sourceMappingVisitor";
 
 
 @Component({
@@ -13,15 +12,17 @@ import {isLineBreak} from "codelyzer/angular/sourceMappingVisitor";
 
 // tslint:disable-next-line:component-class-suffix
 export class HomeComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute,
+              private params: ActivatedRoute) {
   }
 
   ngOnInit() {
 
-    if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null || undefined) {
+    if (this.route.params === null || this.route.params === undefined)  {
       stop();
-
-
+    } else if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null ||
+      this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
+      stop();
     } else {
       this.route.queryParamMap.pipe(map(params => {
         return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;

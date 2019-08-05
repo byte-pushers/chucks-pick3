@@ -16,7 +16,8 @@ export class DemoComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null || undefined) {
+    if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null  ||
+      this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
       stop();
 
 
