@@ -20,10 +20,10 @@ export class InfoViewComponent implements OnInit {
   ngOnInit() {
 
     if (this.route.params === null || this.route.params === undefined)  {
-      stop();
+      return;
     } else if (this.route.snapshot.queryParamMap.get('showSubNavBar') === null ||
       this.route.snapshot.queryParamMap.get('showSubNavBar') === undefined) {
-      stop();
+      return;
     } else {
       this.route.queryParamMap.pipe(map(params => {
         return params.get('showSubNavBar').toLowerCase() === 'true' ? true : false;
