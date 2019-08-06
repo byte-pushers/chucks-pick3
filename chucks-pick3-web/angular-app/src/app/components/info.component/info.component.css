@@ -20,6 +20,10 @@
 
 }
 
+.how-to-header {
+  display: block;
+}
+
 .how-to-view {
   display: block;
   width: 100%;
