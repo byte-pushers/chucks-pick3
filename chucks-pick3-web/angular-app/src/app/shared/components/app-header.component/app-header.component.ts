@@ -1,6 +1,9 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Component, ChangeDetectorRef, OnInit, AfterViewInit} from '@angular/core';
 import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {ActivatedRoute, Params} from '@angular/router';
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs/internal/Observable";
+import {of} from "rxjs/internal/observable/of";
 
 
 @Component({
@@ -9,18 +12,23 @@ import {ActivatedRoute, Params} from '@angular/router';
   styleUrls: ['./app-header.component.css']
 })
 
-export class AppHeaderComponent implements OnInit {
+export class AppHeaderComponent implements OnInit, AfterViewInit{
 
 
-  constructor(private subNavBarService: SubNavBarService,
-              private route: ActivatedRoute,
-              public params: ActivatedRoute) {
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute, private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.subNavBarService.setSubNavBarVisibility(params.showSubNavBar);
-    });
+    /*this.route.queryParamMap.pipe(map(params => params.get('showSubNavBar').toLowerCase() === 'true' ? true : false)).subscribe(subNavBarVisible => {
+      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+    });*/
+    /*this.route.params.subscribe((params: Params) => {
+      //this.subNavBarService.setSubNavBarVisibility(params.showSubNavBar);
+    });*/
+  }
+
+  ngAfterViewInit() {
+    this.cd.detectChanges();
   }
 
   public isSubNavBarVisible(): boolean {
