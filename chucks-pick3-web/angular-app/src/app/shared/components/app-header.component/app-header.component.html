@@ -20,18 +20,18 @@
         <b>How To</b>
       </div>
       </a>
-     <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
+     <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
       <div  class="nav-bar-col-25 allow-hover" >
         <b>Demo</b>
       </div>
       </a>
       <div class="nav-bar-col-25">
-        <a [routerLink]="['/log-in']" [queryParams]="{showSubNavBar: false}">
+        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
         <div  class="nav-bar-col-50 allow-hover">
           <b>Log-In</b>
         </div>
       </a>
-      <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
+      <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
         <div class="nav-bar-col-50 allow-hover">
           <b>Sign-Up</b>
         </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="mobile-nav-bar-container">
 
-      <div [routerLink]="'/home'" class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
+      <div [routerLink]="'/home'" routerLinkActive="active"class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
         <a  [routerLink]="'/home'">Home</a>
       </div>
 
@@ -136,30 +136,34 @@
   </div>
 
   <<div class="sub-nav-bar-col-25">
-  <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
+  <a [routerLink]="['/requirements']" routerLinkActive="subactive" [queryParams]="{showSubNavBar: true}">
     <div id="sub-nav-bar-item-require"
-         class="sub-nav-bar-col-50 allow-hover " >
+         class="sub-nav-bar-col-50 allow-hover "
+         routerLinkActive="subactive">
       <b>Requirements</b>
     </div>
   </a>
-  <a [routerLink]="['/interface']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
+  <a [routerLink]="['/interface']"  routerLinkActive="subactive" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-inter"
-         class="sub-nav-bar-col-50 allow-hover ">
+         class="sub-nav-bar-col-50 allow-hover "
+         routerLinkActive="subactive">
       <b>Interface</b>
     </div>
   </a>
   </div>
 
   <div class="sub-nav-bar-col-25">
-    <a [routerLink]="['/generate']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
+    <a [routerLink]="['/generate']" routerLinkActive="subactive" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-generate"
-         class="sub-nav-bar-col-50 allow-hover">
+         class="sub-nav-bar-col-50 allow-hover"
+         routerLinkActive="subactive">
       <b>Generate</b>
     </div>
     </a>
-    <a [routerLink]="['/view']" [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
+    <a [routerLink]="['/view']" routerLinkActive="subactive"  [queryParams]="{showSubNavBar: true}" (click)="howToActive()">
     <div id="sub-nav-bar-item-generate-pic"
-         class="sub-nav-bar-col-50 allow-hover">
+         class="sub-nav-bar-col-50 allow-hover"
+         routerLinkActive="subactive">
       <b>View Picks</b>
     </div>
     </a>

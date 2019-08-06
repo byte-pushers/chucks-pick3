@@ -925,3 +925,9 @@ display: none;
 color: gray !important;
 
 }
+
+.subactive .allow-hover {
+  background-color:  #414141 !important;
+  color: #686868 !important;
+
+}
