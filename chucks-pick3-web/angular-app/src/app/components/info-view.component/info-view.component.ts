@@ -17,6 +17,8 @@ export class InfoViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
+    document.getElementById('howTo').style.color = 'gray';
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');

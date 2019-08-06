@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    document.getElementById('howTo').style.backgroundColor = '#fff';
+    document.getElementById('howTo').style.color = '#212529';
+
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');
@@ -30,7 +33,3 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
-// TODO: before using params, check to make sure it is not null or undefined.
-// TODO: After calling params.get('showSubNavBar') set return value to variable and check to make sure it is not null or undefined.
-// TODO: HINT: You only can call toLowerCase() method on a string.*/

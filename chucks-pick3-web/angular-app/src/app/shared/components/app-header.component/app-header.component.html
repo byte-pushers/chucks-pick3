@@ -15,8 +15,8 @@
           <b>Home</b>
         </div>
       </a>
-      <a [routerLink]="['/requirements']" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
-        <div class="nav-bar-col-25 allow-hover">
+      <a [routerLink]="['/requirements']" class="info"  routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
+        <div class="nav-bar-col-25 allow-hover" id="howTo">
           <b>How To</b>
         </div>
       </a>
@@ -26,7 +26,7 @@
         </div>
       </a>
       <div class="nav-bar-col-25">
-        <a [routerLink]="['/log-in']" routerLinkActive="active " [queryParams]="{showSubNavBar: false}">
+        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover">
             <b>Log-In</b>
           </div>

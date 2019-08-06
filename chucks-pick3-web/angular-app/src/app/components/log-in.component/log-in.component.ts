@@ -14,6 +14,9 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('howTo').style.backgroundColor = '#fff';
+    document.getElementById('howTo').style.color = '#212529';
+
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');

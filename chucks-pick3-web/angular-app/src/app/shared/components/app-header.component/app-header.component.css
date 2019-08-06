@@ -922,7 +922,13 @@ display: none;
 }
 .active .allow-hover {
   background-color: #d0d0d0 !important;
-color: gray;
+color: gray !important;
+
+}
+
+.subactive .allow-hover {
+  background-color:  #414141 !important;
+  color: #686868 !important;
 
 }
 .subActive .allow-hover {
