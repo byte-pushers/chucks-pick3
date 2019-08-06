@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -14,11 +14,18 @@ export class InfoRequirementsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Capture the showSubNavBar if available
-    // tslint:disable-next-line:max-line-length
-    this.route.queryParamMap.pipe(map(params => params.get('showSubNavBar').toLowerCase() === 'true' ? true : false)).subscribe(subNavBarVisible => {
+    this.route.queryParamMap.pipe(map(params => {
+      if (params !== null && params !== undefined) {
+        const showSubNavBarStatus = params.get('showSubNavBar');
+
+        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
+          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
+        }
+      }
+
+      return false;
+    })).subscribe(subNavBarVisible => {
       this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
     });
   }
 }
-
