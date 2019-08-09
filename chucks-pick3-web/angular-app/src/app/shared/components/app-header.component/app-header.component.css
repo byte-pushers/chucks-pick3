@@ -88,7 +88,9 @@
 
 
 }
-
+#howTo.hover {
+  background-color: #4CAF50;
+}
 .nav-bar-col-50 a {
 
   color: black;
@@ -229,7 +231,7 @@ img {
     list-style-type: none;
     font-size: 17px;
     text-decoration: none;
-    color: black;
+
 
   }
 
@@ -339,15 +341,19 @@ img {
   }
 
   .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
-    background-color: green;
+    background-color: #d0d0d0 !important;
+    color: gray !important;
     cursor: pointer;
   }
 
   .mobile-nav-bar-container a:hover {
     text-decoration: none;
-    color: black;
+    color: gray !important;
   }
-
+.active {
+  background-color: #d0d0d0 !important;
+  color: gray !important;
+}
 
   .logo-container {
     height: 135px;
@@ -672,6 +678,9 @@ display: none;
 }
 /**IPAD**/
 @media only screen and (min-width: 760px) {
+  .col-md-4:hover {
+    background-color: #4CAF50!important;
+  }
   .tabletHeader {
     display: block;
   }
@@ -793,7 +802,7 @@ display: none;
   display: inline-block;
 
   width: 100%;
-  height: 6%;
+  height: 10%;
   vertical-align: middle;
 
 
@@ -936,3 +945,5 @@ color: gray !important;
   color: white;
 
 }
+
+

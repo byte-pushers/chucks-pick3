@@ -59,4 +59,13 @@ export class AppHeaderComponent implements OnInit, AfterViewInit{
     document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
     document.getElementById('howTo').style.color = 'gray';
   }
+public howToHoverStart() {
+  document.getElementById('howTo').style.backgroundColor = 'green';
+
+}
+  public howToHoverEnd() {
+    document.getElementById('howTo').style.backgroundColor = 'white';
+
+  }
+
 }

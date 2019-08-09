@@ -2,6 +2,22 @@
 html {
   height:100%;
 }
+.no-pad {
+  padding: 0px !important;
+  margin: 0px;
+}
+.no-pad-left {
+  padding-left: 0px !important;
+  margin: 0px;
+}
+.no-pad-right {
+  padding-right: 0px !important;
+  margin: 0px;
+}
+.forsignup {
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
 .form-control.ng-touched.ng-invalid {
   border: 1px solid red;
 }
@@ -163,7 +179,6 @@ h1 {
   margin-top: 30px !important;
   font-size: 24px !important;
   font-family: arial;
-  border-bottom: solid 1px #9d9d9d;
   padding: 0 0 5px 0;
   color: #4d4d4d;
   float: left;
@@ -215,7 +230,7 @@ h1 {
   left: 10px;
 }
 .grediant img.signup {
-  bottom: -28px;
+  bottom: -20px;
 }
 .greenpatch {
   background: #7ebd56;
@@ -247,25 +262,32 @@ h1 {
 
 @media only screen and (max-width: 425px) {
   .middlebdr {
-    border-left: solid 1px #bdbdbd !important;
-    border-right: solid 1px #bdbdbd !important;
-    height: 365px;
+    border-left: none!important;
+    border-right: none!important;
+    border-bottom: solid 1px #2e2e2e;
+    border-top: solid 1px #2e2e2e;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 430px;
+  }
+.col-md-4 {
+padding: 0px!important;
+}
+  .no-pad {
+    margin: 10px;
+    margin-bottom: 20px;
+  }
+  .no-pad-left {
+    margin: 10px;
+    margin-bottom: 20px;
+  }
+  .no-pad-right {
+    margin: 10px;
+    margin-bottom: 20px;
   }
 }
 
-.no-pad {
-  padding: 0px !important;
-}
-.no-pad-left {
-  padding-left: 0px !important;
-}
-.no-pad-right {
-  padding-right: 0px !important;
-}
-.forsignup {
-  padding-top: 25px;
-padding-bottom: 5px;
-}
+
 
 * {
   font-family: 'Lato', sans-serif!important;
