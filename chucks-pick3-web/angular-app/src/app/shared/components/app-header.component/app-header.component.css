@@ -109,6 +109,7 @@
 .main-nav-bar-container .nav-bar-col-50.active {
   background-color: gray;
   text-decoration: none;
+  color: gray;
 }
 
 .main-nav-bar-container .nav-bar-col-50.allow-hover:hover {
@@ -121,8 +122,9 @@
 
 
 .active{
-  background-color: gray;
+  background-color: #d0d0d0!important;
   border-color: gray;
+  color: gray;
 }
 
 
@@ -942,8 +944,13 @@ color: gray !important;
 }
 .subActive .allow-hover {
   background-color: #292929 !important;
-  color: white;
+  color: white !important;
 
+}
+
+.howToActive:hover {
+  background-color: green!important;
+  color: black;
 }
 
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -17,8 +17,9 @@ export class InfoViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
-    document.getElementById('howTo').style.color = 'gray';
+    const howToActive = document.getElementById('howTo');
+    howToActive.classList.add('active');
+    howToActive.classList.remove('allow-hover');
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');
@@ -34,3 +35,4 @@ export class InfoViewComponent implements OnInit {
     });
   }
 }
+

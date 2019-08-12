@@ -12,12 +12,13 @@ import {map} from 'rxjs/operators';
 
 // tslint:disable-next-line:component-class-suffix
 export class HomeComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {}
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    document.getElementById('howTo').style.backgroundColor = '#fff';
-    document.getElementById('howTo').style.color = '#212529';
-
+    const howToActive = document.getElementById('howTo');
+    howToActive.classList.remove('active');
+    howToActive.classList.add('allow-hover');
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');
