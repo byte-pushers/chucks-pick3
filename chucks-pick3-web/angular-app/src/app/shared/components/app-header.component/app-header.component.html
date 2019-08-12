@@ -15,8 +15,8 @@
           <b>Home</b>
         </div>
       </a>
-      <a [routerLink]="['/requirements']" class="info"  routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
-        <div class="nav-bar-col-25 allow-hover" id="howTo">
+      <a [routerLink]="'/requirements'" class="info"   routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
+        <div class="nav-bar-col-25  allow-hover"  routerLinkActive="howToActive" id="howTo" >
           <b>How To</b>
         </div>
       </a>
@@ -40,11 +40,11 @@
     </div>
     <div class="mobile-nav-bar-container">
 
-      <div [routerLink]="'/home'" class="nav-bar-col-20  allow-hover active " (click)="closeNav()">
-        <a [routerLink]="'/home'">Home</a>
+      <div [routerLink]="'/home'" class="nav-bar-col-20 allow-hover" routerLinkActive="active" (click)="closeNav()">
+        <a [routerLink]="'/home'" routerLinkActive="active">Home</a>
       </div>
 
-      <div class=" nav-bar-col-20 allow-hover float-right">
+      <div class=" nav-bar-col-20 float-right allow-hover" routerLinkActive="active">
 
         <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
 
@@ -53,7 +53,7 @@
           <div id="side-nav-bar" class="sidenav">
             <div class="menu">
               <div class="end">
-                <a href="javascript:void(0)" (click)="closeNav()">&times;</a>
+                <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
               </div>
               <div class="menu-title">
                 <h2><b>Menu</b></h2>
@@ -73,7 +73,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
+                    <a [routerLink]="'/requirements'"  (click)="closeNav()">Requirements</a>
                   </div>
                 </div>
                 <div class="options">
@@ -115,12 +115,12 @@
           </div>
         </div>
       </div>
-      <div [routerLink]="'/log-in'" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
-        <a [routerLink]="'/log-in'">Login</a>
+      <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover" (click)="closeNav()">
+        <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
       </div>
 
-      <div [routerLink]="'/sign-up'" class="nav-bar-col-20 allow-hover float-right" (click)="closeNav()">
-        <a [routerLink]="'/sign-up'">Sign Up</a>
+      <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover"  routerLinkActive="active" (click)="closeNav()">
+        <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
       </div>
     </div>
 

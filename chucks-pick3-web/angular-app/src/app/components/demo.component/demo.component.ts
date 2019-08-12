@@ -14,8 +14,9 @@ export class DemoComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById('howTo').style.backgroundColor = '#fff';
-    document.getElementById('howTo').style.color = '#212529';
+    const howToActive = document.getElementById('howTo');
+    howToActive.classList.remove('active');
+    howToActive.classList.add('allow-hover');
 
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {

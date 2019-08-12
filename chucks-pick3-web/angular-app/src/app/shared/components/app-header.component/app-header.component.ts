@@ -19,12 +19,7 @@ export class AppHeaderComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    /*this.route.queryParamMap.pipe(map(params => params.get('showSubNavBar').toLowerCase() === 'true' ? true : false)).subscribe(subNavBarVisible => {
-      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
-    });*/
-    /*this.route.params.subscribe((params: Params) => {
-      //this.subNavBarService.setSubNavBarVisibility(params.showSubNavBar);
-    });*/
+
   }
 
   ngAfterViewInit() {
@@ -59,4 +54,10 @@ export class AppHeaderComponent implements OnInit, AfterViewInit{
     document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
     document.getElementById('howTo').style.color = 'gray';
   }
+public howToHover() {
+  document.getElementById('howTo').style.backgroundColor = 'green';
+
+}
+
+
 }
