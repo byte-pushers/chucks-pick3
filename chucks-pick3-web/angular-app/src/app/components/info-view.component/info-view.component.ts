@@ -1,7 +1,4 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {SubNavBarService} from '../../services/show-sub-nav-bar.service/sub-nav-bar.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {map} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -11,28 +8,12 @@ import {map} from 'rxjs/operators';
 })
 
 export class InfoViewComponent implements OnInit {
-  private isSubNavBarVisible = true;
-
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
-  }
+  constructor() {}
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');
     howToActive.classList.add('active');
     howToActive.classList.remove('allow-hover');
-    this.route.queryParamMap.pipe(map(params => {
-      if (params !== null && params !== undefined) {
-        const showSubNavBarStatus = params.get('showSubNavBar');
-
-        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
-          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
-        }
-      }
-
-      return false;
-    })).subscribe(subNavBarVisible => {
-      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
-    });
   }
 }
 
