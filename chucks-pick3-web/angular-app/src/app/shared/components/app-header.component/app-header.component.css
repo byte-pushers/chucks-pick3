@@ -129,11 +129,38 @@
 
 
 
+.sub-nav-bar-col-25 {
+  display: inline-block;
+  color: white;
+  float: left;
 
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 25%;
+
+  height: 100%;
+}
+
+
+.sub-nav-bar-col-12-5 {
+  display: inline-block;
+  color: white;
+  float: left;
+
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 12.5%;
+
+  height: 100%;
+}
 
 .sub-nav-bar-col-20 {
   display: inline-block;
-color: white;
+  color: white;
   float: left;
 
   line-height: 3em;
@@ -143,9 +170,8 @@ color: white;
   width: 20%;
 
   height: 100%;
-
-
 }
+
 .sub-nav-bar-col-10 {
   display: inline-block;
   float: left;
@@ -163,8 +189,20 @@ color: white;
   font-size: 17px;
 }
 
+.sub-nav-bar-col-25 a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 
 .sub-nav-bar-container .sub-nav-bar-col-20.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sub-nav-bar-container .sub-nav-bar-col-25.allow-hover:hover {
   background-color: green;
   cursor: pointer;
   text-decoration: none;
