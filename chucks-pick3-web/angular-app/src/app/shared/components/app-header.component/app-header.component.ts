@@ -1,9 +1,7 @@
-import {Component, ChangeDetectorRef, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {map} from "rxjs/operators";
-import {Observable} from "rxjs/internal/Observable";
-import {of} from "rxjs/internal/observable/of";
 
 
 @Component({
@@ -12,18 +10,28 @@ import {of} from "rxjs/internal/observable/of";
   styleUrls: ['./app-header.component.css']
 })
 
-export class AppHeaderComponent implements OnInit, AfterViewInit{
-
-
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute, private cd: ChangeDetectorRef) {
+export class AppHeaderComponent implements OnInit {
+  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
+    console.info("Inside AppHeaderComponent constructor() method.");
   }
 
   ngOnInit() {
+    console.info("Inside AppHeaderComponent ngOnInit() method.");
 
-  }
+    this.route.queryParamMap.pipe(map(params => {
+      if (params !== null && params !== undefined) {
+        const showSubNavBarStatus = params.get('showSubNavBar');
 
-  ngAfterViewInit() {
-    this.cd.detectChanges();
+        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
+          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
+        }
+      }
+
+      return false;
+    })).subscribe(subNavBarVisible => {
+      console.info("Inside AppHeaderComponent route.queryParams.subscribe() method2.");
+      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
+    });
   }
 
   public isSubNavBarVisible(): boolean {
@@ -33,7 +41,8 @@ export class AppHeaderComponent implements OnInit, AfterViewInit{
   public showSubNavBar(showSubNavBarStatus: boolean): void {
     this.subNavBarService.setSubNavBarVisibility(showSubNavBarStatus);
   }
-/*Side Nav Bar Mobile*/
+
+  /*Side Nav Bar Mobile*/
   public openNav() {
     document.getElementById('side-nav-bar').style.width = '250px';
   }
@@ -54,10 +63,9 @@ export class AppHeaderComponent implements OnInit, AfterViewInit{
     document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
     document.getElementById('howTo').style.color = 'gray';
   }
-public howToHover() {
-  document.getElementById('howTo').style.backgroundColor = 'green';
 
-}
-
+  public howToHover() {
+    document.getElementById('howTo').style.backgroundColor = 'green';
+  }
 
 }
