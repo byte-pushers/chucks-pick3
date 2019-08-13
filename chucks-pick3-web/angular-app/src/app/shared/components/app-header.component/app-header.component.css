@@ -131,23 +131,40 @@
 
 
 
-.sub-nav-bar-col-50 {
+.sub-nav-bar-col-20 {
+  display: inline-block;
+color: white;
   float: left;
-  width: 50%;
-  /*border: 1px solid red;*/
+
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 20%;
+
+  height: 100%;
+
+
+}
+.sub-nav-bar-col-10 {
+  display: inline-block;
+  float: left;
+
+  width: 10%;
+
   height: 100%;
 
 
 }
 
-.sub-nav-bar-col-50 a {
+.sub-nav-bar-col-20 a {
   color: white;
   text-decoration: none;
   font-size: 17px;
 }
 
 
-.sub-nav-bar-container .sub-nav-bar-col-50.allow-hover:hover {
+.sub-nav-bar-container .sub-nav-bar-col-20.allow-hover:hover {
   background-color: green;
   cursor: pointer;
   text-decoration: none;
@@ -944,7 +961,7 @@ color: gray !important;
 }
 .subActive .allow-hover {
   background-color: #292929 !important;
-  color: white !important;
+  color: gray !important;
 
 }
 
