@@ -1,0 +1,45 @@
+.btn-block {
+  margin-top: 0px;
+}
+
+@media only screen and (max-width: 375px) {
+.btn-block {
+  margin-top: 15px;
+}
+}
+/**IPHONE +**/
+@media only screen and (min-width: 410px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
+/**ANDROID**/
+@media only screen and (max-width: 365px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
+/**ANDROID**/
+@media only screen and (max-width: 360px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
+/**IPHONE 5**/
+@media only screen and (max-width: 320px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
+/**IPAD**/
+@media only screen and (min-width: 760px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
+/**KINDLE**/
+@media only screen and (min-width: 799px) {
+  .btn-block {
+    margin-top: 15px;
+  }
+}
