@@ -12,6 +12,7 @@ import {InfoGenerateComponent} from './components/info-generate.component/info-g
 import {InfoInterfaceComponent} from './components/info-interface.component/info-interface.component';
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
 import {InfoViewComponent} from './components/info-view.component/info-view.component';
+import {ThankYouComponent} from './components/thank-you.component/thank-you.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'view', component: InfoViewComponent},
   { path: 'demo', component: DemoComponent},
   { path: 'sign-up', component: SignUpComponent},
-  { path: 'log-in', component: LogInComponent}
+  { path: 'log-in', component: LogInComponent},
+  { path: 'thank-you', component: ThankYouComponent}
 ];
 
 @NgModule({
@@ -36,5 +38,6 @@ export const routingComponents = [
   InfoComponent,
   DemoComponent,
   SignUpComponent,
-  LogInComponent
+  LogInComponent,
+  ThankYouComponent
 ];

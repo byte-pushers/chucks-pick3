@@ -7,7 +7,7 @@
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
         var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
+            forms.addEventListener('submit', function (event) {
                 var formElements = form.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];

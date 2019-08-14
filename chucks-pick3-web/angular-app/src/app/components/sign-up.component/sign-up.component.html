@@ -209,7 +209,11 @@
           <br>
           <br>
           <br>
-          <button type="submit" class="btn btn btn-success btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+          <button type="submit"  [routerLink]="'/thank-you'"
+                  routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
+                  class="btn btn btn-success submit btn-lg btn-block"
+                  [disabled]="!signUpForm.form.valid"
+          (click)="onSubmit()">
             Submit
           </button>
 

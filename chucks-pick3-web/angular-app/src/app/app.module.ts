@@ -22,7 +22,10 @@ import {InfoGenerateComponent} from './components/info-generate.component/info-g
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
-import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.service";
+import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {ThankYouComponent} from './components/thank-you.component/thank-you.component';
+import {SubmitValidationService} from './services/submit-validation.service/submit-validation.service';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.
     InfoViewComponent,
     InfoInterfaceComponent,
     InfoGenerateComponent,
-    InfoRequirementsComponent
+    InfoRequirementsComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.
     ScrollEventModule
   ],
   providers: [
+    SubmitValidationService,
     SubNavBarService,
     FormValidationService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
