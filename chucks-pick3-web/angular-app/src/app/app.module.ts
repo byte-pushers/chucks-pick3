@@ -26,6 +26,7 @@ import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.
 import {UppercaseValidator} from './directives/uppercase-validator.directive';
 import { LowercaseValidator } from './directives/lowercase-validator.directive';
 import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
+import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SpecialCharactersValidator } from './directives/special-characters-vali
     InfoRequirementsComponent,
     UppercaseValidator,
     LowercaseValidator,
-    SpecialCharactersValidator
+    SpecialCharactersValidator,
+    CustomerSummaryComponent
   ],
   imports: [
     BrowserModule,

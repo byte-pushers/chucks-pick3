@@ -12,29 +12,38 @@ import {InfoGenerateComponent} from './components/info-generate.component/info-g
 import {InfoInterfaceComponent} from './components/info-interface.component/info-interface.component';
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
 import {InfoViewComponent} from './components/info-view.component/info-view.component';
+import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'info', component: InfoComponent, },
-  { path: 'generate', component: InfoGenerateComponent},
-  { path: 'interface', component: InfoInterfaceComponent},
-  { path: 'requirements', component: InfoRequirementsComponent},
-  { path: 'view', component: InfoViewComponent},
-  { path: 'demo', component: DemoComponent},
-  { path: 'sign-up', component: SignUpComponent},
-  { path: 'log-in', component: LogInComponent}
+  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'info', component: InfoComponent,},
+  {path: 'generate', component: InfoGenerateComponent},
+  {path: 'interface', component: InfoInterfaceComponent},
+  {path: 'requirements', component: InfoRequirementsComponent},
+  {path: 'view', component: InfoViewComponent},
+  {path: 'demo', component: DemoComponent},
+  {path: 'sign-up', component: SignUpComponent},
+  {path: 'log-in', component: LogInComponent},
+  {path: 'customer-summary', component: CustomerSummaryComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export  class AppRoutingModule { }
+export class AppRoutingModule {
+}
+
 export const routingComponents = [
   HomeComponent,
   InfoComponent,
   DemoComponent,
   SignUpComponent,
-  LogInComponent
+  LogInComponent,
+  CustomerSummaryComponent,
+  InfoGenerateComponent,
+  InfoRequirementsComponent,
+  InfoGenerateComponent,
+  InfoViewComponent
 ];
