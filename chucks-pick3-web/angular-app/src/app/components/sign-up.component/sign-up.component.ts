@@ -9,7 +9,7 @@ export class SignUpComponent implements OnInit {
   //Todo: create an errorMessage attribute so that it can be use later if and when the memberService.createAccount() return false.
 
 
-  //Todo: inject MemberService to be able to delegate to later.
+  //Todo: inject both the FormValidationService & MemberService to be able to delegate to later.
   constructor() {}
 
   ngOnInit() {
