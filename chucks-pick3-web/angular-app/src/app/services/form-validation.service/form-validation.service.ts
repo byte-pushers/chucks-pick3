@@ -7,10 +7,14 @@ export class FormValidationService {
   constructor() {
   }
 
+/*ADD validateForm here!*/
+public validateForm() {
+return true;
+}
 
   private hasData(input: string): boolean {
     let hasDataResult = false;
-
+    const forms = document.getElementsByClassName('needs-validation');
     if (input !== null && input !== undefined) {
       input = input.trim();
       if (input.length > 0) {
