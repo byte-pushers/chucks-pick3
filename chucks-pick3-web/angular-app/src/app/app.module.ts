@@ -24,7 +24,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
 import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {ThankYouComponent} from './components/thank-you.component/thank-you.component';
-import {SubmitValidationService} from './services/submit-validation.service/submit-validation.service';
+import {MemberService} from './services/member.service/member.service';
 
 
 @NgModule({
@@ -55,7 +55,7 @@ import {SubmitValidationService} from './services/submit-validation.service/subm
     ScrollEventModule
   ],
   providers: [
-    SubmitValidationService,
+    MemberService,
     SubNavBarService,
     FormValidationService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}

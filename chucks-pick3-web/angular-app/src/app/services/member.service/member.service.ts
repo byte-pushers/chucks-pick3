@@ -5,10 +5,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class SubmitValidationService {
+export class MemberService {
 
   constructor() {
 
   }
+
+  //TODO: Create ac
 
 }
