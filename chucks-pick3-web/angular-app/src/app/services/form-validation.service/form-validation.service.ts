@@ -8,13 +8,21 @@ export class FormValidationService {
   }
 
 /*ADD validateForm here!*/
-public validateForm() {
-return true;
+public validateForm(): boolean {
+  console.log('validateFormtest');
+  return true;
+/*  const forms = document.getElementsByClassName('needs-validation');
+  // Loop over them and prevent submission
+  const validation = Array.prototype.filter.call(forms, function (form) {
+    form.addEventListener('submit', function (event) {
+      var formElements = form.elements;
+});
+}*/
+
 }
 
   private hasData(input: string): boolean {
     let hasDataResult = false;
-    const forms = document.getElementsByClassName('needs-validation');
     if (input !== null && input !== undefined) {
       input = input.trim();
       if (input.length > 0) {

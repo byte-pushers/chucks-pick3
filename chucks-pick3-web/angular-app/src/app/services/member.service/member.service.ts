@@ -12,7 +12,9 @@ export class MemberService {
   }
 
 /* Add Create Account Here*/
-  public createAccount() {
+  public createAccount(): boolean {
+    console.log('memberServiceTest');
+    return false;
   }
 
 }
