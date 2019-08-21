@@ -72,7 +72,6 @@
             <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
 
 
-
           </div>
         </div>
         <br>
@@ -210,8 +209,8 @@
           <br>
           <br>
           <br>
-         <!-- [routerLink]="'/thank-you'"
-          routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+          <!-- [routerLink]="'/thank-you'"
+           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
           <button type="submit"
                   class="btn btn btn-success submit btn-lg btn-block"
                   [disabled]="!signUpForm.form.valid" (click)="onSubmit()">

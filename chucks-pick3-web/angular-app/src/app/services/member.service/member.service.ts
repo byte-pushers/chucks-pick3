@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-
+import {Injectable} from '@angular/core';
 
 
 @Injectable({
@@ -11,7 +10,7 @@ export class MemberService {
 
   }
 
-/* Add Create Account Here*/
+  /* Add Create Account Here*/
   public createAccount(): boolean {
     console.log('memberServiceTest');
     return false;

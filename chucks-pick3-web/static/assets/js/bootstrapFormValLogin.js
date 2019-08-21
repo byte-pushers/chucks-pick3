@@ -1,5 +1,3 @@
-
-
 (function () {
     'use strict';
 
@@ -40,7 +38,7 @@ function checkPassWord(input) {
             if (hasData(input)) { // input can not be null or undefined it will throw a error
                 checkPassValidity(input);
             } else {
-                setErrorMessage(".invalid-feedback."+ input.name,input.name.toNormalCase() +" is required and can not be empty " ,input);
+                setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty ", input);
             }
         } else {
             if (hasData(input)) { // input can not be null or undefined it will throw a error
@@ -49,6 +47,7 @@ function checkPassWord(input) {
         }
     }
 }
+
 function checkPassValidity(input) {
     const errorFieldName = input.value.toNormalCase();
     var passwordContainsUpperCase = /[A-Z]/g;//test for uppercase letter
@@ -91,6 +90,7 @@ function checkUserName(input) {
         }
     }
 }
+
 function hasData(input) {
     let hasDataResult = false;
 
@@ -102,6 +102,7 @@ function hasData(input) {
     }
     return hasDataResult;
 }
+
 function setErrorMessage(querySelector, errorMessage, input) { //function named setErrorMessage with a parameter of query, error and input The set syntax binds an object property to a function to be called when there is an attempt to set that property.
     document.querySelector(querySelector).innerHTML = errorMessage;
     input.setCustomValidity(errorMessage);

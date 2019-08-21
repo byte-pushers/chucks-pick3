@@ -3,12 +3,10 @@
 
 
     window.addEventListener('load', function () {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
+        var form = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(form, function (forms) {
             forms.addEventListener('submit', function (event) {
-                var formElements = form.elements;
+                var formElements = forms.elements;
                 for (var i = 0; i < formElements.length; i++) {
                     var aElement = formElements[i];
 
@@ -49,11 +47,11 @@
                     }
                 }
 
-                if (form.checkValidity() === false) {
+                if (forms.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
                 }
-                form.classList.add('was-validated');
+                forms.classList.add('was-validated');
             }, false);
         });
     }, false);
@@ -61,11 +59,11 @@
 }());
 
 
-function checkFirstName(input) { // create a function for first name // use input parameter
+function checkFirstName(input) {
     checkName(input);
 }
 
-function checkLastName(input) { // create a function for first name // use input parameter
+function checkLastName(input) {
     checkName(input);
 }
 
@@ -73,14 +71,14 @@ function checkName(input) {
     if (input !== null && input !== undefined) {
         setErrorMessage(".invalid-feedback." + input.name, "", input);
 
-        if (input.required === true) { // the input is required if not show error message // must have required as a input field
-            if (hasData(input)) { // input can not be null or undefined it will throw a error
+        if (input.required === true) {
+            if (hasData(input)) {
                 checkNameValidity(input);
             } else {
                 setErrorMessage(".invalid-feedback." + input.name, input.name.toNormalCase() + " is required and can not be empty", input);
             }
         } else {
-            if (hasData(input)) { // input can not be null or undefined it will throw a error
+            if (hasData(input)) {
                 checkNameValidity(input);
             }
         }

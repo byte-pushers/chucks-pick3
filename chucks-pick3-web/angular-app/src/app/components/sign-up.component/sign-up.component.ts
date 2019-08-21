@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormValidationService} from '../../services/form-validation.service/form-validation.service';
-import {MemberService} from '../../services/member.service/member.service';
+import {FormValidationService} from 'src/app/services/form-validation.service/form-validation.service';
+import {MemberService} from 'src/app/services/member.service/member.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
 
   public errorMessage: string;
-
 
 
   constructor(public formValidationService: FormValidationService,
@@ -31,13 +30,11 @@ export class SignUpComponent implements OnInit {
     const isAccountCreated = this.memberService.createAccount();
     if (isFormValid === true) {
       if (isAccountCreated === true) {
-              this.router.navigate(['/thank-you']);
+        this.router.navigate(['/thank-you']);
       } else if (isAccountCreated === false) {
-        /*show error message here, dont let user move on*/
         this.errorMessage = 'Account was not created, internal error.';
       }
     } else if (isFormValid === false) {
-      /*show error message here, dont let user move on*/
       this.errorMessage = 'Form was not processed, internal error.';
     }
 

@@ -7,19 +7,9 @@ export class FormValidationService {
   constructor() {
   }
 
-/*ADD validateForm here!*/
-public validateForm(): boolean {
-  console.log('validateFormtest');
-  return true;
-/*  const forms = document.getElementsByClassName('needs-validation');
-  // Loop over them and prevent submission
-  const validation = Array.prototype.filter.call(forms, function (form) {
-    form.addEventListener('submit', function (event) {
-      var formElements = form.elements;
-});
-}*/
-
-}
+  public validateForm(): boolean {
+    return true;
+  }
 
   private hasData(input: string): boolean {
     let hasDataResult = false;
