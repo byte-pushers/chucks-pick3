@@ -22,7 +22,9 @@ import {InfoGenerateComponent} from './components/info-generate.component/info-g
 import {InfoRequirementsComponent} from './components/info-requirements.component/info-requirements.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
-import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.service";
+import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
+import { UsernameValidator } from './directives/username-validator.directive';
+import { SpaceValidator } from './directives/space-validator.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {SubNavBarService} from "./services/show-sub-nav-bar.service/sub-nav-bar.
     InfoViewComponent,
     InfoInterfaceComponent,
     InfoGenerateComponent,
-    InfoRequirementsComponent
+    InfoRequirementsComponent,
+    UsernameValidator,
+    SpaceValidator
   ],
   imports: [
     BrowserModule,

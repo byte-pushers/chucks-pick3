@@ -7,11 +7,24 @@
       <div class="info-form">
         <div class="form-row">
           <label for="defaultRegisterFormUserName">Username</label>
-          <input type="text" minlength="4" name="userName" maxlength="25"
+          <input type="text"
+                 minlength="2"
+                 maxlength="25"
+                 name="userName"
+                 #userName="ngModel"
                  id="defaultRegisterFormUserName"
                  class="form-control"
-                 placeholder="Username" onchange="checkedUserName(this)" required="required">
-          <div class="invalid-feedback userName"></div>
+                 placeholder="Username"
+                 required
+                 ngModel
+                 usernameValidator
+          spaceValidator>
+          <div class="alert alert-danger" *ngIf="userName.touched && !userName.valid">
+            <div *ngIf="userName.errors.required">- User name is required.</div>
+            <div *ngIf="userName.errors.min">- Minimum 2 characters required.</div>
+            <div *ngIf="userName.errors.usernameValidator">- May only use alphabetical and numerical characters.</div>
+            <div *ngIf="userName.errors.spaceValidator">- Not allowed to have spaces.</div>
+          </div>
         </div>
         <br>
         <!-- Password -->
