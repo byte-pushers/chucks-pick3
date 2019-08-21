@@ -3,7 +3,7 @@
   <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
     <div class="row">
       <div class="col-xl-5 mx-auto">
-        <div *ngIf="errorMessage">{{errorMessage}}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
         <p class="h4  text-center">Sign up </p>
         <div class="info-form">
           <div class="form-row">
