@@ -3,6 +3,7 @@
 <form  class="needs-validation"  #logInForm="ngForm" novalidate>
   <div class="row">
     <div class=" col-xl-5 mx-auto text-left">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
       <p class="h4 text-center">Login </p>
       <div class="info-form">
         <div class="form-row">

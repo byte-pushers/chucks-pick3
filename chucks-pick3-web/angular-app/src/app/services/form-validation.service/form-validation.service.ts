@@ -7,6 +7,9 @@ export class FormValidationService {
   constructor() {
   }
 
+  public validateForm() {
+    return true;
+  }
 
   public hasData(input: string): boolean {
     let hasDataResult = false;
