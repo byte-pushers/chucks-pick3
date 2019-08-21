@@ -48,7 +48,8 @@ import { CustomerSummaryComponent } from './components/customer-summary.componen
     UppercaseValidator,
     LowercaseValidator,
     SpecialCharactersValidator,
-    CustomerSummaryComponent
+    CustomerSummaryComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import {InfoRequirementsComponent} from './components/info-requirements.componen
 import {InfoViewComponent} from './components/info-view.component/info-view.component';
 import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},

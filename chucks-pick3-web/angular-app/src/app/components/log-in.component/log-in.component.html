@@ -35,8 +35,10 @@
           <br>
           <br>
           <div class="mobile-space"></div>
-          <button type="submit" value='submit' [disabled]="!logInForm.form.valid"
-                  class="btn btn btn-success btn-lg btn-block">Submit
+          <button type="submit"
+                  class="btn btn btn-success submit btn-lg btn-block"
+                  [disabled]="!logInForm.form.valid" (click)="onSubmit()">
+            Submit
           </button>
 
           <br>

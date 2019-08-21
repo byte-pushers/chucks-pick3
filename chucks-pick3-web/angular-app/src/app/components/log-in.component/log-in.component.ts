@@ -29,7 +29,7 @@ export class LogInComponent implements OnInit {
     const isAccountCreated = this.memberService.logInSuccessful();
     if (isFormValid === true) {
       if (isAccountCreated === true) {
-        this.router.navigate(['/thank-you']);
+        this.router.navigate(['/customer-summary']);
       } else if (isAccountCreated === false) {
         /*show error message here, dont let user move on*/
         this.errorMessage = 'Account was not created, internal error.';

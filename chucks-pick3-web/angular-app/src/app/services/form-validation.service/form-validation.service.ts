@@ -8,7 +8,7 @@ export class FormValidationService {
   }
 
   public validateForm() {
-    return true;
+    return false;
   }
 
   public hasData(input: string): boolean {
