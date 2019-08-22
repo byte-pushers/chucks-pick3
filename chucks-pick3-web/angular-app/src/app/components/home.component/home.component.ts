@@ -7,9 +7,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 
-// tslint:disable-next-line:component-class-suffix
+
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');

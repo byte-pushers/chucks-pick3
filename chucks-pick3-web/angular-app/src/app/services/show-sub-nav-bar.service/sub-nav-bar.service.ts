@@ -12,6 +12,7 @@ export class SubNavBarService {
   public setSubNavBarVisibility(subNavBarVisible: boolean): void {
     this.subNavBarVisible = subNavBarVisible;
   }
+
   public getSubNavBarVisibility(): boolean {
     return this.subNavBarVisible;
   }

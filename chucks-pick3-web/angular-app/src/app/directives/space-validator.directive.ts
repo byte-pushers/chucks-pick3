@@ -8,12 +8,12 @@ import {Directive} from '@angular/core';
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: spaceValidator,
+      useExisting: SpaceValidator,
       multi: true
     }
   ]
 })
-export class spaceValidator implements Validator {
+export class SpaceValidator implements Validator {
   public validator: ValidatorFn;
 
   constructor(private formValidationService: FormValidationService) {

@@ -78,9 +78,9 @@
 
             // Note: the key word this represents the string that calls this isAlphabetical() method.
             // TODO: split the string into array and assign to a variable.
-            var charactersArray = this.replace(/ /g,'').split('');
+            var charactersArray = this.replace(/ /g, '').split('');
             // TODO: loop through the newly created array.
-            for (var i=0; i < charactersArray.length; i++){
+            for (var i = 0; i < charactersArray.length; i++) {
                 // TODO: get each element out of newly created array
                 var character = charactersArray[i];
                 // TODO: determine if the true alphabet includes element.
@@ -118,9 +118,9 @@
 
             // Note: the key word this represents the string that calls this isAlphabetical() method.
             // TODO: split the string into array and assign to a variable.
-            var charactersArray = this.replace(/ /g,'').split('');
+            var charactersArray = this.replace(/ /g, '').split('');
             // TODO: loop through the newly created array.
-           for (var i=0; i < charactersArray.length; i++){
+            for (var i = 0; i < charactersArray.length; i++) {
                 // TODO: get each element out of newly created array
                 var character = charactersArray[i];
                 // TODO: determine if the true alphabet includes element.
@@ -146,13 +146,11 @@
      * @return <a href="http://www.w3schools.com/jsref/jsref_obj_string.asp">String</a> The value of the string after it has been formatted to a normal sentence format.
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
-        String.prototype.toNormalCase = function () {
+    String.prototype.toNormalCase = function () {
         return this.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z])([A-Z])/g, '$1 $2').replace(/^./, function (str) {
             return str.toUpperCase();
         });
     };
-
-
 
 
     /**

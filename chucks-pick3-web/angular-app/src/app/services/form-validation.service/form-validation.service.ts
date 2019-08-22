@@ -7,10 +7,12 @@ export class FormValidationService {
   constructor() {
   }
 
+  public validateForm(): boolean {
+    return true;
+  }
 
   private hasData(input: string): boolean {
     let hasDataResult = false;
-
     if (input !== null && input !== undefined) {
       input = input.trim();
       if (input.length > 0) {
@@ -55,26 +57,26 @@ export class FormValidationService {
     return alphabetical;
   }
   public isSpaceInvalid(input: string): boolean {
-    let alphabetical = false;
+    let spaceInvalid = false;
     const alphaChars = ' ';
     const charactersArray = input.replace(/ a-z, A-Z, 1-9/g, '').split('');
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {
-        alphabetical = false;
+        spaceInvalid = false;
 
       } else {
-        alphabetical = true;
+        spaceInvalid = true;
         console.log('There is a space');
         break;
       }
     }
-    return alphabetical;
+    return spaceInvalid;
   }
   private isAlphanumeric(input: string): boolean {
     let alphanumeric = false;
-    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
-    const charactersArray = input.replace(/ /g, '').split('');
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    const charactersArray = input;
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {
@@ -115,3 +117,4 @@ export class FormValidationService {
     return NumberisValid;
   }
 }
+
