@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 
 export class LogInComponent implements OnInit {
 
+
   public errorMessage: string;
 
   constructor(public formValidationService: FormValidationService,

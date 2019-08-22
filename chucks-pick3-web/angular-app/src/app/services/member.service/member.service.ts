@@ -1,16 +1,21 @@
-import { Injectable } from '@angular/core';
-import {publish} from "rxjs/operators";
+import {Injectable} from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
 
-  constructor() { }
+  constructor() {
 
+  }
+
+
+  public createAccount(): boolean {
+    return false;
+  }
   public logInSuccessful() {
     return true;
   }
-}
 
-// tslint:disable-next-line:align
+}

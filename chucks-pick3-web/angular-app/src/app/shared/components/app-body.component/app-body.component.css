@@ -7,6 +7,7 @@
 
 
 }
+
 .main-content-container {
 
   background-color: white;
@@ -20,8 +21,9 @@
 
 
 }
+
 /*****Responsive Design*****/
-@media screen and (max-device-width: 480px) and (orientation: portrait){
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
   .body-container {
     display: block;
     background-color: #ffffff;
@@ -34,7 +36,8 @@
 
   }
 }
-@media screen and (max-device-width: 320px) and (orientation: portrait){
+
+@media screen and (max-device-width: 320px) and (orientation: portrait) {
   .body-container {
     display: block;
     background-color: #ffffff;
@@ -47,7 +50,8 @@
 
   }
 }
-@media screen and (max-device-width: 360px) and (orientation: portrait){
+
+@media screen and (max-device-width: 360px) and (orientation: portrait) {
   .body-container {
     display: block;
     background-color: #ffffff;

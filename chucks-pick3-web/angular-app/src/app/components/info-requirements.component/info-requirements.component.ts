@@ -7,7 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class InfoRequirementsComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');

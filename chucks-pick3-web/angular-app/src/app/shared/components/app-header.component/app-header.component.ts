@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SubNavBarService} from '../../../services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {SubNavBarService} from 'src/app/services/show-sub-nav-bar.service/sub-nav-bar.service';
 import {ActivatedRoute} from '@angular/router';
-import {map} from "rxjs/operators";
+import {map} from 'rxjs/operators';
 
 
 @Component({
@@ -12,11 +12,9 @@ import {map} from "rxjs/operators";
 
 export class AppHeaderComponent implements OnInit {
   constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
-    console.info("Inside AppHeaderComponent constructor() method.");
   }
 
   ngOnInit() {
-    console.info("Inside AppHeaderComponent ngOnInit() method.");
 
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
@@ -29,7 +27,6 @@ export class AppHeaderComponent implements OnInit {
 
       return false;
     })).subscribe(subNavBarVisible => {
-      console.info("Inside AppHeaderComponent route.queryParams.subscribe() method2.");
       this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
     });
   }

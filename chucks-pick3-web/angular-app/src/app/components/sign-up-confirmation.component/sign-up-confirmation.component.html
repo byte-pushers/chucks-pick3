@@ -1,0 +1,15 @@
+<div class="container d-flex justify-content-center align-items-center" id="container-jumbotron">
+  <div class=" jumbotron jumbotron-fluid w-50 p-3">
+    <h1 class="display-4 text-success">Successful Signup!</h1>
+    <hr>
+    <p>Reached this page in error? <a [routerLink]="'/home'"
+                                      routerLinkActive="active" [queryParams]="{showSubNavBar: false}">Click Here</a>
+    </p>
+    <p><a class="btn btn-primary btn-sm" [routerLink]="'/home'"
+          routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
+          role="button">
+      Continue to Home
+    </a>
+    </p>
+  </div>
+</div>
