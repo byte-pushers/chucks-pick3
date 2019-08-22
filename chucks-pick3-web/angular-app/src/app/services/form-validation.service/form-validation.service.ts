@@ -11,7 +11,7 @@ export class FormValidationService {
     return true;
   }
 
-  public hasData(input: string): boolean {
+  private hasData(input: string): boolean {
     let hasDataResult = false;
     if (input !== null && input !== undefined) {
       input = input.trim();
@@ -56,10 +56,11 @@ export class FormValidationService {
     }
     return alphabetical;
   }
+
   public isLowercase(input: string): boolean {
     let lowercase = false;
-    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-    const charactersArray = input.replace(/ /g, '').split('');
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const charactersArray = input.split('');
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {
@@ -73,10 +74,11 @@ export class FormValidationService {
     }
     return lowercase;
   }
+
   public isUppercase(input: string): boolean {
     let uppercase = false;
     const alphaChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-    const charactersArray = input.replace(/ /g, '').split('');
+    const charactersArray = input.split('');
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {
@@ -90,10 +92,11 @@ export class FormValidationService {
     }
     return uppercase;
   }
+
   public containsSpecialChars(input: string): boolean {
     let special = false;
     const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<'.split('');
-    const charactersArray = input.replace(/ /g, '').split('');
+    const charactersArray = input.split('');
     for (const character of charactersArray) {
       console.log(character);
       if (specialChars.includes(character)) {
@@ -109,13 +112,13 @@ export class FormValidationService {
   }
 
   public isNameValid(input: string): boolean {
-    let NameIsValid = false;
+    let nameIsValid = false;
 
     if (this.hasData(input)) {
-      NameIsValid = this.isAlphabetical(input);
+      nameIsValid = this.isAlphabetical(input);
     }
 
-    return NameIsValid;
+    return nameIsValid;
   }
 
   public isPhoneNumberValid(input: string): boolean {

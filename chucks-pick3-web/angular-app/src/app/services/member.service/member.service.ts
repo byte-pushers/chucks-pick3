@@ -14,7 +14,7 @@ export class MemberService {
   public createAccount(): boolean {
     return false;
   }
-  public logInSuccessful() {
+  public performLogIn() {
     return true;
   }
 
