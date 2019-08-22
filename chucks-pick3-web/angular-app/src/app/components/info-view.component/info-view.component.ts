@@ -8,7 +8,8 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class InfoViewComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');

@@ -7,10 +7,12 @@ export class FormValidationService {
   constructor() {
   }
 
+  public validateForm(): boolean {
+    return true;
+  }
 
   private hasData(input: string): boolean {
     let hasDataResult = false;
-
     if (input !== null && input !== undefined) {
       input = input.trim();
       if (input.length > 0) {
@@ -73,3 +75,4 @@ export class FormValidationService {
     return NumberisValid;
   }
 }
+

@@ -7,11 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class InfoInterfaceComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
-     const howToActive = document.getElementById('howTo');
-     howToActive.classList.add('active');
-     howToActive.classList.remove('allow-hover');
+    const howToActive = document.getElementById('howTo');
+    howToActive.classList.add('active');
+    howToActive.classList.remove('allow-hover');
   }
 }

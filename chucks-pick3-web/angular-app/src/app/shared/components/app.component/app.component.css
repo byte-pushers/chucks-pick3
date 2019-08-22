@@ -7,9 +7,9 @@ html, body {
 }
 
 .splash-container {
-margin: 0px auto;
-width: 260px;
-  margin-top:150px;
+  margin: 0px auto;
+  width: 260px;
+  margin-top: 150px;
 
 }
 
@@ -24,6 +24,7 @@ a:link {
   background-color: transparent;
   text-decoration: none;
 }
+
 a:hover {
   font-size: 35px;
   color: green;
@@ -32,6 +33,6 @@ a:hover {
 }
 
 .link-container {
-color: green;
-text-align: center;
+  color: green;
+  text-align: center;
 }

@@ -3,6 +3,7 @@
   <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
     <div class="row">
       <div class="col-xl-5 mx-auto">
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
         <p class="h4  text-center">Sign up </p>
         <div class="info-form">
           <div class="form-row">
@@ -69,7 +70,6 @@
             <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
             <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
             <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
-
 
 
           </div>
@@ -209,8 +209,11 @@
           <br>
           <br>
           <br>
-          <div class="mobile-space"></div>
-          <button type="submit" class="btn btn btn-success btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+          <!-- [routerLink]="'/thank-you'"
+           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+          <button type="submit"
+                  class="btn btn btn-success submit btn-lg btn-block"
+                  [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
             Submit
           </button>
 
