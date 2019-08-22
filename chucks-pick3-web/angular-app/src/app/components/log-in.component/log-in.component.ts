@@ -15,4 +15,5 @@ export class LogInComponent implements OnInit {
     howToActive.classList.remove('active');
     howToActive.classList.add('allow-hover');
   }
+
 }
