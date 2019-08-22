@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
     const isAccountCreated = this.memberService.createAccount();
     if (isFormValid === true) {
       if (isAccountCreated === true) {
-        this.router.navigate(['/thank-you']);
+        this.router.navigate(['/sign-up-confirmation']);
       } else if (isAccountCreated === false) {
         this.errorMessage = 'Account was not created, internal error.';
       }

@@ -23,7 +23,7 @@ import {InfoRequirementsComponent} from 'src/app/components/info-requirements.co
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
 import {SubNavBarService} from 'src/app/services/show-sub-nav-bar.service/sub-nav-bar.service';
-import {ThankYouComponent} from 'src/app/components/thank-you.component/thank-you.component';
+import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
 
 
@@ -44,7 +44,7 @@ import {MemberService} from 'src/app/services/member.service/member.service';
     InfoInterfaceComponent,
     InfoGenerateComponent,
     InfoRequirementsComponent,
-    ThankYouComponent
+    SignUpConfirmationComponent
   ],
   imports: [
     BrowserModule,

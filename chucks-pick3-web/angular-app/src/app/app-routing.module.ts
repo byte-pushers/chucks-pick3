@@ -12,7 +12,7 @@ import {InfoGenerateComponent} from 'src/app/components/info-generate.component/
 import {InfoInterfaceComponent} from 'src/app/components/info-interface.component/info-interface.component';
 import {InfoRequirementsComponent} from 'src/app/components/info-requirements.component/info-requirements.component';
 import {InfoViewComponent} from 'src/app/components/info-view.component/info-view.component';
-import {ThankYouComponent} from 'src/app/components/thank-you.component/thank-you.component';
+import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'demo', component: DemoComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'log-in', component: LogInComponent},
-  {path: 'thank-you', component: ThankYouComponent}
+  {path: 'sign-up-confirmation', component: SignUpConfirmationComponent}
 ];
 
 @NgModule({
@@ -41,5 +41,5 @@ export const routingComponents = [
   DemoComponent,
   SignUpComponent,
   LogInComponent,
-  ThankYouComponent
+  SignUpConfirmationComponent
 ];
