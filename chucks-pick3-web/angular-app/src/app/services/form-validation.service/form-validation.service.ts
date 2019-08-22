@@ -56,6 +56,7 @@ export class FormValidationService {
     }
     return alphabetical;
   }
+
   public isSpaceInvalid(input: string): boolean {
     let spaceInvalid = false;
     const alphaChars = ' ';
@@ -73,6 +74,7 @@ export class FormValidationService {
     }
     return spaceInvalid;
   }
+
   private isAlphanumeric(input: string): boolean {
     let alphanumeric = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -100,6 +102,7 @@ export class FormValidationService {
 
     return NameIsValid;
   }
+
   public isUsernameValid(input: string): boolean {
     let NameIsValid = false;
 
@@ -109,6 +112,7 @@ export class FormValidationService {
 
     return NameIsValid;
   }
+
   public isPhoneNumberValid(input: string): boolean {
     let NumberisValid = false;
     if (this.hasData(input)) {
@@ -117,4 +121,5 @@ export class FormValidationService {
     return NumberisValid;
   }
 }
+
 
