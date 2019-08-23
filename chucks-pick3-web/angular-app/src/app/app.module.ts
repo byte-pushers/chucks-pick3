@@ -22,10 +22,13 @@ import {InfoGenerateComponent} from 'src/app/components/info-generate.component/
 import {InfoRequirementsComponent} from 'src/app/components/info-requirements.component/info-requirements.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
-import {SubNavBarService} from 'src/app/services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {UppercaseValidator} from './directives/upper-case-validator.directive';
+import { LowercaseValidator } from './directives/lower-case-validator.directive';
+import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
+import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
-
 
 @NgModule({
   declarations: [
@@ -44,6 +47,10 @@ import {MemberService} from 'src/app/services/member.service/member.service';
     InfoInterfaceComponent,
     InfoGenerateComponent,
     InfoRequirementsComponent,
+    UppercaseValidator,
+    LowercaseValidator,
+    SpecialCharactersValidator,
+    CustomerSummaryComponent,
     SignUpConfirmationComponent
   ],
   imports: [

@@ -1,42 +1,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <div class="main-content container-fluid">
-  <form class="needs-validation" novalidate>
-    <div class="row">
-      <div class=" col-xl-5 mx-auto text-left">
-        <p class="h4 text-center">Login </p>
-        <div class="info-form">
-          <div class="form-row">
-            <label for="defaultRegisterFormUserName">Username</label>
-            <input type="text" minlength="4" name="userName" maxlength="25"
-                   id="defaultRegisterFormUserName"
-                   class="form-control"
-                   placeholder="Username" onchange="checkedUserName(this)" required="required">
-            <div class="invalid-feedback userName"></div>
+<form  class="needs-validation"  #logInForm="ngForm" novalidate>
+  <div class="row">
+    <div class=" col-xl-5 mx-auto text-left">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+      <p class="h4 text-center">Login </p>
+      <div class="info-form">
+        <div class="form-row">
+          <label for="UserName">Username</label>
+          <input id="UserName"
+                 name="userName"
+                 #userName="ngModel"
+                 type="text"
+                 class="form-control" placeholder="User Name"
+                 required ngModel nameValidator>
+          <div class="alert alert-danger" *ngIf="userName.errors && (userName.dirty || userName.touched)">
+            <div *ngIf="userName.errors.required">- User name is required.</div>
+          </div>
+        <br>
+        <!-- Password -->
+        <div class="form-row">
+          <label for="Password">Password</label>
+          <input id="Password"
+                 name="password"
+                 #password="ngModel"
+                 type="text"
+                 minlength="2"
+                 class="form-control" placeholder="Password"
+                 required ngModel nameValidator>
+          <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required">- Password is required.</div>
           </div>
           <br>
-          <!-- Password -->
-          <div class="form-row">
-            <label for="defaultRegisterFormPassword">Password</label>
-            <input type="password" minlength="6" maxlength="25" name="passWord"
-                   onchange="checkPassword(this)"
-                   id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                   required="required">
-            <div class="invalid-feedback passWord ">
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="mobile-space"></div>
-            <button type="submit" value='submit' onSubmit="parent.location='login-success.html'"
-                    class="btn btn btn-success btn-lg btn-block">Submit
-            </button>
+          <br>
+          <br>
+          <div class="mobile-space"></div>
+          <button type="submit"
+                  class="btn btn btn-success submit btn-lg btn-block"
+                  [disabled]="!logInForm.form.valid" (click)="onSubmit()">
+            Submit
+          </button>
 
-            <br>
-          </div>
+          <br>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+  </div>
+</form>
 </div>
 <br>
 <div class="footer"></div>

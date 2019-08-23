@@ -57,14 +57,68 @@ export class FormValidationService {
     return alphabetical;
   }
 
+  public isLowercase(input: string): boolean {
+    let lowercase = false;
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (alphaChars.includes(character)) {
+        lowercase = true;
+
+      } else {
+        lowercase = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return lowercase;
+  }
+
+  public isUppercase(input: string): boolean {
+    let uppercase = false;
+    const alphaChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (alphaChars.includes(character)) {
+        uppercase = true;
+
+      } else {
+        uppercase = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return uppercase;
+  }
+
+  public containsSpecialChars(input: string): boolean {
+    let special = false;
+    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (specialChars.includes(character)) {
+        special = true;
+
+      } else {
+        special = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return special;
+  }
+
   public isNameValid(input: string): boolean {
-    let NameIsValid = false;
+    let nameIsValid = false;
 
     if (this.hasData(input)) {
-      NameIsValid = this.isAlphabetical(input);
+      nameIsValid = this.isAlphabetical(input);
     }
 
-    return NameIsValid;
+    return nameIsValid;
   }
 
   public isPhoneNumberValid(input: string): boolean {
