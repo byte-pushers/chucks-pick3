@@ -31,7 +31,7 @@ export class SpaceValidator implements Validator {
       } else {
         return {
           SpaceValidator: {
-            valid: false
+            valid: true
           }
         };
       }

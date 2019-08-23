@@ -19,8 +19,8 @@
                  required
                  ngModel
                  usernameValidator
-          spaceValidator>
-          <div class="alert alert-danger" *ngIf="userName.touched && !userName.valid">
+          spaceValidator >
+          <div class="alert alert-danger" role="alert" *ngIf="userName.touched && !userName.valid">
             <div *ngIf="userName.errors.required">- User name is required.</div>
             <div *ngIf="userName.errors.min">- Minimum 2 characters required.</div>
             <div *ngIf="userName.errors.usernameValidator">- May only use alphabetical and numerical characters.</div>

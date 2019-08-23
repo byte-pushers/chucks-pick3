@@ -59,18 +59,17 @@ export class FormValidationService {
 
   public isSpaceInvalid(input: string): boolean {
     let spaceInvalid = false;
-    const alphaChars = ' ';
-    const charactersArray = input.replace(/ a-z, A-Z, 1-9/g, '').split('');
-    for (const character of charactersArray) {
-      console.log(character);
-      if (alphaChars.includes(character)) {
-        spaceInvalid = false;
-
-      } else {
-        spaceInvalid = true;
-        console.log('There is a space');
-        break;
-      }
+    const spaceInput = input;
+    const spaceChar = ' ';
+    if (spaceInput === null || spaceInput === undefined) {
+      return null;
+    } else {
+        if (spaceInput === spaceChar) {
+          spaceInvalid = false;
+          console.log('There is a space');
+        } else {
+          spaceInvalid = true;
+        }
     }
     return spaceInvalid;
   }
@@ -78,7 +77,7 @@ export class FormValidationService {
   private isAlphanumeric(input: string): boolean {
     let alphanumeric = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    const charactersArray = input;
+    const charactersArray = input.split('');
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {

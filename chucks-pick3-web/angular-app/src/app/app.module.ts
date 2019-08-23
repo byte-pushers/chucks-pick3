@@ -27,6 +27,7 @@ import { UsernameValidator } from './directives/username-validator.directive';
 import { SpaceValidator } from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
+import { UserNameValidatorDirective } from './directives/user-name-validator.directive';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {MemberService} from 'src/app/services/member.service/member.service';
     InfoRequirementsComponent,
     SignUpConfirmationComponent,
     UsernameValidator,
-    SpaceValidator
+    SpaceValidator,
+    UserNameValidatorDirective
   ],
   imports: [
     BrowserModule,
