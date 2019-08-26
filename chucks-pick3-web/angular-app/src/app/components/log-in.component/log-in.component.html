@@ -13,39 +13,51 @@
                  #userName="ngModel"
                  type="text"
                  class="form-control" placeholder="User Name"
-                 required ngModel nameValidator>
+                 required
+                 ngModel
+          spaceValidator
+                 userNameValidator>
           <div class="alert alert-danger" *ngIf="userName.errors && (userName.dirty || userName.touched)">
             <div *ngIf="userName.errors.required">- User name is required.</div>
+            <div *ngIf="userName.errors.spaceValidator">- Remove spaces in user name.</div>
+            <div *ngIf="userName.errors.userNameValidator">- User name may only contain alphabetical and numerical characters. </div>
           </div>
+        </div>
         <br>
         <!-- Password -->
         <div class="form-row">
-          <label for="Password">Password</label>
-          <input id="Password"
-                 name="password"
-                 #password="ngModel"
-                 type="text"
-                 minlength="2"
-                 class="form-control" placeholder="Password"
-                 required ngModel nameValidator>
+          <label for="defaultRegisterFormPassword">Password</label>
+          <input  id="Password"
+                  name="password"
+                  #password="ngModel"
+            type="password"
+                  minlength="6"
+                  maxlength="25"
+                 id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+                  ngModel
+                 required
+          passwordValidator
+          specialCharactersValidator>
           <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
             <div *ngIf="password.errors.required">- Password is required.</div>
+            <div *ngIf="password.errors.passwordValidator">- Password is not valid.</div>
+            <div *ngIf="password.errors.minlength">- Password does not meet minimum characters.</div>
+            <div *ngIf="password.errors.min">- Password does not meet minimum characters</div>
+            <div *ngIf="password.errors.specialCharactersValidator">- Password does not meet minimum special characters</div>
+
           </div>
           <br>
           <br>
           <br>
           <div class="mobile-space"></div>
-          <button type="submit"
-                  class="btn btn btn-success submit btn-lg btn-block"
-                  [disabled]="!logInForm.form.valid" (click)="onSubmit()">
-            Submit
+          <button type="submit" value='submit' (click)="onSubmit()"
+                  class="btn btn btn-success btn-lg btn-block">Submit
           </button>
 
           <br>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </form>
 </div>

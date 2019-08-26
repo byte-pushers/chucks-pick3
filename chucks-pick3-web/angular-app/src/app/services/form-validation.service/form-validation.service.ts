@@ -38,11 +38,7 @@ export class FormValidationService {
     }
     return numeric;
   }
-  private meetsPasswordNeeds(input: string) {
-let passwordNeeds = false;
-if (input.isA)
-return passwordNeeds;
-  }
+
 
   private isAlphabetical(input: string): boolean {
     let alphabetical = false;
@@ -100,20 +96,77 @@ return passwordNeeds;
 
   public containsSpecialChars(input: string): boolean {
     let special = false;
-    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<'.split('');
-    const charactersArray = input.split('');
+    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<';
+    if (input === null || input === undefined) {
+      return null;
+    } else {
+      for (const character of input) {
+        console.log(character);
+        if (specialChars.includes(character)) {
+          special = true;
+
+        } else {
+          special = false;
+          console.log('character not valid');
+          break;
+        }
+      }
+      return special;
+    }
+  }
+
+  public hasInvalidSpace(input: string): boolean {
+    let spaceInvalid = false;
+    const spaceChar = ' ';
+    if (input === null || input === undefined) {
+      return null;
+    } else {
+      for (const character of input) {
+        console.log(character);
+        if (character.includes(spaceChar)) {
+          spaceInvalid = false;
+
+          console.log('There is a space');
+        } else {
+          spaceInvalid = true;
+          break;
+        }
+      }
+    }
+    return spaceInvalid;
+  }
+private isSpecialAlphanumeric(input: string): boolean {
+  let specialAlphanumeric = false;
+  const specialAlphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+'.split('');
+  for (const character of input) {
+    console.log(character);
+    if (specialAlphaChars.includes(character)) {
+      specialAlphanumeric = true;
+
+    } else {
+      specialAlphanumeric = false;
+      console.log('character not valid');
+      break;
+    }
+    return specialAlphanumeric;
+  }
+}
+  private isAlphanumeric(input: string): boolean {
+    let alphanumeric = false;
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
+    const charactersArray = input;
     for (const character of charactersArray) {
       console.log(character);
-      if (specialChars.includes(character)) {
-        special = true;
+      if (alphaChars.includes(character)) {
+        alphanumeric = true;
 
       } else {
-        special = false;
+        alphanumeric = false;
         console.log('character not valid');
         break;
       }
     }
-    return special;
+    return alphanumeric;
   }
 
   public isNameValid(input: string): boolean {
@@ -126,6 +179,16 @@ return passwordNeeds;
     return nameIsValid;
   }
 
+  public isUserNameValid(input: string): boolean {
+    let NameIsValid = false;
+
+    if (this.hasData(input)) {
+      NameIsValid = this.isAlphanumeric(input);
+    }
+
+    return NameIsValid;
+  }
+
   public isPhoneNumberValid(input: string): boolean {
     let NumberisValid = false;
     if (this.hasData(input)) {
@@ -133,12 +196,12 @@ return passwordNeeds;
     }
     return NumberisValid;
   }
+
   public isPasswordValid(input: string) {
-let passwordIsValid = false;
-if (this.hasData(input)) {
-  passwordIsValid = this.meetsPasswordNeeds();
-}
-return passwordIsValid;
+    let passwordIsValid = false;
+    if (this.hasData(input)) {
+      passwordIsValid = this.isSpecialAlphanumeric(input);
+    }
+    return passwordIsValid;
   }
 }
-
