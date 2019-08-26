@@ -38,6 +38,11 @@ export class FormValidationService {
     }
     return numeric;
   }
+  private meetsPasswordNeeds(input: string) {
+let passwordNeeds = false;
+if (input.isA)
+return passwordNeeds;
+  }
 
   private isAlphabetical(input: string): boolean {
     let alphabetical = false;
@@ -127,6 +132,13 @@ export class FormValidationService {
       NumberisValid = this.isNumeric(input);
     }
     return NumberisValid;
+  }
+  public isPasswordValid(input: string) {
+let passwordIsValid = false;
+if (this.hasData(input)) {
+  passwordIsValid = this.meetsPasswordNeeds();
+}
+return passwordIsValid;
   }
 }
 

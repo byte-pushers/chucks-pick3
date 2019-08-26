@@ -29,6 +29,7 @@ import { SpecialCharactersValidator } from './directives/special-characters-vali
 import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
+import { PasswordDirective } from './directives/password.directive';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {MemberService} from 'src/app/services/member.service/member.service';
     LowercaseValidator,
     SpecialCharactersValidator,
     CustomerSummaryComponent,
-    SignUpConfirmationComponent
+    SignUpConfirmationComponent,
+    PasswordDirective
   ],
   imports: [
     BrowserModule,
