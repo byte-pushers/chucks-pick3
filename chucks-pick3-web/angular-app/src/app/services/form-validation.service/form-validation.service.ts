@@ -57,27 +57,86 @@ export class FormValidationService {
     return alphabetical;
   }
 
+  public isLowercase(input: string): boolean {
+    let lowercase = false;
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (alphaChars.includes(character)) {
+        lowercase = true;
+
+      } else {
+        lowercase = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return lowercase;
+  }
+
+  public isUppercase(input: string): boolean {
+    let uppercase = false;
+    const alphaChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (alphaChars.includes(character)) {
+        uppercase = true;
+
+      } else {
+        uppercase = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return uppercase;
+  }
+
+  public containsSpecialChars(input: string): boolean {
+    let special = false;
+    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<'.split('');
+    const charactersArray = input.split('');
+    for (const character of charactersArray) {
+      console.log(character);
+      if (specialChars.includes(character)) {
+        special = true;
+
+      } else {
+        special = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return special;
+  }
+
   public isSpaceInvalid(input: string): boolean {
     let spaceInvalid = false;
-    const spaceInput = input;
     const spaceChar = ' ';
+    const spaceInput = input;
     if (spaceInput === null || spaceInput === undefined) {
-      return null;
+     return null;
     } else {
-        if (spaceInput === spaceChar) {
+      for (const character of spaceInput) {
+        console.log(character);
+        if (spaceInput.includes(spaceChar)) {
           spaceInvalid = false;
+
           console.log('There is a space');
         } else {
           spaceInvalid = true;
+          break;
         }
+      }
     }
     return spaceInvalid;
   }
 
   private isAlphanumeric(input: string): boolean {
     let alphanumeric = false;
-    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    const charactersArray = input.split('');
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
+    const charactersArray = input;
     for (const character of charactersArray) {
       console.log(character);
       if (alphaChars.includes(character)) {
@@ -93,13 +152,13 @@ export class FormValidationService {
   }
 
   public isNameValid(input: string): boolean {
-    let NameIsValid = false;
+    let nameIsValid = false;
 
     if (this.hasData(input)) {
-      NameIsValid = this.isAlphabetical(input);
+      nameIsValid = this.isAlphabetical(input);
     }
 
-    return NameIsValid;
+    return nameIsValid;
   }
 
   public isUsernameValid(input: string): boolean {
@@ -120,5 +179,3 @@ export class FormValidationService {
     return NumberisValid;
   }
 }
-
-

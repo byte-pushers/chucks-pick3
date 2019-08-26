@@ -23,12 +23,14 @@ import {InfoRequirementsComponent} from 'src/app/components/info-requirements.co
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
 import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
-import { UsernameValidator } from './directives/username-validator.directive';
+import {UppercaseValidator} from './directives/upper-case-validator.directive';
+import { LowercaseValidator } from './directives/lower-case-validator.directive';
+import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
+import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
 import { SpaceValidator } from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
-import { UserNameValidatorDirective } from './directives/user-name-validator.directive';
-
+import { UserNameValidator } from './directives/user-name-validator.directive';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,12 @@ import { UserNameValidatorDirective } from './directives/user-name-validator.dir
     InfoGenerateComponent,
     InfoRequirementsComponent,
     SignUpConfirmationComponent,
-    UsernameValidator,
     SpaceValidator,
-    UserNameValidatorDirective
+    UppercaseValidator,
+    LowercaseValidator,
+    SpecialCharactersValidator,
+    CustomerSummaryComponent,
+    UserNameValidator
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <div class="main-content container-fluid">
-<form class="needs-validation" novalidate>
-  <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+<form  class="needs-validation"  #logInForm="ngForm" novalidate>
   <div class="row">
     <div class=" col-xl-5 mx-auto text-left">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
       <p class="h4 text-center">Login </p>
       <div class="info-form">
         <div class="form-row">
-          <label for="defaultRegisterFormUserName">Username</label>
-          <input type="text"
-                 minlength="2"
-                 maxlength="25"
+          <label for="UserName">Username</label>
+          <input id="UserName"
                  name="userName"
                  #userName="ngModel"
-                 id="defaultRegisterFormUserName"
-                 class="form-control"
-                 placeholder="Username"
+                 type="text"
+                 class="form-control" placeholder="User Name"
                  required
                  ngModel
-                 usernameValidator
-          spaceValidator >
-          <div class="alert alert-danger" role="alert" *ngIf="userName.touched && !userName.valid">
+          spaceValidator
+                 userNameValidator>
+          <div class="alert alert-danger" *ngIf="userName.errors && (userName.dirty || userName.touched)">
             <div *ngIf="userName.errors.required">- User name is required.</div>
-            <div *ngIf="userName.errors.min">- Minimum 2 characters required.</div>
-            <div *ngIf="userName.errors.usernameValidator">- May only use alphabetical and numerical characters.</div>
-            <div *ngIf="userName.errors.spaceValidator">- Not allowed to have spaces.</div>
+            <div *ngIf="userName.errors.spaceValidator">- Remove spaces in user name.</div>
+            <div *ngIf="userName.errors.userNameValidator">- User name may only contain alphabetical and numerical characters. </div>
           </div>
         </div>
         <br>

@@ -1,10 +1,40 @@
-import { Directive } from '@angular/core';
+import {NG_VALIDATORS, FormControl, ValidatorFn, Validator} from '@angular/forms';
+import {FormValidationService} from '../services/form-validation.service/form-validation.service';
+import {Directive} from '@angular/core';
 
 @Directive({
-  selector: '[appUserNameValidator]'
+  // tslint:disable-next-line:directive-selector
+  selector: '[userNameValidator] [ngModel]',
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: UserNameValidator,
+      multi: true
+    }
+  ]
 })
-export class UserNameValidatorDirective {
+export class UserNameValidator implements Validator {
+  public validator: ValidatorFn;
 
-  constructor() { }
+  constructor(private formValidationService: FormValidationService) {
+    this.validator = this.userNameValidator();
+  }
 
+  validate(c: FormControl) {
+    return this.validator(c);
+  }
+
+  public userNameValidator(): ValidatorFn {
+    return (c: FormControl) => {
+      if (this.formValidationService.isUsernameValid(c.value)) {
+        return null;
+      } else {
+        return {
+          userNameValidator: {
+            valid: false
+          }
+        };
+      }
+    };
+  }
 }
