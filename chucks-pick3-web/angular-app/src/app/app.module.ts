@@ -27,8 +27,10 @@ import {UppercaseValidator} from './directives/upper-case-validator.directive';
 import { LowercaseValidator } from './directives/lower-case-validator.directive';
 import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
 import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
+import { SpaceValidator } from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
+import { UserNameValidator } from './directives/user-name-validator.directive';
 
 @NgModule({
   declarations: [
@@ -47,11 +49,13 @@ import {MemberService} from 'src/app/services/member.service/member.service';
     InfoInterfaceComponent,
     InfoGenerateComponent,
     InfoRequirementsComponent,
+    SignUpConfirmationComponent,
+    SpaceValidator,
     UppercaseValidator,
     LowercaseValidator,
     SpecialCharactersValidator,
     CustomerSummaryComponent,
-    SignUpConfirmationComponent
+    UserNameValidator
   ],
   imports: [
     BrowserModule,

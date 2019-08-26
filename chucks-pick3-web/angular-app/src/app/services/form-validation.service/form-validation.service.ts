@@ -111,6 +111,45 @@ export class FormValidationService {
     return special;
   }
 
+  public hasInvalidSpace(input: string): boolean {
+    let spaceInvalid = false;
+    const spaceChar = ' ';
+    if (input === null || input === undefined) {
+     return null;
+    } else {
+      for (const character of input) {
+        console.log(character);
+        if (character.includes(spaceChar)) {
+          spaceInvalid = false;
+
+          console.log('There is a space');
+        } else {
+          spaceInvalid = true;
+          break;
+        }
+      }
+    }
+    return spaceInvalid;
+  }
+
+  private isAlphanumeric(input: string): boolean {
+    let alphanumeric = false;
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
+    const charactersArray = input;
+    for (const character of charactersArray) {
+      console.log(character);
+      if (alphaChars.includes(character)) {
+        alphanumeric = true;
+
+      } else {
+        alphanumeric = false;
+        console.log('character not valid');
+        break;
+      }
+    }
+    return alphanumeric;
+  }
+
   public isNameValid(input: string): boolean {
     let nameIsValid = false;
 
@@ -121,6 +160,16 @@ export class FormValidationService {
     return nameIsValid;
   }
 
+  public isUserNameValid(input: string): boolean {
+    let NameIsValid = false;
+
+    if (this.hasData(input)) {
+      NameIsValid = this.isAlphanumeric(input);
+    }
+
+    return NameIsValid;
+  }
+
   public isPhoneNumberValid(input: string): boolean {
     let NumberisValid = false;
     if (this.hasData(input)) {
@@ -129,4 +178,3 @@ export class FormValidationService {
     return NumberisValid;
   }
 }
-
