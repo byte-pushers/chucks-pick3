@@ -26,7 +26,7 @@ export class UserNameValidator implements Validator {
 
   public userNameValidator(): ValidatorFn {
     return (c: FormControl) => {
-      if (this.formValidationService.isUsernameValid(c.value)) {
+      if (this.formValidationService.isUserNameValid(c.value)) {
         return null;
       } else {
         return {

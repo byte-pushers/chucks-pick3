@@ -111,16 +111,15 @@ export class FormValidationService {
     return special;
   }
 
-  public isSpaceInvalid(input: string): boolean {
+  public hasInvalidSpace(input: string): boolean {
     let spaceInvalid = false;
     const spaceChar = ' ';
-    const spaceInput = input;
-    if (spaceInput === null || spaceInput === undefined) {
+    if (input === null || input === undefined) {
      return null;
     } else {
-      for (const character of spaceInput) {
+      for (const character of input) {
         console.log(character);
-        if (spaceInput.includes(spaceChar)) {
+        if (character.includes(spaceChar)) {
           spaceInvalid = false;
 
           console.log('There is a space');
@@ -161,7 +160,7 @@ export class FormValidationService {
     return nameIsValid;
   }
 
-  public isUsernameValid(input: string): boolean {
+  public isUserNameValid(input: string): boolean {
     let NameIsValid = false;
 
     if (this.hasData(input)) {

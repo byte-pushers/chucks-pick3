@@ -26,7 +26,7 @@ export class SpaceValidator implements Validator {
 
   public spaceValidator(): ValidatorFn {
     return (c: FormControl) => {
-      if (this.formValidationService.isSpaceInvalid(c.value)) {
+      if (this.formValidationService.hasInvalidSpace(c.value)) {
         return null;
       } else {
         return {
