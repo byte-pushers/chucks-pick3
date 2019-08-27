@@ -137,7 +137,7 @@ export class FormValidationService {
   }
 private isSpecialAlphanumeric(input: string): boolean {
   let specialAlphanumeric = false;
-  const specialAlphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+'.split('');
+  const specialAlphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+';
   for (const character of input) {
     console.log(character);
     if (specialAlphaChars.includes(character)) {
