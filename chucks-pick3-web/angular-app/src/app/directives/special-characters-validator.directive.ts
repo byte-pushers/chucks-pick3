@@ -27,7 +27,7 @@ export class SpecialCharactersValidator implements Validator {
   public specialCharactersValidator(): ValidatorFn {
     return (c: FormControl) => {
 
-      if (this.formValidationService.containsSpecialChars(c.value)) {
+      if (this.formValidationService.hasSpecialCharacters(c.value)) {
         return null;
       } else {
         return {
