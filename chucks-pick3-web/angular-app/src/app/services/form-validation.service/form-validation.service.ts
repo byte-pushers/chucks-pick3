@@ -32,7 +32,6 @@ export class FormValidationService {
         numeric = true;
       } else {
         numeric = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -51,7 +50,6 @@ export class FormValidationService {
 
       } else {
         alphabetical = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -69,7 +67,6 @@ export class FormValidationService {
 
       } else {
         lowercase = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -87,7 +84,6 @@ export class FormValidationService {
 
       } else {
         uppercase = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -97,17 +93,13 @@ export class FormValidationService {
   public hasSpecialCharacters(input: string): boolean {
     let special = false;
     const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<';
-    if (input === null || input === undefined) {
-      return special;
-    } else {
+    if (input != null || input !== undefined) {
       for (const character of input) {
-        console.log(character);
-        if (specialChars.match(character)) {
+        if (specialChars.includes(character)) {
           special = true;
 
         } else {
           special = false;
-          console.log('character not valid');
           break;
         }
       }
@@ -118,52 +110,27 @@ export class FormValidationService {
   public hasInvalidSpace(input: string): boolean {
     let spaceInvalid = false;
     const spaceChar = ' ';
-    if (input === null || input === undefined) {
-      return spaceInvalid;
-    } else {
-      for (const character of input) {
-        console.log(character);
-        if (character.includes(spaceChar)) {
-          spaceInvalid = false;
-
-          console.log('There is a space');
-        } else {
-          spaceInvalid = true;
-          break;
-        }
+    if (input != null || input !== undefined) {
+      if (spaceChar.includes(input)) {
+        spaceInvalid = false;
+      } else {
+        spaceInvalid = true;
       }
     }
     return spaceInvalid;
   }
 
-  private isSpecialAlphanumeric(input: string): boolean {
-    let specialAlphaNumeric = false;
-    const specialAlphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+';
-    for (const character of input) {
-      console.log(character);
-      if (specialAlphaChars.includes(character)) {
-        specialAlphaNumeric = true;
-
-      } else {
-        specialAlphaNumeric = false;
-        console.log('character not valid');
-        break;
-      }
-      return specialAlphaNumeric;
-    }
-  }
 
   private isAlphaNumeric(input: string): boolean {
     let alphaNumeric = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     for (const character of input) {
       console.log(character);
-      if (alphaChars.match(character)) {
+      if (alphaChars.includes(character)) {
         alphaNumeric = true;
 
       } else {
         alphaNumeric = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -201,27 +168,19 @@ export class FormValidationService {
   public isPasswordValid(input: string) {
     let passwordIsValid = false;
     if (this.hasData(input)) {
-      passwordIsValid = this.isAlphaNumeric(input);
-      if (passwordIsValid === false) {
-        passwordIsValid = this.hasSpecialCharacters(input);
-        if (passwordIsValid === false) {
-          passwordIsValid = this.hasInvalidSpace(input);
-          if (passwordIsValid === false) {
-            passwordIsValid = true;
-          } else if (passwordIsValid === true) {
-            passwordIsValid = false;
-          }
-        } else if (passwordIsValid === true) {
-          passwordIsValid = false;
-        }
-      } else if (passwordIsValid === true) {
-        passwordIsValid = this.hasSpecialCharacters(input);
-        if (passwordIsValid === false) {
-          passwordIsValid = false;
-        }
+      const passwordCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+';
+      for (const character of input) {
+        console.log(character);
+        if (passwordCharacters.includes(character)) {
+          passwordIsValid = true;
 
+        } else {
+          passwordIsValid = false;
+          break;
+        }
       }
     }
     return passwordIsValid;
   }
 }
+
