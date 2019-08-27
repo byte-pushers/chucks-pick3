@@ -211,7 +211,9 @@ export class FormValidationService {
           } else if (passwordIsValid === true) {
             passwordIsValid = false;
           }
-        } else if (passwordIsValid === true) { passwordIsValid = false; }
+        } else if (passwordIsValid === true) {
+          passwordIsValid = false;
+        }
       } else if (passwordIsValid === true) {
         passwordIsValid = this.hasSpecialCharacters(input);
         if (passwordIsValid === false) {
