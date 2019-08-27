@@ -1,24 +1,36 @@
 .options {
+  display: block;
   margin: 10px;
+  width: 100%;
+  height: 100px;
+  line-height: 2em;
+
 }
 
 .campaign {
+  display: block;
   width: 50%;
   float: left;
-  margin: 5px;
+
 }
 
 .add {
-  width: 50%;
+  width: 49%;
   float: left;
+  margin-right: 3px;
+
 }
 
 .delete {
-  width: 50%;
+  width: 49%;
   float: right;
+  margin-left: 3px;
+
 }
 
 .buttons {
+  display: block;
   float: right;
-  width: 50%;
+  width: 47%;
+  margin-top: 6%;
 }
