@@ -36,15 +36,11 @@
                  id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
                   ngModel
                  required
-          passwordValidator
-          specialCharactersValidator>
+          passwordValidator>
           <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
             <div *ngIf="password.errors.required">- Password is required.</div>
             <div *ngIf="password.errors.passwordValidator">- Password is not valid.</div>
             <div *ngIf="password.errors.minlength">- Password does not meet minimum characters.</div>
-            <div *ngIf="password.errors.min">- Password does not meet minimum characters</div>
-            <div *ngIf="password.errors.specialCharactersValidator">- Password does not meet minimum special characters</div>
-
           </div>
           <br>
           <br>

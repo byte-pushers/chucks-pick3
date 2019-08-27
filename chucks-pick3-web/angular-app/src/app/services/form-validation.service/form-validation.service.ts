@@ -150,7 +150,7 @@ private isSpecialAlphanumeric(input: string): boolean {
     }
     return specialAlphanumeric;
   }
-}
+  }
   private isAlphanumeric(input: string): boolean {
     let alphanumeric = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
