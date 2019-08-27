@@ -1,3 +1,73 @@
-<p>
-  customer-summary works!
-</p>
+<div class="form-row options">
+  <div class="form-col campaign">
+    <label for="emailCampaign">Email Campaign</label>
+    <label for="emailCampaign"></label>
+    <select #dropDownEmailCampaign="ngModel"
+            name="dropDownHowOftenName"
+            class="custom-select" id="emailCampaign"
+            required
+            ngModel>
+      <option value="" selected>No option selected</option>
+      <option value="Often">Option 1</option>
+      <option value="Sometimes">Option 2</option>
+      <option value="Never">Option 3</option>
+    </select>
+  </div>
+  <div class="buttons">
+  <div class="col-sm">
+    <button type="submit"
+            class="btn btn add btn-success btn-sm btn-block">
+    Add
+    </button>
+  </div>
+  <div class="col-sm">
+    <button type="submit"
+            class="btn btn add btn-danger btn-sm btn-block">
+      Delete All
+    </button>
+  </div>
+  </div>
+  <table class="table">
+<thead>
+<tr>
+<th scope="col">First Name</th>
+  <th scope="col">Last Name</th>
+  <th scope="col">Email</th>
+  <th scope="col">Phone</th>
+  <th scope="col">City</th>
+  <th scope="col">State</th>
+  <th scope="col">Action</th>
+</tr>
+</thead>
+    <tbody>
+    <tr>
+  <th scope="col">Bill</th>
+  <th scope="col">Smith</th>
+  <th scope="col">bsmith@gmail.com</th>
+  <th scope="col">555-555-5555</th>
+  <th scope="col">Dallas</th>
+  <th scope="col">Texas</th>
+  <th scope="col">x</th>
+    </tr>
+    <tr>
+      <th scope="col">Jared</th>
+      <th scope="col">Taylor</th>
+      <th scope="col">jtaylor@gmail.com</th>
+      <th scope="col">555-555-5555</th>
+      <th scope="col">Reno</th>
+      <th scope="col">Nevada</th>
+      <th scope="col">x</th>
+    </tr>
+    <tr>
+      <th scope="col">Cameron</th>
+      <th scope="col">Kirk</th>
+      <th scope="col">ckirk@gmail.com</th>
+      <th scope="col">555-555-5555</th>
+      <th scope="col">Portland</th>
+      <th scope="col">Oregon</th>
+      <th scope="col">x</th>
+    </tr>
+  </tbody>
+
+  </table>
+</div>

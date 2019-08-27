@@ -1,0 +1,24 @@
+.options {
+  margin: 10px;
+}
+
+.campaign {
+  width: 50%;
+  float: left;
+  margin: 5px;
+}
+
+.add {
+  width: 50%;
+  float: left;
+}
+
+.delete {
+  width: 50%;
+  float: right;
+}
+
+.buttons {
+  float: right;
+  width: 50%;
+}
