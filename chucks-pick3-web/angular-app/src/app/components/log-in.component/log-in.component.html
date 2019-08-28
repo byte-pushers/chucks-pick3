@@ -26,18 +26,27 @@
         <br>
         <!-- Password -->
         <div class="form-row">
-          <label for="defaultRegisterFormPassword">Password</label>
-          <input type="password" minlength="6" maxlength="25" name="passWord"
-                 onchange="checkPassword(this)"
-                 id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-                 required="required">
-          <div class="invalid-feedback passWord ">
+          <label for="password">Password</label>
+          <input  id="password"
+                  name="password"
+                  #password="ngModel"
+            type="password"
+                  minlength="6"
+                  maxlength="25"
+                  class="form-control" placeholder="Password"
+                  ngModel
+                 required
+          passwordValidator>
+          <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required">- Password is required.</div>
+            <div *ngIf="password.errors.passwordValidator">- Password is not valid.</div>
+            <div *ngIf="password.errors.minlength">- Password does not meet minimum characters.</div>
           </div>
           <br>
           <br>
           <br>
           <div class="mobile-space"></div>
-          <button type="submit" value='submit' (click)="onSubmit()"
+          <button type="submit" value='submit' [disabled]="!logInForm.form.valid" (click)="onSubmit()"
                   class="btn btn btn-success btn-lg btn-block">Submit
           </button>
 

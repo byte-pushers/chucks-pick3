@@ -31,6 +31,7 @@ import { SpaceValidator } from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service/member.service';
 import { UserNameValidator } from './directives/user-name-validator.directive';
+import { PasswordValidator } from './directives/password.directive';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UserNameValidator } from './directives/user-name-validator.directive';
     LowercaseValidator,
     SpecialCharactersValidator,
     CustomerSummaryComponent,
-    UserNameValidator
+    UserNameValidator,
+    PasswordValidator
   ],
   imports: [
     BrowserModule,
