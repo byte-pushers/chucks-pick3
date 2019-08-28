@@ -93,7 +93,7 @@ export class FormValidationService {
   public hasSpecialCharacters(input: string): boolean {
     let special = false;
     const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<';
-    if (input != null || input !== undefined) {
+    if (input !== null && input !== undefined) {
       for (const character of input) {
         if (specialChars.includes(character)) {
           special = true;
@@ -110,7 +110,7 @@ export class FormValidationService {
   public hasInvalidSpace(input: string): boolean {
     let spaceInvalid = false;
     const spaceChar = ' ';
-    if (input != null || input !== undefined) {
+    if (input !== null && input !== undefined) {
       if (spaceChar.includes(input)) {
         spaceInvalid = false;
       } else {
