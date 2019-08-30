@@ -23,7 +23,9 @@ position: relative;
 .table {
   display: block;
   position: relative;
+  font-size: 13px;
 }
+
 
 .add {
   width: 49%;
