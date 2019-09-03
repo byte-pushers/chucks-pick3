@@ -32,12 +32,12 @@ export class FormValidationService {
         numeric = true;
       } else {
         numeric = false;
-        console.log('character not valid');
         break;
       }
     }
     return numeric;
   }
+
 
   private isAlphabetical(input: string): boolean {
     let alphabetical = false;
@@ -50,7 +50,6 @@ export class FormValidationService {
 
       } else {
         alphabetical = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -68,7 +67,6 @@ export class FormValidationService {
 
       } else {
         lowercase = false;
-        console.log('character not valid');
         break;
       }
     }
@@ -86,26 +84,24 @@ export class FormValidationService {
 
       } else {
         uppercase = false;
-        console.log('character not valid');
         break;
       }
     }
     return uppercase;
   }
 
-  public containsSpecialChars(input: string): boolean {
+  public hasSpecialCharacters(input: string): boolean {
     let special = false;
-    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<'.split('');
-    const charactersArray = input.split('');
-    for (const character of charactersArray) {
-      console.log(character);
-      if (specialChars.includes(character)) {
-        special = true;
+    const specialChars = '!@#$%^&*()_+=-[]{}\"|/?.>,<';
+    if (input !== null && input !== undefined) {
+      for (const character of input) {
+        if (specialChars.includes(character)) {
+          special = true;
 
-      } else {
-        special = false;
-        console.log('character not valid');
-        break;
+        } else {
+          special = false;
+          break;
+        }
       }
     }
     return special;
@@ -114,40 +110,31 @@ export class FormValidationService {
   public hasInvalidSpace(input: string): boolean {
     let spaceInvalid = false;
     const spaceChar = ' ';
-    if (input === null || input === undefined) {
-     return null;
-    } else {
-      for (const character of input) {
-        console.log(character);
-        if (character.includes(spaceChar)) {
-          spaceInvalid = false;
-
-          console.log('There is a space');
-        } else {
-          spaceInvalid = true;
-          break;
-        }
+    if (input !== null && input !== undefined) {
+      if (spaceChar.includes(input)) {
+        spaceInvalid = false;
+      } else {
+        spaceInvalid = true;
       }
     }
     return spaceInvalid;
   }
 
-  private isAlphanumeric(input: string): boolean {
-    let alphanumeric = false;
-    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'.split('');
-    const charactersArray = input;
-    for (const character of charactersArray) {
+
+  private isAlphaNumeric(input: string): boolean {
+    let alphaNumeric = false;
+    const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    for (const character of input) {
       console.log(character);
       if (alphaChars.includes(character)) {
-        alphanumeric = true;
+        alphaNumeric = true;
 
       } else {
-        alphanumeric = false;
-        console.log('character not valid');
+        alphaNumeric = false;
         break;
       }
     }
-    return alphanumeric;
+    return alphaNumeric;
   }
 
   public isNameValid(input: string): boolean {
@@ -164,7 +151,7 @@ export class FormValidationService {
     let NameIsValid = false;
 
     if (this.hasData(input)) {
-      NameIsValid = this.isAlphanumeric(input);
+      NameIsValid = this.isAlphaNumeric(input);
     }
 
     return NameIsValid;
@@ -177,4 +164,23 @@ export class FormValidationService {
     }
     return NumberisValid;
   }
+
+  public isPasswordValid(input: string) {
+    let passwordIsValid = false;
+    if (this.hasData(input)) {
+      const passwordCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+';
+      for (const character of input) {
+        console.log(character);
+        if (passwordCharacters.includes(character)) {
+          passwordIsValid = true;
+
+        } else {
+          passwordIsValid = false;
+          break;
+        }
+      }
+    }
+    return passwordIsValid;
+  }
 }
+

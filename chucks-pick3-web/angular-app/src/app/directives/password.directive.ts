@@ -1,37 +1,36 @@
 import {NG_VALIDATORS, FormControl, ValidatorFn, Validator} from '@angular/forms';
-import {FormValidationService} from '../services/form-validation.service/form-validation.service';
+import {FormValidationService} from 'src/app/services/form-validation.service/form-validation.service';
 import {Directive} from '@angular/core';
 
-// @ts-ignore
-// @ts-ignore
 @Directive({
   // tslint:disable-next-line:directive-selector
-  selector: '[specialCharactersValidator] [ngModel]',
+  selector: '[passwordValidator] [ngModel]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: SpecialCharactersValidator,
+      useExisting: PasswordValidator,
       multi: true
     }
   ]
 })
-export class SpecialCharactersValidator implements Validator {
+export class PasswordValidator implements Validator {
   public validator: ValidatorFn;
+
   constructor(private formValidationService: FormValidationService) {
-    this.validator = this.specialCharactersValidator();
+    this.validator = this.passwordValidator();
   }
+
   validate(c: FormControl) {
     return this.validator(c);
   }
 
-  public specialCharactersValidator(): ValidatorFn {
+  public passwordValidator(): ValidatorFn {
     return (c: FormControl) => {
-
-      if (this.formValidationService.hasSpecialCharacters(c.value)) {
+      if (this.formValidationService.isPasswordValid(c.value)) {
         return null;
       } else {
         return {
-          specialCharactersValidator: {
+          passwordValidator: {
             valid: false
           }
         };
