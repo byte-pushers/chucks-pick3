@@ -36,7 +36,6 @@ export class CustomerSummaryComponent implements OnInit {
     if (customer !== null && customer !== undefined) {
       for (const customerIndex of customerArray) {
         if (customerIndex.id.includes(customer.id)) {
-          /*    const customerSelect = customerArray.indexOf(customer);*/
           this.customers.splice(0, 1);
         }
       }
@@ -45,7 +44,6 @@ export class CustomerSummaryComponent implements OnInit {
 
   public addRow() {
     const customer = this.customers;
-    /* this.customers.forEach(customer => {*/
     // TODO: create a new customer.
     const johnBowman = {
       firstName: 'John',
