@@ -19,7 +19,7 @@
   <div class="buttons">
     <div class="col-sm">
       <button type="button"
-              class="btn btn add btn-success btn-sm btn-block" (click)="addRow(customers)">
+              class="btn btn add btn-success btn-sm btn-block" (click)="addRow()">
         Add
       </button>
     </div>
@@ -59,7 +59,7 @@
     <th scope="col">{{customer.state}}</th>
     <th scope="col">
       <button type="button"
-              class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)">
+              class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
         Delete
       </button>
     </th>

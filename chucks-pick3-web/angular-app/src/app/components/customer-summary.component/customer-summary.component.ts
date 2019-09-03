@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
 import {CustomerInfoModel} from '../../models/customer-info.model';
+import index from "@angular/cli/lib/cli";
+import {queueComponentIndexForCheck} from "@angular/core/src/render3/instructions";
 
 
 @Component({
@@ -22,56 +24,42 @@ export class CustomerSummaryComponent implements OnInit {
         email: 'docampo@bytepushers.software',
         phone: '555-555-5555',
         city: 'Denton',
-        state: 'Texas'
-      },
-      {
-        firstName: 'Mark',
-        lastName: 'Caroll',
-        email: 'mcarroll@gmail.com',
-        phone: '555-555-5555',
-        city: 'Elko',
-        state: 'Nevada'
-      },
-      {
-        firstName: 'George',
-        lastName: 'Anderson',
-        email: 'ganderson@gmail.com',
-        phone: '555-555-5555',
-        city: 'Los Angeles',
-        state: 'California'
-      },
-      {
-        firstName: 'Henry',
-        lastName: 'Smith',
-        email: 'hsmith@gmail.com',
-        phone: '555-555-5555',
-        city: 'Boston',
-        state: 'Massachusetts'
-      }
-    ];
+        state: 'Texas',
+        id: '22'
+      }];
   }
 
 
   public deleteRow(customer) {
+    const customerArray = this.customers;
+    const customerValue = customer.id;
     if (customer !== null && customer !== undefined) {
-      this.customers.splice(customer, 1);
+      for (const customerIndex of customerArray) {
+        if (customerIndex.id.includes(customer.id)) {
+          /*    const customerSelect = customerArray.indexOf(customer);*/
+          this.customers.splice(0, 1);
+        }
+      }
     }
   }
 
-  public addRow(customer) {
-
+  public addRow() {
+    const customer = this.customers;
     /* this.customers.forEach(customer => {*/
     // TODO: create a new customer.
-    customer[4] = {
+    const johnBowman = {
       firstName: 'John',
       lastName: 'Bowman',
       email: 'jbowman@gmail.com',
       phone: '555-555-5555',
       city: 'Chicago',
-      state: 'Illinois'
+      state: 'Illinois',
+      id: '76'
     };
+    // TODO: const aCustomer = this.generateCustomer()
+
     // TODO: add new customer to array.
-    customer.push();
+    customer.push(johnBowman);
     /*   });*/
   }
 }
