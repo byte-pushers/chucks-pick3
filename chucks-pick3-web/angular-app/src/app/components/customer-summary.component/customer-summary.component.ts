@@ -35,8 +35,8 @@ export class CustomerSummaryComponent implements OnInit {
     const customerValue = customer.id;
     if (customer !== null && customer !== undefined) {
       for (const customerIndex of customerArray) {
-        if (customerIndex.id.includes(customer.id)) {
-          this.customers.splice(customer, 1);
+        if (customerIndex.id.includes(customerValue)) {
+          this.customers.splice(this.customers.indexOf(customer), 1);
         }
       }
     }
