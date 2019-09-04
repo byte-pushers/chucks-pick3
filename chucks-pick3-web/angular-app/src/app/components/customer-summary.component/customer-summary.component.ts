@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
 
 
-
 @Component({
   selector: 'app-customer-summary',
   templateUrl: './customer-summary.component.html',
@@ -27,15 +26,6 @@ export class CustomerSummaryComponent implements OnInit {
       }];
   }
 
-  /*  private matchIndex(indexEntry) {
-      const customerArray = this.customers.indexOf(indexEntry, 0);
-      if (customerArray.match(indexEntry)) {
-        console.log(indexEntry);
-  } else {
-        return false;
-      }
-      return;
-    }*/
 
   public deleteRow(targetCustomer) {
     let targetCustomerIndex;
