@@ -8,6 +8,6 @@ export interface CustomerInfo {
   phone: string;
   city: string;
   state: string;
-  id: string;
+  id: number;
 
 }

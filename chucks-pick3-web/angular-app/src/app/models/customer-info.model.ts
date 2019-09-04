@@ -7,29 +7,15 @@ export class CustomerInfoModel implements CustomerInfo {
   public phone: string;
   public city: string;
   public state: string;
-  public id: string;
+  public id: number;
 
   constructor(config: CustomerInfo) {
-    if (config != null && config !== undefined) {
-      this.firstName = config.firstName;
-    }
-    if (config != null && config !== undefined) {
-      this.lastName = config.lastName;
-    }
-    if (config != null && config !== undefined) {
-      this.email = config.email;
-    }
-    if (config != null && config !== undefined) {
-      this.phone = config.phone;
-    }
-    if (config != null && config !== undefined) {
-      this.city = config.city;
-    }
-    if (config != null && config !== undefined) {
-      this.state = config.state;
-    }
-    if (config != null && config !== undefined) {
-      this.id = config.id;
-    }
+    this.firstName =  (config !== null && config !== undefined) ? config.firstName : undefined;
+    this.lastName =  (config !== null && config !== undefined) ? config.lastName : undefined;
+    this.email =  (config !== null && config !== undefined) ? config.email : undefined;
+    this.phone =  (config !== null && config !== undefined) ? config.phone : undefined;
+    this.city =  (config !== null && config !== undefined) ? config.city : undefined;
+    this.state =  (config !== null && config !== undefined) ? config.state : undefined;
+    this.id =  (config !== null && config !== undefined) ? config.id : undefined;
     }
   }
