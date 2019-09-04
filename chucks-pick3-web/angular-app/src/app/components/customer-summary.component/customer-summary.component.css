@@ -1,0 +1,49 @@
+.options {
+  margin: 20px;
+  width: 100%;
+  height: 100px;
+  line-height: 2em;
+position: relative;
+}
+
+.customer-title-section {
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+.campaign {
+  display: block;
+  width: 50%;
+  float: left;
+
+}
+.table {
+  display: block;
+  position: relative;
+  font-size: 13px;
+}
+
+
+.add {
+  width: 49%;
+  float: left;
+  margin-right: 3px;
+
+}
+
+.delete {
+  width: 49%;
+  float: right;
+  margin-left: 3px;
+
+}
+
+.buttons {
+  display: block;
+  float: right;
+  width: 47%;
+  margin-top: 6%;
+}

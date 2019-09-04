@@ -1,3 +1,70 @@
-<p>
-  customer-summary works!
-</p>
+<div class="customer-title-section">
+  <h1><b>Customer Summary</b></h1>
+</div>
+<div class="form-row options">
+  <div class="form-col campaign">
+    <label for="emailCampaign">Email Campaign</label>
+    <label for="emailCampaign"></label>
+    <select #dropDownEmailCampaign="ngModel"
+            name="dropDownHowOftenName"
+            class="custom-select" id="emailCampaign"
+            required
+            ngModel>
+      <option value="" selected>No option selected</option>
+      <option value="Often">Option 1</option>
+      <option value="Sometimes">Option 2</option>
+      <option value="Never">Option 3</option>
+    </select>
+  </div>
+  <div class="buttons">
+    <div class="col-sm">
+      <button type="button"
+              class="btn btn add btn-success btn-sm btn-block" (click)="addRow()">
+        Add
+      </button>
+    </div>
+    <div class="col-sm">
+      <button type="button"
+              class="btn btn add btn-danger btn-sm btn-block">
+        Delete All
+      </button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped" id="table">
+  <thead>
+  <tr>
+    <th scope="col"><!--checkbox--></th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Phone</th>
+    <th scope="col">City</th>
+    <th scope="col">State</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor=" let customer of customers">
+    <th scope="col">
+      <div class="checkbox">
+        <input type="checkbox" value="">
+      </div>
+    </th>
+    <th scope="col">{{customer.firstName}}</th>
+    <th scope="col">{{customer.lastName}}</th>
+    <th scope="col">{{customer.email}}</th>
+    <th scope="col">{{customer.phone}}</th>
+    <th scope="col">{{customer.city}}</th>
+    <th scope="col">{{customer.state}}</th>
+    <th scope="col">
+      <button type="button"
+              class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
+        Delete
+      </button>
+    </th>
+  </tr>
+  </tbody>
+
+</table>
+
