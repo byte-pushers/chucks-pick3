@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
-import {CustomerInfoModel} from '../../models/customer-info.model';
-import index from "@angular/cli/lib/cli";
-import {queueComponentIndexForCheck} from "@angular/core/src/render3/instructions";
-import {forEach} from "@angular/router/src/utils/collection";
+
 
 
 @Component({
