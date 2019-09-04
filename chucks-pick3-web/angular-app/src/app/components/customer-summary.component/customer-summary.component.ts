@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
+import {privateEntriesToIndex} from "@angular/compiler-cli/src/metadata/index_writer";
+import index from "@angular/cli/lib/cli";
 
 
 @Component({
@@ -46,8 +48,8 @@ export class CustomerSummaryComponent implements OnInit {
   public addRow() {
     const customer = this.customers;
     // TODO: create a new customer.
-    const johnBowman = {
-      firstName: 'John',
+    const newCust = {
+      firstName: this.generateCustomer(),
       lastName: 'Bowman',
       email: 'jbowman@gmail.com',
       phone: '555-555-5555',
@@ -56,9 +58,17 @@ export class CustomerSummaryComponent implements OnInit {
       id: 76
     };
     // TODO: const aCustomer = this.generateCustomer()
-
     // TODO: add new customer to array.
-    customer.push(johnBowman);
+    customer.push(newCust);
     /*   });*/
   }
+
+  private generateCustomer() {
+    const firstName =
+      [
+        'Harvey', 'Murray', 'Jack'
+      ];
+    return firstName[Math.floor(Math.random() * 3)];
+  }
 }
+
