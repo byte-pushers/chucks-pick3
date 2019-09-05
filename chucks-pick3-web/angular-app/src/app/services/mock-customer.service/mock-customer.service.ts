@@ -72,13 +72,8 @@ export class MockCustomerService {
   }
 
   public generateId() {
-    const idName =
-      [
-        234,
-        45,
-        97
-      ];
-    return idName[Math.floor(Math.random() * idName.length)];
+    const idName =  Math.floor(Math.random() * 999);
+    return idName;
   }
   public generatePhone() {
     const areaCode =
