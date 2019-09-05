@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GenerateCustomerService {
+export class MockCustomerService {
 
   constructor() { }
   public generateCustomer() {
@@ -48,7 +48,7 @@ export class GenerateCustomerService {
         'supernintendo@gmail.com'
       ];
     // TODO find way to combine first and last name in order to create email.
-    const chosenEmail = [Math.floor(Math.random() * email.length)];
+    return email[Math.floor(Math.random() * email.length)];
 
   }
 
