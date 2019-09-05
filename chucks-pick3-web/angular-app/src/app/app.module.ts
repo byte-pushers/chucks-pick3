@@ -32,6 +32,7 @@ import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmati
 import {MemberService} from 'src/app/services/member.service/member.service';
 import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
+import { GenerateCustomerService } from './services/generate-customer.service/generate-customer.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { PasswordValidator } from './directives/password.directive';
     MemberService,
     SubNavBarService,
     FormValidationService,
+    GenerateCustomerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
