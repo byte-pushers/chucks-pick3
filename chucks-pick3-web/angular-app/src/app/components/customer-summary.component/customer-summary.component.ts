@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
+import {privateEntriesToIndex} from "@angular/compiler-cli/src/metadata/index_writer";
+import index from "@angular/cli/lib/cli";
 
 
 @Component({
@@ -46,19 +48,78 @@ export class CustomerSummaryComponent implements OnInit {
   public addRow() {
     const customer = this.customers;
     // TODO: create a new customer.
-    const johnBowman = {
-      firstName: 'John',
-      lastName: 'Bowman',
-      email: 'jbowman@gmail.com',
+    const newCust = {
+      firstName: this.generateFirstName(),
+      lastName: this.generateLastName(),
+      email: this.generateEmail(),
       phone: '555-555-5555',
-      city: 'Chicago',
-      state: 'Illinois',
-      id: 76
+      city: this.generateCity(),
+      state: this.generateState(),
+      id: this.generateId()
     };
     // TODO: const aCustomer = this.generateCustomer()
-
     // TODO: add new customer to array.
-    customer.push(johnBowman);
+    customer.push(newCust);
     /*   });*/
   }
+
+  private generateFirstName() {
+    const firstName =
+      [
+        'Harvey',
+        'Murray',
+        'Jack'
+      ];
+    return firstName[Math.floor(Math.random() * 4)];
+  }
+
+  private generateLastName() {
+    const lastName =
+      [
+        'Pliskin',
+        'Smith',
+        'Gallegos'
+      ];
+    return lastName[Math.floor(Math.random() * 4)];
+  }
+
+  private generateEmail() {
+    const email =
+      // these are temps
+      [
+        'baseballstar@gmail.com',
+        'rockets@gmail.com',
+        'supernintendo@gmail.com'
+      ];
+    // TODO find way to combine first and last name in order to create email.
+    return email[Math.floor(Math.random() * 4)];
+  }
+  private generateCity() {
+    const lastName =
+      [
+        'Tampa',
+        'Los Angeles',
+        'Portland'
+      ];
+    return lastName[Math.floor(Math.random() * 4)];
+  }
+  private generateState() {
+    const lastName =
+      [
+        'Florida',
+        'California',
+        'Oregon'
+      ];
+    return lastName[Math.floor(Math.random() * 4)];
+  }
+  private generateId() {
+    const lastName =
+      [
+        234,
+        45,
+        97
+      ];
+    return lastName[Math.floor(Math.random() * 4)];
+  }
 }
+
