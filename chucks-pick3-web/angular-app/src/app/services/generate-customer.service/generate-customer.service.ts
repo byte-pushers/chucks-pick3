@@ -48,7 +48,8 @@ export class GenerateCustomerService {
         'supernintendo@gmail.com'
       ];
     // TODO find way to combine first and last name in order to create email.
-    return email[Math.floor(Math.random() * email.length)];
+    const chosenEmail = [Math.floor(Math.random() * email.length)];
+
   }
 
   public generateCity() {
