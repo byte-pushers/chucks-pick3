@@ -32,7 +32,7 @@ import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmati
 import {MemberService} from 'src/app/services/member.service/member.service';
 import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
-import { GenerateCustomerService } from './services/generate-customer.service/generate-customer.service';
+import { MockCustomerService } from './services/mock-customer.service/mock-customer.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,7 @@ import { GenerateCustomerService } from './services/generate-customer.service/ge
     MemberService,
     SubNavBarService,
     FormValidationService,
-    GenerateCustomerService,
+    MockCustomerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

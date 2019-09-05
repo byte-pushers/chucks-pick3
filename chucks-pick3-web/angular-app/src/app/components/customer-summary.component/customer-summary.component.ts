@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from 'src/app/models/customer-info';
-import {GenerateCustomerService} from '../../services/generate-customer.service/generate-customer.service';
+import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import {GenerateCustomerService} from '../../services/generate-customer.service/
 export class CustomerSummaryComponent implements OnInit {
   public customers: CustomerInfo [] = [];
 
-  constructor(public generateCustomerService: GenerateCustomerService) {
+  constructor(public customerService: MockCustomerService) {
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class CustomerSummaryComponent implements OnInit {
 
   public addRow() {
     const customer = this.customers;
-    const aCustomer = this.generateCustomerService.generateCustomer();
+    const aCustomer = this.customerService.generateCustomer();
     customer.push(aCustomer);
   }
 
