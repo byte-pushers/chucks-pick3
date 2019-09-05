@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class GenerateCustomerService {
       firstName: this.generateFirstName(),
       lastName: this.generateLastName(),
       email: this.generateEmail(),
-      phone: '555-555-5555',
+      phone: this.generatePhone(),
       city: this.generateCity(),
       state: this.generateState(),
       id: this.generateId()
@@ -43,13 +43,12 @@ export class GenerateCustomerService {
     const email =
       // these are temps
       [
-        'baseballstar@gmail.com',
-        'rockets@gmail.com',
-        'supernintendo@gmail.com'
+        '@gmail.com',
+        '@yahoo.com',
+        '@bytepushers.software'
       ];
     // TODO find way to combine first and last name in order to create email.
-    const chosenEmail = [Math.floor(Math.random() * email.length)];
-
+    return email[Math.floor(Math.random() * email.length)];
   }
 
   public generateCity() {
@@ -80,5 +79,17 @@ export class GenerateCustomerService {
         97
       ];
     return idName[Math.floor(Math.random() * idName.length)];
+  }
+  public generatePhone() {
+    const areaCode =
+      [
+        214,
+        469,
+        972,
+      ];
+    const selectedAreaCode = areaCode[Math.floor(Math.random() * areaCode.length)];
+    const selectedPhoneNumberA = Math.floor(Math.random() * 999);
+    const selectedPhoneNumberB = Math.floor(Math.random() * 9999);
+    return '(' + selectedAreaCode + ')' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
   }
 }
