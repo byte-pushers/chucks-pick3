@@ -3,7 +3,6 @@ import {CustomerInfo} from 'src/app/models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
 
 
-
 @Component({
   selector: 'app-customer-summary',
   templateUrl: './customer-summary.component.html',
@@ -33,18 +32,16 @@ export class CustomerSummaryComponent implements OnInit {
   public selectCustomer(event) {
     const checkBoxElement = event.target;
     const targetId = Number(checkBoxElement.id);
-    // TODO: Create a variable that represents a number (the selected id) based on the checkbox element id which
-    // which is a string
-    // TODO: Replace all checkboxId's with new variable
-    /*const checkBoxElement = document.getElementById(selectedCustomer.id) as HTMLInputElement;*/
-    if (checkBoxElement.checked === true) {
-      this.selectedCustomerIdArray.push(targetId);
-    } else {
-      this.selectedCustomerIdArray.forEach((selectedCustomerId, selectedCustomerIdIndex) => {
-        if (selectedCustomerId === targetId) {
-          this.selectedCustomerIdArray.splice(selectedCustomerIdIndex, 1);
-        }
-      });
+    if (checkBoxElement !== null && checkBoxElement !== undefined) {
+      if (checkBoxElement.checked === true) {
+        this.selectedCustomerIdArray.push(targetId);
+      } else {
+        this.selectedCustomerIdArray.forEach((selectedCustomerId, selectedCustomerIdIndex) => {
+          if (selectedCustomerId === targetId) {
+            this.selectedCustomerIdArray.splice(selectedCustomerIdIndex, 1);
+          }
+        });
+      }
     }
   }
 
