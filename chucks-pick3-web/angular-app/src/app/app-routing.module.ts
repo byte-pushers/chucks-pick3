@@ -14,6 +14,7 @@ import {InfoRequirementsComponent} from 'src/app/components/info-requirements.co
 import {InfoViewComponent} from 'src/app/components/info-view.component/info-view.component';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
+import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'log-in', component: LogInComponent},
   {path: 'sign-up-confirmation', component: SignUpConfirmationComponent},
-  {path: 'customer-summary', component: CustomerSummaryComponent}
+  {path: 'customer-summary', component: CustomerSummaryComponent},
+  {path: 'customer-details', component: CustomerDetailsComponent}
 
 ];
 
@@ -49,5 +51,6 @@ export const routingComponents = [
   InfoGenerateComponent,
   InfoRequirementsComponent,
   InfoGenerateComponent,
-  InfoViewComponent
+  InfoViewComponent,
+  CustomerDetailsComponent
 ];
