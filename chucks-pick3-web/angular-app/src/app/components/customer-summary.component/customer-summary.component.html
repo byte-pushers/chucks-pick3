@@ -25,7 +25,7 @@
     </div>
     <div class="col-sm">
       <button type="button"
-              class="btn btn add btn-danger btn-sm btn-block">
+              class="btn btn add btn-danger btn-sm btn-block" (click)="deleteSelected()">
         Delete All
       </button>
     </div>
@@ -48,7 +48,9 @@
   <tr *ngFor=" let customer of customers">
     <th scope="col">
       <div class="checkbox">
-        <input type="checkbox" value="">
+        <label>
+          <input type="checkbox" value="" id="{{customer.id}}" (click)="selectCustomer($event)">
+        </label>
       </div>
     </th>
     <th scope="col">{{customer.firstName}}</th>
