@@ -7,7 +7,6 @@ export class MockCustomerService {
 
   constructor() { }
   public generateCustomer() {
-    let generateCustomer;
     const firstName = this.generateFirstName();
     const lastName = this.generateLastName();
     const newCustomer = {
@@ -19,8 +18,7 @@ export class MockCustomerService {
       state: this.generateState(),
       id: this.generateId()
     };
-    generateCustomer = newCustomer;
-    return generateCustomer;
+    return newCustomer;
   }
   public generateFirstName() {
     const firstName =
