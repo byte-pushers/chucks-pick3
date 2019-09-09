@@ -32,16 +32,16 @@
   </div>
 </div>
 <table class="table table-striped" id="table">
-  <thead>
+  <thead class="table-width">
   <tr>
-    <th scope="col"><!--checkbox--></th>
-    <th scope="col">First Name</th>
-    <th scope="col">Last Name</th>
-    <th scope="col">Email</th>
-    <th scope="col">Phone</th>
-    <th scope="col">City</th>
-    <th scope="col">State</th>
-    <th scope="col">Action</th>
+    <th scope="col" class="th-width"><!--checkbox--></th>
+    <th scope="col" class="th-width">First Name</th>
+    <th scope="col" class="th-width">Last Name</th>
+    <th scope="col" class="th-width">Email</th>
+    <th scope="col" class="th-width">Phone</th>
+    <th scope="col" class="th-width">City</th>
+    <th scope="col" class="th-width">State</th>
+    <th scope="col" class="th-width">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -53,13 +53,13 @@
         </label>
       </div>
     </th>
-    <th scope="col">{{customer.firstName}}</th>
-    <th scope="col">{{customer.lastName}}</th>
-    <th scope="col">{{customer.email}}</th>
-    <th scope="col">{{customer.phone}}</th>
-    <th scope="col">{{customer.city}}</th>
-    <th scope="col">{{customer.state}}</th>
-    <th scope="col">
+    <th scope="col" class="th-width">{{customer.firstName}}</th>
+    <th scope="col" class="th-width">{{customer.lastName}}</th>
+    <th scope="col" class="th-width">{{customer.email}}</th>
+    <th scope="col" class="th-width" style="font-size: x-small; padding-top: 12px">{{customer.phone}}</th>
+    <th scope="col" class="th-width">{{customer.city}}</th>
+    <th scope="col" class="th-width">{{customer.state}}</th>
+    <th scope="col" class="th-width">
       <button type="button"
               class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
         Delete
