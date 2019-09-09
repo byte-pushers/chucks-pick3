@@ -7,17 +7,18 @@ export class MockCustomerService {
 
   constructor() { }
   public generateCustomer() {
-    // TODO: create a new customer.
-    const newCust = {
-      firstName: this.generateFirstName(),
-      lastName: this.generateLastName(),
-      email: this.generateEmail(),
+    const firstName = this.generateFirstName();
+    const lastName = this.generateLastName();
+    const newCustomer = {
+      firstName,
+      lastName,
+      email: this.generateEmail(firstName, lastName),
       phone: this.generatePhone(),
       city: this.generateCity(),
       state: this.generateState(),
       id: this.generateId()
     };
-    return newCust;
+    return newCustomer;
   }
   public generateFirstName() {
     const firstName =
@@ -29,7 +30,7 @@ export class MockCustomerService {
     return firstName[Math.floor(Math.random() * firstName.length)];
   }
 
-  public generateLastName() {
+  public generateLastName(): string {
     const lastName =
       [
         'Pliskin',
@@ -39,7 +40,7 @@ export class MockCustomerService {
     return lastName[Math.floor(Math.random() * lastName.length)];
   }
 
-  public generateEmail() {
+  public generateEmail(firstName: string, lastName: string): string {
     const email =
       // these are temps
       [
@@ -48,7 +49,7 @@ export class MockCustomerService {
         '@bytepushers.software'
       ];
     // TODO find way to combine first and last name in order to create email.
-    return email[Math.floor(Math.random() * email.length)];
+    return firstName + '.' + lastName + email[Math.floor(Math.random() * email.length)];
   }
 
   public generateCity() {
