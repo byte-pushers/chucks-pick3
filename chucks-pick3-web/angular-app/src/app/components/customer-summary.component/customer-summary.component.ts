@@ -3,6 +3,7 @@ import {CustomerInfo} from 'src/app/models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
 
 
+
 @Component({
   selector: 'app-customer-summary',
   templateUrl: './customer-summary.component.html',
@@ -10,6 +11,8 @@ import {MockCustomerService} from '../../services/mock-customer.service/mock-cus
 })
 export class CustomerSummaryComponent implements OnInit {
   public customers: CustomerInfo [] = [];
+  public selectedCustomerIdArray: number [] = [];
+
 
   constructor(public customerService: MockCustomerService) {
   }
@@ -25,6 +28,40 @@ export class CustomerSummaryComponent implements OnInit {
         state: 'Texas',
         id: 22
       }];
+  }
+
+  public selectCustomer(event) {
+    const checkBoxElement = event.target;
+    const targetId = Number(checkBoxElement.id);
+    // TODO: Create a variable that represents a number (the selected id) based on the checkbox element id which
+    // which is a string
+    // TODO: Replace all checkboxId's with new variable
+    /*const checkBoxElement = document.getElementById(selectedCustomer.id) as HTMLInputElement;*/
+    if (checkBoxElement.checked === true) {
+      this.selectedCustomerIdArray.push(targetId);
+    } else {
+      this.selectedCustomerIdArray.forEach((selectedCustomerId, selectedCustomerIdIndex) => {
+        if (selectedCustomerId === targetId) {
+          this.selectedCustomerIdArray.splice(selectedCustomerIdIndex, 1);
+        }
+      });
+    }
+  }
+
+  public deleteSelected() {
+    this.selectedCustomerIdArray.forEach((selectedCustomerId) => {
+      const targetCustomer = this.customers.find(customer => {
+        let foundCustomer = false;
+        if (customer.id === selectedCustomerId) {
+          foundCustomer = true;
+        }
+        return foundCustomer;
+      });
+
+      if (targetCustomer !== null && targetCustomer !== undefined) {
+        this.deleteRow(targetCustomer);
+      }
+    });
   }
 
 
@@ -49,8 +86,6 @@ export class CustomerSummaryComponent implements OnInit {
     const aCustomer = this.customerService.generateCustomer();
     customer.push(aCustomer);
   }
-
-
 
 
 }
