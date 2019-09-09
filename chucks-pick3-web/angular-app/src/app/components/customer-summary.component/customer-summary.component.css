@@ -26,6 +26,10 @@ width: 100%;
   font-size: 13px;
   text-align: left;
 }
+.checkbox {
+padding-left: 20px;
+  padding-top: 2.5px;
+}
 
 .table th {
   line-height: 3em;
