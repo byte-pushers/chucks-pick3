@@ -3,10 +3,12 @@
 </div>
 <div class="options">
   <div class="campaign">
+    <a [routerLink]="['/customer-summary']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
     <button type="button"
             class="btn btn-sec edit btn-secondary btn-sm btn-block">
       Back
     </button>
+    </a>
   </div>
   <div class="buttons">
     <div class="col-sm">
@@ -34,27 +36,27 @@
   <tbody style="text-align: left">
   <tr>
   <th scope="row" colspan="1">Email:</th>
-  <td colspan="11">david.ocampo@bytepushers.software</td>
+  <td colspan="11" *ngFor=" let customer of customers">{{customer.email}}</td>
   </tr>
   <tr>
   <th scope="row" colspan="1">Phone:</th>
-  <td colspan="11">555-5555</td>
+  <td colspan="11" *ngFor=" let customer of customers">{{customer.phone}}</td>
   </tr>
   <tr>
     <th scope="row" colspan="1">City:</th>
-    <td colspan="11">Denton</td>
+    <td colspan="11" *ngFor=" let customer of customers">{{customer.city}}</td>
   </tr>
   <tr>
     <th scope="row" colspan="1">State:</th>
-    <td colspan="11">Texas</td>
+    <td colspan="11" *ngFor=" let customer of customers">{{customer.state}}</td>
   </tr>
   <tr>
     <th scope="row" colspan="1">How Often?</th>
-    <td colspan="11">Sometimes</td>
+    <td colspan="11" *ngFor=" let customer of customers">Sometimes</td>
   </tr>
   <tr>
     <th scope="row" colspan="1">Type of Phone?</th>
-    <td colspan="11">iPhone</td>
+    <td colspan="11" *ngFor=" let customer of customers">iPhone</td>
   </tr>
   </tbody>
 </table>
