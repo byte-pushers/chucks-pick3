@@ -86,6 +86,6 @@ export class MockCustomerService {
     const selectedAreaCode = areaCode[Math.floor(Math.random() * areaCode.length)];
     const selectedPhoneNumberA = Math.floor(Math.random() * 999);
     const selectedPhoneNumberB = Math.floor(Math.random() * 9999);
-    return '(' + selectedAreaCode + ')' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
+    return '(' + selectedAreaCode + ')' + ' ' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
   }
 }
