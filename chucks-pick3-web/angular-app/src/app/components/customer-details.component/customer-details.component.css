@@ -1,0 +1,47 @@
+
+
+.details {
+  height: 100%;
+  width: 100%;
+}
+.customer-title-section {
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+.campaign {
+  display: block;
+  width: 50%;
+  float: left;
+padding-left: 3%;
+
+}
+.table {
+  position: relative;
+  font-size: 13px;
+}
+
+
+.edit {
+  width: 48.5%;
+  float: left;
+  margin-right: 3px;
+
+}
+
+.delete {
+  width: 48.5%;
+  float: right;
+  margin-left: 3px;
+
+}
+
+.buttons {
+  display: block;
+  float: right;
+  width: 50%;
+
+}
