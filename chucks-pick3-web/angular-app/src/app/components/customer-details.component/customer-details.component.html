@@ -1,13 +1,15 @@
 <div class="customer-title-section">
   <div class="campaign">
+    <a [routerLink]="['/customer-summary']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
     <button type="button"
             class="btn btn-sec btn-secondary btn-sm btn-block">
       Back
     </button>
+    </a>
   </div>
   <h1><b>Customer Details</b></h1>
 </div>
-<div class="details">
+<div id="details" >
   <table class="table table-striped">
     <thead>
     <tr style="text-align: left">
@@ -22,7 +24,7 @@
           colspan="1">Email:
       </th>
       <td class="rounded-right"  colspan="11">
-        <input type="text" placeholder="david.ocampo@bytepushers.software"></td>
+        <input type="text" placeholder="david.ocampo@bytepushers.software" *ngIf="editMode">david.ocampo@bytepushers.software</td>
     </tr>
     <tr>
       <th scope="row"
@@ -30,7 +32,8 @@
           colspan="1">Phone:
       </th>
       <td class="rounded-right"   colspan="11">
-        <input type="text" placeholder="(555) 555-5555">
+        <input type="text" placeholder="(555) 555-5555" *ngIf="editMode">
+        (555) 555-5555
       </td>
     </tr>
     <tr>
@@ -39,7 +42,8 @@
           colspan="1">City:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Denton">
+        <input type="text" placeholder="Denton" *ngIf="editMode">
+        Denton
       </td>
     </tr>
     <tr>
@@ -48,7 +52,8 @@
           colspan="1">State:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Texas">
+        <input type="text" placeholder="Texas" *ngIf="editMode">
+        Texas
       </td>
     </tr>
     <tr>
@@ -57,7 +62,8 @@
           colspan="1">How Often?
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Sometimes">
+        <input type="text" placeholder="Sometimes" *ngIf="editMode">
+        Sometimes
       </td>
     </tr>
     <tr>
@@ -66,7 +72,8 @@
           colspan="1">Type of Phone?
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="iPhone">
+        <input type="text" placeholder="iPhone" *ngIf="editMode">
+        iPhone
       </td>
     </tr>
     </tbody>
@@ -74,11 +81,19 @@
 </div>
 <div class="optionButtons">
     <button type="button"
-            class="btn btn-secondary edit btn btn-sm btn-block">
+            class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
       Edit
     </button>
     <button type="button"
-            class="btn btn delete btn-danger btn-sm btn-block">
+            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode">
       Delete
     </button>
+  <button type="button"
+          class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode">
+    Update
+  </button>
+  <button type="button"
+          class="btn btn cancel btn-danger btn-sm btn-block" (click)="toggleEditMode()" *ngIf="editMode">
+    Cancel
+  </button>
 </div>

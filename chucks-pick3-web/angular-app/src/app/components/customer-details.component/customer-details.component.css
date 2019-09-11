@@ -48,12 +48,25 @@ margin-top: 2%;
   width: 18%;
 
 }
+.update {
+  float: right;
+  margin-left: 3px;
+  width: 18%;
+
+}
 
 .btn-block {
 margin-top: 0;
 }
 
 .delete {
+  float: right;
+  margin-left: 3px;
+  width: 18%;
+
+}
+
+.cancel {
   float: right;
   margin-left: 3px;
   width: 18%;
