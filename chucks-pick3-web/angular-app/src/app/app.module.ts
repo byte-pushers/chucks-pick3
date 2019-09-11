@@ -33,6 +33,7 @@ import {MemberService} from 'src/app/services/member.service/member.service';
 import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service/mock-customer.service';
+import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MockCustomerService } from './services/mock-customer.service/mock-custo
     SpecialCharactersValidator,
     CustomerSummaryComponent,
     UserNameValidator,
-    PasswordValidator
+    PasswordValidator,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
