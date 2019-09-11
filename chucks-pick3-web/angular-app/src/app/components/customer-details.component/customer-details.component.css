@@ -14,34 +14,63 @@
 
 .campaign {
   display: block;
-  width: 50%;
-  float: left;
-padding-left: 3%;
+  width: 8%;
+  float: right;
+margin-top: 2%;
 
 }
 .table {
   position: relative;
   font-size: 13px;
+  width: 50%;
+  margin: 0 auto;
+}
+.table td {
+  position: relative;
 }
 
+.table td input {
+  position: absolute;
+  display: block;
+  top:0;
+  left:0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
 .edit {
-  width: 48.5%;
-  float: left;
-  margin-right: 3px;
+  float: right;
+  margin-left: 3px;
+  width: 18%;
 
+}
+
+.btn-block {
+margin-top: 0;
 }
 
 .delete {
-  width: 48.5%;
   float: right;
   margin-left: 3px;
+  width: 18%;
 
 }
 
 .buttons {
   display: block;
   float: right;
-  width: 50%;
+  width: 20%;
 
+}
+
+.optionButtons {
+  display: inline-block;
+  width: 50%;
+  height: 25%;
+  margin: 0 auto;
+  padding-top: 10px;
 }
