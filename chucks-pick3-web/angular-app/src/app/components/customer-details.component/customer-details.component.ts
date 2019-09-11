@@ -9,25 +9,32 @@ import {MockCustomerService} from '../../services/mock-customer.service/mock-cus
 })
 export class CustomerDetailsComponent implements OnInit {
   editMode = false;
+  readOnlyMode = true;
   constructor() { }
 
   ngOnInit() {
   }
-  public toggleEditMode(editMode) {
-if (editMode === false) {
+  public toggleEditMode() {
+if (this.editMode === false) {
 this.enableEdit();
-} else if (editMode === true) {
+} else if (this.editMode === true) {
   this.disableEdit();
 }
   }
-  public enableEdit(  ) {
-    if (this.editMode !== false) {
-      console.log('enabled');
+  private enableEdit(  ) {
+    if (this.editMode === false) {
+      this.editMode = true;
+      if (this.editMode === true) {
+        this.readOnlyMode = false;
+      }
     }
   }
-  public disableEdit() {
-    if (this.editMode !== true) {
-      console.log('disabled');
+  private disableEdit() {
+    if (this.editMode === true) {
+      this.editMode = false;
+      if (this.editMode === false) {
+        this.readOnlyMode = true;
+      }
     }
   }
 }
