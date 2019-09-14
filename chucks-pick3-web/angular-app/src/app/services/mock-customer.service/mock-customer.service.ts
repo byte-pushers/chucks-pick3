@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
+import {CustomerInfo} from '../../models/customer-info';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockCustomerService {
+  public selectedCustomerIdArray: CustomerInfo [] = [];
 
-  constructor() { }
+  constructor() {
+  }
+
   public generateCustomer() {
     const firstName = this.generateFirstName();
     const lastName = this.generateLastName();
@@ -20,6 +24,11 @@ export class MockCustomerService {
     };
     return newCustomer;
   }
+
+  public getCustomer(id): CustomerInfo[] {
+return this.selectedCustomerIdArray;
+  }
+
   public generateFirstName() {
     const firstName =
       [
@@ -28,6 +37,10 @@ export class MockCustomerService {
         'Jack'
       ];
     return firstName[Math.floor(Math.random() * firstName.length)];
+  }
+
+  public test(testCustomer) {
+    console.log(testCustomer);
   }
 
   public generateLastName(): string {
@@ -73,9 +86,10 @@ export class MockCustomerService {
   }
 
   public generateId() {
-    const idName =  Math.floor(Math.random() * 999);
+    const idName = Math.floor(Math.random() * 999);
     return idName;
   }
+
   public generatePhone() {
     const areaCode =
       [

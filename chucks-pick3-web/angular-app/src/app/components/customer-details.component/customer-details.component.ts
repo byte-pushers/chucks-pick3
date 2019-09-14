@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-details',
@@ -8,20 +10,31 @@ import {MockCustomerService} from '../../services/mock-customer.service/mock-cus
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
+  public testCustomer: CustomerInfo [] = [];
   editMode = false;
   readOnlyMode = true;
-  constructor() { }
+  public customers: CustomerInfo [] = [];
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              public mockCustomerService: MockCustomerService) {
+  }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.customers = this.mockCustomerService.getCustomer(id);
   }
+
   public toggleEditMode() {
-if (this.editMode === false) {
-this.enableEdit();
-} else if (this.editMode === true) {
-  this.disableEdit();
-}
+    if (this.editMode === false) {
+      this.enableEdit();
+    } else if (this.editMode === true) {
+      this.disableEdit();
+    }
   }
-  private enableEdit(  ) {
+
+  private enableEdit() {
     if (this.editMode === false) {
       this.editMode = true;
       if (this.editMode === true) {
@@ -29,6 +42,7 @@ this.enableEdit();
       }
     }
   }
+
   private disableEdit() {
     if (this.editMode === true) {
       this.editMode = false;

@@ -28,8 +28,8 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'log-in', component: LogInComponent},
   {path: 'sign-up-confirmation', component: SignUpConfirmationComponent},
-  {path: 'customer-summary', component: CustomerSummaryComponent},
-  {path: 'customer-details', component: CustomerDetailsComponent}
+  {path: 'customers', component: CustomerSummaryComponent},
+  {path: 'customer/:id', component: CustomerDetailsComponent}
 
 ];
 

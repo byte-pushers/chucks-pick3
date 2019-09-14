@@ -53,8 +53,8 @@
         </label>
       </div>
     </th>
-    <th scope="col" class="th-width"> <a [routerLink]="['/customer-details']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
-    <th scope="col" class="th-width"><a [routerLink]="['/customer-details']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
+    <th scope="col" class="th-width"> <a [routerLink]="['/customer', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}" (click)="selectCustomerData(customer)">{{customer.firstName}}</a></th>
+    <th scope="col" class="th-width"><a [routerLink]="['/customer', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}" (click)="selectCustomerData(customer)">{{customer.lastName}}</a></th>
     <th scope="col" class="th-width">{{customer.email}}</th>
     <th scope="col" class="th-width">{{customer.phone}}</th>
     <th scope="col" class="th-width">{{customer.city}}</th>
