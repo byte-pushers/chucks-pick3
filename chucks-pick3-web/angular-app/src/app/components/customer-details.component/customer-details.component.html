@@ -2,7 +2,8 @@
   <div class="campaign">
     <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
     <button type="button"
-            class="btn btn-sec btn-secondary btn-sm btn-block">
+            class="btn btn-sec btn-secondary btn-sm btn-block"
+    (click)="deleteCustomerDetail(customers)">
       Back
     </button>
     </a>

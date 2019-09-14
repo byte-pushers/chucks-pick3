@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-details',
@@ -49,6 +48,17 @@ export class CustomerDetailsComponent implements OnInit {
       if (this.editMode === false) {
         this.readOnlyMode = true;
       }
+    }
+  }
+  public deleteCustomerDetail(targetCustomer) {
+    let targetCustomerIndex;
+    if (targetCustomer !== null && targetCustomer !== undefined) {
+      this.mockCustomerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
+        if (customer.id === targetCustomer.id) {
+          targetCustomerIndex = customerIndex;
+        }
+      });
+      this.mockCustomerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
     }
   }
 }
