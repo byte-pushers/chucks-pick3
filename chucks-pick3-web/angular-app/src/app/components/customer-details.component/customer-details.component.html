@@ -1,11 +1,12 @@
 <div class="customer-title-section">
   <div class="campaign">
-    <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-    <button type="button"
-            class="btn btn-sec btn-secondary btn-sm btn-block"
-    (click)="deleteCustomerDetail(customers)">
-      Back
-    </button>
+    <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
+       style="text-decoration: none">
+      <button type="button"
+              class="btn btn-sec btn-secondary btn-sm btn-block"
+              (click)="removeCustomerDetail(customers)">
+        Back
+      </button>
     </a>
   </div>
   <h1><b>Customer Details</b></h1>
@@ -24,7 +25,7 @@
           class="rounded-left bg-dark text-white"
           colspan="1">Email:
       </th>
-      <td class="rounded-right"  colspan="11">
+      <td class="rounded-right" colspan="11">
         <input type="text" placeholder="{{customer.email}}" *ngIf="editMode">{{customer.email}}</td>
     </tr>
     <tr>
@@ -32,7 +33,7 @@
           class="rounded-left bg-dark text-white"
           colspan="1">Phone:
       </th>
-      <td class="rounded-right"   colspan="11">
+      <td class="rounded-right" colspan="11">
         <input type="text" placeholder="{{customer.phone}}" *ngIf="editMode">
         {{customer.phone}}
       </td>
@@ -80,17 +81,19 @@
     </tbody>
   </table>
 </div>
-<div class="optionButtons">
-    <button type="button"
-            class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
-      Edit
-    </button>
-    <button type="button"
-            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode">
-      Delete
-    </button>
+<div class="optionButtons" *ngFor="let customer of customers">
   <button type="button"
-          class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode">
+          class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
+    Edit
+  </button>
+  <button type="button"
+          class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+          (click)="deleteCustomer(customers); deleteRow(customer)">
+    Delete
+  </button>
+  <button type="button"
+          class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode"
+  >
     Update
   </button>
   <button type="button"

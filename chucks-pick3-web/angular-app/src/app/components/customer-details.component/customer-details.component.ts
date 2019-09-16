@@ -16,13 +16,13 @@ export class CustomerDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              public mockCustomerService: MockCustomerService) {
+              public customerService: MockCustomerService) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.customers = this.mockCustomerService.getCustomer(id);
+    this.customers = this.customerService.getSelectedCustomer(id);
   }
 
   public toggleEditMode() {
@@ -50,15 +50,45 @@ export class CustomerDetailsComponent implements OnInit {
       }
     }
   }
-  public deleteCustomerDetail(targetCustomer) {
+
+  public removeCustomerDetail(targetCustomer) {
     let targetCustomerIndex;
     if (targetCustomer !== null && targetCustomer !== undefined) {
-      this.mockCustomerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
+      this.customerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
         if (customer.id === targetCustomer.id) {
           targetCustomerIndex = customerIndex;
         }
       });
-      this.mockCustomerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
+      this.customerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
     }
   }
+
+  public deleteRow(targetCustomer) {
+    let targetCustomerIndex;
+    if (targetCustomer !== null && targetCustomer !== undefined) {
+      this.customerService.customers.forEach((customer, customerIndex) => {
+        if (customer.id === targetCustomer.id) {
+          targetCustomerIndex = customerIndex;
+        }
+      });
+      this.customerService.customers.splice(targetCustomerIndex, 1);
+    }
+  }
+
+  public deleteCustomer(targetCustomer) {
+    let targetCustomerIndex;
+    if (targetCustomer !== null && targetCustomer !== undefined) {
+      /*if (this.customers.includes(customer)) {
+          const customerIndex = this.customers.indexOf(customer);
+          this.customers.splice(customerIndex, 1);
+        }*/
+      this.customerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
+        if (customer.id === targetCustomer.id) {
+          targetCustomerIndex = customerIndex;
+        }
+      });
+      this.customerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
+    }
+  }
+
 }

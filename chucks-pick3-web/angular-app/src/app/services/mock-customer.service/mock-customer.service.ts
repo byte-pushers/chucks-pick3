@@ -6,6 +6,7 @@ import {CustomerInfo} from '../../models/customer-info';
 })
 export class MockCustomerService {
   public selectedCustomerIdArray: CustomerInfo [] = [];
+  public customers: CustomerInfo [] = [];
 
   constructor() {
   }
@@ -25,8 +26,12 @@ export class MockCustomerService {
     return newCustomer;
   }
 
-  public getCustomer(id): CustomerInfo[] {
-return this.selectedCustomerIdArray;
+  public getSelectedCustomer(id): CustomerInfo[] {
+    return this.selectedCustomerIdArray;
+  }
+
+  public getCustomers(): CustomerInfo[] {
+    return this.customers;
   }
 
   public generateFirstName() {
@@ -34,7 +39,10 @@ return this.selectedCustomerIdArray;
       [
         'Harvey',
         'Murray',
-        'Jack'
+        'Jack',
+        'Janet',
+        'Terry',
+        'Daniel'
       ];
     return firstName[Math.floor(Math.random() * firstName.length)];
   }
@@ -48,7 +56,10 @@ return this.selectedCustomerIdArray;
       [
         'Pliskin',
         'Smith',
-        'Gallegos'
+        'Gallegos',
+        'Johnson',
+        'Bogard',
+        'Hall'
       ];
     return lastName[Math.floor(Math.random() * lastName.length)];
   }
@@ -59,7 +70,9 @@ return this.selectedCustomerIdArray;
       [
         '@gmail.com',
         '@yahoo.com',
-        '@bytepushers.software'
+        '@bytepushers.software',
+        '@aol.com',
+        '@hotmail.com'
       ];
     // TODO find way to combine first and last name in order to create email.
     return firstName + '.' + lastName + email[Math.floor(Math.random() * email.length)];
@@ -70,7 +83,9 @@ return this.selectedCustomerIdArray;
       [
         'Tampa',
         'Los Angeles',
-        'Portland'
+        'Portland',
+        'San Fransisco',
+        'Washington DC'
       ];
     return cityName[Math.floor(Math.random() * cityName.length)];
   }
@@ -80,7 +95,9 @@ return this.selectedCustomerIdArray;
       [
         'Florida',
         'California',
-        'Oregon'
+        'Oregon',
+        'Maryland',
+        'Montana'
       ];
     return stateName[Math.floor(Math.random() * stateName.length)];
   }
@@ -98,8 +115,8 @@ return this.selectedCustomerIdArray;
         972,
       ];
     const selectedAreaCode = areaCode[Math.floor(Math.random() * areaCode.length)];
-    const selectedPhoneNumberA = Math.floor(Math.random() * 999);
-    const selectedPhoneNumberB = Math.floor(Math.random() * 9999);
+    const selectedPhoneNumberA = Math.floor(Math.random() * 999 - 100);
+    const selectedPhoneNumberB = Math.floor(Math.random() * 9999 - 1000);
     return '(' + selectedAreaCode + ')' + ' ' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
   }
 }
