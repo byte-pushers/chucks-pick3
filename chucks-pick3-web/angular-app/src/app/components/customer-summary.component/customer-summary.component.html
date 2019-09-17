@@ -45,7 +45,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor=" let customer of customers">
+  <tr *ngFor=" let customer of customerService.getCustomers()">
     <th scope="col">
       <div class="checkbox">
         <label>
@@ -53,8 +53,8 @@
         </label>
       </div>
     </th>
-    <th scope="col" class="th-width"> <a [routerLink]="['/customer-details']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
-    <th scope="col" class="th-width"><a [routerLink]="['/customer-details']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
+    <th scope="col" class="th-width"> <a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
+    <th scope="col" class="th-width"><a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
     <th scope="col" class="th-width">{{customer.email}}</th>
     <th scope="col" class="th-width">{{customer.phone}}</th>
     <th scope="col" class="th-width">{{customer.city}}</th>

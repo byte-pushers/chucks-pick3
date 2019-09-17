@@ -1,20 +1,33 @@
 <div class="customer-title-section">
-  <div class="campaign">
-    <a [routerLink]="['/customer-summary']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-    <button type="button"
-            class="btn btn-sec btn-secondary btn-sm btn-block">
-      Back
-    </button>
+  <div class="back-button">
+    <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
+       style="text-decoration: none">
+      <button type="button"
+              class="btn btn-sec btn-secondary btn-sm btn-block" *ngIf="readOnlyMode">
+        Back
+      </button>
     </a>
   </div>
   <h1><b>Customer Details</b></h1>
 </div>
-<div id="details" >
+<div class="details">
+<form id="details" name="details" #details="ngForm">
   <table class="table table-striped">
     <thead>
     <tr style="text-align: left">
       <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
-      <td class="border-0" colspan="11" style="font-size: 18px">David Ocampo</td>
+      <td class="border-0" colspan="8" style="font-size: 18px">
+        <input name="firstName"
+               type="text"
+               [(ngModel)]="selectedCustomer.firstName"
+               value="{{selectedCustomer.firstName}}"
+               *ngIf="editMode">
+        {{selectedCustomer.firstName}}</td>
+      <td class="border-0" colspan="8" style="font-size: 18px">
+        <input name="lastName"
+               type="text" [(ngModel)]="selectedCustomer.lastName"
+               *ngIf="editMode">
+        {{selectedCustomer.lastName}}</td>
     </tr>
     </thead>
     <tbody style="text-align: left">
@@ -23,17 +36,22 @@
           class="rounded-left bg-dark text-white"
           colspan="1">Email:
       </th>
-      <td class="rounded-right"  colspan="11">
-        <input type="text" placeholder="david.ocampo@bytepushers.software" *ngIf="editMode">david.ocampo@bytepushers.software</td>
+      <td class="rounded-right" colspan="11">
+        <input name="email"
+               type="text"
+               [(ngModel)]="selectedCustomer.email"
+               *ngIf="editMode">{{ selectedCustomer.email }}</td>
     </tr>
     <tr>
       <th scope="row"
           class="rounded-left bg-dark text-white"
           colspan="1">Phone:
       </th>
-      <td class="rounded-right"   colspan="11">
-        <input type="text" placeholder="(555) 555-5555" *ngIf="editMode">
-        (555) 555-5555
+      <td class="rounded-right" colspan="11">
+        <input name="phone"
+               type="text"
+               [(ngModel)]="selectedCustomer.phone" *ngIf="editMode">
+        {{selectedCustomer.phone}}
       </td>
     </tr>
     <tr>
@@ -42,8 +60,10 @@
           colspan="1">City:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Denton" *ngIf="editMode">
-        Denton
+        <input name="city"
+               type="text"
+               [(ngModel)]="selectedCustomer.city" *ngIf="editMode">
+        {{selectedCustomer.city}}
       </td>
     </tr>
     <tr>
@@ -52,8 +72,10 @@
           colspan="1">State:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Texas" *ngIf="editMode">
-        Texas
+        <input name="state"
+               type="text"
+               [(ngModel)]="selectedCustomer.state" *ngIf="editMode">
+        {{selectedCustomer.state}}
       </td>
     </tr>
     <tr>
@@ -62,7 +84,9 @@
           colspan="1">How Often?
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="Sometimes" *ngIf="editMode">
+        <input name="howOften"
+               type="text"
+               placeholder="Sometimes" *ngIf="editMode">
         Sometimes
       </td>
     </tr>
@@ -72,28 +96,38 @@
           colspan="1">Type of Phone?
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="iPhone" *ngIf="editMode">
+        <input name="phoneType"
+               type="text"
+               placeholder="iPhone" *ngIf="editMode">
         iPhone
       </td>
     </tr>
     </tbody>
   </table>
-</div>
-<div class="optionButtons">
+</form>
+  <div class="optionButtons">
     <button type="button"
             class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
       Edit
     </button>
+    <a [routerLink]="['/customers']" routerLinkActive="active">
     <button type="button"
-            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode">
+            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+            (click)="deleteCustomer(selectedCustomer)">
       Delete
     </button>
-  <button type="button"
-          class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode">
-    Update
-  </button>
-  <button type="button"
-          class="btn btn cancel btn-danger btn-sm btn-block" (click)="toggleEditMode()" *ngIf="editMode">
-    Cancel
-  </button>
+    </a>
+    <button type="button"
+            class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
+      Update
+    </button>
+    <a [routerLink]="['/customers']" routerLinkActive="active">
+      <button type="button"
+              class="btn btn cancel btn-danger btn-sm btn-block" (click)="resetCustomerInfo(details)"
+              *ngIf="editMode">
+        Cancel
+      </button>
+    </a>
+
+  </div>
 </div>

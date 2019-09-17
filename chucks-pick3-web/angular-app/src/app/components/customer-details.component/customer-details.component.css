@@ -65,7 +65,10 @@ margin-top: 0;
   width: 18%;
 
 }
-
+.back-button {
+  width: 10%;
+  float: right;
+}
 .cancel {
   float: right;
   margin-left: 3px;

@@ -1,11 +1,20 @@
 import {Injectable} from '@angular/core';
+import {CustomerInfo} from '../../models/customer-info';
+import {CustomerService} from '../customer.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MockCustomerService {
+export class MockCustomerService implements CustomerService {
+  public customers: CustomerInfo [] = [];
 
-  constructor() { }
+  constructor() {
+  }
+
+  public createCustomer(customer: CustomerInfo): CustomerInfo {
+    return this.generateCustomer();
+  }
+
   public generateCustomer() {
     const firstName = this.generateFirstName();
     const lastName = this.generateLastName();
@@ -20,12 +29,30 @@ export class MockCustomerService {
     };
     return newCustomer;
   }
+
+  public getSelectedCustomer(selectedCustomerId: number): CustomerInfo {
+    let selectedCustomer: CustomerInfo = null;
+    this.customers.forEach((customer) => {
+      if (customer.id === selectedCustomerId) {
+        selectedCustomer = customer;
+      }
+    });
+    return selectedCustomer;
+  }
+
+  public getCustomers(): CustomerInfo[] {
+    return this.customers;
+  }
+
   public generateFirstName() {
     const firstName =
       [
         'Harvey',
         'Murray',
-        'Jack'
+        'Jack',
+        'Janet',
+        'Terry',
+        'Daniel'
       ];
     return firstName[Math.floor(Math.random() * firstName.length)];
   }
@@ -35,7 +62,10 @@ export class MockCustomerService {
       [
         'Pliskin',
         'Smith',
-        'Gallegos'
+        'Gallegos',
+        'Johnson',
+        'Bogard',
+        'Hall'
       ];
     return lastName[Math.floor(Math.random() * lastName.length)];
   }
@@ -46,7 +76,9 @@ export class MockCustomerService {
       [
         '@gmail.com',
         '@yahoo.com',
-        '@bytepushers.software'
+        '@bytepushers.software',
+        '@aol.com',
+        '@hotmail.com'
       ];
     // TODO find way to combine first and last name in order to create email.
     return firstName + '.' + lastName + email[Math.floor(Math.random() * email.length)];
@@ -57,7 +89,9 @@ export class MockCustomerService {
       [
         'Tampa',
         'Los Angeles',
-        'Portland'
+        'Portland',
+        'San Fransisco',
+        'Washington DC'
       ];
     return cityName[Math.floor(Math.random() * cityName.length)];
   }
@@ -67,15 +101,18 @@ export class MockCustomerService {
       [
         'Florida',
         'California',
-        'Oregon'
+        'Oregon',
+        'Maryland',
+        'Montana'
       ];
     return stateName[Math.floor(Math.random() * stateName.length)];
   }
 
   public generateId() {
-    const idName =  Math.floor(Math.random() * 999);
+    const idName = Math.floor(Math.random() * 999);
     return idName;
   }
+
   public generatePhone() {
     const areaCode =
       [
@@ -84,8 +121,24 @@ export class MockCustomerService {
         972,
       ];
     const selectedAreaCode = areaCode[Math.floor(Math.random() * areaCode.length)];
-    const selectedPhoneNumberA = Math.floor(Math.random() * 999);
-    const selectedPhoneNumberB = Math.floor(Math.random() * 9999);
+    const selectedPhoneNumberA = Math.floor(Math.random() * 999 - 100);
+    const selectedPhoneNumberB = Math.floor(Math.random() * 9999 - 1000);
     return '(' + selectedAreaCode + ')' + ' ' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
+  }
+
+  public deleteCustomer(targetCustomer): void {
+    let targetCustomerIndex;
+    if (targetCustomer !== null && targetCustomer !== undefined) {
+      this.customers.forEach((customer, customerIndex) => {
+        if (customer.id === targetCustomer.id) {
+          targetCustomerIndex = customerIndex;
+        }
+      });
+      this.customers.splice(targetCustomerIndex, 1);
+    }
+  }
+
+  public addCustomer(newCustomer: CustomerInfo): void {
+    this.customers.push(newCustomer);
   }
 }
