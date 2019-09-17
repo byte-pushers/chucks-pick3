@@ -1,22 +1,23 @@
-<div class="customer-title-section">
+<div class="selectedCustomer-title-section">
   <div class="campaign">
     <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
        style="text-decoration: none">
       <button type="button"
-              class="btn btn-sec btn-secondary btn-sm btn-block"
-              (click)="removeCustomerDetail(customers)">
+              class="btn btn-sec btn-secondary btn-sm btn-block">
         Back
       </button>
     </a>
   </div>
   <h1><b>Customer Details</b></h1>
 </div>
-<div id="details" *ngFor="let customer of customers">
+<div id="details">
   <table class="table table-striped">
     <thead>
     <tr style="text-align: left">
       <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
-      <td class="border-0" colspan="11" style="font-size: 18px">{{customer.firstName}} {{customer.lastName}}</td>
+      <td class="border-0" colspan="11" style="font-size: 18px"><input
+        type="text" [ngModel]="selectedCustomer.firstName" *ngIf="editMode">
+        {{selectedCustomer.firstName}} {{selectedCustomer.lastName}}</td>
     </tr>
     </thead>
     <tbody style="text-align: left">
@@ -26,7 +27,7 @@
           colspan="1">Email:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="{{customer.email}}" *ngIf="editMode">{{customer.email}}</td>
+        <input type="text" [ngModel]="selectedCustomer.email" *ngIf="editMode">{{ selectedCustomer.email }}</td>
     </tr>
     <tr>
       <th scope="row"
@@ -34,8 +35,8 @@
           colspan="1">Phone:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="{{customer.phone}}" *ngIf="editMode">
-        {{customer.phone}}
+        <input type="text" [ngModel]="selectedCustomer.phone" *ngIf="editMode">
+        {{selectedCustomer.phone}}
       </td>
     </tr>
     <tr>
@@ -44,8 +45,8 @@
           colspan="1">City:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="{{customer.city}}" *ngIf="editMode">
-        {{customer.city}}
+        <input type="text" [ngModel]="selectedCustomer.city" *ngIf="editMode">
+        {{selectedCustomer.city}}
       </td>
     </tr>
     <tr>
@@ -54,8 +55,8 @@
           colspan="1">State:
       </th>
       <td class="rounded-right" colspan="11">
-        <input type="text" placeholder="{{customer.state}}" *ngIf="editMode">
-        {{customer.state}}
+        <input type="text" [ngModel]="selectedCustomer.state" *ngIf="editMode">
+        {{selectedCustomer.state}}
       </td>
     </tr>
     <tr>
@@ -80,24 +81,28 @@
     </tr>
     </tbody>
   </table>
-</div>
-<div class="optionButtons" *ngFor="let customer of customers">
-  <button type="button"
-          class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
-    Edit
-  </button>
-  <button type="button"
-          class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
-          (click)="deleteCustomer(customers); deleteRow(customer)">
-    Delete
-  </button>
-  <button type="button"
-          class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode"
-  >
-    Update
-  </button>
-  <button type="button"
-          class="btn btn cancel btn-danger btn-sm btn-block" (click)="toggleEditMode()" *ngIf="editMode">
-    Cancel
-  </button>
+
+  <div class="optionButtons">
+    <button type="button"
+            class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
+      Edit
+    </button>
+    <button type="button"
+            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+            (click)="deleteCustomer(selectedCustomer)">
+      Delete
+    </button>
+    <button type="button"
+            class="btn btn-success update btn btn-sm btn-block" *ngIf="editMode"
+    >
+      Update
+    </button>
+    <a [routerLink]="['/customers']" routerLinkActive="active">
+    <button type="button"
+            class="btn btn cancel btn-danger btn-sm btn-block" (click)="toggleEditMode()" *ngIf="editMode">
+      Cancel
+    </button>
+    </a>
+
+  </div>
 </div>

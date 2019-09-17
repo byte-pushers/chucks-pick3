@@ -9,10 +9,9 @@ import {Router, ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
-  public testCustomer: CustomerInfo [] = [];
   editMode = false;
   readOnlyMode = true;
-  public customers: CustomerInfo [] = [];
+  public selectedCustomer: CustomerInfo = null;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -21,8 +20,7 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
-    this.customers = this.customerService.getSelectedCustomer(id);
+    this.selectedCustomer = this.customerService.getSelectedCustomer(parseInt(id, 10));
   }
 
   public toggleEditMode() {
@@ -51,44 +49,7 @@ export class CustomerDetailsComponent implements OnInit {
     }
   }
 
-  public removeCustomerDetail(targetCustomer) {
-    let targetCustomerIndex;
-    if (targetCustomer !== null && targetCustomer !== undefined) {
-      this.customerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
-        if (customer.id === targetCustomer.id) {
-          targetCustomerIndex = customerIndex;
-        }
-      });
-      this.customerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
-    }
-  }
-
-  public deleteRow(targetCustomer) {
-    let targetCustomerIndex;
-    if (targetCustomer !== null && targetCustomer !== undefined) {
-      this.customerService.customers.forEach((customer, customerIndex) => {
-        if (customer.id === targetCustomer.id) {
-          targetCustomerIndex = customerIndex;
-        }
-      });
-      this.customerService.customers.splice(targetCustomerIndex, 1);
-    }
-  }
-
   public deleteCustomer(targetCustomer) {
-    let targetCustomerIndex;
-    if (targetCustomer !== null && targetCustomer !== undefined) {
-      /*if (this.customers.includes(customer)) {
-          const customerIndex = this.customers.indexOf(customer);
-          this.customers.splice(customerIndex, 1);
-        }*/
-      this.customerService.selectedCustomerIdArray.forEach((customer, customerIndex) => {
-        if (customer.id === targetCustomer.id) {
-          targetCustomerIndex = customerIndex;
-        }
-      });
-      this.customerService.selectedCustomerIdArray.splice(targetCustomerIndex, 1);
-    }
+    this.customerService.deleteCustomer(targetCustomer);
   }
-
 }

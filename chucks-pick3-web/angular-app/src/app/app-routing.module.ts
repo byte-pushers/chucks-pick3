@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'log-in', component: LogInComponent},
   {path: 'sign-up-confirmation', component: SignUpConfirmationComponent},
   {path: 'customers', component: CustomerSummaryComponent},
-  {path: 'customer/:id', component: CustomerDetailsComponent}
+  {path: 'customers/:id', component: CustomerDetailsComponent}
 
 ];
 

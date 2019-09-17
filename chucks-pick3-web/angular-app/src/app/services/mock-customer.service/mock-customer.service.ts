@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
+import {CustomerService} from '../customer.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MockCustomerService {
-  public selectedCustomerIdArray: CustomerInfo [] = [];
+export class MockCustomerService implements CustomerService {
   public customers: CustomerInfo [] = [];
 
   constructor() {
+  }
+
+  public createCustomer(customer: CustomerInfo): CustomerInfo {
+    return this.generateCustomer();
   }
 
   public generateCustomer() {
@@ -26,8 +30,14 @@ export class MockCustomerService {
     return newCustomer;
   }
 
-  public getSelectedCustomer(id): CustomerInfo[] {
-    return this.selectedCustomerIdArray;
+  public getSelectedCustomer(selectedCustomerId: number): CustomerInfo {
+    let selectedCustomer: CustomerInfo = null;
+    this.customers.forEach((customer) => {
+      if (customer.id === selectedCustomerId) {
+        selectedCustomer = customer;
+      }
+    });
+    return selectedCustomer;
   }
 
   public getCustomers(): CustomerInfo[] {
@@ -45,10 +55,6 @@ export class MockCustomerService {
         'Daniel'
       ];
     return firstName[Math.floor(Math.random() * firstName.length)];
-  }
-
-  public test(testCustomer) {
-    console.log(testCustomer);
   }
 
   public generateLastName(): string {
@@ -118,5 +124,21 @@ export class MockCustomerService {
     const selectedPhoneNumberA = Math.floor(Math.random() * 999 - 100);
     const selectedPhoneNumberB = Math.floor(Math.random() * 9999 - 1000);
     return '(' + selectedAreaCode + ')' + ' ' + selectedPhoneNumberA + '-' + selectedPhoneNumberB;
+  }
+
+  public deleteCustomer(targetCustomer): void {
+    let targetCustomerIndex;
+    if (targetCustomer !== null && targetCustomer !== undefined) {
+      this.customers.forEach((customer, customerIndex) => {
+        if (customer.id === targetCustomer.id) {
+          targetCustomerIndex = customerIndex;
+        }
+      });
+      this.customers.splice(targetCustomerIndex, 1);
+    }
+  }
+
+  public addCustomer(newCustomer: CustomerInfo): void {
+    this.customers.push(newCustomer);
   }
 }

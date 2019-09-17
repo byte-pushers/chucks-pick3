@@ -11,7 +11,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./customer-summary.component.css']
 })
 export class CustomerSummaryComponent implements OnInit {
-  public customers: CustomerInfo [] = [];
   public selectedCustomerIdArray: number [] = [];
 
 
@@ -19,7 +18,6 @@ export class CustomerSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customers = this.customerService.getCustomers();
   }
 
   public selectCustomer(event) {
@@ -38,17 +36,9 @@ export class CustomerSummaryComponent implements OnInit {
     }
   }
 
-  public selectCustomerData(targetCustomer) {
-    const aCustomer = this.customerService.selectedCustomerIdArray;
-    if (targetCustomer !== null && targetCustomer !== undefined) {
-      console.log(targetCustomer);
-      aCustomer.push(targetCustomer);
-    }
-  }
-
   public deleteSelected() {
     this.selectedCustomerIdArray.forEach((selectedCustomerId) => {
-      const targetCustomer = this.customers.find(customer => {
+      const targetCustomer = this.customerService.getCustomers().find(customer => {
         let foundCustomer = false;
         if (customer.id === selectedCustomerId) {
           foundCustomer = true;
@@ -64,21 +54,12 @@ export class CustomerSummaryComponent implements OnInit {
 
 
   public deleteRow(targetCustomer) {
-    let targetCustomerIndex;
-    if (targetCustomer !== null && targetCustomer !== undefined) {
-      this.customerService.customers.forEach((customer, customerIndex) => {
-        if (customer.id === targetCustomer.id) {
-          targetCustomerIndex = customerIndex;
-        }
-      });
-      this.customerService.customers.splice(targetCustomerIndex, 1);
-    }
+    this.customerService.deleteCustomer(targetCustomer);
   }
 
   public addRow() {
-    const customer = this.customerService.customers;
-    const aCustomer = this.customerService.generateCustomer();
-    customer.push(aCustomer);
+    const aCustomer = this.customerService.createCustomer(null);
+    this.customerService.addCustomer(aCustomer);
   }
 
 
