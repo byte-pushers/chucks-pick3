@@ -1,7 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {NgForm, FormsModule} from '@angular/forms';
+
+@NgModule({
+  imports: [FormsModule]
+})
 
 @Component({
   selector: 'app-customer-details',
@@ -29,6 +34,9 @@ export class CustomerDetailsComponent implements OnInit {
     } else if (this.editMode === true) {
       this.disableEdit();
     }
+  }
+  public resetCustomerInfo(details: NgForm) {
+    details.reset(this.selectedCustomer);
   }
 
   private enableEdit() {
