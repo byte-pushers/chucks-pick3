@@ -3,7 +3,7 @@
     <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
        style="text-decoration: none">
       <button type="button"
-              class="btn btn-sec btn-secondary btn-sm btn-block">
+              class="btn btn-sec btn-secondary btn-sm btn-block" *ngIf="readOnlyMode">
         Back
       </button>
     </a>

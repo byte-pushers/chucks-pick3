@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CustomerInfo} from 'src/app/models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
-import {map} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+
 
 
 @Component({
