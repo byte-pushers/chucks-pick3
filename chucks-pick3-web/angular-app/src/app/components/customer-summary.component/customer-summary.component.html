@@ -53,12 +53,12 @@
         </label>
       </div>
     </th>
-    <th scope="col" class="th-width"> <a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
-    <th scope="col" class="th-width"><a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
-    <th scope="col" class="th-width hide-in-mobile" style="word-wrap: break-word;min-width: 150px;max-width: 150px;">{{customer.email}}</th>
-    <th scope="col" class="th-width hide-in-mobile">{{customer.phone}}</th>
-    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{customer.city}}</th>
-    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{customer.state}}</th>
+    <th scope="col" class="th-width" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid"> <a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
+    <th scope="col" class="th-width" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid"><a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
+    <th scope="col" class="th-width hide-in-mobile" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid; word-wrap: break-word;min-width: 150px;max-width: 150px;">{{customer.email}}</th>
+    <th scope="col" class="th-width hide-in-mobile" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.phone}}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.city}}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.state}}</th>
     <th scope="col" class="th-width">
       <button type="button"
               class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
