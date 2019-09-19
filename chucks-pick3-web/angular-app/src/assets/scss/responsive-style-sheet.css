@@ -798,6 +798,11 @@
 }
 
 /*For Customer Summary*/
+@media only screen and (min-device-width : 411px) and (max-device-width : 731px) {
+  .buttonOptions {
+    width: 75% !important;
+  }
+}
 @media only screen and (min-device-width : 414px) and (max-device-width : 736px)  {
   .add {
     width: 46% !important;
@@ -805,6 +810,9 @@
   }
   .table {
     font-size: 12px;
+  }
+  .optionButtons {
+    width: 75% !important;
   }
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 560px) {
@@ -841,6 +849,25 @@
     }
   .hide-in-mobile {
     display: none;
+  }
+  .edit{
+    width: 0;
+    font-size: 11px !important;
+  }
+  .optionButtons {
+    width: 85% !important;
+  }
+  .delete{
+    width: 0;
+    font-size: 11px !important;
+  }
+  .cancel {
+    width: 0;
+    font-size: 11px !important;
+  }
+  .update {
+    width: 0;
+    font-size: 11px !important;
   }
   }
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px)   {
