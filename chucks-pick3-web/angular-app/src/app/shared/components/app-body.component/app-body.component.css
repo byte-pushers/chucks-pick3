@@ -1,13 +1,10 @@
 .body-container {
   display: block;
   background-color: #ffffff;
-  height: 90%;
+  height: 100%;
   width: 100%;
-  padding-right: 120px;
-  padding-left: 120px;
-  margin-top: 30px;
-
-
+  padding-right: 15%;
+  padding-left: 15%;
 }
 
 .main-content-container {
