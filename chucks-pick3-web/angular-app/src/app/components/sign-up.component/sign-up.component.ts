@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormValidationService} from 'src/app/services/form-validation.service/form-validation.service';
-import {MemberService} from 'src/app/services/member.service/member.service';
+import {FormValidationService} from 'src/app/services/form-validation.service';
+import {MemberService} from 'src/app/services/member.service';
 import {Router} from '@angular/router';
 
 @Component({

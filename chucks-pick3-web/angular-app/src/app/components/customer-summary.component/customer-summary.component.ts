@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
+import {MockCustomerService} from '../../services/mock-customer.service';
 
 
 

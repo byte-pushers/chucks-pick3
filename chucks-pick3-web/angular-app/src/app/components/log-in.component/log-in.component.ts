@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormValidationService} from '../../services/form-validation.service/form-validation.service';
-import {MemberService} from '../../services/member.service/member.service';
+import {FormValidationService} from '../../services/form-validation.service';
+import {MemberService} from '../../services/member.service';
 import {Router} from '@angular/router';
+import {LogInValidationService} from '../../services/log-in.service';
 
 @Component({
   selector: 'app-log-in',
@@ -16,7 +17,8 @@ export class LogInComponent implements OnInit {
 
   constructor(public formValidationService: FormValidationService,
               public memberService: MemberService,
-              public router: Router) {
+              public router: Router,
+              public logInService: LogInValidationService) {
   }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class LogInComponent implements OnInit {
       const isLogInSuccessful = this.memberService.performLogIn();
       if (isLogInSuccessful === true) {
         this.router.navigate(['/customers']);
+        this.logInService.logIn();
       } else if (isLogInSuccessful === false) {
         /*show error message here, dont let user move on*/
         this.errorMessage = 'Account was not created, internal error.';
@@ -40,4 +43,5 @@ export class LogInComponent implements OnInit {
       this.errorMessage = 'Form was not processed, internal error.';
     }
   }
+
 }

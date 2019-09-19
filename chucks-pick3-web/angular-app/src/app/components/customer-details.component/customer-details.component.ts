@@ -1,6 +1,6 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
-import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
+import {MockCustomerService} from '../../services/mock-customer.service';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {NgForm, FormsModule} from '@angular/forms';
 
