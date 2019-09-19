@@ -46,24 +46,22 @@ margin-top: 2%;
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 .update {
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 
-.btn-block {
-margin-top: 0;
-}
+
 
 .delete {
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 .back-button {
   width: 10%;
@@ -73,7 +71,7 @@ margin-top: 0;
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 
 .buttons {
