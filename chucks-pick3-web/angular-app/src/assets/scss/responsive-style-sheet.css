@@ -827,6 +827,9 @@
   .delete {
     width: 30%;
   }
+  .hide-in-mobile {
+    display: none;
+  }
 }
 @media only screen and (min-device-width : 360px) and (max-device-width : 667px) {
   .add {
@@ -836,6 +839,9 @@
   .buttons {
     margin-top: 3em !important;
     }
+  .hide-in-mobile {
+    display: none;
+  }
   }
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px)   {
   .hide-in-mobile {
