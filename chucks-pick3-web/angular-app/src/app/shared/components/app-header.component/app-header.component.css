@@ -8,6 +8,15 @@
 
 
 }
+#log-in {
+  display: inline-block;
+}
+#log-out {
+  display: none;
+}
+#summary {
+  display: none;
+}
 
 .logo-container {
   display: block;

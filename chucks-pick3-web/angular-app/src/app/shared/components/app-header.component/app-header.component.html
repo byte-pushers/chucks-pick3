@@ -29,13 +29,23 @@
       </a>
       <div class="nav-bar-col-25">
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover">
+          <div class="nav-bar-col-50 allow-hover" id="log-in">
             <b>Log-In</b>
           </div>
         </a>
+        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
+            <b>Log-Out</b>
+          </div>
+        </a>
         <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover">
+          <div class="nav-bar-col-50 allow-hover" id="sign-up">
             <b>Sign-Up</b>
+          </div>
+        </a>
+        <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="summary">
+            <b>Summary</b>
           </div>
         </a>
       </div>

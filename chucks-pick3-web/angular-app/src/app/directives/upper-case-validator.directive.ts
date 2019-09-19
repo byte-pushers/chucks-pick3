@@ -1,5 +1,5 @@
 import {NG_VALIDATORS, FormControl, ValidatorFn, Validator} from '@angular/forms';
-import {FormValidationService} from '../services/form-validation.service/form-validation.service';
+import {FormValidationService} from '../services/form-validation.service';
 import {Directive} from '@angular/core';
 
 // @ts-ignore

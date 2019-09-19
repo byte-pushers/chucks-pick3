@@ -12,7 +12,7 @@ import {SignUpComponent} from 'src/app/components/sign-up.component/sign-up.comp
 import {LogInComponent} from 'src/app/components/log-in.component/log-in.component';
 import {AppRoutingModule} from 'src/app/app-routing.module';
 import {FormsModule} from '@angular/forms';
-import {FormValidationService} from 'src/app/services/form-validation.service/form-validation.service';
+import {FormValidationService} from 'src/app/services/form-validation.service';
 import {NameValidator} from 'src/app/directives/name-validator.directive';
 import {EmailValidator} from 'src/app/directives/email-validator.directive';
 import {NumberValidator} from 'src/app/directives/number-validator.directive';
@@ -22,17 +22,17 @@ import {InfoGenerateComponent} from 'src/app/components/info-generate.component/
 import {InfoRequirementsComponent} from 'src/app/components/info-requirements.component/info-requirements.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
-import {SubNavBarService} from './services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {SubNavBarService} from './services/sub-nav-bar.service';
 import {UppercaseValidator} from './directives/upper-case-validator.directive';
 import { LowercaseValidator } from './directives/lower-case-validator.directive';
 import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
 import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
 import { SpaceValidator } from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
-import {MemberService} from 'src/app/services/member.service/member.service';
+import {MemberService} from 'src/app/services/member.service';
 import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
-import { MockCustomerService } from './services/mock-customer.service/mock-customer.service';
+import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 
 @NgModule({

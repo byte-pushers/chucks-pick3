@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MockCustomerService} from '../../services/mock-customer.service/mock-customer.service';
+import {MockCustomerService} from '../../services/mock-customer.service';
 
 
 
@@ -16,6 +16,12 @@ export class CustomerSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    const summaryActive = document.getElementById('summary');
+    summaryActive.classList.add('active');
+    summaryActive.classList.remove('allow-hover');
+    const howToActive = document.getElementById('howTo');
+    howToActive.classList.remove('active');
+    howToActive.classList.add('allow-hover');
   }
 
   public selectCustomer(event) {

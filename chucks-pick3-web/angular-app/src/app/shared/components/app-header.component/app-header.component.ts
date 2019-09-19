@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {SubNavBarService} from 'src/app/services/show-sub-nav-bar.service/sub-nav-bar.service';
+import {SubNavBarService} from 'src/app/services/sub-nav-bar.service';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
+import {LogInValidationService} from '../../../services/log-in.service';
+
 
 
 @Component({
@@ -11,7 +13,9 @@ import {map} from 'rxjs/operators';
 })
 
 export class AppHeaderComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService, private route: ActivatedRoute) {
+  constructor(private subNavBarService: SubNavBarService,
+              private route: ActivatedRoute,
+              public logInService: LogInValidationService) {
   }
 
   ngOnInit() {
@@ -60,9 +64,9 @@ export class AppHeaderComponent implements OnInit {
     document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
     document.getElementById('howTo').style.color = 'gray';
   }
-
-  public howToHover() {
-    document.getElementById('howTo').style.backgroundColor = 'green';
+  public changeToLogInButton() {
+this.logInService.logOut();
   }
+
 
 }
