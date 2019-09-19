@@ -11,111 +11,123 @@
   <h1><b>Customer Details</b></h1>
 </div>
 <div class="details">
-<form id="details" name="details" #details="ngForm">
-  <table class="table table-striped">
-    <thead>
-    <tr style="text-align: left">
-      <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
-      <td class="border-0" colspan="8" style="font-size: 18px">
-        <input name="firstName"
-               type="text"
-               [(ngModel)]="selectedCustomer.firstName"
-               value="{{selectedCustomer.firstName}}"
-               *ngIf="editMode">
-        {{selectedCustomer.firstName}}</td>
-      <td class="border-0" colspan="8" style="font-size: 18px">
-        <input name="lastName"
-               type="text" [(ngModel)]="selectedCustomer.lastName"
-               *ngIf="editMode">
-        {{selectedCustomer.lastName}}</td>
-    </tr>
-    </thead>
-    <tbody style="text-align: left">
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">Email:
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="email"
-               type="text"
-               [(ngModel)]="selectedCustomer.email"
-               *ngIf="editMode">{{ selectedCustomer.email }}</td>
-    </tr>
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">Phone:
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="phone"
-               type="text"
-               [(ngModel)]="selectedCustomer.phone" *ngIf="editMode">
-        {{selectedCustomer.phone}}
-      </td>
-    </tr>
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">City:
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="city"
-               type="text"
-               [(ngModel)]="selectedCustomer.city" *ngIf="editMode">
-        {{selectedCustomer.city}}
-      </td>
-    </tr>
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">State:
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="state"
-               type="text"
-               [(ngModel)]="selectedCustomer.state" *ngIf="editMode">
-        {{selectedCustomer.state}}
-      </td>
-    </tr>
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">How Often?
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="howOften"
-               type="text"
-               placeholder="Sometimes" *ngIf="editMode">
-        Sometimes
-      </td>
-    </tr>
-    <tr>
-      <th scope="row"
-          class="rounded-left bg-dark text-white"
-          colspan="1">Type of Phone?
-      </th>
-      <td class="rounded-right" colspan="11">
-        <input name="phoneType"
-               type="text"
-               placeholder="iPhone" *ngIf="editMode">
-        iPhone
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</form>
-  <div class="optionButtons">
+  <form id="details" name="details" #details="ngForm">
+    <table class="table">
+      <thead>
+      <tr style="text-align: left">
+        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
+        <td class="border-0" colspan="8" style="font-size: 18px">
+          <input name="firstName"
+                 type="text"
+                 [(ngModel)]="selectedCustomer.firstName"
+                 value="{{selectedCustomer.firstName}}"
+                 *ngIf="editMode">
+          {{selectedCustomer.firstName}}</td>
+        <td class="border-0" colspan="8" style="font-size: 18px">
+          <input name="lastName"
+                 type="text" [(ngModel)]="selectedCustomer.lastName"
+                 *ngIf="editMode">
+          {{selectedCustomer.lastName}}</td>
+      </tr>
+      </thead>
+      <tbody style="text-align: left">
+      <tr>
+        <th scope="row"
+            id="email"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">Email:
+        </th>
+        <td class="rounded-right bg-light" id="email-input" style="border-right: 1px solid #dee2e6" colspan="11">
+          <input name="email"
+                 type="text"
+                 [(ngModel)]="selectedCustomer.email"
+                 *ngIf="editMode">{{ selectedCustomer.email }}</td>
+      </tr>
+      <tr>
+        <th scope="row"
+            id="phone"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">Phone:
+        </th>
+        <td class="rounded-right bg-light" style="border-right: 1px solid #dee2e6" id="phone-input" colspan="11">
+          <input name="phone"
+                 type="text"
+                 [(ngModel)]="selectedCustomer.phone" *ngIf="editMode">
+          {{selectedCustomer.phone}}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"
+            id="city"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">City:
+        </th>
+        <td class="rounded-right bg-light" id="city-input" style="border-right: 1px solid #dee2e6" colspan="11">
+          <input name="city"
+                 type="text"
+
+                 [(ngModel)]="selectedCustomer.city" *ngIf="editMode">
+          {{selectedCustomer.city}}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"
+            id="state"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">State:
+        </th>
+        <td class="rounded-right bg-light" id="state-input" style="border-right: 1px solid #dee2e6" colspan="11">
+          <input name="state"
+                 type="text"
+                 [(ngModel)]="selectedCustomer.state" *ngIf="editMode">
+          {{selectedCustomer.state}}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"
+            id="howOften"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">How Often?
+        </th>
+        <td class="rounded-right bg-light"
+            style="border-right: 1px solid #dee2e6" colspan="11">
+          <input name="howOften"
+                 id="howOften-input"
+                 type="text"
+                 placeholder="Sometimes" *ngIf="editMode">
+          Sometimes
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"
+            id="phoneType"
+            class="rounded-left bg-secondary text-white"
+            colspan="1">Type of Phone?
+        </th>
+        <td class="rounded-right bg-light"
+            style="border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6"
+            colspan="11">
+          <input name="phoneType"
+                 id="phoneType-input"
+                 type="text"
+                 placeholder="iPhone" *ngIf="editMode">
+          iPhone
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </form>
     <button type="button"
             class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
       Edit
     </button>
     <a [routerLink]="['/customers']" routerLinkActive="active">
-    <button type="button"
-            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
-            (click)="deleteCustomer(selectedCustomer)">
-      Delete
-    </button>
+      <button type="button"
+              class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+              (click)="deleteCustomer(selectedCustomer)">
+        Delete
+      </button>
     </a>
     <button type="button"
             class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
@@ -128,6 +140,4 @@
         Cancel
       </button>
     </a>
-
-  </div>
 </div>

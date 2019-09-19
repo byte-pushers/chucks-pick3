@@ -42,6 +42,18 @@ export class CustomerDetailsComponent implements OnInit {
   private enableEdit() {
     if (this.editMode === false) {
       this.editMode = true;
+      document.getElementById('email').classList.toggle('bg-secondary');
+      document.getElementById('phone').classList.toggle('bg-secondary');
+      document.getElementById('city').classList.toggle('bg-secondary');
+      document.getElementById('state').classList.toggle('bg-secondary');
+      document.getElementById('howOften').classList.toggle('bg-secondary');
+      document.getElementById('phoneType').classList.toggle('bg-secondary');
+      document.getElementById('email').classList.toggle('bg-dark');
+      document.getElementById('phone').classList.toggle('bg-dark');
+      document.getElementById('city').classList.toggle('bg-dark');
+      document.getElementById('state').classList.toggle('bg-dark');
+      document.getElementById('howOften').classList.toggle('bg-dark');
+      document.getElementById('phoneType').classList.toggle('bg-dark');
       if (this.editMode === true) {
         this.readOnlyMode = false;
       }
@@ -51,6 +63,19 @@ export class CustomerDetailsComponent implements OnInit {
   private disableEdit() {
     if (this.editMode === true) {
       this.editMode = false;
+      document.getElementById('email').classList.toggle('bg-secondary');
+      document.getElementById('phone').classList.toggle('bg-secondary');
+      document.getElementById('city').classList.toggle('bg-secondary');
+      document.getElementById('state').classList.toggle('bg-secondary');
+      document.getElementById('howOften').classList.toggle('bg-secondary');
+      document.getElementById('phoneType').classList.toggle('bg-secondary');
+      document.getElementById('email').classList.toggle('bg-dark');
+      document.getElementById('phone').classList.toggle('bg-dark');
+      document.getElementById('city').classList.toggle('bg-dark');
+      document.getElementById('state').classList.toggle('bg-dark');
+      document.getElementById('howOften').classList.toggle('bg-dark');
+      document.getElementById('phoneType').classList.toggle('bg-dark');
+
       if (this.editMode === false) {
         this.readOnlyMode = true;
       }

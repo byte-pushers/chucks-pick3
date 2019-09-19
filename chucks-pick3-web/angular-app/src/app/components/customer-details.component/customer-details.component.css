@@ -6,7 +6,7 @@
 }
 .customer-title-section {
   width: 100%;
-  height: 100%;
+  height: 30%;
   display: block;
   float: left;
   position: relative;
@@ -46,24 +46,22 @@ margin-top: 2%;
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 .update {
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 
-.btn-block {
-margin-top: 0;
-}
+
 
 .delete {
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 .back-button {
   width: 10%;
@@ -73,18 +71,18 @@ margin-top: 0;
   float: right;
   margin-left: 3px;
   width: 18%;
-
+  margin-top: 10px;
 }
 
 .buttons {
   display: block;
   float: right;
-  width: 20%;
+  width: 30%;
 
 }
 
 .optionButtons {
-  display: inline-block;
+  display: block;
   width: 50%;
   height: 25%;
   margin: 0 auto;
