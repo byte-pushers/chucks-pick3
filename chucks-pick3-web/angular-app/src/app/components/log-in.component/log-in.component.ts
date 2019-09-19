@@ -25,6 +25,9 @@ export class LogInComponent implements OnInit {
     const howToActive = document.getElementById('howTo');
     howToActive.classList.remove('active');
     howToActive.classList.add('allow-hover');
+    const summaryActive = document.getElementById('summary');
+    summaryActive.classList.remove('active');
+    summaryActive.classList.add('allow-hover');
   }
 
   public onSubmit() {

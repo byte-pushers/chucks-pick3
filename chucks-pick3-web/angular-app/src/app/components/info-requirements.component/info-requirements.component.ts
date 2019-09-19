@@ -14,5 +14,8 @@ export class InfoRequirementsComponent implements OnInit {
     const howToActive = document.getElementById('howTo');
     howToActive.classList.add('active');
     howToActive.classList.remove('allow-hover');
+    const summaryActive = document.getElementById('summary');
+    summaryActive.classList.remove('active');
+    summaryActive.classList.add('allow-hover');
   }
 }
