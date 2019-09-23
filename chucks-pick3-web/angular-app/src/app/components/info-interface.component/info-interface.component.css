@@ -1,0 +1,57 @@
+.interface-mobile {
+  display: none;
+}
+/*Mobile responsiveness*/
+
+@media only screen and (max-width: 740px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .interface {
+    display: none;
+  }
+  .interface-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .what-you-need {
+    display: none;
+  }
+  .interface-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .interface {
+    display: none;
+  }
+  .interface-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .interface {
+    display: none;
+  }
+  .interface-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .interface {
+    display: none;
+  }
+  .interface-mobile {
+    display: block;
+  }
+}
