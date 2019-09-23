@@ -12,3 +12,58 @@
 .how-to-header {
   display: block;
 }
+@media only screen and (max-width: 740px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+.generate-mobile {
+  display: none;
+}

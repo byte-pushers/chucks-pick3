@@ -74,9 +74,11 @@
               <div class="hamburger-menu-section-1">
                 <div class="hamburger-menu-indent">
                 </div>
+                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}" (click)="closeNav()">
                 <div class="how">
                   <h5><b> How To</b></h5>
                 </div>
+                </a>
               </div>
               <div class="hamburger-menu-section-2">
                 <div class="options">

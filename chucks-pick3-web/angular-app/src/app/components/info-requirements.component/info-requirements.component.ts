@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormValidationService} from '../../services/form-validation.service';
 
 @Component({
   selector: 'app-info-requirements',
@@ -7,7 +9,8 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class InfoRequirementsComponent implements OnInit {
-  constructor() {
+  constructor(public formValidationService: FormValidationService,
+              public router: Router) {
   }
 
   ngOnInit() {
@@ -17,5 +20,8 @@ export class InfoRequirementsComponent implements OnInit {
     const summaryActive = document.getElementById('summary');
     summaryActive.classList.remove('active');
     summaryActive.classList.add('allow-hover');
+  }
+  public goToMobileInterface() {
+    this.router.navigate(['/interface']);
   }
 }
