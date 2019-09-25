@@ -6,20 +6,22 @@
   margin: 0 auto;
   position: center;
   float: left;
-
-
 }
-.what-you-need-mobile {
+.view-mobile {
   display: none;
+
 }
+
 /*Mobile responsiveness*/
 
 @media only screen and (max-width: 740px) {
-
-}
-
-@media only screen and (max-width: 768px) {
-
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -28,6 +30,17 @@
   }
   .view-mobile {
     display: block;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+    font-size: 15px;
   }
 }
 
@@ -37,6 +50,7 @@
   }
   .view-mobile {
     display: block;
+    font-size: 15px;
   }
 }
 
@@ -46,6 +60,7 @@
   }
   .view-mobile {
     display: block;
+    font-size: 15px;
   }
 }
 
@@ -55,6 +70,7 @@
   }
   .view-mobile {
     display: block;
+    font-size: 15px;
   }
 }
 
@@ -64,9 +80,6 @@
   }
   .view-mobile {
     display: block;
+    font-size: 15px;
   }
-}
-
-.view-mobile {
-  display: none;
 }

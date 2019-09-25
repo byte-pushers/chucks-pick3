@@ -20,4 +20,8 @@ export class HomeComponent implements OnInit {
     summaryActive.classList.remove('active');
     summaryActive.classList.add('allow-hover');
   }
+  public backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 }

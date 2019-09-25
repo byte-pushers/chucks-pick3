@@ -23,5 +23,7 @@ export class InfoRequirementsComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/interface']);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 }

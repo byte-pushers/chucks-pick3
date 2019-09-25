@@ -11,7 +11,10 @@
   float: left;
   position: relative;
 }
-
+.border-secondary {
+  border: 1px solid #dee2e6 !important;
+  border-radius: 25px;
+}
 .campaign {
   display: block;
   width: 8%;

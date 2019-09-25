@@ -1,3 +1,5 @@
+
+
 .how-to-generate {
   display: block;
   width: 100%;
@@ -8,16 +10,20 @@
   float: left;
 
 }
-
+.generate-mobile {
+  display: none;
+}
 .how-to-header {
   display: block;
 }
 @media only screen and (max-width: 740px) {
-
-}
-
-@media only screen and (max-width: 768px) {
-
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -26,6 +32,28 @@
   }
   .generate-mobile {
     display: block;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+    font-size: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+    font-size: 15px;
   }
 }
 
@@ -35,24 +63,17 @@
   }
   .generate-mobile {
     display: block;
+    font-size: 15px;
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 415px) {
   .how-to-generate {
     display: none;
   }
   .generate-mobile {
     display: block;
-  }
-}
-
-@media only screen and (max-width: 414px) {
-  .how-to-generate {
-    display: none;
-  }
-  .generate-mobile {
-    display: block;
+    font-size: 15px;
   }
 }
 
@@ -62,8 +83,6 @@
   }
   .generate-mobile {
     display: block;
+    font-size: 15px;
   }
-}
-.generate-mobile {
-  display: none;
 }
