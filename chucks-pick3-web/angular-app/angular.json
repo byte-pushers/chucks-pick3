@@ -65,8 +65,7 @@
   "outputPath": "dist/i18ntranslate/",
   "i18nFile": "src/app/locale/messages.es.xlf",
   "i18nFormat": "xlf",
-  "i18nLocale": "es",
-  "i18nMissingTranslation": "error"
+  "i18nLocale": "es"
 }
           }
         },
