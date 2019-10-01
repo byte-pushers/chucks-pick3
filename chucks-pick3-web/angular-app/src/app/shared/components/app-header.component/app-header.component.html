@@ -14,12 +14,12 @@
     <div class="main-nav-bar-container">
       <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
         <div class="nav-bar-col-25  allow-hover">
-          <b>Home</b>
+          <b translate>{{ 'Home' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
         <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
-          <b>How To</b>
+          <b>{{ 'HowTo' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
@@ -30,22 +30,22 @@
       <div class="nav-bar-col-25">
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-in">
-            <b>Log-In</b>
+            <b>{{ 'Login' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
-            <b>Log-Out</b>
+            <b>{{ 'Login' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="sign-up">
-            <b>Sign-Up</b>
+            <b>{{ 'SignUp' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="summary">
-            <b>Summary</b>
+            <b>{{ 'Customers' | translate}}</b>
           </div>
         </a>
       </div>
@@ -141,11 +141,13 @@
     </div>
 
   </div>
+  <div class="lang-buttons">
+    <button class=" btn btn-light" (click)="switchLanguage('en')">en</button>
+
+    <button class="btn btn-light" (click)="switchLanguage('es')">es</button>
+  </div>
 </div>
 <div *ngIf="isSubNavBarVisible()">
-  <div class="sub-nav-bar-title-container">
-    <div><span><b>How To Play</b></span></div>
-  </div>
   <div class="sub-nav-bar-container">
     <div class="sub-nav-bar-col-25">
       <span></span>

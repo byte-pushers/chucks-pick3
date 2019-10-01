@@ -34,8 +34,14 @@ import {UserNameValidator} from './directives/user-name-validator.directive';
 import {PasswordValidator} from './directives/password.directive';
 import {MockCustomerService} from './services/mock-customer.service';
 import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +75,22 @@ import localeFr from '@angular/common/locales/fr';
     AppRoutingModule,
     FormsModule,
     ClickOutsideModule,
-    ScrollEventModule
+    ScrollEventModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     MemberService,
