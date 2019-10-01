@@ -1,28 +1,24 @@
 <div class="row">
-  <div class="col-md-12" i18n="Description showing the use for the application.@@home.mainContent.paragraph">
-    <p><i><b>Chuck's Pick 3</b></i> is a companion app dedicated to generating the best picks for your
-      states <i>Pick 3</i> lotto game. Once the application generates numbers based off your states winning numbers, you
-      can simply write them into your lotto ticket.
-    </p>
+  <div class="col-md-12">
+    <p>{{ 'home-main-content' | translate}}</p>
   </div>
   <div class="col-md-4 no-pad-right">
     <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
-      <div class="grediant" i18n="Image for how-to page.@@home.containers.howTo.image">
+      <div class="grediant">
         <img src="/assets/images/screens-02.png">
       </div>
-      <div class="greenpatch" i18n="Description for how-to page.@@home.containers.howTo">
-        Learn how to use <i><b>Chuck's Pick 3</b></i> on your mobile and tablet devices.
+      <div class="greenpatch">
+        {{ 'home-how-to' | translate}}
       </div>
     </a>
   </div>
   <div class="col-md-4 middlebdr no-pad">
     <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant" i18n="Image for demo page.@@home.containers.demo.image">
+      <div class="grediant">
         <img src="/assets/images/screens-01.png">
       </div>
-      <div class="greenpatch" i18n="Description for demo page.@@home.containers.demo">
-        <p style="padding:0px 7px; margin: 0px;">Try out <i><b>Chuck's Pick 3</b></i> directly from your mobile or
-          tablet devices. </p>
+      <div class="greenpatch">
+        <p style="padding:0px 7px; margin: 0px;">{{ 'home-demo' | translate}}</p>
       </div>
     </a>
   </div>
@@ -31,8 +27,8 @@
       <div class="grediant" i18n="Image for sign-up page.@@home.containers.signUp.image">
         <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
       </div>
-      <div class="greenpatch bottom-space forsignup" i18n="Description for sign-up page.@@home.containers.signUp">
-        Sign up for more information and get notified when the application goes live!
+      <div class="greenpatch bottom-space forsignup">
+        {{ 'home-sign-up' | translate}}
       </div>
     </a>
   </div>

@@ -1,10 +1,17 @@
 {
-  "Home": "Home",
-  "HowTo": "How-To",
-  "Demo": "Demo",
-  "SignUp": "Sign-Up",
-  "Login": "Log-In",
-  "LogOut": "Log-Out",
-  "Customers": "Customers",
-  "Select": "Select Language"
+  "//a": "Navigation---------------------------------.",
+  "home": "Home",
+  "howTo": "How-To",
+  "demo": "Demo",
+  "signUp": "Sign-Up",
+  "login": "Log-In",
+  "logOut": "Log-Out",
+  "customers": "Customers",
+  "select": "Select Language",
+
+  "//b": "Home Component---------------------------------.",
+  "home-main-content": "Chuck's Pick 3 is a companion app dedicated to generating the best picks for your\n      states <i>Pick 3</i> lotto game. Once the application generates numbers based off your states winning numbers, you\n      can simply write them into your lotto ticket.",
+  "home-how-to": "Learn how to use Chuck's Pick 3 on your mobile and tablet devices.",
+  "home-demo": "Try out Chuck's Pick 3 directly from your mobile or tablet devices.",
+  "home-sign-up": "Sign up for more information and get notified when the application goes live!"
 }

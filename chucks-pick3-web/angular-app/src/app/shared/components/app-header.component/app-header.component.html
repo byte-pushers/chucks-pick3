@@ -14,12 +14,12 @@
     <div class="main-nav-bar-container">
       <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
         <div class="nav-bar-col-25  allow-hover">
-          <b translate>{{ 'Home' | translate}}</b>
+          <b translate>{{ 'home' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
         <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
-          <b>{{ 'HowTo' | translate}}</b>
+          <b>{{ 'howTo' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
@@ -30,22 +30,22 @@
       <div class="nav-bar-col-25">
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-in">
-            <b>{{ 'Login' | translate}}</b>
+            <b>{{ 'login' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
-            <b>{{ 'Login' | translate}}</b>
+            <b>{{ 'logOut' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="sign-up">
-            <b>{{ 'SignUp' | translate}}</b>
+            <b>{{ 'signUp' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="summary">
-            <b>{{ 'Customers' | translate}}</b>
+            <b>{{ 'customers' | translate}}</b>
           </div>
         </a>
       </div>

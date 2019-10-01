@@ -1,10 +1,17 @@
 {
-  "Home": "Inicio",
-  "HowTo": "Guía",
-  "Demo": "Demo",
-  "SignUp": "Regístrate",
-  "Login": "Acceso",
-  "LogOut": "Cerrar",
-  "Customers": "Clientes",
-  "Select": "Seleccionar Idioma"
+  "//a": "Navigation---------------------------------.",
+  "home": "Inicio",
+  "howTo": "Guía",
+  "demo": "Demo",
+  "signUp": "Regístrate",
+  "login": "Acceso",
+  "logOut": "Cerrar",
+  "customers": "Clientes",
+  "select": "Seleccionar Idioma",
+
+  "//b": "Home Component---------------------------------.",
+  "home-main-content": "Chuck's Pick 3 es una aplicación complementaria dedicada a generar numeros para el juego de Pick 3 de su estado. Una vez que la aplicación genera números basados los números ganadores de su estado, simplemente puede escribirlos en su boleto de lotería.\n",
+  "home-how-to": "Aprende cómo usar Chuck's Pick 3 en sus aparatos móviles y tabletas.",
+  "home-demo": "Prueba Chuck's Pick 3 directamente desde sus aparatos móviles o tabletas.",
+  "home-sign-up": "¡Regístrese para obtener más información y recibir notificaciones cuando entre en funcionamiento!"
 }
