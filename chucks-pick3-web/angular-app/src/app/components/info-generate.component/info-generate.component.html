@@ -1,34 +1,34 @@
 <div class="how-to-header" id="generate">
-  <h1><b>How to Generate Picks:</b></h1>
+  <h1><b>{{ 'generate-title' | translate }}</b></h1>
 </div>
 <div class="how-to-generate">
-  <p>By selecting 'View Picks' within mobile you will be allowed to generate new numbers for a specific time of day</p>
+  <p>{{ 'generate-intro' | translate}}</p>
   <br>
   <img src="/assets/images/generateHome.png" style="height: 60%; width: 20%">
   <br>
-  <p>You will then be taken to a seperate screen which will allow you to pick winning numbers from a specific time of day.</p>
+  <p>{{ 'generate-instruction-1' | translate}}</p>
   <br>
   <img src="/assets/images/generateSelectTime.png" style="height: 60%; width: 20%">
   <br>
-  <p>From here you can select the time of day for which you want to generate these new numbers for.</p>
+  <p>{{ 'generate-instruction-2' | translate }}</p>
   <br>
   <img src="/assets/images/generate.png"style="height: 60%; width: 20%">
 </div>
 <div class="generate-mobile">
-<p>By selecting 'View Picks' within mobile you will be allowed to generate new numbers for a specific time of day</p>
+<p>{{ 'generate-intro' | translate}}</p>
   <br>
   <img src="/assets/images/generateHome.png">
   <br>
-  <p>You will then be taken to a seperate screen which will allow you to pick winning numbers from a specific time of day.</p>
+  <p>{{ 'generate-instruction-1' | translate}}</p>
   <br>
   <img src="/assets/images/generateSelectTime.png" >
   <br>
-  <p>From here you can select the time of day for which you want to generate these new numbers for.</p>
+  <p>{{ 'generate-instruction-2' | translate }}</p>
   <br>
   <img src="/assets/images/generate.png">
   <button type="submit"
           class="btn btn btn-success submit btn-lg btn-block" (click)="goToMobileInterface()">
-    View Your Picks
+    {{ 'generate-btn' | translate }}
   </button>
   <br>
   <br>

@@ -1,41 +1,37 @@
 <div class="how-to-header" id="requirements">
-  <h1><b>Requirements:</b></h1>
+  <h1><b>{{ 'requirements-title' | translate }}</b></h1>
 </div>
 <div class="what-you-need">
   <div class="requirements-app">
-    <p><b><i>Chuck's Pick 3</i></b> is a companion app dedicated to helping you generate smart numbers to play in your
-      state's <i>Pick 3</i> lotto game. You will need the following in order to play:</p>
-    <div><p><b>1.</b> You will need to download <b><i>Chuck's Pick 3</i></b> from the appropriate App Store onto your
-      phone.</p></div>
+    <p>{{ 'requirements-intro' | translate }}</p>
+    <div>
+      <p><b>1.</b> {{ 'requirements-instruction-1' | translate }}</p>
+    </div>
     <img src="/assets/images/appLogo.png" alt="IPhone" style="width: 150px; height: 150px;">
     <br>
     <br>
-    <div><p><b>2.</b> Gather a Pick 3 lotto ticket from your state.</p></div>
+    <div><p><b>2.</b> {{ 'requirements-instruction-2' | translate }}</p></div>
     <img src="/assets/images/lottoRequirements.png" alt="IPhone" style="height: 40%; width: 20%">
   </div>
-  <div><p><b>3.</b> Now with both <b><i>Chuck's Pick 3</i></b> and your <i>Pick 3</i> lotto ticket at hand you can begin
-    generating and writing down your picks. </p></div>
+  <div><p><b>3.</b> {{ 'requirements-instruction-3' | translate }}</p></div>
   <br>
   <br>
 </div>
 <div class="what-you-need-mobile">
   <div class="requirements-app">
-    <p><b><i>Chuck's Pick 3</i></b> is a companion app dedicated to helping you generate smart numbers to play in your
-      state's <i>Pick 3</i> lotto game. You will need the following in order to play:</p>
-    <div><p><b>1.</b> You will need to download <b><i>Chuck's Pick 3</i></b> from the appropriate App Store onto your
-      phone.</p></div>
+    <p>{{ 'requirements-intro' | translate }}</p></div>
     <img src="/assets/images/appLogo.png" alt="IPhone" style="width: 150px; height: 150px;">
     <br>
     <br>
-    <div><p><b>2.</b> Gather a Pick 3 lotto ticket from your state.</p></div>
+    <div><p><b>2.</b>{{ 'requirements-instruction-1' | translate }}</p></div>
     <img src="/assets/images/lottoRequirements.png" alt="IPhone">
+  <div><p><b>3.</b>{{ 'requirements-instruction-2' | translate }}</p></div>
   </div>
-  <div><p><b>3.</b> Now with both <b><i>Chuck's Pick 3</i></b> and your <i>Pick 3</i> lotto ticket at hand you can begin
-    generating and writing down your picks. </p></div>
+
   <button type="submit"
           class="btn btn btn-success submit btn-lg btn-block" (click)="goToMobileInterface()">
-    Understanding The Interface
+    {{'requirements-btn' | translate }}
   </button>
   <br>
   <br>
-</div>
+

@@ -1,31 +1,29 @@
 <div class="how-to-header" id="generated-picks">
-  <h1><b>How to View Generated Picks:</b></h1>
+  <h1><b>{{ 'view-title' | translate }}</b></h1>
 </div>
 
 <div class="how-to-view">
-  <p> You can view the numbers you generated for a specific time of day by selecting the clock button on the top half of
-    the screen labeled 'View Picks'</p>
+  <p>{{ 'view-introduction' | translate }}</p>
   <br>
   <img src="/assets/images/viewHome.png" style="height: 60%; width: 20%">
   <br>
-  <p>Once selected you will be allowed to view and scroll through your generated numbers as seen:</p>
+  <p>{{ 'view-instruction-1' | translate }}</p>
   <br>
   <img src="/assets/images/viewScreen.png" style="height: 60%; width: 20%">
 </div>
 
 <div class="view-mobile">
-  <h2> Selecting View Picks</h2>
-  <p> You can view the numbers you generated for a specific time of day by selecting the clock button on the top half of
-    the screen labeled 'View Picks'</p>
+  <h2>{{ 'view-title' | translate }}</h2>
+  <p>{{ 'view-introduction' | translate }}</p>
   <br>
   <img src="/assets/images/viewHome.png">
   <br>
-  <p>Once selected you will be allowed to view and scroll through your generated numbers as seen:</p>
+  <p>{{ 'view-instruction-1' | translate }}</p>
   <br>
   <img src="/assets/images/viewScreen.png">
   <button type="submit"
           class="btn btn btn-success submit btn-lg btn-block" (click)="goToMobileInterface()">
-    Try Out Chuck's Pick 3!
+    {{'view-btn' | translate }}
   </button>
   <br>
   <br>

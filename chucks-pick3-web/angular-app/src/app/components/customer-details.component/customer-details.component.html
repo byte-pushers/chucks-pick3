@@ -4,18 +4,18 @@
        style="text-decoration: none">
       <button type="button"
               class="btn btn-sec btn-secondary btn-sm btn-block" *ngIf="readOnlyMode">
-        Back
+        {{'detail-back' | translate }}
       </button>
     </a>
   </div>
-  <h1><b>Customer Details</b></h1>
+  <h1><b>{{'detail-title' | translate }}</b></h1>
 </div>
 <div class="details">
   <form id="details" name="details" #details="ngForm">
     <table class="table">
       <thead>
       <tr style="text-align: left">
-        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
+        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>{{'detail-title-customer' | translate }}</b></th>
         <td class="border-0" colspan="8" style="font-size: 18px">
           <input name="firstName"
                  type="text"
@@ -35,7 +35,7 @@
         <th scope="row"
             id="email"
             class="rounded-left bg-secondary text-white"
-            colspan="1">Email:
+            colspan="1">{{'detail-email' | translate }}
         </th>
         <td class="rounded-right bg-light" id="email-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="email"
@@ -47,7 +47,7 @@
         <th scope="row"
             id="phone"
             class="rounded-left bg-secondary text-white"
-            colspan="1">Phone:
+            colspan="1">{{'detail-phone' | translate }}
         </th>
         <td class="rounded-right bg-light" style="border-right: 1px solid #dee2e6" id="phone-input" colspan="11">
           <input name="phone"
@@ -60,7 +60,7 @@
         <th scope="row"
             id="city"
             class="rounded-left bg-secondary text-white"
-            colspan="1">City:
+            colspan="1">{{'detail-city' | translate }}
         </th>
         <td class="rounded-right bg-light" id="city-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="city"
@@ -74,7 +74,7 @@
         <th scope="row"
             id="state"
             class="rounded-left bg-secondary text-white"
-            colspan="1">State:
+            colspan="1">{{'detail-state' | translate }}
         </th>
         <td class="rounded-right bg-light" id="state-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="state"
@@ -95,14 +95,14 @@
                  id="howOften-input"
                  type="text"
                  placeholder="Sometimes" *ngIf="editMode">
-          Sometimes
+          A veces
         </td>
       </tr>
       <tr>
         <th scope="row"
             id="phoneType"
             class="rounded-left bg-secondary text-white"
-            colspan="1">Type of Phone?
+            colspan="1">{{'detail-phone-type' | translate }}
         </th>
         <td class="rounded-right bg-light"
             style="border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6"
@@ -120,24 +120,24 @@
   </form>
     <button type="button"
             class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
-      Edit
+      {{'detail-edit' | translate }}
     </button>
     <a [routerLink]="['/customers']" routerLinkActive="active">
       <button type="button"
               class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
               (click)="deleteCustomer(selectedCustomer)">
-        Delete
+       {{'detail-delete' | translate }}
       </button>
     </a>
     <button type="button"
             class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
-      Update
+      {{'detail-update' | translate }}
     </button>
     <a [routerLink]="['/customers']" routerLinkActive="active">
       <button type="button"
               class="btn btn cancel btn-danger btn-sm btn-block" (click)="resetCustomerInfo(details)"
               *ngIf="editMode">
-        Cancel
+        {{'detail-cancel' | translate }}
       </button>
     </a>
 </div>

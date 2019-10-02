@@ -53,7 +53,7 @@
     <div class="mobile-nav-bar-container">
 
       <div [routerLink]="'/home'" class="nav-bar-col-20 allow-hover" routerLinkActive="active" (click)="closeNav()">
-        <a [routerLink]="'/home'" routerLinkActive="active">Home</a>
+        <a [routerLink]="'/home'" routerLinkActive="active">{{ 'home' | translate}}</a>
       </div>
 
       <div class=" nav-bar-col-20 float-right allow-hover" routerLinkActive="active">
@@ -68,7 +68,7 @@
                 <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
               </div>
               <div class="menu-title">
-                <h2><b>Menu</b></h2>
+                <h2><b>{{'menu' | translate}}</b></h2>
               </div>
 
               <div class="hamburger-menu-section-1">
@@ -76,7 +76,7 @@
                 </div>
                 <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}" (click)="closeNav()">
                 <div class="how">
-                  <h5><b> How To</b></h5>
+                  <h5><b>{{ 'howTo' | translate}}</b></h5>
                 </div>
                 </a>
               </div>
@@ -87,7 +87,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
+                    <a [routerLink]="'/requirements'" (click)="closeNav()">{{ 'requirements' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -96,7 +96,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
-                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
+                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">{{ 'interface' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -105,7 +105,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
-                    <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
+                    <a [routerLink]="'/generate'" (click)="closeNav()">{{ 'generate' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -114,7 +114,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/view'" (click)="closeNav()">
-                    <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
+                    <a [routerLink]="'/view'" (click)="closeNav()">{{ 'view-picks' | translate }}</a>
                   </div>
                 </div>
               </div>
@@ -131,12 +131,12 @@
       </div>
       <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
            (click)="closeNav()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
+        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'login' | translate}}</a>
       </div>
 
       <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
            (click)="closeNav()">
-        <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
+        <a [routerLink]="'/sign-up'" routerLinkActive="active">{{ 'signUp' | translate}}</a>
       </div>
     </div>
 
@@ -155,25 +155,25 @@
     <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-require"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>Requirements</b>
+        <b>{{ 'requirements' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/interface']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-inter"
            class="sub-nav-bar-col-12-5 allow-hover ">
-        <b>Interface</b>
+        <b>{{ 'interface' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/generate']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-generate"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>Generate</b>
+        <b>{{ 'generate' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/view']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-generate-pic"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>View Picks</b>
+        <b>{{ 'view-picks' | translate }}</b>
       </div>
     </a>
     <div class="sub-nav-bar-col-25">

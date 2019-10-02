@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-info-generate',
   templateUrl: './info-generate.component.html',
@@ -7,7 +8,12 @@ import {Router} from '@angular/router';
 })
 
 export class InfoGenerateComponent implements OnInit {
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+  switchLanguage(es: string) {
+    this.translate.use(es);
   }
 
   ngOnInit() {
