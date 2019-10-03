@@ -4,10 +4,10 @@
   <div class="row">
     <div class=" col-xl-5 mx-auto text-left">
       <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-      <p class="h4 text-center">Login </p>
+      <p class="h4 text-center">{{'log-in-title' | translate}}</p>
       <div class="info-form">
         <div class="form-row">
-          <label for="UserName">Username</label>
+          <label for="UserName">{{'log-in-username' | translate}}</label>
           <input id="UserName"
                  name="userName"
                  #userName="ngModel"
@@ -18,15 +18,15 @@
           spaceValidator
                  userNameValidator>
           <div class="alert alert-danger" *ngIf="userName.errors && (userName.dirty || userName.touched)">
-            <div *ngIf="userName.errors.required">- User name is required.</div>
-            <div *ngIf="userName.errors.spaceValidator">- Remove spaces in user name.</div>
-            <div *ngIf="userName.errors.userNameValidator">- User name may only contain alphabetical and numerical characters. </div>
+            <div *ngIf="userName.errors.required">{{'log-in-username-error-required' | translate}}</div>
+            <div *ngIf="userName.errors.spaceValidator">{{'log-in-username-error-space' | translate}}</div>
+            <div *ngIf="userName.errors.userNameValidator">{{'log-in-username-error-valid' | translate}}</div>
           </div>
         </div>
         <br>
         <!-- Password -->
         <div class="form-row">
-          <label for="password">Password</label>
+          <label for="password">{{'log-in-password' | translate}}</label>
           <input  id="password"
                   name="password"
                   #password="ngModel"
@@ -38,16 +38,16 @@
                  required
           passwordValidator>
           <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
-            <div *ngIf="password.errors.required">- Password is required.</div>
-            <div *ngIf="password.errors.passwordValidator">- Password is not valid.</div>
-            <div *ngIf="password.errors.minlength">- Password does not meet minimum characters.</div>
+            <div *ngIf="password.errors.required">{{'log-in-password-error-required' | translate}}</div>
+            <div *ngIf="password.errors.passwordValidator">{{'log-in-password-error-valid' | translate}}</div>
+            <div *ngIf="password.errors.minlength">{{'log-in-password-error-min' | translate}}</div>
           </div>
           <br>
           <br>
           <br>
           <div class="mobile-space"></div>
           <button type="submit" value='submit' [disabled]="!logInForm.form.valid" (click)="onSubmit()"
-                  class="btn btn btn-success btn-lg btn-block">Submit
+                  class="btn btn btn-success btn-lg btn-block">{{'log-in-submit' | translate}}
           </button>
 
           <br>

@@ -24,16 +24,23 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {ScrollEventModule} from 'ngx-scroll-event';
 import {SubNavBarService} from './services/sub-nav-bar.service';
 import {UppercaseValidator} from './directives/upper-case-validator.directive';
-import { LowercaseValidator } from './directives/lower-case-validator.directive';
-import { SpecialCharactersValidator } from './directives/special-characters-validator.directive';
-import { CustomerSummaryComponent } from './components/customer-summary.component/customer-summary.component';
-import { SpaceValidator } from './directives/space-validator.directive';
+import {LowercaseValidator} from './directives/lower-case-validator.directive';
+import {SpecialCharactersValidator} from './directives/special-characters-validator.directive';
+import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
+import {SpaceValidator} from './directives/space-validator.directive';
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {MemberService} from 'src/app/services/member.service';
-import { UserNameValidator } from './directives/user-name-validator.directive';
-import { PasswordValidator } from './directives/password.directive';
-import { MockCustomerService } from './services/mock-customer.service';
-import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
+import {UserNameValidator} from './directives/user-name-validator.directive';
+import {PasswordValidator} from './directives/password.directive';
+import {MockCustomerService} from './services/mock-customer.service';
+import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -68,7 +75,22 @@ import { CustomerDetailsComponent } from './components/customer-details.componen
     AppRoutingModule,
     FormsModule,
     ClickOutsideModule,
-    ScrollEventModule
+    ScrollEventModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     MemberService,
