@@ -158,5 +158,8 @@
   "detail-edit": "Edit",
   "detail-delete": "Delete",
   "detail-update": "Update",
-  "detail-cancel": "Cancel"
+  "detail-cancel": "Cancel",
+  "//n": "Splash Page------------------------------------------",
+  "learn-more": "LEARN MORE"
 }
+
