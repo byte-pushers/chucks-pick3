@@ -1,32 +1,41 @@
 <div class="customer-title-section">
+<<<<<<< HEAD
   <h1>Customer Summary</h1>
+=======
+  <h1><b>{{'customers-title' | translate }}</b></h1>
+>>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
 </div>
 <br>
 <div class="form-row options">
   <div class="form-col campaign">
+<<<<<<< HEAD
     <label><b>Email Campaign</b></label>
+=======
+    <label for="emailCampaign">{{'customers-campaign' | translate }}</label>
+    <label for="emailCampaign"></label>
+>>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
     <select #dropDownEmailCampaign="ngModel"
             name="dropDownHowOftenName"
             class="custom-select" id="emailCampaign"
             required
             ngModel>
-      <option value="" selected>No option selected</option>
-      <option value="Often">Option 1</option>
-      <option value="Sometimes">Option 2</option>
-      <option value="Never">Option 3</option>
+      <option value="" selected>{{'customers-email-opt-1' | translate }}</option>
+      <option value="Often">{{'customers-email-opt-2' | translate }}</option>
+      <option value="Sometimes">{{'customers-email-opt-3' | translate }}</option>
+      <option value="Never">{{'customers-email-opt-4' | translate }}</option>
     </select>
   </div>
   <div class="buttons">
     <div>
       <button type="button"
               class="btn btn add btn-success btn-sm btn-block" (click)="addRow()">
-        Add
+       {{'customers-add' | translate }}
       </button>
     </div>
     <div>
       <button type="button"
               class="btn btn add btn-danger btn-sm btn-block" (click)="deleteSelected()">
-        Delete All
+        {{'customers-delete-all' | translate }}
       </button>
     </div>
   </div>
@@ -35,13 +44,13 @@
   <thead class="table-width ">
   <tr>
     <th scope="col" class="th-width"><!--checkbox--></th>
-    <th scope="col" class="th-width">First Name</th>
-    <th scope="col" class="th-width">Last Name</th>
-    <th scope="col" class="th-width hide-in-mobile">Email</th>
-    <th scope="col" class="th-width hide-in-mobile">Phone</th>
-    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">City</th>
-    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">State</th>
-    <th scope="col" class="th-width hide-in-mobile">Action</th>
+    <th scope="col" class="th-width">{{'customers-first-name' | translate }}</th>
+    <th scope="col" class="th-width">{{'customers-last-name' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-email' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-phone' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{'customers-city' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{'customers-state' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-action' | translate }}</th>
   </tr>
   </thead>
   <tbody>
@@ -62,7 +71,7 @@
     <th scope="col" class="th-width">
       <button type="button"
               class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
-        Delete
+        {{'customers-delete' | translate }}
       </button>
     </th>
   </tr>

@@ -59,7 +59,14 @@
                   "maximumError": "5mb"
                 }
               ]
-            }
+            },
+"es": {
+  "aot": true,
+  "outputPath": "dist/i18ntranslate/",
+  "i18nFile": "src/app/locale/messages.es.xlf",
+  "i18nFormat": "xlf",
+  "i18nLocale": "es"
+}
           }
         },
         "serve": {
@@ -70,6 +77,9 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-app:build:production"
+            },
+            "es": {
+              "browserTarget": "angular-app:build:es"
             }
           }
         },

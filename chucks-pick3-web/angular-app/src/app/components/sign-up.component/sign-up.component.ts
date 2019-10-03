@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormValidationService} from 'src/app/services/form-validation.service';
 import {MemberService} from 'src/app/services/member.service';
 import {Router} from '@angular/router';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -16,7 +16,12 @@ export class SignUpComponent implements OnInit {
 
   constructor(public formValidationService: FormValidationService,
               private memberService: MemberService,
-              public router: Router) {
+              public router: Router,
+              private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+  switchLanguage(es: string) {
+    this.translate.use(es);
   }
 
   ngOnInit() {

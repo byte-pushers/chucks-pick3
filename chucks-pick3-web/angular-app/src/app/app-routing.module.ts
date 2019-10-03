@@ -20,7 +20,7 @@ import {HowToComponent} from './components/how-to/how-to.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'info', component: InfoComponent,},
+  {path: 'info', component: InfoComponent},
   {path: 'generate', component: InfoGenerateComponent},
   {path: 'interface', component: InfoInterfaceComponent},
   {path: 'requirements', component: InfoRequirementsComponent},

@@ -4,12 +4,12 @@
     <div class="row">
       <div class="col-xl-5 mx-auto">
         <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
-        <h1>Sign up</h1>
+        <p class="h4  text-center">{{'sign-up-title' | translate}} </p>
         <br>
         <br>
         <div class="info-form">
           <div class="form-row">
-            <label for="defaultRegisterFormFirstName">First Name</label>
+            <label for="defaultRegisterFormFirstName">{{'sign-up-first-name' | translate}}</label>
             <input id="defaultRegisterFormFirstName"
                    name="firstName"
                    class="form-control"
@@ -19,15 +19,15 @@
                    type="text"
                    required ngModel nameValidator>
             <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-              <div *ngIf="firstName.errors.required">- First name is required.</div>
-              <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
-              <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
+              <div *ngIf="firstName.errors.required">{{'sign-up-first-name-error-required' | translate}}</div>
+              <div *ngIf="firstName.errors.minlength">{{'sign-up-first-name-error-min' | translate}}</div>
+              <div *ngIf="firstName.errors.nameValidator">{{'sign-up-first-name-error-valid' | translate}}</div>
 
             </div>
           </div>
           <br>
           <div class="form-row">
-            <label for="defaultRegisterFormLastName">Last Name</label>
+            <label for="defaultRegisterFormLastName">{{'sign-up-last-name' | translate}}</label>
             <input id="defaultRegisterFormLastName"
                    name="lastName"
                    #lastName="ngModel"
@@ -36,29 +36,29 @@
                    class="form-control" placeholder="Last name"
                    required ngModel nameValidator>
             <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
-              <div *ngIf="lastName.errors.required">- Last name is required.</div>
-              <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
-              <div *ngIf="lastName.errors.nameValidator">- May only use alphabetical characters.</div>
+              <div *ngIf="lastName.errors.required">{{'sign-up-last-name-error-required' | translate}}</div>
+              <div *ngIf="lastName.errors.minlength">{{'sign-up-last-name-error-min' | translate}}</div>
+              <div *ngIf="lastName.errors.nameValidator">{{'sign-up-last-name-error-valid' | translate}}</div>
             </div>
 
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormEmail">Email</label>
+          <label for="defaultRegisterFormEmail">{{'sign-up-email' | translate }}</label>
           <input
             type="email" name="email" email #email="ngModel"
             id="defaultRegisterFormEmail"
             class="form-control" placeholder="Email"
             required ngModel dataValidator emailValidator>
           <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
-            <div *ngIf="email.errors.required">- Email is required.</div>
-            <div *ngIf="email.errors.emailValidator">- Email is not valid.</div>
+            <div *ngIf="email.errors.required">{{'sign-up-email-error-required' | translate }}</div>
+            <div *ngIf="email.errors.emailValidator">{{'sign-up-email-error-valid' | translate }}</div>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormPhone">Phone</label>
+          <label for="defaultRegisterFormPhone">{{'sign-up-phone' | translate }}</label>
           <input type="tel" name="phoneNumber"
                  #phoneNumber="ngModel"
                  id="defaultRegisterFormPhone"
@@ -68,17 +68,17 @@
                  placeholder="Phone Number"
                  required ngModel numberValidator>
           <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
-            <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
-            <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
-            <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
-            <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
+            <div *ngIf="phoneNumber.errors.required">{{'sign-up-phone-error-required' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.pattern">{{'sign-up-phone-error-pattern' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.numberValidator">{{'sign-up-phone-error-valid' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.minlength">{{'sign-up-phone-error-min' | translate}}</div>
 
 
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormCity">City</label>
+          <label for="defaultRegisterFormCity">{{'sign-up-city' | translate}}</label>
           <input name="cityName" #cityName="ngModel"
                  type="text"
                  id="defaultRegisterFormCity"
@@ -87,20 +87,20 @@
                  minlength="2"
                  required ngModel nameValidator>
           <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
-            <div *ngIf="cityName.errors.required">- City name is required.</div>
-            <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical characters.</div>
-            <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
+            <div *ngIf="cityName.errors.required">{{'sign-up-city-error-required' | translate}}</div>
+            <div *ngIf="cityName.errors.nameValidator">{{'sign-up-city-error-valid' | translate}}</div>
+            <div *ngIf="cityName.errors.minlength">{{'sign-up-city-error-min' | translate}}</div>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormCity">State</label>
+          <label for="defaultRegisterFormCity">{{'sign-up-state' | translate}}</label>
           <label for="stateDropDownId"></label>
           <select #stateDropDownInputName="ngModel"
                   name="stateDropDownInputName"
                   class="custom-select" id="stateDropDownId"
                   required ngModel>
-            <option value="" selected>Select a State</option>
+            <option value="" selected>{{'sign-up-select-state' | translate}}</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
             <option value="Arizona">Arizona</option>
@@ -155,12 +155,12 @@
           </select>
 
           <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
-            <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
+            <div *ngIf="stateDropDownInputName.errors.required">{{'sign-up-state-error-required' | translate }}</div>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormZip">Zip</label>
+          <label for="defaultRegisterFormZip">{{'sign-up-zip' | translate }}</label>
           <input name="zipCode"
                  #zipCode="ngModel"
                  type="text"
@@ -170,53 +170,51 @@
                  placeholder="Zip"
                  required ngModel numberValidator>
           <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
-            <div *ngIf="zipCode.errors.required">- Zip code is required.</div>
-            <div *ngIf="zipCode.errors.numberValidator">- Zip code must only contain numeric characters.</div>
-            <div *ngIf="zipCode.errors.minlength">- Zip code is invalid.</div>
+            <div *ngIf="zipCode.errors.required">{{'sign-up-zip-error-required' | translate }}</div>
+            <div *ngIf="zipCode.errors.numberValidator">{{'sign-up-zip-error-valid' | translate }}</div>
+            <div *ngIf="zipCode.errors.minlength">{{'sign-up-zip-error-min' | translate }}</div>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormCity">Type Of Phone</label>
+          <label for="defaultRegisterFormCity">{{'sign-up-phone-type' | translate}}</label>
           <label for="typeOfPhoneId"></label>
           <select #dropDownTypeOfPhoneName="ngModel"
                   name="dropDownTypeOfPhoneName"
                   class="custom-select"
                   id="typeOfPhoneId"
                   required ngModel>
-            <option value="" selected>Type Of Phone</option>
-            <option value="Iphone">Iphone</option>
-            <option value="Android">Android</option>
+            <option value="" selected>{{ 'sign-up-phone-select-type' | translate }}</option>
+            <option value="Iphone">{{ 'sign-up-phone-type-1' | translate }}</option>
+            <option value="Android">{{ 'sign-up-phone-type-2' | translate }}</option>
           </select>
           <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
-            <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
+            <div *ngIf="dropDownTypeOfPhoneName.errors.required">{{ 'sign-up-phone-type-error-required' | translate }}</div>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <label for="defaultRegisterFormCity">How Often Do You Play?</label>
+          <label for="defaultRegisterFormCity">{{ 'sign-up-how-often' | translate }}</label>
           <label for="howOftenId"></label>
           <select #dropDownHowOftenName="ngModel"
                   name="dropDownHowOftenName"
                   class="custom-select" id="howOftenId"
                   required ngModel>
             <option value="" selected>How Often Do You Play?</option>
-            <option value="Often">Often</option>
-            <option value="Sometimes">Sometimes</option>
-            <option value="Never">Never</option>
+            <option value="Often">{{'sign-up-how-often-1' | translate}}</option>
+            <option value="Sometimes">{{'sign-up-how-often-2' | translate}}</option>
+            <option value="Never">{{'sign-up-how-often-3' | translate }}</option>
           </select>
           <div class="alert alert-danger" *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
-            <div *ngIf="dropDownHowOftenName.errors.required">- Selection is required.</div>
+            <div *ngIf="dropDownHowOftenName.errors.required">{{ 'sign-up-how-submit' | translate }}</div>
           </div>
           <br>
           <br>
           <br>
-          <!-- [routerLink]="'/thank-you'"
-           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
           <button type="submit"
                   class="btn btn btn-success submit btn-lg btn-block"
                   [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
-            Submit
+            {{ 'sign-up-how-submit' | translate }}
           </button>
 
         </div>
