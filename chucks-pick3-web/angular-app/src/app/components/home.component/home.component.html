@@ -2,34 +2,38 @@
   <div class="col-md-12">
     <p>{{ 'home-page-desc-main-content' | translate}}</p>
   </div>
-  <div class="col-md-4 no-pad-right">
-    <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
-      <div class="grediant">
-        <img src="/assets/images/screens-02.png">
+  <div class="encasing-box">
+    <div class="box">
+      <div class="image-area">
       </div>
-      <div class="greenpatch">
-        {{ 'home-page-desc-how-to' | translate}}
+      <div class="other-area">
+        <div class="text-area">
+          <p>{{ 'home-how-to' | translate}}</p>
+        </div>
       </div>
-    </a>
+    </div>
+    <div class="line">
+    </div>
+    <div class="box">
+      <div class="image-area">
+      </div>
+      <div class="other-area">
+        <div class="text-area">
+          <p>{{ 'home-demo' | translate}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="line">
+    </div>
+    <div class="box">
+      <div class="image-area">
+      </div>
+      <div class="other-area">
+        <div class="text-area">
+          {{ 'home-sign-up' | translate}}
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-4 middlebdr no-pad">
-    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant">
-        <img src="/assets/images/screens-01.png">
-      </div>
-      <div class="greenpatch">
-        <p style="padding:0px 7px; margin: 0px;">{{ 'home-page-desc-demo' | translate}}</p>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4 no-pad-left">
-    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant" i18n="Image for sign-up page.@@home.containers.signUp.image">
-        <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
-      </div>
-      <div class="greenpatch bottom-space forsignup">
-        {{ 'home-page-desc-sign-up' | translate}}
-      </div>
-    </a>
-  </div>
+  <br>
 </div>
