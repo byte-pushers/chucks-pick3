@@ -369,7 +369,11 @@ img {
     width: 100%;
 
   }
-
+.lang-buttons {
+  display: block;
+  width: 30%;
+  height: 10%;
+}
 
   .mobile-space {
     display: inline-block;

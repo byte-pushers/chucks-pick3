@@ -22,15 +22,17 @@ a {
   display: none;
 }
 .encasing-box {
-  width: 800px;
+  width: 805px;
   height:320px;
   display: block;
   margin-left: 10%;
   margin-right: 10%;
+  border: solid 1px;
+  border-color: black;
 }
 
 .box {
-  width: 32%;
+  width: 33.1%;
   height: 100%;
   float: left;
 }
@@ -44,7 +46,8 @@ a {
 .other-area {
   width: 100%;
   height: 25%;
-  background-color: gray;
+  background-color: #7eb956;
+  border-top: solid 1px;
 }
 
 .text-area {
@@ -61,4 +64,233 @@ a {
   height: 100%;
   float: left;
   display: inline;
+}
+@media only screen and (max-width: 740px) {
+  .encasing-box {
+    width: 800px;
+    height:320px;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+  .image-area {
+    width: 100%;
+    height: 75%;
+    background-image:url("/assets/images/appLogo.png");
+  }
+
+  .other-area {
+    width: 100%;
+    height: 25%;
+    background-color: #7eb956;
+  }
+
+  .text-area {
+    padding: 10px;
+    display: inline-block;
+    font-size: 11px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #d9d9d9;
+    width: 100%;
+    float: left;
+    display: inline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .what-you-need {
+    display: none;
+  }
+  .what-you-need-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .what-you-need {
+    display: none;
+  }
+  .what-you-need-mobile {
+    display: block;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+  .encasing-box {
+    width: 800px;
+    height:340px;
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .box {
+    width: 80%;
+    height: 100%;
+    float: left;
+  }
+
+  .image-area {
+    width: 100%;
+    height: 75%;
+    background-color: lightgray;
+  }
+
+  .other-area {
+    width: 100%;
+    height: 25%;
+    background-color: #7eb956;
+  }
+
+  .text-area {
+    padding: 10px;
+    display: inline-block;
+    font-size: 9px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #d9d9d9;
+    width: 100%;
+    float: left;
+    display: inline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .encasing-box {
+    width: 800px;
+    height:320px;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+  .image-area {
+    width: 100%;
+    height: 75%;
+    background-image:url("/assets/images/appLogo.png");
+  }
+
+  .other-area {
+    width: 100%;
+    height: 25%;
+    background-color: #7eb956;
+  }
+
+  .text-area {
+    padding: 10px;
+    display: inline-block;
+    font-size: 11px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #d9d9d9;
+    width: 100%;
+    float: left;
+    display: inline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .what-you-need {
+    display: none;
+  }
+  .what-you-need-mobile {
+    display: block;
+  }
+  .encasing-box {
+    width: 805px;
+    height:280px;
+    display: block;
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+  .text-area {
+    padding: 10px;
+    display: inline-block;
+    font-size: 9px;
+    text-align: left;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .what-you-need {
+    display: none;
+  }
+  .what-you-need-mobile {
+    display: block;
+  }
+  .encasing-box {
+    width: 805px;
+    height:280px;
+    display: block;
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+
+  .box {
+    width: 32.5%;
+    height: 100%;
+    float: left;
+  }
+  .text-area {
+    padding: 10px;
+    display: inline-block;
+    font-size: 9px;
+    text-align: left;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 770px) {
+  .box {
+    width: 33.1%;
+    height: 100%;
+    float: left;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .box {
+    width: 33.1%;
+    height: 100%;
+    float: left;
+  }
 }

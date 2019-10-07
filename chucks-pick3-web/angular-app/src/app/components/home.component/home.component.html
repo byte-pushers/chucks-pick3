@@ -3,8 +3,10 @@
     <p>{{ 'home-page-desc-main-content' | translate}}</p>
   </div>
   <div class="encasing-box">
+    <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
     <div class="box">
       <div class="image-area">
+        <img src= "/assets/images/howToContainer.png" style="height: 100%; width: 100%;">
       </div>
       <div class="other-area">
         <div class="text-area">
@@ -12,10 +14,13 @@
         </div>
       </div>
     </div>
+    </a>
     <div class="line">
     </div>
+    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
     <div class="box">
       <div class="image-area">
+        <img src= "/assets/images/demoContainer.png" style="height: 100%; width: 100%;">
       </div>
       <div class="other-area">
         <div class="text-area">
@@ -23,10 +28,13 @@
         </div>
       </div>
     </div>
+    </a>
     <div class="line">
     </div>
+    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
     <div class="box">
       <div class="image-area">
+        <img src= "/assets/images/signUpContainer.png"  style="height: 100%; width: 100%;">
       </div>
       <div class="other-area">
         <div class="text-area">
@@ -34,6 +42,7 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   <br>
 </div>
