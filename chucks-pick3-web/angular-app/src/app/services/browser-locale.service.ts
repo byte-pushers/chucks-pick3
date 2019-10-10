@@ -8,15 +8,14 @@ export class BrowserLocaleService {
   constructor(public translate: TranslateService) {
   }
 
-  public findLanguage() {
-    let passedLanguage;
-    const recievedLanguage = navigator.language;
-    if (recievedLanguage.includes('es')) {
-      passedLanguage = 'es';
+  public getLanguage() {
+    let browserLanguage;
+    if (navigator.language.includes('es')) {
+      browserLanguage = 'es';
     } else {
-      passedLanguage = 'en';
+      browserLanguage = 'en';
     }
-    return passedLanguage;
+    return browserLanguage;
   }
 
   public switchLanguage(passedLanguage) {

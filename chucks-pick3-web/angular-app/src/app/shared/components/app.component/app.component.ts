@@ -17,12 +17,12 @@ export class AppComponent {
               private translate: TranslateService,
               public browserLocaleService: BrowserLocaleService) {
     translate.setDefaultLang('en');
-    this.setLanguage();
+    this.useBrowserLanguage();
   }
 
 
-  public setLanguage() {
-    const language = this.browserLocaleService.findLanguage();
+  public useBrowserLanguage() {
+    const language = this.browserLocaleService.getLanguage();
     if (language !== null && language !== undefined) {
       this.browserLocaleService.switchLanguage(language);
     } else {
