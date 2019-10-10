@@ -18,6 +18,16 @@
   display: none;
 }
 
+#log-in-mobile {
+  display: inline-block;
+}
+#log-out-mobile {
+  display: none;
+}
+#summary-mobile {
+  display: none;
+}
+
 .logo-container {
   display: block;
   background-color: rgb(0, 0, 0);
@@ -626,7 +636,14 @@ img {
 
   color: black;
 }
+.hamburger-menu-section-4:hover {
+  background-color: white;
+}
 
+.hamburger-menu-section-4:hover a {
+
+  color: black;
+}
 
 .demo {
   display: inline-block;

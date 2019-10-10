@@ -17,6 +17,7 @@ export class CustomerDetailsComponent implements OnInit {
   editMode = false;
   readOnlyMode = true;
   public selectedCustomer: CustomerInfo = null;
+  public copiedCustomer = {};
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,8 +25,10 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     const id = this.route.snapshot.paramMap.get('id');
     this.selectedCustomer = this.customerService.getSelectedCustomer(parseInt(id, 10));
+    this.copiedCustomer = Object.assign({}, this.selectedCustomer);
   }
 
   public toggleEditMode() {
@@ -35,13 +38,23 @@ export class CustomerDetailsComponent implements OnInit {
       this.disableEdit();
     }
   }
-  public resetCustomerInfo(details: NgForm) {
-    details.reset(this.selectedCustomer);
+
+  public resetCustomerInfo(selectedCustomer) {
+    if (selectedCustomer !== null && selectedCustomer !== undefined) {
+      this.customerService.deleteCustomer(selectedCustomer);
+      selectedCustomer = Object.assign(this.selectedCustomer, this.copiedCustomer);
+      this.customerService.addCustomer(selectedCustomer);
+    }
+    return selectedCustomer;
   }
 
   private enableEdit() {
     if (this.editMode === false) {
       this.editMode = true;
+      document.getElementById('firstName').classList.toggle('border-0');
+      document.getElementById('firstName').classList.toggle('border-secondary');
+      document.getElementById('lastName').classList.toggle('border-0');
+      document.getElementById('lastName').classList.toggle('border-secondary');
       document.getElementById('email').classList.toggle('bg-secondary');
       document.getElementById('phone').classList.toggle('bg-secondary');
       document.getElementById('city').classList.toggle('bg-secondary');
@@ -63,6 +76,10 @@ export class CustomerDetailsComponent implements OnInit {
   private disableEdit() {
     if (this.editMode === true) {
       this.editMode = false;
+      document.getElementById('firstName').classList.toggle('border-0');
+      document.getElementById('firstName').classList.toggle('border-secondary');
+      document.getElementById('lastName').classList.toggle('border-0');
+      document.getElementById('lastName').classList.toggle('border-secondary');
       document.getElementById('email').classList.toggle('bg-secondary');
       document.getElementById('phone').classList.toggle('bg-secondary');
       document.getElementById('city').classList.toggle('bg-secondary');

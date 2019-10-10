@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-12">
+    <br>
+    <br>
     <p>{{ 'home-main-content' | translate}}</p>
   </div>
   <div class="col-md-4 no-pad-right">
-    <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
+    <a [routerLink]="['/how-to']" [queryParams]="{showSubNavBar: true}" (click)="backToTop();">
       <div class="grediant">
         <img src="/assets/images/screens-02.png">
       </div>
@@ -13,7 +15,7 @@
     </a>
   </div>
   <div class="col-md-4 middlebdr no-pad">
-    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
+    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}" (click)="backToTop();">
       <div class="grediant">
         <img src="/assets/images/screens-01.png">
       </div>
@@ -23,8 +25,8 @@
     </a>
   </div>
   <div class="col-md-4 no-pad-left">
-    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant" i18n="Image for sign-up page.@@home.containers.signUp.image">
+    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}" (click)="backToTop();">
+      <div class="grediant">
         <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
       </div>
       <div class="greenpatch bottom-space forsignup">

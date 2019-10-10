@@ -14,5 +14,7 @@ export class InfoComponent implements OnInit {
     const howToActive = document.getElementById('howTo');
     howToActive.classList.remove('active');
     howToActive.classList.add('allow-hover');
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 }

@@ -63,9 +63,51 @@
 
 }
 
+
 .buttons {
   display: block;
   float: right;
   width: 47%;
 }
 
+@media only screen and (max-width: 740px) {
+ .options {
+   margin-top: 30px;
+ }
+}
+
+@media only screen and (max-width: 768px) {
+  .options {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .options {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .options {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .options {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .options {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .options {
+    margin-top: 30px;
+  }
+}

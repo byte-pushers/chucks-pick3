@@ -585,6 +585,16 @@ img {
 
 }
 
+.summary {
+  display: inline-block ;
+
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  float: right;
+
+}
+
 
 
 .demo a h5{
@@ -594,4 +604,12 @@ img {
 
 .demo a h5:hover{
     color: black;
+}
+.summary a h5{
+  line-height: 3em;
+  color: white;
+}
+
+.summary a h5:hover{
+  color: black;
 }

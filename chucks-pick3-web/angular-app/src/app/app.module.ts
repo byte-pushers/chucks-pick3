@@ -37,6 +37,7 @@ import {CustomerDetailsComponent} from './components/customer-details.component/
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HowToComponent } from './components/how-to/how-to.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CustomerSummaryComponent,
     UserNameValidator,
     PasswordValidator,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    HowToComponent
   ],
   imports: [
     BrowserModule,

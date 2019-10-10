@@ -8,22 +8,32 @@
       </button>
     </a>
   </div>
+<<<<<<< HEAD
+  <h1>Customer Details</h1>
+  <br>
+  <br>
+=======
   <h1><b>{{'detail-title' | translate }}</b></h1>
+>>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
 </div>
 <div class="details">
-  <form id="details" name="details" #details="ngForm">
+  <form id="details" name="details">
     <table class="table">
       <thead>
       <tr style="text-align: left">
+<<<<<<< HEAD
+        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
+        <td class="border-0"  id="firstName" colspan="8" style="font-size: 18px">
+=======
         <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>{{'detail-title-customer' | translate }}</b></th>
         <td class="border-0" colspan="8" style="font-size: 18px">
+>>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
           <input name="firstName"
                  type="text"
                  [(ngModel)]="selectedCustomer.firstName"
-                 value="{{selectedCustomer.firstName}}"
                  *ngIf="editMode">
           {{selectedCustomer.firstName}}</td>
-        <td class="border-0" colspan="8" style="font-size: 18px">
+        <td class="border-0" colspan="8" id="lastName" style="font-size: 18px">
           <input name="lastName"
                  type="text" [(ngModel)]="selectedCustomer.lastName"
                  *ngIf="editMode">
@@ -65,7 +75,6 @@
         <td class="rounded-right bg-light" id="city-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="city"
                  type="text"
-
                  [(ngModel)]="selectedCustomer.city" *ngIf="editMode">
           {{selectedCustomer.city}}
         </td>
@@ -118,7 +127,30 @@
     </table>
 
   </form>
-    <button type="button"
+  <button type="button"
+          class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
+    Edit
+  </button>
+  <a [routerLink]="['/customers']" routerLinkActive="active">
+    <button type="button">
+<<<<<<< HEAD
+            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+            (click)="deleteCustomer(selectedCustomer)">
+      Delete
+    </button>
+  </a>
+  <button type="button"
+          class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
+    Update
+  </button>
+
+  <button type="button"
+          class="btn btn cancel btn-danger btn-sm btn-block" (click)="resetCustomerInfo(selectedCustomer); toggleEditMode();"
+          *ngIf="editMode">
+    Cancel
+  </button>
+
+<button
             class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
       {{'detail-edit' | translate }}
     </button>
@@ -140,4 +172,5 @@
         {{'detail-cancel' | translate }}
       </button>
     </a>
+>>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
 </div>
