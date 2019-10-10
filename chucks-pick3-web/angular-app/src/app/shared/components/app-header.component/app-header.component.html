@@ -14,12 +14,12 @@
     <div class="main-nav-bar-container">
       <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
         <div class="nav-bar-col-25  allow-hover">
-          <b translate>{{ 'home' | translate}}</b>
+          <b translate>{{ 'navigation-button-link-home' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
         <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
-          <b>{{ 'howTo' | translate}}</b>
+          <b>{{ 'navigation-button-link-howTo' | translate}}</b>
         </div>
       </a>
       <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
@@ -30,22 +30,22 @@
       <div class="nav-bar-col-25">
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-in">
-            <b>{{ 'login' | translate}}</b>
+            <b>{{ 'navigation-button-link-login' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
-            <b>{{ 'logOut' | translate}}</b>
+            <b>{{ 'navigation-button-link-logOut' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="sign-up">
-            <b>{{ 'signUp' | translate}}</b>
+            <b>{{ 'navigation-button-link-signUp' | translate}}</b>
           </div>
         </a>
         <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="summary">
-            <b>{{ 'customers' | translate}}</b>
+            <b>{{ 'navigation-button-link-customers' | translate}}</b>
           </div>
         </a>
       </div>
@@ -68,7 +68,7 @@
                 <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
               </div>
               <div class="menu-title">
-                <h2><b>{{'menu' | translate}}</b></h2>
+                <h2><b>{{'sub-navigation-button-link-menu' | translate}}</b></h2>
               </div>
 
               <div class="hamburger-menu-section-1">
@@ -77,7 +77,7 @@
                 <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}"
                    (click)="closeNav()">
                   <div class="how">
-                    <h5><b>{{ 'howTo' | translate}}</b></h5>
+                    <h5><b>{{ 'navigation-button-link-howTo' | translate}}</b></b></h5>
                   </div>
                 </a>
               </div>
@@ -88,7 +88,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">{{ 'requirements' | translate }}</a>
+                    <a [routerLink]="'/requirements'" (click)="closeNav()">{{ 'sub-navigation-button-link-requirements' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -98,7 +98,7 @@
                   </div>
                   <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
                     <a [routerLink]="'/interface'"
-                       [queryParams]="{showSubNavBar: true}">{{ 'interface' | translate }}</a>
+                       [queryParams]="{showSubNavBar: true}">{{ 'sub-navigation-button-link-interface' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -107,7 +107,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
-                    <a [routerLink]="'/generate'" (click)="closeNav()">{{ 'generate' | translate }}</a>
+                    <a [routerLink]="'/generate'" (click)="closeNav()">{{ 'sub-navigation-button-link-generate' | translate }}</a>
                   </div>
                 </div>
                 <div class="options">
@@ -116,7 +116,7 @@
                   <div class="option-indent">
                   </div>
                   <div class="block" [routerLink]="'/view'" (click)="closeNav()">
-                    <a [routerLink]="'/view'" (click)="closeNav()">{{ 'view-picks' | translate }}</a>
+                    <a [routerLink]="'/view'" (click)="closeNav()">{{ 'sub-navigation-button-link-view-picks' | translate }}</a>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
               <div class="hamburger-menu-section-4">
                 <div class="summary" [routerLink]="'/customers'"
                      id="summary-mobile" (click)="closeNav()">
-                  <a [routerLink]="'/customers'" (click)="closeNav()"><h5><b>Summary</b></h5></a>
+                  <a [routerLink]="'/customers'" (click)="closeNav()"><h5><b>{{ 'sub-navigation-button-link-customers' | translate }}</b></h5></a>
                 </div>
               </div>
             </div>
@@ -139,17 +139,16 @@
       </div>
       <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
            id="log-in-mobile" (click)="closeNav()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'login' | translate}}</a>
+        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'navigation-button-link-login' | translate}}</a>
       </div>
       <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
            id="log-out-mobile" (click)="closeNav(); changeToLogInButton()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">Log Out</a>
+        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'navigation-button-link-logOut' | translate}}</a>
       </div>
       <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
            id="sign-up-mobile"
            (click)="closeNav()">
-        <a [routerLink]="'/sign-up'" routerLinkActive="active">{{ 'signUp' | translate }}</a>
-
+        <a [routerLink]="'/sign-up'" routerLinkActive="active">{{ 'navigation-button-link-signUp' | translate}}</a>
       </div>
     </div>
 
@@ -163,25 +162,25 @@
     <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-require"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>{{ 'requirements' | translate }}</b>
+        <b>{{ 'sub-navigation-button-link-requirements' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/interface']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-inter"
            class="sub-nav-bar-col-12-5 allow-hover ">
-        <b>{{ 'interface' | translate }}</b>
+        <b>{{ 'sub-navigation-button-link-interface' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/generate']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-generate"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>{{ 'generate' | translate }}</b>
+        <b>{{ 'sub-navigation-button-link-generate' | translate }}</b>
       </div>
     </a>
     <a [routerLink]="['/view']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
       <div id="sub-nav-bar-item-generate-pic"
            class="sub-nav-bar-col-12-5 allow-hover">
-        <b>{{ 'view-picks' | translate }}</b>
+        <b>{{ 'sub-navigation-button-link-view-picks' | translate }}</b>
       </div>
     </a>
     <div class="sub-nav-bar-col-25">

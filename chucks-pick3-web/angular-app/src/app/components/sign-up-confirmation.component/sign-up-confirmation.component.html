@@ -1,14 +1,14 @@
 <div class="container d-flex justify-content-center align-items-center" id="container-jumbotron">
   <div class=" jumbotron jumbotron-fluid w-50 p-3">
-    <h1 class="display-4 text-success">{{'successful-signup-title' | translate }}</h1>
+    <h1 class="display-4 text-success">{{'successful-signup-page-title' | translate }}</h1>
     <hr>
-    <p>{{'successful-signup-errror' | translate }} <a [routerLink]="'/home'"
-                                      routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{'successful-signup-click' | translate }}</a>
+    <p>{{'successful-signup-page-error' | translate }} <a [routerLink]="'/home'"
+                                      routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{'successful-signup-page-link-click' | translate }}</a>
     </p>
     <p><a class="btn btn-primary btn-sm" [routerLink]="'/home'"
            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
            role="button">
-      {{'successful-signup-back' | translate }}
+      {{'successful-signup-link-home' | translate }}
     </a>
     </p>
   </div>
