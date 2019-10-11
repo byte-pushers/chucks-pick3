@@ -9,7 +9,7 @@
 
 
 }
-.what-you-need-mobile {
+.view-mobile {
   display: none;
 }
 /*Mobile responsiveness*/
@@ -67,6 +67,3 @@
   }
 }
 
-.view-mobile {
-  display: none;
-}
