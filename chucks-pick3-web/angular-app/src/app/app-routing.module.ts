@@ -15,7 +15,6 @@ import {InfoViewComponent} from 'src/app/components/info-view.component/info-vie
 import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmation.component/sign-up-confirmation.component';
 import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
 import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
-import {HowToComponent} from './components/how-to/how-to.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -30,8 +29,8 @@ const routes: Routes = [
   {path: 'log-in', component: LogInComponent},
   {path: 'sign-up-confirmation', component: SignUpConfirmationComponent},
   {path: 'customers', component: CustomerSummaryComponent},
-  {path: 'customers/:id', component: CustomerDetailsComponent},
-  {path: 'how-to', component: HowToComponent}
+  {path: 'customers/:id', component: CustomerDetailsComponent}
+
 ];
 
 @NgModule({
@@ -53,6 +52,5 @@ export const routingComponents = [
   InfoRequirementsComponent,
   InfoGenerateComponent,
   InfoViewComponent,
-  CustomerDetailsComponent,
-  HowToComponent
+  CustomerDetailsComponent
 ];

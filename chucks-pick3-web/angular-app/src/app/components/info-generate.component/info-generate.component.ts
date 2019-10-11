@@ -23,7 +23,5 @@ export class InfoGenerateComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/view']);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
   }
 }

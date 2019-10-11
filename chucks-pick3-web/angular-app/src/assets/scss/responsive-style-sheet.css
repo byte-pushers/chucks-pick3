@@ -823,9 +823,6 @@
   .table {
     font-size: 12px;
   }
-  * {
-    font-size: 15px;
-  }
   .buttons {
     margin-top: 3em !important;
   }
@@ -850,9 +847,6 @@
   .buttons {
     margin-top: 3em !important;
     }
-  * {
-    font-size: 15px;
-  }
   .hide-in-mobile {
     display: none;
   }
@@ -880,9 +874,7 @@
   .hide-in-mobile {
     display: none;
   }
-  * {
-    font-size: 15px;
-  }
+
   .add {
     width: 45% !important;
     font-size: 8px;
@@ -896,9 +888,6 @@ margin-top: 3em !important;
   .add {
     width: 48% !important;
     font-size: 8px;
-  }
-  * {
-    font-size: 15px;
   }
   .buttons {
     margin-top: 3em !important;
