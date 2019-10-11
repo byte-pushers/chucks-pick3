@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-info-generate',
   templateUrl: './info-generate.component.html',
@@ -12,6 +13,7 @@ export class InfoGenerateComponent implements OnInit {
               private translate: TranslateService) {
     translate.setDefaultLang('en');
   }
+
   switchLanguage(es: string) {
     this.translate.use(es);
   }
@@ -21,7 +23,9 @@ export class InfoGenerateComponent implements OnInit {
     howToActive.classList.add('active');
     howToActive.classList.remove('allow-hover');
   }
+
   public goToMobileInterface() {
     this.router.navigate(['/view']);
+    document.documentElement.scrollTop = 0;
   }
 }

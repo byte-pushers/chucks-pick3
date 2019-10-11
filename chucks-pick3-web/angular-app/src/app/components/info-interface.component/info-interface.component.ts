@@ -23,5 +23,6 @@ export class InfoInterfaceComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/generate']);
+    document.documentElement.scrollTop = 0;
   }
 }

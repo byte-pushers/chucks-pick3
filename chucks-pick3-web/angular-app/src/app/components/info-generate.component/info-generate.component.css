@@ -8,7 +8,9 @@
   float: left;
 
 }
-
+.generate-mobile {
+  display: none;
+}
 .how-to-header {
   display: block;
 }
@@ -64,6 +66,4 @@
     display: block;
   }
 }
-.generate-mobile {
-  display: none;
-}
+

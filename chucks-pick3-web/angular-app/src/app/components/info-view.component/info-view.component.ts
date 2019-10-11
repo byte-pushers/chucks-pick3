@@ -22,6 +22,7 @@ export class InfoViewComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/demo']);
+    document.documentElement.scrollTop = 0;
   }
 }
 
