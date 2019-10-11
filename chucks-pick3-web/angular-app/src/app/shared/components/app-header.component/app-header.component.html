@@ -17,7 +17,7 @@
           <b translate>{{ 'home' | translate}}</b>
         </div>
       </a>
-      <a [routerLink]="'/how-to'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
+      <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
         <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
           <b>{{ 'howTo' | translate}}</b>
         </div>
@@ -45,11 +45,7 @@
         </a>
         <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
           <div class="nav-bar-col-50 allow-hover" id="summary">
-<<<<<<< HEAD
-            <b>Customers</b>
-=======
             <b>{{ 'customers' | translate}}</b>
->>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
           </div>
         </a>
       </div>
@@ -57,11 +53,7 @@
     <div class="mobile-nav-bar-container">
 
       <div [routerLink]="'/home'" class="nav-bar-col-20 allow-hover" routerLinkActive="active" (click)="closeNav()">
-<<<<<<< HEAD
-        <a [routerLink]="'/home'" routerLinkActive="active" style="font-size: 30px">&#8962;</a>
-=======
         <a [routerLink]="'/home'" routerLinkActive="active">{{ 'home' | translate}}</a>
->>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
       </div>
 
       <div class=" nav-bar-col-20 float-right allow-hover" routerLinkActive="active">
@@ -82,7 +74,7 @@
               <div class="hamburger-menu-section-1">
                 <div class="hamburger-menu-indent">
                 </div>
-                <a [routerLink]="['/how-to']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}" (click)="closeNav()">
+                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}" (click)="closeNav()">
                 <div class="how">
                   <h5><b>{{ 'howTo' | translate}}</b></h5>
                 </div>
@@ -133,37 +125,18 @@
                   <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
                 </div>
               </div>
-              <div class="hamburger-menu-section-4">
-                <div class="summary" [routerLink]="'/customers'"
-                     id="summary-mobile" (click)="closeNav()">
-                  <a [routerLink]="'/customers'" (click)="closeNav()"><h5><b>Summary</b></h5></a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
-<<<<<<< HEAD
-           id="log-in-mobile" (click)="closeNav()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
-=======
            (click)="closeNav()">
         <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'login' | translate}}</a>
->>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
       </div>
-      <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
-           id="log-out-mobile" (click)="closeNav(); changeToLogInButton()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">Log Out</a>
-      </div>
+
       <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
-<<<<<<< HEAD
-          id="sign-up-mobile" (click)="closeNav()">
-        <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
-=======
            (click)="closeNav()">
         <a [routerLink]="'/sign-up'" routerLinkActive="active">{{ 'signUp' | translate}}</a>
->>>>>>> f83c431c192adeb85edf620661c98fea63b95a9c
       </div>
     </div>
 

@@ -22,22 +22,11 @@
 /*Mobile responsiveness*/
 
 @media only screen and (max-width: 740px) {
-  .what-you-need {
-    display: none;
-  }
-  .what-you-need-mobile {
-    display: block;
-  }
+
 }
 
 @media only screen and (max-width: 768px) {
-  .what-you-need {
-    display: none;
-  }
-  .what-you-need-mobile {
-    display: block;
-    font-size: 15px;
-  }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -46,7 +35,6 @@
 }
   .what-you-need-mobile {
     display: block;
-    font-size: 15px;
   }
 }
 
@@ -56,7 +44,6 @@
   }
   .what-you-need-mobile {
     display: block;
-    font-size: 15px;
   }
 }
 
@@ -66,7 +53,6 @@
   }
   .what-you-need-mobile {
     display: block;
-    font-size: 15px;
   }
 }
 
@@ -76,7 +62,6 @@
   }
   .what-you-need-mobile {
     display: block;
-    font-size: 15px;
   }
 }
 
@@ -86,6 +71,5 @@
   }
   .what-you-need-mobile {
     display: block;
-    font-size: 15px;
   }
 }

@@ -44,7 +44,6 @@ export class MockCustomerService implements CustomerService {
     return this.customers;
   }
 
-
   public generateFirstName() {
     const firstName =
       [
@@ -81,7 +80,7 @@ export class MockCustomerService implements CustomerService {
         '@aol.com',
         '@hotmail.com'
       ];
-
+    // TODO find way to combine first and last name in order to create email.
     return firstName + '.' + lastName + email[Math.floor(Math.random() * email.length)];
   }
 
