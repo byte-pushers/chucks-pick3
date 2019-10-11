@@ -25,8 +25,6 @@ export class AppComponent {
     const language = this.browserLocaleService.getLanguage();
     if (language !== null && language !== undefined) {
       this.browserLocaleService.switchLanguage(language);
-    } else {
-      return;
     }
   }
 
