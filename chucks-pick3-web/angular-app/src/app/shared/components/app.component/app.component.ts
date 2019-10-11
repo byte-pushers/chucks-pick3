@@ -16,15 +16,17 @@ export class AppComponent {
   constructor(public logInService: LogInValidationService,
               private translate: TranslateService,
               public browserLocaleService: BrowserLocaleService) {
-    translate.setDefaultLang('en');
     this.useBrowserLanguage();
   }
 
 
   public useBrowserLanguage() {
     const language = this.browserLocaleService.getLanguage();
+    const defaultLanguage = 'en';
     if (language !== null && language !== undefined) {
       this.browserLocaleService.switchLanguage(language);
+    } else {
+      this.browserLocaleService.switchLanguage(defaultLanguage);
     }
   }
 
