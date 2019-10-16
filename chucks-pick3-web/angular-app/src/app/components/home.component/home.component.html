@@ -2,34 +2,47 @@
   <div class="col-md-12">
     <p>{{ 'home-page-desc-main-content' | translate}}</p>
   </div>
-  <div class="col-md-4 no-pad-right">
+  <div class="encasing-box">
     <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
-      <div class="grediant">
-        <img src="/assets/images/screens-02.png">
+    <div class="box">
+      <div class="image-area">
+        <img src= "/assets/images/howToContainer.png" style="height: 100%; width: 100%;">
       </div>
-      <div class="greenpatch">
-        {{ 'home-page-desc-how-to' | translate}}
+      <div class="other-area">
+        <div class="text-area">
+          {{ 'home-page-desc-how-to' | translate}}
+        </div>
       </div>
+    </div>
     </a>
-  </div>
-  <div class="col-md-4 middlebdr no-pad">
+    <div class="line">
+    </div>
     <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant">
-        <img src="/assets/images/screens-01.png">
+    <div class="box">
+      <div class="image-area">
+        <img src= "/assets/images/demoContainer.png" style="height: 100%; width: 100%;">
       </div>
-      <div class="greenpatch">
-        <p style="padding:0px 7px; margin: 0px;">{{ 'home-page-desc-demo' | translate}}</p>
+      <div class="other-area">
+        <div class="text-area">
+          {{ 'home-page-desc-demo' | translate}}
+        </div>
       </div>
+    </div>
     </a>
-  </div>
-  <div class="col-md-4 no-pad-left">
+    <div class="line">
+    </div>
     <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant" i18n="Image for sign-up page.@@home.containers.signUp.image">
-        <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
+    <div class="box">
+      <div class="image-area">
+        <img src= "/assets/images/signUpContainer.png"  style="height: 100%; width: 100%;">
       </div>
-      <div class="greenpatch bottom-space forsignup">
-        {{ 'home-page-desc-sign-up' | translate}}
+      <div class="other-area">
+        <div class="text-area">
+          {{ 'home-page-desc-sign-up' | translate}}
+        </div>
       </div>
+    </div>
     </a>
   </div>
+  <br>
 </div>
