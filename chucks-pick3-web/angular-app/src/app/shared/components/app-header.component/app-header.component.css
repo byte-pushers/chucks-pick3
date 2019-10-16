@@ -8,6 +8,12 @@
 
 
 }
+.lang-title h6{
+  float: left;
+  line-height: 2em !important;
+  margin-left: 10px;
+  margin-bottom: 0px !important;
+}
 #log-in {
   display: inline-block;
 }
@@ -32,7 +38,7 @@
   display: block;
   background-color: rgb(0, 0, 0);
   width: 20%;
-  height: 151px;
+  height: 100px;
   padding: 0px;
   margin: 0 auto;
   float: left;
@@ -236,7 +242,7 @@
 .logo-container img {
   display: block;
   margin: auto;
-  width: 150px;
+  width: 100px;
 }
 
 .header-img-container {
@@ -369,11 +375,6 @@ img {
     width: 100%;
 
   }
-.lang-buttons {
-  display: block;
-  width: 30%;
-  height: 10%;
-}
 
   .mobile-space {
     display: inline-block;
@@ -703,6 +704,9 @@ img {
 /**RESPONSIVE IMAGES ***/
 /**IPHONE 678 & X**/
 @media only screen and (max-width: 375px) {
+  .lang-buttons {
+    display: none;
+  }
   .mobileHeader {
     display: block;
     margin-top: 15%;
@@ -720,6 +724,9 @@ img {
 
 /**IPHONE +**/
 @media only screen and (min-width: 410px) {
+  .lang-buttons {
+    display: none;
+  }
   .mobileHeader {
     display: block;
     margin-top: 12%;
@@ -737,6 +744,9 @@ img {
 
 /**ANDROID**/
 @media only screen and (max-width: 365px) {
+  .lang-buttons {
+    display: none;
+  }
   .mobileHeader {
     display: block;
     margin-top: 15%;
@@ -754,6 +764,9 @@ img {
 
 /**ANDROID**/
 @media only screen and (max-width: 360px) {
+  .lang-buttons {
+    display: none;
+  }
   .mobileHeader {
     display: block;
   }
@@ -769,6 +782,9 @@ img {
 
 /**IPHONE 5**/
 @media only screen and (max-width: 320px) {
+  .lang-buttons {
+    display: none;
+  }
   .mobileHeader {
     display: block;
     margin-top: 17%;
@@ -786,6 +802,16 @@ img {
 
 /**IPAD**/
 @media only screen and (min-width: 760px) {
+  .lang-buttons {
+    display: inline-block;
+    width: 20%;
+    height: 51px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    text-align: center;
+    line-height: 2em;
+
+  }
   .col-md-4:hover {
     background-color: #4CAF50 !important;
   }
@@ -843,6 +869,10 @@ img {
 
 
 @media screen and (max-height: 450px) {
+  .lang-buttons {
+    display: none;
+
+  }
   .sidenav {
     padding-top: 15px;
   }
