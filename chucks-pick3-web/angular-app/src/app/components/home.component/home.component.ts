@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('en');
   }
+
   switchLanguage(es: string) {
     this.translate.use(es);
   }
@@ -23,5 +24,9 @@ export class HomeComponent implements OnInit {
     const summaryActive = document.getElementById('summary');
     summaryActive.classList.remove('active');
     summaryActive.classList.add('allow-hover');
+
   }
+
+
 }
+
