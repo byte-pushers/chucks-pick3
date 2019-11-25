@@ -1,15 +1,14 @@
 package software.bytepushers.pick3.config;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import software.bytepushers.pick3.services.Pick3PredictionService;
 
 @Configuration
-@Profile("dev")
+@Profile("!aws")
 public class DummyPredictionsConfig {
     @Bean
-    Pick3PredictionService pick3PredictionService() {
+    public Pick3PredictionService pick3PredictionService() {
         return new Pick3PredictionService() {
             public int[][] generatePredictions(int winningNumber) {
                 int[][] result = getPredictions(35);

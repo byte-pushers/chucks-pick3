@@ -1,13 +1,17 @@
 package software.bytepushers.pick3.services;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.junit.MockitoJUnitRunner;
-import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.domain.Pick3Plays;
+import software.bytepushers.pick3.api.v1.DrawingTime;
+import software.bytepushers.pick3.services.Pick3PlaysService;
+import software.bytepushers.pick3.services.Pick3PlaysServiceImpl;
+import software.bytepushers.pick3.services.Pick3PredictionService;
 
 import java.time.LocalDate;
 
@@ -53,7 +57,7 @@ public class Pick3PlaysServiceImplTest {
         Pick3Plays plays =
                 underTest.getPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(), DrawingTime.MORNING);
 
-        assertThat(plays.getDrawingTime()).isEqualTo(DrawingTime.MORNING);
+        Assertions.assertThat(plays.getDrawingTime()).isEqualTo(DrawingTime.MORNING);
     }
 
     @Test

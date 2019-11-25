@@ -1,11 +1,17 @@
 package software.bytepushers.pick3.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
@@ -24,6 +30,9 @@ import java.util.stream.Collectors;
 @EnableWebMvc
 public class NumbersController {
 
+    @Autowired
+    ConversionService conversionService;
+
     private final Pick3PlaysMapper pick3PlaysMapper;
     private final Pick3PlaysService pick3PlaysService;
 
@@ -35,12 +44,16 @@ public class NumbersController {
     @RequestMapping(path = "/numbers",
                     method=RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Pick3PlaysResponse getNumbers(Integer winNumber,
-                                         @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate winDrawDate,
-                                         @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam LocalDate futureDrawDate,
-                                         DrawingTime winDrawTime, DrawingTime futureDrawTime) throws Exception{
+    public Pick3PlaysResponse getNumbers(@RequestParam("winNumber") Integer winNumber,
+                                         @RequestParam("winDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate winDrawDate/*String winDrawDateString*/,
+                                         @RequestParam("futureDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate futureDrawDate/*String futureDrawDateString*/,
+                                         @RequestParam("winDrawTime") DrawingTime winDrawTime,
+                                         @RequestParam("futureDrawTime") DrawingTime futureDrawTime) throws Exception{
         if(winNumber < 0 || 999 < winNumber)
             throw new MalformedRequestException("winNumber must be within bounds [0, 999]");
+
+        //LocalDate winDrawDate = this.conversionService.convert(winDrawDateString, LocalDate.class);
+        //LocalDate futureDrawDate = this.conversionService.convert(futureDrawDateString, LocalDate.class);
 
         if (winDrawDate.atStartOfDay().isAfter(LocalDate.now().atStartOfDay().plusDays(1)))
             throw new MalformedRequestException("winDrawDate cannot be a future date");
@@ -75,5 +88,13 @@ public class NumbersController {
                 .stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.toList());
+    }
+
+    @ExceptionHandler({ MethodArgumentConversionNotSupportedException.class })
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentConversionNotSupportedException ex, WebRequest request) {
+        String error = ex.getName() + " should be of type " + ex.getRequiredType().getName();
+
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 }

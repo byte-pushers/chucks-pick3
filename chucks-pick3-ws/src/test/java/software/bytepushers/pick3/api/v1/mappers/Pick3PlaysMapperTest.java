@@ -9,11 +9,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
-import software.bytepushers.pick3.domain.Pick3Plays;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

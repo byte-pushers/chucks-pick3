@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.api.v1;
 
 import org.junit.Test;
+import software.bytepushers.pick3.api.v1.DrawingTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

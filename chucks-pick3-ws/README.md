@@ -11,7 +11,7 @@ Input:
     - int digit3
 
 Output:
- - DrawingState
+ - DrawingState 
  - DrawingTime
  - Collection<PlayNumber> (order is not important)
  

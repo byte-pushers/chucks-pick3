@@ -3,10 +3,9 @@ package software.bytepushers.pick3.util;
 import org.mapstruct.ap.internal.util.Collections;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.domain.Pick3Plays;
+import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Answers {

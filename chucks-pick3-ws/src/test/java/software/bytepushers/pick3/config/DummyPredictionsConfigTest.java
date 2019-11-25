@@ -3,10 +3,8 @@ package software.bytepushers.pick3.config;
 
 import org.junit.Before;
 import org.junit.Test;
-import software.bytepushers.pick3.api.v1.DrawingTime;
+import software.bytepushers.pick3.config.DummyPredictionsConfig;
 import software.bytepushers.pick3.services.Pick3PredictionService;
-
-import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
