@@ -17,6 +17,7 @@
         <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
         <junit.version>5.5.2</junit.version>
         <log4j.version>2.8.2</log4j.version>
+        <mysql.version>8.0.18</mysql.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
         <surefireAndFailsafeReport.dir>target/test-report</surefireAndFailsafeReport.dir>
         <skipTests>false</skipTests>
@@ -222,18 +223,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.20</version>
             <scope>compile</scope>
-        </dependency>
-
-        <!--<dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.17</version>
-        </dependency>-->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
@@ -450,18 +439,40 @@
             <properties>
                 <spring.profiles.active>in-memory</spring.profiles.active>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>1.4.200</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>local</id>
             <properties>
                 <spring.profiles.active>local</spring.profiles.active>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>${mysql.version}</version>
+                </dependency>
+            </dependencies>
         </profile>
         <profile>
             <id>aws</id>
             <properties>
                 <spring.profiles.active>aws</spring.profiles.active>
             </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>${mysql.version}</version>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 </project>

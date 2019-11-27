@@ -42,18 +42,15 @@ public class NumbersController {
     }
 
     @RequestMapping(path = "/numbers",
-                    method=RequestMethod.GET,
+                    method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public Pick3PlaysResponse getNumbers(@RequestParam("winNumber") Integer winNumber,
-                                         @RequestParam("winDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate winDrawDate/*String winDrawDateString*/,
-                                         @RequestParam("futureDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate futureDrawDate/*String futureDrawDateString*/,
+                                         @RequestParam("winDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate winDrawDate,
+                                         @RequestParam("futureDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate futureDrawDate,
                                          @RequestParam("winDrawTime") DrawingTime winDrawTime,
                                          @RequestParam("futureDrawTime") DrawingTime futureDrawTime) throws Exception{
         if(winNumber < 0 || 999 < winNumber)
             throw new MalformedRequestException("winNumber must be within bounds [0, 999]");
-
-        //LocalDate winDrawDate = this.conversionService.convert(winDrawDateString, LocalDate.class);
-        //LocalDate futureDrawDate = this.conversionService.convert(futureDrawDateString, LocalDate.class);
 
         if (winDrawDate.atStartOfDay().isAfter(LocalDate.now().atStartOfDay().plusDays(1)))
             throw new MalformedRequestException("winDrawDate cannot be a future date");

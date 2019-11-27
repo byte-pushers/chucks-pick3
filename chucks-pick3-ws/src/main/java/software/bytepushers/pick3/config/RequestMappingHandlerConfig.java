@@ -7,7 +7,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-@Configuration
+//@Configuration
 public class RequestMappingHandlerConfig {
     /*
      * Create required HandlerMapping, to avoid several default HandlerMapping instances being created

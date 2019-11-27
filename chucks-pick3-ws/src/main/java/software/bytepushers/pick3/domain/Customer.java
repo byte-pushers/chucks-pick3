@@ -2,10 +2,7 @@ package software.bytepushers.pick3.domain;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -13,8 +10,8 @@ import javax.validation.constraints.Size;
 @Entity
 public class Customer {
     @Id
-    @Column(name = "id", unique = true, nullable = false)
-    @GeneratedValue(generator = "ID_GENERATOR")
+    @Column(name = "id", nullable = false, updatable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY/*generator = "ID_GENERATOR"*/)
     private Long id;
 
     @NotNull
@@ -49,6 +46,10 @@ public class Customer {
     @NotNull
     @Size(max=25, message="gamble.frequency.required.max.25")
     protected String gambleFrequency;
+
+    public Customer() {
+
+    }
 
     public Customer(String firstName, String email, String state, String zipCode, String cellPhoneType, String gambleFrequency) {
         this.firstName = firstName;

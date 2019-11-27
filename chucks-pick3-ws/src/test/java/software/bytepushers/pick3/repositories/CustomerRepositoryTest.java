@@ -10,6 +10,8 @@ import software.bytepushers.pick3.domain.Customer;
 
 import javax.sql.DataSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
@@ -37,9 +39,13 @@ public class CustomerRepositoryTest {
         entityManager.flush();
 
         // when
-        Customer actualCustomer = customerRepository.findByFirstName(expectedCustomer.getFirstName());
+        List<Customer> actualCustomers = customerRepository.findByFirstName(expectedCustomer.getFirstName());
 
         // then
-        assertThat(actualCustomer.getFirstName()).isEqualTo(expectedCustomer.getFirstName());
+        for (int i = 0; i < actualCustomers.size(); i++) {
+            System.out.println(actualCustomers.get(i));
+            assertThat(actualCustomers.get(i).getFirstName()).isEqualTo(expectedCustomer.getFirstName());
+        }
+
     }
 }

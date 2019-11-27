@@ -29,6 +29,7 @@ import software.bytepushers.pick3.util.UrlUtils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -79,7 +80,8 @@ public class NumbersControllerIT {
         String futureDate = getDateOneYearInFuture();
 
         String url = UrlUtils.buildGetNumbersUrl("123", nowDate, futureDate, "MORNING", "DAY");
-        mockMvc.perform(get(url).accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get(url)
+                .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.date", is(futureDate)))
@@ -207,7 +209,11 @@ public class NumbersControllerIT {
     }
 
     private String getDateOneYearInFuture() {
-        return new SimpleDateFormat("yyyy-MM-dd").format(new Date(new Date().getYear() + 1, 11, 12));
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 1);
+        Date newDate = c.getTime();
+        return new SimpleDateFormat("yyyy-MM-dd").format(newDate);
     }
 
     private String getDateNow() {
