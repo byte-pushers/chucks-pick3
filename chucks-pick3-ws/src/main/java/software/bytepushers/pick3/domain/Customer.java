@@ -2,23 +2,26 @@ package software.bytepushers.pick3.domain;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Data
 @Entity
 public class Customer {
     @Id
     @Column(name = "id", nullable = false, updatable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY/*generator = "ID_GENERATOR"*/)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "ID_GENERATOR")
     private Long id;
 
     @NotNull
     @Size(min=2, max=255, message="first.name.required.max.255.min.2")
     protected String firstName;
 
-    @Size(min=2, max=255, message="middle.name.required.max.255.min.2")
+    @Size(min=1, max=255, message="middle.name.required.max.255.min.2")
     protected String middleName;
 
     @Size(min=2, max=255, message="last.name.required.max.255.min.2")
