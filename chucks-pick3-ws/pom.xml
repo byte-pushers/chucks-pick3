@@ -239,7 +239,7 @@
             <plugin>
                 <groupId>org.openclover</groupId>
                 <artifactId>clover-maven-plugin</artifactId>
-                <version>4.3.0</version>
+                <version>4.4.1</version>
                 <configuration>
                     <skip>${skipTests}</skip>
                     <reportDescriptor>clover-report.xml</reportDescriptor>
@@ -424,6 +424,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
                 <configuration>
                     <excludeDevtools>false</excludeDevtools>
                 </configuration>

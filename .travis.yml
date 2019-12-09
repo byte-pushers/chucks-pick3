@@ -7,7 +7,7 @@ matrix:
       - "$HOME/.m2"
     deploy:
       provider: script
-      script: mvn deploy
+      script: mvn deploy -Drun.jpa.tests=false
       on:
         branch: master
     env:
