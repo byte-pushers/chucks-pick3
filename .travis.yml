@@ -31,7 +31,7 @@ matrix:
     install:
     - npm install
     - npm install --only=dev
-    - webdriver-manager update --gecko false
+    - webdriver-manager update --versions.chrome=75" --gecko false
     script:
     - ionic build && ng test --code-coverage && protractor
     env:
