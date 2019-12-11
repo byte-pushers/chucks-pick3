@@ -29,9 +29,7 @@ matrix:
       - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
       - npm install -g cordova ionic protractor
     install:
-      - npm audit fix
       - npm install
- #     - npm install webdriver-manager@12.1.4 --save-dev --save-exact --gecko false
       - webdriver-manager update --versions.chrome=74.0.3729.6 --gecko false
     script:
       - ionic build && ng test --code-coverage && protractor
