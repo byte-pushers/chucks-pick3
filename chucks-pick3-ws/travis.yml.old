@@ -1,0 +1,25 @@
+- language: node_js
+  node_js:
+    - "8"
+  dist: trusty
+  addons:
+    chrome: stable
+  cache:
+    directories:
+      - "chucks-pick3-client/node_modules"
+  before_install:
+    - cd chucks-pick3-client
+    - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> .npmrc
+    - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
+  #       - npm install -g cordova ionic protractor
+  install:
+    - npm install
+    - npm install --only=dev
+    #      - npm uninstall -g webdriver-manager
+    #      - npm install -g webdriver-manager@12.1.4
+    - webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false
+  script:
+    - ionic build && ng test --code-coverage && protractor
+  env:
+    global:
+      - secure: bBmquLkb59FYWKo9Ho3dMVvt28NXAdBNy2deg/oi8bfc74FW7VNsFFnFGS8hJMDEBNH9AJuCH9MdYdfenT55nv6nwAWB6PzUveRRF0YtYQQ42VfF4HcgyBbIaFLG82KU5mhbWhVgrvQdnMxf7RT9KaJHuFEfSh2CxeElgfk9pynjeXGiIPpxc5zzeHDluBywZpYmGXWGdlZVhRTy4mzsNiBaypBakt9McervDWd7zjfn4v+MOLO0mBFrzXRb8664XPDJhNTofd/nsBUmQV0DDI54yv5mnzyuHvD409CJprAjlgyLFXPFkRtxuV/dNX0Uz2xHhj5yVivmQZ2gf1smFu6uVzxxnr6mx7L6OBsWxHQPkuTj8olSAFhCRL11wFCB6u9ypSV4sUTmSNJpND9xKSL5s4uaocJgGK2gyPbpImPJ2mdOpbui0tMeHH7+tjiwYyY2gOvSHHocWsZgfFT3vjoUrrj0RPtJlap2G7vF+yTSs8jNCX4b7VoeNlJL1r2AxtO94utE/e72B4C/2zNiv2CpW+8eznHAPlcEUecslWLLDJslY7L0wedeV78cvu5tek4S/FoGL6bW69e1X99Iv7h5EjHzQdCL33omETuK1GR3+PPlLw6fiFpr2l1Qr7zZ7DInpIO09jLx9qb0Ym/TMKZDbTltGbW9yW9jAv0ZxKI=
