@@ -34,7 +34,6 @@ matrix:
       - webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false
       - npm install
     script:
-      - npm run webdriver
       - ionic build && ng test --code-coverage && protractor
     env:
       global:
