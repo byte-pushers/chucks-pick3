@@ -32,7 +32,7 @@ matrix:
       - npm uninstall -g webdriver-manager
       - npm install -g webdriver-manager@latest
       - webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false
-      - npm install
+      - npm install -f
     script:
       - ionic build && ng test --code-coverage && protractor
     env:
