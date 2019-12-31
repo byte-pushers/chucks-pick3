@@ -9,7 +9,7 @@ matrix:
       provider: script
       script: mvn deploy -Drun.jpa.tests=false
       on:
-        all_branches: true
+        branch: features/impl-aws-sign-up-ws
     env:
       global:
       - secure: Nj7TjJn/+huVeE28t3wV67PDSjX68KrGmWCRbnQAvpxIAJdp11g4ppNS/mbpyZp5ibCqN8dcdI6vSXhhofBEf+drUIVHdFkeUaklKAsExZg3EmL3pxYxWWswnBvbUxJU5RlKTQDpzCmaBDDkedP4Qjbo860SVAQgkD10ojvT4eIHbbvIFJDa10RykC5S+Aex1XRQwtN6Z7EbeWql+V5b8ORnpbAdKY7GG8/Y4EPo/yTRTu/qFTtxfaU2UsYK5bH9Xv0lr5cAfDOFn8gfL3Blo738DEcsRBietoHpWbX4xNrjNzbi3wOfXr+t8Z8DAEnp1U789MU4NOA07LPBdWF2BT/tqkIKDe0uBwgxUmQiO8sozNcpn9dEEb9NgOSxP3uZ0fh9gOjvMGuIAuqFlJIYRT8AV3J6h5Z/eY/6qbXoHbAYw/9UFFDyuFLdPywcJn2s2hLaHISIGZYhekR9gOoXCQnUXyWFjsHFIKXIynKrgGFXGEjYdHyX7FflcWPOq3YSHE1SXqITPDaahqyFwOxMMpYEOoshvJT3oH03oYyrj+lHEAggqYz5+T02S82XOg569nOgFtosoMJ4qf7mcP6GCzOFldUlgaDjk8X3v1tU6O/iakLzFnbdxU67CVDg20zzClN5bTSsg5MuPviHmsGesNucoaiFJmjDWAXOdXIbyvw=

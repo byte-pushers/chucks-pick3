@@ -1,5 +1,5 @@
 # chucks-pick-3
-![Travis CI Build](https://travis-ci.org/byte-pushers/chucks-pick3.svg?branch=master)
+![Travis CI Build](https://travis-ci.org/byte-pushers/chucks-pick3.svg?branch=features/impl-aws-sign-up-ws)
 
 Pick 3 Lottery App
 
