@@ -11,8 +11,6 @@ matrix:
       on:
         branches:
           only:
-            - master
-            - develop
             - features/impl-aws-sign-up-ws
     env:
       global:
