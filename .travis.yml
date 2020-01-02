@@ -6,6 +6,7 @@ cache:
 deploy:
   provider: script
   script: mvn deploy -Drun.jpa.tests=false
+  skip_cleanup: true
   on:
     branch: features/impl-aws-sign-up-ws
 env:
