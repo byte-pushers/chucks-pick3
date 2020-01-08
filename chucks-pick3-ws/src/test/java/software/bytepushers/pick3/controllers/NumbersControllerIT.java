@@ -46,7 +46,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes={SpringApiConfig.class, NumbersControllerIT.TestConfig.class})
-@TestPropertySource("classpath:application.yml")
+/*@TestPropertySource("classpath:application.yml")*/
 public class NumbersControllerIT {
 
     static Pick3PlaysService playsService;

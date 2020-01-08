@@ -12,6 +12,6 @@ import software.bytepushers.pick3.converter.LocalDateTimeConverter;
 @Configuration
 @ComponentScan("software.bytepushers.pick3")
 @EnableAutoConfiguration
-@PropertySource("classpath:application.yml")
+/*@PropertySource("classpath:application.yml")*/
 public class SpringApiConfig {
 }
