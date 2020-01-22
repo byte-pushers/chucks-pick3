@@ -24,7 +24,7 @@ public class Pick3PlaysMapperTest {
 
     @Configuration
     @ComponentScan(basePackageClasses = Pick3PlaysMapper.class)
-    public static class SpringTestConfig{
+    public static class SpringTestConfig {
     }
 
     @Autowired
