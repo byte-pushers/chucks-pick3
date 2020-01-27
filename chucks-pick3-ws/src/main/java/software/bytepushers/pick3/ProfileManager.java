@@ -1,15 +1,18 @@
 package software.bytepushers.pick3;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Value;
 
 public class ProfileManager {
-    @Autowired
-    private Environment environment;
+    @Value("${spring.profiles.active:}")
+    private String activeProfiles;
 
     public void getActiveProfiles() {
-        for (String profileName : environment.getActiveProfiles()) {
-            System.out.println("Currently active profile - " + profileName);
+        if (activeProfiles != null) {
+            for (String profileName : activeProfiles.split(",")) {
+                System.out.println("Currently active profile - " + profileName);
+            }
+        } else {
+            System.out.println("Currently NO active profiles.");
         }
     }
 }

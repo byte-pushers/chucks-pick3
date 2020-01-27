@@ -75,9 +75,11 @@ public class DeployToAwsLambda {
         if (!cloudFormationStackExists(cloudFormationClient, stackName)) {
             // Create a new cloud formation stack using the specified SAM template.
             createCloudFormationStack(cloudFormationClient, bucketName, objectName);
+            System.out.println("Created a new cloud formation stack using the specified SAM template.");
         } else {
             // Attempt to update the existing lambda function.
             updateAndPublishLambdaFunction(lambdaClient, functionName, bucketName, objectName, fileName);
+            System.out.println("Updated the existing lambda function (" + functionName + ").");
         }
     }
 

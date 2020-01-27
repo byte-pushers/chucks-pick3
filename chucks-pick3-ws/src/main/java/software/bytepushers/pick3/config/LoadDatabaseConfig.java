@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import software.bytepushers.pick3.domain.Customer;
 import software.bytepushers.pick3.repositories.CustomerRepository;
 
-@Configuration
-@Slf4j
-class LoadDatabase {
+/*@Configuration
+@Slf4j*/
+class LoadDatabaseConfig {
 
-    @Bean
+    /*@Bean
     CommandLineRunner initDatabase(CustomerRepository customerRepository) {
         return args -> {
             log.info("Pre-Loading " + customerRepository.save(new Customer("Jame", "jame@gmail.com", "Michigan", "48507",
@@ -20,5 +20,5 @@ class LoadDatabase {
             log.info("Pre-Loading " + customerRepository.save(new Customer("David", "david@gmail.com", "Texas", "76227",
                     "iPhone", "always")));
         };
-    }
+    }*/
 }

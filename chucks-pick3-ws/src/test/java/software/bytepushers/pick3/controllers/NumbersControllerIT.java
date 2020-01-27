@@ -4,23 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import software.bytepushers.pick3.ChucksPick3Application;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
-import software.bytepushers.pick3.config.DummyPredictionsConfig;
-import software.bytepushers.pick3.config.SpringApiConfig;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.services.Pick3PredictionService;
 import software.bytepushers.pick3.util.Answers;
@@ -45,8 +40,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes={SpringApiConfig.class, NumbersControllerIT.TestConfig.class})
-/*@TestPropertySource("classpath:application.yml")*/
+@SpringBootTest(classes={ChucksPick3Application.class, NumbersControllerIT.TestConfig.class})
+
 public class NumbersControllerIT {
 
     static Pick3PlaysService playsService;

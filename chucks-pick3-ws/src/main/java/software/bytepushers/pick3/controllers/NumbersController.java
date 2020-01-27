@@ -23,7 +23,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -39,6 +41,13 @@ public class NumbersController {
     public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
         this.pick3PlaysService = pick3PlaysService;
         this.pick3PlaysMapper = pick3PlaysMapper;
+    }
+
+    @RequestMapping(path = "/numbers/ping", method = RequestMethod.GET)
+    public Map<String, String> ping() {
+        Map<String, String> pong = new HashMap<>();
+        pong.put("pong", "Hello, World!");
+        return pong;
     }
 
     @RequestMapping(path = "/numbers",

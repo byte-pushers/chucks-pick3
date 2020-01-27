@@ -25,7 +25,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -34,9 +36,15 @@ public class CustomerController {
 
     private final CustomerRepository customerRepository;
 
-
     public CustomerController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
+    }
+
+    @RequestMapping(path = "/customers/ping", method = RequestMethod.GET)
+    public Map<String, String> ping() {
+        Map<String, String> pong = new HashMap<>();
+        pong.put("pong", "Hello, World!");
+        return pong;
     }
 
     @GetMapping("/customers")

@@ -12,9 +12,9 @@
     <properties>
         <!--<maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>-->
-        <maven.compiler.release>7</maven.compiler.release>
+        <!--<maven.compiler.release>7</maven.compiler.release>-->
         <maven.deploy.skip>true</maven.deploy.skip>
-        <spring.boot.version>2.2.3.RELEASE</spring.boot.version>
+        <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
         <junit.version>5.5.2</junit.version>
         <log4j.version>2.8.2</log4j.version>
         <mysql.version>8.0.18</mysql.version>
@@ -39,8 +39,8 @@
     <dependencies>
         <dependency>
             <groupId>com.amazonaws.serverless</groupId>
-            <artifactId>aws-serverless-java-container-spring</artifactId>
-            <version>1.1.3</version>
+            <artifactId>aws-serverless-java-container-springboot2</artifactId>
+            <version>1.4</version>
         </dependency>
 
         <dependency>
@@ -89,13 +89,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <version>${spring.boot.version}</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
+            <scope>provided</scope>
+        </dependency>-->
 
        <!-- <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -139,20 +145,6 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.1-b08</version>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.4.1.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.4.1.Final</version>
-            <scope>runtime</scope>
-        </dependency>-->
-
 
         <!-- TEST DEPENDENCIES -->
 
@@ -217,18 +209,24 @@
             <version>1.18.10</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-indexer</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
 
         <!-- Map ${} into resources -->
-        <resources>
+        <!--<resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
-        </resources>
+        </resources>-->
 
         <plugins>
             <!--<plugin>
@@ -282,6 +280,9 @@
                 </executions>
                 <configuration>
                     <reportsDirectory>${surefireAndFailsafeReport.dir}</reportsDirectory>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -290,6 +291,9 @@
                 <version>2.22.0</version>
                 <configuration>
                     <reportsDirectory>${surefireAndFailsafeReport.dir}</reportsDirectory>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -313,56 +317,6 @@
                     </classes>
                     <outputKind>module</outputKind>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <transformers>
-                                <transformer
-                                        implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
-                                </transformer>
-                            </transformers>
-                            <!-- Filter to exclude deployment script from shaded jar. -->
-                            <filters>
-                                <filter>
-                                    <artifact>${project.groupId}:${project.artifactId}</artifact>
-                                    <excludes>
-                                        <exclude>software/bytepushers/pick3/deploy/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
-                                    <excludes>
-                                        <exclude>software/bytepushers/pick3/deploy/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>com.h2database:h2</artifact>
-                                    <excludes>
-                                        <exclude>com/h2database/**</exclude>
-                                        <exclude>org/h2/**</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.edwgiz</groupId>
-                        <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-                        <version>2.8.1</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -408,7 +362,7 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.cloudFormationStackName</key>
-                                    <value>bytepushers-chucks-pick3-ws-</value>
+                                    <value>bytepushers-chucks-pick3-ws</value>
                                 </systemProperty>
                             </systemProperties>
                         </configuration>
@@ -429,20 +383,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <excludeDevtools>false</excludeDevtools>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>13</release>
+                    <release>11</release>
                 </configuration>
             </plugin>
         </plugins>
@@ -455,23 +409,47 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <spring.profiles.active>in-memory</spring.profiles.active>
+                <!--<spring.profiles.active>in-memory</spring.profiles.active>-->
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>1.4.200</version>
-                    <scope>runtime</scope>
                 </dependency>
             </dependencies>
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>2.3</version>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <excludes>
+                                            <exclude>org.apache.tomcat.embed:*</exclude>
+                                            <exclude>software.bytepushers.pick3.deploy:*</exclude>
+                                            <exclude>application-*.properties</exclude>
+                                        </excludes>
+                                    </artifactSet>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
                             <execution>
-                                <phase>test</phase>
+                                <phase>generate-resources</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
@@ -491,7 +469,7 @@
         <profile>
             <id>local</id>
             <properties>
-                <spring.profiles.active>local</spring.profiles.active>
+                <!--<spring.profiles.active>local</spring.profiles.active>-->
             </properties>
             <dependencies>
                 <dependency>
@@ -503,10 +481,50 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>2.3</version>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <excludes>
+                                            <exclude>org.apache.tomcat.embed:*</exclude>
+                                            <exclude>software.bytepushers.pick3.deploy:*</exclude>
+                                            <!--<exclude>application-*.properties</exclude>-->
+                                        </excludes>
+                                    </artifactSet>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
                             <execution>
-                                <phase>test</phase>
+                                <id>local-generate-sources</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <delete file="${project.build.outputDirectory}/application.properties"/>
+                                        <copy file="src/main/resources/application-local.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>local-prepare-package</id>
+                                <phase>prepare-package</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
@@ -526,7 +544,7 @@
         <profile>
             <id>aws</id>
             <properties>
-                <spring.profiles.active>aws</spring.profiles.active>
+                <!--<spring.profiles.active>aws</spring.profiles.active>-->
             </properties>
             <dependencies>
                 <dependency>
@@ -543,6 +561,32 @@
             </dependencies>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>2.3</version>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactSet>
+                                        <excludes>
+                                            <exclude>org.apache.tomcat.embed:*</exclude>
+                                            <exclude>software.bytepushers.pick3.deploy:*</exclude>
+                                            <exclude>org.h2:*</exclude>
+                                            <exclude>application-*.properties</exclude>
+                                        </excludes>
+                                    </artifactSet>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
@@ -574,7 +618,7 @@
                                     </tasks>
                                 </configuration>
                             </execution>
-                            <execution>
+                            <!--<execution>
                                 <id>exec-pre-integration-test</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
@@ -587,7 +631,7 @@
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
-                            </execution>
+                            </execution>-->
                         </executions>
                     </plugin>
                 </plugins>

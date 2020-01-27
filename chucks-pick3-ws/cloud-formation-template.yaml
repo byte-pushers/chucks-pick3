@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: AWS Serverless Spring API - software.bytepushers.pick3::aws-api-gateway-sample
+Description: Chucks Pick 3 AWS Serverless Spring API
 Outputs:
   AwsApiGatewaySampleApi:
     Description: Root URL for application
@@ -22,7 +22,7 @@ Resources:
       VpcId:
         Ref: ChucksPick3RdsVpc
       CidrBlock: 192.168.1.0/24
-      AvailabilityZone: "us-east-1a"
+      AvailabilityZone: "us-east-2a"
       Tags:
         - Key: Name
           Value: PrivateSubnet1
@@ -32,7 +32,7 @@ Resources:
       VpcId:
         Ref: ChucksPick3RdsVpc
       CidrBlock: 192.168.2.0/24
-      AvailabilityZone: "us-east-1b"
+      AvailabilityZone: "us-east-2b"
       Tags:
         - Key: Name
           Value: PrivateSubnet2
@@ -104,8 +104,12 @@ Resources:
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
       MemorySize: 256
       Policies:
-      - AWSLambdaBasicExecutionRole
-      - LambdaInvokePolicy:
-        FunctionName: ${bytepushers.deploy.peerName}
-      Runtime: java8
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - 'lambda:InvokeFunction'
+              Resource:
+                - '*'
+      Runtime: java11
       Timeout: 15

@@ -61,8 +61,10 @@ public class StreamLambdaHandlerIT {
         assertTrue(response.getBody().contains("\"drawingTime\":\"NIGHT\""));
         assertTrue(response.getBody().contains("\"plays\":["));
 
-        assertTrue(response.getHeaders().containsKey(HttpHeaders.CONTENT_TYPE));
-        assertTrue(response.getHeaders().get(HttpHeaders.CONTENT_TYPE).startsWith(MediaType.APPLICATION_JSON));
+        if (response.getHeaders() != null) {
+            assertTrue(response.getHeaders().containsKey(HttpHeaders.CONTENT_TYPE));
+            assertTrue(response.getHeaders().get(HttpHeaders.CONTENT_TYPE).startsWith(MediaType.APPLICATION_JSON));
+        }
     }
 
     @Test
