@@ -561,7 +561,7 @@
             </dependencies>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-shade-plugin</artifactId>
                         <version>2.3</version>
@@ -575,18 +575,19 @@
                                     <goal>shade</goal>
                                 </goals>
                                 <configuration>
+                                    <outputDirectory>${project.build.directory}/dist</outputDirectory>
                                     <artifactSet>
                                         <excludes>
                                             <exclude>org.apache.tomcat.embed:*</exclude>
                                             <exclude>software.bytepushers.pick3.deploy:*</exclude>
                                             <exclude>org.h2:*</exclude>
-                                            <!--<exclude>application-*.properties</exclude>-->
+                                            &lt;!&ndash;<exclude>application-*.properties</exclude>&ndash;&gt;
                                         </excludes>
                                     </artifactSet>
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
@@ -606,7 +607,7 @@
                             </execution>
                             <execution>
                                 <id>exec-prepare-package</id>
-                                <phase>prepare-package</phase>
+                                <phase>verify</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
@@ -618,18 +619,57 @@
                                     </tasks>
                                 </configuration>
                             </execution>
+                        </executions>
+                    </plugin>
+                    <!-- don't build a jar, we'll use the classes dir -->
+                    <!--<plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
                             <execution>
-                                <id>exec-pre-integration-test</id>
-                                <phase>pre-integration-test</phase>
+                                <id>default-jar</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
+                    </plugin>-->
+                    <!-- select and copy only runtime dependencies to a temporary lib folder -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <execution>
+                                <id>copy-dependencies</id>
+                                <phase>package</phase>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>copy-dependencies</goal>
                                 </goals>
                                 <configuration>
-                                    <tasks>
-                                        <delete file="${project.build.outputDirectory}/application.properties"/>
-                                        <copy file="src/main/resources/application-in-memory.properties"
-                                              tofile="${project.build.outputDirectory}/application.properties"/>
-                                    </tasks>
+                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                    <includeScope>runtime</includeScope>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>zip-assembly</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <finalName>${project.artifactId}</finalName>
+                                    <descriptors>
+                                        <descriptor>src${file.separator}assembly${file.separator}bin.xml</descriptor>
+                                    </descriptors>
+                                    <attach>false</attach>
+                                    <appendAssemblyId>false</appendAssemblyId>
                                 </configuration>
                             </execution>
                         </executions>
