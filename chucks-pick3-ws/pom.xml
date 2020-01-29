@@ -580,7 +580,7 @@
                                             <exclude>org.apache.tomcat.embed:*</exclude>
                                             <exclude>software.bytepushers.pick3.deploy:*</exclude>
                                             <exclude>org.h2:*</exclude>
-                                            <exclude>application-*.properties</exclude>
+                                            <!--<exclude>application-*.properties</exclude>-->
                                         </excludes>
                                     </artifactSet>
                                 </configuration>
@@ -591,8 +591,8 @@
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>exec-test</id>
-                                <phase>test</phase>
+                                <id>exec-generate-resources</id>
+                                <phase>generate-resources</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
@@ -618,7 +618,7 @@
                                     </tasks>
                                 </configuration>
                             </execution>
-                            <!--<execution>
+                            <execution>
                                 <id>exec-pre-integration-test</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
@@ -631,7 +631,7 @@
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
-                            </execution>-->
+                            </execution>
                         </executions>
                     </plugin>
                 </plugins>

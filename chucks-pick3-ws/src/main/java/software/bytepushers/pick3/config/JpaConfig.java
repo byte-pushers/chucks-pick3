@@ -60,7 +60,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        //vendorAdapter.setDatabase(Database.MYSQL);
+        vendorAdapter.setDatabase(Database.MYSQL);
         //vendorAdapter.setGenerateDdl(true);
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -73,19 +73,6 @@ public class JpaConfig {
     }
 
     /*@Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "software.bytepushers.pick3.domain" });
-
-        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-        em.setJpaProperties(additionalProperties());
-
-        return em;
-    }*/
-
-    @Bean
     public DataSource dataSource() {
         System.out.println("******************JpaConfig.dataSource() - driver class name = " + jpaDriverClassName);
         System.out.println("******************JpaConfig.dataSource() - data source url = " + jpaDatasourceUrl);
@@ -97,7 +84,7 @@ public class JpaConfig {
                 .username(jpaDatasourceUsername)
                 .password(jpaDatasourcePassword)
                 .build();
-    }
+    }*/
 
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
