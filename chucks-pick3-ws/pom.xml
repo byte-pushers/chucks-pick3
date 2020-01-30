@@ -53,6 +53,10 @@
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-rds</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-cloudformation</artifactId>
         </dependency>
 
@@ -215,18 +219,30 @@
             <version>5.2.3.RELEASE</version>
             <optional>true</optional>
         </dependency>
+        <!--<dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>-->
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
 
         <!-- Map ${} into resources -->
-        <!--<resources>
-            <resource>
+        <resources>
+            <!--<resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-            </resource>
-        </resources>-->
+            </resource>-->
+            <!--<resource>
+                <directory>resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>-->
+        </resources>
 
         <plugins>
             <!--<plugin>
@@ -552,22 +568,19 @@
                     <artifactId>mysql-connector-java</artifactId>
                     <version>${mysql.version}</version>
                 </dependency>
-                <dependency>
+                <!--<dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>1.4.200</version>
                     <scope>runtime</scope>
-                </dependency>
+                </dependency>-->
             </dependencies>
             <build>
                 <plugins>
-                    <!--<plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-shade-plugin</artifactId>
                         <version>2.3</version>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                        </configuration>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -576,22 +589,49 @@
                                 </goals>
                                 <configuration>
                                     <outputDirectory>${project.build.directory}/dist</outputDirectory>
+                                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                                    <transformers>
+                                        <transformer
+                                                implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
+                                        </transformer>
+                                    </transformers>
+                                    <filters>
+                                        <filter>
+                                            <artifact>${project.groupId}:${project.artifactId}</artifact>
+                                            <excludes>
+                                                <exclude>software/bytepushers/pick3/deploy/**</exclude>
+                                            </excludes>
+                                        </filter>
+                                        <!--<filter>
+                                            <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
+                                            <excludes>
+                                                <exclude>software/bytepushers/pick3/deploy/**</exclude>
+                                            </excludes>
+                                        </filter>-->
+                                    </filters>
                                     <artifactSet>
                                         <excludes>
                                             <exclude>org.apache.tomcat.embed:*</exclude>
                                             <exclude>software.bytepushers.pick3.deploy:*</exclude>
-                                            <exclude>org.h2:*</exclude>
-                                            &lt;!&ndash;<exclude>application-*.properties</exclude>&ndash;&gt;
+                                            <!--<exclude>org.h2:*</exclude>-->
+                                            <!--<exclude>application-*.properties</exclude>-->
                                         </excludes>
                                     </artifactSet>
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>-->
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.github.edwgiz</groupId>
+                                <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
+                                <version>2.8.1</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
-                            <execution>
+                            <!--<execution>
                                 <id>exec-generate-resources</id>
                                 <phase>generate-resources</phase>
                                 <goals>
@@ -604,10 +644,10 @@
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
-                            </execution>
+                            </execution>-->
                             <execution>
                                 <id>exec-prepare-package</id>
-                                <phase>verify</phase>
+                                <phase>prepare-package</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
@@ -619,6 +659,20 @@
                                     </tasks>
                                 </configuration>
                             </execution>
+                            <!--<execution>
+                                <id>exec-verify</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <delete file="${project.build.outputDirectory}/application.properties"/>
+                                        <copy file="src/main/resources/application-aws.properties"
+                                              tofile="${project.build.outputDirectory}/application.properties"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>-->
                         </executions>
                     </plugin>
                     <!-- don't build a jar, we'll use the classes dir -->
@@ -634,7 +688,7 @@
                         </executions>
                     </plugin>-->
                     <!-- select and copy only runtime dependencies to a temporary lib folder -->
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <version>3.1.1</version>
@@ -673,7 +727,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
         </profile>
