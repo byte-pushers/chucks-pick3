@@ -219,11 +219,11 @@
             <version>5.2.3.RELEASE</version>
             <optional>true</optional>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
     <build>
@@ -415,6 +415,11 @@
                     <release>11</release>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.0.0-M1</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -561,6 +566,7 @@
             <id>aws</id>
             <properties>
                 <!--<spring.profiles.active>aws</spring.profiles.active>-->
+                <maven.install.skip>true</maven.install.skip>
             </properties>
             <dependencies>
                 <dependency>
@@ -568,16 +574,16 @@
                     <artifactId>mysql-connector-java</artifactId>
                     <version>${mysql.version}</version>
                 </dependency>
-                <!--<dependency>
+                <dependency>
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>1.4.200</version>
                     <scope>runtime</scope>
-                </dependency>-->
+                </dependency>
             </dependencies>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-shade-plugin</artifactId>
                         <version>2.3</version>
@@ -602,19 +608,19 @@
                                                 <exclude>software/bytepushers/pick3/deploy/**</exclude>
                                             </excludes>
                                         </filter>
-                                        <!--<filter>
+                                        &lt;!&ndash;<filter>
                                             <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
                                             <excludes>
                                                 <exclude>software/bytepushers/pick3/deploy/**</exclude>
                                             </excludes>
-                                        </filter>-->
+                                        </filter>&ndash;&gt;
                                     </filters>
                                     <artifactSet>
                                         <excludes>
                                             <exclude>org.apache.tomcat.embed:*</exclude>
                                             <exclude>software.bytepushers.pick3.deploy:*</exclude>
-                                            <!--<exclude>org.h2:*</exclude>-->
-                                            <!--<exclude>application-*.properties</exclude>-->
+                                            &lt;!&ndash;<exclude>org.h2:*</exclude>&ndash;&gt;
+                                            &lt;!&ndash;<exclude>application-*.properties</exclude>&ndash;&gt;
                                         </excludes>
                                     </artifactSet>
                                 </configuration>
@@ -627,11 +633,11 @@
                                 <version>2.8.1</version>
                             </dependency>
                         </dependencies>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
-                            <!--<execution>
+                            <execution>
                                 <id>exec-generate-resources</id>
                                 <phase>generate-resources</phase>
                                 <goals>
@@ -644,7 +650,7 @@
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
-                            </execution>-->
+                            </execution>
                             <execution>
                                 <id>exec-prepare-package</id>
                                 <phase>prepare-package</phase>
@@ -659,24 +665,24 @@
                                     </tasks>
                                 </configuration>
                             </execution>
-                            <!--<execution>
-                                <id>exec-verify</id>
-                                <phase>verify</phase>
+                            <execution>
+                                <id>exec-pre-integration-test</id>
+                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
                                 <configuration>
                                     <tasks>
                                         <delete file="${project.build.outputDirectory}/application.properties"/>
-                                        <copy file="src/main/resources/application-aws.properties"
+                                        <copy file="src/main/resources/application-in-memory.properties"
                                               tofile="${project.build.outputDirectory}/application.properties"/>
                                     </tasks>
                                 </configuration>
-                            </execution>-->
+                            </execution>
                         </executions>
                     </plugin>
                     <!-- don't build a jar, we'll use the classes dir -->
-                    <!--<plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jar-plugin</artifactId>
                         <version>3.1.1</version>
@@ -686,9 +692,9 @@
                                 <phase>none</phase>
                             </execution>
                         </executions>
-                    </plugin>-->
+                    </plugin>
                     <!-- select and copy only runtime dependencies to a temporary lib folder -->
-                    <!--<plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <version>3.1.1</version>
@@ -712,8 +718,8 @@
                         <version>3.1.0</version>
                         <executions>
                             <execution>
-                                <id>zip-assembly</id>
-                                <phase>verify</phase>
+                                <id>jar-assembly</id>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>single</goal>
                                 </goals>
@@ -727,7 +733,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>-->
+                    </plugin>
                 </plugins>
             </build>
         </profile>

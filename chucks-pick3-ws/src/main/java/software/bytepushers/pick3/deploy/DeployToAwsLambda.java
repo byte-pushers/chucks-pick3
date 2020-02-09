@@ -109,7 +109,7 @@ public class DeployToAwsLambda {
                 .withChangeSetName(changeSetName)
                 .withChangeSetType(ChangeSetType.CREATE)
                 .withTemplateBody(templateBody)
-                .withCapabilities(Capability.CAPABILITY_IAM));
+                .withCapabilities(Capability.CAPABILITY_IAM, Capability.CAPABILITY_NAMED_IAM));
 
         ChangeSetStatus status = monitorChangeSetCreationStatus(cloudFormationClient, stackName, changeSetName);
         if (status != ChangeSetStatus.CREATE_COMPLETE) {

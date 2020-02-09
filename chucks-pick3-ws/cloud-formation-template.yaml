@@ -9,6 +9,25 @@ Outputs:
     Value:
       Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
 Resources:
+  ChucksPick3VpcExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "lambda.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Description: "ChucksPick3 VPC Execution Role"
+      Path: "/"
+      ManagedPolicyArns: ["arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"]
+      RoleName: "chucks-pick3-vpc-role"
+      Tags:
+        - Key: Name
+          Value: ChucksPick3VpcExecutionRole
   ChucksPick3RdsVpc:
     Type: AWS::EC2::VPC
     Properties:
@@ -92,6 +111,8 @@ Resources:
         - Ref: RdsSecurityGroup
   AwsApiGatewaySampleFunction:
     Type: AWS::Serverless::Function
+    DependsOn:
+      - ChucksPick3VpcExecutionRole
     Properties:
       CodeUri: s3://${bytepushers.deploy.s3BucketName}/${bytepushers.deploy.s3ObjectName}
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
@@ -103,6 +124,8 @@ Resources:
           Type: Api
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
       MemorySize: 256
+      Role:
+        Fn::GetAtt: [ ChucksPick3VpcExecutionRole, Arn ]
       Policies:
         - AWSLambdaBasicExecutionRole
         - Statement:
@@ -113,3 +136,9 @@ Resources:
                 - '*'
       Runtime: java11
       Timeout: 15
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref RdsSecurityGroup
+        SubnetIds:
+          - !Ref PrivateSubnet1
+          - !Ref PrivateSubnet2
