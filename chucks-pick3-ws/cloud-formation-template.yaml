@@ -23,7 +23,10 @@ Resources:
               - "sts:AssumeRole"
       Description: "ChucksPick3 VPC Execution Role"
       Path: "/"
-      ManagedPolicyArns: ["arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"]
+      ManagedPolicyArns: [
+        "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+      ]
       RoleName: "chucks-pick3-vpc-role"
       Tags:
         - Key: Name
@@ -75,15 +78,29 @@ Resources:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
-          CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
+          CidrIp: 192.168.0.0/16
+      #SecurityGroupEgress:
+      #  - IpProtocol: tcp
+      #    FromPort: 80
+      #    ToPort: 80
+      #    CidrIp: 192.168.0.0/16
       Tags:
         - Key: Name
           Value: RDSSecurityGroup
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow RDS Connections
+      VpcId:
+        Ref: ChucksPick3RdsVpc
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 192.168.0.0/16
+      Tags:
+        - Key: Name
+          Value: LambdaSecurityGroup
   RdsDBInstance:
     Type: AWS::RDS::DBInstance
     Properties:
@@ -115,6 +132,7 @@ Resources:
       - ChucksPick3VpcExecutionRole
     Properties:
       CodeUri: s3://${bytepushers.deploy.s3BucketName}/${bytepushers.deploy.s3ObjectName}
+      Description: Chucks Pick 3 AWS Serverless Spring API
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
       Events:
         GetResource:
@@ -123,7 +141,7 @@ Resources:
             Path: /{proxy+}
           Type: Api
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
-      MemorySize: 256
+      MemorySize: 1024
       Role:
         Fn::GetAtt: [ ChucksPick3VpcExecutionRole, Arn ]
       Policies:
@@ -135,10 +153,10 @@ Resources:
               Resource:
                 - '*'
       Runtime: java11
-      Timeout: 15
+      Timeout: 30
       VpcConfig:
         SecurityGroupIds:
-          - !Ref RdsSecurityGroup
+          - !Ref LambdaSecurityGroup
         SubnetIds:
           - !Ref PrivateSubnet1
           - !Ref PrivateSubnet2
