@@ -299,9 +299,12 @@ public class DeployToAwsLambda {
 
     private static boolean s3BucketExists(AmazonS3 client, String bucketName) throws AmazonServiceException {
         try {
+            System.out.println("About to check to see if bucket(" + bucketName + ") exists.");
             client.headBucket(new HeadBucketRequest(bucketName));
+            System.out.println("Bucket(" + bucketName + ") exists.");
             return true; // if headBucket doesn't throw an exception, the bucket exists.
         } catch (AmazonServiceException e) {
+            System.out.println("Bucket(" + bucketName + ") does not exist.");
             System.out.println("e.getStatusCode(): " + e.getStatusCode());
             System.out.println("e.getErrorMessage(): " + e.getErrorMessage());
             System.out.println("e.getErrorCode(): " + e.getErrorCode());
