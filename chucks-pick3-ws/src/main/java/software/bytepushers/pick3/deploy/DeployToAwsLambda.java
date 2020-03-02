@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Class with main method meant to be run by Maven exec during deploy phase.</br>
@@ -302,8 +303,9 @@ public class DeployToAwsLambda {
         try {
             System.out.println("About to check to see if bucket(" + bucketName + ") exists.");
             List<Bucket> buckets = client.listBuckets();
+            buckets.forEach(System.out::println);
             long matchedBuckets = buckets.stream()
-                    .filter(b -> b.getName().equalsIgnoreCase(bucketName))
+                    .filter(b -> b.getName().toLowerCase().contains(bucketName.toLowerCase()))
                     .count();
             if (matchedBuckets > 0) {
                 System.out.println("Bucket(" + bucketName + ") exists.");
