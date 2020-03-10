@@ -5,7 +5,7 @@ cache:
   - "$HOME/.m2"
 deploy:
   provider: script
-  script: mvn clean deploy -P aws -Drun.jpa.tests=false
+  script: mvn clean deploy -P aws -Dskiptests=true
   on:
     branch: features/impl-aws-sign-up-ws
 env:
