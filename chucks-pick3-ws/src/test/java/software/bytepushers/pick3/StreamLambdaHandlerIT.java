@@ -1,6 +1,7 @@
 package software.bytepushers.pick3;
 
 
+import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.internal.LambdaContainerHandler;
 import com.amazonaws.serverless.proxy.internal.testutils.AwsProxyRequestBuilder;
 import com.amazonaws.serverless.proxy.internal.testutils.MockLambdaContext;
@@ -28,7 +29,7 @@ public class StreamLambdaHandlerIT {
     private static Context lambdaContext;
 
     @BeforeClass
-    public static void setUp() {
+    public static void setUp() throws ContainerInitializationException {
         handler = new StreamLambdaHandler();
         lambdaContext = new MockLambdaContext();
     }

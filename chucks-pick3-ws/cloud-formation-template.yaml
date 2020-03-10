@@ -151,7 +151,7 @@ Resources:
               Action:
                 - 'lambda:InvokeFunction'
               Resource:
-                - '*'
+                - 'arn:aws:lambda:*:*:function:*'
       Runtime: java11
       Timeout: 30
       VpcConfig:
