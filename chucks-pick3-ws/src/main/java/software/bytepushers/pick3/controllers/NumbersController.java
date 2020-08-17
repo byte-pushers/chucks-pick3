@@ -66,10 +66,10 @@ public class NumbersController {
         if (futureDrawDate.atStartOfDay().isBefore(LocalDate.now().atStartOfDay()))
             throw new MalformedRequestException("futureDrawDate cannot be a past date");
 
-        /*return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(
+        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(
                 pick3PlaysService.getPick3Plays(winNumber, winDrawDate, winDrawTime, futureDrawDate, futureDrawTime)
-        );*/
-        Pick3Plays pick3Plays = new Pick3Plays();
+        );
+        /*Pick3Plays pick3Plays = new Pick3Plays();
         pick3Plays.setPlays(Arrays.stream(new int[][]{ {0, 0, 0}, {1,2,3}, {0,2,3}, {0,0,1}, {9,9,9} })
                 .map(digits -> digits[0] * 100 + digits[1] * 10 + digits[2])
                 .collect(Collectors.toList()));
@@ -78,7 +78,7 @@ public class NumbersController {
         pick3Plays.setDrawingTime(futureDrawTime);
 
 
-        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(pick3Plays);
+        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(pick3Plays);*/
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.repositories;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +26,7 @@ public class CustomerRepositoryTest {
     @Autowired private TestEntityManager entityManager;
     @Autowired private CustomerRepository customerRepository;
 
-    @Test
+    @Before
     void injectedComponentsAreNotNull() {
         assertThat(dataSource).isNotNull();
         assertThat(entityManager).isNotNull();

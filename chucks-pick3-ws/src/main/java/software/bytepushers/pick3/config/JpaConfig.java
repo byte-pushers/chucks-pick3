@@ -21,10 +21,12 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Properties;
+import java.util.TimeZone;
 
 @Profile("aws | local")
 @Configuration
@@ -56,8 +58,17 @@ public class JpaConfig {
     @Value("${spring.jpa.properties.hibernate.format_sql:}")
     private String jpaFormatSql;
 
+    @Value("spring.jpa.properties.hibernate.jdbc.time_zone")
+    private String jpaTimezone;
+
     @Value("${spring.profiles.active:}")
     private String activeProfiles;
+
+    @PostConstruct
+    void started() {
+        TimeZone.setDefault(TimeZone.getTimeZone(jpaTimezone));
+        String[] ids = TimeZone.getAvailableIDs();
+    }
 
     //Used in addition of @PropertySource
     @Bean
@@ -68,7 +79,6 @@ public class JpaConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setDatabase(Database.MYSQL);
         //vendorAdapter.setGenerateDdl(true);
