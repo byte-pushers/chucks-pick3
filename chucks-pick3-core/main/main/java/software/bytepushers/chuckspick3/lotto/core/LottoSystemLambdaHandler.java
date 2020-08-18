@@ -11,7 +11,7 @@ public class LottoSystemLambdaHandler implements RequestHandler<Integer, Vector<
     public Vector<Vector<Integer>> handleRequest(Integer previousWinningNumber, Context context) {
         context.getLogger().log("Previous Winning Number: " + previousWinningNumber);
         LottoSystem lotto = new LottoSystem();
-        Vector<Vector<Integer>> outcomes = lotto.processNumber(previousWinningNumber);
+        Vector<Vector<Integer>> outcomes = lotto.processNumber(previousWinningNumber); // [[1,2,3], [4,5,6]]
         return outcomes;
     }
 }
