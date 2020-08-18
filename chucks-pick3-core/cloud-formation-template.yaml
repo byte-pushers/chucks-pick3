@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Chucks Pick 3 AWS Serverless Java Lambda
+Resources:
+  ChucksPick3LottoSystemVpcExecuteRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "lambda.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Description: "ChucksPick3 Lotto Core VPC Execution Role"
+      Path: "/"
+      Policies: [
+      {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+          {
+            "Sid": "CP3LSInlinePolicyS3PutObject",
+            "Effect": "Allow",
+            "Action": "s3:PutObject",
+            "Resource": "*"
+          }
+          ]
+        },
+        "PolicyName": "CP3LSS3PutObjectPolicy"
+      }
+      ]
+      ManagedPolicyArns: [
+        "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        "arn:aws:iam::aws:policy/AWSLambdaExecute"
+      ]
+      RoleName: "chucks-pick3-lotto-system-vpc-role"
+      Tags:
+        - Key: Name
+          Value: ChucksPick3LottoSystemVpcExecuteRole
+  ChucksPick3LottoSystemVpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 192.168.0.0/16
+      Tags:
+        - Key: Name
+          Value: ChucksPick3LottoSystemVpc
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3LottoSystemVpc
+      CidrBlock: 192.168.1.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet1
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3LottoSystemVpc
+      CidrBlock: 192.168.2.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet2
+  ChucksPick3LottoSystemLambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow Lambda Connections
+      VpcId:
+        Ref: ChucksPick3LottoSystemVpc
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 9090
+          ToPort: 9090
+          CidrIp: 192.168.0.0/16
+      Tags:
+        - Key: Name
+          Value: ChucksPick3LottoSystemLambdaSecurityGroup
+  ChucksPick3LottoSystemFunction:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Code:
+        S3Bucket: ${bytepushers.deploy.s3BucketName}
+        S3Key: ${bytepushers.deploy.s3ObjectName}
+      Description: "Chucks Pick3 Lotto System"
+      FunctionName: ${bytepushers.deploy.lambdaFunctionName}
+      Handler: "software.bytepushers.chuckspick3.lotto.core.LottoSystemLambdaHandler::handleRequest"
+      MemorySize: 256
+      Role:
+        Fn::GetAtt: [ ChucksPick3LottoSystemVpcExecuteRole, Arn ]
+      Runtime: "java8"
+      Timeout: 15
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref ChucksPick3LottoSystemLambdaSecurityGroup
+        SubnetIds:
+          - !Ref PrivateSubnet1
+          - !Ref PrivateSubnet2
