@@ -2,6 +2,7 @@ package software.bytepushers.pick3;
 
 
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
+import com.amazonaws.serverless.proxy.internal.LambdaContainerHandler;
 import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.serverless.proxy.spring.SpringBootLambdaContainerHandler;
@@ -21,12 +22,14 @@ public class StreamLambdaHandler implements RequestStreamHandler {
 
     public StreamLambdaHandler() throws ContainerInitializationException {
         long startTime = Instant.now().toEpochMilli();
+        SpringBootLambdaContainerHandler.getContainerConfig().setInitializationTimeout(30_000);
         handler = new SpringBootProxyHandlerBuilder()
                 .defaultProxy()
                 .asyncInit(startTime)
                 .springBootApplication(ChucksPick3Application.class)
                 .profiles("aws")
                 .buildAndInitialize();
+
     }
 
     /*private static SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
@@ -57,7 +60,6 @@ public class StreamLambdaHandler implements RequestStreamHandler {
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context)
             throws IOException {
         handler.proxyStream(inputStream, outputStream, context);
-
         // just in case it wasn't closed by the mapper
         //outputStream.close();
     }
