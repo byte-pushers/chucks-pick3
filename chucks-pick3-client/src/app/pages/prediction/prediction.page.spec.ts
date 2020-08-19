@@ -36,7 +36,7 @@ describe('PredictionPage', () => {
 
     fixture.whenStable().then(() => {
       expect(fixture.debugElement.query(By.css('span.draw-time')).nativeElement.textContent.trim()).toBe('Morning');
-      expect(fixture.debugElement.query(By.css('span.draw-result')).nativeElement.textContent.trim()).toBe('June 2, 2018');
+      expect(fixture.debugElement.query(By.css('span.draw-result')).nativeElement.textContent.trim()).toBe('November 12, 2018');
     });
   });
 
