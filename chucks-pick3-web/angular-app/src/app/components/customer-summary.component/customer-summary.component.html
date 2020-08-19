@@ -1,0 +1,72 @@
+<div class="customer-title-section">
+  <h1><b>{{'customers-page-title' | translate }}</b></h1>
+</div>
+<div class="form-row options">
+  <div class="form-col campaign">
+    <label for="emailCampaign">{{'customers-form-title-campaign' | translate }}</label>
+    <label for="emailCampaign"></label>
+    <select #dropDownEmailCampaign="ngModel"
+            name="dropDownHowOftenName"
+            class="custom-select" id="emailCampaign"
+            required
+            ngModel>
+      <option value="" selected>{{'customers-form-input-email-opt-1' | translate }}</option>
+      <option value="Often">{{'customers-form-input-email-opt-2' | translate }}</option>
+      <option value="Sometimes">{{'customers-form-input-email-opt-3' | translate }}</option>
+      <option value="Never">{{'customers-form-input-email-opt-4' | translate }}</option>
+    </select>
+  </div>
+  <div class="buttons">
+    <div>
+      <button type="button"
+              class="btn btn add btn-success btn-sm btn-block" (click)="addRow()">
+       {{'customers-form-button-add' | translate }}
+      </button>
+    </div>
+    <div>
+      <button type="button"
+              class="btn btn add btn-danger btn-sm btn-block" (click)="deleteSelected()">
+        {{'customers-form-button-delete-all' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped table-responsive-sm" id="table">
+  <thead class="table-width ">
+  <tr>
+    <th scope="col" class="th-width"><!--checkbox--></th>
+    <th scope="col" class="th-width">{{'customers-form-output-first-name' | translate }}</th>
+    <th scope="col" class="th-width">{{'customers-form-output-last-name' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-form-output-email' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-form-output-phone' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{'customers-form-output-city' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet">{{'customers-form-output-state' | translate }}</th>
+    <th scope="col" class="th-width hide-in-mobile">{{'customers-form-title-action' | translate }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor=" let customer of customerService.getCustomers()">
+    <th scope="col">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="" id="{{customer.id}}" (click)="selectCustomer($event)">
+        </label>
+      </div>
+    </th>
+    <th scope="col" class="th-width" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid"> <a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.firstName}}</a></th>
+    <th scope="col" class="th-width" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid"><a [routerLink]="['/customers', customer.id]" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">{{customer.lastName}}</a></th>
+    <th scope="col" class="th-width hide-in-mobile" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid; word-wrap: break-word;min-width: 150px;max-width: 150px;">{{customer.email}}</th>
+    <th scope="col" class="th-width hide-in-mobile" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.phone}}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.city}}</th>
+    <th scope="col" class="th-width hide-in-mobile hide-in-tablet" style="border-left: #c4c8cc 1px solid; border-right: #c4c8cc 1px solid">{{customer.state}}</th>
+    <th scope="col" class="th-width">
+      <button type="button"
+              class="btn btn  btn-danger btn-xs btn-block" (click)="deleteRow(customer)" >
+        {{'customers-form-button-delete' | translate }}
+      </button>
+    </th>
+  </tr>
+  </tbody>
+
+</table>
+

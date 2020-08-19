@@ -1,0 +1,71 @@
+
+.customer-title-section {
+  width: 100%;
+  height:20%;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+.table-space {
+  width: 930px;
+}
+
+.th-width {
+  width: 140.5px;
+}
+
+.campaign {
+  display: block;
+  width: 50%;
+  float: left;
+  text-align: left;
+
+}
+
+.table {
+  display: block;
+  width: 100%;
+  position: relative;
+  font-size: 13px;
+  text-align: left;
+}
+
+.checkbox {
+  padding-left: 20px;
+  padding-top: 2.5px;
+}
+
+.table th {
+  line-height: 3em;
+  padding-left: .4rem;
+  padding-top: .5rem;
+}
+
+.options {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.add {
+  width: 49%;
+  float: left;
+  margin-left: 3px;
+
+
+}
+
+.delete {
+  width: 49%;
+  float: right;
+  margin-left: 3px;
+
+}
+
+.buttons {
+  display: block;
+  float: right;
+  width: 47%;
+}
+

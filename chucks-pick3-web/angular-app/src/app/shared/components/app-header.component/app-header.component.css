@@ -1,0 +1,1071 @@
+.header-container {
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+  height: 150px;
+  padding: 0px;
+  margin: 0 auto;
+
+
+}
+.lang-title h6{
+  float: left;
+  line-height: 2em !important;
+  margin-left: 10px;
+  margin-bottom: 0px !important;
+}
+#log-in {
+  display: inline-block;
+}
+#log-out {
+  display: none;
+}
+#summary {
+  display: none;
+}
+
+#log-in-mobile {
+  display: inline-block;
+}
+#log-out-mobile {
+  display: none;
+}
+#summary-mobile {
+  display: none;
+}
+
+.logo-container {
+  display: block;
+  background-color: rgb(0, 0, 0);
+  width: 20%;
+  height: 100px;
+  padding: 0px;
+  margin: 0 auto;
+  float: left;
+
+
+}
+
+#showNav {
+  display: none;
+}
+
+.nav-bar-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.main-nav-bar-container {
+
+  width: 80%;
+  background-color: white;
+  float: right;
+  /*border: 2px solid black;
+  padding: 5px;*/
+  height: 51px;
+  border-bottom: 1px solid black;
+
+}
+
+.main-nav-bar-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.main-nav-bar-container a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar-col-25 {
+  display: inline-block;
+  float: left;
+  line-height: 3em;
+  text-align: center;
+  width: 25%;
+  /*border: 2px solid blue;*/
+  height: 100%;
+
+
+}
+
+
+.nav-bar-col-20 {
+  display: none;
+
+
+}
+
+.nav-bar-col-25 a {
+  list-style-type: none;
+  font-size: 17px;
+  text-decoration: none;
+  color: black;
+
+}
+
+.nav-bar-col-50 {
+  float: right;
+
+  width: 50%;
+  /*border: 1px solid red;*/
+  height: 100%;
+
+
+}
+
+#howTo.hover {
+  background-color: #4CAF50;
+}
+
+.nav-bar-col-50 a {
+
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+
+
+}
+
+.main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+
+.main-nav-bar-container .nav-bar-col-50.active {
+  background-color: gray;
+  text-decoration: none;
+  color: gray;
+}
+
+.main-nav-bar-container .nav-bar-col-50.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+.active {
+  background-color: #d0d0d0 !important;
+  border-color: gray;
+  color: gray;
+}
+
+
+.sub-nav-bar-col-25 {
+  display: inline-block;
+  color: white;
+  float: left;
+
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 25%;
+
+  height: 100%;
+}
+
+
+.sub-nav-bar-col-12-5 {
+  display: inline-block;
+  color: white;
+  float: left;
+
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 12.5%;
+
+  height: 100%;
+}
+
+.sub-nav-bar-col-20 {
+  display: inline-block;
+  color: white;
+  float: left;
+
+  line-height: 3em;
+
+  text-align: center;
+
+  width: 20%;
+
+  height: 100%;
+}
+
+.sub-nav-bar-col-10 {
+  display: inline-block;
+  float: left;
+
+  width: 10%;
+
+  height: 100%;
+
+
+}
+
+.sub-nav-bar-col-20 a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.sub-nav-bar-col-25 a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.sub-nav-bar-container .sub-nav-bar-col-20.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sub-nav-bar-container .sub-nav-bar-col-25.allow-hover:hover {
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.sub-nav-bar-container .sub-nav-bar-col-50.active {
+  background-color: gray;
+}
+
+.logo-container img {
+  display: block;
+  margin: auto;
+  width: 100px;
+}
+
+.header-img-container {
+  display: block;
+  background-color: rgb(126, 187, 86);
+  width: 80%;
+  height: 100px;
+  padding: 0px;
+  margin: auto;
+  float: right;
+
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mobile-nav-bar-container {
+  display: none;
+}
+
+.mobile-sub-nav-bar-title-container {
+  display: none;
+}
+
+.mobile-sub-nav-bar-container {
+  display: none;
+}
+
+.mobile-spacing {
+  display: none;
+}
+
+@media only screen and (max-width: 760px) {
+
+  .mobile-spacing {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+  }
+
+  .main-content-container {
+    display: inline-block;
+    height: 250px;
+    width: 70%;
+    margin-left: 15%;
+    font-size: 11px;
+  }
+
+  .col-3 {
+    position: inherit !important;
+  }
+
+  .main-nav-bar-container {
+    display: none;
+  }
+
+  .sub-nav-bar-container {
+    display: none;
+  }
+
+  .nav-bar-col-20 {
+    display: inline-block;
+    float: left;
+    line-height: 3em;
+    text-align: center;
+    width: 20%;
+    /*border: 2px solid blue;*/
+    height: 100%;
+
+
+  }
+
+  .nav-bar-col-20 a {
+    list-style-type: none;
+    font-size: 17px;
+    text-decoration: none;
+
+
+  }
+
+  .sub-nav-bar-title-container {
+    display: none;
+  }
+
+  .float-right {
+    float: right;
+  }
+
+  /*------sub-nav-bar-----*/
+  [class*="sub-nav-bar-col-25"] {
+    width: 25%
+
+  }
+
+  .mobile-sub-nav-bar-title-container {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 3em;
+    background-color: white;
+    float: right;
+  }
+
+  .mobile-sub-nav-bar-container {
+
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    color: white;
+    float: right;
+    /*border: 2px solid black;
+    padding: 5px;*/
+  }
+
+
+  .sub-side-nav-stick {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  .mobile-space {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+
+  }
+
+  .mobile-space {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+
+  }
+
+  .break-line {
+    display: inline-block;
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    margin-top: 1.4em;
+    align-content: center;
+  }
+
+
+  .mobile-sub-nav-bar-container .sub-nav-bar-col-25.allow-hover:hover {
+    background-color: green;
+
+    cursor: pointer;
+    text-decoration: none;
+
+  }
+
+  .sub-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+
+  }
+
+  .sub-side-nav-stick {
+    position: fixed;
+    top: 10em;
+    width: 100%;
+
+  }
+
+  .subsidenav {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin-bottom: 20px;
+
+  }
+
+  /*------sub-nav-bar-----*/
+  .mobile-nav-bar-container {
+    display: block;
+    width: 100%;
+
+    /*expands to 100% width */
+  }
+
+  .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
+    background-color: #d0d0d0 !important;
+    color: gray !important;
+    cursor: pointer;
+  }
+
+  .mobile-nav-bar-container a:hover {
+    text-decoration: none;
+    color: gray !important;
+  }
+
+  .active {
+    background-color: #d0d0d0 !important;
+    color: gray !important;
+  }
+
+  .logo-container {
+    height: 135px;
+    width: 30%;
+
+    /* stays at 20% width, takes on height of header-img */
+  }
+
+  .header-img-container {
+    height: 135px;
+    width: 70%;
+    /* stays at 80% width */
+  }
+
+
+}
+
+/*---Hamburger Menu----*/
+
+
+.side-nav-stick {
+  display: inline-block;
+  position: relative;
+  top: .85em;
+  z-index: 7 !important;
+}
+
+.sidenav {
+  display: block;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  overflow-x: hidden;
+  transition: 0.5s;
+
+
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 70%;
+}
+
+/*------implement and erase --*/
+
+.menu {
+  display: inline-block;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+
+}
+
+.end {
+  display: inline-block;
+  width: 100%;
+  height: 5%;
+  padding-right: 10px;
+
+}
+
+.end a {
+  float: right;
+  line-height: 1em;
+  color: #ffffff;
+  font-size: 40px;
+
+}
+
+.menu-title {
+  display: inline-block;
+
+  width: 100%;
+  height: 6%;
+  vertical-align: middle;
+
+
+}
+
+.menu-title h2 {
+  position: relative;
+  color: white;
+  text-align: left;
+  left: 10px;
+
+
+}
+
+.hamburger-menu-section-1 {
+  width: 100%;
+  height: 6%;
+
+}
+
+.hamburger-menu-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+.how {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  float: right;
+}
+
+.how h5 {
+  line-height: 2em;
+  text-align: left;
+  color: white;
+}
+
+
+.hamburger-menu-section-2 {
+  width: 100%;
+  height: 30%;
+
+}
+
+.options {
+  display: inline-block;
+
+  width: 100%;
+  height: 25%;
+
+
+}
+
+.options:hover {
+  background-color: white;
+}
+
+.options:hover a {
+
+  color: black;
+}
+
+.options a {
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  color: gray;
+}
+
+
+.option-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+.block {
+
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.hamburger-menu-section-3 {
+  width: 100%;
+  height: 8%;
+
+}
+
+
+.hamburger-menu-section-3:hover {
+  background-color: white;
+}
+
+.hamburger-menu-section-3:hover a {
+
+  color: black;
+}
+.hamburger-menu-section-4:hover {
+  background-color: white;
+}
+
+.hamburger-menu-section-4:hover a {
+
+  color: black;
+}
+.summary {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  float: right;
+
+}
+
+
+.summary a h5 {
+  line-height: 3em;
+  color: white;
+}
+
+.summary a h5:hover {
+  color: black;
+}
+
+.demo {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  float: right;
+
+}
+
+
+.demo a h5 {
+  line-height: 3em;
+  color: white;
+}
+
+.demo a h5:hover {
+  color: black;
+}
+
+.desktopHeader {
+  display: block;
+}
+
+.tabletHeader {
+  display: none;
+}
+
+.mobileHeader {
+  display: none;
+}
+
+/**RESPONSIVE IMAGES ***/
+/**IPHONE 678 & X**/
+@media only screen and (max-width: 375px) {
+  .lang-buttons {
+    display: none;
+  }
+  .mobileHeader {
+    display: block;
+    margin-top: 15%;
+    align-content: center;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .tabletHeader {
+    display: none;
+  }
+}
+
+/**IPHONE +**/
+@media only screen and (min-width: 410px) {
+  .lang-buttons {
+    display: none;
+  }
+  .mobileHeader {
+    display: block;
+    margin-top: 12%;
+    align-content: center;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .tabletHeader {
+    display: none;
+  }
+}
+
+/**ANDROID**/
+@media only screen and (max-width: 365px) {
+  .lang-buttons {
+    display: none;
+  }
+  .mobileHeader {
+    display: block;
+    margin-top: 15%;
+    align-content: center;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .tabletHeader {
+    display: none;
+  }
+}
+
+/**ANDROID**/
+@media only screen and (max-width: 360px) {
+  .lang-buttons {
+    display: none;
+  }
+  .mobileHeader {
+    display: block;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .tabletHeader {
+    display: none;
+  }
+}
+
+/**IPHONE 5**/
+@media only screen and (max-width: 320px) {
+  .lang-buttons {
+    display: none;
+  }
+  .mobileHeader {
+    display: block;
+    margin-top: 17%;
+    align-content: center;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .tabletHeader {
+    display: none;
+  }
+}
+
+/**IPAD**/
+@media only screen and (min-width: 760px) {
+  .lang-buttons {
+    display: inline-block;
+    width: 20%;
+    height: 51px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    text-align: center;
+    line-height: 2em;
+
+  }
+  .col-md-4:hover {
+    background-color: #4CAF50 !important;
+  }
+
+  .tabletHeader {
+    display: block;
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+}
+
+/**KINDLE**/
+@media only screen and (min-width: 799px) {
+  .tabletHeader {
+    display: none;
+  }
+
+  .desktopHeader {
+    display: block;
+    align-content: center;
+    margin: auto;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+}
+
+
+/*******************SIDE NAV***********************/
+.side-nav-stick {
+  display: inline-block;
+  position: relative;
+  top: .85em;
+}
+
+.sidenav {
+  display: block;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  overflow-x: hidden;
+  transition: 0.5s;
+
+
+}
+
+
+@media screen and (max-height: 450px) {
+  .lang-buttons {
+    display: none;
+
+  }
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 70%;
+}
+
+/*------implement and erase --*/
+
+.menu {
+  display: inline-block;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+
+}
+
+.end {
+  display: inline-block;
+  width: 100%;
+  height: 5%;
+  padding-right: 10px;
+
+}
+
+.end a {
+  float: right;
+  line-height: 1em;
+  color: #ffffff;
+  font-size: 40px;
+
+}
+
+.menu-title {
+  display: inline-block;
+
+  width: 100%;
+  height: 10%;
+  vertical-align: middle;
+
+
+}
+
+.menu-title h2 {
+  position: relative;
+  color: white;
+  text-align: left;
+  left: 10px;
+
+
+}
+
+.hamburger-menu-section-1 {
+  width: 100%;
+  height: 6%;
+
+}
+
+.hamburger-menu-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+.how {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  float: right;
+}
+
+.how h5 {
+  line-height: 2em;
+  text-align: left;
+  color: white;
+}
+
+
+.hamburger-menu-section-2 {
+  width: 100%;
+  height: 30%;
+
+}
+
+.options {
+  display: inline-block;
+
+  width: 100%;
+  height: 25%;
+
+
+}
+
+.options:hover {
+  background-color: white;
+}
+
+.options:hover a {
+
+  color: black;
+}
+
+.options a {
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  color: gray;
+}
+
+
+.option-indent {
+  width: 10%;
+  height: 100%;
+  float: left;
+}
+
+
+.block {
+
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.hamburger-menu-section-3 {
+  width: 100%;
+  height: 8%;
+
+}
+
+
+.hamburger-menu-section-3:hover {
+  background-color: white;
+}
+
+.hamburger-menu-section-3:hover a {
+
+  color: black;
+}
+
+
+.demo {
+  display: inline-block;
+
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  float: right;
+
+}
+
+
+.demo a h5 {
+  line-height: 3em;
+  color: white;
+}
+
+.demo a h5:hover {
+  color: black;
+}
+
+.active .allow-hover {
+  background-color: #d0d0d0 !important;
+  color: gray !important;
+
+}
+
+.subactive .allow-hover {
+  background-color: #414141 !important;
+  color: #686868 !important;
+
+}
+
+.subActive .allow-hover {
+  background-color: #292929 !important;
+  color: gray !important;
+
+}
+
+.howToActive:hover {
+  background-color: green !important;
+  color: black;
+}
+
+

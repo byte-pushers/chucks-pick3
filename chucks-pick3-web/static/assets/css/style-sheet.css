@@ -1,0 +1,901 @@
+.css-selector {
+    font-family: 'Lato', serif;
+}
+/*-----Global--------*/
+.main-container {
+    background-color: #fafafa;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+
+
+
+}
+
+
+.header-container {
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+    height: 150px;
+    padding: 0px;
+    margin: 0 auto;
+
+
+}
+p {
+
+    text-align: left;
+}
+.logo-container {
+    display: block;
+    background-color: rgb(0, 0, 0);
+    width: 20%;
+    height: 100%;
+    padding: 0px;
+    margin: 0 auto;
+    float: left;
+
+
+}
+
+.header-img-container {
+    display: block;
+    background-color: rgb(126, 187, 86);
+    width: 80%;
+    height: 100px;
+    padding: 0px;
+    margin: auto;
+    float: right;
+
+    /*-----Global--------*/
+}
+
+/*.navbar-container {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+
+
+}*/
+
+/*.navbar-how-to-container {
+    display: block;
+    background-color: #fff059;
+    width: 80%;
+    height: 50px;
+    padding: 0;
+    margin: 0 auto;
+    float: right;
+
+}*/
+
+/*-----Global--------*/
+.body-container {
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+
+}
+
+.main-content-container {
+
+    background-color: white;
+    width: 100%;
+    min-height: 25%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+
+
+}
+/*-----Global--------*/
+
+/*-----Ad Containers--------*/
+
+.how-to-container {
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style:solid;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-width: 1px;
+    width: 33%;
+    height: 350px;
+    border-color: #BDBDBD;
+
+
+}
+/*-----Ad Containers--------*/
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: center;
+}
+
+/*-----How To Containers------*/
+.what-you-need {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 800px;
+    padding-top: 24%;
+    margin: 0 auto;
+
+    float: left;
+
+
+}
+
+.interface {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+
+}
+/*-----How To Containers------*/
+.fill-container {
+    display: block;
+    background-color: #eea53a;
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    margin: auto;
+    position: center;
+
+}
+
+.how-to-generate {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0;
+    margin: 0 auto;
+    position: center;
+    float: left;
+    border: 3px solid green;
+
+}
+
+.how-to-view {
+    display: block;
+    background-color: #fafafa;
+    width: 100%;
+    height: 500px;
+    padding: 0px;
+    margin: 0 auto;
+    position: center;
+    float: left;
+
+
+}
+/*-----How To Containers------*/
+* {
+    margin-inside: .5;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    align-content: center;
+}
+
+.wrapper {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #6465a5;
+    box-sizing: border-box;
+    padding: 40px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+
+.address {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: #a9aacd;
+    margin-bottom: 50px;
+}
+
+.inner-address p {
+    font-size: 12px;
+}
+
+.inner-address .fas {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+
+}
+
+.form-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: center;
+}
+
+.input-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1%;
+    margin-inside: .5;
+
+
+}
+/* To align each section of the form properly*/
+.location {
+    margin-top: 7%;
+}
+
+.phone {
+    margin-top: 7%;
+}
+
+.inner-msg {
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* For actual form input*/
+.input > input {
+    border: 1px;
+    width: 100%;
+    height: 80%;
+    padding: 10px 20px;
+    outline: none;
+    border-style: solid;
+}
+
+
+.btn {
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    color: #9d9d9d;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #000000;
+}
+
+
+
+/* for screen to remain responsive at phone size*/
+@media screen and (max-width: 640px) {
+    .input-form {
+        flex-direction: column;
+    }
+
+
+    .form .input > input {
+        width: 100% !important;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .input-form {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 10%;
+        margin-bottom: 1%;
+        margin-inside: .5;
+    }
+
+    @-moz-document url-prefix() {
+        .input-form {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50%;
+            margin-bottom: 1%;
+            margin-inside: .5;
+        }
+    }
+}
+.fill-form {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 15%;
+    box-sizing: border-box;
+    align-content: center;
+
+
+}
+
+
+select {
+    background: #ffffff;
+    border: 1px;
+    height: 80%;
+    width: 100%;
+    float: right;
+    padding: 10px 20px;
+    outline: none;
+    border-style: solid;
+
+}
+/* used to center into body*/
+.row {
+    margin-top: 10%;
+}
+
+/*---Ad Container-----*/
+/* .link-container {
+
+
+    width: 100%;
+    height: 420px;
+    padding-top:30px;
+    text-align: center;
+
+} */
+
+
+.demo-container {
+    display: inline-block;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style:solid;
+    border-bottom-style: none;
+    border-left-style: solid;
+    border-width: 1px;
+    width: 33.3%;
+    height: 350px;
+    margin-left:-6px;
+    border-color: #BDBDBD;
+}
+
+.demo-container p {
+
+margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+.sign-up-container {
+    display: inline-block;
+    background-image: url("../img/screens-04.png");
+    background-size: 420px  350px;
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-width: 1px;
+    width: 33.2%;
+    height: 350px;
+    margin-left:-4px;
+border-color: #BDBDBD;
+
+}
+
+.sign-up-container p {
+    vertical-align: bottom;
+    margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+.how-to-container p {
+    vertical-align: bottom;
+    margin: 5%;
+    text-align: left;
+    position:relative;
+
+}
+
+.demo-container, .sign-up-container, .how-to-container {
+
+    display: inline-block;
+
+}
+/*---Ad Container-----*/
+
+
+
+
+
+
+
+
+h2 {
+    font-family: 'Lato', serif;
+    padding-left: 20px;
+}
+
+/*#navbar {
+
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    height: 150px;
+    text-decoration: none;
+
+
+}*/
+
+/*-----How To Containers------*/
+.how-to-nav {
+    display: block;
+    text-align: center;
+    width: 80%;
+    height: 5%;
+    padding: 0px;
+    justify-content: space-evenly;
+    position:relative;
+    left:22%;
+
+    float: right;
+
+
+}
+/*-----How To Containers------*/
+
+.sub-nav-bar-title-container {
+    display: inline-block;
+    text-align: center;
+    background-color: #f2f2f2;
+    width: 20%;
+    float: left;
+    height: 50px;
+    line-height: 3em;
+}
+
+/*#navbar a {
+    !*float: left;*!
+    display: block;
+
+    text-align: center;
+    padding: 0px 35px;
+    height: 51px;
+    !*line-height: 3.225em;*!
+    text-decoration: none;
+'Lato', serif;
+}
+#navbar a:hover {
+
+    text-decoration: none;
+}
+
+#navbar a.active {
+
+    text-decoration: none;
+}*/
+
+
+.content {
+    padding: 0px;
+}
+
+
+
+
+
+.sticky + .content {
+    padding-top: 0px;
+}
+
+
+
+.text {
+    margin: auto;
+    padding-top: 60%;
+    padding-left: 5%;
+    position: center;
+    vertical-align: bottom;
+}
+
+/* Responsive Buttons---------------------------------- */
+.sign-up {
+    display: none;
+}
+
+.log-in {
+    display: none;
+}
+
+.home {
+    display: none;
+}
+
+.side-menu {
+    display: none;
+}
+
+.slide a {
+    display: none;
+}
+/* Responsive Buttons---------------------------------- */
+/* FOR DESKTOP--Responsive-------------------------------- */
+
+
+
+    @media screen and (max-width: 805px) {
+        .header-container  {
+            display: block;
+            height: 14%;
+        }
+    }
+
+    /*@media screen and (max-width: 805px) {
+        .nav-bar-container  {
+            display: block;
+            width: 100%;
+        }
+    }*/
+
+
+    @media screen and (max-width: 805px) {
+        .logo-container  {
+            display: block;
+            width: 20%;
+            height: 83%;
+        }
+    }
+
+    @media screen and (max-width: 805px) {
+        .header-img-container  {
+            display: block;
+            width: 80%;
+        }
+    }
+/*@media screen and (max-width: 805px) {
+    #navbar-wrapper  {
+        display: block;
+
+
+    }
+}*/
+
+@media screen and (max-width: 770px) {
+    .header-container  {
+        display: block;
+        height: 18%;
+    }
+}
+@media screen and (max-width: 770px) {
+    .logo-container  {
+        display: block;
+        width: 20%;
+        height: 81.5%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .header-img-container  {
+        display: block;
+        width: 80%;
+    }
+}
+@media screen and (max-width: 770px) {
+    #navbar-wrapper  {
+        display: block;
+
+
+    }
+}
+
+
+    /* FOR DESKTOP & IPAD ---------------------------------- */
+
+    /* FOR IPHONE 6/7/8---------------------------------- */
+/*
+@media screen and (max-width: 750px) {
+    #navbar-wrapper  {
+        display: none;
+
+
+    }
+}
+*/
+
+@media screen and (max-width: 750px) {
+    .slide a {
+        display: block;
+
+
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .side-nav  {
+        display: block;
+        width: 15%;
+        height: 100%;
+
+    }
+}
+@media screen and (max-width: 750px) {
+    .side-menu  {
+        display: block;
+        width: 15%;
+        height: 100%;
+        color: indigo;
+
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .home {
+        display: block;
+        width: 20%;
+        height: 100%;
+        background-color: #1704f9;
+        float: left;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .home  h9 {
+        display: block;
+        margin: 0 auto;
+        padding-top: 17%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .log-in {
+        display: block;
+        width: 20%;
+        height: 100%;
+        background-color: darkcyan;
+        float: right;
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sign-up {
+        display: block;
+        width: 20%;
+        height: 100%;
+        background-color: darkcyan;
+        float: right;
+    }
+}
+
+
+
+
+
+    @media screen and (max-width: 750px) {
+        .header-container  {
+            display: block;
+            height: 20%; /* The width is 100%, when the viewport is 800px or smaller */
+        }
+    }
+
+
+
+    /*@media screen and (max-width: 750px) {
+        .nav-bar-home-container  {
+            display: block;
+            width: 50%;
+            height: 30%;
+        }
+    }
+
+
+
+    @media screen and (max-width: 750px) {
+        .nav-bar-container  {
+            display: block;
+            width: 100%;
+            height: 30%;
+        }
+    }*/
+
+
+    @media screen and (max-width: 750px) {
+        .logo-container  {
+            display: block;
+            width: 30%; /* The width is 100%, when the viewport is 800px or smaller */
+            height: 70%;
+
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .header-img-container  {
+            display: block;
+            width: 70%; /* The width is 100%, when the viewport is 800px or smaller */
+            height: 70%;
+        }
+    }
+
+@media screen and (max-width: 750px) {
+    .demo-container  {
+        display: block;
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-width: 1px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .how-to-container  {
+        display: block;
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+
+        border-width: 1px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .sign-up-container  {
+        display: block;
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-width: 1px;
+    }
+}
+/* FOR IPHONE 6/7/8---------------------------------- */
+/* FOR TABLET---------*/
+@media screen and (max-width: 800px) {
+    .demo-container  {
+        display: block;
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-width: 1px;
+
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .how-to-container  {
+        display: block;
+        width: 100%;
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-width: 1px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .sign-up-container  {
+        display: block;
+        width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+        background-image: url("../img/screens-04.png");
+        background-size: 100%  350px;
+        border-top-style: solid;
+        border-right-style:solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-width: 1px;
+    }
+}
+
+/* FOR TABLET---------*/
+/* -------------- SIDE BAR ------------- */
+
+
+/*.nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 20%;
+    right: 0;
+    background-color: #111;
+    opacity: .9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.7s;
+
+
+}
+.nav a {
+    display: block;
+    padding: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #ccc;
+}
+.nav a:hover {
+    color: black;
+    background-color: white;
+    transition: 0.4s;
+}
+.nav .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin-left: 50px;
+    font-size: 30px;
+}
+
+.nav h2 {
+
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    margin-left: 30px;
+    font-size: 30px;
+    color: white;
+}*/
+.slide a {
+    color: #000;
+
+    font-size: 24px;
+
+    top: 15.4%;
+
+    position: absolute;
+
+    right: 5%;
+}
+#content {
+    padding: 0px;
+    transition: margin-left 0.7s;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+
+

@@ -1,0 +1,64 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div class="main-content container-fluid">
+<form  class="needs-validation"  #logInForm="ngForm" novalidate>
+  <div class="row">
+    <div class=" col-xl-5 mx-auto text-left">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+      <p class="h4 text-center">{{'log-in-page-title' | translate}}</p>
+      <br>
+      <br>
+      <div class="info-form">
+        <div class="form-row">
+          <label for="UserName">{{'log-in-form-output-username' | translate}}</label>
+          <input id="UserName"
+                 name="userName"
+                 #userName="ngModel"
+                 type="text"
+                 class="form-control" placeholder="User Name"
+                 required
+                 ngModel
+          spaceValidator
+                 userNameValidator>
+          <div class="alert alert-danger" *ngIf="userName.errors && (userName.dirty || userName.touched)">
+            <div *ngIf="userName.errors.required">{{'log-in-form-username-error-required' | translate}}</div>
+            <div *ngIf="userName.errors.spaceValidator">{{'log-in-form-username-error-space' | translate}}</div>
+            <div *ngIf="userName.errors.userNameValidator">{{'log-in-form-username-error-valid' | translate}}</div>
+          </div>
+        </div>
+        <br>
+        <!-- Password -->
+        <div class="form-row">
+          <label for="password">{{'log-in-form-output-password' | translate}}</label>
+          <input  id="password"
+                  name="password"
+                  #password="ngModel"
+            type="password"
+                  minlength="6"
+                  maxlength="25"
+                  class="form-control" placeholder="Password"
+                  ngModel
+                 required
+          passwordValidator>
+          <div class="alert alert-danger" *ngIf="password.errors && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required">{{'log-in-form-password-error-required' | translate}}</div>
+            <div *ngIf="password.errors.passwordValidator">{{'log-in-form-password-error-valid' | translate}}</div>
+            <div *ngIf="password.errors.minlength">{{'log-in-form-password-error-min' | translate}}</div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="mobile-space"></div>
+          <button type="submit" value='submit' [disabled]="!logInForm.form.valid" (click)="onSubmit()"
+                  class="btn btn btn-success btn-lg btn-block">{{'log-in-form-button-link-submit' | translate}}
+          </button>
+
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+<br>
+<div class="footer"></div>
+<br>

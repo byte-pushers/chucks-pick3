@@ -49,7 +49,7 @@ describe('FutureSelectPage', () => {
 
   it('should show the date picker when the select day button is clicked', () => {
     fixture.detectChanges();
-    spyOn(instance, 'showPicker').and.callFake(() => {});
+    spyOn(instance, 'showPicker').and.callFake(() => {return {}; });
     fixture.debugElement.query(By.css('#select-day')).triggerEventHandler('click', null);
 
     fixture.detectChanges();
@@ -59,7 +59,7 @@ describe('FutureSelectPage', () => {
 
   it('should show the time picker when the select time button is clicked', () => {
     fixture.detectChanges();
-    spyOn(instance, 'showTimePicker').and.callFake(() => {});
+    spyOn(instance, 'showTimePicker').and.callFake(() => {return {}; });
     fixture.debugElement.query(By.css('#select-time')).triggerEventHandler('click', null);
 
     fixture.detectChanges();

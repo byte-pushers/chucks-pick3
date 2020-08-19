@@ -1,0 +1,69 @@
+.how-to-generate {
+  display: block;
+  width: 100%;
+  height: 500px;
+  padding: 0;
+  margin: 0 auto;
+  position: center;
+  float: left;
+
+}
+.generate-mobile {
+  display: none;
+}
+.how-to-header {
+  display: block;
+}
+@media only screen and (max-width: 740px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-generate {
+    display: none;
+  }
+  .generate-mobile {
+    display: block;
+  }
+}
+

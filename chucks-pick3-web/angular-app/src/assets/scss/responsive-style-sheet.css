@@ -1,0 +1,917 @@
+/* Responsive Buttons---------------------------------- */
+.sign-up {
+  display: none;
+}
+
+.log-in {
+  display: none;
+}
+
+.home {
+  display: none;
+}
+
+.side-menu {
+  display: none;
+}
+
+.slide a {
+  display: none;
+}
+
+/* Responsive Buttons---------------------------------- */
+/* FOR DESKTOP--Responsive-------------------------------- */
+
+
+@media screen and (max-width: 805px) {
+  .header-container {
+    display: block;
+    height: 14%;
+  }
+}
+
+/*@media screen and (max-width: 805px) {
+    .nav-bar-container  {
+        display: block;
+        width: 100%;
+    }
+}*/
+
+
+@media screen and (max-width: 805px) {
+  .logo-container {
+    display: block;
+    width: 20%;
+    height: 83%;
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .header-img-container {
+    display: block;
+    width: 80%;
+  }
+}
+
+/*@media screen and (max-width: 805px) {
+    #navbar-wrapper  {
+        display: block;
+
+
+    }
+}*/
+
+@media screen and (max-width: 770px) {
+  .header-container {
+    display: block;
+    height: 18%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .logo-container {
+    display: block;
+    width: 20%;
+    height: 81.5%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .header-img-container {
+    display: block;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  #navbar-wrapper {
+    display: block;
+
+
+  }
+}
+
+
+/* FOR DESKTOP & IPAD ---------------------------------- */
+
+/* FOR IPHONE 6/7/8---------------------------------- */
+/*
+@media screen and (max-width: 750px) {
+    #navbar-wrapper  {
+        display: none;
+
+
+    }
+}
+*/
+
+
+@media screen and (max-width: 750px) {
+  .slide a {
+    display: block;
+
+
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .side-nav {
+    display: block;
+    width: 15%;
+    height: 100%;
+
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .side-menu {
+    display: block;
+    width: 15%;
+    height: 100%;
+    color: indigo;
+
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .home {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background-color: #1704f9;
+    float: left;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .home h9 {
+    display: block;
+    margin: 0 auto;
+    padding-top: 17%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .log-in {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background-color: darkcyan;
+    float: right;
+    margin-right: 15%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .sign-up {
+    display: block;
+    width: 20%;
+    height: 100%;
+    background-color: darkcyan;
+    float: right;
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .header-container {
+    display: block;
+    height: 20%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+
+
+/*@media screen and (max-width: 750px) {
+    .nav-bar-home-container  {
+        display: block;
+        width: 50%;
+        height: 30%;
+    }
+}
+
+
+
+@media screen and (max-width: 750px) {
+    .nav-bar-container  {
+        display: block;
+        width: 100%;
+        height: 30%;
+    }
+}*/
+
+
+@media screen and (max-width: 750px) {
+  .logo-container {
+    display: block;
+    width: 30%; /* The width is 100%, when the viewport is 800px or smaller */
+    height: 70%;
+
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .header-img-container {
+    display: block;
+    width: 70%; /* The width is 100%, when the viewport is 800px or smaller */
+    height: 70%;
+  }
+}
+
+
+/* FOR IPHONE 6/7/8---------------------------------- */
+/* FOR TABLET AND PC---------*/
+
+
+/*-------------------------------Responsive Containers-----------------------------------*/
+/*---Iphone 6/7/8 and X---*/
+@media only screen and (max-width: 375px) {
+  .how-to-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    border-color: gray;
+    border-width: thin;
+
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .container-spacing {
+    height: 102px;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .link-container-img {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-img-sign-up {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: left;
+  }
+
+
+  .link-container-text {
+    display: inline-block;
+    height: 65px;
+    width: 100%;
+    float: right;
+    padding: 11px;
+    font-size: 7px;
+  }
+
+
+  .demo-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    border-color: gray;
+    border-width: thin;
+
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .normal-space {
+    display: none;
+  }
+
+  .sign-up-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    border-color: gray;
+    border-width: thin;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .container-spacing-sign-up {
+    height: 87px;
+    width: 100%;
+    display: inline-block;
+    float: right;
+  }
+
+  .link-container-text-sign-up {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding-left: 11px;
+    font-size: 7px;
+    padding-top: 2.7em;
+  }
+}
+
+/*--------------Iphone +-----------*/
+@media only screen and (min-width: 410px) {
+  .normal-space {
+    display: none;
+  }
+
+  .how-to-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .container-spacing {
+    height: 93px;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .link-container-img {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-img-sign-up {
+    display: inline-block;
+    height: 95px;
+    width: 100%;
+    float: left;
+  }
+
+
+  .link-container-text {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding: 11px;
+    font-size: 7px;
+  }
+
+
+  .demo-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .sign-up-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .how-to-container, .sign-up-container, .demo-container {
+    border-bottom: #BDBDBD;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-width: 1px;
+  }
+
+  .container-spacing-sign-up {
+    height: 80px;
+    width: 100%;
+    display: inline-block;
+    float: right;
+  }
+
+  .link-container-text-sign-up {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding-left: 11px;
+    font-size: 7px;
+    padding-top: 3em;
+  }
+}
+
+/*----------Android------------*/
+@media only screen and (max-width: 365px) {
+  .how-to-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .container-spacing {
+    height: 105px;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .link-container-img {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-img-sign-up {
+    display: inline-block;
+    height: 87px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-text {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding: 11px;
+    font-size: 11px;
+  }
+
+
+  .demo-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .sign-up-container {
+    display: block;
+    height: 250px;
+    width: 70%;
+    margin: 0 auto;
+    border-style: none;
+    background-size: 261.5px 249px;
+    align-content: center;
+    float: none;
+  }
+
+  .container-spacing-sign-up {
+    height: 92px;
+    width: 100%;
+    display: inline-block;
+    float: right;
+  }
+
+  .link-container-text-sign-up {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding-left: 11px;
+    font-size: 11px;
+    padding-top: 2em;
+  }
+
+  .normal-space {
+    display: none;
+  }
+
+  .how-to-container, .sign-up-container, .demo-container {
+    border-bottom: #BDBDBD;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-width: 1px;
+  }
+}
+
+/* FOR TABLET (Ipad and Kindle)---------*/
+@media only screen and (min-width: 760px) {
+  /*---ipad---*/
+  .normal-space {
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+  }
+
+  .how-to-container, .sign-up-container, .demo-container {
+    display: block;
+    width: 33.3%;
+    height: 350px;
+    float: left;
+    background-size: 261.5px 349px;
+  }
+
+  .break-line {
+    display: none;
+  }
+
+  .mobile-space {
+    display: none;
+  }
+
+  .container-spacing {
+    height: 11.2em;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .container-spacing-sign-up {
+    height: 10.3em;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .link-container-img {
+    display: inline-block;
+    height: 83px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-img-sign-up {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: left;
+  }
+
+
+  .link-container-text {
+    display: inline-block;
+    height: 80px;
+    width: 100%;
+    float: right;
+    padding: 11px;
+    font-size: 8px;
+  }
+
+  .link-container-text-sign-up {
+    display: inline-block;
+    height: 90px;
+    width: 100%;
+    float: right;
+    padding: 17px;
+    font-size: 8px;
+  }
+}
+
+@media only screen and (min-width: 799px) {
+  /*---kindle---*/
+  .how-to-container, .sign-up-container, .demo-container {
+    width: 33.3%;
+    height: 350px;
+    float: left;
+    background-size: 261.5px 349px;
+    border-bottom: #BDBDBD;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-width: 1px;
+  }
+
+  .break-line {
+    display: none;
+  }
+
+  .mobile-space {
+    display: none;
+  }
+
+  .container-spacing {
+    height: 7.2em;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .demo-container {
+    border-left: solid;
+    border-right: solid;
+    border-width: 1px;
+    border-color: #BDBDBD;
+  }
+
+  .container-spacing-sign-up {
+    height: 6.7em;
+    width: 100%;
+    display: inline-block;
+    float: left;
+  }
+
+  .link-container-img {
+    display: inline-block;
+    height: 150px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-img-sign-up {
+    display: inline-block;
+    height: 150px;
+    width: 100%;
+    float: left;
+  }
+
+  .link-container-text {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding: 11px;
+    font-size: 7px;
+  }
+
+  .link-container-text-sign-up {
+    display: inline-block;
+    height: 75px;
+    width: 100%;
+    float: right;
+    padding: 17px;
+    font-size: 7px;
+  }
+}
+
+.header-image-3 {
+  display: none;
+}
+
+/*----------------------------- Header and Logo Responsiveness -------------------------*/
+
+@media only screen and (max-width: 740px) {
+  .header-image-1 {
+    display: none;
+
+  }
+
+
+  .logo-container img {
+
+  }
+
+  .header-image-3 {
+    display: block;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header-image-1 {
+    display: block;
+    margin-top: 15px;
+  }
+
+
+  .header-image-3 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header-image-1 {
+    display: block;
+    margin-top: 15px;
+  }
+
+
+  .header-image-3 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .header-image-1 {
+    display: none;
+
+  }
+
+
+  .logo-container img {
+    margin-top: 10px;
+  }
+
+  .header-image-3 {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .header-image-1 {
+    display: none !important;
+
+  }
+
+
+  .logo-container img {
+    margin-top: 10px;
+    padding-top: 0 !important;
+  }
+
+  .header-image-3 {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .header-image-1 {
+    display: none !important;
+
+  }
+
+
+  .logo-container img {
+    margin-top: 5px !important;
+  }
+
+  .header-image-3 {
+    display: block !important;
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header-image-1 {
+    display: block;
+
+  }
+
+
+  .header-image-3 {
+    display: none;
+  }
+}
+
+
+.header-image-1 {
+  display: block;
+
+}
+
+
+.logo-container img {
+
+}
+
+.header-image-3 {
+  display: none;
+}
+
+/*For Customer Summary*/
+@media only screen and (min-device-width : 411px) and (max-device-width : 731px) {
+  .buttonOptions {
+    width: 75% !important;
+  }
+}
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px)  {
+  .add {
+    width: 46% !important;
+    font-size: 8px;
+  }
+  .table {
+    font-size: 12px;
+  }
+  .optionButtons {
+    width: 75% !important;
+  }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 560px) {
+  .add {
+    width: 48% !important;
+    font-size: 9px;
+  }
+  .table {
+    font-size: 12px;
+  }
+  .buttons {
+    margin-top: 3em !important;
+  }
+  .back-button {
+    width: 30% !important;
+  }
+  .edit {
+    width: 30%;
+  }
+  .delete {
+    width: 30%;
+  }
+  .hide-in-mobile {
+    display: none;
+  }
+}
+@media only screen and (min-device-width : 360px) and (max-device-width : 667px) {
+  .add {
+    width: 48% !important;
+    font-size: 8px;
+  }
+  .buttons {
+    margin-top: 3em !important;
+    }
+  .hide-in-mobile {
+    display: none;
+  }
+  .edit{
+    width: 0;
+    font-size: 11px !important;
+  }
+  .optionButtons {
+    width: 85% !important;
+  }
+  .delete{
+    width: 0;
+    font-size: 11px !important;
+  }
+  .cancel {
+    width: 0;
+    font-size: 11px !important;
+  }
+  .update {
+    width: 0;
+    font-size: 11px !important;
+  }
+  }
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px)   {
+  .hide-in-mobile {
+    display: none;
+  }
+
+  .add {
+    width: 45% !important;
+    font-size: 8px;
+  }
+  .buttons {
+margin-top: 3em !important;
+  }
+}
+
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) {
+  .add {
+    width: 48% !important;
+    font-size: 8px;
+  }
+  .buttons {
+    margin-top: 3em !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .add {
+    width: 47% !important;
+    font-size: 9px;
+  }
+  .buttons {
+    margin-top: 2.5em ;
+  }
+
+  .hide-in-tablet {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .buttons {
+    margin-top: 2.2em ;
+  }
+
+}
+

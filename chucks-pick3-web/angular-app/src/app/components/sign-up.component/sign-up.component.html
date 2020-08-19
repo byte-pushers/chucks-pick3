@@ -1,0 +1,231 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div class="main-content container-fluid">
+  <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+    <div class="row">
+      <div class="col-xl-5 mx-auto">
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+        <p class="h4  text-center">{{'sign-up-page-title' | translate}} </p>
+        <br>
+        <br>
+        <div class="info-form">
+          <div class="form-row">
+            <label for="defaultRegisterFormFirstName">{{'sign-up-form-output-first-name' | translate}}</label>
+            <input id="defaultRegisterFormFirstName"
+                   name="firstName"
+                   class="form-control"
+                   placeholder="First name"
+                   minlength="2"
+                   #firstName="ngModel"
+                   type="text"
+                   required ngModel nameValidator>
+            <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+              <div *ngIf="firstName.errors.required">{{'sign-up-form-first-name-error-required' | translate}}</div>
+              <div *ngIf="firstName.errors.minlength">{{'sign-up-form-first-name-error-min' | translate}}</div>
+              <div *ngIf="firstName.errors.nameValidator">{{'sign-up-form-first-name-error-valid' | translate}}</div>
+
+            </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <label for="defaultRegisterFormLastName">{{'sign-up-form-output-last-name' | translate}}</label>
+            <input id="defaultRegisterFormLastName"
+                   name="lastName"
+                   #lastName="ngModel"
+                   type="text"
+                   minlength="2"
+                   class="form-control" placeholder="Last name"
+                   required ngModel nameValidator>
+            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+              <div *ngIf="lastName.errors.required">{{'sign-up-form-last-name-error-required' | translate}}</div>
+              <div *ngIf="lastName.errors.minlength">{{'sign-up-form-last-name-error-min' | translate}}</div>
+              <div *ngIf="lastName.errors.nameValidator">{{'sign-up-form-last-name-error-valid' | translate}}</div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormEmail">{{'sign-up-form-output-sign-up-email' | translate }}</label>
+          <input
+            type="email" name="email" email #email="ngModel"
+            id="defaultRegisterFormEmail"
+            class="form-control" placeholder="Email"
+            required ngModel dataValidator emailValidator>
+          <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+            <div *ngIf="email.errors.required">{{'sign-up-form-sign-up-email-error-required' | translate }}</div>
+            <div *ngIf="email.errors.emailValidator">{{'sign-up-form-sign-up-email-error-valid' | translate }}</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormPhone">{{'sign-up-form-output-phone' | translate }}</label>
+          <input type="tel" name="phoneNumber"
+                 #phoneNumber="ngModel"
+                 id="defaultRegisterFormPhone"
+                 class="form-control"
+                 minlength="12"
+                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                 placeholder="Phone Number"
+                 required ngModel numberValidator>
+          <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
+            <div *ngIf="phoneNumber.errors.required">{{'sign-up-form-phone-error-required' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.pattern">{{'sign-up-form-phone-error-pattern' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.numberValidator">{{'sign-up-form-phone-error-valid' | translate}}</div>
+            <div *ngIf="phoneNumber.errors.minlength">{{'sign-up-form-phone-error-min' | translate}}</div>
+
+
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">{{'sign-up-form-output-city' | translate}}</label>
+          <input name="cityName" #cityName="ngModel"
+                 type="text"
+                 id="defaultRegisterFormCity"
+                 class="form-control"
+                 placeholder="City"
+                 minlength="2"
+                 required ngModel nameValidator>
+          <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
+            <div *ngIf="cityName.errors.required">{{'sign-up-form-city-error-required' | translate}}</div>
+            <div *ngIf="cityName.errors.nameValidator">{{'sign-up-form-city-error-valid' | translate}}</div>
+            <div *ngIf="cityName.errors.minlength">{{'sign-up-form-city-error-min' | translate}}</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">{{'sign-up-form-output-state' | translate}}</label>
+          <label for="stateDropDownId"></label>
+          <select #stateDropDownInputName="ngModel"
+                  name="stateDropDownInputName"
+                  class="custom-select" id="stateDropDownId"
+                  required ngModel>
+            <option value="" selected>{{'sign-up-form-input-select-state' | translate}}</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="5">California</option>
+            <option value="6">Colorado</option>
+            <option value="7">Connecticut</option>
+            <option value="8">Delaware</option>
+            <option value="1">District Of Columbia</option>
+            <option value="1">Florida</option>
+            <option value="1">Georgia</option>
+            <option value="1">Hawaii</option>
+            <option value="1">Idaho</option>
+            <option value="1">Illinois</option>
+            <option value="1">Indiana</option>
+            <option value="1">Iowa</option>
+            <option value="1">Kansas</option>
+            <option value="1">Kentucky</option>
+            <option value="1">Louisiana</option>
+            <option value="1">Maine</option>
+            <option value="1">Maryland</option>
+            <option value="1">Massachusetts</option>
+            <option value="1">Michigan</option>
+            <option value="1">Minnesota</option>
+            <option value="1">Mississippi</option>
+            <option value="1">Missouri</option>
+            <option value="1">Montana</option>
+            <option value="1">Nebraska</option>
+            <option value="1">Nevada</option>
+            <option value="1">New Hampshire</option>
+            <option value="1">New Jersey</option>
+            <option value="1">New Mexico</option>
+            <option value="1">New York</option>
+            <option value="1">North Carolina</option>
+            <option value="1">North Dakota</option>
+            <option value="1">Ohio</option>
+            <option value="1">Oklahoma</option>
+            <option value="1">Oregon</option>
+            <option value="1">Pennsylvania</option>
+            <option value="1">Rhode Island</option>
+            <option value="1">South Carolina</option>
+            <option value="1">South Dakota</option>
+            <option value="1">Tennessee</option>
+            <option value="1">Texas</option>
+            <option value="1">Utah</option>
+            <option value="1">Vermont</option>
+            <option value="1">Virginia</option>
+            <option value="1">Washington</option>
+            <option value="1">West Virginia</option>
+            <option value="1">Wisconsin</option>
+            <option value="1">Wyoming</option>
+          </select>
+
+          <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
+            <div *ngIf="stateDropDownInputName.errors.required">{{'sign-up-form-state-error-required' | translate }}</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormZip">{{'sign-up-form-output-zip' | translate }}</label>
+          <input name="zipCode"
+                 #zipCode="ngModel"
+                 type="text"
+                 minlength="4"
+                 maxlength="5"
+                 id="defaultRegisterFormZip" class="form-control"
+                 placeholder="Zip"
+                 required ngModel numberValidator>
+          <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
+            <div *ngIf="zipCode.errors.required">{{'sign-up-form-zip-error-required' | translate }}</div>
+            <div *ngIf="zipCode.errors.numberValidator">{{'sign-up-form-zip-error-valid' | translate }}</div>
+            <div *ngIf="zipCode.errors.minlength">{{'sign-up-form-zip-error-min' | translate }}</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">{{'sign-up-form-output-phone-type' | translate}}</label>
+          <label for="typeOfPhoneId"></label>
+          <select #dropDownTypeOfPhoneName="ngModel"
+                  name="dropDownTypeOfPhoneName"
+                  class="custom-select"
+                  id="typeOfPhoneId"
+                  required ngModel>
+            <option value="" selected>{{ 'sign-up-form-input-phone-select-type' | translate }}</option>
+            <option value="Iphone">{{ 'sign-up-form-input-phone-type-1' | translate }}</option>
+            <option value="Android">{{ 'sign-up-form-input-phone-type-2' | translate }}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
+            <div *ngIf="dropDownTypeOfPhoneName.errors.required">{{ 'sign-up-form-phone-type-error-required' | translate }}</div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <label for="defaultRegisterFormCity">{{ 'sign-up-form-output-how-often' | translate }}</label>
+          <label for="howOftenId"></label>
+          <select #dropDownHowOftenName="ngModel"
+                  name="dropDownHowOftenName"
+                  class="custom-select" id="howOftenId"
+                  required ngModel>
+            <option value="" selected>How Often Do You Play?</option>
+            <option value="Often">{{'sign-up-form-input-how-often-1' | translate}}</option>
+            <option value="Sometimes">{{'sign-up-form-input-how-often-2' | translate}}</option>
+            <option value="Never">{{'sign-up-form-input-how-often-3' | translate }}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
+            <div *ngIf="dropDownHowOftenName.errors.required">{{ 'sign-up-form-how-often-error-required' | translate }}</div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <button type="submit"
+                  class="btn btn btn-success submit btn-lg btn-block"
+                  [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
+            {{ 'sign-up-form-button-link-submit' | translate }}
+          </button>
+
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+    <br>
+  </form>
+  <br>
+  <div class="footer"></div>
+  <br>
+
+</div>

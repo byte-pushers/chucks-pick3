@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { TX_PICK3_URL } from '../../app.config';
 
 import BytePushers from '@byte-pushers/pick3-lottery-web-scraper';
-import {DrawingResult} from '../../model/DrawingResult.model';
-import {ScrapingService} from './scraping.service.interface';
-import {DateUtil} from '../../model/DateUtil';
+import { DrawingResult} from '../../model/DrawingResult.model';
+import { ScrapingService } from './scraping.service.interface';
 
 @Injectable()
 export class ScrapingProvider extends ScrapingService {

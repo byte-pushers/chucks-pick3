@@ -1,0 +1,69 @@
+.how-to-view {
+  display: block;
+  width: 100%;
+  height: 500px;
+  padding: 0px;
+  margin: 0 auto;
+  position: center;
+  float: left;
+
+
+}
+.view-mobile {
+  display: none;
+}
+/*Mobile responsiveness*/
+
+@media only screen and (max-width: 740px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .how-to-view {
+    display: none;
+  }
+  .view-mobile {
+    display: block;
+  }
+}
+

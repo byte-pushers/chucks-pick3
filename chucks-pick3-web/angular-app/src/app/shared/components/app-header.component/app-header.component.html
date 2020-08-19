@@ -1,0 +1,203 @@
+<div class="header-container" (clickOutside)="onClickedOutside($event)" detect-scroll (onScroll)="handleScroll($event)">
+  <div class="logo-container">
+    <img src="/assets/images/chucksPickThreeLogo.png" alt="logo" width="50px" height="50px">
+  </div>
+  <div class="header-img-container">
+    <img src="/assets/images/ChucksPick3HeaderDesktop.png" class="desktopHeader" alt="logo" width="700px"
+         height="100px">
+    <img src="/assets/images/ChucksPick3HeaderTablet.png" class="tabletHeader" alt="logo" width="1000px"
+         height="100px">
+    <img src="/assets/images/ChucksPick3HeaderMobile.png" class="mobileHeader" alt="logo" width="1000px"
+         height="100px">
+  </div>
+  <div class="nav-bar-container"><!--style="background-color: white"//-->
+    <div class="lang-buttons">
+      <button class=" btn nav-bar-col-25  allow-hover" style="line-height: 1em;" (click)="switchLanguage('en')">en</button>
+
+      <button class="btn nav-bar-col-25  allow-hover" style="line-height: 1em;" (click)="switchLanguage('es')">es</button>
+    </div>
+    <div class="main-nav-bar-container">
+      <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-25  allow-hover">
+          <b translate>{{ 'navigation-button-link-home' | translate}}</b>
+        </div>
+      </a>
+      <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
+        <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
+          <b>{{ 'navigation-button-link-howTo' | translate}}</b>
+        </div>
+      </a>
+      <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-25 allow-hover">
+          <b>Demo</b>
+        </div>
+      </a>
+      <div class="nav-bar-col-25">
+        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="log-in">
+            <b>{{ 'navigation-button-link-login' | translate}}</b>
+          </div>
+        </a>
+        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
+            <b>{{ 'navigation-button-link-logOut' | translate}}</b>
+          </div>
+        </a>
+        <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="sign-up">
+            <b>{{ 'navigation-button-link-signUp' | translate}}</b>
+          </div>
+        </a>
+        <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+          <div class="nav-bar-col-50 allow-hover" id="summary">
+            <b>{{ 'navigation-button-link-customers' | translate}}</b>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="mobile-nav-bar-container">
+
+      <div [routerLink]="'/home'" class="nav-bar-col-20 allow-hover" routerLinkActive="active" (click)="closeNav()">
+        <a [routerLink]="'/home'" routerLinkActive="active" style="font-size: 30px">&#8962;</a>
+      </div>
+
+      <div class=" nav-bar-col-20 float-right allow-hover" routerLinkActive="active">
+
+        <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
+
+        <div class="side-nav-stick">
+
+          <div id="side-nav-bar" class="sidenav">
+            <div class="menu">
+              <div class="end">
+                <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
+              </div>
+              <div class="lang-buttons-mobile">
+                <div class="lang-title">
+                <h6>Language:</h6>
+                </div>
+                <div class=" btn nav-bar-col-25  allow-hover" style="line-height: 1em; color: white;" (click)="switchLanguage('en'); closeNav();">en</div>
+
+                <div class="btn nav-bar-col-25  allow-hover" style="line-height: 1em; color: white;" (click)="switchLanguage('es'); closeNav();">es</div>
+              </div>
+              <div class="menu-title">
+                <h2><b>{{'sub-navigation-button-link-menu' | translate}}</b></h2>
+              </div>
+
+              <div class="hamburger-menu-section-1">
+                <div class="hamburger-menu-indent">
+                </div>
+                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}"
+                   (click)="closeNav()">
+                  <div class="how">
+                    <h5><b>{{ 'navigation-button-link-howTo' | translate}}</b></h5>
+                  </div>
+                </a>
+              </div>
+              <div class="hamburger-menu-section-2">
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
+                    <a [routerLink]="'/requirements'" (click)="closeNav()">{{ 'sub-navigation-button-link-requirements' | translate }}</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
+                    <a [routerLink]="'/interface'"
+                       [queryParams]="{showSubNavBar: true}">{{ 'sub-navigation-button-link-interface' | translate }}</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
+                    <a [routerLink]="'/generate'" (click)="closeNav()">{{ 'sub-navigation-button-link-generate' | translate }}</a>
+                  </div>
+                </div>
+                <div class="options">
+                  <div class="hamburger-menu-indent">
+                  </div>
+                  <div class="option-indent">
+                  </div>
+                  <div class="block" [routerLink]="'/view'" (click)="closeNav()">
+                    <a [routerLink]="'/view'" (click)="closeNav()">{{ 'sub-navigation-button-link-view-picks' | translate }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="hamburger-menu-section-3">
+                <div class="hamburger-menu-indent">
+                </div>
+                <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
+                  <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
+                </div>
+              </div>
+              <div class="hamburger-menu-section-4">
+                <div class="summary" [routerLink]="'/customers'"
+                     id="summary-mobile" (click)="closeNav()">
+                  <a [routerLink]="'/customers'" (click)="closeNav()"><h5><b>{{ 'navigation-button-link-customers' | translate}}</b></h5></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
+           id="log-in-mobile" (click)="closeNav()">
+        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'navigation-button-link-login' | translate}}</a>
+      </div>
+      <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
+           id="log-out-mobile" (click)="closeNav(); changeToLogInButton()">
+        <a [routerLink]="'/log-in'" routerLinkActive="active">{{ 'navigation-button-link-logOut' | translate}}</a>
+      </div>
+      <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
+           id="sign-up-mobile"
+           (click)="closeNav()">
+        <a [routerLink]="'/sign-up'" routerLinkActive="active">{{ 'navigation-button-link-signUp' | translate}}</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="isSubNavBarVisible()">
+  <div class="sub-nav-bar-container">
+    <div class="sub-nav-bar-col-25">
+      <span></span>
+    </div>
+    <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+      <div id="sub-nav-bar-item-require"
+           class="sub-nav-bar-col-12-5 allow-hover">
+        <b>{{ 'sub-navigation-button-link-requirements' | translate }}</b>
+      </div>
+    </a>
+    <a [routerLink]="['/interface']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+      <div id="sub-nav-bar-item-inter"
+           class="sub-nav-bar-col-12-5 allow-hover ">
+        <b>{{ 'sub-navigation-button-link-interface' | translate }}</b>
+      </div>
+    </a>
+    <a [routerLink]="['/generate']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+      <div id="sub-nav-bar-item-generate"
+           class="sub-nav-bar-col-12-5 allow-hover">
+        <b>{{ 'sub-navigation-button-link-generate' | translate }}</b>
+      </div>
+    </a>
+    <a [routerLink]="['/view']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+      <div id="sub-nav-bar-item-generate-pic"
+           class="sub-nav-bar-col-12-5 allow-hover">
+        <b>{{ 'sub-navigation-button-link-view-picks' | translate }}</b>
+      </div>
+    </a>
+    <div class="sub-nav-bar-col-25">
+      <span></span>
+    </div>
+  </div>
+</div>

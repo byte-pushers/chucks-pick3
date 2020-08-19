@@ -86,7 +86,7 @@ export class FutureSelectPage {
     actionSheet.present();
   }
 
-  private dateToUrlDate(d: Date): string {
+  /*private dateToUrlDate(d: Date): string {
     return DateUtil.dateToString(d);
-  }
+  }*/
 }
