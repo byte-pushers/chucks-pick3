@@ -1,20 +1,17 @@
-package main.java.software.bytepushers.chuckspick3.lotto.core;
+package software.bytepushers.chuckspick3.lotto.core;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoSystem {
 
-    public List<List<Integer>> processNumber(Integer previousWinningNumber) {
-        List<List<Integer>> outcomes = new ArrayList<>();
+    private final static Random RANDOM = new Random();
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-
-            }
-        }
-
+    public static int[][] processNumber(Integer previousWinningNumber) {
         // TODO: Populate the outcomes with a data that looks like this: // [[1,2,3], [4,5,6]]
-        return outcomes;
+        return IntStream.range(0, 5).mapToObj(c -> IntStream.range(0, 3)
+                .map(r -> RANDOM.nextInt(10)).toArray()).toArray(int[][]::new);
     }
 }

@@ -1,17 +1,17 @@
 package software.bytepushers.chuckspick3.lotto.core;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-import java.util.Vector;
+import java.util.List;
 
-public class LottoSystemLambdaHandler implements RequestHandler<Integer, Vector<Vector<Integer>>> {
+public class LottoSystemLambdaHandler implements RequestHandler<Integer, int[][]> {
 
     @Override
-    public Vector<Vector<Integer>> handleRequest(Integer previousWinningNumber, Context context) {
-        context.getLogger().log("Previous Winning Number: " + previousWinningNumber);
-        LottoSystem lotto = new LottoSystem();
-        Vector<Vector<Integer>> outcomes = lotto.processNumber(previousWinningNumber); // [[1,2,3], [4,5,6]]
-        return outcomes;
+    public int[][] handleRequest(Integer previousWinningNumber, Context context) {
+        LambdaLogger logger = context.getLogger();
+        logger.log("Previous Winning Number: " + previousWinningNumber);
+        return LottoSystem.processNumber(previousWinningNumber);
     }
 }
