@@ -1,8 +1,6 @@
 package software.bytepushers.chuckspick3.lotto.core;
 
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoSystem {
