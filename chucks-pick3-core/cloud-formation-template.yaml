@@ -93,7 +93,7 @@ Resources:
       MemorySize: 256
       Role:
         Fn::GetAtt: [ ChucksPick3LottoSystemVpcExecuteRole, Arn ]
-      Runtime: "java8"
+      Runtime: "java11"
       Timeout: 15
       VpcConfig:
         SecurityGroupIds:
