@@ -23,6 +23,22 @@ Resources:
               - "sts:AssumeRole"
       Description: "ChucksPick3 VPC Execution Role"
       Path: "/"
+      Policies: [
+      {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+          {
+            "Sid": "CP3InlinePolicyLambdaToLambdaInvocation",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "*"
+          }
+          ]
+        },
+        "PolicyName": "LambdaToLambdaInvocationPolicy"
+      }
+      ]
       ManagedPolicyArns: [
         "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
         "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
