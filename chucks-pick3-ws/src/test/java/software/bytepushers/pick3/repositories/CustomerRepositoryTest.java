@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.repositories;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,7 @@ public class CustomerRepositoryTest {
         assertThat(customerRepository).isNotNull();
     }
 
+    @Ignore
     @Test
     public void whenFindByNameThenReturnCustomer() {
         // given
