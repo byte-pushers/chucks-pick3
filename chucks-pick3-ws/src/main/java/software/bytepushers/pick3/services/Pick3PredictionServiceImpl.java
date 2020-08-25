@@ -6,6 +6,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.AWSLambdaClientBuilder;
 import com.amazonaws.services.lambda.invoke.LambdaInvokerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class Pick3PredictionServiceImpl implements Pick3PredictionService {
 
+    @Value("${chucks-pick3.aws-access-key}")
+    private String awsAccessKey;
+
+    @Value("${chucks-pick3.aws-secret-key}")
+    private String awSecretKey;
+
     @Override
     public int[][] generatePredictions(int winningNumber) {
         System.out.println("generatePredictions() method - start.");
-        BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAV5HWKAZHMQ2FQF6N", "eSxogf3sCkCxJcbVFucXuI8ewylLIiz+XWupUEh+");
+        //TODO: As part of code improvements, It needs to be converted to Spring Bean instead of creating on each request.
+        BasicAWSCredentials credentials = new BasicAWSCredentials(awsAccessKey, awSecretKey);
         AWSLambda awsLambda = AWSLambdaClientBuilder.standard().withRegion(Regions.US_EAST_2)
                 .withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
         final Pick3LottoSystemService pick3PredictionService = LambdaInvokerFactory.builder()
