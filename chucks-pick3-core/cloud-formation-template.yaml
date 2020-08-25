@@ -52,7 +52,7 @@ Resources:
     Properties:
       VpcId:
         Ref: ChucksPick3LottoSystemVpc
-      CidrBlock: 192.168.1.0/24
+      CidrBlock: 192.168.0.0/24
       AvailabilityZone: "us-east-2a"
       Tags:
         - Key: Name
@@ -62,7 +62,7 @@ Resources:
     Properties:
       VpcId:
         Ref: ChucksPick3LottoSystemVpc
-      CidrBlock: 192.168.2.0/24
+      CidrBlock: 192.168.1.0/24
       AvailabilityZone: "us-east-2b"
       Tags:
         - Key: Name
