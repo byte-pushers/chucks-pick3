@@ -43,37 +43,157 @@ Resources:
         "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
         "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
       ]
-      RoleName: "chucks-pick3-vpc-role"
+      RoleName: "chucks-pick3-vpc-role-ws"
       Tags:
         - Key: Name
           Value: ChucksPick3VpcExecutionRole
-  ChucksPick3RdsVpc:
+
+  ChucksPick3NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: "eipalloc-08a5f37c315dbd02e"
+      SubnetId:
+        Ref: PublicSubnet1
+      Tags:
+        - Key: Name
+          Value: ChucksPick3NatGateway
+
+  ChucksPick3InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: ChucksPick3InternetGateway
+
+  ChucksPick3PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      Tags:
+        - Key: Name
+          Value: ChucksPick3PrivateRouteTable
+  ChucksPick3PrivateRoute:
+    Type: AWS::EC2::Route
+    DependsOn:
+      - ChucksPick3NatGateway
+      - ChucksPick3AttachInternetGateway
+    Properties:
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId:
+        Ref: ChucksPick3NatGateway
+
+  ChucksPick3PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      Tags:
+        - Key: Name
+          Value: ChucksPick3PublicRouteTable
+  ChucksPick3PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn:
+      - ChucksPick3InternetGateway
+      - ChucksPick3AttachInternetGateway
+    Properties:
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: ChucksPick3InternetGateway
+
+  PrivateSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PrivateSubnet1
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+
+  PrivateSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PrivateSubnet2
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+
+  PublicSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PublicSubnet1
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+
+  PublicSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PublicSubnet2
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+
+  ChucksPick3AttachInternetGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      InternetGatewayId:
+        Ref: ChucksPick3InternetGateway
+
+  ChucksPick3WSVpc:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 192.168.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
       Tags:
         - Key: Name
-          Value: ChucksPick3RdsVpc
+          Value: ChucksPick3WSVpc
   PrivateSubnet1:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId:
-        Ref: ChucksPick3RdsVpc
+        Ref: ChucksPick3WSVpc
       CidrBlock: 192.168.1.0/24
       AvailabilityZone: "us-east-2a"
       Tags:
         - Key: Name
-          Value: PrivateSubnet1
+          Value: PrivateSubnet1-ws
   PrivateSubnet2:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId:
-        Ref: ChucksPick3RdsVpc
+        Ref: ChucksPick3WSVpc
       CidrBlock: 192.168.2.0/24
       AvailabilityZone: "us-east-2b"
       Tags:
         - Key: Name
-          Value: PrivateSubnet2
+          Value: PrivateSubnet2-ws
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.0.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+        - Key: Name
+          Value: PublicSubnet1-ws
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.3.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+        - Key: Name
+          Value: PublicSubnet2-ws
   RdsDBSubnetGroup:
     Type: "AWS::RDS::DBSubnetGroup"
     Properties:
@@ -89,17 +209,12 @@ Resources:
     Properties:
       GroupDescription: Allow RDS Connections
       VpcId:
-        Ref: ChucksPick3RdsVpc
+        Ref: ChucksPick3WSVpc
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
           CidrIp: 192.168.0.0/16
-      #SecurityGroupEgress:
-      #  - IpProtocol: tcp
-      #    FromPort: 80
-      #    ToPort: 80
-      #    CidrIp: 192.168.0.0/16
       Tags:
         - Key: Name
           Value: RDSSecurityGroup
@@ -108,15 +223,20 @@ Resources:
     Properties:
       GroupDescription: Allow RDS Connections
       VpcId:
-        Ref: ChucksPick3RdsVpc
+        Ref: ChucksPick3WSVpc
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 3306
           ToPort: 3306
           CidrIp: 192.168.0.0/16
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
       Tags:
         - Key: Name
           Value: LambdaSecurityGroup
+
   RdsDBInstance:
     Type: AWS::RDS::DBInstance
     Properties:

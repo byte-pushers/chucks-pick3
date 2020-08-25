@@ -16,7 +16,9 @@ public class Pick3PredictionServiceImpl implements Pick3PredictionService {
     @Override
     public int[][] generatePredictions(int winningNumber) {
         System.out.println("generatePredictions() method - start.");
-        AWSLambda awsLambda = AWSLambdaClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
+        BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAV5HWKAZHMQ2FQF6N", "eSxogf3sCkCxJcbVFucXuI8ewylLIiz+XWupUEh+");
+        AWSLambda awsLambda = AWSLambdaClientBuilder.standard().withRegion(Regions.US_EAST_2)
+                .withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
         final Pick3LottoSystemService pick3PredictionService = LambdaInvokerFactory.builder()
                 .lambdaClient(awsLambda)
                 .build(Pick3LottoSystemService.class);
