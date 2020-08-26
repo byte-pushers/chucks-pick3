@@ -4,26 +4,26 @@
        style="text-decoration: none">
       <button type="button"
               class="btn btn-sec btn-secondary btn-sm btn-block" *ngIf="readOnlyMode">
-        {{'customer-detail-form-button-back' | translate }}
+        Back
       </button>
     </a>
   </div>
-  <h1><b>{{'customer-detail-form-title' | translate }}</b></h1>
+  <h1><b>Customer Details</b></h1>
 </div>
 <div class="details">
   <form id="details" name="details" #details="ngForm">
     <table class="table">
       <thead>
       <tr style="text-align: left">
-        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>{{'customer-detail-form-output-customer' | translate }}</b></th>
-        <td class="border-0"  id="firstName" colspan="8" style="font-size: 18px">
+        <th scope="row" class="border-0" colspan="1" style="font-size: 18px"><b>Customer:</b></th>
+        <td class="border-0" colspan="8" style="font-size: 18px">
           <input name="firstName"
                  type="text"
                  [(ngModel)]="selectedCustomer.firstName"
                  value="{{selectedCustomer.firstName}}"
                  *ngIf="editMode">
           {{selectedCustomer.firstName}}</td>
-        <td class="border-0" colspan="8" id="lastName" style="font-size: 18px">
+        <td class="border-0" colspan="8" style="font-size: 18px">
           <input name="lastName"
                  type="text" [(ngModel)]="selectedCustomer.lastName"
                  *ngIf="editMode">
@@ -35,7 +35,7 @@
         <th scope="row"
             id="email"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-email' | translate }}
+            colspan="1">Email:
         </th>
         <td class="rounded-right bg-light" id="email-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="email"
@@ -47,7 +47,7 @@
         <th scope="row"
             id="phone"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-phone' | translate }}
+            colspan="1">Phone:
         </th>
         <td class="rounded-right bg-light" style="border-right: 1px solid #dee2e6" id="phone-input" colspan="11">
           <input name="phone"
@@ -60,7 +60,7 @@
         <th scope="row"
             id="city"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-city' | translate }}
+            colspan="1">City:
         </th>
         <td class="rounded-right bg-light" id="city-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="city"
@@ -74,7 +74,7 @@
         <th scope="row"
             id="state"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-state' | translate }}
+            colspan="1">State:
         </th>
         <td class="rounded-right bg-light" id="state-input" style="border-right: 1px solid #dee2e6" colspan="11">
           <input name="state"
@@ -87,7 +87,7 @@
         <th scope="row"
             id="howOften"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-how-often' | translate}}
+            colspan="1">How Often?
         </th>
         <td class="rounded-right bg-light"
             style="border-right: 1px solid #dee2e6" colspan="11">
@@ -95,14 +95,14 @@
                  id="howOften-input"
                  type="text"
                  placeholder="Sometimes" *ngIf="editMode">
-          {{'customer-detail-form-input-how-often' | translate}}
+          Sometimes
         </td>
       </tr>
       <tr>
         <th scope="row"
             id="phoneType"
             class="rounded-left bg-secondary text-white"
-            colspan="1">{{'customer-detail-form-output-phone-type' | translate }}
+            colspan="1">Type of Phone?
         </th>
         <td class="rounded-right bg-light"
             style="border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6"
@@ -118,26 +118,26 @@
     </table>
 
   </form>
-  <button type="button"
-          class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
-    {{'detail-form-button-edit' | translate }}
-  </button>
-  <a [routerLink]="['/customers']" routerLinkActive="active">
     <button type="button"
-            class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
-            (click)="deleteCustomer(selectedCustomer)">
-      {{'detail-form-button-delete' | translate }}
+            class="btn btn-secondary edit btn btn-sm btn-block" *ngIf="readOnlyMode" (click)="toggleEditMode()">
+      Edit
     </button>
-  </a>
-  <button type="button"
-          class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
-    {{'detail-form-button-update' | translate }}
-  </button>
-
-  <button type="button"
-          class="btn btn cancel btn-danger btn-sm btn-block" (click)="resetCustomerInfo(selectedCustomer); toggleEditMode();"
-          *ngIf="editMode">
-    {{'detail-form-button-cancel' | translate }}
-  </button>
-
+    <a [routerLink]="['/customers']" routerLinkActive="active">
+      <button type="button"
+              class="btn btn delete btn-danger btn-sm btn-block" *ngIf="readOnlyMode"
+              (click)="deleteCustomer(selectedCustomer)">
+        Delete
+      </button>
+    </a>
+    <button type="button"
+            class="btn btn-success update btn btn-sm btn-block" (click)="toggleEditMode();" *ngIf="editMode">
+      Update
+    </button>
+    <a [routerLink]="['/customers']" routerLinkActive="active">
+      <button type="button"
+              class="btn btn cancel btn-danger btn-sm btn-block" (click)="resetCustomerInfo(details)"
+              *ngIf="editMode">
+        Cancel
+      </button>
+    </a>
 </div>

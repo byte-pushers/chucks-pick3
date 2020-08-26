@@ -1,19 +1,14 @@
   import {Component, OnInit} from '@angular/core';
-  import { TranslateService } from '@ngx-translate/core';
 
-  @Component({
+@Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
 
 export class DemoComponent implements OnInit {
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
+  constructor() {
   }
-    switchLanguage(es: string) {
-      this.translate.use(es);
-    }
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');

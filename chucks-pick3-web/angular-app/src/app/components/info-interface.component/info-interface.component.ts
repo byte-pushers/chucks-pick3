@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-info-interface',
   templateUrl: './info-interface.component.html',
@@ -8,12 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class InfoInterfaceComponent implements OnInit {
-  constructor(public router: Router,
-              private translate: TranslateService) {
-    translate.setDefaultLang('en');
-  }
-  switchLanguage(es: string) {
-    this.translate.use(es);
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
@@ -23,6 +17,5 @@ export class InfoInterfaceComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/generate']);
-    document.documentElement.scrollTop = 0;
   }
 }

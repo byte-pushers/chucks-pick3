@@ -3,7 +3,7 @@ import {SubNavBarService} from 'src/app/services/sub-nav-bar.service';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {LogInValidationService} from '../../../services/log-in.service';
-import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -15,13 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppHeaderComponent implements OnInit {
   constructor(private subNavBarService: SubNavBarService,
               private route: ActivatedRoute,
-              public logInService: LogInValidationService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('en');
-  }
-
-  switchLanguage(es: string) {
-    this.translate.use(es);
+              public logInService: LogInValidationService) {
   }
 
   ngOnInit() {

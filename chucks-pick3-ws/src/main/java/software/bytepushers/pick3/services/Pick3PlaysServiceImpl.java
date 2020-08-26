@@ -20,8 +20,10 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
     @Override
     public Pick3Plays getPick3Plays(Integer winningNumber, LocalDate winningDrawDate, DrawingTime winningDrawTime,
                                     LocalDate futureDrawDate, DrawingTime futureDrawTime) {
+        System.out.println("getPick3Plays() method - start.");
+        System.out.println("getPick3Plays() method - about to generate numbers.");
         int[][] predictions = pick3PredictionService.generatePredictions(winningNumber);
-
+        System.out.println("getPick3Plays() method - numbers generated.");
         Pick3Plays result = new Pick3Plays();
 
         result.setPlays(Arrays.stream(predictions)

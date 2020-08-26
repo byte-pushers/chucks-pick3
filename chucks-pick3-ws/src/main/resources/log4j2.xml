@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration packages="com.amazonaws.services.lambda.runtime.log4j2.LambdaAppender">
+<Configuration packages="com.amazonaws.services.lambda.runtime.log4j2">
     <Appenders>
         <Lambda name="Lambda">
             <PatternLayout>
@@ -9,7 +9,11 @@
     </Appenders>
     <Loggers>
         <Root level="info">
-            <AppenderRef ref="Lambda" />
+            <AppenderRef ref="Lambda"/>
         </Root>
+
+        <Logger name="com.amazonaws" level="debug">
+            <AppenderRef ref="Lambda"/>
+        </Logger>
     </Loggers>
 </Configuration>

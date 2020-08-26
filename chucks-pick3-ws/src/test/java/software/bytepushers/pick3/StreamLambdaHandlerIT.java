@@ -1,6 +1,7 @@
 package software.bytepushers.pick3;
 
 
+import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.internal.LambdaContainerHandler;
 import com.amazonaws.serverless.proxy.internal.testutils.AwsProxyRequestBuilder;
 import com.amazonaws.serverless.proxy.internal.testutils.MockLambdaContext;
@@ -8,7 +9,6 @@ import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import software.bytepushers.pick3.util.UrlUtils;
 
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.core.HttpHeaders;
@@ -29,7 +29,7 @@ public class StreamLambdaHandlerIT {
     private static Context lambdaContext;
 
     @BeforeClass
-    public static void setUp() {
+    public static void setUp() throws ContainerInitializationException {
         handler = new StreamLambdaHandler();
         lambdaContext = new MockLambdaContext();
     }
@@ -62,8 +62,10 @@ public class StreamLambdaHandlerIT {
         assertTrue(response.getBody().contains("\"drawingTime\":\"NIGHT\""));
         assertTrue(response.getBody().contains("\"plays\":["));
 
-        assertTrue(response.getHeaders().containsKey(HttpHeaders.CONTENT_TYPE));
-        assertTrue(response.getHeaders().get(HttpHeaders.CONTENT_TYPE).startsWith(MediaType.APPLICATION_JSON));
+        if (response.getHeaders() != null) {
+            assertTrue(response.getHeaders().containsKey(HttpHeaders.CONTENT_TYPE));
+            assertTrue(response.getHeaders().get(HttpHeaders.CONTENT_TYPE).startsWith(MediaType.APPLICATION_JSON));
+        }
     }
 
     @Test

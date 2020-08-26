@@ -1,11 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { DrawingResult } from '../../model/DrawingResult.model';
 import { DrawResultsComponent } from '../../components/draw-results/draw-results';
-import {DateUtil} from '../../model/DateUtil';
 
 @IonicPage({
-  segment: 'results/:todayDate',
+  segment: 'results',
 })
 @Component({
   selector: 'page-today',
@@ -16,12 +15,8 @@ export class TodayPage {
   public drawResult: DrawResultsComponent;
   public date: Date;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    if (this.navParams.get('todayDate')) {
-      this.date = DateUtil.stringToDate(navParams.get('todayDate'));
-    } else {
-      this.date = new Date();
-    }
+  constructor(public navCtrl: NavController) {
+    this.date = new Date();
   }
 
   public itemSelected(result: DrawingResult): void {

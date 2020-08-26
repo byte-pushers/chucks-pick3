@@ -1,5 +1,3 @@
-require('protractor/built/logger').Logger.prototype.info = () => {};
-
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
@@ -8,11 +6,11 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     chromeOptions: {
-      args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-web-security'],
+      args: ['--no-sandbox', '--headless', '--disable-gpu'],
     }
   },
   directConnect: true,
-  baseUrl: 'http://localhost:8100/',
+  baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
@@ -25,7 +23,7 @@ exports.config = {
       project: 'e2e/tsconfig.e2e.json'
     });
 
-    //require('connect')().use(require('serve-static')('www')).listen(4200);
+    require('connect')().use(require('serve-static')('www')).listen(4200);
   },
   onPrepare() {
     var jasmineReporters = require('jasmine-reporters');

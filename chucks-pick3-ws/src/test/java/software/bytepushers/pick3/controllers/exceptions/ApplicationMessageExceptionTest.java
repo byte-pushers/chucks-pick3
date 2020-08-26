@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.controllers.exceptions;
 
 import org.junit.Test;
+import software.bytepushers.pick3.controllers.exceptions.ApplicationMessageException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormValidationService} from '../../services/form-validation.service';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info-requirements',
@@ -11,13 +10,9 @@ import {TranslateService} from '@ngx-translate/core';
 
 export class InfoRequirementsComponent implements OnInit {
   constructor(public formValidationService: FormValidationService,
-              public router: Router,
-              private translate: TranslateService) {
-    translate.setDefaultLang('en');
+              public router: Router) {
   }
-  switchLanguage(es: string) {
-    this.translate.use(es);
-  }
+
   ngOnInit() {
     const howToActive = document.getElementById('howTo');
     howToActive.classList.add('active');
@@ -26,9 +21,7 @@ export class InfoRequirementsComponent implements OnInit {
     summaryActive.classList.remove('active');
     summaryActive.classList.add('allow-hover');
   }
-
   public goToMobileInterface() {
     this.router.navigate(['/interface']);
-    document.documentElement.scrollTop = 0;
   }
 }

@@ -4,19 +4,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import software.bytepushers.pick3.ChucksPick3Application;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
-import software.bytepushers.pick3.config.SpringApiConfig;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.services.Pick3PredictionService;
 import software.bytepushers.pick3.util.Answers;
@@ -25,6 +28,7 @@ import software.bytepushers.pick3.util.UrlUtils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -38,10 +42,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes={SpringApiConfig.class, NumbersControllerIT.TestConfig.class})
-@TestPropertySource("classpath:application.yml")
+@ContextConfiguration(classes={ChucksPick3Application.class, NumbersControllerIT.TestConfig.class})
+@TestPropertySource("classpath:application.properties")
 public class NumbersControllerIT {
 
     static Pick3PlaysService playsService;
@@ -75,14 +79,15 @@ public class NumbersControllerIT {
         String futureDate = getDateOneYearInFuture();
 
         String url = UrlUtils.buildGetNumbersUrl("123", nowDate, futureDate, "MORNING", "DAY");
-        mockMvc.perform(get(url))
+        mockMvc.perform(get(url)
+                .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.date", is(futureDate)))
                 .andExpect(jsonPath("$.drawingTime", is("DAY")))
                 .andExpect(jsonPath("$.plays[*]").isArray())
                 .andExpect(jsonPath("$.plays[*]").isNotEmpty())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -130,7 +135,7 @@ public class NumbersControllerIT {
         String now = getDateNow();
 
         String url = UrlUtils.buildGetNumbersUrl("123", now, "asdf", "MORNING", "DAY");
-        mockMvc.perform(get(url))
+        mockMvc.perform(get(url).accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
     }
@@ -203,7 +208,11 @@ public class NumbersControllerIT {
     }
 
     private String getDateOneYearInFuture() {
-        return new SimpleDateFormat("yyyy-MM-dd").format(new Date(new Date().getYear() + 1, 11, 12));
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 1);
+        Date newDate = c.getTime();
+        return new SimpleDateFormat("yyyy-MM-dd").format(newDate);
     }
 
     private String getDateNow() {

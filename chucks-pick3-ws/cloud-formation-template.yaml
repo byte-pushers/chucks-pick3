@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: AWS Serverless Spring API - software.bytepushers.pick3::aws-api-gateway-sample
+Description: Chucks Pick 3 AWS Serverless Spring API
 Outputs:
   AwsApiGatewaySampleApi:
     Description: Root URL for application
@@ -9,10 +9,266 @@ Outputs:
     Value:
       Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
 Resources:
+  ChucksPick3VpcExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "lambda.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Description: "ChucksPick3 VPC Execution Role"
+      Path: "/"
+      Policies: [
+      {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+          {
+            "Sid": "CP3InlinePolicyLambdaToLambdaInvocation",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "*"
+          }
+          ]
+        },
+        "PolicyName": "LambdaToLambdaInvocationPolicy"
+      }
+      ]
+      ManagedPolicyArns: [
+        "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+      ]
+      RoleName: "chucks-pick3-vpc-role-ws"
+      Tags:
+        - Key: Name
+          Value: ChucksPick3VpcExecutionRole
+
+  ChucksPick3NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: "eipalloc-08a5f37c315dbd02e"
+      SubnetId:
+        Ref: PublicSubnet1
+      Tags:
+        - Key: Name
+          Value: ChucksPick3NatGateway
+
+  ChucksPick3InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: ChucksPick3InternetGateway
+
+  ChucksPick3PrivateRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      Tags:
+        - Key: Name
+          Value: ChucksPick3PrivateRouteTable
+  ChucksPick3PrivateRoute:
+    Type: AWS::EC2::Route
+    DependsOn:
+      - ChucksPick3NatGateway
+      - ChucksPick3AttachInternetGateway
+    Properties:
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId:
+        Ref: ChucksPick3NatGateway
+
+  ChucksPick3PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      Tags:
+        - Key: Name
+          Value: ChucksPick3PublicRouteTable
+  ChucksPick3PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn:
+      - ChucksPick3InternetGateway
+      - ChucksPick3AttachInternetGateway
+    Properties:
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: ChucksPick3InternetGateway
+
+  PrivateSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PrivateSubnet1
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+
+  PrivateSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PrivateSubnet2
+      RouteTableId:
+        Ref: ChucksPick3PrivateRouteTable
+
+  PublicSubnet1RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PublicSubnet1
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+
+  PublicSubnet2RouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: PublicSubnet2
+      RouteTableId:
+        Ref: ChucksPick3PublicRouteTable
+
+  ChucksPick3AttachInternetGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      InternetGatewayId:
+        Ref: ChucksPick3InternetGateway
+
+  ChucksPick3WSVpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 192.168.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: ChucksPick3WSVpc
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.1.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet1-ws
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.2.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet2-ws
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.0.0/24
+      AvailabilityZone: "us-east-2a"
+      Tags:
+        - Key: Name
+          Value: PublicSubnet1-ws
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      CidrBlock: 192.168.3.0/24
+      AvailabilityZone: "us-east-2b"
+      Tags:
+        - Key: Name
+          Value: PublicSubnet2-ws
+  RdsDBSubnetGroup:
+    Type: "AWS::RDS::DBSubnetGroup"
+    Properties:
+      DBSubnetGroupDescription: Subnets for RDS
+      SubnetIds:
+        - Ref: PrivateSubnet1
+        - Ref: PrivateSubnet2
+      Tags:
+        - Key: Name
+          Value: RdsDBSubnetGroup
+  RdsSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow RDS Connections
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 192.168.0.0/16
+      Tags:
+        - Key: Name
+          Value: RDSSecurityGroup
+  LambdaSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow RDS Connections
+      VpcId:
+        Ref: ChucksPick3WSVpc
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 192.168.0.0/16
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: LambdaSecurityGroup
+
+  RdsDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 20
+      AllowMajorVersionUpgrade: false
+      AutoMinorVersionUpgrade: false
+      BackupRetentionPeriod: 7
+      DBInstanceClass: db.t2.micro
+      DBInstanceIdentifier: ChucksPick3Rds
+      DBName: chuckspick3db
+      DBSubnetGroupName:
+        Ref: RdsDBSubnetGroup
+      Engine: MySQL
+      EngineVersion: 5.7.22
+      MasterUsername: chuckspick3
+      MasterUserPassword: chuckspick3
+      MultiAZ: false
+      Port: 3306
+      PubliclyAccessible: false
+      StorageType: gp2
+      Tags:
+        - Key: Name
+          Value: ChucksPick3Rds
+      VPCSecurityGroups:
+        - Ref: RdsSecurityGroup
   AwsApiGatewaySampleFunction:
     Type: AWS::Serverless::Function
+    DependsOn:
+      - ChucksPick3VpcExecutionRole
     Properties:
       CodeUri: s3://${bytepushers.deploy.s3BucketName}/${bytepushers.deploy.s3ObjectName}
+      Description: Chucks Pick 3 AWS Serverless Spring API
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
       Events:
         GetResource:
@@ -21,10 +277,22 @@ Resources:
             Path: /{proxy+}
           Type: Api
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
-      MemorySize: 256
+      MemorySize: 1024
+      Role:
+        Fn::GetAtt: [ ChucksPick3VpcExecutionRole, Arn ]
       Policies:
-      - AWSLambdaBasicExecutionRole
-      - LambdaInvokePolicy:
-        FunctionName: ${bytepushers.deploy.peerName}
-      Runtime: java8
-      Timeout: 15
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - 'lambda:InvokeFunction'
+              Resource:
+                - 'arn:aws:lambda:*:*:function:*'
+      Runtime: java11
+      Timeout: 30
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref LambdaSecurityGroup
+        SubnetIds:
+          - !Ref PrivateSubnet1
+          - !Ref PrivateSubnet2

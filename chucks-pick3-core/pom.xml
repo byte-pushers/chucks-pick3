@@ -10,14 +10,133 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>chucks-pick3-core</artifactId>
+
+    <packaging>jar</packaging>
+
+    <name>chucks-pick3-lotto-core</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
+        <log4j.version>2.8.2</log4j.version>
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>1.11.327</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-lambda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-cloudformation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-log4j2</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>software.bytepushers.chuckspick3</groupId>
             <artifactId>chucks-pick3-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                            <mainClass>software.bytepushers.chuckspick3.lotto.core.DeployToAwsLambda</mainClass>
+                            <systemProperties>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.awsRegion</key>
+                                    <value>us-east-2</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.s3BucketName</key>
+                                    <value>com.bytepushers.chucks-pick3</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.s3ObjectName</key>
+                                    <value>bytepushers-pick3-lotto-system-jar</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.payloadLocalPath</key>
+                                    <value>${project.build.directory}/${project.build.finalName}.jar</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.lambdaFunctionName</key>
+                                    <value>bytepushers-chucks-pick3-lotto-system</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.cloudFormationTemplate</key>
+                                    <value>${project.basedir}/cloud-formation-template.yaml</value>
+                                </systemProperty>
+                                <systemProperty>
+                                    <key>bytepushers.deploy.cloudFormationStackName</key>
+                                    <value>bytepushers-chucksPick3-lotto-system</value>
+                                </systemProperty>
+                            </systemProperties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -4,13 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start: es": "ng serve --configuration=es",
     "build": "ng build",
-    "build: es": "ng build --configuration=es",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "int:extract": "ng xil8n"
+    "webdriver": "webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false"
   },
   "private": true,
   "dependencies": {
@@ -23,8 +21,6 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^4.2.1",
-    "@ngx-translate/core": "^11.0.1",
-    "@ngx-translate/http-loader": "^4.0.0",
     "angular-route": "^1.7.8",
     "bootstrap": "^4.3.1",
     "bytepushers-js-string-extensions": "0.0.8",
@@ -51,7 +47,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.4.0",
+    "protractor": "~5.4.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"

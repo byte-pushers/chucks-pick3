@@ -1,3 +1,4 @@
+spring.profiles.active: dev
 config:
   numPlaysToPredict: 10
 errors:

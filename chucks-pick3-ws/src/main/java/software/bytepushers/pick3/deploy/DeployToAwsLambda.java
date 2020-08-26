@@ -18,6 +18,7 @@ import com.amazonaws.services.lambda.model.UpdateFunctionCodeResult;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
 import com.amazonaws.services.s3.model.HeadBucketRequest;
 import com.amazonaws.services.s3.model.SetBucketVersioningConfigurationRequest;
@@ -28,6 +29,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Class with main method meant to be run by Maven exec during deploy phase.</br>
@@ -75,9 +77,11 @@ public class DeployToAwsLambda {
         if (!cloudFormationStackExists(cloudFormationClient, stackName)) {
             // Create a new cloud formation stack using the specified SAM template.
             createCloudFormationStack(cloudFormationClient, bucketName, objectName);
+            System.out.println("Created a new cloud formation stack using the specified SAM template.");
         } else {
             // Attempt to update the existing lambda function.
             updateAndPublishLambdaFunction(lambdaClient, functionName, bucketName, objectName, fileName);
+            System.out.println("Updated the existing lambda function (" + functionName + ").");
         }
     }
 
@@ -107,7 +111,7 @@ public class DeployToAwsLambda {
                 .withChangeSetName(changeSetName)
                 .withChangeSetType(ChangeSetType.CREATE)
                 .withTemplateBody(templateBody)
-                .withCapabilities(Capability.CAPABILITY_IAM));
+                .withCapabilities(Capability.CAPABILITY_IAM, Capability.CAPABILITY_NAMED_IAM));
 
         ChangeSetStatus status = monitorChangeSetCreationStatus(cloudFormationClient, stackName, changeSetName);
         if (status != ChangeSetStatus.CREATE_COMPLETE) {
@@ -297,13 +301,34 @@ public class DeployToAwsLambda {
 
     private static boolean s3BucketExists(AmazonS3 client, String bucketName) throws AmazonServiceException {
         try {
-            client.headBucket(new HeadBucketRequest(bucketName));
-            return true; // if headBucket doesn't throw an exception, the bucket exists.
-        } catch (AmazonServiceException e) {
-            if (e.getStatusCode() != 200) {
+            System.out.println("About to check to see if bucket(" + bucketName + ") exists.");
+            List<Bucket> buckets = client.listBuckets();
+            buckets.forEach(System.out::println);
+            long matchedBuckets = buckets.stream()
+                    .filter(b -> b.getName().toLowerCase().contains(bucketName.toLowerCase()))
+                    .count();
+            if (matchedBuckets > 0) {
+                System.out.println("Bucket(" + bucketName + ") exists.");
+                return true;
+            } else {
+                System.out.println("Bucket(" + bucketName + ") does not exist.");
                 return false;
             }
-            throw e;
+            //client.headBucket(new HeadBucketRequest(bucketName));
+            //System.out.println("Bucket(" + bucketName + ") exists.");
+            //return true; // if headBucket doesn't throw an exception, the bucket exists.
+        } catch (AmazonServiceException e) {
+            System.out.println("Bucket(" + bucketName + ") does not exist.");
+            System.out.println("e.getStatusCode(): " + e.getStatusCode());
+            System.out.println("e.getErrorMessage(): " + e.getErrorMessage());
+            System.out.println("e.getErrorCode(): " + e.getErrorCode());
+            System.out.println("e.toString(): " + e.toString());
+
+            if (e.getStatusCode() != 200) {
+                return false;
+            } else {
+                throw e;
+            }
         }
     }
 

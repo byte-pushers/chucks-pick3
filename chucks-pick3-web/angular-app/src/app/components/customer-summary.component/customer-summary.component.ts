@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MockCustomerService} from '../../services/mock-customer.service';
-import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -12,14 +12,8 @@ export class CustomerSummaryComponent implements OnInit {
   public selectedCustomerIdArray: number [] = [];
 
 
-  constructor(public customerService: MockCustomerService,
-              private translate: TranslateService) {
-    translate.setDefaultLang('en');
+  constructor(public customerService: MockCustomerService) {
   }
-  switchLanguage(es: string) {
-    this.translate.use(es);
-  }
-
 
   ngOnInit() {
     const summaryActive = document.getElementById('summary');
