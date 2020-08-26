@@ -7,7 +7,7 @@ deploy:
   provider: script
   script: mvn clean deploy -P aws
   on:
-    branch: features/impl-aws-sign-up-ws
+    branch: develop
 env:
   global:
   - secure: mx0M+EDJHI9AiPWNauWHxme1kRk1/oIMH2Z3dqO5pBYuKDHMJb8zSb40HzKbAUbhB6GaN2Mi/uBCx8NfO16/6x3YcMqn2XzkIXSqka9JAJoQmB0mqlFPV1y6eJ2nZEAd8lt7P1Z+2y4A+i5GurFkWtITdUjuQJoujvDc3mVrN8t5CNeOTly//DeQz8yvuka9gFQg3QrgukNi8iysEvOz2nEWI5+LS29XuO2znH6tPXQLStVhH48k0XrxyIT7U4ylDl30gPJxHSGxCI221ipSAHGFPRSiZQzYXwMftDseztA0XyvGocRzBS4yIHEmUvecscEUlZR/qztyf2GMBO1jZNub4misosawA7QWLPKsBb3J3hoPH86L4yt1a86TrW/40gmAKMU8kl/bpjHcsOzzSz4Il9Ebqx/uVayH5PNzOy6imSxMm6bQBDmyt/wVvuKkaE5NikiNjbXniHZNT8wqeFyJH53GxyqD72kIMQQXefuF8vQqpwIenYUdfVkx82acR+CIMFsqALY/tecE5Yz53vEN5Loe97+Cg8o1AB9XpB4AS+/8c6AkwlfOqMRYnvmwUrNfEP4HZoHwI7OG4hrp1HkiWTu6qFmnud1+4AJjyvl0bdvfmgdd1jYyFLEgBySovJDDAWYaXmkTraFDSMhy5jhMlMbNPOTpH4t0Os5mhW8=
