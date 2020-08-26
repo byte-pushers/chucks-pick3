@@ -34,8 +34,7 @@ public class CustomerRepositoryTest {
         assertThat(customerRepository).isNotNull();
     }
 
-    @Ignore
-    @Test
+    // @Test
     public void whenFindByNameThenReturnCustomer() {
         // given
         Customer expectedCustomer = new Customer("Alex", "alex@gmail.com", "Texas", "76227",
