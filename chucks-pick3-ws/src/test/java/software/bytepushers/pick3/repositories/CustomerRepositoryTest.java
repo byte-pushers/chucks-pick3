@@ -1,7 +1,6 @@
 package software.bytepushers.pick3.repositories;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import software.bytepushers.pick3.domain.Customer;
 
 import javax.sql.DataSource;
-
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -34,7 +32,7 @@ public class CustomerRepositoryTest {
         assertThat(customerRepository).isNotNull();
     }
 
-    // @Test
+    @Test
     public void whenFindByNameThenReturnCustomer() {
         // given
         Customer expectedCustomer = new Customer("Alex", "alex@gmail.com", "Texas", "76227",
