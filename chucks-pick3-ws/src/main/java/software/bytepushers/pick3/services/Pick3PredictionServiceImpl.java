@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class Pick3PredictionServiceImpl implements Pick3PredictionService {
 
-    @Value("${chucks-pick3.aws-access-key}")
+    @Value("${chucks_pick3_aws_access_key}")
     private String awsAccessKey;
 
-    @Value("${chucks-pick3.aws-secret-key}")
+    @Value("${chucks_pick3_aws_secret_key}")
     private String awSecretKey;
 
     @Override
