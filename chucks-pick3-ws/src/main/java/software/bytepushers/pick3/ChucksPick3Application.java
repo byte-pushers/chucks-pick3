@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Import;
 import software.bytepushers.pick3.controllers.CustomerController;
 
 @SpringBootApplication
-@Import({CustomerController.class})
 public class ChucksPick3Application {
     public static void main(String[] args) {
         System.out.println("Inside ChucksPick3Application.main() method.");
