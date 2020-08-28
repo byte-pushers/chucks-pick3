@@ -32,7 +32,7 @@ import java.util.TimeZone;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "software.bytepushers.pick3.repositories")
-@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound=false)
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
 public class JpaConfig {
     @Value("${spring.datasource.driver-class-name:}")
     private String jpaDriverClassName;
@@ -64,18 +64,17 @@ public class JpaConfig {
     @Value("${spring.profiles.active:}")
     private String activeProfiles;
 
+    //Used in addition of @PropertySource
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
     @PostConstruct
     void started() {
         TimeZone.setDefault(TimeZone.getTimeZone(jpaTimezone));
         String[] ids = TimeZone.getAvailableIDs();
     }
-
-    //Used in addition of @PropertySource
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer   propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -134,6 +133,7 @@ public class JpaConfig {
         //properties.setProperty("hibernate.format_sql", "false");
         return properties;
     }
+
     private String generateDatasourceUrl() {
         String datasourceUrl = null;
         String[] targetProfiles = {"aws", "aws-runtime"};
@@ -166,6 +166,7 @@ public class JpaConfig {
         System.out.println("JpaConfig.generateDatasourceUrlFromAws() - end: datasourceUrl: " + datasourceUrl);
         return datasourceUrl;
     }
+
     private boolean hasActiveProfiles(String[] targetProfiles) {
         int matchedActiveProfiles = 0;
         System.out.println("JpaConfig.hasActiveProfiles() - start");
