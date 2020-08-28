@@ -1,12 +1,12 @@
 package software.bytepushers.pick3;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
 public class ProfileManager {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(ProfileManager.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     @Value("${spring.profiles.active:}")
     private String activeProfiles;

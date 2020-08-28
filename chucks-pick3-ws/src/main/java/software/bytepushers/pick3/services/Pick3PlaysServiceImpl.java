@@ -1,7 +1,7 @@
 package software.bytepushers.pick3.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.domain.Pick3Plays;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Service
 public class Pick3PlaysServiceImpl implements Pick3PlaysService {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(Pick3PlaysServiceImpl.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     private final Pick3PredictionService pick3PredictionService;
 

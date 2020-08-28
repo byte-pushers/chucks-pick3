@@ -5,8 +5,8 @@ import com.amazonaws.services.rds.AmazonRDSClientBuilder;
 import com.amazonaws.services.rds.model.DBInstance;
 import com.amazonaws.services.rds.model.DescribeDBInstancesRequest;
 import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +37,7 @@ import java.util.TimeZone;
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
 public class JpaConfig {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(JpaConfig.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     @Value("${spring.datasource.driver-class-name:}")
     private String jpaDriverClassName;

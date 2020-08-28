@@ -2,8 +2,8 @@ package software.bytepushers.pick3.services;
 
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.invoke.LambdaInvokerFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Profile("aws")
 public class Pick3PredictionServiceImpl implements Pick3PredictionService {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(Pick3PredictionServiceImpl.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     private final AWSLambda awsLambda;
 

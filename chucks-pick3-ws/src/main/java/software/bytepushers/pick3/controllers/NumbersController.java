@@ -1,7 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,6 @@ import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
 import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
-import software.bytepushers.pick3.deploy.DeployToAwsLambda;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 
 import javax.validation.ConstraintViolation;
@@ -33,7 +32,7 @@ import java.util.stream.Collectors;
 @EnableWebMvc
 public class NumbersController {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(NumbersController.class);
+    private final static Logger LOGGER = LogManager.getLogger();
 
     private final Pick3PlaysMapper pick3PlaysMapper;
 
