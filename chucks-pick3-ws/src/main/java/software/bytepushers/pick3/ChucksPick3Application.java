@@ -1,17 +1,21 @@
 package software.bytepushers.pick3;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
-import software.bytepushers.pick3.controllers.CustomerController;
 
 @SpringBootApplication
 public class ChucksPick3Application {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(ChucksPick3Application.class);
+
     public static void main(String[] args) {
-        System.out.println("Inside ChucksPick3Application.main() method.");
+        LOGGER.info("Inside ChucksPick3Application.main() method.");
         SpringApplication.run(ChucksPick3Application.class, args);
-        System.out.println("Inside ChucksPick3Application.main() method - Done initializing app.");
+        LOGGER.info("Inside ChucksPick3Application.main() method - Done initializing app.");
         ProfileManager pm = new ProfileManager();
         pm.getActiveProfiles();
     }
+
 }

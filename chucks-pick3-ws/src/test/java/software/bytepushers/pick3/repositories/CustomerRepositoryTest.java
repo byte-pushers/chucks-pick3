@@ -26,7 +26,7 @@ public class CustomerRepositoryTest {
     @Autowired private CustomerRepository customerRepository;
 
     @Before
-    void injectedComponentsAreNotNull() {
+    public void injectedComponentsAreNotNull() {
         assertThat(dataSource).isNotNull();
         assertThat(entityManager).isNotNull();
         assertThat(customerRepository).isNotNull();
@@ -45,9 +45,8 @@ public class CustomerRepositoryTest {
         List<Customer> actualCustomers = customerRepository.findByFirstName(expectedCustomer.getFirstName());
 
         // then
-        for (int i = 0; i < actualCustomers.size(); i++) {
-            System.out.println(actualCustomers.get(i));
-            assertThat(actualCustomers.get(i).getFirstName()).isEqualTo(expectedCustomer.getFirstName());
+        for (Customer actualCustomer : actualCustomers) {
+            assertThat(actualCustomer.getFirstName()).isEqualTo(expectedCustomer.getFirstName());
         }
 
     }

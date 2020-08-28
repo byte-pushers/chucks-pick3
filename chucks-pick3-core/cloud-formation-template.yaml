@@ -81,8 +81,18 @@ Resources:
       Tags:
         - Key: Name
           Value: ChucksPick3LottoSystemLambdaSecurityGroup
+
+  ChucksPick3LottoSystemLambdaLogGroup:
+    Type: AWS::Logs::LogGroup
+    DependsOn:
+      - ChucksPick3LottoSystemFunction
+    Properties:
+      RetentionInDays: 7
+      LogGroupName:
+        !Join ['', ['/aws/lambda/', !Ref ChucksPick3LottoSystemFunction]]
+
   ChucksPick3LottoSystemFunction:
-    Type: "AWS::Lambda::Function"
+    Type: AWS::Lambda::Function
     Properties:
       Code:
         S3Bucket: ${bytepushers.deploy.s3BucketName}

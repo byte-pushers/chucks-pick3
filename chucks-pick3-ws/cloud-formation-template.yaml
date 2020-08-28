@@ -262,6 +262,16 @@ Resources:
           Value: ChucksPick3Rds
       VPCSecurityGroups:
         - Ref: RdsSecurityGroup
+
+  ChucksPick3WSLambdaLogGroup:
+    Type: AWS::Logs::LogGroup
+    DependsOn:
+      - AwsApiGatewaySampleFunction
+    Properties:
+      RetentionInDays: 7
+      LogGroupName:
+        !Join ['', ['/aws/lambda/', !Ref AwsApiGatewaySampleFunction]]
+
   AwsApiGatewaySampleFunction:
     Type: AWS::Serverless::Function
     DependsOn:
