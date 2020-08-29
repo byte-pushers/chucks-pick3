@@ -1,7 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,23 +17,25 @@ import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
 import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
-import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
 @EnableWebMvc
 public class NumbersController {
 
-    @Autowired
-    ConversionService conversionService;
+    private final static Logger LOGGER = LogManager.getLogger();
 
     private final Pick3PlaysMapper pick3PlaysMapper;
+
     private final Pick3PlaysService pick3PlaysService;
 
     public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
@@ -49,15 +51,15 @@ public class NumbersController {
     }
 
     @RequestMapping(path = "/numbers",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public Pick3PlaysResponse getNumbers(@RequestParam("winNumber") Integer winNumber,
                                          @RequestParam("winDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate winDrawDate,
                                          @RequestParam("futureDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate futureDrawDate,
                                          @RequestParam("winDrawTime") DrawingTime winDrawTime,
                                          @RequestParam("futureDrawTime") DrawingTime futureDrawTime) throws Exception {
-        System.out.println("******** Inside getNumbers() method.");
-        if(winNumber < 0 || 999 < winNumber)
+        LOGGER.info("******** Inside getNumbers() method.");
+        if (winNumber < 0 || 999 < winNumber)
             throw new MalformedRequestException("winNumber must be within bounds [0, 999]");
 
         if (winDrawDate.atStartOfDay().isAfter(LocalDate.now().atStartOfDay().plusDays(1)))
@@ -69,16 +71,6 @@ public class NumbersController {
         return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(
                 pick3PlaysService.getPick3Plays(winNumber, winDrawDate, winDrawTime, futureDrawDate, futureDrawTime)
         );
-        /*Pick3Plays pick3Plays = new Pick3Plays();
-        pick3Plays.setPlays(Arrays.stream(new int[][]{ {0, 0, 0}, {1,2,3}, {0,2,3}, {0,0,1}, {9,9,9} })
-                .map(digits -> digits[0] * 100 + digits[1] * 10 + digits[2])
-                .collect(Collectors.toList()));
-
-        pick3Plays.setDrawingDate(futureDrawDate);
-        pick3Plays.setDrawingTime(futureDrawTime);
-
-
-        return pick3PlaysMapper.pick3PlaysToPick3PlaysResponse(pick3Plays);*/
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -105,7 +97,7 @@ public class NumbersController {
                 .collect(Collectors.toList());
     }
 
-    @ExceptionHandler({ MethodArgumentConversionNotSupportedException.class })
+    @ExceptionHandler({MethodArgumentConversionNotSupportedException.class})
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentConversionNotSupportedException ex, WebRequest request) {
         String error = ex.getName() + " should be of type " + ex.getRequiredType().getName();
 

@@ -11,9 +11,5 @@
         <Root level="info">
             <AppenderRef ref="Lambda"/>
         </Root>
-
-        <Logger name="com.amazonaws" level="debug">
-            <AppenderRef ref="Lambda"/>
-        </Logger>
     </Loggers>
 </Configuration>

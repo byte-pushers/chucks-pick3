@@ -46,6 +46,7 @@ public class NumbersControllerTest {
         playsService = mock(Pick3PlaysService.class);
         playsMapper = mock(Pick3PlaysMapper.class);
 
+
         numbersController = new NumbersController(playsService, playsMapper);
     }
 
