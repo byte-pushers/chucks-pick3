@@ -25,3 +25,19 @@
 #container a {
   text-decoration: none;
 }
+
+ion-grid {
+  height: 100%;
+
+  ion-row.primary-view {
+    height: 305px;
+    border: 1px solid white;
+  }
+
+  ion-row.drawing-time {
+    height: 77px;
+    border: 1px solid green;
+  }
+}
+
+.scroll-content{overflow-y: hidden;}
