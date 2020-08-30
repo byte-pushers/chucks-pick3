@@ -101,11 +101,6 @@
             <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>
-        <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-log4j2</artifactId>
             <version>1.1.0</version>
@@ -560,7 +555,9 @@
                 <!--<spring.profiles.active>aws</spring.profiles.active>-->
                 <maven.install.skip>true</maven.install.skip>
                 <!--suppress UnresolvedMavenProperty -->
-                <jasypt.encryptor.secret>${env.JASYPT_ENCRYPTOR_SECRET}</jasypt.encryptor.secret>
+                <datasource.username>${env.DATASOURCE_USERNAME}</datasource.username>
+                <!--suppress UnresolvedMavenProperty -->
+                <datasource.password>${env.DATASOURCE_PASSWORD}</datasource.password>
             </properties>
             <dependencies>
                 <dependency>
