@@ -1,5 +1,7 @@
 {
   "name": "chucks-pick3-mobile",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
