@@ -100,7 +100,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-log4j2</artifactId>
@@ -207,10 +206,10 @@
 
         <!-- Map ${} into resources -->
         <resources>
-            <!--<resource>
+            <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-            </resource>-->
+            </resource>
             <!--<resource>
                 <directory>resources</directory>
                 <targetPath>${project.build.outputDirectory}</targetPath>
@@ -396,6 +395,10 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.0.0-M1</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
@@ -551,6 +554,10 @@
             <properties>
                 <!--<spring.profiles.active>aws</spring.profiles.active>-->
                 <maven.install.skip>true</maven.install.skip>
+                <!--suppress UnresolvedMavenProperty -->
+                <datasource.username>${env.DATASOURCE_USERNAME}</datasource.username>
+                <!--suppress UnresolvedMavenProperty -->
+                <datasource.password>${env.DATASOURCE_PASSWORD}</datasource.password>
             </properties>
             <dependencies>
                 <dependency>
