@@ -1,8 +1,8 @@
 <ion-content [fullscreen]="true" class="scroll-content" (swipe)="swipeEvent($event)">
-  <ion-slides pages>
-    <ion-slide style="background-color: purple;">
-      <pick3-date-view style="height: 100%; width: 100%;"></pick3-date-view>
-    </ion-slide>
+  <ion-slides pages [options]="slideOpts">
+    <ion-slide style="background-color: purple;" *ngFor="let card of pick3DrawDateDecks; index as i">
+      <pick3-date-view style="height: 100%; width: 100%;" [slideNumber]="i+1" [data]="card"></pick3-date-view>
+    </ion-slide><!--
     <ion-slide style="background-color: red;">
       <pick3-date-view style="height: 100%; width: 100%;"></pick3-date-view>
     </ion-slide>
@@ -11,7 +11,7 @@
     </ion-slide>
     <ion-slide style="background-color: blue;">
       <pick3-date-view style="height: 100%; width: 100%;"></pick3-date-view>
-    </ion-slide>
+    </ion-slide>-->
   </ion-slides>
   <!--<div id="container">-->
     <!--<ion-grid>

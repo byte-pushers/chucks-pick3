@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Pick3DrawingDateCard} from "../../domains/pick3-drawing-date-card";
 
 @Component({
   selector: 'pick3-date-view',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pick3-date-view.component.scss'],
 })
 export class Pick3DateViewComponent implements OnInit {
+  @Input() slideNumber: number;
+  @Input() data: Pick3DrawingDateCard;
 
   constructor() { }
 
