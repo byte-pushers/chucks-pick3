@@ -7,6 +7,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private drawTime: string;
     private upcomingDrawTime: Date;
     private hasWinner: boolean;
+    private backgroundImage: string;
 
     constructor() {
 
@@ -47,5 +48,10 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     setDrawTime(drawTime: string) {
         this.drawTime = drawTime;
     }
-
+    getBackgroundImage(): string {
+        return this.backgroundImage;
+    }
+    setBackgroundImage(backgroundImage: string): void {
+        this.backgroundImage = backgroundImage;
+    }
 }

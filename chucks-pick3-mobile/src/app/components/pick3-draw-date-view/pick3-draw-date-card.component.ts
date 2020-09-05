@@ -10,8 +10,16 @@ export class Pick3DrawDateCardComponent implements OnInit {
   @Input() slideNumber: number;
   @Input() data: Pick3DrawDateCard;
 
-  constructor() { }
 
-  ngOnInit() {}
+  constructor() {
+
+  }
+
+  ngOnInit() {
+    this.data.setBackgroundImage('https://blairhouseinn.com/wp-content/uploads/2020/02/Bluebonnets-in-Texas-Hill-Country-1170x475.jpg');
+    this.data.setDrawState('Texas');
+    this.data.setDrawTime('Evening');
+    this.data.setDrawDate(new Date());
+  }
 
 }

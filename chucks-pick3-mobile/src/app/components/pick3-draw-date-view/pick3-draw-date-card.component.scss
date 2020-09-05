@@ -1,6 +1,7 @@
 
 ion-grid {
   height: 100%;
+  padding: 0px;
 
   ion-row.primary-view {
     height: 305px;
@@ -14,3 +15,15 @@ ion-grid {
 }
 
 .scroll-content{overflow-y: hidden;}
+
+.dot {
+  height: 60px;
+  width: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+  color: black;
+  line-height: 2.2em;
+  font-size: 1.5em;
+}
