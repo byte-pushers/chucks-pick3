@@ -8,4 +8,6 @@ export interface Pick3DrawDateCard {
     setDrawDate(drawDate: Date): void;
     getUpcomingDrawingTime(): Date;
     hasGeneratedWinner(): boolean;
+    getBackgroundImage(): string;
+    setBackgroundImage(backgroundImage: string): void;
 }
