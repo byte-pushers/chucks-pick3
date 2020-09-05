@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { Pick3DateViewComponent } from './pick3-date-view.component';
+import { Pick3DrawDateCardComponent } from './pick3-draw-date-card.component';
 
-describe('Pick3DateViewComponent', () => {
-  let component: Pick3DateViewComponent;
-  let fixture: ComponentFixture<Pick3DateViewComponent>;
+describe('Pick3DrawDateViewComponent', () => {
+  let component: Pick3DrawDateCardComponent;
+  let fixture: ComponentFixture<Pick3DrawDateCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Pick3DateViewComponent ],
+      declarations: [ Pick3DrawDateCardComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Pick3DateViewComponent);
+    fixture = TestBed.createComponent(Pick3DrawDateCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

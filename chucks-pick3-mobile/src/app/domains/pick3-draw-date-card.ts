@@ -1,4 +1,4 @@
-export interface Pick3DrawingDateCard {
+export interface Pick3DrawDateCard {
     getTitle(): string;
     getDrawState(): string;
     setDrawState(drawState: string): void;

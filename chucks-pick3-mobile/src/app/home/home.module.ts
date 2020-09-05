@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { Pick3DateViewComponent } from "../components/pick3-date-view/pick3-date-view.component";
+import { Pick3DrawDateCardComponent } from "../components/pick3-draw-date-view/pick3-draw-date-card.component";
 
 
 @NgModule({
@@ -15,6 +15,6 @@ import { Pick3DateViewComponent } from "../components/pick3-date-view/pick3-date
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, Pick3DateViewComponent]
+  declarations: [HomePage, Pick3DrawDateCardComponent]
 })
 export class HomePageModule {}

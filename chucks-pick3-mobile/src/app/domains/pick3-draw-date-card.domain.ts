@@ -1,6 +1,6 @@
-import {Pick3DrawingDateCard} from "./pick3-drawing-date-card";
+import {Pick3DrawDateCard} from "./pick3-draw-date-card";
 
-export class Pick3DrawingDateCardDomain implements Pick3DrawingDateCard {
+export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private readonly TITLE:string = 'Pick 3 Lottery';
     private drawDate: Date;
     private drawState: string;
