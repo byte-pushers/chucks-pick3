@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" class="scroll-content" (swipe)="swipeEvent($event)">
+<ion-content [fullscreen]="true" class="scroll-content">
   <ion-slides pages [options]="slideOpts">
     <ion-slide style="background-color: purple;" *ngFor="let card of pick3DrawDateDecks; index as i">
       <pick3-draw-date-card style="height: 100%; width: 100%;" [slideNumber]="i+1" [data]="card"></pick3-draw-date-card>
