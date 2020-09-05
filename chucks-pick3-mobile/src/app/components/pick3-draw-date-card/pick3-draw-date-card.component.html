@@ -10,24 +10,9 @@
       <!--<p>{{slideNumber}}</p>-->
     </ion-col>
   </ion-row>
-  <ion-row class="drawing-time">
+  <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
     <ion-col>
-      ion-col
-    </ion-col>
-  </ion-row>
-  <ion-row class="drawing-time">
-    <ion-col>
-      ion-col
-    </ion-col>
-  </ion-row>
-  <ion-row class="drawing-time">
-    <ion-col>
-      ion-col
-    </ion-col>
-  </ion-row>
-  <ion-row class="drawing-time">
-    <ion-col>
-      ion-col
+      <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
     </ion-col>
   </ion-row>
 </ion-grid>

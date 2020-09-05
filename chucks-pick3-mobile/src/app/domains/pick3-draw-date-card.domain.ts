@@ -9,7 +9,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private hasWinner: boolean;
     private backgroundImage: string;
 
-    constructor() {
+    constructor(private readonly config: any) {
 
     }
 

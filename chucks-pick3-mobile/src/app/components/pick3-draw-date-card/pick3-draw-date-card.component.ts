@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pick3DrawDateCard} from "../../domains/pick3-draw-date-card";
+import {Pick3DrawTimeCard} from "../../domains/pick3-draw-time-card";
+import {Pick3DrawTimeCardDomain} from "../../domains/pick3-draw-time-card.domain";
 
 @Component({
   selector: 'pick3-draw-date-card',
@@ -9,7 +11,12 @@ import {Pick3DrawDateCard} from "../../domains/pick3-draw-date-card";
 export class Pick3DrawDateCardComponent implements OnInit {
   @Input() slideNumber: number;
   @Input() data: Pick3DrawDateCard;
-
+  drawTimes: Array<Pick3DrawTimeCard> = [
+    new Pick3DrawTimeCardDomain({title: 'Morning'}),
+    new Pick3DrawTimeCardDomain({title: 'Day'}),
+    new Pick3DrawTimeCardDomain({title: 'Evening'}),
+    new Pick3DrawTimeCardDomain({title: 'Night'})
+  ];
 
   constructor() {
 

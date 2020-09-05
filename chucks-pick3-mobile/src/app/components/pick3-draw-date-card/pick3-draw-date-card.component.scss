@@ -4,14 +4,19 @@ ion-grid {
   padding: 0px;
 
   ion-row.primary-view {
-    height: 305px;
+    height: 315px;
     border: 1px solid white;
   }
 
   ion-row.drawing-time {
     height: 77px;
-    border: 1px solid green;
+    border: 1px solid darkgray;
+
+    ion-col {
+      padding: 0px;
+    }
   }
+
 }
 
 .scroll-content{overflow-y: hidden;}

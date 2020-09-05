@@ -13,13 +13,13 @@ export class HomePage {
     speed: 400
   };
   pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
-    new Pick3DrawDateCardDomain(),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
+    new Pick3DrawDateCardDomain({}),
   ];
 
   constructor() {}
