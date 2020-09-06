@@ -12,6 +12,6 @@ Input:
 
 Output:
  - DrawingState 
- - DrawingTime
+ - DrawingTimeEnum
  - Collection<PlayNumber> (order is not important)
  

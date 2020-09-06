@@ -303,7 +303,7 @@
                 <configuration>
                     <jsonLibrary>jackson2</jsonLibrary>
                     <classes>
-                        <class>software.bytepushers.pick3.api.v1.DrawingTime</class>
+                        <class>software.bytepushers.pick3.api.v1.DrawingTimeEnum</class>
                         <class>software.bytepushers.pick3.api.v1.Pick3PlaysResponse</class>
                     </classes>
                     <outputKind>module</outputKind>

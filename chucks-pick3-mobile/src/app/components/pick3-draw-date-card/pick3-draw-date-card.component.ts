@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Pick3DrawDateCard} from "../../domains/pick3-draw-date-card";
-import {Pick3DrawTimeCard} from "../../domains/pick3-draw-time-card";
-import {Pick3DrawTimeCardDomain} from "../../domains/pick3-draw-time-card.domain";
+import {Pick3DrawDateCard} from "../../models/pick3-draw-date-card";
+import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
+import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 
 @Component({
   selector: 'pick3-draw-date-card',
