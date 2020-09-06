@@ -8,8 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ScrapingProvider } from './providers/web-scraping/scraping.service';
-import { ScrapingService } from './providers/web-scraping/scraping.service.interface';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +16,7 @@ import { ScrapingService } from './providers/web-scraping/scraping.service.inter
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: ScrapingService, useClass: ScrapingProvider },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

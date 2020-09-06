@@ -1,7 +1,20 @@
-<ion-content [fullscreen]="true" class="scroll-content">
-  <ion-slides pages [options]="slideOpts">
-    <ion-slide style="background-color: purple;" *ngFor="let card of pick3DrawDateDecks; index as i">
-      <pick3-draw-date-card style="height: 100%; width: 100%;" [slideNumber]="i+1" [data]="card"></pick3-draw-date-card>
-    </ion-slide>
-  </ion-slides>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
 </ion-content>
