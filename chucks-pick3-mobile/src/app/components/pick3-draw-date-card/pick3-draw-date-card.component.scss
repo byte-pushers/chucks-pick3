@@ -1,0 +1,34 @@
+
+ion-grid {
+  height: 100%;
+  padding: 0px;
+
+  ion-row.primary-view {
+    height: 315px;
+    border: 1px solid white;
+  }
+
+  ion-row.drawing-time {
+    height: 77px;
+    border: 1px solid darkgray;
+
+    ion-col {
+      padding: 0px;
+    }
+  }
+
+}
+
+.scroll-content{overflow-y: hidden;}
+
+.dot {
+  height: 60px;
+  width: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+  color: black;
+  line-height: 2.2em;
+  font-size: 1.5em;
+}
