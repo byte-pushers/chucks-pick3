@@ -24,9 +24,9 @@ matrix:
         chrome: stable
       cache:
         directories:
-          - "chucks-pick3-client/node_modules"
+          - "chucks-pick3-mobile/node_modules"
       before_install:
-        - cd chucks-pick3-client
+        - cd chucks-pick3-mobile
         - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> .npmrc
         - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
         - npm install -g cordova ionic protractor
