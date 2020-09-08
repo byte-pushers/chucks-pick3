@@ -1,0 +1,20 @@
+version: "2.1"
+
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack
+    ports:
+      - "4566-4599:4566-4599"
+      - "8080:8080"
+      - "443:443"
+    environment:
+      - SERVICES=lambda, s3, iam, apigateway, rds, cloudformation, ec2
+      - DATA_DIR=${DATA_DIR- }
+      - PORT_WEB_UI=8080
+      - LAMBDA_EXECUTOR=docker
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR}
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
