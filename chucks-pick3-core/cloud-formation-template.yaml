@@ -99,7 +99,7 @@ Resources:
         S3Key: ${bytepushers.deploy.s3ObjectName}
       Description: "Chucks Pick3 Lotto System"
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
-      Handler: "software.bytepushers.chuckspick3.lotto.core.LottoSystemLambdaHandler::handleRequest"
+      Handler: software.bytepushers.chuckspick3.lotto.core.LottoSystemLambdaHandler
       MemorySize: 256
       Role:
         Fn::GetAtt: [ ChucksPick3LottoSystemVpcExecuteRole, Arn ]

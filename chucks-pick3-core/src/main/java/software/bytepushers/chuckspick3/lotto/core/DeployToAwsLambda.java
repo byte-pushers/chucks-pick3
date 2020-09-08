@@ -3,7 +3,9 @@ package software.bytepushers.chuckspick3.lotto.core;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceResult;
 import com.amazonaws.SdkClientException;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.client.builder.AwsSyncClientBuilder;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.cloudformation.AmazonCloudFormation;
 import com.amazonaws.services.cloudformation.AmazonCloudFormationClient;
 import com.amazonaws.services.cloudformation.AmazonCloudFormationClientBuilder;
@@ -107,7 +109,8 @@ public class DeployToAwsLambda {
                 .withChangeSetName(changeSetName)
                 .withChangeSetType(ChangeSetType.CREATE)
                 .withTemplateBody(templateBody)
-                .withCapabilities(Capability.CAPABILITY_IAM, Capability.CAPABILITY_NAMED_IAM));;
+                .withCapabilities(Capability.CAPABILITY_IAM, Capability.CAPABILITY_NAMED_IAM));
+        ;
 
         ChangeSetStatus status = monitorChangeSetCreationStatus(cloudFormationClient, stackName, changeSetName);
         if (status != ChangeSetStatus.CREATE_COMPLETE) {
@@ -330,23 +333,33 @@ public class DeployToAwsLambda {
     private static AmazonS3 buildS3Client() {
         AmazonS3ClientBuilder builder = AmazonS3Client.builder();
 
-        setCommonProperties(builder);
+//        setCommonProperties(builder);
 
-        return builder.build();
+        AwsClientBuilder.EndpointConfiguration endpointConfig = new AwsClientBuilder.EndpointConfiguration(
+                "http://localhost:4572", Regions.US_EAST_2.getName());
+
+        return builder.withPathStyleAccessEnabled(true).withEndpointConfiguration(endpointConfig).build();
     }
 
     private static AmazonCloudFormation buildCloudFormationClient() {
         AmazonCloudFormationClientBuilder builder = AmazonCloudFormationClient.builder();
 
-        setCommonProperties(builder);
+//        setCommonProperties(builder);
 
-        return builder.build();
+        AwsClientBuilder.EndpointConfiguration endpointConfig = new AwsClientBuilder.EndpointConfiguration(
+                "http://localhost:4581", Regions.US_EAST_2.getName());
+
+        return builder.withEndpointConfiguration(endpointConfig).build();
     }
 
     private static AWSLambda buildLambdaClient() {
         AWSLambdaClientBuilder builder = AWSLambdaClient.builder();
 
-        setCommonProperties(builder);
+//        setCommonProperties(builder);
+
+        AwsClientBuilder.EndpointConfiguration endpointConfig = new AwsClientBuilder.EndpointConfiguration(
+                "http://localhost:4574", Regions.US_EAST_2.getName());
+        builder.withEndpointConfiguration(endpointConfig);
 
         return builder.build();
     }
