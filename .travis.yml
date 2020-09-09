@@ -46,6 +46,7 @@ matrix:
 notifications:
   email:
     recipients:
+      - tonte.pouncil@bytepushers.software
       - amanjotabroljava@gmail.com
     on_success: always
     on_failure: always
