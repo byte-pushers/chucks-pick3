@@ -1,10 +1,12 @@
-package software.bytepushers.pick3.services;
+package software.bytepushers.pick3.services.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.domain.Pick3Plays;
+import software.bytepushers.pick3.services.Pick3PlaysService;
+import software.bytepushers.pick3.services.Pick3PredictionService;
 
 import java.time.LocalDate;
 import java.util.Arrays;

@@ -9,9 +9,7 @@ import org.mockito.Captor;
 import org.mockito.junit.MockitoJUnitRunner;
 import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.api.v1.DrawingTime;
-import software.bytepushers.pick3.services.Pick3PlaysService;
-import software.bytepushers.pick3.services.Pick3PlaysServiceImpl;
-import software.bytepushers.pick3.services.Pick3PredictionService;
+import software.bytepushers.pick3.services.impl.Pick3PlaysServiceImpl;
 
 import java.time.LocalDate;
 
