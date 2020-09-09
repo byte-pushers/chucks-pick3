@@ -4,3 +4,4 @@ chucks-pick3.iml
 chucks-pick3-ws/chucks-pick3-ws.iml
 .DS_Store
 */target/*
+coverage
