@@ -7,7 +7,7 @@ matrix:
           - "$HOME/.m2"
       deploy:
         provider: script
-        script: mvn clean deploy -P was
+        script: mvn clean deploy -P aws
         on:
           branch: develop
       env:
