@@ -25,7 +25,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'], /// ChromeHeadless in CI 'Chrome', 'ChromeHeadless'
+    browsers: ['ChromeHeadlessCI'], /// ChromeHeadless in CI 'Chrome', 'ChromeHeadless'
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: true,
     junitReporter: {
       outputDir: process.env.JUNIT_REPORT_PATH,
