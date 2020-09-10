@@ -64,7 +64,7 @@ describe('PredictionProvider', () => {
         req.error(new ErrorEvent('network error'));
   }));*/
 
-    it('test', () => {
-        expect(true).toBe(true);
-    });
+  it('test', () => {
+    expect(true).toBe(true);
+  });
 });
