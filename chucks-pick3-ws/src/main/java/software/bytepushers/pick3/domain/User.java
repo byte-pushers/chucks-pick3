@@ -1,13 +1,17 @@
 package software.bytepushers.pick3.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * User DTO class
  */
-@Data
+@Getter
+@Setter
 @Entity
 public class User {
 
@@ -37,4 +41,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(name = "User_Roles",
+            joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 }

@@ -3,7 +3,7 @@ package software.bytepushers.pick3.controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
-import software.bytepushers.pick3.dto.UserDTO;
+import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.services.UserService;
 
 import javax.validation.Valid;
@@ -30,7 +30,7 @@ public class UserController {
      * @return the user details
      */
     @GetMapping("/{id}")
-    public UserDTO userById(@PathVariable Long id) {
+    public UserDto userById(@PathVariable Long id) {
         LOGGER.info("Fetch User. Id: {}", id);
         return this.userServiceImpl.getById(id);
     }
@@ -41,7 +41,7 @@ public class UserController {
      * @param userDto with required details as a request paylod.
      */
     @PostMapping
-    public void save(@RequestBody @Valid UserDTO userDto) {
+    public void save(@RequestBody @Valid UserDto userDto) {
         LOGGER.info("Save User. username: {}", userDto.getUsername());
         this.userServiceImpl.save(userDto);
     }
@@ -52,7 +52,7 @@ public class UserController {
      * @param userDto userDto with required details as a request paylod.
      */
     @PutMapping
-    public void update(@RequestBody UserDTO userDto) {
+    public void update(@RequestBody UserDto userDto) {
         LOGGER.info("Update User. Id: {}", userDto.getId());
         this.userServiceImpl.update(userDto);
     }

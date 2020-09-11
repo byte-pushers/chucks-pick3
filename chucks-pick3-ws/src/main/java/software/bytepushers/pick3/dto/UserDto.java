@@ -8,13 +8,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User DTO class
  */
 @Data
 @UserValidator
-public class UserDTO {
+public class UserDto {
 
     private Long id;
 
@@ -45,5 +47,7 @@ public class UserDTO {
     @NotEmpty(message = "{user.password.required}")
     @Size(min = 8, message = "{user.password.size}")
     private String password;
+
+    private List<String> roles = new ArrayList<>();
 
 }
