@@ -1,0 +1,62 @@
+Localstack:
+
+Localstack has some requirements to setup the tools to use it. 
+1. Python
+2. Pip
+3. Docker
+
+Installation:
+Localstack itself is a tool which has to be installed on local environment. (Easiest way)
+- pip install localstack (Do not use root user)
+
+Once above step is successed, Let's verify the installation.
+- localstack --version
+
+(Note that on MacOS you may have to run TMPDIR=/private$TMPDIR localstack start --docker if $TMPDIR contains a symbolic link that cannot be mounted by Docker.)
+
+
+Docker Compose: Easy way to manage the docker part with Localstack.
+- We have created the docker-compose.yml file in our project directory
+- Hit the "docker-compose up" command on same directory
+- By executing the above step, All required services (mentioned in docker-compose.yml file) get started automatically
+
+Now, Localstack environment is ready to use. Please find below services to use their respective ports.
+- S3:	http://localhost:4572
+- Cloudformation:	http://localhost:4581
+- Lambda:	http://localhost:4574
+- IAM:	http://localhost:4593
+- API Gateway:	http://localhost:4567
+- EC2:	http://localhost:4597
+- Cloudwatch:	http://localhost:4582
+
+
+There is one more point needs to be consider for making easier handy command on AWS CLI for localstack. It is called as "AWS Local CLI".
+
+It is a thin CLI wrapper that runs commands directly against LocalStack. If we do not install Localstack AWS CLI, then we have to mentione "--endppoint-url" argiment to all AWS CLI command.
+
+Please follow instruction to install it AWS Local CLI
+- pip install awscli-local
+
+It will enable the commands starting with "awslocal". 
+
+
+There are some basic commands, I'm mentioning here for our reference.
+
+Create Lambda Role: (To execute the lmambda function)
+- awslocal iam create-role --role-name lambda-ex --assume-role-policy-document file://role.json
+
+Listing the IAM Roles
+- awslocal iam list-roles
+
+Attaching the policies to the created/existing IAM role: (To give the access on lambda function)
+- awslocal iam attach-role-policy --role-name lambda-ex --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+View the attached the policy of individual IAM role:
+- awslocal iam list-role-policies --role-name lambda-ex
+
+
+Create Lambda Function: Python: 
+- awslocal lambda create-function --function-name my-function --zip-file fileb://HelloWorld.zip --handler 'HelloWorld.lambda_handler' --runtime python2.7 --role arn:aws:iam::000000000000:role/lambda-ex
+
+Invoke Lambda Function:
+- awslocal lambda invoke --function-name my-function out --log-type Tail
