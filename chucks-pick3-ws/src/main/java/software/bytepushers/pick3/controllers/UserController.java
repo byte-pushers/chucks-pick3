@@ -9,7 +9,9 @@ import software.bytepushers.pick3.services.UserService;
 import javax.validation.Valid;
 
 import static software.bytepushers.pick3.config.security.SecurityConstants.USERS_END_POINT;
-
+//TODO: Implement refresh token
+//TODO: Move secret key to environment variable:
+//TODO: known issue on getting gateway timeout error. It should return actual error message.
 /**
  * The rest endpoint implementation for the User operations
  */
