@@ -1,4 +1,5 @@
 spring.profiles.active: dev
+
 config:
   numPlaysToPredict: 10
 errors:
@@ -6,3 +7,7 @@ errors:
     past: "winDate must be in the past."
   futureDrawDate:
     future: "futureDrawDate must be in the future."
+
+spring:
+  messages:
+    basename: ValidationMessages

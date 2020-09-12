@@ -3,7 +3,7 @@ package software.bytepushers.pick3.controllers.exceptions;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApplicationMessageException extends Exception {
+public class ApplicationMessageException extends RuntimeException {
 
     String[] messages;
 
@@ -12,7 +12,7 @@ public class ApplicationMessageException extends Exception {
     }
 
     public ApplicationMessageException(String... messages) {
-        super(messages.length == 0 ? null : messages[0]);
+        super(messages != null && messages.length != 0 ? messages[0] : null);
         this.messages = messages;
     }
 }

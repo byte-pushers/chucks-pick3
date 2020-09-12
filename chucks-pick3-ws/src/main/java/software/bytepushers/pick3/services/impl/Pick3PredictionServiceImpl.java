@@ -1,4 +1,4 @@
-package software.bytepushers.pick3.services;
+package software.bytepushers.pick3.services.impl;
 
 import com.amazonaws.services.lambda.AWSLambda;
 import com.amazonaws.services.lambda.invoke.LambdaInvokerFactory;
@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import software.bytepushers.pick3.services.Pick3LottoSystemService;
+import software.bytepushers.pick3.services.Pick3PredictionService;
 
 @Service
 @Profile("aws")
