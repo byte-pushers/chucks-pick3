@@ -8,11 +8,13 @@ import software.bytepushers.pick3.services.UserService;
 
 import javax.validation.Valid;
 
+import static software.bytepushers.pick3.config.security.SecurityConstants.USERS_END_POINT;
+
 /**
- * The rest endpoint implemntation for the User operations
+ * The rest endpoint implementation for the User operations
  */
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping(USERS_END_POINT)
 public class UserController {
 
     private final static Logger LOGGER = LogManager.getLogger();

@@ -5,12 +5,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import software.bytepushers.pick3.component.JwtUtils;
 import software.bytepushers.pick3.config.security.filter.JwtAuthorizationFilter;
 import software.bytepushers.pick3.config.security.filter.RestAuthenticationEntryPoint;
 
@@ -28,10 +30,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
+    private final JwtUtils jwtUtils;
+
     public SecurityConfiguration(CustomUserDetailsService customUserDetailsService,
-                                 RestAuthenticationEntryPoint restAuthenticationEntryPoint) {
+                                 RestAuthenticationEntryPoint restAuthenticationEntryPoint,
+                                 JwtUtils jwtUtils) {
         this.customUserDetailsService = customUserDetailsService;
         this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
+        this.jwtUtils = jwtUtils;
     }
 
     /**
@@ -61,10 +67,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(LOGIN_END_POINT).permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                //TODO: Please mention the API accessibility with respective roles.
+                .antMatchers(ROLES_END_POINT).hasAnyRole(ROLE_ADMIN)
                 .antMatchers("/api/**").hasAnyRole(ROLE_PREMIUM, ROLE_BASIC, ROLE_GUEST)
-                .anyRequest().authenticated().and()
+                .anyRequest().permitAll().and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
-                .addFilter(new JwtAuthorizationFilter(this.authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(this.authenticationManager(), this.jwtUtils))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 

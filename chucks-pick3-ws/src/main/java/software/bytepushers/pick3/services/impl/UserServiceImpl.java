@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
@@ -14,12 +15,14 @@ import software.bytepushers.pick3.repositories.RoleRepository;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.services.UserService;
 
-import javax.transaction.Transactional;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Service layer implementation for the user operations.
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -51,9 +54,7 @@ public class UserServiceImpl implements UserService {
             LOGGER.debug("User not found. Id: {}", id);
             throw new MalformedRequestException("User Not Found");
         }
-        UserDto userdto = new UserDto();
-        BeanUtils.copyProperties(userOptional.get(), userdto);
-        return userdto;
+        return getUserDto(userOptional.get());
     }
 
     /**
@@ -69,10 +70,7 @@ public class UserServiceImpl implements UserService {
             throw new MalformedRequestException("User Not Found");
         }
         User user = userOptional.get();
-        UserDto userdto = new UserDto();
-        BeanUtils.copyProperties(user, userdto);
-        userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
-        return userdto;
+        return getUserDto(user);
     }
 
     /**
@@ -114,7 +112,10 @@ public class UserServiceImpl implements UserService {
         }
         //Not overriding the password during save/update operation
         User user = userOptional.get();
-        BeanUtils.copyProperties(userDto, user, "id", "username", "password");
+        BeanUtils.copyProperties(userDto, user, "id", "username", "password", "roles");
+        Set<Role> roles = userDto.getRoles().stream().map(role ->
+                this.roleRepository.findByName(role).orElse(null)).filter(Objects::nonNull).collect(Collectors.toSet());
+        user.setRoles(roles);
         this.userRepository.save(user);
     }
 
@@ -127,6 +128,13 @@ public class UserServiceImpl implements UserService {
         LOGGER.debug("Delete User. Id: {}", id);
         UserDto userById = getById(id);
         this.userRepository.deleteById(userById.getId());
+    }
+
+    private UserDto getUserDto(User user) {
+        UserDto userdto = new UserDto();
+        BeanUtils.copyProperties(user, userdto);
+        userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
+        return userdto;
     }
 
 

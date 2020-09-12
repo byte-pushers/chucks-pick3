@@ -1,7 +1,5 @@
 package software.bytepushers.pick3.controllers;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -13,15 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import software.bytepushers.pick3.component.JwtUtils;
 import software.bytepushers.pick3.dto.LoginDto;
 import software.bytepushers.pick3.dto.LoginResponseDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.services.UserService;
 
 import javax.validation.Valid;
-import java.util.Date;
 
-import static software.bytepushers.pick3.config.security.SecurityConstants.*;
+import static software.bytepushers.pick3.config.security.SecurityConstants.LOGIN_END_POINT;
 
 /**
  * Authentication rest endpoints.
@@ -36,9 +34,12 @@ public class LoginController {
 
     private final UserService userService;
 
-    public LoginController(AuthenticationManager authenticationManager, UserService userService) {
+    private final JwtUtils jwtUtils;
+
+    public LoginController(AuthenticationManager authenticationManager, UserService userService, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
+        this.jwtUtils = jwtUtils;
     }
 
     /**
@@ -57,18 +58,11 @@ public class LoginController {
             this.authenticationManager.authenticate(authRequest);
             UserDto userDetails = this.userService.getByUsername(username);
             LOGGER.info("Login Successful. Username: {}", username);
-            return new ResponseEntity<>(new LoginResponseDto(jwtToken(userDetails), userDetails), HttpStatus.OK);
+            String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
+            return new ResponseEntity<>(new LoginResponseDto(token, userDetails), HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("Login error: {}", e.getMessage(), e);
             throw new UsernameNotFoundException("Invallid credentials");
         }
     }
-
-    private String jwtToken(final UserDto userDetails) {
-        return Jwts.builder().setSubject(userDetails.getUsername())
-                .setIssuer(String.join(JWT_ROLE_JOIN_DELIMITER, userDetails.getRoles()))
-                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRY_TIME))
-                .signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes())).compact();
-    }
-
 }

@@ -16,7 +16,13 @@ public interface SecurityConstants {
 
     String ROLE_PREMIUM = "PREMIUM";
 
+    String ROLE_ADMIN = "ADMIN";
+
     String LOGIN_END_POINT = "/api/v1/login";
+
+    String USERS_END_POINT = "/api/v1/users";
+
+    String ROLES_END_POINT = "/api/v1/roles";
 
     //TODO: move it to the environment variable
     String SECRET_KEY = "chuckspick3chuckspick3chuckspick3chuckspick3chuckspick3";

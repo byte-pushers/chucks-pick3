@@ -112,12 +112,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -526,6 +521,12 @@
                     <artifactId>mysql-connector-java</artifactId>
                     <version>${mysql.version}</version>
                 </dependency>
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                    <version>4.0.1</version>
+                    <scope>provided</scope>
+                </dependency>
             </dependencies>
             <build>
                 <plugins>
@@ -611,6 +612,11 @@
                     <artifactId>h2</artifactId>
                     <version>1.4.200</version>
                     <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                    <version>4.0.1</version>
                 </dependency>
             </dependencies>
             <build>

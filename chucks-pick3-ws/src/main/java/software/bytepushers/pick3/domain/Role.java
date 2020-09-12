@@ -7,6 +7,9 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Application Roles entity model.
+ */
 @Getter
 @Setter
 @Entity
