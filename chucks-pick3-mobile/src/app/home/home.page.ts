@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Pick3DrawDateCard } from "../domains/pick3-draw-date-card";
-import { Pick3DrawDateCardDomain } from "../domains/pick3-draw-date-card.domain";
+import { Pick3DrawDateCard } from "../models/pick3-draw-date-card";
+import { Pick3DrawDateCardDomain } from "../models/pick3-draw-date-card.domain";
 
 @Component({
   selector: 'app-home',
