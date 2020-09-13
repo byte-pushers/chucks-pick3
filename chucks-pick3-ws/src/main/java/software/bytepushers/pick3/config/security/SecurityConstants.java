@@ -24,6 +24,8 @@ public interface SecurityConstants {
 
     String ROLES_END_POINT = "/api/v1/roles";
 
+    String TOKEN_ERROR_ATTRIBUTE_KEY = "tokenError";
+
     //TODO: move it to the environment variable
     String SECRET_KEY = "chuckspick3chuckspick3chuckspick3chuckspick3chuckspick3";
 
