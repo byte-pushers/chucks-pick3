@@ -16,36 +16,41 @@ import software.bytepushers.pick3.controllers.exceptions.MalformedRequestExcepti
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
 
+    private static final String INVALID_REQUEST = "Invalid Request";
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MalformedRequestException.class)
-    public List<String> handleMalformedRequestExceptions(MalformedRequestException ex) {
-        return ex.getMessages() == null ? Collections.emptyList() : ex.getMessages();
+    public ResponseEntity<Object> handleMalformedRequestExceptions(MalformedRequestException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), ex.getMessages());
+        return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<String> handleArgumentNotValidExceptions(MethodArgumentNotValidException ex) {
-        return ex.getBindingResult()
+    public ResponseEntity<Object> handleArgumentNotValidExceptions(MethodArgumentNotValidException ex) {
+        List<String> errors = ex.getBindingResult()
                 .getAllErrors().stream()
                 .map(ObjectError::getDefaultMessage)
                 .collect(Collectors.toList());
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, INVALID_REQUEST, errors);
+        return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
-    public List<String> handleConstraintValidationExceptions(ConstraintViolationException ex) {
-        return ex.getConstraintViolations()
+    public ResponseEntity<Object> handleConstraintValidationExceptions(ConstraintViolationException ex) {
+        List<String> errors = ex.getConstraintViolations()
                 .stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.toList());
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, INVALID_REQUEST, errors);
+        return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
     @ExceptionHandler({MethodArgumentConversionNotSupportedException.class})
