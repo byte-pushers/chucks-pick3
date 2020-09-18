@@ -41,15 +41,22 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String header = request.getHeader(HEADER_STRING);
         if (StringUtils.startsWithIgnoreCase(header, TOKEN_PREFIX)) {
             String token = StringUtils.substringAfter(header, TOKEN_PREFIX);
-            UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
+            UsernamePasswordAuthenticationToken authentication = getAuthentication(token, request);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             LOGGER.info("Request authenticated.");
         }
         chain.doFilter(request, response);
     }
 
-    private UsernamePasswordAuthenticationToken getAuthentication(String jwtToken) {
-        ApplicationUser applicationUser = this.jwtUtils.parseToken(jwtToken);
-        return new UsernamePasswordAuthenticationToken(applicationUser.getUsername(), null, applicationUser.getAuthorities());
+    private UsernamePasswordAuthenticationToken getAuthentication(String jwtToken, HttpServletRequest request) {
+        UsernamePasswordAuthenticationToken token = null;
+        try {
+            ApplicationUser applicationUser = this.jwtUtils.parseToken(jwtToken);
+            token = new UsernamePasswordAuthenticationToken(applicationUser.getUsername(), null, applicationUser.getAuthorities());
+        } catch (Exception e) {
+            LOGGER.error("Error. Token invalid: {}", e.getMessage(), e);
+            request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, e.getMessage());
+        }
+        return token;
     }
 }
