@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,11 +18,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+@Log4j2
 @EnableWebMvc
+@RestController
 public class NumbersController {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private final Pick3PlaysMapper pick3PlaysMapper;
 
@@ -45,7 +45,7 @@ public class NumbersController {
                                          @RequestParam("futureDrawDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate futureDrawDate,
                                          @RequestParam("winDrawTime") DrawingTime winDrawTime,
                                          @RequestParam("futureDrawTime") DrawingTime futureDrawTime) {
-        LOGGER.info("******** Inside getNumbers() method.");
+        log.info("******** Inside getNumbers() method.");
         if (winNumber < 0 || 999 < winNumber)
             throw new MalformedRequestException("winNumber must be within bounds [0, 999]");
 

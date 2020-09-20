@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.config.security;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Bean;
@@ -20,10 +21,9 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 /**
  * Security Configuration class for the  application
  */
+@Log4j2
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        LOGGER.info("Securing the rest endpoints");
+        log.info("Securing the rest endpoints");
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(LOGIN_END_POINT, ACCOUNT_TYPE_END_POINT).permitAll()
                 .antMatchers(HttpMethod.POST, USERS_END_POINT).permitAll()
