@@ -1,25 +1,23 @@
 package software.bytepushers.pick3;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 
+@Log4j2
 public class ProfileManager {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     @Value("${spring.profiles.active:}")
     private String activeProfiles;
 
     public void getActiveProfiles() {
-        LOGGER.info("ProfileManager.getActiveProfiles() method - start");
+        log.info("ProfileManager.getActiveProfiles() method - start");
         if (activeProfiles != null) {
             for (String profileName : activeProfiles.split(",")) {
-                LOGGER.info("Currently active profile - {}", profileName);
+                log.info("Currently active profile - {}", profileName);
             }
         } else {
-            LOGGER.info("Currently NO active profiles.");
+            log.info("Currently NO active profiles.");
         }
-        LOGGER.info("ProfileManager.getActiveProfiles() method - end");
+        log.info("ProfileManager.getActiveProfiles() method - end");
     }
 }
