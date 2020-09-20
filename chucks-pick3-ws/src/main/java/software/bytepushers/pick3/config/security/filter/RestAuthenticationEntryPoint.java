@@ -7,9 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import software.bytepushers.pick3.controllers.ApiError;
+import software.bytepushers.pick3.dto.ApiError;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -31,6 +30,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException {
 
         String tokenError = (String) request.getAttribute(TOKEN_ERROR_ATTRIBUTE_KEY);
+        request.removeAttribute(TOKEN_ERROR_ATTRIBUTE_KEY); //Cleanup on request attribute
         HttpStatus responseStatus = StringUtils.isBlank(tokenError) ? FORBIDDEN : UNAUTHORIZED;
         String errorMessage = StringUtils.isBlank(tokenError) ? e.getMessage() : tokenError;
 

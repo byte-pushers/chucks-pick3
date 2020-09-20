@@ -1,4 +1,4 @@
-package software.bytepushers.pick3.controllers.exceptions;
+package software.bytepushers.pick3.exceptions;
 
 import java.util.Arrays;
 import java.util.List;

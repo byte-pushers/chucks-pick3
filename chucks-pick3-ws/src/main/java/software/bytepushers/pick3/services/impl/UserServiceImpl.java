@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
             LOGGER.debug("User not found. Id: {}", id);
             throw new MalformedRequestException("User Not Found");
         }
-        return getUserDto(userOptional.get());
+        return fromEntity(userOptional.get());
     }
 
     /**
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
             throw new MalformedRequestException("User Not Found");
         }
         User user = userOptional.get();
-        return getUserDto(user);
+        return fromEntity(user);
     }
 
     /**
@@ -130,12 +130,21 @@ public class UserServiceImpl implements UserService {
         this.userRepository.deleteById(userById.getId());
     }
 
-    private UserDto getUserDto(User user) {
-        UserDto userdto = new UserDto();
-        BeanUtils.copyProperties(user, userdto);
-        userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
-        return userdto;
+    /**
+     * The method implementation is responsible for setting up the account type and roles.
+     *
+     * @param account type to set
+     * @param user    for whom to set account type and role.
+     */
+    private void setAccountTypeAndRole(software.bytepushers.pick3.dto.enums.AccountType account, User user) {
+        Optional.ofNullable(account).ifPresent(accountType -> {
+            Optional<AccountType> accountOptional = this.accountRepository.findByName(accountType.name());
+            if (accountOptional.isPresent()) {
+                this.roleRepository.findByNameLike(accountType.getRoleName())
+                        .ifPresent(role -> user.setRoles(Collections.singleton(role)));
+                user.setAccountType(accountOptional.get());
+            }
+        });
     }
-
 
 }

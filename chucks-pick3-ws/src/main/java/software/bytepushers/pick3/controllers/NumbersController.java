@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 
 import java.time.LocalDate;

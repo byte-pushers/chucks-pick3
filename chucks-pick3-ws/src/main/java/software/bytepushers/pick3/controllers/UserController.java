@@ -2,16 +2,18 @@ package software.bytepushers.pick3.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.dto.UserDto.CreateUserRequest;
+import software.bytepushers.pick3.dto.UserDto.UpdateUserRequest;
 import software.bytepushers.pick3.services.UserService;
-
-import javax.validation.Valid;
 
 import static software.bytepushers.pick3.config.security.SecurityConstants.USERS_END_POINT;
 //TODO: Implement refresh token
 //TODO: Move secret key to environment variable:
 //TODO: known issue on getting gateway timeout error. It should return actual error message.
+
 /**
  * The rest endpoint implementation for the User operations
  */
@@ -45,7 +47,7 @@ public class UserController {
      * @param userDto with required details as a request paylod.
      */
     @PostMapping
-    public void save(@RequestBody @Valid UserDto userDto) {
+    public void save(@RequestBody @Validated(CreateUserRequest.class) UserDto userDto) {
         LOGGER.info("Save User. username: {}", userDto.getUsername());
         this.userServiceImpl.save(userDto);
     }
@@ -56,7 +58,7 @@ public class UserController {
      * @param userDto userDto with required details as a request paylod.
      */
     @PutMapping
-    public void update(@RequestBody UserDto userDto) {
+    public void update(@RequestBody @Validated(UpdateUserRequest.class) UserDto userDto) {
         LOGGER.info("Update User. Id: {}", userDto.getId());
         this.userServiceImpl.update(userDto);
     }

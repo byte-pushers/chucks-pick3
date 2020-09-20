@@ -24,7 +24,13 @@ public interface SecurityConstants {
 
     String ROLES_END_POINT = "/api/v1/roles";
 
+    String ACCOUNT_TYPE_END_POINT = "/api/v1/account-type";
+
     String TOKEN_ERROR_ATTRIBUTE_KEY = "tokenError";
+
+    int TOKEN_REFRESH_WINDOW_IN_MINUTES = 5 * 60;
+
+    String JWT_TOKEN_COOKIE_NAME = "jwtToken";
 
     //TODO: move it to the environment variable
     String SECRET_KEY = "chuckspick3chuckspick3chuckspick3chuckspick3chuckspick3";
