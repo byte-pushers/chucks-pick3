@@ -7,10 +7,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.repositories.RoleRepository;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.services.UserService;
@@ -19,6 +19,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static software.bytepushers.pick3.dto.UserDto.fromEntity;
 
 /**
  * Service layer implementation for the user operations.
@@ -128,23 +130,6 @@ public class UserServiceImpl implements UserService {
         LOGGER.debug("Delete User. Id: {}", id);
         UserDto userById = getById(id);
         this.userRepository.deleteById(userById.getId());
-    }
-
-    /**
-     * The method implementation is responsible for setting up the account type and roles.
-     *
-     * @param account type to set
-     * @param user    for whom to set account type and role.
-     */
-    private void setAccountTypeAndRole(software.bytepushers.pick3.dto.enums.AccountType account, User user) {
-        Optional.ofNullable(account).ifPresent(accountType -> {
-            Optional<AccountType> accountOptional = this.accountRepository.findByName(accountType.name());
-            if (accountOptional.isPresent()) {
-                this.roleRepository.findByNameLike(accountType.getRoleName())
-                        .ifPresent(role -> user.setRoles(Collections.singleton(role)));
-                user.setAccountType(accountOptional.get());
-            }
-        });
     }
 
 }
