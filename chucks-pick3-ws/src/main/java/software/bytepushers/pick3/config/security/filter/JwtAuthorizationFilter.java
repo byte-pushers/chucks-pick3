@@ -1,8 +1,7 @@
 package software.bytepushers.pick3.config.security.filter;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,9 +20,8 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 /**
  * Authorization filter for next upcoming authenticated user request
  */
+@Log4j2
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private final JwtUtils jwtUtils;
 
@@ -43,7 +41,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             String token = StringUtils.substringAfter(header, TOKEN_PREFIX);
             UsernamePasswordAuthenticationToken authentication = getAuthentication(token, request);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            LOGGER.info("Request authenticated.");
+            log.info("Request authenticated.");
         }
         chain.doFilter(request, response);
     }
@@ -54,7 +52,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             ApplicationUser applicationUser = this.jwtUtils.parseToken(jwtToken);
             token = new UsernamePasswordAuthenticationToken(applicationUser.getUsername(), null, applicationUser.getAuthorities());
         } catch (Exception e) {
-            LOGGER.error("Error. Token invalid: {}", e.getMessage(), e);
+            log.error("Error. Token invalid: {}", e.getMessage(), e);
             request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, e.getMessage());
         }
         return token;

@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -24,11 +25,10 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.LOGIN
 /**
  * Authentication rest endpoints.
  */
+@Log4j2
 @RestController
 @RequestMapping(LOGIN_END_POINT)
 public class LoginController {
-
-    private static final Logger LOGGER = LogManager.getLogger();
 
     private final AuthenticationManager authenticationManager;
 
@@ -53,15 +53,15 @@ public class LoginController {
         try {
             String username = loginDto.getUsername();
             String password = loginDto.getPassword();
-            LOGGER.info("Login. Username: {}", username);
+            log.info("Login. Username: {}", username);
             UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
             this.authenticationManager.authenticate(authRequest);
             UserDto userDetails = this.userService.getByUsername(username);
-            LOGGER.info("Login Successful. Username: {}", username);
+            log.info("Login Successful. Username: {}", username);
             String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
             return new ResponseEntity<>(new LoginResponseDto(token, userDetails), HttpStatus.OK);
         } catch (Exception e) {
-            LOGGER.error("Login error: {}", e.getMessage(), e);
+            log.error("Login error: {}", e.getMessage(), e);
             throw new UsernameNotFoundException("Invallid credentials");
         }
     }

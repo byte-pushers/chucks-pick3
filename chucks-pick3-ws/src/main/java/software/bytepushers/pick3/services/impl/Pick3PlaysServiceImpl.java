@@ -1,7 +1,6 @@
 package software.bytepushers.pick3.services.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.domain.Pick3Plays;
@@ -12,10 +11,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 public class Pick3PlaysServiceImpl implements Pick3PlaysService {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private final Pick3PredictionService pick3PredictionService;
 
@@ -26,10 +24,10 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
     @Override
     public Pick3Plays getPick3Plays(Integer winningNumber, LocalDate winningDrawDate, DrawingTime winningDrawTime,
                                     LocalDate futureDrawDate, DrawingTime futureDrawTime) {
-        LOGGER.info("getPick3Plays() method - start.");
-        LOGGER.info("getPick3Plays() method - about to generate numbers.");
+        log.info("getPick3Plays() method - start.");
+        log.info("getPick3Plays() method - about to generate numbers.");
         int[][] predictions = pick3PredictionService.generatePredictions(winningNumber);
-        LOGGER.info("getPick3Plays() method - numbers generated.");
+        log.info("getPick3Plays() method - numbers generated.");
         Pick3Plays result = new Pick3Plays();
 
         result.setPlays(Arrays.stream(predictions)
