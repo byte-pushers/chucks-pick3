@@ -51,6 +51,10 @@ public class UserDto {
     @Size(groups = {CreateUserRequest.class, UpdateUserRequest.class}, min = 8, message = "{user.password.size}")
     private String password;
 
+    @NotNull(groups = {CreateUserRequest.class}, message = "{user.account.type.required}")
+    private AccountType type;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<String> roles = new ArrayList<>();
 
     public interface CreateUserRequest {
@@ -63,6 +67,7 @@ public class UserDto {
         UserDto userdto = new UserDto();
         BeanUtils.copyProperties(user, userdto);
         userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
+        userdto.setType(EnumUtils.getEnum(software.bytepushers.pick3.dto.enums.AccountType.class, user.getAccountType().getName()));
         return userdto;
     }
 

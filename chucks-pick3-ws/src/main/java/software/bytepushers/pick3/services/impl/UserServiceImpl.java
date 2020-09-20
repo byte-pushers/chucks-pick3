@@ -7,18 +7,19 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
-import software.bytepushers.pick3.domain.Role;
+import software.bytepushers.pick3.domain.AccountType;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
+import software.bytepushers.pick3.repositories.AccountRepository;
 import software.bytepushers.pick3.repositories.RoleRepository;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.services.UserService;
 
-import java.util.Objects;
+import java.util.Collections;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+
+import static software.bytepushers.pick3.dto.UserDto.fromEntity;
 
 /**
  * Service layer implementation for the user operations.
@@ -34,10 +35,14 @@ public class UserServiceImpl implements UserService {
 
     private final RoleRepository roleRepository;
 
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    private final AccountRepository accountRepository;
+
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,
+                           RoleRepository roleRepository, AccountRepository accountRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.accountRepository = accountRepository;
     }
 
     /**
@@ -83,10 +88,8 @@ public class UserServiceImpl implements UserService {
         LOGGER.debug("Create User. Username: {}", username);
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
-        Set<Role> roles = userDto.getRoles().stream().map(role ->
-                this.roleRepository.findByName(role).orElse(null)).filter(Objects::nonNull).collect(Collectors.toSet());
-        user.setRoles(roles);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        setAccountTypeAndRole(userDto.getType(), user);
         this.userRepository.save(user);
         LOGGER.debug("User created. Username: {}", username);
     }
@@ -113,9 +116,7 @@ public class UserServiceImpl implements UserService {
         //Not overriding the password during save/update operation
         User user = userOptional.get();
         BeanUtils.copyProperties(userDto, user, "id", "username", "password", "roles");
-        Set<Role> roles = userDto.getRoles().stream().map(role ->
-                this.roleRepository.findByName(role).orElse(null)).filter(Objects::nonNull).collect(Collectors.toSet());
-        user.setRoles(roles);
+        setAccountTypeAndRole(userDto.getType(), user);
         this.userRepository.save(user);
     }
 
