@@ -45,8 +45,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * {@inheritDoc}
-     *
-     * @return
      */
     @Override
     @Transactional

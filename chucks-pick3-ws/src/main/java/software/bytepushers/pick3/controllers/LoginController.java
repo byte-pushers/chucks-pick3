@@ -1,8 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,7 +43,7 @@ public class LoginController {
     }
 
     /**
-     * The rest endpoint implementation for the login process.
+     * The rest endpoint implementation for the initiating the login process.
      *
      * @param loginDto with user credentials
      * @return the logged in user details

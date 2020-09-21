@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 /**
- *
+ * Login request dto model
  */
 @Data
 public class LoginDto {

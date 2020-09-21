@@ -3,6 +3,9 @@ package software.bytepushers.pick3.exceptions;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Custom application message exception.
+ */
 public class ApplicationMessageException extends RuntimeException {
 
     String[] messages;

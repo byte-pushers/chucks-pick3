@@ -34,6 +34,11 @@ public class RoleController {
         });
     }
 
+    /**
+     * The rest endpoint implementation is responsible for fetching the all available roles.
+     *
+     * @return the list of roles.
+     */
     @GetMapping
     public List<String> getRoles() {
         return this.roleRepository.findAll().stream().map(Role::getName).collect(Collectors.toList());

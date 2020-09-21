@@ -1,5 +1,8 @@
 package software.bytepushers.pick3.config.security;
 
+/**
+ * Security constants.
+ */
 public interface SecurityConstants {
 
     String HEADER_STRING = "Authorization";

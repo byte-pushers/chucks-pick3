@@ -9,8 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The rest endpoint implementations for the customer operations
+ */
 @RestController
 @EnableWebMvc
+@RequestMapping("/customers")
 public class CustomerController {
 
     private final CustomerRepository customerRepository;
@@ -19,19 +23,35 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @RequestMapping(path = "/customers/ping", method = RequestMethod.GET)
+    /**
+     * The rest endpoint implementation is responsible for handling status check of the application
+     *
+     * @return the "Hello World!" if the application up and running
+     */
+    @GetMapping("/ping")
     public Map<String, String> ping() {
         Map<String, String> pong = new HashMap<>();
         pong.put("pong", "Hello, World!");
         return pong;
     }
 
-    @GetMapping("/customers")
+    /**
+     * The rest endpoint implementation is responsible for fetching the all customers from the application.
+     *
+     * @return the list of customers.
+     */
+    @GetMapping
     public List<Customer> all() {
         return customerRepository.findAll();
     }
 
-    @PostMapping("/customers")
+    /**
+     * The rest endpoint implementation is responsible for creating/saving/adding the customer into the system.
+     *
+     * @param customer with details to persist
+     * @return the created customer details
+     */
+    @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerRepository.save(customer);
     }

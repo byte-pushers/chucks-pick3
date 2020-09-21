@@ -14,12 +14,14 @@ import java.util.stream.Collectors;
 
 import static software.bytepushers.pick3.config.security.SecurityConstants.ACCOUNT_TYPE_END_POINT;
 
+/**
+ * The rest endpoint implementations for the account types
+ */
 @RestController
 @RequestMapping(ACCOUNT_TYPE_END_POINT)
 public class AccountTypeController {
 
     private final AccountRepository accountRepository;
-
 
     public AccountTypeController(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -40,6 +42,11 @@ public class AccountTypeController {
         });
     }
 
+    /**
+     * The rest endpoint implementation is responsible for fetching all the configured the account types.
+     *
+     * @return the list of account types.
+     */
     @GetMapping
     public List<String> getAll() {
         return this.accountRepository.findAll().stream().map(AccountType::getName).collect(Collectors.toList());

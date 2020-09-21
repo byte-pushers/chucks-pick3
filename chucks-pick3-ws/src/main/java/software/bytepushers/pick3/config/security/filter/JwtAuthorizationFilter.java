@@ -54,6 +54,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(request, response);
     }
 
+    /**
+     * The method implementation is responsible for reading the jwtToken from the http servlet request
+     *
+     * @param request from where to read the jwt token
+     * @return the jwt token
+     */
     private String readJwtToken(HttpServletRequest request) {
         AtomicReference<String> jwtToken = new AtomicReference<>();
         String header = request.getHeader(HEADER_STRING);
@@ -67,6 +73,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         return jwtToken.get();
     }
 
+    /**
+     * The method implementation is responsible for providing the security context instance from the JWT token.
+     *
+     * @param jwtToken to parse and build the user details
+     * @param request  to read the jwt token from the cookie
+     * @param response to write the jwt token cookie if it is expired
+     * @return the valid authentication context object.
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(String jwtToken, HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token = null;
         try {

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Locale;
 
 /**
- *
+ * Custom message bundle to load messages from the Messgae source
  */
 @Component
 public class AppMessages {

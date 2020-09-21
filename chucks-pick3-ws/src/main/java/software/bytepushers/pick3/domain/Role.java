@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Application Roles entity model.
+ * Application Roles entity/database model.
  */
 @Getter
 @Setter

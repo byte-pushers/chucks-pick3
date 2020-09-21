@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AWSConfiguration {
 
+    /**
+     * Aws lambda bean configuration.
+     *
+     * @return the instance of {@link AWSLambda}
+     */
     @Bean
     public AWSLambda awsLambda() {
         return AWSLambdaClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
