@@ -600,6 +600,8 @@
                 <datasource.username>${env.DATASOURCE_USERNAME}</datasource.username>
                 <!--suppress UnresolvedMavenProperty -->
                 <datasource.password>${env.DATASOURCE_PASSWORD}</datasource.password>
+                <!--suppress UnresolvedMavenProperty -->
+                <jwt.token.secret>${env.JWT_TOKEN_SECRET}</jwt.token.secret>
             </properties>
             <dependencies>
                 <dependency>
