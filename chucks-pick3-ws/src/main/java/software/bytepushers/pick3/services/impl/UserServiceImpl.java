@@ -1,8 +1,7 @@
 package software.bytepushers.pick3.services.impl;
 
 import com.amazonaws.util.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,10 +22,9 @@ import java.util.stream.Collectors;
 /**
  * Service layer implementation for the user operations.
  */
+@Log4j2
 @Service
 public class UserServiceImpl implements UserService {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private final UserRepository userRepository;
 
@@ -48,10 +46,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDto getById(Long id) {
-        LOGGER.debug("Fetch User. Id: {}", id);
+        log.debug("Fetch User. Id: {}", id);
         Optional<User> userOptional = this.userRepository.findById(id);
         if (userOptional.isEmpty()) {
-            LOGGER.debug("User not found. Id: {}", id);
+            log.debug("User not found. Id: {}", id);
             throw new MalformedRequestException("User Not Found");
         }
         return getUserDto(userOptional.get());
@@ -63,10 +61,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserDto getByUsername(String username) {
-        LOGGER.debug("Fetch User. Id: {}", username);
+        log.debug("Fetch User. Id: {}", username);
         Optional<User> userOptional = this.userRepository.findByUsername(username);
         if (userOptional.isEmpty()) {
-            LOGGER.debug("User not found. Id: {}", username);
+            log.debug("User not found. Id: {}", username);
             throw new MalformedRequestException("User Not Found");
         }
         User user = userOptional.get();
@@ -80,7 +78,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void save(UserDto userDto) {
         String username = userDto.getUsername();
-        LOGGER.debug("Create User. Username: {}", username);
+        log.debug("Create User. Username: {}", username);
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         Set<Role> roles = userDto.getRoles().stream().map(role ->
@@ -88,7 +86,7 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         this.userRepository.save(user);
-        LOGGER.debug("User created. Username: {}", username);
+        log.debug("User created. Username: {}", username);
     }
 
     /**
@@ -99,7 +97,7 @@ public class UserServiceImpl implements UserService {
     public void update(UserDto userDto) {
         Long userId = userDto.getId();
         String username = userDto.getUsername();
-        LOGGER.debug("Update User. id/username: {}/{}", userId, username);
+        log.debug("Update User. id/username: {}/{}", userId, username);
         Optional<User> userOptional = Optional.empty();
         if (userId != null) {
             userOptional = this.userRepository.findById(userId);
@@ -107,7 +105,7 @@ public class UserServiceImpl implements UserService {
             userOptional = this.userRepository.findByUsername(username);
         }
         if (userOptional.isEmpty()) {
-            LOGGER.debug("User not found. id/username: {}/{}", userId, username);
+            log.debug("User not found. id/username: {}/{}", userId, username);
             throw new MalformedRequestException("User not found");
         }
         //Not overriding the password during save/update operation
@@ -125,7 +123,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void delete(Long id) {
-        LOGGER.debug("Delete User. Id: {}", id);
+        log.debug("Delete User. Id: {}", id);
         UserDto userById = getById(id);
         this.userRepository.deleteById(userById.getId());
     }

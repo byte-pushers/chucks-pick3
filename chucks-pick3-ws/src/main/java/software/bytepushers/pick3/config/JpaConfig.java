@@ -5,8 +5,7 @@ import com.amazonaws.services.rds.AmazonRDSClientBuilder;
 import com.amazonaws.services.rds.model.DBInstance;
 import com.amazonaws.services.rds.model.DescribeDBInstancesRequest;
 import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -35,9 +34,8 @@ import java.util.TimeZone;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "software.bytepushers.pick3.repositories")
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
+@Log4j2
 public class JpaConfig {
-
-    private final static Logger LOGGER = LogManager.getLogger();
 
     @Value("${spring.datasource.driver-class-name:}")
     private String jpaDriverClassName;
@@ -98,10 +96,10 @@ public class JpaConfig {
 
     @Bean
     public DataSource dataSource() {
-        LOGGER.info("JpaConfig.dataSource() - driver class name = " + jpaDriverClassName);
-        LOGGER.info("JpaConfig.dataSource() - data source url = " + jpaDatasourceUrl);
-        LOGGER.info("JpaConfig.dataSource() - db username = " + jpaDatasourceUsername);
-        LOGGER.info("JpaConfig.dataSource() - db password = " + jpaDatasourcePassword);
+        log.info("JpaConfig.dataSource() - driver class name = " + jpaDriverClassName);
+        log.info("JpaConfig.dataSource() - data source url = " + jpaDatasourceUrl);
+        log.info("JpaConfig.dataSource() - db username = " + jpaDatasourceUsername);
+        log.info("JpaConfig.dataSource() - db password = " + jpaDatasourcePassword);
         return DataSourceBuilder.create()
                 .driverClassName(jpaDriverClassName)
                 .url(generateDatasourceUrl())
@@ -142,55 +140,55 @@ public class JpaConfig {
     private String generateDatasourceUrl() {
         String datasourceUrl = null;
         String[] targetProfiles = {"aws", "aws-runtime"};
-        LOGGER.info("JpaConfig.generateDatasourceUrl() - start ");
+        log.info("JpaConfig.generateDatasourceUrl() - start ");
 
         if (hasActiveProfiles(targetProfiles)) {
-            LOGGER.info("JpaConfig.generateDatasourceUrl() - has found active profiles. ");
+            log.info("JpaConfig.generateDatasourceUrl() - has found active profiles. ");
             datasourceUrl = generateDatasourceUrlFromAws();
         } else {
-            LOGGER.info("JpaConfig.generateDatasourceUrl() - does not have active profiles. ");
+            log.info("JpaConfig.generateDatasourceUrl() - does not have active profiles. ");
             datasourceUrl = jpaDatasourceUrl;
         }
 
-        LOGGER.info("JpaConfig.generateDatasourceUrl() - end: datasourceUrl: " + datasourceUrl);
+        log.info("JpaConfig.generateDatasourceUrl() - end: datasourceUrl: " + datasourceUrl);
         return datasourceUrl;
     }
 
     private String generateDatasourceUrlFromAws() {
         String datasourceUrl = null;
-        LOGGER.info("JpaConfig.generateDatasourceUrlFromAws() - start ");
+        log.info("JpaConfig.generateDatasourceUrlFromAws() - start ");
 
         AmazonRDS rdsClient = AmazonRDSClientBuilder.defaultClient();
 
         DescribeDBInstancesRequest request = new DescribeDBInstancesRequest();
         DescribeDBInstancesResult result = rdsClient.describeDBInstances(request);
         List<DBInstance> list = result.getDBInstances();
-        LOGGER.info("JpaConfig.generateDatasourceUrlFromAws() - list length = {}", list.size());
+        log.info("JpaConfig.generateDatasourceUrlFromAws() - list length = {}", list.size());
         datasourceUrl = list.get(0).getEndpoint().getAddress();
 
-        LOGGER.info("JpaConfig.generateDatasourceUrlFromAws() - end: datasourceUrl: {}", datasourceUrl);
+        log.info("JpaConfig.generateDatasourceUrlFromAws() - end: datasourceUrl: {}", datasourceUrl);
         return datasourceUrl;
     }
 
     private boolean hasActiveProfiles(String[] targetProfiles) {
         int matchedActiveProfiles = 0;
-        LOGGER.info("JpaConfig.hasActiveProfiles() - start");
+        log.info("JpaConfig.hasActiveProfiles() - start");
 
         if (activeProfiles != null) {
             for (String profileName : activeProfiles.split(",")) {
-                LOGGER.info("JpaConfig.hasActiveProfiles() - Currently active profile - '{}'", profileName);
+                log.info("JpaConfig.hasActiveProfiles() - Currently active profile - '{}'", profileName);
                 for (String targetProfile : targetProfiles) {
-                    LOGGER.info("JpaConfig.hasActiveProfiles() - Currently target profile - '{}'", targetProfile);
+                    log.info("JpaConfig.hasActiveProfiles() - Currently target profile - '{}'", targetProfile);
                     if (profileName.equals(targetProfile)) {
                         matchedActiveProfiles++;
                     }
                 }
             }
         } else {
-            LOGGER.info("JpaConfig.hasActiveProfiles() - Currently NO active profiles.");
+            log.info("JpaConfig.hasActiveProfiles() - Currently NO active profiles.");
         }
 
-        LOGGER.info("JpaConfig.hasActiveProfiles() - end: matchedActiveProfiles: {} targetProfiles.length: {}", matchedActiveProfiles, targetProfiles.length);
+        log.info("JpaConfig.hasActiveProfiles() - end: matchedActiveProfiles: {} targetProfiles.length: {}", matchedActiveProfiles, targetProfiles.length);
 
         return matchedActiveProfiles == targetProfiles.length;
     }
