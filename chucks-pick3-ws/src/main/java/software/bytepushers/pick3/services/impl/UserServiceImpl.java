@@ -3,6 +3,7 @@ package software.bytepushers.pick3.services.impl;
 import com.amazonaws.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import software.bytepushers.pick3.component.ApplicationUtils;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     private final RoleRepository roleRepository;
 
@@ -82,10 +83,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(UserDto userDto) {
-        String username = userDto.getUsername();
-        log.debug("Create User. Username: {}", username);
         User user = new User();
         ApplicationUtils.copyProperties(userDto, user);
+        String username = userDto.getUsername();
+        log.debug("Create User. Username: {}", username);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         setAccountTypeAndRole(userDto.getType(), user);
         this.userRepository.save(user);
