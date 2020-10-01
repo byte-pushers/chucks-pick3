@@ -3,7 +3,7 @@ package software.bytepushers.pick3.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.apache.commons.lang3.EnumUtils;
-import org.springframework.beans.BeanUtils;
+import software.bytepushers.pick3.component.ApplicationUtils;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.enums.AccountType;
@@ -65,7 +65,7 @@ public class UserDto {
 
     public static UserDto fromEntity(User user) {
         UserDto userdto = new UserDto();
-        BeanUtils.copyProperties(user, userdto);
+        ApplicationUtils.copyProperties(user, userdto);
         userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
         userdto.setType(EnumUtils.getEnum(software.bytepushers.pick3.dto.enums.AccountType.class, user.getAccountType().getName()));
         return userdto;
