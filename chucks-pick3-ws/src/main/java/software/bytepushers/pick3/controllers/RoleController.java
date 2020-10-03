@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.repositories.RoleRepository;
@@ -12,6 +13,7 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.ROLES
 /**
  * The rest endpoint implementation for the User operations
  */
+@Log4j2
 @RestController
 @RequestMapping(ROLES_END_POINT)
 public class RoleController {
@@ -36,7 +38,10 @@ public class RoleController {
 
     @GetMapping
     public List<String> getRoles() {
-        return this.roleRepository.findAll().stream().map(Role::getName).collect(Collectors.toList());
+        return this.roleRepository.findAll().stream().map(role -> {
+            log.trace("Role: {}", role.getId());
+            return role.getName();
+        }).collect(Collectors.toList());
     }
 
 }

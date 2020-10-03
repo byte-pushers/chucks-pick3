@@ -47,6 +47,7 @@ public class UserController {
     public void save(@RequestBody @Validated(CreateUserRequest.class) UserDto userDto) {
         log.info("Save User. username: {}", userDto.getUsername());
         this.userServiceImpl.save(userDto);
+        log.info("User updated. username: {}", userDto.getUsername());
     }
 
     /**

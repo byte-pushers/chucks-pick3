@@ -20,6 +20,8 @@ import software.bytepushers.pick3.util.ModelUtils;
 
 import java.util.Optional;
 
+import static software.bytepushers.pick3.util.TestConstants.USER_USERNAME;
+
 /**
  * User service layer test case implementations
  */
@@ -64,6 +66,10 @@ public class UserServiceImplTest {
     public void testUserUpdateUsingUsername() {
         UserDto userDto = ModelUtils.userDto();
         User userEntity = ModelUtils.userEntity();
+        Mockito.when(this.accountRepository.findByName(userDto.getType().name()))
+                .thenReturn(Optional.of(userEntity.getAccountType()));
+        Mockito.when(this.roleRepository.findByNameLike(userDto.getType().getRoleName()))
+                .thenReturn(userEntity.getRoles().stream().findFirst());
         Mockito.when(this.userRepository.findByUsername(Mockito.anyString())).thenReturn(Optional.of(userEntity));
         this.userServiceImpl.update(userDto);
     }
@@ -105,5 +111,18 @@ public class UserServiceImplTest {
         User userEntity = ModelUtils.userEntity();
         Mockito.when(this.userRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
         this.userServiceImpl.delete(1L);
+    }
+
+    @Test
+    public void testUserByUsername() {
+        User userEntity = ModelUtils.userEntity();
+        Mockito.when(this.userRepository.findByUsername(userEntity.getUsername())).thenReturn(Optional.of(userEntity));
+        this.userServiceImpl.getByUsername(userEntity.getUsername());
+    }
+
+    @Test(expected = MalformedRequestException.class)
+    public void testUserByUsernameIfNotFound() {
+        Mockito.when(this.userRepository.findByUsername(USER_USERNAME)).thenReturn(Optional.empty());
+        this.userServiceImpl.getByUsername(USER_USERNAME);
     }
 }

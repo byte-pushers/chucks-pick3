@@ -24,4 +24,7 @@ public class ApplicationUtils {
                 .filter(property -> bean.getPropertyValue(property) == null).toArray(String[]::new);
     }
 
+    private ApplicationUtils(){
+    }
+
 }

@@ -1,8 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +13,6 @@ import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 @Log4j2
 @EnableWebMvc
@@ -30,13 +26,6 @@ public class NumbersController {
     public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
         this.pick3PlaysService = pick3PlaysService;
         this.pick3PlaysMapper = pick3PlaysMapper;
-    }
-
-    @GetMapping("/numbers/ping")
-    public Map<String, String> ping() {
-        Map<String, String> pong = new HashMap<>();
-        pong.put("pong", "Hello, World!");
-        return pong;
     }
 
     @GetMapping("/numbers")

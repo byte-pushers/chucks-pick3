@@ -19,15 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import static software.bytepushers.pick3.config.security.SecurityConstants.LOGIN_END_POINT;
-import static software.bytepushers.pick3.config.security.SecurityConstants.LOGOUT_END_POINT;
+import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 
 /**
  * Authentication rest endpoints.
  */
 @Log4j2
 @RestController
-public class LoginController {
+public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
 
@@ -35,7 +34,8 @@ public class LoginController {
 
     private final JwtUtils jwtUtils;
 
-    public LoginController(AuthenticationManager authenticationManager, UserService userService, JwtUtils jwtUtils) {
+    public AuthenticationController(AuthenticationManager authenticationManager,
+                                    UserService userService, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.jwtUtils = jwtUtils;
@@ -58,7 +58,7 @@ public class LoginController {
             this.authenticationManager.authenticate(authRequest);
             UserDto userDetails = this.userService.getByUsername(username);
             log.info("Login Successful. Username: {}", username);
-            String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
+            String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles(), TOKEN_EXPIRY_TIME);
             this.jwtUtils.sendTokenInCookie(token, request, response);
             return new ResponseEntity<>(new LoginResponseDto(token, userDetails), HttpStatus.OK);
         } catch (Exception e) {
@@ -75,11 +75,7 @@ public class LoginController {
      */
     @PostMapping(LOGOUT_END_POINT)
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            this.jwtUtils.cleanJwtTokenCookie(request, response);
-        } catch (Exception e) {
-            log.error("Logout error: {}", e.getMessage(), e);
-        }
+        this.jwtUtils.cleanJwtTokenCookie(request, response);
         return ResponseEntity.ok().build();
     }
 }

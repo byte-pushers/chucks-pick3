@@ -1,6 +1,5 @@
 package software.bytepushers.pick3.component;
 
-import com.amazonaws.util.StringUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +24,6 @@ public class AppMessages {
      * @return the message.
      */
     public String getMessage(String messageCode) {
-        String message;
-        if (!StringUtils.isNullOrEmpty(messageCode)) {
-            message = this.messageSource.getMessage(messageCode, null, Locale.ENGLISH);
-        } else {
-            message = "Message Not Found";
-        }
-        return message;
+        return this.messageSource.getMessage(messageCode, null, Locale.ENGLISH);
     }
 }

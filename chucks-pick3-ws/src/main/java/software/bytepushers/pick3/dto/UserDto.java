@@ -1,7 +1,9 @@
 package software.bytepushers.pick3.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.commons.lang3.EnumUtils;
 import software.bytepushers.pick3.component.ApplicationUtils;
 import software.bytepushers.pick3.domain.Role;
@@ -17,10 +19,13 @@ import java.util.stream.Collectors;
 /**
  * User DTO class
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @UserValidator(groups = {UserDto.CreateUserRequest.class})
 public class UserDto {
 
+    @NotNull(groups = {UpdateUserRequest.class}, message = "{user.id.required}")
     private Long id;
 
     @NotEmpty(groups = {CreateUserRequest.class}, message = "{user.firstname.required}")

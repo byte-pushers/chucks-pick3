@@ -15,8 +15,19 @@ public interface TestConstants {
 
     String USER_PASSWORD = "password";
 
+    String USER_BCRYPT_ENCODED_PASSWORD = "$2a$10$2G7MgjF0mRzjhPGWRhtdWuGkLDXgbZWTP3ZJLMLeu.rUBiwkk1stm";
+
     String USER_STATE = "CL";
 
     String USER_PHONE = "1234567890";
+
+    String USER_CELL_PHONE_TYPE = "Mobile";
+
+    String USER_ZIPCODE = "12345";
+
+    String USER_GAMBLE_FREQUENCY = "Gamble Frequency";
+
+    String USER_MIDDLE_NAME = "Middle Name";
+
 
 }

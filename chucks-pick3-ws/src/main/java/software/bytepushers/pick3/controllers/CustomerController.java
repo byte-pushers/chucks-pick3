@@ -5,6 +5,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import software.bytepushers.pick3.domain.Customer;
 import software.bytepushers.pick3.repositories.CustomerRepository;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customers")
-    public Customer createCustomer(@RequestBody Customer customer) {
+    public Customer createCustomer(@RequestBody @Valid Customer customer) {
         return customerRepository.save(customer);
     }
 

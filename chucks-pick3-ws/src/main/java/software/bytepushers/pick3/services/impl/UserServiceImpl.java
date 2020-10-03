@@ -1,7 +1,7 @@
 package software.bytepushers.pick3.services.impl;
 
-import com.amazonaws.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = Optional.empty();
         if (userId != null) {
             userOptional = this.userRepository.findById(userId);
-        } else if (!StringUtils.isNullOrEmpty(username)) {
+        } else if (StringUtils.isNotBlank(username)) {
             userOptional = this.userRepository.findByUsername(username);
         }
         if (userOptional.isEmpty()) {
