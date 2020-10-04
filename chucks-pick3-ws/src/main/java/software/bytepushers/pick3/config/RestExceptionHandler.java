@@ -56,7 +56,7 @@ public class RestExceptionHandler {
 
     @ExceptionHandler({MethodArgumentConversionNotSupportedException.class, HttpMessageNotReadableException.class})
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(Exception ex, WebRequest request) {
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getCause().getMessage(), "Invalid request input");
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage(), "Invalid request input");
         return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
