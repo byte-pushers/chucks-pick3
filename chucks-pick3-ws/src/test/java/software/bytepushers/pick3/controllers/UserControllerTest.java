@@ -2,6 +2,7 @@ package software.bytepushers.pick3.controllers;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
@@ -10,10 +11,15 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.ApiError;
 import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.util.ModelUtils;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.Collections;
 import java.util.Optional;
 
+import static java.util.Collections.emptyMap;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static software.bytepushers.pick3.config.security.SecurityConstants.*;
@@ -158,6 +164,26 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     }
 
     @Test
+    public void testUserByIdEndpointWithInvalidId() throws Exception {
+        MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
+                .contentType(MediaType.APPLICATION_JSON)
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
+                .content("Content")).andReturn().getResponse();
+        assert response.getStatus() == HttpStatus.BAD_REQUEST.value() : "Invlid request body should throw as Bad Request.";
+    }
+
+
+    @Test
+    public void testUserByIdEndpointWhenNotFound() throws Exception {
+        UserDto userDto = ModelUtils.userDto();
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenThrow(new MalformedRequestException());
+        MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
+                .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+        assert response.getStatus() == HttpStatus.BAD_REQUEST.value() : "Missing User must be thrown as bad request";
+    }
+
+    @Test
     public void testUserByIdEndpointMissingId() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
@@ -165,6 +191,18 @@ public class UserControllerTest extends AbstractLoginControllerTest {
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
         assert response.getStatus() == HttpStatus.METHOD_NOT_ALLOWED.value() : "User get by id endpoint must required user id to fetch details.";
+    }
+
+    @Test
+    public void testUserByIdEndpointWithDatabaseConstraintsError() throws Exception {
+        UserDto userDto = ModelUtils.userDto();
+        ConstraintViolation<Object> messagee = ConstraintViolationImpl.forBeanValidation("message.template", emptyMap(), emptyMap(),
+                "Invalid query", Object.class, null, null, null, null, null, null, null);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenThrow(new ConstraintViolationException(Collections.singleton(messagee)));
+        MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
+                .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+        assert response.getStatus() == HttpStatus.BAD_REQUEST.value() : "Database constraints error must be thrown as Bad Request.";
     }
 
     @Test

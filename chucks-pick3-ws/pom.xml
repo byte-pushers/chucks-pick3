@@ -798,6 +798,15 @@
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
                         <version>0.8.6</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/config/JpaConfig.*</exclude>
+                                <exclude>**/config/AWSConfiguration.*</exclude>
+                                <exclude>**/config/MyWebAppInitializer.*</exclude>
+                                <exclude>**/pick3/StreamLambdaHandler.**</exclude>
+                                <exclude>**/pick3/deploy/*</exclude>
+                            </excludes>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>coverage-initialize</id>
@@ -822,7 +831,7 @@
                                         <rule>
                                             <limits>
                                                 <limit>
-                                                    <minimum>0%</minimum>
+                                                    <minimum>85%</minimum>
                                                 </limit>
                                             </limits>
                                         </rule>

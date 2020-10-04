@@ -3,6 +3,7 @@ package software.bytepushers.pick3.config;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -53,10 +54,9 @@ public class RestExceptionHandler {
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
-    @ExceptionHandler({MethodArgumentConversionNotSupportedException.class})
-    public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentConversionNotSupportedException ex, WebRequest request) {
-        String error = ex.getName() + " should be of type " + ex.getRequiredType().getName();
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+    @ExceptionHandler({MethodArgumentConversionNotSupportedException.class, HttpMessageNotReadableException.class})
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatch(Exception ex, WebRequest request) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getCause().getMessage(), "Invalid request input");
         return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
