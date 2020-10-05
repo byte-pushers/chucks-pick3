@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import software.bytepushers.pick3.domain.AccountType;
 import software.bytepushers.pick3.domain.User;
-import software.bytepushers.pick3.dto.AccountTypeDto;
 import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.exceptions.MalformedRequestException;
@@ -85,13 +84,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetailsDto save(UserDto userDto) {
         UserDetailsDto userDetailsDto = userDto.getUser();
-        AccountTypeDto accountType = userDto.getAccountType();
         String username = userDetailsDto.getUsername();
         log.debug("Create User. Username: {}", username);
         User user = new User();
         BeanUtils.copyProperties(userDetailsDto, user);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        setAccountTypeAndRole(accountType.getType(), user);
+        setAccountTypeAndRole(userDto.getType(), user);
         User createdUser = this.userRepository.save(user);
         log.debug("User created. Username: {}", username);
         return fromEntity(createdUser);
@@ -104,7 +102,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetailsDto update(UserDto userDto) {
         UserDetailsDto userDetailsDto = userDto.getUser();
-        AccountTypeDto accountType = userDto.getAccountType();
         Long userId = userDetailsDto.getId();
         String username = userDetailsDto.getUsername();
         log.debug("Update User. id/username: {}/{}", userId, username);
@@ -121,7 +118,7 @@ public class UserServiceImpl implements UserService {
         //Not overriding the password during save/update operation
         User user = userOptional.get();
         BeanUtils.copyProperties(userDetailsDto, user, "id", "username", "password", "roles");
-        setAccountTypeAndRole(accountType.getType(), user);
+        setAccountTypeAndRole(userDto.getType(), user);
         User updatedUser = this.userRepository.save(user);
         return fromEntity(updatedUser);
     }

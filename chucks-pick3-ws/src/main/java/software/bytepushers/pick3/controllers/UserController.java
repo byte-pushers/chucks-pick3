@@ -52,7 +52,7 @@ public class UserController {
     public UserDetailsDto save(@RequestBody @Valid UserDto userDto) {
         List<Object> objectsToValidate = new ArrayList<>();
         objectsToValidate.add(userDto.getUser());
-        objectsToValidate.add(userDto.getAccountType());
+        objectsToValidate.add(userDto);
         validateRequest(objectsToValidate, CreateUserRequest.class);
         UserDetailsDto userDetailsDto = userDto.getUser();
         log.info("Save User. username: {}", userDetailsDto.getUsername());
