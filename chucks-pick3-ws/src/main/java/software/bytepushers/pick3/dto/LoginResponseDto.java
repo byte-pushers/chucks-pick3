@@ -16,6 +16,6 @@ public class LoginResponseDto {
 
     private String token;
 
-    private UserDto userDetail;
+    private UserDetailsDto userDetail;
 
 }
