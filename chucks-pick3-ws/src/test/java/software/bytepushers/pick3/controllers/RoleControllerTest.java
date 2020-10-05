@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
-import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.enums.AccountType;
 import software.bytepushers.pick3.repositories.RoleRepository;
 import software.bytepushers.pick3.util.ModelUtils;
@@ -38,11 +38,11 @@ public class RoleControllerTest extends AbstractLoginControllerTest {
      */
     @Test
     public void testCreateAccountTypes() throws Exception {
-        UserDto userDto = ModelUtils.userDto();
-        userDto.setRoles(Collections.singletonList("ROLE_" + ROLE_ADMIN));
+        UserDetailsDto userDetailsDto = ModelUtils.userDto().getUser();
+        userDetailsDto.setRoles(Collections.singletonList("ROLE_" + ROLE_ADMIN));
         User user = ModelUtils.userEntity();
         user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_ADMIN));
-        MockHttpServletResponse loginResponse = loginResponse(user, userDto);
+        MockHttpServletResponse loginResponse = loginResponse(user, userDetailsDto);
         List<String> roles = Arrays.asList(AccountType.BASIC.getRoleName(), AccountType.GUEST.getRoleName());
         String requestBodyInJson = this.objectMapper.writeValueAsString(roles);
         Mockito.when(this.roleRepository.findByName(Mockito.any())).thenReturn(Optional.empty());
@@ -59,7 +59,7 @@ public class RoleControllerTest extends AbstractLoginControllerTest {
      */
     @Test
     public void testGetAllAccountTypes() throws Exception {
-        UserDto userDto = ModelUtils.userDto();
+        UserDetailsDto userDto = ModelUtils.userDto().getUser();
         userDto.setRoles(Collections.singletonList("ROLE_" + ROLE_ADMIN));
         User user = ModelUtils.userEntity();
         user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_ADMIN));

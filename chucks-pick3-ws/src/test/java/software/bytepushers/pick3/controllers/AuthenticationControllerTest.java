@@ -46,7 +46,7 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
         User user = ModelUtils.userEntity();
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userRepository.findByUsername(loginDto.getUsername())).thenReturn(Optional.of(user));
-        Mockito.when(this.userService.getByUsername(loginDto.getUsername())).thenReturn(userDto);
+        Mockito.when(this.userService.getByUsername(loginDto.getUsername())).thenReturn(userDto.getUser());
         //Below line won't include the password as it is marked as only writable field.
         String requestBodyInJson = this.objectMapper.writeValueAsString(loginDto);
         MockHttpServletResponse response = mvc.perform(post(LOGIN_END_POINT)
@@ -155,7 +155,7 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
         User user = ModelUtils.userEntity();
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userRepository.findByUsername(loginDto.getUsername())).thenReturn(Optional.of(user));
-        Mockito.when(this.userService.getByUsername(loginDto.getUsername())).thenReturn(userDto);
+        Mockito.when(this.userService.getByUsername(loginDto.getUsername())).thenReturn(userDto.getUser());
         //Below line won't include the password as it is marked as only writable field.
         String requestBodyInJson = this.objectMapper.writeValueAsString(loginDto);
         MockHttpServletResponse response = mvc.perform(post(LOGIN_END_POINT)
@@ -225,11 +225,11 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
     public void testUpdateUserEndpointForMissingAccess() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         User user = ModelUtils.userEntity();
-        userDto.setId(5L);
-        userDto.setRoles(Collections.singletonList(AccountType.BASIC.getRoleName() + "_INVALID"));
+        userDto.getUser().setId(5L);
+        userDto.getUser().setRoles(Collections.singletonList(AccountType.BASIC.getRoleName() + "_INVALID"));
         user.getRoles().forEach(role -> role.setName(role.getName() + "_INVALID"));
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
-        MockHttpServletResponse loginResponse = loginResponse(user, userDto);
+        MockHttpServletResponse loginResponse = loginResponse(user, userDto.getUser());
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .cookie(loginResponse.getCookie(JWT_TOKEN_COOKIE_NAME))
@@ -247,11 +247,11 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
     public void testUpdateUserEndpointForMissingRoles() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         User user = ModelUtils.userEntity();
-        userDto.setId(5L);
-        userDto.setRoles(Collections.emptyList());
+        userDto.getUser().setId(5L);
+        userDto.getUser().setRoles(Collections.emptyList());
         user.setRoles(Collections.emptySet());
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
-        MockHttpServletResponse loginResponse = loginResponse(user, userDto);
+        MockHttpServletResponse loginResponse = loginResponse(user, userDto.getUser());
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .cookie(loginResponse.getCookie(JWT_TOKEN_COOKIE_NAME))
@@ -268,7 +268,8 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testRefreshTokenForAuthenticatedEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        String expiredJwtToken = this.jwtUtils.generateJwtToken(userDto.getUsername(), userDto.getRoles(), 0);
+        String expiredJwtToken = this.jwtUtils.generateJwtToken(userDto.getUser().getUsername(),
+                userDto.getUser().getRoles(), 0);
         Cookie expiredTokenCookie = new Cookie(JWT_TOKEN_COOKIE_NAME, expiredJwtToken);
         MockHttpServletResponse response = mvc.perform(post(LOGOUT_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -285,7 +286,8 @@ public class AuthenticationControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testExpiredTokenForIdealUser() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        String expiredJwtToken = this.jwtUtils.generateJwtToken(userDto.getUsername(), userDto.getRoles(), -600000);
+        String expiredJwtToken = this.jwtUtils.generateJwtToken(userDto.getUser().getUsername(),
+                userDto.getUser().getRoles(), -600000);
         Cookie expiredTokenCookie = new Cookie(JWT_TOKEN_COOKIE_NAME, expiredJwtToken);
         MockHttpServletResponse response = mvc.perform(put(LOGOUT_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)

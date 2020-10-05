@@ -10,10 +10,7 @@ import software.bytepushers.pick3.dto.UserDto.CreateUserRequest;
 import software.bytepushers.pick3.dto.UserDto.UpdateUserRequest;
 import software.bytepushers.pick3.validators.UserValidator;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +23,7 @@ import java.util.stream.Collectors;
 @UserValidator(groups = {CreateUserRequest.class})
 public class UserDetailsDto {
 
+    @NotNull(groups = {UpdateUserRequest.class}, message = "{user.firstname.required}")
     private Long id;
 
     @NotEmpty(groups = {CreateUserRequest.class}, message = "{user.firstname.required}")

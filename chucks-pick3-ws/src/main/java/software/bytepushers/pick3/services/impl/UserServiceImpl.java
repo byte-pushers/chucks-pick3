@@ -85,10 +85,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetailsDto save(UserDto userDto) {
         UserDetailsDto userDetailsDto = userDto.getUser();
-        String username = userDetailsDto.getUsername();
-        log.debug("Create User. Username: {}", username);
         User user = new User();
         ApplicationUtils.copyProperties(userDetailsDto, user);
+        String username = userDetailsDto.getUsername();
+        log.debug("Create User. Username: {}", username);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         setAccountTypeAndRole(userDto.getType(), user);
         User createdUser = this.userRepository.save(user);
@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
         }
         //Not overriding the password during save/update operation
         User user = userOptional.get();
-        ApplicationUtils.copyProperties(userDto, user, "id", "username", "password", "roles");
+        ApplicationUtils.copyProperties(userDto.getUser(), user, "id", "username", "password", "roles");
         setAccountTypeAndRole(userDto.getType(), user);
         User updatedUser = this.userRepository.save(user);
         return fromEntity(updatedUser);

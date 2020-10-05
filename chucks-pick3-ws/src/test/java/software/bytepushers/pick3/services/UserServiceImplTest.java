@@ -54,12 +54,16 @@ public class UserServiceImplTest {
     @Test
     public void testUserSave() {
         UserDto userDto = ModelUtils.userDto();
+        User userEntity = ModelUtils.userEntity();
+        Mockito.when(this.userRepository.save(Mockito.any())).thenReturn(userEntity);
         this.userServiceImpl.save(userDto);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUserSaveWithNull() {
-        this.userServiceImpl.save(null);
+        UserDto userDto = ModelUtils.userDto();
+        userDto.setUser(null);
+        this.userServiceImpl.save(userDto);
     }
 
     @Test
@@ -71,13 +75,13 @@ public class UserServiceImplTest {
         Mockito.when(this.roleRepository.findByNameLike(userDto.getType().getRoleName()))
                 .thenReturn(userEntity.getRoles().stream().findFirst());
         Mockito.when(this.userRepository.findByUsername(Mockito.anyString())).thenReturn(Optional.of(userEntity));
+        Mockito.when(this.userRepository.save(Mockito.any())).thenReturn(userEntity);
         this.userServiceImpl.update(userDto);
     }
 
     @Test(expected = MalformedRequestException.class)
     public void testUserUpdateIfUserNotFoundUsingUsername() {
         UserDto userDto = ModelUtils.userDto();
-        User userEntity = ModelUtils.userEntity();
         Mockito.when(this.userRepository.findByUsername(Mockito.anyString())).thenReturn(Optional.empty());
         this.userServiceImpl.update(userDto);
     }
@@ -86,15 +90,16 @@ public class UserServiceImplTest {
     public void testUserUpdateUsingUserId() {
         UserDto userDto = ModelUtils.userDto();
         User userEntity = ModelUtils.userEntity();
-        userDto.setId(1L);
+        userDto.getUser().setId(1L);
         Mockito.when(this.userRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(userEntity));
+        Mockito.when(this.userRepository.save(Mockito.any())).thenReturn(userEntity);
         this.userServiceImpl.update(userDto);
     }
 
     @Test(expected = MalformedRequestException.class)
     public void testUserUpdateIfUserNotFoundUsingUserId() {
         UserDto userDto = ModelUtils.userDto();
-        userDto.setId(1L);
+        userDto.getUser().setId(1L);
         Mockito.when(this.userRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
         this.userServiceImpl.update(userDto);
     }
@@ -108,7 +113,6 @@ public class UserServiceImplTest {
 
     @Test(expected = MalformedRequestException.class)
     public void testUserDeleteIfNotFound() {
-        User userEntity = ModelUtils.userEntity();
         Mockito.when(this.userRepository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
         this.userServiceImpl.delete(1L);
     }

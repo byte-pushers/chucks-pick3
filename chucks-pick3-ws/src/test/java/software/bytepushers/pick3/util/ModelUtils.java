@@ -5,6 +5,7 @@ import software.bytepushers.pick3.domain.Customer;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.LoginDto;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.dto.enums.AccountType;
 
@@ -16,16 +17,18 @@ public class ModelUtils {
 
     public static UserDto userDto() {
         UserDto userDto = new UserDto();
+        UserDetailsDto userDetailsDto = new UserDetailsDto();
         AccountType accountType = AccountType.PREMIUM;
+        userDetailsDto.setRoles(Collections.singletonList(accountType.getRoleName()));
+        userDetailsDto.setEmail(USER_EMAIL);
+        userDetailsDto.setFirstName(USER_FIRST_NAME);
+        userDetailsDto.setLastName(USER_LAST_NAME);
+        userDetailsDto.setPassword(USER_PASSWORD);
+        userDetailsDto.setPhone(USER_PHONE);
+        userDetailsDto.setState(USER_STATE);
+        userDetailsDto.setUsername(USER_USERNAME);
         userDto.setType(accountType);
-        userDto.setRoles(Collections.singletonList(accountType.getRoleName()));
-        userDto.setEmail(USER_EMAIL);
-        userDto.setFirstName(USER_FIRST_NAME);
-        userDto.setLastName(USER_LAST_NAME);
-        userDto.setPassword(USER_PASSWORD);
-        userDto.setPhone(USER_PHONE);
-        userDto.setState(USER_STATE);
-        userDto.setUsername(USER_USERNAME);
+        userDto.setUser(userDetailsDto);
         return userDto;
     }
 

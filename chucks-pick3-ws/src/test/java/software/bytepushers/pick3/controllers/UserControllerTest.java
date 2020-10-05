@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.ApiError;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.util.ModelUtils;
@@ -37,7 +38,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testCreateUserEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userRepository.findByUsername(userDto.getUsername())).thenReturn(Optional.empty());
+        Mockito.when(this.userRepository.findByUsername(userDto.getUser().getUsername())).thenReturn(Optional.empty());
         //Below line won't include the password as it is marked as only writable field.
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
         MockHttpServletResponse response = mvc.perform(post(USERS_END_POINT)
@@ -69,7 +70,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testSuccessCreateUserEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userRepository.findByUsername(userDto.getUsername())).thenReturn(Optional.empty());
+        Mockito.when(this.userRepository.findByUsername(userDto.getUser().getUsername())).thenReturn(Optional.empty());
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(MapperFeature.USE_ANNOTATIONS);
         String requestBodyInJson = mapper.writeValueAsString(userDto);
@@ -82,8 +83,8 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testCreateUserEndpointIfNamesNotProvided() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        userDto.setFirstName(null);
-        userDto.setLastName(null);
+        userDto.getUser().setFirstName(null);
+        userDto.getUser().setLastName(null);
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
         MockHttpServletResponse response = mvc.perform(post(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -100,7 +101,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(MapperFeature.USE_ANNOTATIONS);
         String requestBodyInJson = mapper.writeValueAsString(userDto);
-        Mockito.when(this.userRepository.findByUsername(userDto.getUsername()))
+        Mockito.when(this.userRepository.findByUsername(userDto.getUser().getUsername()))
                 .thenReturn(Optional.of(userEntity));
         MockHttpServletResponse response = mvc.perform(post(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -117,7 +118,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(MapperFeature.USE_ANNOTATIONS);
         String requestBodyInJson = mapper.writeValueAsString(userDto);
-        Mockito.when(this.userRepository.findByEmail(userDto.getEmail())).thenReturn(Optional.of(userEntity));
+        Mockito.when(this.userRepository.findByEmail(userDto.getUser().getEmail())).thenReturn(Optional.of(userEntity));
         MockHttpServletResponse response = mvc.perform(post(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyInJson)).andReturn().getResponse();
@@ -142,7 +143,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUpdateUserEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        userDto.setId(5L);
+        userDto.getUser().setId(5L);
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -154,13 +155,13 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserByIdEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
         assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user details successfully.";
-        UserDto createdUser = this.objectMapper.readValue(response.getContentAsString(), UserDto.class);
-        assert createdUser.getFirstName().equals(userDto.getFirstName()) : "Created user details must be same as provided in request.";
+        UserDetailsDto createdUser = this.objectMapper.readValue(response.getContentAsString(), UserDetailsDto.class);
+        assert createdUser.getFirstName().equals(userDto.getUser().getFirstName()) : "Created user details must be same as provided in request.";
     }
 
     @Test
@@ -175,7 +176,6 @@ public class UserControllerTest extends AbstractLoginControllerTest {
 
     @Test
     public void testUserByIdEndpointWhenNotFound() throws Exception {
-        UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenThrow(new MalformedRequestException());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
@@ -186,7 +186,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserByIdEndpointMissingId() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT)
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -195,7 +195,6 @@ public class UserControllerTest extends AbstractLoginControllerTest {
 
     @Test
     public void testUserByIdEndpointWithDatabaseConstraintsError() throws Exception {
-        UserDto userDto = ModelUtils.userDto();
         ConstraintViolation<Object> messagee = ConstraintViolationImpl.forBeanValidation("message.template", emptyMap(), emptyMap(),
                 "Invalid query", Object.class, null, null, null, null, null, null, null);
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenThrow(new ConstraintViolationException(Collections.singleton(messagee)));
@@ -208,7 +207,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserDeleteByIdEndpoint() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT + "/5")
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -218,7 +217,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserDeleteByIdEndpointMissingId() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT)
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -228,7 +227,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserDeleteByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT + "/5")
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -238,7 +237,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto);
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
@@ -249,7 +248,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUpdateUserEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        userDto.setId(5L);
+        userDto.getUser().setId(5L);
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
