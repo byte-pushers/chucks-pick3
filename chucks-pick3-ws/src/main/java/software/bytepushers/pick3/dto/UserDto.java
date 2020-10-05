@@ -2,8 +2,6 @@ package software.bytepushers.pick3.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.EnumUtils;
-import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.enums.AccountType;
 
 import javax.validation.constraints.NotNull;
@@ -25,13 +23,6 @@ public class UserDto {
     }
 
     public interface UpdateUserRequest {
-    }
-
-    public static UserDto fromEntity(User user) {
-        UserDto userdto = new UserDto();
-        userdto.setUser(UserDetailsDto.fromEntity(user));
-        userdto.setType(EnumUtils.getEnum(AccountType.class, user.getAccountType().getName()));
-        return userdto;
     }
 
 }
