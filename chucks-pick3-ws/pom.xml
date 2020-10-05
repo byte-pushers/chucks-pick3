@@ -623,6 +623,15 @@
             </dependencies>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.0</version>
+                        <configuration>
+                            <reportsDirectory>${surefireAndFailsafeReport.dir}</reportsDirectory>
+                            <argLine>@{argLine} --illegal-access=permit</argLine>
+                        </configuration>
+                    </plugin>
                     <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-shade-plugin</artifactId>
@@ -730,6 +739,11 @@
                             <execution>
                                 <id>default-jar</id>
                                 <phase>none</phase>
+                                <configuration>
+                                    <!--<excludes>
+                                        <exclude>software/bytepushers/pick3/deploy/*.*</exclude>
+                                    </excludes>-->
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -774,6 +788,45 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.6</version>
+                        <executions>
+                            <execution>
+                                <id>coverage-initialize</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>coverage-report</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>coverage-check</id>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <rule>
+                                            <limits>
+                                                <limit>
+                                                    <minimum>0%</minimum>
+                                                </limit>
+                                            </limits>
+                                        </rule>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
