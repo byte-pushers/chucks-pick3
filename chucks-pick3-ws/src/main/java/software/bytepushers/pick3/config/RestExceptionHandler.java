@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException;
-import software.bytepushers.pick3.controllers.ApiError;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
+import software.bytepushers.pick3.dto.ApiError;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;

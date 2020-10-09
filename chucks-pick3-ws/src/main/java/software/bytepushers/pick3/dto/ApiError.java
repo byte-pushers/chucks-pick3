@@ -1,4 +1,4 @@
-package software.bytepushers.pick3.controllers;
+package software.bytepushers.pick3.dto;
 
 import org.springframework.http.HttpStatus;
 

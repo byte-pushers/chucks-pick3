@@ -18,6 +18,8 @@ import software.bytepushers.pick3.dto.LoginResponseDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.services.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import static software.bytepushers.pick3.config.security.SecurityConstants.LOGIN_END_POINT;
@@ -49,7 +51,8 @@ public class LoginController {
      * @return the logged in user details
      */
     @PostMapping
-    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginDto loginDto) {
+    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginDto loginDto,
+                                                  HttpServletRequest request, HttpServletResponse response) {
         try {
             String username = loginDto.getUsername();
             String password = loginDto.getPassword();
@@ -59,6 +62,7 @@ public class LoginController {
             UserDto userDetails = this.userService.getByUsername(username);
             log.info("Login Successful. Username: {}", username);
             String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
+            this.jwtUtils.sendTokenInCookie(token, request, response);
             return new ResponseEntity<>(new LoginResponseDto(token, userDetails), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Login error: {}", e.getMessage(), e);

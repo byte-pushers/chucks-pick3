@@ -6,10 +6,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.repositories.RoleRepository;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.services.UserService;
@@ -18,6 +18,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static software.bytepushers.pick3.dto.UserDto.fromEntity;
 
 /**
  * Service layer implementation for the user operations.
@@ -52,7 +54,7 @@ public class UserServiceImpl implements UserService {
             log.debug("User not found. Id: {}", id);
             throw new MalformedRequestException("User Not Found");
         }
-        return getUserDto(userOptional.get());
+        return fromEntity(userOptional.get());
     }
 
     /**
@@ -68,7 +70,7 @@ public class UserServiceImpl implements UserService {
             throw new MalformedRequestException("User Not Found");
         }
         User user = userOptional.get();
-        return getUserDto(user);
+        return fromEntity(user);
     }
 
     /**
@@ -127,13 +129,5 @@ public class UserServiceImpl implements UserService {
         UserDto userById = getById(id);
         this.userRepository.deleteById(userById.getId());
     }
-
-    private UserDto getUserDto(User user) {
-        UserDto userdto = new UserDto();
-        BeanUtils.copyProperties(user, userdto);
-        userdto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
-        return userdto;
-    }
-
 
 }
