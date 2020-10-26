@@ -4,9 +4,16 @@
       <span style="font-size: 1.5em;font-weight: bolder;">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
       <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTime()}}</span><br><br>
       <span style="font-size: 1.0em;font-weight: bold;">{{data.getDrawDate() | date}}</span><br><br>
-      <span class="dot">2</span>
-      <span class="dot">9</span>
-      <span class="dot">0</span>
+      <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+        <span class="dot">2</span>
+        <span class="dot">9</span>
+        <span class="dot">0</span>
+      </div>
+      <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+      </div>
+
+
+
       <p>{{slideNumber}}</p>
     </ion-col>
   </ion-row>

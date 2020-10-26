@@ -7,4 +7,6 @@ export interface Pick3DrawTimeCard {
     setTitle(title: string): void;
     getState(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     setState(state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum): void;
+    getDrawTime(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
+    setDrawTime(drawTime: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum): void;
 }
