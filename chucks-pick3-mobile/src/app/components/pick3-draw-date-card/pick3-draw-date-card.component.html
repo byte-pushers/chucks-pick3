@@ -10,10 +10,8 @@
         <span class="dot">0</span>
       </div>
       <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+        <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
       </div>
-
-
-
       <p>{{slideNumber}}</p>
     </ion-col>
   </ion-row>

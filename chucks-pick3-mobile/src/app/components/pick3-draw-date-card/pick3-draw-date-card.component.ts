@@ -6,6 +6,7 @@ import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
 import {Pick3DrawTime} from "../../models/pick3-draw-time";
 import {Pick3StateLottery} from "../../models/pick3-state-lottery";
 import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
+import {CountdownTimerService} from "../countdown-timer/countdown-timer.service";
 
 @Component({
   selector: 'pick3-draw-date-card',
