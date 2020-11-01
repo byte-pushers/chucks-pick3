@@ -39,9 +39,9 @@ public class RoleControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testCreateAccountTypes() throws Exception {
         UserDetailsDto userDetailsDto = ModelUtils.userDto().getUser();
-        userDetailsDto.setRoles(Collections.singletonList("ROLE_" + ROLE_ADMIN));
+        userDetailsDto.setRoles(Collections.singletonList("ROLE_" + ROLE_BASIC));
         User user = ModelUtils.userEntity();
-        user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_ADMIN));
+        user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_BASIC));
         MockHttpServletResponse loginResponse = loginResponse(user, userDetailsDto);
         List<String> roles = Arrays.asList(AccountType.BASIC.getRoleName(), AccountType.GUEST.getRoleName());
         String requestBodyInJson = this.objectMapper.writeValueAsString(roles);
@@ -60,9 +60,9 @@ public class RoleControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testGetAllAccountTypes() throws Exception {
         UserDetailsDto userDto = ModelUtils.userDto().getUser();
-        userDto.setRoles(Collections.singletonList("ROLE_" + ROLE_ADMIN));
+        userDto.setRoles(Collections.singletonList("ROLE_" + ROLE_BASIC));
         User user = ModelUtils.userEntity();
-        user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_ADMIN));
+        user.getRoles().forEach(role -> role.setName("ROLE_" + ROLE_BASIC));
         MockHttpServletResponse loginResponse = loginResponse(user, userDto);
         Role role = ModelUtils.role();
         Mockito.when(this.roleRepository.findAll()).thenReturn(Collections.singletonList(role));

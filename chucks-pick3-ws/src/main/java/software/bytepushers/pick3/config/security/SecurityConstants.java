@@ -16,8 +16,6 @@ public interface SecurityConstants {
 
     String ROLE_PREMIUM = "PREMIUM";
 
-    String ROLE_ADMIN = "ADMIN";
-
     String LOGIN_END_POINT = "/api/v1/login";
 
     String LOGOUT_END_POINT = "/api/v1/logout";

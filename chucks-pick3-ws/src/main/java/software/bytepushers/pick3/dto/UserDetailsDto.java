@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @UserValidator(groups = {CreateUserRequest.class})
 public class UserDetailsDto {
 
-    @NotNull(groups = {UpdateUserRequest.class}, message = "{user.firstname.required}")
+    @NotNull(groups = {UpdateUserRequest.class}, message = "{user.id.required}")
     private Long id;
 
     @NotEmpty(groups = {CreateUserRequest.class}, message = "{user.firstname.required}")
