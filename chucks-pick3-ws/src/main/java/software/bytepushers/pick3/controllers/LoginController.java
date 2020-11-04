@@ -1,8 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import software.bytepushers.pick3.component.JwtUtils;
 import software.bytepushers.pick3.dto.LoginDto;
 import software.bytepushers.pick3.dto.LoginResponseDto;
-import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +57,7 @@ public class LoginController {
             log.info("Login. Username: {}", username);
             UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
             this.authenticationManager.authenticate(authRequest);
-            UserDto userDetails = this.userService.getByUsername(username);
+            UserDetailsDto userDetails = this.userService.getByUsername(username);
             log.info("Login Successful. Username: {}", username);
             String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
             this.jwtUtils.sendTokenInCookie(token, request, response);

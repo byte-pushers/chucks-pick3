@@ -1,22 +1,21 @@
 package software.bytepushers.pick3.domain;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-/**
- * Application Roles entity model.
- */
 @Getter
 @Setter
 @Entity
-public class Role {
+public class AccountType {
 
     @Id
-    @Column(name = "id", nullable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "ID_GENERATOR")
-    private Long id;
+    @Column(name = "id", nullable = false, updatable = false, unique = true)
+    private long id;
 
     private String name;
+
 }

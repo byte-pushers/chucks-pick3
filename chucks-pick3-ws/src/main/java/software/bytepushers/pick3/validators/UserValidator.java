@@ -20,18 +20,16 @@ public @interface UserValidator {
 
     /**
      * The default message.
-     *
-     * @return
      */
-    String message() default "{user.details.missing}";
+    String message() default "{user.details.required}";
 
     /**
-     * @return
+     * Groups to execute validator
      */
     Class<?>[] groups() default {};
 
     /**
-     * @return
+     * Payload
      */
     Class<? extends Payload>[] payload() default {};
 }
