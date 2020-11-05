@@ -3,6 +3,14 @@
   width: 40%;
   height: 100%;
   border: 1px solid red;
+
+  > ion-icon.selected {
+    color: black;
+  }
+
+  > ion-icon.not-selected {
+    color: #d7d7d7;
+  }
 }
 
 .draw-time-title {
@@ -11,6 +19,14 @@
   height: 100%;
   border: 1px solid green;
   line-height: 67px;
+
+  > span.not-selected {
+    color: #d7d7d7;
+  }
+
+  > span.selected {
+    color: black;
+  }
 }
 
 .generated-picks-indicator {
@@ -20,4 +36,38 @@
   height: 100%;
   line-height: 3em;
   float: right;
+  background-color: #d7d7d7;
 }
+
+.generated-picks-indicator.not-drawn-yet,
+.generated-picks-indicator.drawn,
+.generated-picks-indicator.drawn-with-generated-picks-with-no-winners {
+  background-color: #d7d7d7;
+}
+
+.generated-picks-indicator.not-drawn-yet.selected,
+.generated-picks-indicator.not-drawn.selected,
+.generated-picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
+  background-color: black;
+  width: 16%;
+}
+
+.generated-picks-indicator.not-drawn-yet-with-generated-picks {
+  background-color: yellow;
+}
+
+.generated-picks-indicator.not-drawn-yet-with-generated-picks.selected {
+  background-color: yellow;
+  width: 16%;
+}
+
+.generated-picks-indicator.drawn-with-generated-picks-with-winners {
+  background-color: green;
+}
+
+.generated-picks-indicator.drawn-with-generated-picks-with-winners.selected {
+  background-color: green;
+  width: 16%;
+}
+
+

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Pick3DrawDateCard} from "../../models/pick3-draw-date-card";
 import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
@@ -6,7 +6,7 @@ import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
 import {Pick3DrawTime} from "../../models/pick3-draw-time";
 import {Pick3StateLottery} from "../../models/pick3-state-lottery";
 import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
-import {CountdownTimerService} from "../countdown-timer/countdown-timer.service";
+import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
 
 @Component({
   selector: 'pick3-draw-date-card',
@@ -18,13 +18,15 @@ export class Pick3DrawDateCardComponent implements OnInit {
   @Input() data: Pick3DrawDateCard;
   @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
+  private pick3DrawState: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum =
+      Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
   public showCountDownToDrawing: boolean = false;
 
   drawTimes: Array<Pick3DrawTimeCard> = [
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT})
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: null}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY), icon: 'day-icon'}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT), icon: 'night-icon'})
   ];
 
   private pick3StateLottery: Pick3StateLottery;
@@ -35,6 +37,9 @@ export class Pick3DrawDateCardComponent implements OnInit {
 
   ngOnInit() {
     let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
+    // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
+
+    // currentDrawTime.setSelected(true);
     this.setData(this.getDrawStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
     // this.displayDrawTime(this.data.getDrawDate());
   }
@@ -55,7 +60,24 @@ export class Pick3DrawDateCardComponent implements OnInit {
 
     if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)) {
       // this.data.setWinningNumber(this.pick3WebScrappingService.scrapeResults(pick3DrawTime.getDateTime(), pick3DrawTime.getType()));
+      switch(this.pick3DrawState) {
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
+          break;
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+          break;
+        default:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+      }
     } else {
+      switch(this.pick3DrawState) {
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS);
+          break;
+        default:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+      }
       this.showCountDownToDrawing = true;
     }
   }
@@ -63,5 +85,23 @@ export class Pick3DrawDateCardComponent implements OnInit {
   private displayDrawTime(drawDate: Date): void {
     const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTime(drawDate);
     this.setData(this.getDrawStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+  }
+
+  private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
+    this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
+      const compareResult = drawTime.compareTo(pick3DrawDateCard);
+
+      if (drawTime.getTitle().toUpperCase() === Pick3DrawTimeEnum.toString(pick3DrawDateCard.getDrawTime())) {
+        drawTime.setSelected(true);
+      }
+
+      if (compareResult === 0) {
+        drawTime.setState(pick3DrawTimeCardStateEnum);
+      } else if (compareResult === -1) {
+        drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+      } else if (compareResult === 1) {
+        drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+      }
+    });
   }
 }
