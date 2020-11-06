@@ -1,9 +1,11 @@
+import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+
 export interface Pick3DrawDateCard {
     getTitle(): string;
     getDrawState(): string;
     setDrawState(drawState: string): void;
-    getDrawTime(): string;
-    setDrawTime(drawTime: string);
+    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum);
     getDrawDate(): Date;
     setDrawDate(drawDate: Date): void;
     getUpcomingDrawingTime(): Date;

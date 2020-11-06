@@ -2,6 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Pick3DrawDateCard} from "../../models/pick3-draw-date-card";
 import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
+import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
+import {Pick3DrawTime} from "../../models/pick3-draw-time";
+import {Pick3StateLottery} from "../../models/pick3-state-lottery";
+import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
+import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
 
 @Component({
   selector: 'pick3-draw-date-card',
@@ -11,22 +16,100 @@ import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain"
 export class Pick3DrawDateCardComponent implements OnInit {
   @Input() slideNumber: number;
   @Input() data: Pick3DrawDateCard;
+  @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+
+  private pick3DrawState: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum =
+      Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+  public showCountDownToDrawing: boolean = false;
+
   drawTimes: Array<Pick3DrawTimeCard> = [
-    new Pick3DrawTimeCardDomain({title: 'Morning'}),
-    new Pick3DrawTimeCardDomain({title: 'Day'}),
-    new Pick3DrawTimeCardDomain({title: 'Evening'}),
-    new Pick3DrawTimeCardDomain({title: 'Night'})
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: null}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY), icon: 'day-icon'}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT), icon: 'night-icon'})
   ];
 
-  constructor() {
+  private pick3StateLottery: Pick3StateLottery;
 
+  constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
   }
 
   ngOnInit() {
-    this.data.setBackgroundImage('https://blairhouseinn.com/wp-content/uploads/2020/02/Bluebonnets-in-Texas-Hill-Country-1170x475.jpg');
-    this.data.setDrawState('Texas');
-    this.data.setDrawTime('Evening');
-    this.data.setDrawDate(new Date());
+    /*const someDateTime = new Date();
+    someDateTime.setHours(17, 0, 0, 0);
+    let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);*/
+    let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
+        // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
+
+    // currentDrawTime.setSelected(true);
+    this.setData(this.getDrawStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+    // this.displayDrawTime(this.data.getDrawDate());
   }
 
+  private getCurrentDrawTime(): Pick3DrawTime {
+    return this.pick3StateLottery.getCurrentDrawingTime();
+  }
+
+  /*private getDrawTime(someDateTime: Date): Pick3DrawTime {
+    return this.pick3StateLottery.getDrawingTime(someDateTime);
+  }*/
+
+  private getDrawStateName(): string {
+    return this.pick3StateLottery.getStateName();
+  }
+
+  private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string): void {
+    this.data.setBackgroundImage(backgroundImageUrl);
+    this.data.setDrawState(stateName);
+    this.data.setDrawTime(Pick3DrawTimeEnum.toEnum(pick3DrawTime.getType()));
+    this.data.setDrawDate(pick3DrawTime.getDateTime());
+
+    if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
+      // this.data.setWinningNumber(this.pick3WebScrappingService.scrapeResults(pick3DrawTime.getDateTime(), pick3DrawTime.getType()));
+      switch(this.pick3DrawState) {
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
+          break;
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+          break;
+        default:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+      }
+      this.showCountDownToDrawing = false;
+    } else {
+      switch(this.pick3DrawState) {
+        case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS);
+          break;
+        default:
+          this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+      }
+      this.showCountDownToDrawing = true;
+    }
+  }
+
+  private displayDrawTime(drawDate: Date): void {
+    const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTime(drawDate);
+    this.setData(this.getDrawStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+  }
+
+  private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
+    this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
+      const compareResult = drawTime.compareTo(pick3DrawDateCard);
+
+      if (drawTime.getTitle().toUpperCase() === Pick3DrawTimeEnum.toString(pick3DrawDateCard.getDrawTime())) {
+        drawTime.setSelected(true);
+      }
+
+      if (compareResult === 0) {
+        drawTime.setState(pick3DrawTimeCardStateEnum);
+      } else if (compareResult === -1) {
+        drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+      } else if (compareResult === 1) {
+        drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+      }
+    });
+  }
 }
