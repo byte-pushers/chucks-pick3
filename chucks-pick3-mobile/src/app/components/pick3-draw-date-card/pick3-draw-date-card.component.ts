@@ -36,8 +36,11 @@ export class Pick3DrawDateCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*const someDateTime = new Date();
+    someDateTime.setHours(17, 0, 0, 0);
+    let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);*/
     let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
-    // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
+        // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
 
     // currentDrawTime.setSelected(true);
     this.setData(this.getDrawStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
@@ -47,6 +50,10 @@ export class Pick3DrawDateCardComponent implements OnInit {
   private getCurrentDrawTime(): Pick3DrawTime {
     return this.pick3StateLottery.getCurrentDrawingTime();
   }
+
+  /*private getDrawTime(someDateTime: Date): Pick3DrawTime {
+    return this.pick3StateLottery.getDrawingTime(someDateTime);
+  }*/
 
   private getDrawStateName(): string {
     return this.pick3StateLottery.getStateName();
@@ -58,7 +65,7 @@ export class Pick3DrawDateCardComponent implements OnInit {
     this.data.setDrawTime(Pick3DrawTimeEnum.toEnum(pick3DrawTime.getType()));
     this.data.setDrawDate(pick3DrawTime.getDateTime());
 
-    if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)) {
+    if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
       // this.data.setWinningNumber(this.pick3WebScrappingService.scrapeResults(pick3DrawTime.getDateTime(), pick3DrawTime.getType()));
       switch(this.pick3DrawState) {
         case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
@@ -70,6 +77,7 @@ export class Pick3DrawDateCardComponent implements OnInit {
         default:
           this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
       }
+      this.showCountDownToDrawing = false;
     } else {
       switch(this.pick3DrawState) {
         case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:

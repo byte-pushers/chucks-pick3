@@ -15,4 +15,6 @@ export interface Pick3StateLottery {
     getBackgroundImageUrl(): string;
 
     winningNumberHasBeenDrawn(pick3DrawTime: Pick3DrawTime): Boolean;
+
+    getDrawingTime(currentTime: Date): Pick3DrawTime;
 }
