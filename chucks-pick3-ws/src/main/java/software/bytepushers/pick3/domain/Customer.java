@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @Data
 @Entity
 public class Customer {
+
     @Id
     @Column(name = "id", nullable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "ID_GENERATOR")
@@ -51,7 +52,6 @@ public class Customer {
     protected String gambleFrequency;
 
     public Customer() {
-
     }
 
     public Customer(String firstName, String email, String state, String zipCode, String cellPhoneType, String gambleFrequency) {

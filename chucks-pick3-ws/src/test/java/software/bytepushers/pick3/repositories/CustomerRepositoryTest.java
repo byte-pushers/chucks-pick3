@@ -21,6 +21,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @DisabledIfSystemProperty(named="run.jpa.tests", matches="false")
 public class CustomerRepositoryTest {
+
     @Autowired private DataSource dataSource;
     @Autowired private TestEntityManager entityManager;
     @Autowired private CustomerRepository customerRepository;

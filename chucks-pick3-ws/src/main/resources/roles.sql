@@ -1,0 +1,1 @@
+insert into Role(id, name) values (1, 'ROLE_GUEST'), (2, 'ROLE_BASIC'), (3, 'ROLE_PREMIUM');

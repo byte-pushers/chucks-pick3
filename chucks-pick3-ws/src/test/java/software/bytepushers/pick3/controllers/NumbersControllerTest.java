@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.stubbing.Answer;
 import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
-import software.bytepushers.pick3.controllers.exceptions.MalformedRequestException;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.api.v1.DrawingTime;
