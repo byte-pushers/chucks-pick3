@@ -12,4 +12,6 @@ export interface Pick3DrawDateCard {
     hasGeneratedWinner(): boolean;
     getBackgroundImage(): string;
     setBackgroundImage(backgroundImage: string): void;
+    //getWinningNumber(): number;
+    //setWinningNumber(winningNumber: number): void;
 }

@@ -66,7 +66,9 @@ export class Pick3DrawDateCardComponent implements OnInit {
     this.data.setDrawDate(pick3DrawTime.getDateTime());
 
     if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
-      // this.data.setWinningNumber(this.pick3WebScrappingService.scrapeResults(pick3DrawTime.getDateTime(), pick3DrawTime.getType()));
+      //this.pick3WebScrappingService.scrapeResults(pick3DrawTime.getDateTime(), pick3DrawTime.getType()).then(drawingResult => {
+        // this.data.setWinningNumber(drawingResult.drawResult);
+      //});
       switch(this.pick3DrawState) {
         case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
           this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
