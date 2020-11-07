@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import software.bytepushers.pick3.domain.AccountType;
 import software.bytepushers.pick3.domain.User;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.repositories.AccountRepository;
@@ -18,7 +19,7 @@ import software.bytepushers.pick3.services.UserService;
 import java.util.Collections;
 import java.util.Optional;
 
-import static software.bytepushers.pick3.dto.UserDto.fromEntity;
+import static software.bytepushers.pick3.dto.UserDetailsDto.fromEntity;
 
 /**
  * Service layer implementation for the user operations.
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional
-    public UserDto getById(Long id) {
+    public UserDetailsDto getById(Long id) {
         log.debug("Fetch User. Id: {}", id);
         Optional<User> userOptional = this.userRepository.findById(id);
         if (userOptional.isEmpty()) {
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional
-    public UserDto getByUsername(String username) {
+    public UserDetailsDto getByUsername(String username) {
         log.debug("Fetch User. Id: {}", username);
         Optional<User> userOptional = this.userRepository.findByUsername(username);
         if (userOptional.isEmpty()) {
@@ -79,15 +80,17 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional
-    public void save(UserDto userDto) {
-        String username = userDto.getUsername();
+    public UserDetailsDto save(UserDto userDto) {
+        UserDetailsDto userDetailsDto = userDto.getUser();
+        String username = userDetailsDto.getUsername();
         log.debug("Create User. Username: {}", username);
         User user = new User();
-        BeanUtils.copyProperties(userDto, user);
+        BeanUtils.copyProperties(userDetailsDto, user);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         setAccountTypeAndRole(userDto.getType(), user);
-        this.userRepository.save(user);
+        User createdUser = this.userRepository.save(user);
         log.debug("User created. Username: {}", username);
+        return fromEntity(createdUser);
     }
 
     /**
@@ -95,9 +98,10 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Transactional
-    public void update(UserDto userDto) {
-        Long userId = userDto.getId();
-        String username = userDto.getUsername();
+    public UserDetailsDto update(UserDto userDto) {
+        UserDetailsDto userDetailsDto = userDto.getUser();
+        Long userId = userDetailsDto.getId();
+        String username = userDetailsDto.getUsername();
         log.debug("Update User. id/username: {}/{}", userId, username);
         Optional<User> userOptional = Optional.empty();
         if (userId != null) {
@@ -111,9 +115,10 @@ public class UserServiceImpl implements UserService {
         }
         //Not overriding the password during save/update operation
         User user = userOptional.get();
-        BeanUtils.copyProperties(userDto, user, "id", "username", "password", "roles");
+        BeanUtils.copyProperties(userDetailsDto, user, "id", "username", "password", "roles");
         setAccountTypeAndRole(userDto.getType(), user);
-        this.userRepository.save(user);
+        User updatedUser = this.userRepository.save(user);
+        return fromEntity(updatedUser);
     }
 
     /**
@@ -123,7 +128,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void delete(Long id) {
         log.debug("Delete User. Id: {}", id);
-        UserDto userById = getById(id);
+        UserDetailsDto userById = getById(id);
         this.userRepository.deleteById(userById.getId());
     }
 

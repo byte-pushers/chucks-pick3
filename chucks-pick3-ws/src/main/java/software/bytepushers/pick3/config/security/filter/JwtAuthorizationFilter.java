@@ -49,7 +49,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         if (StringUtils.isNotBlank(jwtToken)) {
             UsernamePasswordAuthenticationToken authentication = getAuthentication(jwtToken, request, response);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            log.info("Request authenticated.");
         }
         chain.doFilter(request, response);
     }
@@ -86,13 +85,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         try {
             ApplicationUser applicationUser = this.jwtUtils.parseToken(jwtToken);
             token = new UsernamePasswordAuthenticationToken(applicationUser.getUsername(), null, applicationUser.getAuthorities());
+            log.info("Request authenticated.");
         } catch (ExpiredJwtException e) {
             log.error("Error. Token expired: {}", e.getMessage());
             try {
                 Claims expiredJwtTokenClaims = e.getClaims();
                 LocalDateTime tokenExpiredAt = expiredJwtTokenClaims.getExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
                 long refreshTokenWindow = Duration.between(tokenExpiredAt, LocalDateTime.now()).toSeconds();
-                log.info("Refresh Token Window(in minutes): {}", refreshTokenWindow);
+                log.info("Refresh Token Window (in seconds): {}", refreshTokenWindow);
                 if (TOKEN_REFRESH_WINDOW_IN_MINUTES > refreshTokenWindow) {
                     log.info("Lucky User. Refreshing token before it getting expired.");
                     String username = expiredJwtTokenClaims.getSubject();
@@ -101,8 +101,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     this.jwtUtils.sendTokenInCookie(refreshedToken, request, response);
 
                     ApplicationUser refreshedUser = this.jwtUtils.parseToken(refreshedToken);
-                    token = new UsernamePasswordAuthenticationToken(refreshedUser.getUsername(),
-                            null, refreshedUser.getAuthorities());
+                    token = new UsernamePasswordAuthenticationToken(refreshedUser.getUsername(), null, refreshedUser.getAuthorities());
+                    log.info("Request authenticated.");
                 } else {
                     request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, "Token expired.");
                 }
