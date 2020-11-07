@@ -17,7 +17,7 @@ public final class LocalDateTimeConverter implements Converter<String, LocalDate
     private final DateTimeFormatter formatter;
 
     public LocalDateTimeConverter() {
-        this.formatter = DateTimeFormatter.ISO_DATE;
+        this.formatter = DateTimeFormatter.ISO_DATE_TIME;
     }
 
     public LocalDateTimeConverter(String dateFormat) {
