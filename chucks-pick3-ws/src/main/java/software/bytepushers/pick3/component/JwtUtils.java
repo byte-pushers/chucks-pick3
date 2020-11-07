@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static software.bytepushers.pick3.config.security.SecurityConstants.JWT_ROLE_JOIN_DELIMITER;
-import static software.bytepushers.pick3.config.security.SecurityConstants.JWT_TOKEN_COOKIE_NAME;
+import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 
 /**
  * The JWT Token component to work with security integration.
@@ -94,6 +93,7 @@ public class JwtUtils {
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         cookie.setMaxAge(expire);
+        response.addHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + token));
         response.addCookie(cookie);
     }
 
@@ -116,4 +116,5 @@ public class JwtUtils {
             }
         }
     }
+
 }

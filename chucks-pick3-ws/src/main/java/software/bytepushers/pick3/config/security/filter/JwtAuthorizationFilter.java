@@ -49,7 +49,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         if (StringUtils.isNotBlank(jwtToken)) {
             UsernamePasswordAuthenticationToken authentication = getAuthentication(jwtToken, request, response);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            log.info("Request authenticated.");
         }
         chain.doFilter(request, response);
     }
@@ -72,6 +71,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         try {
             ApplicationUser applicationUser = this.jwtUtils.parseToken(jwtToken);
             token = new UsernamePasswordAuthenticationToken(applicationUser.getUsername(), null, applicationUser.getAuthorities());
+            log.info("Request authenticated.");
         } catch (ExpiredJwtException e) {
             log.error("Error. Token expired: {}", e.getMessage());
             Claims expiredJwtTokenClaims = e.getClaims();
