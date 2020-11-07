@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.services;
 
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 
 /**
@@ -13,7 +14,7 @@ public interface UserService {
      * @param id to fetch the user details
      * @return the user details
      */
-    UserDto getById(Long id);
+    UserDetailsDto getById(Long id);
 
     /**
      * The method implementation is responsible for fetching the user details based on username
@@ -21,21 +22,21 @@ public interface UserService {
      * @param username to fetch the user details
      * @return the user details.
      */
-    UserDto getByUsername(String username);
+    UserDetailsDto getByUsername(String username);
 
     /**
      * The method implementation is responsible for creating/adding/saving the user into the system.
      *
      * @param userDto with required details to create/save/add
      */
-    void save(UserDto userDto);
+    UserDetailsDto save(UserDto userDto);
 
     /**
      * The method implementation is responsible for updating the existing user into the system.
      *
      * @param userDto with required details to update
      */
-    void update(UserDto userDto);
+    UserDetailsDto update(UserDto userDto);
 
     /**
      * The method implementation is responsible for deleting the existing user.

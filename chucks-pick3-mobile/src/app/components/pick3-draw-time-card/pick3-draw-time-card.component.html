@@ -1,10 +1,13 @@
 <div style="line-height: 4.0em;height: 100%;">
-  <div class="draw-time-icon">[icon here]</div>
+  <div class="draw-time-icon">
+    <span *ngIf="!data.getIcon()">[icon here]</span>
+    <ion-icon *ngIf="data.getIcon()" src="/assets/icon/{{data.getIcon()}}.svg" [ngClass]="getSelectedState()"></ion-icon>
+  </div>
   <div class="draw-time-title" align="left">&nbsp;
-    <span style="font-size: 24px;font-weight: 500;">
+    <span style="font-size: 24px;font-weight: 500;" [ngClass]="getSelectedState()">
       {{data.getTitle()}}
     </span>
-    <div class="generated-picks-indicator">
+    <div class="generated-picks-indicator" [ngClass]="getDrawingTimeCardState()">
     </div>
   </div>
 </div>

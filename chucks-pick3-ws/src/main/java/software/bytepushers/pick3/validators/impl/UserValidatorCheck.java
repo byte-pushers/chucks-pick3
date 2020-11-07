@@ -1,8 +1,9 @@
 package software.bytepushers.pick3.validators.impl;
 
 import software.bytepushers.pick3.component.AppMessages;
+import software.bytepushers.pick3.component.ApplicationContext;
 import software.bytepushers.pick3.domain.User;
-import software.bytepushers.pick3.dto.UserDto;
+import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.validators.ABaseValidator;
 import software.bytepushers.pick3.validators.UserValidator;
@@ -14,15 +15,15 @@ import java.util.Optional;
 /**
  * User validator implementation.
  */
-public class UserValidatorCheck extends ABaseValidator implements ConstraintValidator<UserValidator, UserDto> {
+public class UserValidatorCheck extends ABaseValidator implements ConstraintValidator<UserValidator, UserDetailsDto> {
 
     private final UserRepository userRepository;
 
     private final AppMessages appMessages;
 
-    public UserValidatorCheck(UserRepository userRepository, AppMessages appMessages) {
-        this.userRepository = userRepository;
-        this.appMessages = appMessages;
+    public UserValidatorCheck() {
+        this.userRepository = ApplicationContext.getContext().getBean(UserRepository.class);
+        this.appMessages = ApplicationContext.getContext().getBean(AppMessages.class);
     }
 
     /**
@@ -36,7 +37,7 @@ public class UserValidatorCheck extends ABaseValidator implements ConstraintVali
      * {@inheritDoc}
      */
     @Override
-    public boolean isValid(UserDto user, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(UserDetailsDto user, ConstraintValidatorContext constraintValidatorContext) {
         boolean isValid = true;
         Optional<User> optionalUser = this.userRepository.findByUsername(user.getUsername());
         if (optionalUser.isPresent()) {
