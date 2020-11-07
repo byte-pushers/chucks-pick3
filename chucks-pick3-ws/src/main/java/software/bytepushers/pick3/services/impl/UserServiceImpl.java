@@ -2,10 +2,10 @@ package software.bytepushers.pick3.services.impl;
 
 import com.amazonaws.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import software.bytepushers.pick3.component.ApplicationUtils;
 import software.bytepushers.pick3.domain.AccountType;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.UserDetailsDto;
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
         String username = userDetailsDto.getUsername();
         log.debug("Create User. Username: {}", username);
         User user = new User();
-        BeanUtils.copyProperties(userDetailsDto, user);
+        ApplicationUtils.copyProperties(userDetailsDto, user);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         setAccountTypeAndRole(userDto.getType(), user);
         User createdUser = this.userRepository.save(user);
@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService {
         }
         //Not overriding the password during save/update operation
         User user = userOptional.get();
-        BeanUtils.copyProperties(userDetailsDto, user, "id", "username", "password", "roles");
+        ApplicationUtils.copyProperties(userDetailsDto, user, "id", "username", "password", "roles");
         setAccountTypeAndRole(userDto.getType(), user);
         User updatedUser = this.userRepository.save(user);
         return fromEntity(updatedUser);

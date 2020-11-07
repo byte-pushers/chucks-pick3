@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 
 /**
- * Performing the JWT token related operations
+ * The JWT Token component to work with security integration.
  */
 @Component
 public class JwtUtils {
@@ -31,11 +31,11 @@ public class JwtUtils {
     private String secret;
 
     /**
-     * the method implementation is responsible for generating the JWT token based on the username and roles.
+     * The method implementation is responsible for generating the jwt token based on the used details.
      *
-     * @param username of the logged in user
-     * @param roles    of the logegd in user
-     * @return the JWT token
+     * @param username to add in jwt token.
+     * @param roles    to add in jwt token.
+     * @return the valid jwt token.
      */
     public String generateJwtToken(String username, List<String> roles) {
         Date expiration = new Date(System.currentTimeMillis() + 1000 * 60);
@@ -46,10 +46,10 @@ public class JwtUtils {
     }
 
     /**
-     * The method implementation is responsible for parsing the JWT token bulding the user details
+     * The method implementation is responsible parsing the for jwt token to build the application user.
      *
-     * @param jwtToken to parse and get user details
-     * @return the user details
+     * @param jwtToken to parse
+     * @return the application user
      */
     public ApplicationUser parseToken(String jwtToken) {
         Claims claims = Jwts.parserBuilder().setSigningKey(StringUtils.getBytes(this.secret, StandardCharsets.UTF_8))
@@ -60,9 +60,9 @@ public class JwtUtils {
     }
 
     /**
-     * get the roles from the claims
+     * The method implementation is responsible for providing the list of roles.
      *
-     * @param claims from the JWT token
+     * @param claims from where read the roles.
      * @return the list of roles.
      */
     public List<String> getRoles(Claims claims) {
@@ -70,33 +70,51 @@ public class JwtUtils {
     }
 
     /**
-     * The method implementation is responsible for geenrating the HTTP cookie for the logged in user with jwt token
+     * The method implementation is responsible for sending the token in cookie.
      *
-     * @param token    to add in cookie
-     * @param request  to find existing cookie for jwt token
+     * @param token    to send in cookie
+     * @param request  to read cookie
      * @param response to add cookie
      */
     public void sendTokenInCookie(String token, HttpServletRequest request, HttpServletResponse response) {
+        cleanJwtTokenCookie(request, response);
+        generateNewCookie(token, response, SecurityConstants.TOKEN_EXPIRY_TIME);
+    }
+
+    /**
+     * The method implementation is responsible for generating the jwt token cookie
+     *
+     * @param token    to add in cookie value
+     * @param response to add cookie
+     * @param expire   time of the cookie
+     */
+    private void generateNewCookie(String token, HttpServletResponse response, int expire) {
+        Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, token);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(expire);
+        response.addHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + token));
+        response.addCookie(cookie);
+    }
+
+    /**
+     * The method implementation is responsible for cleaning up the jwt token cookie.
+     *
+     * @param request  to read the existing cookie.
+     * @param response to remove the http cookie.
+     */
+    public void cleanJwtTokenCookie(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
-        Cookie tokenCookie;
         if (cookies != null) {
             Optional<Cookie> jwtTokenCookie = Arrays.stream(cookies).filter(cookie ->
                     StringUtils.equals(cookie.getName(), JWT_TOKEN_COOKIE_NAME)).findAny();
             if (jwtTokenCookie.isPresent()) {
-                tokenCookie = jwtTokenCookie.get();
+                Cookie tokenCookie = jwtTokenCookie.get();
                 tokenCookie.setMaxAge(0);
+                tokenCookie.setValue(null);
             }
         }
-        generateNewCookie(token, response);
-    }
-
-    private void generateNewCookie(String token, HttpServletResponse response) {
-        Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, token);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        cookie.setMaxAge(SecurityConstants.TOKEN_EXPIRY_TIME);
-        response.addHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + token));
-        response.addCookie(cookie);
+        generateNewCookie(null, response, 0);
     }
 
 }

@@ -23,6 +23,8 @@ public interface SecurityConstants {
 
     String LOGIN_END_POINT = "/api/v1/login";
 
+    String LOGOUT_END_POINT = "/api/v1/logout";
+
     String USERS_END_POINT = "/api/v1/users";
 
     String ROLES_END_POINT = "/api/v1/roles";
