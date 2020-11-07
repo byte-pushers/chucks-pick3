@@ -1,17 +1,18 @@
 package software.bytepushers.pick3.domain;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-/**
- * Customer entity/database model.
- */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Customer {
 
@@ -53,9 +54,6 @@ public class Customer {
     @Size(max = 25, message = "gamble.frequency.required.max.25")
     protected String gambleFrequency;
 
-    public Customer() {
-    }
-
     public Customer(String firstName, String email, String state, String zipCode, String cellPhoneType, String gambleFrequency) {
         this.firstName = firstName;
         this.email = email;
@@ -64,7 +62,6 @@ public class Customer {
         this.cellPhoneType = cellPhoneType;
         this.gambleFrequency = gambleFrequency;
     }
-
 
     public Long getId() {
         return id;

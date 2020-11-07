@@ -1,13 +1,17 @@
 package software.bytepushers.pick3.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
 /**
  * Login request dto model
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class LoginDto {
 
     @NotEmpty(message = "{user.username.required}")

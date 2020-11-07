@@ -17,13 +17,7 @@ public class ProfileManager {
      */
     public void getActiveProfiles() {
         log.info("ProfileManager.getActiveProfiles() method - start");
-        if (activeProfiles != null) {
-            for (String profileName : activeProfiles.split(",")) {
-                log.info("Currently active profile - {}", profileName);
-            }
-        } else {
-            log.info("Currently NO active profiles.");
-        }
+        log.info("Active profiles: {}", activeProfiles);
         log.info("ProfileManager.getActiveProfiles() method - end");
     }
 }

@@ -37,8 +37,8 @@ public class JwtUtils {
      * @param roles    to add in jwt token.
      * @return the valid jwt token.
      */
-    public String generateJwtToken(String username, List<String> roles) {
-        Date expiration = new Date(System.currentTimeMillis() + 1000 * 60);
+    public String generateJwtToken(String username, List<String> roles, int expirationInMilliseconds) {
+        Date expiration = new Date(System.currentTimeMillis() + expirationInMilliseconds);
         return Jwts.builder().setSubject(username)
                 .setIssuer(String.join(JWT_ROLE_JOIN_DELIMITER, roles))
                 .setExpiration(expiration)
@@ -88,7 +88,7 @@ public class JwtUtils {
      * @param response to add cookie
      * @param expire   time of the cookie
      */
-    private void generateNewCookie(String token, HttpServletResponse response, int expire) {
+    public void generateNewCookie(String token, HttpServletResponse response, int expire) {
         Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, token);
         cookie.setHttpOnly(true);
         cookie.setPath("/");
@@ -112,9 +112,9 @@ public class JwtUtils {
                 Cookie tokenCookie = jwtTokenCookie.get();
                 tokenCookie.setMaxAge(0);
                 tokenCookie.setValue(null);
+                response.addCookie(tokenCookie);
             }
         }
-        generateNewCookie(null, response, 0);
     }
 
 }

@@ -11,6 +11,7 @@ import software.bytepushers.pick3.services.Pick3PredictionService;
 @Configuration
 @Profile("!aws")
 public class DummyPredictionsConfig {
+
     @Bean
     public Pick3PredictionService pick3PredictionService() {
         return new Pick3PredictionService() {

@@ -158,7 +158,6 @@ public class JpaConfig {
     }
 
     private String generateDatasourceUrlFromAws() {
-        String datasourceUrl = null;
         log.info("JpaConfig.generateDatasourceUrlFromAws() - start ");
 
         AmazonRDS rdsClient = AmazonRDSClientBuilder.defaultClient();
@@ -167,7 +166,7 @@ public class JpaConfig {
         DescribeDBInstancesResult result = rdsClient.describeDBInstances(request);
         List<DBInstance> list = result.getDBInstances();
         log.info("JpaConfig.generateDatasourceUrlFromAws() - list length = {}", list.size());
-        datasourceUrl = list.get(0).getEndpoint().getAddress();
+        String datasourceUrl = list.get(0).getEndpoint().getAddress();
 
         log.info("JpaConfig.generateDatasourceUrlFromAws() - end: datasourceUrl: {}", datasourceUrl);
         return datasourceUrl;

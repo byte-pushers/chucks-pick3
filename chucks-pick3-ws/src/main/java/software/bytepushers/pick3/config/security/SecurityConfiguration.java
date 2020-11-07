@@ -64,12 +64,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         log.info("Securing the rest endpoints");
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(LOGIN_END_POINT, ACCOUNT_TYPE_END_POINT).permitAll()
+                .antMatchers(LOGIN_END_POINT, ACCOUNT_TYPE_END_POINT, ROLES_END_POINT).permitAll()
                 .antMatchers(HttpMethod.POST, USERS_END_POINT).permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                //TODO: Please mention the API accessibility with respective roles.
-                .antMatchers(ROLES_END_POINT).hasAnyRole(ROLE_ADMIN)
-                .antMatchers("/api/**").hasAnyRole(ROLE_PREMIUM, ROLE_BASIC, ROLE_GUEST, ROLE_ADMIN)
+                .antMatchers("/api/**").hasAnyRole(ROLE_PREMIUM, ROLE_BASIC, ROLE_GUEST)
                 .anyRequest().permitAll().and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .addFilter(new JwtAuthorizationFilter(this.authenticationManager(), this.jwtUtils))

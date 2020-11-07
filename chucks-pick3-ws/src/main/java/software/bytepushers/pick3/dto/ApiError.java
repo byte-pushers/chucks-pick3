@@ -1,5 +1,8 @@
 package software.bytepushers.pick3.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import java.util.Collections;
@@ -8,11 +11,14 @@ import java.util.List;
 /**
  * The error response model class
  */
+@Getter
+@Setter
+@NoArgsConstructor
 public class ApiError {
 
-    private final HttpStatus status;
-    private final String message;
-    private final List<String> errors;
+    private HttpStatus status;
+    private String message;
+    private List<String> errors;
 
     public ApiError(HttpStatus status, String message, List<String> errors) {
         super();
@@ -26,17 +32,5 @@ public class ApiError {
         this.status = status;
         this.message = message;
         this.errors = Collections.singletonList(error);
-    }
-
-    public HttpStatus getStatus() {
-        return status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public List<String> getErrors() {
-        return errors;
     }
 }

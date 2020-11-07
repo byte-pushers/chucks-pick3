@@ -1,8 +1,9 @@
 package software.bytepushers.pick3.services.impl;
 
-import com.amazonaws.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import software.bytepushers.pick3.component.ApplicationUtils;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     private final RoleRepository roleRepository;
 
@@ -82,10 +83,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDetailsDto save(UserDto userDto) {
         UserDetailsDto userDetailsDto = userDto.getUser();
-        String username = userDetailsDto.getUsername();
-        log.debug("Create User. Username: {}", username);
         User user = new User();
         ApplicationUtils.copyProperties(userDetailsDto, user);
+        String username = userDetailsDto.getUsername();
+        log.debug("Create User. Username: {}", username);
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         setAccountTypeAndRole(userDto.getType(), user);
         User createdUser = this.userRepository.save(user);
@@ -106,7 +107,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = Optional.empty();
         if (userId != null) {
             userOptional = this.userRepository.findById(userId);
-        } else if (!StringUtils.isNullOrEmpty(username)) {
+        } else if (StringUtils.isNotBlank(username)) {
             userOptional = this.userRepository.findByUsername(username);
         }
         if (userOptional.isEmpty()) {
@@ -115,7 +116,7 @@ public class UserServiceImpl implements UserService {
         }
         //Not overriding the password during save/update operation
         User user = userOptional.get();
-        ApplicationUtils.copyProperties(userDetailsDto, user, "id", "username", "password", "roles");
+        ApplicationUtils.copyProperties(userDto.getUser(), user, "id", "username", "password", "roles");
         setAccountTypeAndRole(userDto.getType(), user);
         User updatedUser = this.userRepository.save(user);
         return fromEntity(updatedUser);

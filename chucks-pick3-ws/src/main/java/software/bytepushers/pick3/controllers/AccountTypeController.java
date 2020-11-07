@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.controllers;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.ACCOU
 /**
  * The rest endpoint implementations for the account types
  */
+@Log4j2
 @RestController
 @RequestMapping(ACCOUNT_TYPE_END_POINT)
 public class AccountTypeController {
@@ -49,6 +51,9 @@ public class AccountTypeController {
      */
     @GetMapping
     public List<String> getAll() {
-        return this.accountRepository.findAll().stream().map(AccountType::getName).collect(Collectors.toList());
+        return this.accountRepository.findAll().stream().map(accountType -> {
+            log.trace("Account type: {}", accountType.getId());
+            return accountType.getName();
+        }).collect(Collectors.toList());
     }
 }

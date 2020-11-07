@@ -14,8 +14,6 @@ import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.services.Pick3PlaysService;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Rest endpoint implementations to perform the actions on lottery numbers.
@@ -33,18 +31,6 @@ public class NumbersController {
     public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
         this.pick3PlaysService = pick3PlaysService;
         this.pick3PlaysMapper = pick3PlaysMapper;
-    }
-
-    /**
-     * The rest endpoint implementation is responsible for handling status check of the application
-     *
-     * @return the "Hello World!" if the application up and running
-     */
-    @GetMapping("/ping")
-    public Map<String, String> ping() {
-        Map<String, String> pong = new HashMap<>();
-        pong.put("pong", "Hello, World!");
-        return pong;
     }
 
     /**
