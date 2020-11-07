@@ -93,6 +93,7 @@ public class JwtUtils {
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         cookie.setMaxAge(expire);
+        response.addHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + token));
         response.addCookie(cookie);
     }
 
@@ -114,15 +115,6 @@ public class JwtUtils {
             }
         }
         generateNewCookie(null, response, 0);
-    }
-
-    private void generateNewCookie(String token, HttpServletResponse response) {
-        Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, token);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        cookie.setMaxAge(SecurityConstants.TOKEN_EXPIRY_TIME);
-        response.addHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + token));
-        response.addCookie(cookie);
     }
 
 }
