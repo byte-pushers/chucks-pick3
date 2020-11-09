@@ -1,12 +1,16 @@
 package software.bytepushers.pick3.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
- *
+ * Login response dto model
  */
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponseDto {
 

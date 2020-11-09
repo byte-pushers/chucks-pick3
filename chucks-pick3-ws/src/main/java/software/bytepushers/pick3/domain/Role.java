@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * Application Roles entity model.
+ * Application Roles entity/database model.
  */
 @Getter
 @Setter
@@ -18,5 +18,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "ID_GENERATOR")
     private Long id;
 
+    @Column
     private String name;
 }

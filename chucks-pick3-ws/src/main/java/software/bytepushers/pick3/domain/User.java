@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * User DTO class
+ * User entity/database model class
  */
 @Getter
 @Setter

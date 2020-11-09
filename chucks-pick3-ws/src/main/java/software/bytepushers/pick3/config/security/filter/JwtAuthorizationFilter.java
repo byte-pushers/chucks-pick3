@@ -53,6 +53,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(request, response);
     }
 
+    /**
+     * The method implementation is responsible for reading the jwtToken from the http servlet request
+     *
+     * @param request from where to read the jwt token
+     * @return the jwt token
+     */
     private String readJwtToken(HttpServletRequest request) {
         AtomicReference<String> jwtToken = new AtomicReference<>();
         String header = request.getHeader(HEADER_STRING);
@@ -66,6 +72,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         return jwtToken.get();
     }
 
+    /**
+     * The method implementation is responsible for providing the security context instance from the JWT token.
+     *
+     * @param jwtToken to parse and build the user details
+     * @param request  to read the jwt token from the cookie
+     * @param response to write the jwt token cookie if it is expired
+     * @return the valid authentication context object.
+     */
     private UsernamePasswordAuthenticationToken getAuthentication(String jwtToken, HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token = null;
         try {
@@ -74,27 +88,22 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             log.info("Request authenticated.");
         } catch (ExpiredJwtException e) {
             log.error("Error. Token expired: {}", e.getMessage());
-            try {
-                Claims expiredJwtTokenClaims = e.getClaims();
-                LocalDateTime tokenExpiredAt = expiredJwtTokenClaims.getExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-                long refreshTokenWindow = Duration.between(tokenExpiredAt, LocalDateTime.now()).toSeconds();
-                log.info("Refresh Token Window (in seconds): {}", refreshTokenWindow);
-                if (TOKEN_REFRESH_WINDOW_IN_MINUTES > refreshTokenWindow) {
-                    log.info("Lucky User. Refreshing token before it getting expired.");
-                    String username = expiredJwtTokenClaims.getSubject();
-                    List<String> roles = this.jwtUtils.getRoles(expiredJwtTokenClaims);
-                    String refreshedToken = this.jwtUtils.generateJwtToken(username, roles);
-                    this.jwtUtils.sendTokenInCookie(refreshedToken, request, response);
+            Claims expiredJwtTokenClaims = e.getClaims();
+            LocalDateTime tokenExpiredAt = expiredJwtTokenClaims.getExpiration().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            long refreshTokenWindow = Duration.between(tokenExpiredAt, LocalDateTime.now()).toSeconds();
+            log.info("Refresh Token Window(in minutes): {}", refreshTokenWindow);
+            if (TOKEN_REFRESH_WINDOW_IN_MINUTES > refreshTokenWindow) {
+                log.info("Lucky User. Refreshing token before it getting expired.");
+                String username = expiredJwtTokenClaims.getSubject();
+                List<String> roles = this.jwtUtils.getRoles(expiredJwtTokenClaims);
+                String refreshedToken = this.jwtUtils.generateJwtToken(username, roles, TOKEN_EXPIRY_TIME);
+                this.jwtUtils.sendTokenInCookie(refreshedToken, request, response);
 
-                    ApplicationUser refreshedUser = this.jwtUtils.parseToken(refreshedToken);
-                    token = new UsernamePasswordAuthenticationToken(refreshedUser.getUsername(), null, refreshedUser.getAuthorities());
-                    log.info("Request authenticated.");
-                } else {
-                    request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, "Token expired.");
-                }
-            } catch (Exception error) {
-                request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, "Invalid token.");
-                log.error("Error. During refreshing the token: {}", e.getMessage(), e);
+                ApplicationUser refreshedUser = this.jwtUtils.parseToken(refreshedToken);
+                token = new UsernamePasswordAuthenticationToken(refreshedUser.getUsername(),
+                        null, refreshedUser.getAuthorities());
+            } else {
+                request.setAttribute(TOKEN_ERROR_ATTRIBUTE_KEY, "Token expired.");
             }
         } catch (Exception e) {
             log.error("Error. Token invalid: {}", e.getMessage(), e);

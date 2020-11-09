@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+/**
+ * Service layer implementation for the play service
+ */
 @Log4j2
 @Service
 public class Pick3PlaysServiceImpl implements Pick3PlaysService {
@@ -21,6 +24,9 @@ public class Pick3PlaysServiceImpl implements Pick3PlaysService {
         this.pick3PredictionService = pick3PredictionService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Pick3Plays getPick3Plays(Integer winningNumber, LocalDate winningDrawDate, DrawingTime winningDrawTime,
                                     LocalDate futureDrawDate, DrawingTime futureDrawTime) {

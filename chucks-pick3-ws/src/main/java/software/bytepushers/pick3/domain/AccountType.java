@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Account type entity/database model.
+ */
 @Getter
 @Setter
 @Entity

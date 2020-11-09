@@ -8,7 +8,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import software.bytepushers.pick3.component.JwtUtils;
 import software.bytepushers.pick3.dto.LoginDto;
@@ -20,15 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import static software.bytepushers.pick3.config.security.SecurityConstants.LOGIN_END_POINT;
+import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 
 /**
  * Authentication rest endpoints.
  */
 @Log4j2
 @RestController
-@RequestMapping(LOGIN_END_POINT)
-public class LoginController {
+public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
 
@@ -36,19 +34,20 @@ public class LoginController {
 
     private final JwtUtils jwtUtils;
 
-    public LoginController(AuthenticationManager authenticationManager, UserService userService, JwtUtils jwtUtils) {
+    public AuthenticationController(AuthenticationManager authenticationManager,
+                                    UserService userService, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.jwtUtils = jwtUtils;
     }
 
     /**
-     * The rest endpoint implementation for the login process.
+     * The rest endpoint implementation for the initiating the login process.
      *
      * @param loginDto with user credentials
      * @return the logged in user details
      */
-    @PostMapping
+    @PostMapping(LOGIN_END_POINT)
     public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginDto loginDto,
                                                   HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -59,12 +58,24 @@ public class LoginController {
             this.authenticationManager.authenticate(authRequest);
             UserDetailsDto userDetails = this.userService.getByUsername(username);
             log.info("Login Successful. Username: {}", username);
-            String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles());
+            String token = this.jwtUtils.generateJwtToken(userDetails.getUsername(), userDetails.getRoles(), TOKEN_EXPIRY_TIME);
             this.jwtUtils.sendTokenInCookie(token, request, response);
             return new ResponseEntity<>(new LoginResponseDto(token, userDetails), HttpStatus.OK);
         } catch (Exception e) {
             log.error("Login error: {}", e.getMessage(), e);
             throw new UsernameNotFoundException("Invallid credentials");
         }
+    }
+
+    /**
+     * The rest endpoint implementation to perform the logout.
+     *
+     * @param request  to read cookies
+     * @param response to write the cookies
+     */
+    @PostMapping(LOGOUT_END_POINT)
+    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+        this.jwtUtils.cleanJwtTokenCookie(request, response);
+        return ResponseEntity.ok().build();
     }
 }

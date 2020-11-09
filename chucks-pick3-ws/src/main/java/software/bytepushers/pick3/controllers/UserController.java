@@ -89,7 +89,7 @@ public class UserController {
      * @param objects to validate
      * @param type    to validate the group.
      */
-    private <T> void validateRequest(List<Object> objects, Class<?> type) {
+    private void validateRequest(List<Object> objects, Class<?> type) {
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         Set<ConstraintViolation<Object>> violations = objects.stream().map(object -> validator.validate(object, type))
                 .flatMap(Set::stream).collect(Collectors.toSet());

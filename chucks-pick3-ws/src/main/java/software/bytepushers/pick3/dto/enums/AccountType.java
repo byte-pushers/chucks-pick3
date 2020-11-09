@@ -1,5 +1,8 @@
 package software.bytepushers.pick3.dto.enums;
 
+/**
+ * Account type enum.
+ */
 public enum AccountType {
 
     PREMIUM, BASIC, GUEST;

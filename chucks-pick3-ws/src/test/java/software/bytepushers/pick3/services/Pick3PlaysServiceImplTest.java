@@ -39,8 +39,7 @@ public class Pick3PlaysServiceImplTest {
 
     @Test
     public void testGetPick3PlaysCallsMocksOnlyOnce() {
-        when(predictionService.generatePredictions(anyInt()))
-                .thenReturn(new int[0][0]);
+        when(predictionService.generatePredictions(anyInt())).thenReturn(new int[0][0]);
 
         underTest.getPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(), DrawingTime.MORNING);
 

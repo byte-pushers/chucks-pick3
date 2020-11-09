@@ -29,12 +29,15 @@ import java.util.List;
 import java.util.Properties;
 import java.util.TimeZone;
 
+/**
+ * Custom database configuration for the application.
+ */
+@Log4j2
 @Profile("aws | local")
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "software.bytepushers.pick3.repositories")
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
-@Log4j2
 public class JpaConfig {
 
     @Value("${spring.datasource.driver-class-name:}")
@@ -155,7 +158,6 @@ public class JpaConfig {
     }
 
     private String generateDatasourceUrlFromAws() {
-        String datasourceUrl = null;
         log.info("JpaConfig.generateDatasourceUrlFromAws() - start ");
 
         AmazonRDS rdsClient = AmazonRDSClientBuilder.defaultClient();
@@ -164,7 +166,7 @@ public class JpaConfig {
         DescribeDBInstancesResult result = rdsClient.describeDBInstances(request);
         List<DBInstance> list = result.getDBInstances();
         log.info("JpaConfig.generateDatasourceUrlFromAws() - list length = {}", list.size());
-        datasourceUrl = list.get(0).getEndpoint().getAddress();
+        String datasourceUrl = list.get(0).getEndpoint().getAddress();
 
         log.info("JpaConfig.generateDatasourceUrlFromAws() - end: datasourceUrl: {}", datasourceUrl);
         return datasourceUrl;
