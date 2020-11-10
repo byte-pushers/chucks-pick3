@@ -21,3 +21,7 @@ a {
 .header-image-3 {
   display: none;
 }
+
+.containers-margin {
+  margin-bottom: 15px;
+}
