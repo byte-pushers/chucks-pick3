@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * User DTO class
+ * User entity/database model class
  */
 @Getter
 @Setter
@@ -46,4 +46,8 @@ public class User {
     @JoinTable(name = "User_Roles",
             joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToOne
+    @JoinColumn(name = "account_type_id", referencedColumnName = "id")
+    private AccountType accountType;
 }

@@ -20,6 +20,13 @@ export namespace Pick3DrawTimeCardStateEnum {
         }
     }
 
+    export function get(key: string):  Pick3DrawTimeCardStateEnum {
+        for (let pick3DrawTimeCardStateEnum in Pick3DrawTimeCardStateEnum) {
+            console.log("enum member: ", pick3DrawTimeCardStateEnum);
+        }
+        return null;
+    }
+
     export function toString(pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum): string {
         return Pick3DrawTimeCardStateEnum[pick3DrawTimeCardStateEnum];
     }

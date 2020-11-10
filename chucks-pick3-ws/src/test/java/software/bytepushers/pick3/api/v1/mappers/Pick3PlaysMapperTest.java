@@ -47,6 +47,12 @@ public class Pick3PlaysMapperTest {
     }
 
     @Test
+    public void testNullMapsDrawingTimeToResponse() {
+        Pick3PlaysResponse response = mapper.pick3PlaysToPick3PlaysResponse(null);
+        assertThat(response).isEqualTo(null);
+    }
+
+    @Test
     public void testMapsDrawingDateToResponse() {
         LocalDate date = LocalDate.now();
         plays.setDrawingDate(date);

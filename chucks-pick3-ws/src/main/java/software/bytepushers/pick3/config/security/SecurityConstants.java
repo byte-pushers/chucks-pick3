@@ -1,5 +1,8 @@
 package software.bytepushers.pick3.config.security;
 
+/**
+ * Security constants.
+ */
 public interface SecurityConstants {
 
     String HEADER_STRING = "Authorization";
@@ -16,9 +19,9 @@ public interface SecurityConstants {
 
     String ROLE_PREMIUM = "PREMIUM";
 
-    String ROLE_ADMIN = "ADMIN";
-
     String LOGIN_END_POINT = "/api/v1/login";
+
+    String LOGOUT_END_POINT = "/api/v1/logout";
 
     String USERS_END_POINT = "/api/v1/users";
 

@@ -1,10 +1,11 @@
 import {Pick3DrawDateCard} from "./pick3-draw-date-card";
+import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
 
 export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private readonly TITLE:string = 'Pick 3 Lottery';
     private drawDate: Date;
     private drawState: string;
-    private drawTime: string;
+    private drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     private upcomingDrawTime: Date;
     private hasWinner: boolean;
     private backgroundImage: string;
@@ -21,7 +22,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return this.drawState;
     }
 
-    getDrawTime(): string {
+    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
         return this.drawTime;
     }
 
@@ -45,7 +46,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this.drawState = drawState;
     }
 
-    setDrawTime(drawTime: string) {
+    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
         this.drawTime = drawTime;
     }
     getBackgroundImage(): string {
