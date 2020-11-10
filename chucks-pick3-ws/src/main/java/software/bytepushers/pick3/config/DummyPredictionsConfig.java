@@ -5,9 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import software.bytepushers.pick3.services.Pick3PredictionService;
 
+/**
+ * Dummy prediction configurations.
+ */
 @Configuration
 @Profile("!aws")
 public class DummyPredictionsConfig {
+
     @Bean
     public Pick3PredictionService pick3PredictionService() {
         return new Pick3PredictionService() {

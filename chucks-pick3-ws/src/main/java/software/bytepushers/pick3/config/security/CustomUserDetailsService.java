@@ -35,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = this.userRepository.findByUsername(username);
         if (userOptional.isEmpty()) {
-            throw new UsernameNotFoundException("User Now Found.");
+            throw new UsernameNotFoundException("User not Found.");
         }
         User user = userOptional.get();
         List<String> roles = user.getRoles().stream().map(Role::getName).collect(Collectors.toList());

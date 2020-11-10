@@ -8,7 +8,14 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
+/**
+ * Webapp initialization
+ */
 public class MyWebAppInitializer implements WebApplicationInitializer {
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onStartup(ServletContext container) {
         AnnotationConfigWebApplicationContext context

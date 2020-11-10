@@ -17,6 +17,9 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static software.bytepushers.pick3.config.security.SecurityConstants.TOKEN_ERROR_ATTRIBUTE_KEY;
 
+/**
+ * The custom authentication entry point to handle the authentication errors
+ */
 @Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
@@ -26,6 +29,9 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
         this.objectMapper = objectMapper;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException {
 
