@@ -25,3 +25,21 @@ a {
 .containers-margin {
   margin-bottom: 15px;
 }
+
+.carousel-size {
+  height: 450px;
+  width: 100%;
+}
+
+::ng-deep .carousel-inner {
+  overflow: revert !important;
+}
+
+::ng-deep .active{
+  background-color: revert !important;
+  border-color: revert !important;
+}
+
+.col-lg {
+  align-content: center;
+}
