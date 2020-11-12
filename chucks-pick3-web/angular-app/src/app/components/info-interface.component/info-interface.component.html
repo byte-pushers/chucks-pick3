@@ -3,7 +3,7 @@
 </div>
 <br>
 <br>
-<div class="interface">
+<div class="interface" *ngIf="isDesktopResolution()">
   <div class="interface-intro">
     <p>Here is the main screen which will present itself once the application loads. On it you will be able to view the
       winning numbers for your states lottery, which will update in real time as the day progresses. Below will be a
@@ -90,11 +90,17 @@
     <img src="/assets/images/interfaceBottomHalf.png" style="height: 30%; width: 35%">
 
   </div>
+  <a [routerLink]="['/generate']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+  <button type="submit"
+          class="btn btn btn-success submit btn-lg btn-block">
+    Learn to Generate Numbers
+  </button>
+  </a>
   <br>
   <br>
 </div>
 
-<div class="interface-mobile">
+<div class="interface-mobile" *ngIf="isMobileResolution()">
   <div class="interface-intro">
     <p>Here is the main screen which will present itself once the application loads. On it you will be able to view the
       winning numbers for your states lottery, which will update in real time as the day progresses. Below will be a

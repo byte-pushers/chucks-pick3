@@ -2,18 +2,22 @@
   <h1><b>How to View Generated Picks:</b></h1>
 </div>
 
-<div class="how-to-view">
+<div class="how-to-view" *ngIf="isDesktopResolution()">
   <p> You can view the numbers you generated for a specific time of day by selecting the clock button on the top half of
     the screen labeled 'View Picks'</p>
   <br>
-  <img src="/assets/images/viewHome.png" style="height: 60%; width: 20%">
+  <img src="/assets/images/viewHome.png" style="height: 60%;">
   <br>
   <p>Once selected you will be allowed to view and scroll through your generated numbers as seen:</p>
   <br>
-  <img src="/assets/images/viewScreen.png" style="height: 60%; width: 20%">
+  <img src="/assets/images/viewScreen.png" style="height: 60%;">
+  <button type="submit"
+          class="btn btn btn-success submit btn-lg btn-block" (click)="goToMobileInterface()">
+    Try Out Chuck's Pick 3!
+  </button>
 </div>
 
-<div class="view-mobile">
+<div class="view-mobile" *ngIf="isMobileResolution()">
   <h2> Selecting View Picks</h2>
   <p> You can view the numbers you generated for a specific time of day by selecting the clock button on the top half of
     the screen labeled 'View Picks'</p>
