@@ -15,9 +15,9 @@
   display: none;
 }
 
-.slide a {
+/*.slide a {
   display: none;
-}
+}*/
 
 /* Responsive Buttons---------------------------------- */
 /* FOR DESKTOP--Responsive-------------------------------- */
@@ -107,11 +107,11 @@
 
 
 @media screen and (max-width: 750px) {
-  .slide a {
+ /* .slide a {
     display: block;
 
 
-  }
+  }*/
 }
 
 @media screen and (max-width: 750px) {

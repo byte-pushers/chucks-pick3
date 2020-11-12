@@ -35,6 +35,7 @@ import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
