@@ -6,7 +6,7 @@
       blandit.
     </p>
   </div>
-  <div class="form-row containers-margin">
+  <div class="form-row containers-margin" *ngIf="isDesktopResolution()">
   <div class="col-md-4 no-pad-right">
     <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
       <div class="grediant">
@@ -42,4 +42,50 @@
     </a>
   </div>
   </div>
+  <ngb-carousel *ngIf="isMobileResolution()" class="carousel-size">
+    <ng-template ngbSlide>
+      <div class="col-lg ">
+        <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
+          <div class="grediant">
+            <img src="/assets/images/screens-02.png">
+          </div>
+          <div class="greenpatch">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
+            tincidunt lectus vel volutpat.
+          </div>
+        </a>
+      </div>
+
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="col-lg " style="height: 100%" >
+        <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
+          <div class="grediant">
+            <img src="/assets/images/screens-01.png">
+          </div>
+          <div class="greenpatch">
+            <p style="padding:0px 7px; margin: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
+              tristique semper. Nullam lacinia
+              tincidunt lectus vel volutpat.</p>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="col-lg ">
+        <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
+          <div class="grediant">
+            <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
+          </div>
+          <div class="greenpatch bottom-space forsignup">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
+            tincidunt lectus vel volutpat.
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+
 </div>
+
