@@ -32,8 +32,8 @@
             ],
             "scripts": [
               "node_modules/bytepushers-js-string-extensions/release/bytepushers-js-string-extensions.js"
-            ],
-            "es5BrowserSupport": true
+            ]/*,
+            "es5BrowserSupport": true*/
           },
           "configurations": {
             "production": {
