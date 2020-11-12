@@ -1,8 +1,8 @@
 <div class="how-to-header" id="requirements">
   <h1><b>Requirements:</b></h1>
 </div>
-<div class="what-you-need">
-  <div class="requirements-app">
+<div class="what-you-need" *ngIf="isDesktopResolution()">
+  <div class="requirements-app" >
     <p><b><i>Chuck's Pick 3</i></b> is a companion app dedicated to helping you generate smart numbers to play in your
       state's <i>Pick 3</i> lotto game. You will need the following in order to play:</p>
     <div><p><b>1.</b> You will need to download <b><i>Chuck's Pick 3</i></b> from the appropriate App Store onto your
@@ -15,10 +15,16 @@
   </div>
   <div><p><b>3.</b> Now with both <b><i>Chuck's Pick 3</i></b> and your <i>Pick 3</i> lotto ticket at hand you can begin
     generating and writing down your picks. </p></div>
+  <a [routerLink]="['/interface']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
+  <button type="submit"
+          class="btn btn btn-success submit btn-lg btn-block" >
+    Understanding The Interface
+  </button>
+  </a>
   <br>
   <br>
 </div>
-<div class="what-you-need-mobile">
+<div class="what-you-need-mobile" *ngIf="isMobileResolution()">
   <div class="requirements-app">
     <p><b><i>Chuck's Pick 3</i></b> is a companion app dedicated to helping you generate smart numbers to play in your
       state's <i>Pick 3</i> lotto game. You will need the following in order to play:</p>

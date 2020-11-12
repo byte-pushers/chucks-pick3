@@ -17,5 +17,34 @@ export class InfoGenerateComponent implements OnInit {
   }
   public goToMobileInterface() {
     this.router.navigate(['/view']);
+    this.topFunction();
+  }
+
+  public topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  public isMobileResolution(): boolean {
+    let isMobileResolution: boolean = false;
+
+    if (window.innerWidth < 768) {
+      isMobileResolution = true;
+    } else {
+      isMobileResolution = false;
+    }
+
+    return isMobileResolution;
+  }
+
+  public isDesktopResolution(): boolean {
+    let isDesktopResolution: boolean = false;
+
+    if (window.innerWidth > 768) {
+      isDesktopResolution = true;
+    } else {
+      isDesktopResolution = false;
+    }
+
+    return isDesktopResolution;
   }
 }
