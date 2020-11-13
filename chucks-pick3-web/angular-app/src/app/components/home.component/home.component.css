@@ -1,45 +1,25 @@
-.main-content-container {
-
-  background-color: white;
+.hero-area {
+  background-color: #1c1c1d;
   width: 100%;
-  min-height: 25%;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: auto;
+  height: 500px;
   text-align: center;
-  display: inline-block;
-
-
 }
 
-a {
-  color: #000000;
-  text-decoration: none;
-}
-
-
-.header-image-3 {
-  display: none;
-}
-
-.containers-margin {
-  margin-bottom: 15px;
-}
-
-.carousel-size {
-  height: 450px;
-  width: 100%;
-}
-
-::ng-deep .carousel-inner {
-  overflow: revert !important;
-}
-
-::ng-deep .active{
-  background-color: revert !important;
-  border-color: revert !important;
-}
-
-.col-lg {
+.header-text-content{
+  padding: 60px 25px 15px;
+  color: white;
   align-content: center;
+}
+
+.header-text{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.text-emphasis {
+  color: #2dd36f;
+}
+
+.header-btn {
+ background-color: #2dd36f;
 }

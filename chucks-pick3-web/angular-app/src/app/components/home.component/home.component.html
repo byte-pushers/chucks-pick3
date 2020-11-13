@@ -1,91 +1,17 @@
-<div class="row">
-  <div class="col-md-12">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
-      tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin sollicitudin
-      venenatis gravida. In non velit at felis iaculis dignissim nec sed lectus. Integer dignissim tempor risus ac
-      blandit.
-    </p>
-  </div>
-  <div class="form-row containers-margin" *ngIf="isDesktopResolution()">
-  <div class="col-md-4 no-pad-right">
-    <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
-      <div class="grediant">
-        <img src="/assets/images/screens-02.png">
-      </div>
-      <div class="greenpatch">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
-        tincidunt lectus vel volutpat.
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4 middlebdr no-pad" style="height: 100%" >
-    <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant">
-        <img src="/assets/images/screens-01.png">
-      </div>
-      <div class="greenpatch">
-        <p style="padding:0px 7px; margin: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-          tristique semper. Nullam lacinia
-          tincidunt lectus vel volutpat.</p>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4 no-pad-left">
-    <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
-      <div class="grediant">
-        <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
-      </div>
-      <div class="greenpatch bottom-space forsignup">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
-        tincidunt lectus vel volutpat.
-      </div>
-    </a>
-  </div>
-  </div>
-  <ngb-carousel *ngIf="isMobileResolution()" class="carousel-size">
-    <ng-template ngbSlide>
-      <div class="col-lg ">
-        <a [routerLink]="['/requirements']" [queryParams]="{showSubNavBar: true}">
-          <div class="grediant">
-            <img src="/assets/images/screens-02.png">
-          </div>
-          <div class="greenpatch">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
-            tincidunt lectus vel volutpat.
-          </div>
-        </a>
-      </div>
+<div id="homePage">
+<div id="hero" class="hero-area">
 
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="col-lg " style="height: 100%" >
-        <a [routerLink]="['/demo']" [queryParams]="{showSubNavBar: false}">
-          <div class="grediant">
-            <img src="/assets/images/screens-01.png">
-          </div>
-          <div class="greenpatch">
-            <p style="padding:0px 7px; margin: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-              tristique semper. Nullam lacinia
-              tincidunt lectus vel volutpat.</p>
-          </div>
-        </a>
+    <div class="header-text-content">
+      <div class="header-text">
+      <h1>Your Game, <b class="text-emphasis">Our Luck</b></h1>
       </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="col-lg ">
-        <a [routerLink]="['/sign-up']" [queryParams]="{showSubNavBar: false}">
-          <div class="grediant">
-            <img src="/assets/images/screens_Artboard 1-03.png" class="signup" alt="Sign-Up"/>
-          </div>
-          <div class="greenpatch bottom-space forsignup">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
-            tincidunt lectus vel volutpat.
-          </div>
-        </a>
+      <div class="header-paragraph">
+        Play your state's pick 3 lotto game and create your own luck. Avialable only on Chuck's Pick 3 App soon.
       </div>
-    </ng-template>
-  </ngb-carousel>
-
+    </div>
+    <div class="header-image-content">
+      <button class="btn header-btn"> <b>Sign Up To Get Notified</b></button>
+    </div>
 
 </div>
-
+</div>
