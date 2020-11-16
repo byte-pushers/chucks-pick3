@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
-
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -18,10 +16,11 @@ export class HomeComponent implements OnInit {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
+    config.showNavigationIndicators = false;
   }
 
   ngOnInit() {
-
+    this.isMobileResolution();
     const howToActive = document.getElementById('howTo');
     howToActive.classList.remove('active');
     howToActive.classList.add('allow-hover');
@@ -35,22 +34,16 @@ export class HomeComponent implements OnInit {
 
     if (window.innerWidth < 768) {
       isMobileResolution = true;
+      document.getElementById('desktop-view').style.display = 'none';
+      document.getElementById('mobile-view').style.display = 'revert ';
     } else {
       isMobileResolution = false;
+      document.getElementById('desktop-view').style.display = 'revert ';
+      document.getElementById('mobile-view').style.display = 'none ';
     }
 
     return isMobileResolution;
   }
 
-  public isDesktopResolution(): boolean {
-    let isDesktopResolution: boolean = false;
 
-    if (window.innerWidth > 768) {
-      isDesktopResolution = true;
-    } else {
-      isDesktopResolution = false;
-    }
-
-    return isDesktopResolution;
-  }
 }
