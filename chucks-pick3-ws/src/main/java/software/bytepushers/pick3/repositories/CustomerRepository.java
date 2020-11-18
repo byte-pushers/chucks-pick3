@@ -17,7 +17,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      * @param firstName for the where clause to fetch the data
      * @return the customer details.
      */
-    List<Customer> findByFirstNameAndIsDisabledTrue(String firstName);
+    List<Customer> findByFirstNameAndIsDisabledFalse(String firstName);
 
     /**
      * Fetching the customer details by id if and only if it is true.
@@ -25,5 +25,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
      * @param id of customer id
      * @return the customer if possible
      */
-    Optional<Customer> findByIdAndIsDisabledTrue(Long id);
+    Optional<Customer> findByIdAndIsDisabledFalse(Long id);
 }

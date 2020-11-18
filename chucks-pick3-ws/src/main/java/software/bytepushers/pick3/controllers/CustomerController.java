@@ -74,7 +74,7 @@ public class CustomerController {
         if (customerId == null) {
             throw new MalformedRequestException("Customer id required to update");
         }
-        Customer customerById = this.customerRepository.findByIdAndIsDisabledTrue(customerId)
+        Customer customerById = this.customerRepository.findByIdAndIsDisabledFalse(customerId)
                 .orElseThrow(() -> new MalformedRequestException("Customer not found"));
         log.info("Found customer to update");
         BeanUtils.copyProperties(customer, customerById, "id");
@@ -90,7 +90,7 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public Customer getById(@PathVariable Long customerId) {
         log.info("Trying to fetch customer: {}", customerId);
-        return this.customerRepository.findByIdAndIsDisabledTrue(customerId).orElseThrow(()
+        return this.customerRepository.findByIdAndIsDisabledFalse(customerId).orElseThrow(()
                 -> new MalformedRequestException("Customer not found"));
     }
 

@@ -119,7 +119,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
         Customer customer = ModelUtils.customer();
         customer.setId(1L);
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(customer.getId())).thenReturn(Optional.of(customer));
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(customer.getId())).thenReturn(Optional.of(customer));
         Mockito.when(this.customerRepository.save(Mockito.any())).thenReturn(customer);
         MockHttpServletResponse response = mvc.perform(put("/customers")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -137,7 +137,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
         Customer customer = ModelUtils.customer();
         customer.setId(1L);
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(customer.getId())).thenReturn(Optional.empty());
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(customer.getId())).thenReturn(Optional.empty());
         MockHttpServletResponse response = mvc.perform(put("/customers")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyJsonString)).andReturn().getResponse();
@@ -153,7 +153,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
     public void testGetCustomerEndpointWhileCustomerFound() throws Exception {
         Customer customer = ModelUtils.customer();
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(1L)).thenReturn(Optional.of(customer));
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(1L)).thenReturn(Optional.of(customer));
         MockHttpServletResponse response = mvc.perform(get("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyJsonString)).andReturn().getResponse();
@@ -169,7 +169,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
     public void testGetCustomerEndpointWhileCustomerNotFound() throws Exception {
         Customer customer = ModelUtils.customer();
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(1L)).thenReturn(Optional.empty());
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(1L)).thenReturn(Optional.empty());
         MockHttpServletResponse response = mvc.perform(get("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyJsonString)).andReturn().getResponse();
@@ -185,7 +185,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
     public void testDeleteCustomerEndpointWhileCustomerNotFound() throws Exception {
         Customer customer = ModelUtils.customer();
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(1L)).thenReturn(Optional.empty());
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(1L)).thenReturn(Optional.empty());
         MockHttpServletResponse response = mvc.perform(delete("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyJsonString)).andReturn().getResponse();
@@ -201,7 +201,7 @@ public class CustomerControllerTest extends AbstractControllerTest {
     public void testDeleteCustomerEndpoint() throws Exception {
         Customer customer = ModelUtils.customer();
         String requestBodyJsonString = this.objectMapper.writeValueAsString(customer);
-        Mockito.when(this.customerRepository.findByIdAndIsDisabledTrue(1L)).thenReturn(Optional.of(customer));
+        Mockito.when(this.customerRepository.findByIdAndIsDisabledFalse(1L)).thenReturn(Optional.of(customer));
         MockHttpServletResponse response = mvc.perform(delete("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBodyJsonString)).andReturn().getResponse();
