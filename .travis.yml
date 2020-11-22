@@ -28,7 +28,7 @@ matrix:
         - npm install
         - npm run build
       after_success:
-        - aws s3 sync dist/* s3://chuckspick3-bucket-test
+        - aws s3 sync dist/* s3://chuckspick3.com
       env:
         - secure: 0qC9hgcQVkHvE6XO2UXxMNuw8czGY/KFqburmNuKfyOnrOsC35Xrt0eCIIkgHcqvZHU0qKI0hsBB/xTDb9i9pH3KNVVLU39c9/CuSi1D+hedpNM0H5s56f+Te0oUO/ifaW929XT78kI9C1aUVJThWX8hgjnG70TGT4+pCLQHNTEcvBGMADrNh/Zvo93OAGRAJviw4kY1lWlV06vKupZLeQH1WADn6AVACDv/EhRjhCE6bL5lhKwffa4CKfmpr/N080yH4IVvu12bLKHWro12W8xR/Ar6JJeXRkWF7xK1C/DmXPXHlRp1XgEL58Z4yF4/UPbqVZKD91gihnh52XPd4BmReQxPGbeNu3rqlp6CzSi99on9XV8Ua2C7CtZ9k0ExGBHhzYS3n/3gIro0GXni4bqDQZG/5SgDYLkB6jxvj7Zkh0MZfiaPr/U1PCQNRxQVGjFURkJhJtLb6+YZWy8AcYVL3u3miosKp5Xocov2HyHypRKqzLTjWqkmCXcqGlwJLmU8UiU3LAkAecn6KFu0Sts/tYWxcdl1hhSogcfTz3MTHL6eFjMRJUopIv02TafXXTdhP1joLwoS+fWu7mus9tJ0NN4F9p/AiimmMO8TwkWC6tuYI5iBmzoL++ahiT3KvKswQzDpzmiJNpl/OCEO5iCF/Oa9CcswTaYBi2ZXFcA=
         - secure: sR6/eu9x4jTMjcod/VKPTOtlDGT/v/sTauf7tZyRX9KFT8ga81SYSlL4BWVfPGzXtG7hFC+VsLVPbvUIRaBDnKxDYaAXEkIlHllSJjEZJzJ/jVQ2swL2BvC9G0r/gAy53G3FjAhuO8sb08urQ1yohXRvMM2vVtnlAgwGOOTMsBkqmWjoNkcOhl/sw+PJH5TN1jRUS9t315nbxaf0K2oqOzj0ka98wzIveKydGRvD7AKjHNmQCZY4ugqvYKU5bsFvJpWr81kqQjNwkujXfWGtkR8uB2IClXbavrmQhv6LFOfuUjN2CB6GwWzKehj9Vq06n231BqgenjELQuwkzBc+ynvRyGP6RhnTfIk7bP7QPKNp/HfsJ9Y4C8EF686ooRp8oHRRbyeZ0xBI7m2NX90U406doTB4Jd06L4cYKfDAN9ZI2T5lGCQmI382C9xpKr5irO3c/gfY+tOHBPUTT/zj5dIDAPT4QBEKuSmL1txuRI4kUvInvzlbD9tsQea2vJBZnHylZE5TqwDjjBTo53AV6X3WAomfM4vKQ27lCEcd/lls3VHyzK08ZXxCW52tYBJIS9QylRUSo2TCER5Q5uVPFSbRsePCxGMiJyj6zX8wTvivw2o2RVwR/6Rfd8nkXwfMiGcx6lN2nVbMRIrM+XytUfjsQBSdeMZZ8hV1xRNBuZc=
