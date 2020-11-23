@@ -5,9 +5,9 @@
       <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTime()}}</span><br><br>
       <span style="font-size: 1.0em;font-weight: bold;">{{data.getDrawDate() | date}}</span><br><br>
       <div style="display: inline" *ngIf="showCountDownToDrawing === false">
-        <span class="dot">2</span>
-        <span class="dot">9</span>
-        <span class="dot">0</span>
+        <span class="dot">{{data.getWinningNumberDigit1()}}</span>
+        <span class="dot">{{data.getWinningNumberDigit2()}}</span>
+        <span class="dot">{{data.getWinningNumberDigit3()}}</span>
       </div>
       <div style="display: inline" *ngIf="showCountDownToDrawing === true">
         <countdown-timer [end]="data.getDrawDate()"></countdown-timer>

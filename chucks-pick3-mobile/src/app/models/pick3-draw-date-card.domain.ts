@@ -9,6 +9,8 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private upcomingDrawTime: Date;
     private hasWinner: boolean;
     private backgroundImage: string;
+    private winningNumber: number;
+    private winningNumberDigits: number[] = [];
 
     constructor(private readonly config: any) {
 
@@ -49,10 +51,78 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
         this.drawTime = drawTime;
     }
+
     getBackgroundImage(): string {
         return this.backgroundImage;
     }
+
     setBackgroundImage(backgroundImage: string): void {
         this.backgroundImage = backgroundImage;
+    }
+
+    getWinningNumber(): number {
+        return this.winningNumber;
+    }
+
+    setWinningNumber(winningNumber: number) {
+        this.winningNumber = winningNumber;
+        this.setWinningNumberDigits(this.winningNumber);
+    }
+
+    private setWinningNumberDigits(winningNumber: number) {
+        let mod;
+
+        while (winningNumber > 0) {
+            this.winningNumberDigits.push(winningNumber%10);
+            winningNumber = Math.floor(winningNumber/10);
+        }
+    }
+
+    getWinningNumberDigit1(): number {
+        let digit = null;
+
+        if (this.winningNumberDigits && this.winningNumberDigits.length > 0) {
+            if (this.winningNumberDigits.length == 1) {
+                digit = 0;
+            } else if (this.winningNumberDigits.length == 2) {
+                digit = 0;
+            } else if (this.winningNumberDigits.length == 3) {
+                digit = this.winningNumberDigits[2];
+            }
+        }
+
+        return digit;
+    }
+
+    getWinningNumberDigit2(): number {
+        let digit = null;
+
+        if (this.winningNumberDigits && this.winningNumberDigits.length > 0) {
+            if (this.winningNumberDigits.length == 1) {
+                digit = 0;
+            } else if (this.winningNumberDigits.length == 2) {
+                digit = this.winningNumberDigits[1];
+            } else if (this.winningNumberDigits.length == 3) {
+                digit = this.winningNumberDigits[1];
+            }
+        }
+
+        return digit;
+    }
+
+    getWinningNumberDigit3(): number {
+        let digit = null;
+
+        if (this.winningNumberDigits && this.winningNumberDigits.length > 0) {
+            if (this.winningNumberDigits.length == 1) {
+                digit = 0;
+            } else if (this.winningNumberDigits.length == 2) {
+                digit = this.winningNumberDigits[0];
+            } else if (this.winningNumberDigits.length == 3) {
+                digit = this.winningNumberDigits[0];
+            }
+        }
+
+        return digit;
     }
 }

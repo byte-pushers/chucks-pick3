@@ -1,7 +1,7 @@
 .draw-time-icon {
   display: inline-block;
   width: 40%;
-  height: 100%;
+  height: 100vh;
   border: 1px solid red;
 
   > ion-icon.selected {
@@ -16,7 +16,7 @@
 .draw-time-title {
   display: inline-block;
   width: 60%;
-  height: 100%;
+  height: 12vh;
   border: 1px solid green;
   line-height: 67px;
 
