@@ -28,8 +28,11 @@ matrix:
       install:
         - npm install
         - npm run build
-      after_install:
-        - aws s3 sync dist/* s3://chuckspick3.com
+      deploy:
+        provider: script
+        script: aws s3 sync chucks-pick3-web/angular-app/dist/* s3://chuckspick3.com
+        on:
+          branch: develop
     - language: node_js
       node_js:
         - “10”
