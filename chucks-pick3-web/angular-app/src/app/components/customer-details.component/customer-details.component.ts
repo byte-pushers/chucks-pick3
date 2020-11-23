@@ -1,12 +1,8 @@
-import {Component, NgModule, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CustomerInfo} from '../../models/customer-info';
 import {MockCustomerService} from '../../services/mock-customer.service';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {NgForm, FormsModule} from '@angular/forms';
-
-@NgModule({
-  imports: [FormsModule]
-})
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-details',
@@ -35,6 +31,7 @@ export class CustomerDetailsComponent implements OnInit {
       this.disableEdit();
     }
   }
+
   public resetCustomerInfo(details: NgForm) {
     details.reset(this.selectedCustomer);
   }
