@@ -36,11 +36,13 @@ export class Pick3DrawDateCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*const someDateTime = new Date();
-    someDateTime.setHours(9, 10, 0, 0);
-    let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);*/
-    let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
-        // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
+    const someDateTime = new Date();
+    /*someDateTime.setDate(someDateTime.getDate() - 1);
+    someDateTime.setHours(21, 32, 0, 0);*/
+
+    let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
+    // let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
+    // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
 
     // currentDrawTime.setSelected(true);
     this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
