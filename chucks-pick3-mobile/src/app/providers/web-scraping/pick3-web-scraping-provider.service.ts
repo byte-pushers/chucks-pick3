@@ -27,7 +27,7 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
       this.jQuery(html).each((a, b) => {
         if (b.localName === "table") {
           r = jq(b);
-          console.log("a: " + a + ", b: " + b)
+          // console.log("a: " + a + ", b: " + b)
         }
       });
       /*this.jQuery(html).each(data.items, function(item){
@@ -77,14 +77,8 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
   }
 
   public scrapeResults(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
-    return this.service.findRegisteredStateLottery(drawingState).retrieveWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader)
-        .then((data) => {
-          return {
-            drawDate: data.date,
-            drawTime: data.time,
-            drawResult: data.number,
-          };
-        });
+    return this.service.findRegisteredStateLottery(drawingState)
+        .retrieveWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
   }
 
   public findRegisteredStateLottery = function (drawingState:string): Pick3StateLottery {

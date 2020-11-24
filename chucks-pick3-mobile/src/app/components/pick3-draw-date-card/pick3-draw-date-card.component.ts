@@ -37,8 +37,8 @@ export class Pick3DrawDateCardComponent implements OnInit {
 
   ngOnInit() {
     const someDateTime = new Date();
-    /*someDateTime.setDate(someDateTime.getDate() - 1);
-    someDateTime.setHours(21, 32, 0, 0);*/
+    //someDateTime.setDate(someDateTime.getDate() - 1);
+    //someDateTime.setHours(17, 30, 0, 0);
 
     let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
     // let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
@@ -68,7 +68,12 @@ export class Pick3DrawDateCardComponent implements OnInit {
     this.data.setDrawDate(pick3DrawTime.getDateTime());
 
     if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
-      this.pick3WebScrappingService.scrapeResults(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType()).then(drawingResult => {
+      this.pick3WebScrappingService.scrapeResults(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType()).then((winningNumber: any) => {
+        const drawingResult = {
+          drawDate: winningNumber.date,
+          drawTime: winningNumber.time,
+          drawResult: winningNumber.number,
+        };
         this.data.setWinningNumber(drawingResult.drawResult);
         switch(this.pick3DrawState) {
           case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
@@ -81,6 +86,9 @@ export class Pick3DrawDateCardComponent implements OnInit {
             this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
         }
         this.showCountDownToDrawing = false;
+      }, error => {
+        //TODO: Handle error.
+        console.error("TODO: Handle error: " + error, error);
       });
     } else {
       switch(this.pick3DrawState) {
