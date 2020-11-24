@@ -2,7 +2,7 @@
   <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
     <ion-col>
       <span style="font-size: 1.5em;font-weight: bolder;">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
-      <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTime()}}</span><br><br>
+      <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTimeAsString()}}</span><br><br>
       <span style="font-size: 1.0em;font-weight: bold;">{{data.getDrawDate() | date}}</span><br><br>
       <div style="display: inline" *ngIf="showCountDownToDrawing === false">
         <span class="dot">{{data.getWinningNumberDigit1()}}</span>

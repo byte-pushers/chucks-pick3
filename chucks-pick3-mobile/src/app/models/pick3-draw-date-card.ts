@@ -6,6 +6,7 @@ export interface Pick3DrawDateCard {
     setDrawState(drawState: string): void;
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum);
+    getDrawTimeAsString(): string;
     getDrawDate(): Date;
     setDrawDate(drawDate: Date): void;
     getUpcomingDrawingTime(): Date;
@@ -16,5 +17,5 @@ export interface Pick3DrawDateCard {
     setWinningNumber(winningNumber: number): void;
     getWinningNumberDigit1(): number;
     getWinningNumberDigit2(): number;
-    getWinningNumberDigit3(): number
+    getWinningNumberDigit3(): number;
 }

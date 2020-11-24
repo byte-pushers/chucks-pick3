@@ -24,6 +24,10 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return this.drawState;
     }
 
+    getDrawTimeAsString(): string {
+        return Pick3DrawTimeEnum.toString(this.drawTime);
+    }
+
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
         return this.drawTime;
     }
