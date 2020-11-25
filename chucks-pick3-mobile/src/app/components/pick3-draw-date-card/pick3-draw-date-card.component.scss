@@ -22,13 +22,21 @@ ion-grid {
 .scroll-content{overflow-y: hidden;}
 
 .dot {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   background-color: #FFFFFF;
   border-radius: 50%;
   display: inline-block;
   margin: 5px;
   color: black;
-  line-height: 2.2em;
+  line-height: 2em;
   font-size: 1.5em;
+}
+
+.view-picks-icon {
+  fill: #FFFFFF;
+  height: 100%;
+  width: 100%;
+
+
 }
