@@ -48,10 +48,17 @@ Resources:
         - Key: Name
           Value: ChucksPick3VpcExecutionRole
 
+  ChucksPick3ElasticIP:
+    Type: AWS::EC2::EIP
+    DependsOn: ChucksPick3AttachInternetGateway
+    Properties:
+      Domain: vpc
+
   ChucksPick3NatGateway:
     Type: AWS::EC2::NatGateway
     Properties:
-      AllocationId: "eipalloc-08a5f37c315dbd02e"
+      AllocationId:
+        Fn::GetAtt: [ ChucksPick3ElasticIP, AllocationId ]
       SubnetId:
         Ref: PublicSubnet1
       Tags:
@@ -277,7 +284,7 @@ Resources:
     DependsOn:
       - ChucksPick3VpcExecutionRole
     Properties:
-      CodeUri: s3://${bytepushers.deploy.s3BucketName}/${bytepushers.deploy.s3ObjectName}
+      CodeUri: s3://${bytepushers.deploy.chuckspick3.ws.s3BucketName}/${bytepushers.deploy.s3ObjectName}
       Description: Chucks Pick 3 AWS Serverless Spring API
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
       Events:

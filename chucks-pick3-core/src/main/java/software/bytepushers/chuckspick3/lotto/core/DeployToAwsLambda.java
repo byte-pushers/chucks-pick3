@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class DeployToAwsLambda {
     private static final String PROP_AWS_REGION = "bytepushers.deploy.awsRegion";
-    private static final String PROP_BUCKET_NAME = "bytepushers.deploy.s3BucketName";
+    private static final String PROP_BUCKET_NAME = "bytepushers.deploy.chuckspick3.core.s3BucketName";
     private static final String PROP_OBJECT_NAME = "bytepushers.deploy.s3ObjectName";
     private static final String PROP_PAYLOAD_LOCAL_PATH = "bytepushers.deploy.payloadLocalPath";
     private static final String PROP_LAMBDA_FUNCTION_NAME = "bytepushers.deploy.lambdaFunctionName";

@@ -20,7 +20,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.deploy.skip>true</maven.deploy.skip>
         <spring.version>5.0.3.RELEASE</spring.version>
-        <junit.version>4.13.1</junit.version>
         <log4j.version>2.13.3</log4j.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
     </properties>
@@ -67,12 +66,6 @@
             <version>1.18.10</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -99,7 +92,7 @@
                                     <value>us-east-2</value>
                                 </systemProperty>
                                 <systemProperty>
-                                    <key>bytepushers.deploy.s3BucketName</key>
+                                    <key>bytepushers.deploy.chuckspick3.core.s3BucketName</key>
                                     <value>com.bytepushers.chucks-pick3</value>
                                 </systemProperty>
                                 <systemProperty>
