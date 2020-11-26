@@ -372,7 +372,7 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.chuckspick3.ws.s3BucketName</key>
-                                    <value>com.bytepushers.chucks-pick3.webservice</value>
+                                    <value>com.bytepushers.chucks-pick3.webservice-prod</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3ObjectName</key>
@@ -603,6 +603,8 @@
             <properties>
                 <!--<spring.profiles.active>aws</spring.profiles.active>-->
                 <maven.install.skip>true</maven.install.skip>
+                <!--suppress UnresolvedMavenProperty -->
+                <datasource.url>${env.DATASOURCE_URL}</datasource.url>
                 <!--suppress UnresolvedMavenProperty -->
                 <datasource.username>${env.DATASOURCE_USERNAME}</datasource.username>
                 <!--suppress UnresolvedMavenProperty -->
