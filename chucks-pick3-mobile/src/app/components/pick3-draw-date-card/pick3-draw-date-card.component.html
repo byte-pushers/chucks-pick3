@@ -1,9 +1,11 @@
+<!--
 <ion-grid>
   <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
     <ion-col>
       <span style="font-size: 1.5em;font-weight: bolder;">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
       <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTimeAsString()}}</span><br><br>
       <span style="font-size: 1.0em;font-weight: bold;">{{data.getDrawDate() | date}}</span><br><br>
+     <span><ion-icon src="../../../assets/view-picks-icon.svg"  class="view-picks-icon"></ion-icon></span>
       <div style="display: inline" *ngIf="showCountDownToDrawing === false">
         <span class="dot">{{data.getWinningNumberDigit1()}}</span>
         <span class="dot">{{data.getWinningNumberDigit2()}}</span>
@@ -12,9 +14,46 @@
       <div style="display: inline" *ngIf="showCountDownToDrawing === true">
         <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
       </div>
+     <span> <ion-icon src="../../../assets/generate-picks-icon.svg" style="margin-top: 30px" class="view-picks-icon"></ion-icon></span>
       <p>{{slideNumber}}</p>
     </ion-col>
   </ion-row>
+  <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
+    <ion-col>
+      <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+-->
+<ion-grid>
+<ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
+  <ion-col size="2" style="padding-top: 45%">
+    <ion-icon src="../../../assets/view-picks-icon.svg"  class="view-picks-icon"></ion-icon>
+  </ion-col>
+<ion-col size="8">
+<ion-row>
+  <ion-col>
+    <span style="font-size: 1.5em;font-weight: bolder;">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
+    <span style="font-size: 1.25em;font-weight: 500;">{{data.getDrawTimeAsString()}}</span><br><br>
+  <span style="font-size: 1.0em;font-weight: bold;">{{data.getDrawDate() | date}}</span><br>
+  </ion-col>
+</ion-row>
+  <ion-row>
+    <ion-col>
+  <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+    <span class="dot">{{data.getWinningNumberDigit1()}}</span>
+    <span class="dot">{{data.getWinningNumberDigit2()}}</span>
+    <span class="dot">{{data.getWinningNumberDigit3()}}</span>
+  </div>
+  <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+    <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
+  </div>
+    </ion-col>
+  </ion-row>
+</ion-col>
+  <ion-col size="2" style="padding-top: 45%">
+    <ion-icon src="../../../assets/generate-picks-icon.svg"  class="view-picks-icon"></ion-icon></ion-col>
+</ion-row>
   <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
     <ion-col>
       <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
