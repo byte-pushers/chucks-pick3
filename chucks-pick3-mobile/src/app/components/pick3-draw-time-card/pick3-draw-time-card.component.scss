@@ -3,6 +3,8 @@
   width: 40%;
   height: 100vh;
   border: 1px solid red;
+  line-height: 4em;
+
 
   > ion-icon.selected {
     color: black;
@@ -11,6 +13,10 @@
   > ion-icon.not-selected {
     color: #d7d7d7;
   }
+}
+
+.time-of-day-icon {
+  font-size: 32px;
 }
 
 .draw-time-title {

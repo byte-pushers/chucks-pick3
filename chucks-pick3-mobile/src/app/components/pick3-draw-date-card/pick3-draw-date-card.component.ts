@@ -23,9 +23,9 @@ export class Pick3DrawDateCardComponent implements OnInit {
   public showCountDownToDrawing: boolean = false;
 
   drawTimes: Array<Pick3DrawTimeCard> = [
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: null}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: 'morning-icon'}),
     new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY), icon: 'day-icon'}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING), icon: 'evening-icon'}),
     new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT), icon: 'night-icon'})
   ];
 
