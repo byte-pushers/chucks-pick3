@@ -27,16 +27,19 @@ ion-grid {
   background-color: #FFFFFF;
   border-radius: 50%;
   display: inline-block;
-  margin: 5px;
+  margin: 2px;
   color: black;
   line-height: 2em;
   font-size: 1.5em;
+  font-weight: bold;
 }
 
 .view-picks-icon {
   fill: #FFFFFF;
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
+  stroke: #FFFFFF;
+  stroke-width: 5px;
 
 
 }

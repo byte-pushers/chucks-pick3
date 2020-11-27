@@ -27,8 +27,8 @@
 -->
 <ion-grid>
 <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
-  <ion-col size="2" style="padding-top: 45%">
-    <ion-icon src="../../../assets/view-picks-icon.svg"  class="view-picks-icon"></ion-icon>
+  <ion-col size="2" style="padding-top: 50%; margin-right: 0px">
+    <ion-icon src="../../../assets/view-picks-icon.svg"  class="view-picks-icon" style="float: right"></ion-icon>
   </ion-col>
 <ion-col size="8">
 <ion-row>
@@ -51,8 +51,8 @@
     </ion-col>
   </ion-row>
 </ion-col>
-  <ion-col size="2" style="padding-top: 45%">
-    <ion-icon src="../../../assets/generate-picks-icon.svg"  class="view-picks-icon"></ion-icon></ion-col>
+  <ion-col size="2" style="padding-top: 50%; margin-left: 0px">
+    <ion-icon src="../../../assets/generate-picks-icon.svg"  class="view-picks-icon" style="float: left"></ion-icon></ion-col>
 </ion-row>
   <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
     <ion-col>
