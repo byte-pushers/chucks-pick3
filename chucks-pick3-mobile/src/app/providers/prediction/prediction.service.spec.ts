@@ -64,7 +64,7 @@ describe('PredictionProvider', () => {
         req.error(new ErrorEvent('network error'));
   }));*/
 
-  it('test', () => {
+  it('time-of-day-text', () => {
     expect(true).toBe(true);
   });
 });

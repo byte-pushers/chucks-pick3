@@ -22,7 +22,7 @@ describe('Pick3DrawDateViewComponent', () => {
     expect(component).toBeTruthy();
   });*/
 
-  it('test', () => {
+  it('time-of-day-text', () => {
     expect(true).toBe(true);
   });
 });
