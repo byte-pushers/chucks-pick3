@@ -30,7 +30,7 @@ matrix:
         provider: script
         script: ls -ltr
         on:
-          branch: feature/production-deployment
+          branch: develop
     - language: node_js
       node_js:
         - “10”
