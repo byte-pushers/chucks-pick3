@@ -133,6 +133,7 @@ export class Pick3DrawDateCardComponent implements OnInit {
         drawTime.setSelected(false);
       }
     });
+
     this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
   }
 }
