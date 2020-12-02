@@ -124,4 +124,15 @@ export class Pick3DrawDateCardComponent implements OnInit {
       }
     });
   }
+
+  public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+    const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()));
+
+    this.drawTimes.forEach(drawTime => {
+      if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
+        drawTime.setSelected(false);
+      }
+    });
+    this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+  }
 }

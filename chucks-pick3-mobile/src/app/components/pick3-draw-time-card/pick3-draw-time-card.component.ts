@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
 
 @Component({
   selector: 'pick3-draw-time-card',
