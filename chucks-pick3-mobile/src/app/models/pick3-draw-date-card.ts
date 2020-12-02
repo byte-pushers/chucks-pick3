@@ -1,4 +1,4 @@
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 
 export interface Pick3DrawDateCard {
     getTitle(): string;
@@ -18,4 +18,6 @@ export interface Pick3DrawDateCard {
     getWinningNumberDigit1(): number;
     getWinningNumberDigit2(): number;
     getWinningNumberDigit3(): number;
+    getDrawDateIcon(): string;
+    setDrawDateIcon(drawDateIcon: string): void;
 }

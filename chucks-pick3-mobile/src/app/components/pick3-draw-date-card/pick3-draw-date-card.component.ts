@@ -45,8 +45,17 @@ export class Pick3DrawDateCardComponent implements OnInit {
     // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
 
     // currentDrawTime.setSelected(true);
-    this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+    this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
     // this.displayDrawTime(this.data.getDrawDate());
+  }
+  private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
+    const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
+      if (drawTime.getTitle().toUpperCase() === pick3DrawTime.getType().toUpperCase()) {
+        return true;
+      }
+    });
+
+    return (pick3DrawTimeCard === null || pick3DrawTimeCard === undefined) ? null : pick3DrawTimeCard.getIcon();
   }
 
   private getCurrentDrawTime(): Pick3DrawTime {
@@ -61,21 +70,23 @@ export class Pick3DrawDateCardComponent implements OnInit {
     return this.pick3StateLottery.getState();
   }
 
-  private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string): void {
+  private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawDateIcon: string): void {
     this.data.setBackgroundImage(backgroundImageUrl);
     this.data.setDrawState(stateName);
     this.data.setDrawTime(Pick3DrawTimeEnum.toEnum(pick3DrawTime.getType()));
     this.data.setDrawDate(pick3DrawTime.getDateTime());
+    this.data.setDrawDateIcon(drawDateIcon);
 
     if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
-      this.pick3WebScrappingService.scrapeResults(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType()).then((winningNumber: any) => {
+      this.pick3WebScrappingService.scrapeResults(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType()).then(
+          (winningNumber: any) => {
         const drawingResult = {
           drawDate: winningNumber.date,
           drawTime: winningNumber.time,
           drawResult: winningNumber.number,
         };
         this.data.setWinningNumber(drawingResult.drawResult);
-        switch(this.pick3DrawState) {
+        switch (this.pick3DrawState) {
           case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
             this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
             break;
@@ -102,10 +113,10 @@ export class Pick3DrawDateCardComponent implements OnInit {
     }
   }
 
-  private displayDrawTime(drawDate: Date): void {
+  /*private displayDrawTime(drawDate: Date): void {
     const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTime(drawDate);
     this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
-  }
+  }*/
 
   private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
     this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
@@ -126,14 +137,15 @@ export class Pick3DrawDateCardComponent implements OnInit {
   }
 
   public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-    const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()));
-
+    const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName
+    (Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()));
+    this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
     this.drawTimes.forEach(drawTime => {
       if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
         drawTime.setSelected(false);
       }
     });
 
-    this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
+    this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
   }
 }
