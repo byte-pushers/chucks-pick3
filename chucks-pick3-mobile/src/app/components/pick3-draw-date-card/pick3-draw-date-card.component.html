@@ -20,7 +20,7 @@
   </ion-row>
   <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
     <ion-col>
-      <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
+      <pick3-draw-time-card [data]="drawTime" (click)="selectDrawingTimeCard(drawTime)"></pick3-draw-time-card>
     </ion-col>
   </ion-row>
 </ion-grid>
