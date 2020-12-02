@@ -28,9 +28,9 @@ matrix:
         - npm run build
       deploy:
         provider: script
-        script: aws s3 sync chucks-pick3-web/angular-app/dist/* s3://dev.chuckspick3.com
+        script: ls -ltr
         on:
-          branch: develop
+          branch: feature/production-deployment
     - language: node_js
       node_js:
         - “10”
