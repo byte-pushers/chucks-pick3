@@ -31,7 +31,7 @@ matrix:
         skip_cleanup: true
         script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
         on:
-          branch: feature/production-deployment
+          branch: develop
     - language: node_js
       node_js:
         - “10”
