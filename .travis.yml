@@ -28,7 +28,7 @@ matrix:
         - npm run build
       deploy:
         provider: script
-        script: ls -ltr
+        script: ls -ltr && aws s3 sync chucks-pick3-web/angular-app/dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
         on:
           branch: feature/production-deployment
     - language: node_js
