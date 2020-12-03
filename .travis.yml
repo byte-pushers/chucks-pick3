@@ -24,11 +24,10 @@ matrix:
         - pip install awscli
         - cd chucks-pick3-web/angular-app/
       install:
-        - npm install
-        - npm run build
+        - pwd
       deploy:
         provider: script
-        script: pwd && aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
+        script: npm install && npm run build && aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
         on:
           branch: feature/production-deployment
     - language: node_js
