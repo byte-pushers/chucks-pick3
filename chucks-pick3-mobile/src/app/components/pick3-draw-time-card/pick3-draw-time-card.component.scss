@@ -1,3 +1,5 @@
+@import "../../../breakpoints";
+
 .draw-time-icon {
   display: inline-block;
   width: 40%;
@@ -21,6 +23,10 @@
   vertical-align: middle;
   line-height: 12vh;
   font-size: 15vw;
+  @include for-size(iPhone5-SE) {
+    font-size: 12vw;
+  }
+
 }
 
 .time-of-day-text {
