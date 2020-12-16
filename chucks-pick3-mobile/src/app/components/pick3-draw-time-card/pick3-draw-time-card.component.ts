@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 
@@ -7,13 +7,17 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
   templateUrl: './pick3-draw-time-card.component.html',
   styleUrls: ['./pick3-draw-time-card.component.scss'],
 })
-export class Pick3DrawTimeCardComponent implements OnInit {
+export class Pick3DrawTimeCardComponent implements OnInit, OnDestroy {
   @Input() data: Pick3DrawTimeCard;
 
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  ngOnDestroy() {
+    this.data = null;
   }
 
   public getSelectedState(): {'not-selected': boolean, selected: boolean} {
@@ -32,40 +36,54 @@ export class Pick3DrawTimeCardComponent implements OnInit {
     return selectedStateCssClass;
   }
 
-  public getDrawingTimeCardState(): { }  {
+  public getDrawingTimeCardState(): string | string[] | Set<string> | { [klass: string]: any; }  {
     const pick3DrawTimeCardStateEnum = this.data.getState();
-    
+    let cssClass: string | string[] | Set<string> | { [klass: string]: any; };
+
+    console.log("getDrawingTimeCardState() start.");
     switch (pick3DrawTimeCardStateEnum) {
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: //gray
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);
+        cssClass = this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: //yellow
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet-with-generated-picks', true);
+        cssClass = this.toggleDrawingTimeCardStateCssClass('not-drawn-yet-with-generated-picks', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN: //gray
-        return this.toggleDrawingTimeCardStateCssClass('drawn', true);
+        cssClass = this.toggleDrawingTimeCardStateCssClass('drawn', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS://black
-        return this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-no-winners', true);
+        cssClass = this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-no-winners', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS://green
-        return this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-winners', true);
+        cssClass = this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-winners', true);
+        break;
       default:
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);//gray
+        cssClass = this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);//gray
     }
+
+    console.log("getDrawingTimeCardState() end.");
+    return cssClass;
   }
 
   private toggleDrawingTimeCardStateCssClass(attributeName: string, booleanValue: boolean): any {
-    let drawingTimeCardStateCssClass = {
-      'not-drawn-yet': true,
+    const drawingTimeCardStateCssClass = {
+      'not-drawn-yet': false,
       'not-drawn-yet-with-generated-picks': false,
       'drawn': false,
       'drawn-with-generated-picks-with-no-winners': false,
       'drawn-with-generated-picks-with-winners': false,
       'selected': false
     };
+    //console.log('drawingTimeCardStateCssClass: ' + drawingTimeCardStateCssClass, drawingTimeCardStateCssClass);
 
     if (this.data.getSelected()) {
       this.toggleCssClass(drawingTimeCardStateCssClass, 'selected', true);
     }
 
-    return this.toggleCssClass(drawingTimeCardStateCssClass, attributeName, booleanValue);
+    this.toggleCssClass(drawingTimeCardStateCssClass, attributeName, booleanValue);
+    //console.log('attribute name: ' + attributeName + ', booleanValue: ' + booleanValue + ', drawingTimeCardStateCssClass: ' + drawingTimeCardStateCssClass, drawingTimeCardStateCssClass);
+
+    return drawingTimeCardStateCssClass;
   }
 
   private toggleCssClass(drawingTimeCardStateCssClass: any, attributeName: string, booleanValue: boolean): any {
@@ -73,8 +91,7 @@ export class Pick3DrawTimeCardComponent implements OnInit {
       if (drawingTimeCardStateCssClass.hasOwnProperty(property)) {
         if (property === attributeName) {
           drawingTimeCardStateCssClass[property] = booleanValue;
-        } else if (property !== 'selected') {
-          drawingTimeCardStateCssClass[property] = false;
+          break;
         }
       }
     }
