@@ -40,15 +40,12 @@ export class Pick3DrawDateCardComponent implements OnInit {
     const someDateTime = new Date();
     //someDateTime.setDate(someDateTime.getDate() - 1);
     //someDateTime.setHours(17, 30, 0, 0);
-
     let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
-    // let pick3DrawTime: Pick3DrawTime = this.getCurrentDrawTime();
-    // const currentDrawTime = this.drawTimes.find(drawTime => drawTime.getTitle().toLowerCase() === pick3DrawTime.getType().toLowerCase())
-
-    // currentDrawTime.setSelected(true);
+    this.randomlyMockDrawTimeCardStates();
+    //this.setDrawTimeCardsState();
     this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
-    // this.displayDrawTime(this.data.getDrawDate());
   }
+
   private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
     const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
       if (drawTime.getTitle().toUpperCase() === pick3DrawTime.getType().toUpperCase()) {
@@ -71,6 +68,15 @@ export class Pick3DrawDateCardComponent implements OnInit {
     return this.pick3StateLottery.getState();
   }
 
+  /**
+   * Helper method to set all the data for the Pick3 Draw Date Card.
+   *
+   * @param stateName
+   * @param pick3DrawTime
+   * @param backgroundImageUrl
+   * @param drawDateIcon
+   * @private
+   */
   private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawDateIcon: string): void {
     this.data.setBackgroundImage(backgroundImageUrl);
     this.data.setDrawState(stateName);
@@ -170,5 +176,17 @@ export class Pick3DrawDateCardComponent implements OnInit {
         this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
     }
     this.showCountDownToDrawing = false;
+  }
+
+  private randomlyMockDrawTimeCardStates(): void {
+    this.drawTimes.forEach(drawTime => {
+      drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
+    });
+  }
+
+  private randomEnum<T>(anEnum: T): T[keyof T] {
+    const item = Math.floor(Math.random() * Object.keys(anEnum).length);
+    const i2 = Object.keys(anEnum)[item];
+    return anEnum[i2];
   }
 }
