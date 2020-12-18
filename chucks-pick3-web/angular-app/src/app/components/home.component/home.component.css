@@ -22,6 +22,12 @@
 
 .header-btn {
  background-color: #2dd36f;
+  margin-top: 1em;
 }
 
-.hr
+.header-image {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
