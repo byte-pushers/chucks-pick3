@@ -1,7 +1,7 @@
 .hero-area {
   background-color: #1c1c1d;
   width: 100%;
-  height: 500px;
+  height: 800px;
   text-align: center;
 }
 
@@ -23,11 +23,37 @@
 .header-btn {
  background-color: #2dd36f;
   margin-top: 1em;
+
 }
 
+.header-ball{
+  width: 100%;
+  z-index: 10;
+}
+.header-ball-back {
+  width: 100%;
+  z-index: 1;
+}
 .header-image {
   width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  z-index: 11;
+}
+
+.features-header {
+  text-align: left;
+  padding-left: .6em;
+}
+
+.how-to-section {
+  width: 100%;
+  height: 100%;
+text-align: left;
+  margin-top: 5%;
+
+}
+
+.bp-section-header {
+  text-align: left;
 }
