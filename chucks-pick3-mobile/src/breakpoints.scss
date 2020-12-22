@@ -1,0 +1,15 @@
+@mixin for-size($size) {
+  @if $size == iPhone5-SE {
+    @media (max-width: 320px) { @content; }
+  } @else if $size == iPhone6-7-8 {
+    @media (min-width: 375px) { @content; }
+  } @else if $size == iPhone6-7-8-Plus {
+    @media (min-width: 414px) { @content; }
+  } @else if $size == iPhoneX {
+    @media (min-width: 375px) { @content; }
+  } @else if $size == iPad {
+    @media (min-width: 768px) { @content; }
+  } @else if $size == iPad-Pro {
+    @media (min-width: 1024px) { @content; }
+  }
+}
