@@ -50,6 +50,7 @@ matrix:
       install:
         - npm install
         - npm install --only=dev
+        - npm install -g bower
         - bower install
       script:
         - npm run test:ci
