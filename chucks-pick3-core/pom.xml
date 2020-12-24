@@ -93,7 +93,8 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.chuckspick3.core.s3BucketName</key>
-                                    <value>com.bytepushers.chucks-pick3</value>
+                                    <!--suppress UnresolvedMavenProperty -->
+                                    <value>${env.S3_DEPLOYMENT_BUCKET_CHUCKSPICK3_CORE}</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3ObjectName</key>

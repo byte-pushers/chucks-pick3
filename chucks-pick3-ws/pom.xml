@@ -372,7 +372,8 @@
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.chuckspick3.ws.s3BucketName</key>
-                                    <value>com.bytepushers.chucks-pick3.webservice-prod</value>
+                                    <!--suppress UnresolvedMavenProperty -->
+                                    <value>${env.S3_DEPLOYMENT_BUCKET}</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3ObjectName</key>
