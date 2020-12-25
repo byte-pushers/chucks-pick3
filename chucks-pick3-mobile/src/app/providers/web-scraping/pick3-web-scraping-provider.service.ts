@@ -22,14 +22,14 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
       return this.$html;
     },
     read2: (html): any => {
-      let r;
       const jq = this.jQuery;
-      this.jQuery(html).each((a, b) => {
+      let r = this.jQuery(html).find('#LastDraw');
+      /*this.jQuery(html).each((a, b) => {
         if (b.localName === "table") {
           r = jq(b);
           // console.log("a: " + a + ", b: " + b)
         }
-      });
+      });*/
       /*this.jQuery(html).each(data.items, function(item){
         $("<li/>").value().appendTo("#data");
       });*/
@@ -76,9 +76,14 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
     });
   }
 
-  public scrapeResults(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
+  public getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
     return this.service.findRegisteredStateLottery(drawingState)
-        .retrieveWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
+        .retrievePastWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
+  }
+
+  public getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
+    return this.service.findRegisteredStateLottery(drawingState)
+        .retrieveCurrentWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
   }
 
   public findRegisteredStateLottery = function (drawingState:string): Pick3StateLottery {
