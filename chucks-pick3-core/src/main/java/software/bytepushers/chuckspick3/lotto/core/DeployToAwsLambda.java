@@ -21,6 +21,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
 import com.amazonaws.services.s3.model.HeadBucketRequest;
 import com.amazonaws.services.s3.model.SetBucketVersioningConfigurationRequest;
+import com.amazonaws.util.StringUtils;
 import org.joda.time.DateTime;
 
 import java.io.File;
@@ -37,7 +38,7 @@ import java.util.List;
  */
 public class DeployToAwsLambda {
     private static final String PROP_AWS_REGION = "bytepushers.deploy.awsRegion";
-    private static final String PROP_BUCKET_NAME = "bytepushers.deploy.s3BucketName";
+    private static final String PROP_BUCKET_NAME = "bytepushers.deploy.chuckspick3.core.s3BucketName";
     private static final String PROP_OBJECT_NAME = "bytepushers.deploy.s3ObjectName";
     private static final String PROP_PAYLOAD_LOCAL_PATH = "bytepushers.deploy.payloadLocalPath";
     private static final String PROP_LAMBDA_FUNCTION_NAME = "bytepushers.deploy.lambdaFunctionName";
@@ -47,8 +48,12 @@ public class DeployToAwsLambda {
     public static void main(String[] args) {
         final AmazonS3 s3Client = buildS3Client();
 
-        final String bucketName = System.getProperty(PROP_BUCKET_NAME);
         String objectName = System.getProperty(PROP_OBJECT_NAME);
+        final String bucketName = System.getenv().get(PROP_BUCKET_NAME);
+        if (StringUtils.isNullOrEmpty(bucketName)) {
+            String errorMessage = String.format("Bucket name not found in Environment Variable: '%s'", PROP_BUCKET_NAME);
+            throw new IllegalArgumentException(errorMessage);
+        }
 
         if (!s3BucketExists(s3Client, bucketName)) {
             createS3Bucket(s3Client, bucketName);

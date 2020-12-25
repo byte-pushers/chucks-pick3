@@ -371,8 +371,9 @@
                                     <value>us-east-2</value>
                                 </systemProperty>
                                 <systemProperty>
-                                    <key>bytepushers.deploy.s3BucketName</key>
-                                    <value>com.bytepushers.chucks-pick3.webservice</value>
+                                    <key>bytepushers.deploy.chuckspick3.ws.s3BucketName</key>
+                                    <!--suppress UnresolvedMavenProperty -->
+                                    <value>${env.S3_DEPLOYMENT_BUCKET}</value>
                                 </systemProperty>
                                 <systemProperty>
                                     <key>bytepushers.deploy.s3ObjectName</key>
@@ -604,6 +605,8 @@
                 <!--<spring.profiles.active>aws</spring.profiles.active>-->
                 <maven.install.skip>true</maven.install.skip>
                 <!--suppress UnresolvedMavenProperty -->
+                <datasource.url>${env.DATASOURCE_URL}</datasource.url>
+                <!--suppress UnresolvedMavenProperty -->
                 <datasource.username>${env.DATASOURCE_USERNAME}</datasource.username>
                 <!--suppress UnresolvedMavenProperty -->
                 <datasource.password>${env.DATASOURCE_PASSWORD}</datasource.password>
@@ -639,57 +642,6 @@
                             <argLine>@{argLine} --illegal-access=permit</argLine>
                         </configuration>
                     </plugin>
-                    <!--<plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <version>2.3</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/dist</outputDirectory>
-                                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                                    <transformers>
-                                        <transformer
-                                                implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
-                                        </transformer>
-                                    </transformers>
-                                    <filters>
-                                        <filter>
-                                            <artifact>${project.groupId}:${project.artifactId}</artifact>
-                                            <excludes>
-                                                <exclude>software/bytepushers/pick3/deploy/**</exclude>
-                                            </excludes>
-                                        </filter>
-                                        &lt;!&ndash;<filter>
-                                            <artifact>com.amazonaws:aws-java-sdk-cloudformation</artifact>
-                                            <excludes>
-                                                <exclude>software/bytepushers/pick3/deploy/**</exclude>
-                                            </excludes>
-                                        </filter>&ndash;&gt;
-                                    </filters>
-                                    <artifactSet>
-                                        <excludes>
-                                            <exclude>org.apache.tomcat.embed:*</exclude>
-                                            <exclude>software.bytepushers.pick3.deploy:*</exclude>
-                                            &lt;!&ndash;<exclude>org.h2:*</exclude>&ndash;&gt;
-                                            &lt;!&ndash;<exclude>application-*.properties</exclude>&ndash;&gt;
-                                        </excludes>
-                                    </artifactSet>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.github.edwgiz</groupId>
-                                <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-                                <version>2.8.1</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>-->
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>

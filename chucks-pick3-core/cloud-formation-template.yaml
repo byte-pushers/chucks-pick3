@@ -95,7 +95,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        S3Bucket: ${bytepushers.deploy.s3BucketName}
+        S3Bucket: ${bytepushers.deploy.chuckspick3.core.s3BucketName}
         S3Key: ${bytepushers.deploy.s3ObjectName}
       Description: "Chucks Pick3 Lotto System"
       FunctionName: ${bytepushers.deploy.lambdaFunctionName}
