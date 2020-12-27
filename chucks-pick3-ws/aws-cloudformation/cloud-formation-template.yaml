@@ -297,7 +297,7 @@ Resources:
         Bucket: !Ref BucketName
         Key: !Ref ObjectName
       Description: Chucks Pick 3 AWS Serverless Spring API
-      FunctionName: ${bytepushers.deploy.lambdaFunctionName}
+      FunctionName: bytepushers-chucks-pick3-ws
       Events:
         GetResource:
           Properties:
