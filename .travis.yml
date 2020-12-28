@@ -5,14 +5,103 @@ matrix:
       cache:
         directories:
           - "$HOME/.m2"
+      before_install:
+        - pyenv global 3.7.1
+        - pip install -U pip
+        - pip install awscli
+      install:
+        - mvn clean install -P aws -DskipTests
+      before_deploy:
+        - cp -Rf 'chucks-pick3-ws/target/chucks-pick3-ws.jar' ${S3_DEPLOYMENT_OBJECT_NAME}
       deploy:
-        provider: script
-        script: mvn clean deploy -P aws
-        on:
-          branch: develop
+        - provider: cloudformation
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          region: us-east-2
+          wait: true
+          template: chucks-pick3-ws/aws-cloudformation/cloud-formation-deployment-bucket-template.yaml
+          stack_name: chuckspick3-ws-deployment-bucket
+          parameters:
+            - BucketName=${S3_DEPLOYMENT_BUCKET}
+          capabilities: [ CAPABILITY_NAMED_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND ]
+          edge: true
+          skip_cleanup: true
+          on:
+            branch: develop
+        - provider: s3
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          bucket: ${S3_DEPLOYMENT_BUCKET}
+          region: us-east-2
+          skip_cleanup: true
+          glob: ${S3_DEPLOYMENT_OBJECT_NAME}
+          edge: true
+          on:
+            branch: develop
+        - provider: cloudformation
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          region: us-east-2
+          wait: true
+          template: chucks-pick3-ws/aws-cloudformation/cloud-formation-template.yaml
+          stack_name: bytepushers-chucks-pick3-ws
+          parameters:
+            - BucketName=${S3_DEPLOYMENT_BUCKET}
+            - ObjectName=${S3_DEPLOYMENT_OBJECT_NAME}
+          capabilities: [ CAPABILITY_NAMED_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND ]
+          edge: true
+          skip_cleanup: true
+          on:
+            branch: develop
+        - provider: script
+          script: aws lambda update-function-code --publish --function-name bytepushers-bpweb-ws --s3-bucket ${S3_DEPLOYMENT_BUCKET} --s3-key ${S3_DEPLOYMENT_OBJECT_NAME} --region us-east-2
+          on:
+            branch: develop
+
+        - provider: cloudformation
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          region: us-east-2
+          wait: true
+          template: chucks-pick3-ws/aws-cloudformation/cloud-formation-deployment-bucket-template.yaml
+          stack_name: chuckspick3-ws-deployment-bucket
+          parameters:
+            - BucketName=${S3_DEPLOYMENT_BUCKET}
+          capabilities: [ CAPABILITY_NAMED_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND ]
+          edge: true
+          skip_cleanup: true
+          on:
+            branch: feature/deployment
+        - provider: s3
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          bucket: ${S3_DEPLOYMENT_BUCKET}
+          region: us-east-2
+          skip_cleanup: true
+          glob: ${S3_DEPLOYMENT_OBJECT_NAME}
+          edge: true
+          on:
+            branch: feature/deployment
+        - provider: cloudformation
+          access_key_id: ${AWS_ACCESS_KEY_ID}
+          secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+          region: us-east-2
+          wait: true
+          template: chucks-pick3-ws/aws-cloudformation/cloud-formation-template.yaml
+          stack_name: bytepushers-chucks-pick3-ws
+          parameters:
+            - BucketName=${S3_DEPLOYMENT_BUCKET}
+            - ObjectName=${S3_DEPLOYMENT_OBJECT_NAME}
+          capabilities: [ CAPABILITY_NAMED_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND ]
+          edge: true
+          skip_cleanup: true
+          on:
+            branch: feature/deployment
+        - provider: script
+          script: aws lambda update-function-code --publish --function-name bytepushers-chucks-pick3-ws --s3-bucket ${S3_DEPLOYMENT_BUCKET} --s3-key ${S3_DEPLOYMENT_OBJECT_NAME} --region us-east-2
+          on:
+            branch: feature/deployment
       env:
-        - secure: NXY36JVtkF0FnnyoUsxbC23wUDCjdyg5Tsal2HWTAC3/E6P4mxiAzVVnVx/TI3YDrEirEEcqXdgEpZOvS7dWhWPbKS1Xm+NMLalOqaVukqPHl2R6iihsXx7wfpAsUjcH4bIWyILzjNdPtemUxDOunNcFu5Q6JXKG0b1oBdywKtRUc4XtJuaTuxOE3OSvgpUiFLDU1eui40i3K8FEINSEOUfmuk6Do5pmCmCke8UPm87e+55IdFvbJvNdT/lazLf/5K/CFLLjRn7ImSAATkjaR/cqQLUyjobg1fQM1zsM0gsVLH1nv6Fc1t6y9ORqbMN2wiroc210W4ElZ/PCRp3FmvnUCvPzSE/gzllrPD8VZrC2jH3akDkMgxFhFAMVao2FOTNGjoNsEjKrmENem9p+nzCqzFdfZA2t+FfAYdcAJmLM3VeOFpXqL3wquw/bfKWByaqjWpbpzNkqor6kCW7SPscSa7A3OGB/rwh42/5GDLHO+QJwXK7A9Bz8toyNHe4dE7j1JKAsr7+7gB3Ptzowoti5X8fWrGegVE6F6iI2gzRQJTlG7C+Oh0u5z/krVK95YiqswuxEPteuynmIuYKdQg3EyTUKTjWG2A+xvwO3ihY/h+RhAVE8ZF4zq+/HTXIvl4grReUK/rTzCAAPKB+lOVdDWnGG2Sa86uG4/J+xaRM=
-        - secure: MO8ELN9hyB/w8zt3ek3+aihcYq5Rj+82qCb8i/rcbVhVdOavkN83S3k2Z1i7AV16xyLmcCc5EUJBdBabPX1F7R0oddQFlteKY6qnep3+nGjoZi2jipShKONvFBgl7qLRbtdlVXnNk3Nume0McO0dSUVAwNnIkZKbp1vvIU1I5yxY1zSePFzESs0aGeztNRhWMZdn4mKesOW2+aKsuJGxxU6lWuCj7FHCNeBbJPhKzpdiI+mcrqgRkyE0eafS6AHZhO1EVE4gj+04A6W2aOne/ASEGAhoOls4Mt8jU1QctTj3EjGg0TSQJ75KxUugiNTAJfiToAl/H9J4Jfn6Ig+tkL4vW0iz4bOaKLBcSCfhQ0oY5TSnBjCfQxx3eSijN2BvBNymULpdE5i015jfQ6TdYHyR+M3FpGfvLiJ6GCgXnthtzH6cAQMugu2ezTfcACDN2lzt99luAY501FapbUic8RGLcFqpirfWiuHEvyJ2jj9O4qVZgXxrDQHBvxvbTELSdvjfGx8r7eE8rioF8gpPhnck/G+9iRz4c8hb67TTKThu9IPx53defxzMUPzIO2oEj6JDNokoPdyE3ErtuMKR6cgXw5alEhDd8QiAni3e8qRMlDhbXFC/dSemRVz2/rGSrvRDjqvPSV8FnjqIuS2mq0bUxcv7VMcQfUIghXsOdzM=
         - secure: HR01oSZJ+gAoHprnVIiyopCIPppi211f1OM2e8KwaQcu4xVk1pfy0Awm8c5Cvt0XwT79XjMbt+DDR0JyxJv93rb475D8bht4bkxVR6psgC7pow2cwb6crEN9fiw21iKC01jg878++FAIpDTUu0PSm4LPgWA2GQbSYzJfOiA6eX3Rp54VIWf2gZhpDT31sp+t8m8yhhzQBFguhOXNf9XkrsNQgMpH27wXNIjBTgq0mu4EIPaqYpiMbthyAkise6eQSm8JCIaH4pSQuGkDb4Sb03FnuVY5e93x7Y1ezY3Ye4tfo06XwRprSZ2E3mTvstv88l6x9c4DtR2UTrOrEqSjXzRELZZM6MiDK3U5zudwKhdgVlzE2SLlrt4clo+M8VpC7spwX3Mh5Q9F6nyx21aiz1jbZQz3xfii4+3kXMrJ8oOM1nqrOUzfolILSx6Sz0Civ6RC3toEBbh9T9CECL28TqGlafDNlIL84V31zlvUuBraH+hPirVG3UnSSJDDo83xhkyHi+5cQ6Pa0l1cqjrl3tnYtrgKNYG27UGEjl8b+ytI3qnX4wLZKmOP1Sepv+vB6PY9e9NrY8naWEeSfCqXaIp9y0DrMeksQKqbyn/0s42b/qBaKJpFM9WrAUdxVITN0osxvQFNtSDalkyJfUdC7ffdmMtc/nwmaKKVZlqednQ=
     - language: node_js
       node_js:
@@ -29,10 +118,16 @@ matrix:
         - npm install
         - npm run build
       deploy:
-        provider: script
-        script: aws s3 sync chucks-pick3-web/angular-app/dist/* s3://chuckspick3.com
-        on:
-          branch: develop
+        - provider: script
+          skip_cleanup: true
+          script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
+          on:
+            branch: develop
+        - provider: script
+          skip_cleanup: true
+          script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
+          on:
+            branch: feature/deployment
     - language: node_js
       node_js:
         - “10”
@@ -51,7 +146,7 @@ matrix:
         - npm install
         - npm install --only=dev
       script:
-        - npm run test:ci
+        - npm run build
       env:
         - secure: bBmquLkb59FYWKo9Ho3dMVvt28NXAdBNy2deg/oi8bfc74FW7VNsFFnFGS8hJMDEBNH9AJuCH9MdYdfenT55nv6nwAWB6PzUveRRF0YtYQQ42VfF4HcgyBbIaFLG82KU5mhbWhVgrvQdnMxf7RT9KaJHuFEfSh2CxeElgfk9pynjeXGiIPpxc5zzeHDluBywZpYmGXWGdlZVhRTy4mzsNiBaypBakt9McervDWd7zjfn4v+MOLO0mBFrzXRb8664XPDJhNTofd/nsBUmQV0DDI54yv5mnzyuHvD409CJprAjlgyLFXPFkRtxuV/dNX0Uz2xHhj5yVivmQZ2gf1smFu6uVzxxnr6mx7L6OBsWxHQPkuTj8olSAFhCRL11wFCB6u9ypSV4sUTmSNJpND9xKSL5s4uaocJgGK2gyPbpImPJ2mdOpbui0tMeHH7+tjiwYyY2gOvSHHocWsZgfFT3vjoUrrj0RPtJlap2G7vF+yTSs8jNCX4b7VoeNlJL1r2AxtO94utE/e72B4C/2zNiv2CpW+8eznHAPlcEUecslWLLDJslY7L0wedeV78cvu5tek4S/FoGL6bW69e1X99Iv7h5EjHzQdCL33omETuK1GR3+PPlLw6fiFpr2l1Qr7zZ7DInpIO09jLx9qb0Ym/TMKZDbTltGbW9yW9jAv0ZxKI=
 notifications:

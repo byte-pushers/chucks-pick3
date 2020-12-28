@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Chuckspick3 Webservice Deployment Bucket
+Parameters:
+  BucketName:
+    Type: String
+    Description: "Chuckspick3 Lambda deployment bucket"
+    Default: ""
+Resources:
+  BpWebServiceS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      VersioningConfiguration:
+        Status: 'Enabled'

@@ -4,5 +4,6 @@ export abstract class Pick3WebScrapingBaseService {
     protected constructor() {
 
     }
-    public abstract scrapeResults(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult>;
+    public abstract getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult>;
+    public abstract getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult>;
 }
