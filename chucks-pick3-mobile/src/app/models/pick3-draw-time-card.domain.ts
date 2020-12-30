@@ -11,13 +11,13 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     private selected: boolean = false;
 
-    constructor(private readonly config:any) {
-        this.icon = config.icon;
-        this.title = config.title;
-        this.drawTime = config.drawTime ? Pick3DrawTimeEnum.toEnum(config.drawTime) : Pick3DrawTimeEnum.toEnum(this.title) ;
-        this.state = Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
-        this.selected = typeof config.selected === "boolean" ? config.selected : false;
-        this.dateTime = config.dateTime;
+    constructor(config:any) {
+        this.icon = (config) ? config.icon : null;
+        this.title = (config) ? config.title : null;
+        this.drawTime = (config) ? config.drawTime ? Pick3DrawTimeEnum.toEnum(config.drawTime) : Pick3DrawTimeEnum.toEnum(this.title): null;
+        this.state = (config) ? Pick3DrawTimeCardStateEnum.get(config.state) : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+        this.selected = (config) ? (typeof config.selected === "boolean") ? config.selected : false: false;
+        this.dateTime = (config) ? new Date(config.dateTime) : null;
     }
 
     getIcon(): string {

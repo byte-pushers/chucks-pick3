@@ -1,3 +1,5 @@
+import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+
 export namespace Pick3DrawTimeCardStateEnum {
     export enum Pick3DrawTimeCardStateEnum {
         NOT_DRAWN_YET = "not.drawn.yet", // gray
@@ -21,10 +23,19 @@ export namespace Pick3DrawTimeCardStateEnum {
     }
 
     export function get(key: string):  Pick3DrawTimeCardStateEnum {
-        for (let pick3DrawTimeCardStateEnum in Pick3DrawTimeCardStateEnum) {
-            console.log("enum member: ", pick3DrawTimeCardStateEnum);
+        let pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum = null;
+
+        // @ts-ignore
+        if (Object.isDefinedAndNotNull(key)) {
+            for (const value in Pick3DrawTimeCardStateEnum) {
+                if (value == key.toUpperCase()) {
+                    pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum[key.toUpperCase()];
+                    break;
+                }
+            }
         }
-        return null;
+
+        return pick3DrawTimeCardStateEnum;
     }
 
     export function toString(pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum): string {
