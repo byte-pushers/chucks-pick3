@@ -27,7 +27,7 @@
     color: black;
 }
 
-.nav-bar-col-25 {
+.nav-bar-col-15 {
     display: inline-block;
     float: left;
     line-height: 3em;
@@ -46,7 +46,7 @@
 
 }
 
-.nav-bar-col-25 a {
+.nav-bar-col-15 a {
     list-style-type: none;
     font-size: 17px;
     text-decoration: none;
@@ -73,7 +73,7 @@
 
 }
 
-.main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+.main-nav-bar-container .nav-bar-col-15.allow-hover:hover {
     background-color: green !important;
     cursor: pointer;
 }

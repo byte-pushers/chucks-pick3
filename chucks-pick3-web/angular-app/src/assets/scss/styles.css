@@ -269,3 +269,48 @@ padding: 0px!important;
 * {
   font-family: 'Lato', sans-serif!important;
 }
+
+
+@media only screen and (min-width: 768px) {
+  .hidden-desktop {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 320px) {
+  .hidden-mobile {
+    display: none
+  }
+}
+
+.visible-mobile {
+  display: none
+}
+
+@media only screen and (min-width: 0) and (max-width: 320px) {
+  .visible-mobile {
+    display: block
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 449px) {
+  .hidden-mobile-450 {
+    display: none
+  }
+}
+
+@media only screen and (min-width: 0) and (max-width: 767px) {
+  .hidden-mobile-768 {
+    display: none
+  }
+}
+
+.visible-mobile-450 {
+  display: none
+}
+
+@media only screen and (min-width: 0) and (max-width: 449px) {
+  .visible-mobile-450 {
+    display: block
+  }
+}
