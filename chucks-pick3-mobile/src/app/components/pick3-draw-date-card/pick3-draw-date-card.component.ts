@@ -160,13 +160,12 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         return drawTime;
       }
     });
-    this.pick3WebScrappingService
-        .getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-        this.setCardState(winningNumber, selectedPick3DrawTime);
-      }, error => {
-        //TODO: Handle error.
-        console.error('TODO: Handle error: ' + error, error);
-      });
+    this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
+      this.setCardState(winningNumber, selectedPick3DrawTime);
+    }, error => {
+      //TODO: Handle error.
+      console.error('TODO: Handle error: ' + error, error);
+    });
   }
 
   private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: string): void {
@@ -175,13 +174,12 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         return drawTime;
       }
     });
-    this.pick3WebScrappingService
-        .getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-          this.setCardState(winningNumber, selectedPick3DrawTime);
-        }, error => {
-          //TODO: Handle error.
-          console.error('TODO: Handle error: ' + error, error);
-        });
+    this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
+        this.setCardState(winningNumber, selectedPick3DrawTime);
+      }, error => {
+        //TODO: Handle error.
+        console.error('TODO: Handle error: ' + error, error);
+      });
   }
 
   private setCardState(winningNumber: any, selectedPick3DrawTime: Pick3DrawTimeCard): void {
