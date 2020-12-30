@@ -18,11 +18,13 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
       return this.$html;
     },
     read: (html): any => {
+      html = html.replace(/<img[^>]*>/g,"");
       this.$html = this.jQuery(html);
       return this.$html;
     },
     read2: (html): any => {
       const jq = this.jQuery;
+      html = html.replace(/<img[^>]*>/g,"");
       let r = this.jQuery(html).find('#LastDraw');
       /*this.jQuery(html).each((a, b) => {
         if (b.localName === "table") {
