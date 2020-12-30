@@ -8,6 +8,15 @@ Outputs:
       Name: AwsApiGatewaySampleApi
     Value:
       Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/
+Parameters:
+  BucketName:
+    Type: String
+    Description: "Chuckspick3 Lambda deployment bucket"
+    Default: ""
+  ObjectName:
+    Type: String
+    Description: "AWS Lambda code file name from s3 bucket"
+    Default: ""
 Resources:
   ChucksPick3VpcExecutionRole:
     Type: AWS::IAM::Role
@@ -284,9 +293,11 @@ Resources:
     DependsOn:
       - ChucksPick3VpcExecutionRole
     Properties:
-      CodeUri: s3://${bytepushers.deploy.chuckspick3.ws.s3BucketName}/${bytepushers.deploy.s3ObjectName}
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref ObjectName
       Description: Chucks Pick 3 AWS Serverless Spring API
-      FunctionName: ${bytepushers.deploy.lambdaFunctionName}
+      FunctionName: bytepushers-chucks-pick3-ws
       Events:
         GetResource:
           Properties:
