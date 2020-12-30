@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-
-
+import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import validate = WebAssembly.validate;
 
 
 @Component({
@@ -14,6 +13,10 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class HomeComponent implements OnInit {
 
+  public viewField = false;
+  public generateField = false;
+  public writeField = false;
+
   constructor(config: NgbCarouselConfig) {
     config.wrap = true;
     config.keyboard = false;
@@ -21,13 +24,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    const howToActive = document.getElementById('howTo');
-    howToActive.classList.remove('active');
-    howToActive.classList.add('allow-hover');
-    const summaryActive = document.getElementById('summary');
-    summaryActive.classList.remove('active');
-    summaryActive.classList.add('allow-hover');
+    this.displayFeatureButtonDiv();
+    document.getElementById('viewField').style.display = 'block';
+    document.getElementById('generateField').style.display = 'none';
+    document.getElementById('writeField').style.display = 'none';
   }
 
   public isMobileResolution(): boolean {
@@ -53,4 +53,37 @@ export class HomeComponent implements OnInit {
 
     return isDesktopResolution;
   }
+
+  public displayFeatureDiv(input) {
+    const featureFields = ['viewField', 'generateField', 'writeField'];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < featureFields.length; i++) {
+      if (featureFields[i].lastIndexOf(input) === 0) {
+        document.getElementById(featureFields[i]).style.display = 'block';
+        featureFields.splice(i, 1);
+        this.removeFeatureDiv(featureFields);
+      }
+    }
+  }
+
+  public removeFeatureDiv(featureFields) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < featureFields.length; i++) {
+      document.getElementById(featureFields[i]).style.display = 'none';
+    }
+  }
+
+  public displayFeatureButtonDiv() {
+    const header = document.getElementById('featureButtonSection');
+    const btns = header.getElementsByClassName('how-to-title');
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+        const current = document.getElementsByClassName('activeHowTo');
+        current[0].className = current[0].className.replace(' activeHowTo', '');
+        this.className += ' activeHowTo';
+      });
+  }
+  }
+
 }

@@ -1,170 +1,149 @@
-
-  <div class="nav-bar-container"><!--style="background-color: white"//-->
-    <div class="main-nav-bar-container">
-      <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-25  allow-hover">
-          <b>Home</b>
-        </div>
-      </a>
-      <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
-        <div class="nav-bar-col-25  allow-hover" routerLinkActive="howToActive" id="howTo">
-          <b>How To</b>
-        </div>
-      </a>
-      <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-25 allow-hover">
-          <b>Demo</b>
-        </div>
-      </a>
-      <div class="nav-bar-col-25">
-        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover" id="log-in">
-            <b>Log-In</b>
-          </div>
-        </a>
-        <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
-            <b>Log-Out</b>
-          </div>
-        </a>
-        <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover" id="sign-up">
-            <b>Sign-Up</b>
-          </div>
-        </a>
-        <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-          <div class="nav-bar-col-50 allow-hover" id="summary">
-            <b>Summary</b>
-          </div>
-        </a>
+<div class="nav-bar-container"><!--style="background-color: white"//-->
+  <div class="main-nav-bar-container sticky hidden-mobile hidden-mobile-450 hidden-mobile-768">
+    <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+      <div class="nav-bar-col-15  allow-hover">
+        <img src="../../../../assets/images/cp3-web-logo.svg" style="height: auto; width: 12vw; vertical-align: middle">
       </div>
+    </a>
+    <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
+      <div class="nav-bar-col-15  allow-hover" routerLinkActive="howToActive" id="howTo">
+        <b>How To</b>
+      </div>
+    </a>
+    <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+      <div class="nav-bar-col-15 allow-hover">
+        <b>Demo</b>
+      </div>
+    </a>
+    <div class="nav-bar-col-20">
+<br>
     </div>
-    <div class="mobile-nav-bar-container">
+    <div class="nav-bar-col-20">
+      <br>
+    </div>
+    <div class="nav-bar-col-15">
+      <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-50 allow-hover" id="sign-up" style="background-color: #2dd36f">
+          <b>Sign-Up</b>
+        </div>
+      </a>
+      <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-50 allow-hover" id="summary">
+          <b>Summary</b>
+        </div>
+      </a>
+      <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-50 allow-hover" id="log-in">
+          <b>Log-In</b>
+        </div>
+      </a>
+      <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+        <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
+          <b>Log-Out</b>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="mobile-nav-bar-container">
+    <div class="container">
+      <div class="row">
+        <div class=" col-4 allow-hover" routerLinkActive="active">
 
-      <div [routerLink]="'/home'" class="nav-bar-col-20 allow-hover" routerLinkActive="active" (click)="closeNav()">
-        <a [routerLink]="'/home'" routerLinkActive="active">Home</a>
-      </div>
+          <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
 
-      <div class=" nav-bar-col-20 float-right allow-hover" routerLinkActive="active">
+          <div class="side-nav-stick">
 
-        <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
-
-        <div class="side-nav-stick">
-
-          <div id="side-nav-bar" class="sidenav">
-            <div class="menu">
-              <div class="end">
-                <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
-              </div>
-              <div class="menu-title">
-                <h2><b>Menu</b></h2>
-              </div>
-
-              <div class="hamburger-menu-section-1">
-                <div class="hamburger-menu-indent">
+            <div id="side-nav-bar" class="sidenav">
+              <div class="menu">
+                <div class="end">
+                  <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
                 </div>
-                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}" (click)="closeNav()">
-                <div class="how">
-                  <h5><b> How To</b></h5>
+                <div class="menu-title">
+                  <h2><b>Menu</b></h2>
                 </div>
-                </a>
-              </div>
-              <div class="hamburger-menu-section-2">
-                <div class="options">
+
+                <div class="hamburger-menu-section-1">
                   <div class="hamburger-menu-indent">
                   </div>
-                  <div class="option-indent">
+                  <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}"
+                     (click)="closeNav()">
+                    <div class="how">
+                      <h5><b> How To</b></h5>
+                    </div>
+                  </a>
+                </div>
+                <div class="hamburger-menu-section-2">
+                  <div class="options">
+                    <div class="hamburger-menu-indent">
+                    </div>
+                    <div class="option-indent">
+                    </div>
+                    <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
+                      <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
+                    </div>
                   </div>
-                  <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
+                  <div class="options">
+                    <div class="hamburger-menu-indent">
+                    </div>
+                    <div class="option-indent">
+                    </div>
+                    <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
+                      <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
+                    </div>
+                  </div>
+                  <div class="options">
+                    <div class="hamburger-menu-indent">
+                    </div>
+                    <div class="option-indent">
+                    </div>
+                    <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
+                      <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
+                    </div>
+                  </div>
+                  <div class="options">
+                    <div class="hamburger-menu-indent">
+                    </div>
+                    <div class="option-indent">
+                    </div>
+                    <div class="block" [routerLink]="'/view'" (click)="closeNav()">
+                      <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
+                    </div>
                   </div>
                 </div>
-                <div class="options">
+                <div class="hamburger-menu-section-3">
                   <div class="hamburger-menu-indent">
                   </div>
-                  <div class="option-indent">
+                  <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
+                    <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
                   </div>
-                  <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
-                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
-                  </div>
-                </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
-                    <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
-                  </div>
-                </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/view'" (click)="closeNav()">
-                    <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
-                  </div>
-                </div>
-              </div>
-              <div class="hamburger-menu-section-3">
-                <div class="hamburger-menu-indent">
-                </div>
-                <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
-                  <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
-           (click)="closeNav()">
-        <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
-      </div>
 
-      <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
-           (click)="closeNav()">
-        <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
+        <div [routerLink]="'/home'" class="col-4 allow-hover" routerLinkActive="active" (click)="closeNav()"
+             style="margin-top: auto; margin-bottom: auto">
+          <a [routerLink]="'/home'" routerLinkActive="active"><img src="../../../../assets/images/cp3-web-logo.svg"
+                                                                   style="height: auto; width: 80px; vertical-align: middle"></a>
+        </div>
+
+        <div class="col-4 nav-bar-sign-up">
+          <button class="btn sign-up-btn "><b>Sign Up</b></button>
+
+        </div>
+        <!-- <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
+              (click)="closeNav()">
+           <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
+         </div>
+
+         <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
+              (click)="closeNav()">
+           <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
+         </div>-->
       </div>
     </div>
-
   </div>
 
-<div *ngIf="isSubNavBarVisible()">
-  <div class="sub-nav-bar-title-container">
-    <div><span><b>How To Play</b></span></div>
-  </div>
-  <div class="sub-nav-bar-container">
-    <div class="sub-nav-bar-col-25">
-      <span></span>
-    </div>
-    <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
-      <div id="sub-nav-bar-item-require"
-           class="sub-nav-bar-col-12-5 allow-hover">
-        <b>Requirements</b>
-      </div>
-    </a>
-    <a [routerLink]="['/interface']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
-      <div id="sub-nav-bar-item-inter"
-           class="sub-nav-bar-col-12-5 allow-hover ">
-        <b>Interface</b>
-      </div>
-    </a>
-    <a [routerLink]="['/generate']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
-      <div id="sub-nav-bar-item-generate"
-           class="sub-nav-bar-col-12-5 allow-hover">
-        <b>Generate</b>
-      </div>
-    </a>
-    <a [routerLink]="['/view']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}">
-      <div id="sub-nav-bar-item-generate-pic"
-           class="sub-nav-bar-col-12-5 allow-hover">
-        <b>View Picks</b>
-      </div>
-    </a>
-    <div class="sub-nav-bar-col-25">
-      <span></span>
-    </div>
-  </div>
 </div>
+
