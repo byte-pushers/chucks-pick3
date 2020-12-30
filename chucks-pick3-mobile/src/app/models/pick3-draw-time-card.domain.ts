@@ -1,11 +1,12 @@
 import { Pick3DrawTimeCard } from './pick3-draw-time-card';
 import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import {Pick3DrawDateCard} from "./pick3-draw-date-card";
+import { Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+import { Pick3DrawDateCard } from "./pick3-draw-date-card";
 
 export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private icon: string;
     private title: string;
+    private dateTime: Date;
     private drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     private state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     private selected: boolean = false;
@@ -16,6 +17,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this.drawTime = config.drawTime ? Pick3DrawTimeEnum.toEnum(config.drawTime) : Pick3DrawTimeEnum.toEnum(this.title) ;
         this.state = Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this.selected = typeof config.selected === "boolean" ? config.selected : false;
+        this.dateTime = config.dateTime;
     }
 
     getIcon(): string {
@@ -56,6 +58,14 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
 
     setSelected(selected: boolean): void {
         this.selected = selected;
+    }
+
+    getDateTime(): Date {
+        return this.dateTime;
+    }
+
+    setDateTime(dateTime: Date): void {
+        this.dateTime = dateTime;
     }
 
     compareTo(pick3DrawDateCard: Pick3DrawDateCard): number {
