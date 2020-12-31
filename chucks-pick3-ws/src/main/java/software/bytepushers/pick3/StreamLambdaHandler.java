@@ -21,7 +21,7 @@ public class StreamLambdaHandler implements RequestStreamHandler {
 
     public StreamLambdaHandler() throws ContainerInitializationException {
         long startTime = Instant.now().toEpochMilli();
-        SpringBootLambdaContainerHandler.getContainerConfig().setInitializationTimeout(20_000);
+        SpringBootLambdaContainerHandler.getContainerConfig().setInitializationTimeout(30_000);
         handler = new SpringBootProxyHandlerBuilder()
                 .defaultProxy()
                 .asyncInit(startTime)

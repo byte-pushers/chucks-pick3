@@ -43,7 +43,7 @@ public class CustomerRepositoryTest {
         entityManager.flush();
 
         // when
-        List<Customer> actualCustomers = customerRepository.findByFirstName(expectedCustomer.getFirstName());
+        List<Customer> actualCustomers = customerRepository.findByFirstNameAndIsDisabledFalse(expectedCustomer.getFirstName());
 
         // then
         for (Customer actualCustomer : actualCustomers) {

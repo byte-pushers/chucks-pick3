@@ -1,20 +1,64 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
+import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 
 @Component({
   selector: 'pick3-draw-time-card',
   templateUrl: './pick3-draw-time-card.component.html',
   styleUrls: ['./pick3-draw-time-card.component.scss'],
 })
-export class Pick3DrawTimeCardComponent implements OnInit {
+export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   @Input() data: Pick3DrawTimeCard;
+  oldData: Pick3DrawTimeCard = new Pick3DrawTimeCardDomain(null);
+  changelog: string[] = [];
+  drawingTimeCardColorIndicators = {
+    'not-drawn-yet': false,
+    'not-drawn-yet-with-generated-picks': false,
+    'drawn': false,
+    'drawn-with-generated-picks-with-no-winners': false,
+    'drawn-with-generated-picks-with-winners': false,
+    'selected': false
+  };
+  doCheckCount = 0;
 
-  constructor() { }
+  constructor() {
+    //console.log('Constructor');
+  }
 
   ngOnInit() {
+    //console.log('OnInit- DrawType: ' + this.data.getTitle());
+    this.setDrawingTimeCardState();
+  }
 
+  ngDoCheck() {
+    //console.log('DoCheck');
+    this.doCheckCount++;
+    //console.log(JSON.stringify(changes));
+
+    const to  = JSON.stringify(this.data);
+    const from = JSON.stringify(this.oldData);
+    const changeLog = `DoCheck customer: changed from ${from} to ${to} `;
+    this.changelog.push(changeLog);
+
+    // @ts-ignore
+    if (Object.isUndefinedOrNull(this.oldData)) {
+      if (this.oldData.getSelected() !== this.data.getSelected()) {
+        this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
+      }
+    } else {
+      this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
+    }
+
+    this.oldData = new Pick3DrawTimeCardDomain(JSON.stringify(this.data));
+  }
+
+  ngOnDestroy() {
+    this.data = null;
+    this.oldData = null;
+    this.changelog = [];
+    this.drawingTimeCardColorIndicators = null
+    this.doCheckCount = 0;
   }
 
   public getSelectedState(): {'not-selected': boolean, selected: boolean} {
@@ -33,53 +77,49 @@ export class Pick3DrawTimeCardComponent implements OnInit {
     return selectedStateCssClass;
   }
 
-  public getDrawingTimeCardState(): { }  {
+  public setDrawingTimeCardState(): string | string[] | Set<string> | { [klass: string]: any; }  {
     const pick3DrawTimeCardStateEnum = this.data.getState();
-    
+
     switch (pick3DrawTimeCardStateEnum) {
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: //gray
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: //yellow
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet-with-generated-picks', true);
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet-with-generated-picks', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN: //gray
-        return this.toggleDrawingTimeCardStateCssClass('drawn', true);
+        this.setDrawingTimeCardColorIndicators('drawn', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS://black
-        return this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-no-winners', true);
+        this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-no-winners', true);
+        break;
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS://green
-        return this.toggleDrawingTimeCardStateCssClass('drawn-with-generated-picks-with-winners', true);
+        this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-winners', true);
+        break;
       default:
-        return this.toggleDrawingTimeCardStateCssClass('not-drawn-yet', true);//gray
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);//gray
     }
+
+    return this.drawingTimeCardColorIndicators;
   }
 
-  private toggleDrawingTimeCardStateCssClass(attributeName: string, booleanValue: boolean): any {
-    let drawingTimeCardStateCssClass = {
-      'not-drawn-yet': true,
-      'not-drawn-yet-with-generated-picks': false,
-      'drawn': false,
-      'drawn-with-generated-picks-with-no-winners': false,
-      'drawn-with-generated-picks-with-winners': false,
-      'selected': false
-    };
+  private setDrawingTimeCardColorIndicators(attributeName: string, booleanValue: boolean): void {
 
     if (this.data.getSelected()) {
-      this.toggleCssClass(drawingTimeCardStateCssClass, 'selected', true);
+      this.setCssClass(this.drawingTimeCardColorIndicators, 'selected', true);
     }
 
-    return this.toggleCssClass(drawingTimeCardStateCssClass, attributeName, booleanValue);
+    this.setCssClass(this.drawingTimeCardColorIndicators, attributeName, booleanValue);
   }
 
-  private toggleCssClass(drawingTimeCardStateCssClass: any, attributeName: string, booleanValue: boolean): any {
-    for(let property in drawingTimeCardStateCssClass){
-      if (drawingTimeCardStateCssClass.hasOwnProperty(property)) {
+  private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
+    for(let property in drawingTimeCardColorIndicators){
+      if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {
         if (property === attributeName) {
-          drawingTimeCardStateCssClass[property] = booleanValue;
-        } else if (property !== 'selected') {
-          drawingTimeCardStateCssClass[property] = false;
+          drawingTimeCardColorIndicators[property] = booleanValue;
+          break;
         }
       }
     }
-    
-    return drawingTimeCardStateCssClass;
   }
 }

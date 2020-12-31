@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import software.bytepushers.pick3.domain.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Customer repository layer.
@@ -11,10 +12,18 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     /**
-     * fetching the customer details using first name.
+     * Fetching the customer details using first name.
      *
      * @param firstName for the where clause to fetch the data
      * @return the customer details.
      */
-    List<Customer> findByFirstName(String firstName);
+    List<Customer> findByFirstNameAndIsDisabledFalse(String firstName);
+
+    /**
+     * Fetching the customer details by id if and only if it is true.
+     *
+     * @param id of customer id
+     * @return the customer if possible
+     */
+    Optional<Customer> findByIdAndIsDisabledFalse(Long id);
 }
