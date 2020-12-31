@@ -5,6 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from 'src/app/shared/components/app.component/app.component';
 import {AppHeaderComponent} from 'src/app/shared/components/app-header.component/app-header.component';
 import {AppBodyComponent} from 'src/app/shared/components/app-body.component/app-body.component';
+import {AppFooterComponent} from './shared/components/app-footer.component/app-footer.component';
 import {HomeComponent} from 'src/app/components/home.component/home.component';
 import {InfoComponent} from 'src/app/components/info.component/info.component';
 import {DemoComponent} from 'src/app/components/demo.component/demo.component';
@@ -36,6 +37,7 @@ import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +63,8 @@ import { CustomerDetailsComponent } from './components/customer-details.componen
     CustomerSummaryComponent,
     UserNameValidator,
     PasswordValidator,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    AppFooterComponent
   ],
   imports: [
     BrowserModule,
