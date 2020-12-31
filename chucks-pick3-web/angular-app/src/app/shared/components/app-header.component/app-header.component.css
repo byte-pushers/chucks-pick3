@@ -1,3 +1,11 @@
+.navigation {
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 7vh;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
 .header-container {
   display: block;
   background-color: #ffffff;
@@ -8,12 +16,26 @@
 
 
 }
+
+.mobile-nav-bar-container{
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 888;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+
+  /*expands to 100% width */
+}
+
 #log-in {
   display: inline-block;
 }
+
 #log-out {
   display: none;
 }
+
 #summary {
   display: none;
 }
@@ -50,6 +72,7 @@
   padding: 5px;*/
   box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
   z-index: 999;
+  height: 9vh;
 
 
 }
@@ -67,7 +90,7 @@
 .nav-bar-col-15 {
   display: inline-block;
   float: left;
-  line-height: 3em;
+  line-height: 9vh;
   text-align: center;
   width: 15%;
   /*border: 2px solid blue;*/
@@ -85,8 +108,6 @@
   width: 20%;
   /*border: 2px solid blue;*/
   height: 100%;
-
-
 
 
 }
@@ -129,9 +150,7 @@
 
 
 .main-nav-bar-container .nav-bar-col-50.active {
-  background-color: gray;
   text-decoration: none;
-  color: gray;
 }
 
 .main-nav-bar-container .nav-bar-col-50.allow-hover:hover {
@@ -139,8 +158,6 @@
   cursor: pointer;
   text-decoration: none;
 }
-
-
 
 
 .sub-nav-bar-col-25 {
@@ -220,10 +237,6 @@
   background-color: green;
   cursor: pointer;
   text-decoration: none;
-}
-
-.sub-nav-bar-container .sub-nav-bar-col-50.active {
-  background-color: gray;
 }
 
 .logo-container img {
@@ -331,7 +344,7 @@ img {
   }
 
   .nav-bar-sign-up {
-   padding: 0 !important;
+    padding: 0 !important;
   }
 
   /*------sub-nav-bar-----*/
@@ -428,7 +441,6 @@ img {
   }
 
 
-
   .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
     background-color: #d0d0d0 !important;
     color: gray !important;
@@ -490,7 +502,6 @@ img {
     font-size: 18px;
   }
 }
-
 
 
 /*------implement and erase --*/
@@ -976,27 +987,7 @@ img {
   color: black;
 }
 
-.active .allow-hover {
-  background-color: #d0d0d0 !important;
-  color: gray !important;
 
-}
 
-.subactive .allow-hover {
-  background-color: #414141 !important;
-  color: #686868 !important;
-
-}
-
-.subActive .allow-hover {
-  background-color: #292929 !important;
-  color: gray !important;
-
-}
-
-.howToActive:hover {
-  background-color: green !important;
-  color: black;
-}
 
 

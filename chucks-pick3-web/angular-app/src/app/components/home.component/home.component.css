@@ -2,8 +2,6 @@
   background-color: #1c1c1d;
   width: 100%;
   height: auto;
-  text-align: center;
-  margin-bottom: 20vh;
 }
 
 .hero-area {
@@ -19,8 +17,10 @@
 }
 
 .header-text-mobile {
-  padding-left: 5%;
-  padding-right: 5%;
+  margin-top: 25vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 25vh;
 }
 
 .header-text {
@@ -30,6 +30,8 @@
 
 .header-paragraph {
   font-size: 22px;
+  color: white;
+  text-align: center;
 }
 
 .text-emphasis {
@@ -38,7 +40,10 @@
 
 .header-btn {
   background-color: #2dd36f;
-  margin-top: 1em;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+
 
 }
 
@@ -68,19 +73,33 @@
   z-index: 1;
 }
 
-.header-image-section-mobile {
+.hero-image-mobile {
   width: 100%;
-  top: 0;
-  left: 0;
+  height: 25vh;
+  text-align:center
+
+
+}
+
+.header-image-section-mobile {
+  height: auto;
+  width: 10em;
   z-index: 11;
+  margin-left: auto;
+
+}
+
+.header-image-section{
+  height: auto;
+  z-index: 11;
+  margin-left: auto;
+
 }
 
 .header-iphone-mobile {
   height: 100px;
   width: 200px;
-  margin-right: auto;
-  margin-top: 35vh;
-  margin-left: auto;
+
 }
 
 .features-header {
@@ -93,7 +112,8 @@
   width: 100%;
   height: 100%;
   text-align: left;
-  margin-top: 5%;
+  margin-top: 3em;
+  margin-bottom: 3em;
 
 }
 
@@ -127,11 +147,14 @@ h1 {
 }
 
 .intro-section-mobile {
-  margin-bottom: 10%;
+  margin-top: 5em;
+  margin-bottom: 3em;
 }
 
 .try-it-section-mobile {
   background-color: #e7e7e7;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 .features-card-mobile {
@@ -140,13 +163,18 @@ h1 {
   margin-right: 5%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
+.sign-up-section-mobile {
+  background-color: #ffd743;
+  padding-bottom: 3em;
+  padding-top: 3em;
+  vertical-align: middle;
+}
 /*
 ------------Desktop--------------------*/
 
 .intro-section {
   margin-top: 7%;
-  margin-bottom: 7%;
+  margin-bottom: 5%;
 }
 
 .features-section {
@@ -168,6 +196,7 @@ h1 {
   padding-bottom: 5%;
   vertical-align: middle;
 }
+
 
 .how-to-section {
   padding-top: 5%;
