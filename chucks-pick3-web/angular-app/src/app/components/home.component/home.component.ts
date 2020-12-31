@@ -12,21 +12,21 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 export class HomeComponent implements OnInit {
 
+  public viewField = false;
+  public generateField = false;
+  public writeField = false;
+
   constructor(config: NgbCarouselConfig) {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
-    config.showNavigationIndicators = false;
   }
 
   ngOnInit() {
-    this.isMobileResolution();
-    const howToActive = document.getElementById('howTo');
-    howToActive.classList.remove('active');
-    howToActive.classList.add('allow-hover');
-    const summaryActive = document.getElementById('summary');
-    summaryActive.classList.remove('active');
-    summaryActive.classList.add('allow-hover');
+    this.displayFeatureButtonDiv();
+    document.getElementById('viewField').style.display = 'block';
+    document.getElementById('generateField').style.display = 'none';
+    document.getElementById('writeField').style.display = 'none';
   }
 
   public isMobileResolution(): boolean {
@@ -34,16 +34,55 @@ export class HomeComponent implements OnInit {
 
     if (window.innerWidth < 768) {
       isMobileResolution = true;
-      document.getElementById('desktop-view').style.display = 'none';
-      document.getElementById('mobile-view').style.display = 'revert ';
     } else {
       isMobileResolution = false;
-      document.getElementById('desktop-view').style.display = 'revert ';
-      document.getElementById('mobile-view').style.display = 'none ';
     }
 
     return isMobileResolution;
   }
 
+  public isDesktopResolution(): boolean {
+    let isDesktopResolution: boolean = false;
+
+    if (window.innerWidth > 768) {
+      isDesktopResolution = true;
+    } else {
+      isDesktopResolution = false;
+    }
+
+    return isDesktopResolution;
+  }
+
+  public displayFeatureDiv(input) {
+    const featureFields = ['viewField', 'generateField', 'writeField'];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < featureFields.length; i++) {
+      if (featureFields[i].lastIndexOf(input) === 0) {
+        document.getElementById(featureFields[i]).style.display = 'block';
+        featureFields.splice(i, 1);
+        this.removeFeatureDiv(featureFields);
+      }
+    }
+  }
+
+  public removeFeatureDiv(featureFields) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < featureFields.length; i++) {
+      document.getElementById(featureFields[i]).style.display = 'none';
+    }
+  }
+
+  public displayFeatureButtonDiv() {
+    const header = document.getElementById('featureButtonSection');
+    const btns = header.getElementsByClassName('how-to-title');
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+        const current = document.getElementsByClassName('activeHowTo');
+        current[0].className = current[0].className.replace(' activeHowTo', '');
+        this.className += ' activeHowTo';
+      });
+  }
+  }
 
 }

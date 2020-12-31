@@ -21,7 +21,7 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });*/
-  it('test', () => {
+  it('time-of-day-text', () => {
     expect(true).toBe(true);
   });
 });

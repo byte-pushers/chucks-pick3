@@ -13,5 +13,7 @@ export interface Pick3DrawTimeCard {
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
     getSelected(): boolean;
     setSelected(selected: boolean): void;
+    getDateTime(): Date;
+    setDateTime(dateTime: Date): void;
     compareTo(pick3DrawDateCard: Pick3DrawDateCard): number;
 }

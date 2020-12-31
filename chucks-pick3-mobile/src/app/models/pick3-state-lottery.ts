@@ -10,6 +10,8 @@ export interface Pick3StateLottery {
 
     getDrawingTime(aTime): Pick3DrawTime;
 
+    getDrawingTimeByName(drawingTime): Pick3DrawTime;
+
     getCurrentDrawingTime(): Pick3DrawTime;
 
     getBackgroundImageUrl(): string;

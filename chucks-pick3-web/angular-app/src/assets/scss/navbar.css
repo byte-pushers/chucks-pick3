@@ -10,24 +10,13 @@
     margin: 0 auto;
 }
 
-.main-nav-bar-container {
-
-    width: 80%;
-    background-color: white;
-    float: right;
-    /*border: 2px solid black;
-    padding: 5px;*/
-    height: 51px;
-    border-bottom: 1px solid black;
-
-}
 
 .main-nav-bar-container a:hover {
     text-decoration: none;
     color: black;
 }
 
-.nav-bar-col-25 {
+.nav-bar-col-15 {
     display: inline-block;
     float: left;
     line-height: 3em;
@@ -46,7 +35,7 @@
 
 }
 
-.nav-bar-col-25 a {
+.nav-bar-col-15 a {
     list-style-type: none;
     font-size: 17px;
     text-decoration: none;
@@ -73,7 +62,7 @@
 
 }
 
-.main-nav-bar-container .nav-bar-col-25.allow-hover:hover {
+.main-nav-bar-container .nav-bar-col-15.allow-hover:hover {
     background-color: green ;
     cursor: pointer;
 }
@@ -82,7 +71,7 @@
      background-color: gray;
  }*/
 .main-nav-bar-container .nav-bar-col-50.active {
-  background-color: #d0d0d0;
+
   text-decoration: none;
 }
 
@@ -93,11 +82,6 @@
 
 
 
-
-.active{
-    background-color: gray;
-    border-color: gray;
-}
 
 
 
@@ -160,10 +144,6 @@
     background-color: green;
     cursor: pointer;
     text-decoration: none;
-}
-
-.sub-nav-bar-container .sub-nav-bar-col-50.active {
-    background-color: gray;
 }
 
 /*---- Alignment for link containers ------*/
@@ -334,12 +314,7 @@ img {
     }
 
     /*------sub-nav-bar-----*/
-    .mobile-nav-bar-container{
-        display: block;
-        width: 100%;
 
-        /*expands to 100% width */
-    }
 
     .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
         background-color: green;
@@ -423,7 +398,11 @@ img {
 
 
 
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100% !important;
+}
 
 
 @media screen and (max-height: 450px) {

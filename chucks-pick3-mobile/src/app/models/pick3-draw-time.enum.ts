@@ -13,12 +13,15 @@ export namespace Pick3DrawTimeEnum {
     export function toEnum(key: string): Pick3DrawTimeEnum {
         let pick3DrawTimeEnum: Pick3DrawTimeEnum = null;
 
-        for (const value in Pick3DrawTimeEnum) {
-            if (value == key.toUpperCase()) {
-                pick3DrawTimeEnum = Pick3DrawTimeEnum[key.toUpperCase()];
-                break;
+        if (key !== undefined && key !== null) {
+            for (const value in Pick3DrawTimeEnum) {
+                if (value == key.toUpperCase()) {
+                    pick3DrawTimeEnum = Pick3DrawTimeEnum[key.toUpperCase()];
+                    break;
+                }
             }
         }
+
         return pick3DrawTimeEnum;
     }
 }
