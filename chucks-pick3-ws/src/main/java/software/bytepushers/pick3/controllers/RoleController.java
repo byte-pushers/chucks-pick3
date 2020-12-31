@@ -1,10 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.dto.enums.AccountType;
 import software.bytepushers.pick3.repositories.RoleRepository;
@@ -54,6 +51,11 @@ public class RoleController {
             log.trace("Role: {}", role.getId());
             return role.getName();
         }).collect(Collectors.toList());
+    }
+
+    @DeleteMapping
+    public void delete() {
+        this.roleRepository.deleteAll();
     }
 
 }
