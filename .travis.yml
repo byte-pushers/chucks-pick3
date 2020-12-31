@@ -54,7 +54,7 @@ matrix:
           on:
             branch: develop
         - provider: script
-          script: aws lambda update-function-code --publish --function-name bytepushers-bpweb-ws --s3-bucket ${S3_DEPLOYMENT_BUCKET} --s3-key ${S3_DEPLOYMENT_OBJECT_NAME} --region us-east-2
+          script: aws lambda update-function-code --publish --function-name bytepushers-chucks-pick3-ws --s3-bucket ${S3_DEPLOYMENT_BUCKET} --s3-key ${S3_DEPLOYMENT_OBJECT_NAME} --region us-east-2
           on:
             branch: develop
 
@@ -71,7 +71,7 @@ matrix:
           edge: true
           skip_cleanup: true
           on:
-            branch: feature/deployment
+            branch: master
         - provider: s3
           access_key_id: ${AWS_ACCESS_KEY_ID}
           secret_access_key: ${AWS_SECRET_ACCESS_KEY}
@@ -81,7 +81,7 @@ matrix:
           glob: ${S3_DEPLOYMENT_OBJECT_NAME}
           edge: true
           on:
-            branch: feature/deployment
+            branch: master
         - provider: cloudformation
           access_key_id: ${AWS_ACCESS_KEY_ID}
           secret_access_key: ${AWS_SECRET_ACCESS_KEY}
@@ -96,11 +96,11 @@ matrix:
           edge: true
           skip_cleanup: true
           on:
-            branch: feature/deployment
+            branch: master
         - provider: script
           script: aws lambda update-function-code --publish --function-name bytepushers-chucks-pick3-ws --s3-bucket ${S3_DEPLOYMENT_BUCKET} --s3-key ${S3_DEPLOYMENT_OBJECT_NAME} --region us-east-2
           on:
-            branch: feature/deployment
+            branch: master
       env:
         - secure: HR01oSZJ+gAoHprnVIiyopCIPppi211f1OM2e8KwaQcu4xVk1pfy0Awm8c5Cvt0XwT79XjMbt+DDR0JyxJv93rb475D8bht4bkxVR6psgC7pow2cwb6crEN9fiw21iKC01jg878++FAIpDTUu0PSm4LPgWA2GQbSYzJfOiA6eX3Rp54VIWf2gZhpDT31sp+t8m8yhhzQBFguhOXNf9XkrsNQgMpH27wXNIjBTgq0mu4EIPaqYpiMbthyAkise6eQSm8JCIaH4pSQuGkDb4Sb03FnuVY5e93x7Y1ezY3Ye4tfo06XwRprSZ2E3mTvstv88l6x9c4DtR2UTrOrEqSjXzRELZZM6MiDK3U5zudwKhdgVlzE2SLlrt4clo+M8VpC7spwX3Mh5Q9F6nyx21aiz1jbZQz3xfii4+3kXMrJ8oOM1nqrOUzfolILSx6Sz0Civ6RC3toEBbh9T9CECL28TqGlafDNlIL84V31zlvUuBraH+hPirVG3UnSSJDDo83xhkyHi+5cQ6Pa0l1cqjrl3tnYtrgKNYG27UGEjl8b+ytI3qnX4wLZKmOP1Sepv+vB6PY9e9NrY8naWEeSfCqXaIp9y0DrMeksQKqbyn/0s42b/qBaKJpFM9WrAUdxVITN0osxvQFNtSDalkyJfUdC7ffdmMtc/nwmaKKVZlqednQ=
     - language: node_js
@@ -127,7 +127,7 @@ matrix:
           skip_cleanup: true
           script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL}
           on:
-            branch: feature/deployment
+            branch: master
     - language: node_js
       node_js:
         - “10”
