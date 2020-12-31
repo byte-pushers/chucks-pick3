@@ -33,11 +33,11 @@ import java.util.TimeZone;
  * Custom database configuration for the application.
  */
 @Log4j2
-//@Profile("aws | local")
-//@Configuration
-//@EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = "software.bytepushers.pick3.repositories")
-//@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
+@Profile("aws | local")
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "software.bytepushers.pick3.repositories")
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = false)
 public class JpaConfig {
 
     @Value("${spring.datasource.driver-class-name:}")
