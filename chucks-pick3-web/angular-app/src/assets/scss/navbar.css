@@ -71,7 +71,7 @@
      background-color: gray;
  }*/
 .main-nav-bar-container .nav-bar-col-50.active {
-  background-color: #d0d0d0;
+
   text-decoration: none;
 }
 
@@ -144,10 +144,6 @@
     background-color: green;
     cursor: pointer;
     text-decoration: none;
-}
-
-.sub-nav-bar-container .sub-nav-bar-col-50.active {
-    background-color: gray;
 }
 
 /*---- Alignment for link containers ------*/
@@ -318,13 +314,7 @@ img {
     }
 
     /*------sub-nav-bar-----*/
-    .mobile-nav-bar-container{
-        display: block;
-        width: 100%;
-      height: auto;
 
-        /*expands to 100% width */
-    }
 
     .mobile-nav-bar-container .nav-bar-col-20.allow-hover:hover {
         background-color: green;
