@@ -37,11 +37,9 @@ public class RoleController {
     public void save() {
         Arrays.asList(AccountType.values()).forEach(accountType -> {
             Optional<Role> accountOptional = this.roleRepository.findByName(accountType.getRoleName());
-            if (accountOptional.isEmpty()) {
-                Role account = new Role();
-                account.setName(accountType.name());
-                this.roleRepository.save(account);
-            }
+            Role role = accountOptional.orElseGet(Role::new);
+            role.setName(accountType.getRoleName());
+            this.roleRepository.save(role);
         });
     }
 
