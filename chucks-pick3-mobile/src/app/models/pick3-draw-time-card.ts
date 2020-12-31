@@ -3,6 +3,8 @@ import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
 import {Pick3DrawDateCard} from "./pick3-draw-date-card";
 
 export interface Pick3DrawTimeCard {
+    setPick3DrawCardId(pick3DrawCardId: number): void;
+    getPick3DrawCardId(): number;
     getIcon(): string;
     setIcon(icon: string): void;
     getTitle(): string;

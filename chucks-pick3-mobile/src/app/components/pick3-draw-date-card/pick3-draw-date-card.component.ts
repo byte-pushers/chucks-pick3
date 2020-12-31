@@ -22,10 +22,10 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
   public showCountDownToDrawing: boolean = false;
 
   drawTimes: Array<Pick3DrawTimeCard> = [
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: 'morning-icon'}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY), icon: 'day-icon'}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING), icon: 'evening-icon'}),
-    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT), icon: 'night-icon'})
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING), icon: 'morning-icon', dateTime: new Date().setHours(10, 15, 0, 0)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY), icon: 'day-icon', dateTime: new Date().setHours(11, 45, 0, 0)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING), icon: 'evening-icon', dateTime: new Date().setHours(17, 15, 0, 0)}),
+    new Pick3DrawTimeCardDomain({title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT), icon: 'night-icon', dateTime: new Date().setHours(21, 30, 0, 0)})
   ];
 
   private pick3StateLottery: Pick3StateLottery;
@@ -122,6 +122,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
       if (drawTime.getTitle().toUpperCase() === Pick3DrawTimeEnum.toString(pick3DrawDateCard.getDrawTime())) {
         drawTime.setSelected(true);
         drawTime.setState(pick3DrawTimeCardStateEnum);
+      } else {
+        drawTime.setSelected(false);
       }
 
       /*if (compareResult === 0) {
@@ -150,13 +152,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
   }
 
   private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: string): void {
-    const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
-      if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeType.toUpperCase()]) {
-        return drawTime;
-      }
-    });
     this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-      this.setCardState(winningNumber, selectedPick3DrawTime);
+      this.setCardState(winningNumber, pick3DrawTimeType);
     }, error => {
       //TODO: Handle error.
       console.error('TODO: Handle error: ' + error, error);
@@ -164,25 +161,25 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
   }
 
   private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: string): void {
-    const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
-      if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeType.toUpperCase()]) {
-        return drawTime;
-      }
-    });
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-        this.setCardState(winningNumber, selectedPick3DrawTime);
+        this.setCardState(winningNumber, pick3DrawTimeType);
       }, error => {
         //TODO: Handle error.
         console.error('TODO: Handle error: ' + error, error);
       });
   }
 
-  private setCardState(winningNumber: any, selectedPick3DrawTime: Pick3DrawTimeCard): void {
+  private setCardState(winningNumber: any, pick3DrawTimeType: string): void {
     const drawingResult = {
       drawDate: winningNumber.date,
       drawTime: winningNumber.time,
       drawResult: winningNumber.number,
     };
+    const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
+      if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeType.toUpperCase()]) {
+        return drawTime;
+      }
+    });
     this.data.setWinningNumber(drawingResult.drawResult);
     switch (selectedPick3DrawTime.getState()) {
       case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
@@ -207,6 +204,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     // console.log("randomlyMockDrawTimeCardStates() start.");
     this.drawTimes.forEach(drawTime => {
       drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
+      drawTime.setPick3DrawCardId(this.slideNumber);
 
       if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
         //drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);

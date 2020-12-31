@@ -42,7 +42,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
     this.changelog.push(changeLog);
 
     // @ts-ignore
-    if (Object.isUndefinedOrNull(this.oldData)) {
+    if (Object.isDefinedAndNotNull(this.oldData)) {
       if (this.oldData.getSelected() !== this.data.getSelected()) {
         this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
       }
@@ -50,7 +50,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
       this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
     }
 
-    this.oldData = new Pick3DrawTimeCardDomain(JSON.stringify(this.data));
+    this.oldData = new Pick3DrawTimeCardDomain(JSON.parse(JSON.stringify(this.data)));
   }
 
   ngOnDestroy() {
