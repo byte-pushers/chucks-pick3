@@ -1,5 +1,3 @@
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-
 export namespace Pick3DrawTimeCardStateEnum {
     export enum Pick3DrawTimeCardStateEnum {
         NOT_DRAWN_YET = "not.drawn.yet", // gray
@@ -22,15 +20,36 @@ export namespace Pick3DrawTimeCardStateEnum {
         }
     }
 
-    export function get(key: string):  Pick3DrawTimeCardStateEnum {
+    export function get(keyOrValue: string):  Pick3DrawTimeCardStateEnum {
         let pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum = null;
 
         // @ts-ignore
-        if (Object.isDefinedAndNotNull(key)) {
-            for (const value in Pick3DrawTimeCardStateEnum) {
-                if (value == key.toUpperCase()) {
-                    pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum[key.toUpperCase()];
-                    break;
+        if (Object.isDefinedAndNotNull(keyOrValue)) {
+            if (typeof keyOrValue === 'string') {
+                keyOrValue = keyOrValue.toUpperCase();
+                for (const value in Pick3DrawTimeCardStateEnum) {
+                    if (value === keyOrValue) {
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum[keyOrValue];
+                        break;
+                    }
+                }
+            } else if (typeof keyOrValue === 'number') {
+                switch(keyOrValue) {
+                    case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET:
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+                        break;
+                    case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS;
+                        break;
+                    case Pick3DrawTimeCardStateEnum.DRAWN:
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN;
+                        break;
+                    case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS;
+                        break;
+                    case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
+                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS;
+                        break;
                 }
             }
         }
