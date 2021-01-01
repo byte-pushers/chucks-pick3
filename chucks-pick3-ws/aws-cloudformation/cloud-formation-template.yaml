@@ -305,7 +305,7 @@ Resources:
             Path: /{proxy+}
           Type: Api
       Handler: software.bytepushers.pick3.StreamLambdaHandler::handleRequest
-      MemorySize: 1024
+      MemorySize: 1535
       Role:
         Fn::GetAtt: [ ChucksPick3VpcExecutionRole, Arn ]
       Policies:
