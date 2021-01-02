@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.services.impl;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,9 @@ import software.bytepushers.pick3.services.Pick3PredictionService;
 @Profile("aws")
 public class Pick3PredictionServiceImpl implements Pick3PredictionService {
 
-    private final Pick3LottoSystemService pick3LottoSystemService;
-
-    public Pick3PredictionServiceImpl(@Lazy Pick3LottoSystemService pick3LottoSystemService) {
-        this.pick3LottoSystemService = pick3LottoSystemService;
-    }
+    @Autowired
+    @Lazy
+    private Pick3LottoSystemService pick3LottoSystemService;
 
     /**
      * {@inheritDoc}

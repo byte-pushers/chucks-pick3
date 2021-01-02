@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,18 +29,14 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 @RestController
 public class AuthenticationController {
 
-    private final AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
 
-    private final JwtUtils jwtUtils;
-
-    public AuthenticationController(AuthenticationManager authenticationManager,
-                                    UserService userService, JwtUtils jwtUtils) {
-        this.authenticationManager = authenticationManager;
-        this.userService = userService;
-        this.jwtUtils = jwtUtils;
-    }
+    @Autowired
+    private JwtUtils jwtUtils;
 
     /**
      * The rest endpoint implementation for the initiating the login process.

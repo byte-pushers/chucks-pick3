@@ -1,8 +1,7 @@
 package software.bytepushers.pick3.config.security;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,19 +24,14 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.*;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final CustomUserDetailsService customUserDetailsService;
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
 
-    private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-    private final JwtUtils jwtUtils;
-
-    public SecurityConfiguration(CustomUserDetailsService customUserDetailsService,
-                                 RestAuthenticationEntryPoint restAuthenticationEntryPoint,
-                                 JwtUtils jwtUtils) {
-        this.customUserDetailsService = customUserDetailsService;
-        this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
-        this.jwtUtils = jwtUtils;
-    }
+    @Autowired
+    private JwtUtils jwtUtils;
 
     /**
      * The bean configuration of the {@link BCryptPasswordEncoder}

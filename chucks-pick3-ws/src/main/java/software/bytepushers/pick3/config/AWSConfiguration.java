@@ -25,8 +25,8 @@ public class AWSConfiguration {
         return AWSLambdaClientBuilder.standard().withRegion(Regions.US_EAST_2).build();
     }
 
-    @Bean
     @Lazy
+    @Bean
     public Pick3LottoSystemService pick3LottoSystemService(AWSLambda awsLambda) {
         return LambdaInvokerFactory.builder().lambdaClient(awsLambda).build(Pick3LottoSystemService.class);
     }

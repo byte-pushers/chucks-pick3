@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
@@ -25,11 +26,8 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.USERS
 @RequestMapping(USERS_END_POINT)
 public class UserController {
 
-    private final UserService userServiceImpl;
-
-    public UserController(UserService userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
-    }
+    @Autowired
+    private UserService userServiceImpl;
 
     /**
      * The rest endpoint is responsible for fetching the user details by id.

@@ -2,6 +2,7 @@ package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import software.bytepushers.pick3.domain.Customer;
@@ -22,11 +23,8 @@ import java.util.Map;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private final CustomerRepository customerRepository;
-
-    public CustomerController(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+    @Autowired
+    private CustomerRepository customerRepository;
 
     /**
      * The rest endpoint implementation is responsible for handling status check of the application

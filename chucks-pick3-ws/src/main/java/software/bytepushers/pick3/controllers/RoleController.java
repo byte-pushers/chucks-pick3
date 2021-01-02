@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import software.bytepushers.pick3.domain.Role;
 import software.bytepushers.pick3.dto.enums.AccountType;
@@ -21,11 +22,8 @@ import static software.bytepushers.pick3.config.security.SecurityConstants.ROLES
 @RequestMapping(ROLES_END_POINT)
 public class RoleController {
 
-    private final RoleRepository roleRepository;
-
-    public RoleController(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
+    @Autowired
+    private RoleRepository roleRepository;
 
     /**
      * The rest endpoint is responsible for creating/adding/saving the user details.

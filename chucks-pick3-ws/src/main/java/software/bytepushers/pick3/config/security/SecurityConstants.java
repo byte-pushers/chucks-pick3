@@ -35,7 +35,4 @@ public interface SecurityConstants {
 
     String JWT_TOKEN_COOKIE_NAME = "jwtToken";
 
-    //TODO: move it to the environment variable
-    String SECRET_KEY = "chuckspick3chuckspick3chuckspick3chuckspick3chuckspick3";
-
 }

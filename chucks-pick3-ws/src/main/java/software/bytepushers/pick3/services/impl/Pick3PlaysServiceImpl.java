@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.services.impl;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.domain.Pick3Plays;
@@ -18,11 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class Pick3PlaysServiceImpl implements Pick3PlaysService {
 
-    private final Pick3PredictionService pick3PredictionService;
-
-    public Pick3PlaysServiceImpl(Pick3PredictionService pick3PredictionService) {
-        this.pick3PredictionService = pick3PredictionService;
-    }
+    @Autowired
+    private Pick3PredictionService pick3PredictionService;
 
     /**
      * {@inheritDoc}

@@ -1,5 +1,6 @@
 package software.bytepushers.pick3.component;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +12,8 @@ import java.util.Locale;
 @Component
 public class AppMessages {
 
-    private final MessageSource messageSource;
-
-    public AppMessages(MessageSource messageSource) {
-        this.messageSource = messageSource;
-    }
+    @Autowired
+    private MessageSource messageSource;
 
     /**
      * This method is responsible for providing message based on message property file.

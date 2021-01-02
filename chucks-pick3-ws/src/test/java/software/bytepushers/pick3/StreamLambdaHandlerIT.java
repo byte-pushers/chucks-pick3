@@ -40,13 +40,13 @@ public class StreamLambdaHandlerIT {
         String tomorrow = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         InputStream requestStream = new AwsProxyRequestBuilder("/numbers", HttpMethod.GET)
-                        .queryString("winNumber", "123")
-                        .queryString("winDrawDate", now)
-                        .queryString("futureDrawDate", tomorrow)
-                        .queryString("winDrawTime", "EVENING")
-                        .queryString("futureDrawTime", "NIGHT")
-                        .header(HttpHeaders.ACCEPT, "application/json;charset=UTF-8")
-                        .buildStream();
+                .queryString("winNumber", "123")
+                .queryString("winDrawDate", now)
+                .queryString("futureDrawDate", tomorrow)
+                .queryString("winDrawTime", "EVENING")
+                .queryString("futureDrawTime", "NIGHT")
+                .header(HttpHeaders.ACCEPT, "application/json;charset=UTF-8")
+                .buildStream();
 
         ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
 
@@ -71,8 +71,8 @@ public class StreamLambdaHandlerIT {
     @Test
     public void invalidResource_streamRequest_responds404() {
         InputStream requestStream = new AwsProxyRequestBuilder("/pong", HttpMethod.GET)
-                                            .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
-                                            .buildStream();
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
+                .buildStream();
         ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
 
         handle(requestStream, responseStream);

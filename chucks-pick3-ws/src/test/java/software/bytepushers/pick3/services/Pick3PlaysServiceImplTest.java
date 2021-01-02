@@ -4,37 +4,40 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
+import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
-import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.api.v1.DrawingTime;
+import software.bytepushers.pick3.domain.Pick3Plays;
 import software.bytepushers.pick3.services.impl.Pick3PlaysServiceImpl;
 
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Pick3PlaysServiceImplTest {
 
-    private Pick3PredictionService predictionService = mock(Pick3PredictionService.class);
+    @Mock
+    private Pick3PredictionService predictionService;
 
-    private Pick3PlaysService underTest;
+    @InjectMocks
+    private Pick3PlaysServiceImpl underTest;
 
-    @Captor private ArgumentCaptor<Integer> integerCaptor;
+    @Captor
+    private ArgumentCaptor<Integer> integerCaptor;
 
-    @Captor private ArgumentCaptor<LocalDate> dateCaptor;
+    @Captor
+    private ArgumentCaptor<LocalDate> dateCaptor;
 
-    @Captor private ArgumentCaptor<DrawingTime> drawTimeCaptor;
+    @Captor
+    private ArgumentCaptor<DrawingTime> drawTimeCaptor;
 
     @Before
     public void before() {
-        underTest = new Pick3PlaysServiceImpl(predictionService);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -49,7 +52,7 @@ public class Pick3PlaysServiceImplTest {
     @Test
     public void testGetPick3PlaysSetsReturnedDrawingTime() {
         when(predictionService.generatePredictions(anyInt()))
-                .thenReturn(new int[][]{ {0, 0, 0}, {1,2,3}, {0,2,3}, {0,0,1}, {9,9,9} });
+                .thenReturn(new int[][]{{0, 0, 0}, {1, 2, 3}, {0, 2, 3}, {0, 0, 1}, {9, 9, 9}});
 
         Pick3Plays plays =
                 underTest.getPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(), DrawingTime.MORNING);
@@ -60,7 +63,7 @@ public class Pick3PlaysServiceImplTest {
     @Test
     public void testGetPick3PlaysSetsReturnedDrawingDate() {
         when(predictionService.generatePredictions(anyInt()))
-                .thenReturn(new int[][]{ {0, 0, 0}, {1,2,3}, {0,2,3}, {0,0,1}, {9,9,9} });
+                .thenReturn(new int[][]{{0, 0, 0}, {1, 2, 3}, {0, 2, 3}, {0, 0, 1}, {9, 9, 9}});
 
         LocalDate date = LocalDate.now();
         Pick3Plays plays =
@@ -72,7 +75,7 @@ public class Pick3PlaysServiceImplTest {
     @Test
     public void testGetPick3PlaysConvertsPlaysToPackedIntegers() {
         when(predictionService.generatePredictions(anyInt()))
-                .thenReturn(new int[][]{ {0, 0, 0}, {1,2,3}, {0,2,3}, {0,0,1}, {9,9,9} });
+                .thenReturn(new int[][]{{0, 0, 0}, {1, 2, 3}, {0, 2, 3}, {0, 0, 1}, {9, 9, 9}});
 
         Pick3Plays plays =
                 underTest.getPick3Plays(123, LocalDate.now(), DrawingTime.DAY, LocalDate.now(), DrawingTime.MORNING);

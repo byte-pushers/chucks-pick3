@@ -1,6 +1,7 @@
 package software.bytepushers.pick3.controllers;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +25,17 @@ import java.time.LocalDate;
 @RequestMapping("/numbers")
 public class NumbersController {
 
-    private final Pick3PlaysMapper pick3PlaysMapper;
+    @Autowired
+    private Pick3PlaysMapper pick3PlaysMapper;
 
-    private final Pick3PlaysService pick3PlaysService;
+    @Autowired
+    private Pick3PlaysService pick3PlaysService;
 
-    public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
-        this.pick3PlaysService = pick3PlaysService;
-        this.pick3PlaysMapper = pick3PlaysMapper;
-    }
+//    @ConstructorProperties({"pick3PlaysService", "pick3PlaysMapper"})
+//    public NumbersController(Pick3PlaysService pick3PlaysService, Pick3PlaysMapper pick3PlaysMapper) {
+//        this.pick3PlaysService = pick3PlaysService;
+//        this.pick3PlaysMapper = pick3PlaysMapper;
+//    }
 
     /**
      * The rest endpoint implementation is responsible for generating the draw numbers.

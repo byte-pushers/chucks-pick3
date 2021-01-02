@@ -3,13 +3,18 @@ package software.bytepushers.pick3.controllers;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
-import software.bytepushers.pick3.exceptions.MalformedRequestException;
-import software.bytepushers.pick3.domain.Pick3Plays;
-import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.api.v1.DrawingTime;
 import software.bytepushers.pick3.api.v1.Pick3PlaysResponse;
+import software.bytepushers.pick3.api.v1.mappers.Pick3PlaysMapper;
+import software.bytepushers.pick3.domain.Pick3Plays;
+import software.bytepushers.pick3.exceptions.MalformedRequestException;
+import software.bytepushers.pick3.services.Pick3PlaysService;
 import software.bytepushers.pick3.util.Answers;
 
 import java.time.LocalDate;
@@ -19,21 +24,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class NumbersControllerTest {
 
-    Pick3PlaysService playsService;
-    Pick3PlaysMapper playsMapper;
+    @Mock
+    private Pick3PlaysService playsService;
+
+    @Mock
+    private Pick3PlaysMapper playsMapper;
 
     static Answer<Pick3Plays> withGenericPlay;
 
     static Answer<Pick3PlaysResponse> withGenericPlayResponse;
 
-    NumbersController numbersController;
+    @InjectMocks
+    private NumbersController numbersController;
 
     @BeforeClass
     public static void beforeClass() {
@@ -43,11 +51,11 @@ public class NumbersControllerTest {
 
     @Before
     public void before() {
-        playsService = mock(Pick3PlaysService.class);
-        playsMapper = mock(Pick3PlaysMapper.class);
+//        playsService = mock(Pick3PlaysService.class);
+//        playsMapper = mock(Pick3PlaysMapper.class);
 
-
-        numbersController = new NumbersController(playsService, playsMapper);
+        MockitoAnnotations.initMocks(this);
+//        numbersController = new NumbersController(playsService, playsMapper);
     }
 
     @Test
