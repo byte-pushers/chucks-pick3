@@ -5,7 +5,7 @@ import {CustomerService} from './customer.service';
 @Injectable({
   providedIn: 'root'
 })
-export class MockCustomerService implements CustomerService {
+export class MockCustomerService /*implements CustomerService*/ {
   public customers: CustomerInfo [] = [];
 
   constructor() {

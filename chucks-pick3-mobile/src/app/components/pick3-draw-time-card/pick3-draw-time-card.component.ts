@@ -2,6 +2,7 @@ import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
+import * as Object from 'bytepushers-js-obj-extensions';
 
 @Component({
   selector: 'pick3-draw-time-card',
@@ -41,7 +42,6 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
     const changeLog = `DoCheck customer: changed from ${from} to ${to} `;
     this.changelog.push(changeLog);
 
-    // @ts-ignore
     if (Object.isDefinedAndNotNull(this.oldData)) {
       if (this.oldData.getSelected() !== this.data.getSelected()) {
         this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());

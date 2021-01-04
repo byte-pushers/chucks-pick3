@@ -1,3 +1,5 @@
+import * as Object from 'bytepushers-js-obj-extensions';
+
 export namespace Pick3DrawTimeEnum {
     export enum Pick3DrawTimeEnum {
         MORNING,
@@ -13,7 +15,6 @@ export namespace Pick3DrawTimeEnum {
     export function toEnum(keyOrValue: string): Pick3DrawTimeEnum {
         let pick3DrawTimeEnum: Pick3DrawTimeEnum = null;
 
-        // @ts-ignore
         if (Object.isDefinedAndNotNull(keyOrValue)) {
             if (typeof keyOrValue === 'string') {
                 keyOrValue = keyOrValue.toUpperCase();

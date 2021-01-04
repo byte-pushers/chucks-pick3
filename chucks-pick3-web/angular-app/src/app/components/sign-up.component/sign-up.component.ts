@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormValidationService} from 'src/app/services/form-validation.service';
 import {MemberService} from 'src/app/services/member.service';
 import {Router} from '@angular/router';
+import * as Object from 'bytepushers-js-obj-extensions';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-sign-up',
@@ -9,10 +11,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 
-export class SignUpComponent implements OnInit {
-
+export class SignUpComponent implements OnInit, OnDestroy {
   public errorMessage: string;
+  private signUpSubscription: Subscription;
 
+  @ViewChild('signUpForm', {static: false}) signUpForm: any;
 
   constructor(public formValidationService: FormValidationService,
               private memberService: MemberService,
@@ -21,9 +24,17 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     const howToActive = document.getElementById('howTo');
-    howToActive.classList.remove('active');
-    howToActive.classList.add('allow-hover');
+
+    if (Object.isDefinedAndNotNull(howToActive)) {
+      howToActive.classList.remove('active');
+      howToActive.classList.add('allow-hover');
+    }
   }
+
+  ngOnDestroy() {
+    this.signUpSubscription = null;
+  }
+
   public isMobileResolution(): boolean {
     let isMobileResolution: boolean = false;
 
@@ -47,9 +58,11 @@ export class SignUpComponent implements OnInit {
 
     return isDesktopResolution;
   }
+
   public onSubmit() {
-    const isFormValid = this.formValidationService.validateForm();
+    /*const isFormValid = this.formValidationService.validateForm();
     const isAccountCreated = this.memberService.createAccount();
+
     if (isFormValid === true) {
       if (isAccountCreated === true) {
         this.router.navigate(['/sign-up-confirmation']);
@@ -58,12 +71,18 @@ export class SignUpComponent implements OnInit {
       }
     } else if (isFormValid === false) {
       this.errorMessage = 'Form was not processed, internal error.';
+    }*/
+
+    if (!this.signUpForm.valid) {
+      this.errorMessage = 'Form was not processed, internal error.';
+      return false;
+    } else {
+      this.signUpSubscription = this.memberService.createCustomer(null).subscribe(customerInfo => {
+        this.router.navigate(['/sign-up-confirmation']);
+      }, error => {
+        this.errorMessage = 'Account was not created, internal error.';
+        console.log(this.errorMessage + ': ' + error);
+      });
     }
-
   }
-
-
 }
-
-
-
