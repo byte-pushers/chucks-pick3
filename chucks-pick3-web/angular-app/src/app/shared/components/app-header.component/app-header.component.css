@@ -343,9 +343,11 @@ img {
 
   }
 
+
   .nav-bar-sign-up {
     padding: 0 !important;
   }
+
 
   /*------sub-nav-bar-----*/
   [class*="sub-nav-bar-col-25"] {
