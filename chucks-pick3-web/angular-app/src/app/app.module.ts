@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {HttpClientModule} from "@angular/common/http";
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from 'src/app/shared/components/app.component/app.component';
@@ -36,8 +37,6 @@ import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +71,8 @@ import { CustomerDetailsComponent } from './components/customer-details.componen
     AppRoutingModule,
     FormsModule,
     ClickOutsideModule,
-    ScrollEventModule
+    ScrollEventModule,
+    HttpClientModule
   ],
   providers: [
     MemberService,

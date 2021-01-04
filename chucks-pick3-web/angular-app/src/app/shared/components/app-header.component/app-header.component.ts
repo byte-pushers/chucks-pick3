@@ -19,7 +19,6 @@ export class AppHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.route.queryParamMap.pipe(map(params => {
       if (params !== null && params !== undefined) {
         const showSubNavBarStatus = params.get('showSubNavBar');
@@ -64,9 +63,8 @@ export class AppHeaderComponent implements OnInit {
     document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
     document.getElementById('howTo').style.color = 'gray';
   }
+
   public changeToLogInButton() {
-this.logInService.logOut();
+    this.logInService.logOut();
   }
-
-
 }

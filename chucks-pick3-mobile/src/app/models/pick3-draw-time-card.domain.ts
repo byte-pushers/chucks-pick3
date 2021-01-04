@@ -2,6 +2,7 @@ import { Pick3DrawTimeCard } from './pick3-draw-time-card';
 import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
 import { Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
 import { Pick3DrawDateCard } from "./pick3-draw-date-card";
+import * as Object from 'bytepushers-js-obj-extensions';
 
 export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private pick3DrawCardId: number;
@@ -18,7 +19,6 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this.drawTime = (config) ? config.drawTime ? Pick3DrawTimeEnum.toEnum(config.drawTime) : Pick3DrawTimeEnum.toEnum(this.title): null;
         this.state = (config) ? Pick3DrawTimeCardStateEnum.get(config.state) : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this.selected = (config) ? (typeof config.selected === "boolean") ? config.selected : false: false;
-        // @ts-ignore
         this.dateTime = (config) ? (Object.isDate(config.dateTime))? this.dateTime : new Date(config.dateTime) : null;
         this.pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
     }

@@ -1,9 +1,10 @@
 import {CustomerInfo} from '../models/customer-info';
+import {Observable} from "rxjs";
 
 export interface CustomerService {
-  addCustomer(newCustomer: CustomerInfo): void;
-  deleteCustomer(targetCustomer: CustomerInfo): void;
-  getSelectedCustomer(selectedCustomerId: number): CustomerInfo;
-  getCustomers(): CustomerInfo[];
-  createCustomer(customer: CustomerInfo): CustomerInfo;
+  addCustomer(newCustomerInfo: CustomerInfo): void;
+  deleteCustomer(targetCustomerInfo: CustomerInfo): void;
+  getSelectedCustomer(selectedCustomerInfoId: number): Observable<CustomerInfo>;
+  getCustomers(): Observable<CustomerInfo[]>;
+  createCustomer(customerInfo: CustomerInfo): Observable<CustomerInfo>;
 }
