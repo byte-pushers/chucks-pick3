@@ -1,3 +1,5 @@
+import * as Object from 'bytepushers-js-obj-extensions';
+
 export namespace Pick3DrawTimeCardStateEnum {
     export enum Pick3DrawTimeCardStateEnum {
         NOT_DRAWN_YET = "not.drawn.yet", // gray
@@ -23,7 +25,6 @@ export namespace Pick3DrawTimeCardStateEnum {
     export function get(keyOrValue: string):  Pick3DrawTimeCardStateEnum {
         let pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum = null;
 
-        // @ts-ignore
         if (Object.isDefinedAndNotNull(keyOrValue)) {
             if (typeof keyOrValue === 'string') {
                 keyOrValue = keyOrValue.toUpperCase();

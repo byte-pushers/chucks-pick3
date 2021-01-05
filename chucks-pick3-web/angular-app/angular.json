@@ -35,6 +35,23 @@
             ]
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": false,
+              "namedChunks": true,
+              "aot": false,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -69,6 +86,9 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-app:build:production"
+            },
+            "dev": {
+              "browserTarget": "angular-app:build:dev"
             }
           }
         },
