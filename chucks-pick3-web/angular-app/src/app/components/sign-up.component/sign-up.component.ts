@@ -1,11 +1,12 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {FormValidationService} from 'src/app/services/form-validation.service';
-import {MemberService} from 'src/app/services/member.service';
-import {Router} from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormValidationService } from 'src/app/services/form-validation.service';
+import { MemberService } from 'src/app/services/member.service';
+import { Router } from '@angular/router';
 import * as Object from 'bytepushers-js-obj-extensions';
-import {Subscription} from "rxjs";
-import {CustomerInfo} from "../../models/customer-info";
-import {CustomerInfoModel} from "../../models/customer-info.model";
+import { Subscription } from "rxjs";
+import { CustomerInfo } from "../../models/customer-info";
+import { CustomerInfoModel } from "../../models/customer-info.model";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-sign-up',
@@ -19,9 +20,10 @@ export class SignUpComponent implements OnInit, OnDestroy {
   @ViewChild('signUpForm', {static: false}) signUpForm: any;
   public customerInfo: CustomerInfo = new CustomerInfoModel(CustomerInfoModel.DEFAULT_CONFIG);
 
-  constructor(public formValidationService: FormValidationService,
+  constructor(private formValidationService: FormValidationService,
               private memberService: MemberService,
-              public router: Router) {
+              public router: Router,
+              private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -79,11 +81,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
       this.errorMessage = 'Form was not processed, internal error.';
       return false;
     } else {
+      this.spinner.show();
       this.signUpSubscription = this.memberService.createCustomer(this.customerInfo).subscribe(customerInfo => {
         this.router.navigate(['/sign-up-confirmation']);
+        this.spinner.hide();
       }, error => {
         this.errorMessage = 'Account was not created, internal error.';
         console.log(this.errorMessage + ': ' + error);
+        this.spinner.hide();
       });
     }
   }
