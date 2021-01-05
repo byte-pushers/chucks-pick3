@@ -47,14 +47,14 @@
  -->
 
 
-<div class="navigation sticky hidden-mobile-nav hidden-mobile-450-nav hidden-mobile-768-nav">
+<div class="navigation sticky hidden-desktop-nav ">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2" style="display: flex">
+      <div class="col-2" style="display: flex" [routerLink]="'/home'" (click)="backToTop();">
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
-      <div class="col-1" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">How To</b></div>
-      <div class="col-1" style=" height: 7vh; width: 100%; display: flex "><b style="margin: auto auto">Try It</b></div>
+      <div class="col-1" (click)="gotohowTo()" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">How To</b></div>
+      <div class="col-1" (click)="gotoDemo()" style=" height: 7vh; width: 100%; display: flex "><b style="margin: auto auto">Try It</b></div>
       <div class="col-6"></div>
       <div class="col-1" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">Log In</b></div>
 
@@ -65,86 +65,49 @@
 </div>
 
 
-<div class="mobile-nav-bar-container sticky hidden-mobile hidden-mobile-450 hidden-mobile-768 hide-on-tablet">
+<div class="mobile-nav-bar-container sticky hidden-mobile-nav">
   <div class="container-fluid">
     <div class="row">
-      <div class=" col-3 allow-hover" routerLinkActive="active">
+      <div class=" col-3  allow-hover" routerLinkActive="active">
 
-        <span style="font-size:35px;" (click)="openNav()">&#9776;</span>
+        <div id="topnav" class="topnav-mobile-menu" (click)=" openCloseMobileNav();"></div>
 
         <div class="side-nav-stick">
 
           <div id="side-nav-bar" class="sidenav">
             <div class="menu">
-              <div class="end">
-                <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
-              </div>
-              <div class="menu-title">
-                <h2><b>Menu</b></h2>
-              </div>
 
-              <div class="hamburger-menu-section-1">
-                <div class="hamburger-menu-indent">
-                </div>
-                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}"
-                   (click)="closeNav()">
-                  <div class="how">
-                    <h5><b> How To</b></h5>
-                  </div>
-                </a>
-              </div>
+
               <div class="hamburger-menu-section-2">
                 <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
+
+
+                  <div class="block" (click)="openCloseMobileNav(); gotoKeyFeatures()">
+                    <a (click)="openCloseMobileNav(); gotoKeyFeatures()"><b>Key Features</b></a>
                   </div>
                 </div>
                 <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
-                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
+
+
+                  <div class="block" (click)="closeNav(); gotohowTo()">
+                    <a (click)="closeNav(); gotohowTo()"><b>How To</b></a>
                   </div>
                 </div>
                 <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
-                    <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
+                  <div class="block" (click)="closeNav(); gotoDemo()">
+                    <a (click)="closeNav(); gotoDemo()"><b>Try It</b></a>
                   </div>
                 </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/view'" (click)="closeNav()">
-                    <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
-                  </div>
-                </div>
+                <div class="mobile-nav-img"><img src="../../../../assets/images/menuIcons/mobile-nav-image.svg"></div>
               </div>
-              <div class="hamburger-menu-section-3">
-                <div class="hamburger-menu-indent">
-                </div>
-                <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
-                  <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-6" style="display: flex">
-        <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
+      <div class="col-6" style="display: flex" [routerLink]="'/home'" (click)="closeNav(); backToTop()">
+       <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
 
       <div class="col-3 nav-bar-sign-up">
@@ -162,100 +125,20 @@
     </div>
   </div>
 </div>
-
-<div class="mobile-nav-bar-container sticky hidden-mobile-nav hidden-mobile-450-nav hidden-mobile-768-nav show-on-tablet">
+<!--mobile-nav-bar-container sticky hidden-mobile-nav hidden-mobile-450-nav hidden-mobile-768-nav show-on-tablet-->
+<div class="mobile-nav-bar-container sticky  show-on-tablet">
   <div class="container-fluid">
     <div class="row">
-      <div class=" col-1 allow-hover" routerLinkActive="active" style=" height: 7vh; width: 100%; display: flex">
-
-        <span style="font-size:35px; margin: auto auto" (click)="openNav()">&#9776;</span>
-
-        <div class="side-nav-stick">
-
-          <div id="side-nav-bar" class="sidenav">
-            <div class="menu">
-              <div class="end">
-                <a href="javascript:void(0)" routerLinkActive="active" (click)="closeNav()">&times;</a>
-              </div>
-              <div class="menu-title">
-                <h2><b>Menu</b></h2>
-              </div>
-
-              <div class="hamburger-menu-section-1">
-                <div class="hamburger-menu-indent">
-                </div>
-                <a [routerLink]="['/requirements']" routerLinkActive="subActive" [queryParams]="{showSubNavBar: true}"
-                   (click)="closeNav()">
-                  <div class="how">
-                    <h5><b> How To</b></h5>
-                  </div>
-                </a>
-              </div>
-              <div class="hamburger-menu-section-2">
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/requirements'" (click)="closeNav()">
-                    <a [routerLink]="'/requirements'" (click)="closeNav()">Requirements</a>
-                  </div>
-                </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/interface'" (click)="closeNav()">
-                    <a [routerLink]="'/interface'" [queryParams]="{showSubNavBar: true}">Interface</a>
-                  </div>
-                </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/generate'" (click)="closeNav()">
-                    <a [routerLink]="'/generate'" (click)="closeNav()">Generate</a>
-                  </div>
-                </div>
-                <div class="options">
-                  <div class="hamburger-menu-indent">
-                  </div>
-                  <div class="option-indent">
-                  </div>
-                  <div class="block" [routerLink]="'/view'" (click)="closeNav()">
-                    <a [routerLink]="'/view'" (click)="closeNav()">View Picks</a>
-                  </div>
-                </div>
-              </div>
-              <div class="hamburger-menu-section-3">
-                <div class="hamburger-menu-indent">
-                </div>
-                <div class="demo" [routerLink]="'/demo'" (click)="closeNav()">
-                  <a [routerLink]="'/demo'" (click)="closeNav()"><h5><b>Demo</b></h5></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-4" style="display: flex">
+      <div class="col-2"  [routerLink]="'/home'" (click)="backToTop();" style="display: flex">
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
-      <div class="col-3"></div>
-      <div class="col-2" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">Log In</b></div>
-      <div class="col-2" style=" background-color: #2dd36f; height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">Sign Up</b></div>
-      <!-- <div [routerLink]="'/log-in'" routerLinkActive="active" class="nav-bar-col-20 float-right allow-hover"
-            (click)="closeNav()">
-         <a [routerLink]="'/log-in'" routerLinkActive="active">Login</a>
-       </div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'"><b style="margin: auto auto">How To</b></div>
+      <div class="col-2 tablet-nav-button"  [routerLink]="['/home',{fragment: 'demoDesktop'}]"><b style="margin: auto auto">Try It</b></div>
+      <div class="col-2 tablet-nav-button"></div>
+      <div class="col-2 tablet-nav-button" (click)="onHome = false;" [routerLink]="['/log-in']"><b style="margin: auto auto">Log In</b></div>
 
-       <div [routerLink]="'/sign-up'" class="nav-bar-col-20 float-right allow-hover" routerLinkActive="active"
-            (click)="closeNav()">
-         <a [routerLink]="'/sign-up'" routerLinkActive="active">Sign Up</a>
-       </div>-->
+      <div class="col-2 tablet-nav-button" (click)="onHome = false;" [routerLink]="['/sign-up']" style="background-color: #2dd36f;"><b style="margin: auto auto">Sign Up</b></div>
+
     </div>
   </div>
 </div>

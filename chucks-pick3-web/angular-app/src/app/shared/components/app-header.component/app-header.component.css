@@ -17,8 +17,19 @@
 
 }
 
-.mobile-nav-bar-container{
-  display: block;
+.mobile-nav-bar-container {
+
+  width: 100%;
+  height: auto;
+  z-index: 888;
+  background-color: white;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+
+  /*expands to 100% width */
+}
+
+.tablet-nav-bar-container {
+
   width: 100%;
   height: auto;
   z-index: 888;
@@ -511,7 +522,7 @@ img {
   background-color: black;
   width: 100%;
   height: 100%;
-  min-height: 700px;
+
 
 }
 
@@ -584,13 +595,19 @@ img {
 
 }
 
+.desktop-button {
+  height: 7vh;
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+}
+
 .options {
   display: inline-block;
 
   width: 100%;
   height: 25%;
-
-
+  border-bottom: #e7e7e7 1px solid;
 }
 
 .options:hover {
@@ -629,9 +646,25 @@ img {
 
 }
 
+.topnav-mobile-menu {
+  background-image: url(~src/assets/images/menuIcons/hamburgerIcon.png);
+  background-size: .5em;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  font-size: 2.5em;
+  width: .6em;
+  height: 1em;
 
-.hamburger-menu-section-3:hover {
-  background-color: white;
+}
+
+.topnav-mobile-menu.expanded {
+  background-image: url(~src/assets/images/menuIcons/closeIcon.png);
+  background-size: .5em;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  font-size: 2.5em;
+  width: .6em;
+  height: 1em;
 }
 
 .hamburger-menu-section-3:hover a {
@@ -650,6 +683,13 @@ img {
 
 }
 
+.tablet-nav-button {
+  height: 6vh;
+  width: 100%;
+  display: flex;
+  font-size: 13px;
+  cursor: pointer;
+}
 
 .demo a h5 {
   line-height: 3em;
@@ -797,16 +837,17 @@ img {
 .side-nav-stick {
   display: inline-block;
   position: relative;
-  top: .85em;
+  top: -.01em;
 }
 
 .sidenav {
   display: block;
-  height: 100%;
-  width: 0;
+  height: 0;
+  width: 100%;
   position: fixed;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  left: 0;
+  background-color: white;
+  color: #1c1c1d;
   overflow-x: hidden;
   transition: 0.5s;
 
@@ -835,10 +876,10 @@ img {
 
 .menu {
   display: inline-block;
-  background-color: black;
+  background-color: white;
   width: 100%;
   height: 100%;
-  min-height: 700px;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
 
 }
 
@@ -853,7 +894,7 @@ img {
 .end a {
   float: right;
   line-height: 1em;
-  color: #ffffff;
+  color: #2dd36f;
   font-size: 40px;
 
 }
@@ -870,7 +911,7 @@ img {
 
 .menu-title h2 {
   position: relative;
-  color: white;
+  color: #1c1c1d;
   text-align: left;
   left: 10px;
 
@@ -901,7 +942,7 @@ img {
 .how h5 {
   line-height: 2em;
   text-align: left;
-  color: white;
+  color: #1c1c1d;
 }
 
 
@@ -913,16 +954,13 @@ img {
 
 .options {
   display: inline-block;
-
   width: 100%;
-  height: 25%;
+  height: 30%;
+  margin-top: 2em;
 
 
 }
 
-.options:hover {
-  background-color: white;
-}
 
 .options:hover a {
 
@@ -947,7 +985,7 @@ img {
 
   width: 100%;
   height: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .hamburger-menu-section-3 {
@@ -956,10 +994,6 @@ img {
 
 }
 
-
-.hamburger-menu-section-3:hover {
-  background-color: white;
-}
 
 .hamburger-menu-section-3:hover a {
 
@@ -980,14 +1014,155 @@ img {
 
 .demo a h5 {
   line-height: 3em;
-  color: white;
 }
 
 .demo a h5:hover {
   color: black;
 }
 
+.mobile-nav-img {
+  margin-top: 10em;
+  opacity: 18%;
+}
 
 
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  /* CSS */
+  .hidden-desktop-nav {
+    display: block;
+  }
+
+  .hidden-mobile-nav {
+    display: none;
+  }
+
+  .show-on-tablet {
+    display: none;
+  }
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  /* CSS */
+  .hidden-desktop-nav {
+    display: block;
+  }
+
+  .hidden-mobile-nav {
+    display: none;
+  }
+
+  .show-on-tablet {
+    display: none;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* CSS */
+  .hidden-desktop-nav {
+    display: none;
+  }
+
+  .hidden-mobile-nav {
+    display: none;
+  }
+
+  .show-on-tablet {
+    display: block;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+  /* CSS */
+  .hidden-desktop-nav {
+    display: none;
+  }
+
+  .hidden-mobile-nav {
+    display: none;
+  }
+
+  .show-on-tablet {
+    display: block;
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  /* CSS */
+  .hidden-desktop-nav {
+    display: none;
+  }
+
+  .hidden-mobile-nav {
+    display: block;
+  }
+
+  .show-on-tablet {
+    display: none;
+  }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  /* CSS */
+  .hidden-desktop-nav {
+    display: none;
+  }
+
+  .hidden-mobile-nav {
+    display: block;
+  }
+
+  .show-on-tablet {
+    display: none;
+  }
+}
 
 
+@media (min-width: 280px) and (max-width: 320px) {
+
+  .hidden-mobile-nav {
+    display: block;
+  }
+
+  .hidden-desktop-nav {
+    display: none;
+  }
+
+  .show-on-tablet {
+    display: none;
+  }
+}

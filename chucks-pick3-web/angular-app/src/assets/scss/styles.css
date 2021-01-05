@@ -1,23 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-  height:100%;
+  height: 100%;
 }
+
 .no-pad {
   padding: 0px !important;
   margin: 0px;
 }
+
 .no-pad-left {
   padding-left: 0px !important;
   margin: 0px;
 }
+
 .no-pad-right {
   padding-right: 0px !important;
   margin: 0px;
 }
+
 .forsignup {
   padding-top: 25px;
   padding-bottom: 5px;
 }
+
 .form-control.ng-touched.ng-invalid {
   border: 1px solid red;
 }
@@ -42,10 +47,12 @@ html {
 
 
 }
+
 p {
 
   text-align: left;
 }
+
 .logo-container {
   display: block;
   background-color: rgb(0, 0, 0);
@@ -57,11 +64,13 @@ p {
 
 
 }
+
 .logo-container img {
   display: block;
   margin: auto;
   width: 150px;
 }
+
 .header-img-container {
   display: block;
   background-color: rgb(126, 187, 86);
@@ -99,6 +108,7 @@ p {
 
 
 }
+
 .content {
   padding: 0px;
 }
@@ -118,6 +128,7 @@ p {
 
   right: 5%;
 }
+
 #content {
   padding: 0px;
   transition: margin-left 0.7s;
@@ -168,6 +179,7 @@ body {
   display: block;
   float: left;
 }
+
 /* .link-container {
 
 
@@ -179,16 +191,17 @@ body {
 } */
 
 #container-jumbotron {
-  line-height:4.5em;
-  height:100%;
+  line-height: 4.5em;
+  height: 100%;
 
 
 }
 
 .jumbotron {
-  line-height:4.5em;
+  line-height: 4.5em;
 
 }
+
 .alert-danger {
   width: 100%;
 }
@@ -200,15 +213,18 @@ body {
   position: relative;
   background-image: linear-gradient(#fff, #fff, #d2d3d3);
 }
+
 .grediant img {
   position: absolute;
   bottom: -17px;
   /* margin: 0px auto; */
   left: 10px;
 }
+
 .grediant img.signup {
   bottom: -20px;
 }
+
 .greenpatch {
   background: #7ebd56;
   padding: 15px;
@@ -216,6 +232,7 @@ body {
   text-align: left;
   margin: 0 0 0 0;
 }
+
 .middlebdr {
   border-left: solid 1px #bdbdbd !important;
   border-right: solid 1px #bdbdbd !important;
@@ -229,6 +246,7 @@ body {
 
   }
 }
+
 @media only screen and (max-width: 768px) {
   .middlebdr {
     border-left: solid 1px #bdbdbd !important;
@@ -239,25 +257,29 @@ body {
 
 @media only screen and (max-width: 425px) {
   .middlebdr {
-    border-left: none!important;
-    border-right: none!important;
+    border-left: none !important;
+    border-right: none !important;
     border-bottom: solid 1px #2e2e2e;
     border-top: solid 1px #2e2e2e;
     padding-top: 5px;
     padding-bottom: 5px;
 
   }
-.col-md-4 {
-padding: 0px!important;
-}
+
+  .col-md-4 {
+    padding: 0px !important;
+  }
+
   .no-pad {
     margin: 10px;
     margin-bottom: 20px;
   }
+
   .no-pad-left {
     margin: 10px;
     margin-bottom: 20px;
   }
+
   .no-pad-right {
     margin: 10px;
     margin-bottom: 20px;
@@ -265,9 +287,8 @@ padding: 0px!important;
 }
 
 
-
 * {
-  font-family: 'Lato', sans-serif!important;
+  font-family: 'Lato', sans-serif !important;
 }
 
 
@@ -280,36 +301,11 @@ padding: 0px!important;
 }
 
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 767px) and (max-width: 864px){
-  .show-on-tablet {
-    display: block !important;
-  }
+@media (min-width: 767px) and (max-width: 864px) {
 
-  .hide-on-tablet {
-    display: none !important;
-  }
-
-  .hidden-mobile-nav {
-    display: none;
-  }
-  .hidden-mobile-450-nav {
-    display: none;
-  }
-  .hidden-mobile-768-nav {
-    display: none;
-  }
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){
-  .show-on-tablet {
-    display: none !important;
-  }
-
-  .hide-on-tablet {
-    display: none !important;
-  }
-}
 
 
 @media only screen and (min-width: 0) and (max-width: 320px) {
@@ -317,9 +313,7 @@ padding: 0px!important;
     display: none
   }
 
-  .hidden-mobile-nav {
-    display: none !important;
-  }
+
 }
 
 .visible-mobile {
@@ -330,28 +324,20 @@ padding: 0px!important;
   .visible-mobile {
     display: block
   }
-
-  .hidden-mobile-nav {
-    display: none!important;
-  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 449px) {
   .hidden-mobile-450 {
     display: none
   }
-  .hidden-mobile-450-nav {
-    display: none !important;
-  }
+
 }
 
 @media only screen and (min-width: 449px) and (max-width: 767px) {
   .hidden-mobile-768 {
     display: none
   }
-  .hidden-mobile-768-nav {
-    display: none !important;
-  }
+
 }
 
 .visible-mobile-450 {
@@ -363,3 +349,4 @@ padding: 0px!important;
     display: block
   }
 }
+
