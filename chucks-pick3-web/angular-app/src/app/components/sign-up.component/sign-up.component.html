@@ -13,6 +13,7 @@
                    name="firstName"
                    class="form-control"
                    placeholder="First name"
+                   [(ngModel)]="customerInfo.firstName"
                    minlength="2"
                    #firstName="ngModel"
                    type="text"
@@ -30,9 +31,11 @@
             <input id="defaultRegisterFormLastName"
                    name="lastName"
                    #lastName="ngModel"
+                   [(ngModel)]="customerInfo.lastName"
                    type="text"
                    minlength="2"
-                   class="form-control" placeholder="Last name"
+                   class="form-control"
+                   placeholder="Last name"
                    required ngModel nameValidator>
             <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
               <div *ngIf="lastName.errors.required">- Last name is required.</div>
@@ -48,7 +51,7 @@
         <div class="col-6">
           <label for="defaultRegisterFormEmail">Email</label>
           <input
-            type="email" name="email" email #email="ngModel"
+            type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
             id="defaultRegisterFormEmail"
             class="form-control" placeholder="Email"
             required ngModel dataValidator emailValidator>
@@ -62,6 +65,7 @@
           <label for="defaultRegisterFormPhone">Phone</label>
           <input type="tel" name="phoneNumber"
                  #phoneNumber="ngModel"
+                 [(ngModel)]="customerInfo.phone"
                  id="defaultRegisterFormPhone"
                  class="form-control"
                  minlength="12"
@@ -73,8 +77,6 @@
             <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
             <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
             <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
-
-
           </div>
         </div>
         </div>
@@ -82,7 +84,7 @@
         <div class="form-row">
         <div class="col-6">
           <label for="defaultRegisterFormCity">City</label>
-          <input name="cityName" #cityName="ngModel"
+          <input name="cityName" #cityName="ngModel" [(ngModel)]="customerInfo.city"
                  type="text"
                  id="defaultRegisterFormCity"
                  class="form-control"
@@ -100,6 +102,7 @@
           <label for="defaultRegisterFormCity">State</label>
           <label for="stateDropDownId"></label>
           <select #stateDropDownInputName="ngModel"
+                  [(ngModel)]="customerInfo.state"
                   name="stateDropDownInputName"
                   class="custom-select" id="stateDropDownId"
                   required ngModel>
@@ -168,6 +171,7 @@
           <label for="defaultRegisterFormZip">Zip</label>
           <input name="zipCode"
                  #zipCode="ngModel"
+                 [(ngModel)]="customerInfo.zipCode"
                  type="text"
                  minlength="4"
                  maxlength="5"
@@ -185,6 +189,7 @@
           <label for="defaultRegisterFormCity">Type Of Phone</label>
           <label for="typeOfPhoneId"></label>
           <select #dropDownTypeOfPhoneName="ngModel"
+                  [(ngModel)]="customerInfo.cellPhoneType"
                   name="dropDownTypeOfPhoneName"
                   class="custom-select"
                   id="typeOfPhoneId"
@@ -203,6 +208,7 @@
           <label for="defaultRegisterFormCity">How Often Do You Play?</label>
           <label for="howOftenId"></label>
           <select #dropDownHowOftenName="ngModel"
+                  [(ngModel)]="customerInfo.gambleFrequency"
                   name="dropDownHowOftenName"
                   class="custom-select" id="howOftenId"
                   required ngModel>
@@ -251,6 +257,7 @@
                      name="firstName"
                      class="form-control"
                      placeholder="First name"
+                     [(ngModel)]="customerInfo.firstName"
                      minlength="2"
                      #firstName="ngModel"
                      type="text"
@@ -268,6 +275,7 @@
               <input id="defaultRegisterFormLastNameMobile"
                      name="lastName"
                      #lastName="ngModel"
+                     [(ngModel)]="customerInfo.lastName"
                      type="text"
                      minlength="2"
                      class="form-control" placeholder="Last name"
@@ -286,7 +294,7 @@
           <div class="form-row">
             <label for="defaultRegisterFormEmail">Email</label>
             <input
-              type="email" name="email" email #email="ngModel"
+              type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
               id="defaultRegisterFormEmailMobile"
               class="form-control" placeholder="Email"
               required ngModel dataValidator emailValidator>
@@ -300,6 +308,7 @@
             <label for="defaultRegisterFormPhone">Phone</label>
             <input type="tel" name="phoneNumber"
                    #phoneNumber="ngModel"
+                   [(ngModel)]="customerInfo.phone"
                    id="defaultRegisterFormPhoneMobile"
                    class="form-control"
                    minlength="12"
@@ -320,7 +329,7 @@
 
           <div class="form-row">
             <label for="defaultRegisterFormCity">City</label>
-            <input name="cityName" #cityName="ngModel"
+            <input name="cityName" #cityName="ngModel" [(ngModel)]="customerInfo.city"
                    type="text"
                    id="defaultRegisterFormCityMobile"
                    class="form-control"
@@ -337,7 +346,7 @@
           <div class="form-row">
             <label for="defaultRegisterFormCity">State</label>
             <label for="stateDropDownId"></label>
-            <select #stateDropDownInputName="ngModel"
+            <select #stateDropDownInputName="ngModel" [(ngModel)]="customerInfo.state"
                     name="stateDropDownInputName"
                     class="custom-select" id="stateDropDownIdMobile"
                     required ngModel>
@@ -406,6 +415,7 @@
             <label for="defaultRegisterFormZip">Zip</label>
             <input name="zipCode"
                    #zipCode="ngModel"
+                   [(ngModel)]="customerInfo.zipCode"
                    type="text"
                    minlength="4"
                    maxlength="5"
@@ -422,7 +432,7 @@
           <div class="form-row">
             <label for="defaultRegisterFormCity">Type Of Phone</label>
             <label for="typeOfPhoneId"></label>
-            <select #dropDownTypeOfPhoneName="ngModel"
+            <select #dropDownTypeOfPhoneName="ngModel" [(ngModel)]="customerInfo.cellPhoneType"
                     name="dropDownTypeOfPhoneName"
                     class="custom-select"
                     id="typeOfPhoneIdMobile"
@@ -440,7 +450,7 @@
         <div class="form-row">
           <label for="defaultRegisterFormCity">How Often Do You Play?</label>
           <label for="howOftenId"></label>
-          <select #dropDownHowOftenName="ngModel"
+          <select #dropDownHowOftenName="ngModel" [(ngModel)]="customerInfo.gambleFrequency"
                   name="dropDownHowOftenName"
                   class="custom-select" id="howOftenIdMobile"
                   required ngModel>
