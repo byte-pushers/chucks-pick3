@@ -3,10 +3,10 @@ import { FormValidationService } from 'src/app/services/form-validation.service'
 import { MemberService } from 'src/app/services/member.service';
 import { Router } from '@angular/router';
 import * as Object from 'bytepushers-js-obj-extensions';
-import { Subscription } from "rxjs";
-import { CustomerInfo } from "../../models/customer-info";
-import { CustomerInfoModel } from "../../models/customer-info.model";
-import { NgxSpinnerService } from "ngx-spinner";
+import { Subscription } from 'rxjs';
+import { CustomerInfo } from '../../models/customer-info';
+import { CustomerInfoModel } from '../../models/customer-info.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-sign-up',
