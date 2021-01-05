@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SubNavBarService} from 'src/app/services/sub-nav-bar.service';
-import {ActivatedRoute} from '@angular/router';
-import {map} from 'rxjs/operators';
 import {LogInValidationService} from '../../../services/log-in.service';
+import {AppService} from "../../../app.service";
 
 
 @Component({
@@ -12,24 +10,17 @@ import {LogInValidationService} from '../../../services/log-in.service';
 })
 
 export class AppHeaderComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService,
-              private route: ActivatedRoute,
+  constructor(private appService: AppService,
               public logInService: LogInValidationService) {
   }
 
   ngOnInit() {
-    this.route.queryParamMap.pipe(map(params => {
-      if (params !== null && params !== undefined) {
-        // tslint:disable-next-line:no-shadowed-variable
-        const fragment = params.get('fragment');
-        console.log('fragment: ' + fragment);
-      }
-    }));
 
-    const fragment = this.route.snapshot.paramMap.get('fragment');
-    console.log('fragment: ' + fragment);
   }
 
+  public saveFragment(fragment: string): void {
+    this.appService.saveFragment(fragment);
+  }
 
   /*Side Nav Bar Mobile*/
   public backToTop() {

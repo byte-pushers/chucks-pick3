@@ -132,12 +132,12 @@
       <div class="col-2"  [routerLink]="'/home'" (click)="backToTop();" style="display: flex">
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'"><b style="margin: auto auto">How To</b></div>
-      <div class="col-2 tablet-nav-button"  [routerLink]="['/home',{fragment: 'demoDesktop'}]"><b style="margin: auto auto">Try It</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToDesktop')"><b style="margin: auto auto">How To</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoDesktop')"><b style="margin: auto auto">Try It</b></div>
       <div class="col-2 tablet-nav-button"></div>
-      <div class="col-2 tablet-nav-button" (click)="onHome = false;" [routerLink]="['/log-in']"><b style="margin: auto auto">Log In</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="['/log-in']"><b style="margin: auto auto">Log In</b></div>
 
-      <div class="col-2 tablet-nav-button" (click)="onHome = false;" [routerLink]="['/sign-up']" style="background-color: #2dd36f;"><b style="margin: auto auto">Sign Up</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="['/sign-up']" style="background-color: #2dd36f;"><b style="margin: auto auto">Sign Up</b></div>
 
     </div>
   </div>
