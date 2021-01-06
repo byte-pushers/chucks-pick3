@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule, ExtraOptions} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {AppComponent} from 'src/app/shared/components/app.component/app.component';
 import {AppHeaderComponent} from 'src/app/shared/components/app-header.component/app-header.component';
 import {AppBodyComponent} from 'src/app/shared/components/app-body.component/app-body.component';
@@ -16,11 +16,7 @@ import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmati
 import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
 import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
 
-const routerOptions: ExtraOptions = {
-  scrollPositionRestoration: 'enabled',
-  anchorScrolling: 'enabled',
-  scrollOffset: [0, 64],
-};
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -40,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOptions)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
