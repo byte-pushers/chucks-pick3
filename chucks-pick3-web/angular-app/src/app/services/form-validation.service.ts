@@ -27,7 +27,6 @@ export class FormValidationService {
     const numChars = '0123456789-'.split('');
     const numArray = input.replace(/ /g, '').split('');
     for (const numbers of numArray) {
-      console.log(numbers);
       if (numChars.includes(numbers)) {
         numeric = true;
       } else {
@@ -44,7 +43,6 @@ export class FormValidationService {
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     const charactersArray = input.replace(/ /g, '').split('');
     for (const character of charactersArray) {
-      console.log(character);
       if (alphaChars.includes(character)) {
         alphabetical = true;
 
@@ -61,7 +59,6 @@ export class FormValidationService {
     const alphaChars = 'abcdefghijklmnopqrstuvwxyz'.split('');
     const charactersArray = input.split('');
     for (const character of charactersArray) {
-      console.log(character);
       if (alphaChars.includes(character)) {
         lowercase = true;
 
@@ -78,7 +75,6 @@ export class FormValidationService {
     const alphaChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     const charactersArray = input.split('');
     for (const character of charactersArray) {
-      console.log(character);
       if (alphaChars.includes(character)) {
         uppercase = true;
 
@@ -125,7 +121,6 @@ export class FormValidationService {
     let alphaNumeric = false;
     const alphaChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     for (const character of input) {
-      console.log(character);
       if (alphaChars.includes(character)) {
         alphaNumeric = true;
 
@@ -170,7 +165,6 @@ export class FormValidationService {
     if (this.hasData(input)) {
       const passwordCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+';
       for (const character of input) {
-        console.log(character);
         if (passwordCharacters.includes(character)) {
           passwordIsValid = true;
 
