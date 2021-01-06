@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   title = 'angular-app';
   public showSplashPage = true;
   ngOnInit() {
-    screen.orientation.lock('portrait');
   }
   public showSplashView(showStatus: boolean): void {
     this.showSplashPage = showStatus;
