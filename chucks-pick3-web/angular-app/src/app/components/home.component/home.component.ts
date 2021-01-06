@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
-import {AppService} from "../../app.service";
-import {Subscription} from "rxjs";
+import {AppService} from '../../app.service';
+import {Subscription} from 'rxjs';
+import * as Object from 'bytepushers-js-obj-extensions';
 
 
 @Component({
@@ -27,7 +28,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fragmentSubscription = this.appService.fragment().subscribe(fragment => {
       console.log('fragment: ' + fragment);
-      //TODO: add scroll into view logic for fragment.
+      if (Object.isDefinedAndNotNull(fragment)) {
+        // TODO: add scroll into view logic for fragment.
+        const targetElement =  document.getElementById(fragment);
+        console.log('targetElement: ' + targetElement);
+        if (Object.isDefinedAndNotNull(targetElement)) {
+          console.log('targetElement: ' + targetElement + ' found');
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
     });
     this.displayFeatureButtonDiv();
     document.getElementById('viewField').style.display = 'block';
