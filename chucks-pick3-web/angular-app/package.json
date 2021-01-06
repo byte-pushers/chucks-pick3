@@ -29,7 +29,8 @@
     "ng-click-outside": "^4.0.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-scroll-event": "^1.0.8",
-    "rxjs": "~6.3.3",
+    "ngx-spinner": "^10.0.1",
+    "rxjs": "^6.3.3",
     "tslib": "^1.14.1",
     "zone.js": "~0.8.26"
   },
