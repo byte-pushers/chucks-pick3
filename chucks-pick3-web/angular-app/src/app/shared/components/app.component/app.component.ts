@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as Object from 'bytepushers-js-obj-extensions';
 
 @Component({
@@ -6,10 +6,12 @@ import * as Object from 'bytepushers-js-obj-extensions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-app';
   public showSplashPage = true;
-
+  ngOnInit() {
+    screen.orientation.lock('portrait');
+  }
   public showSplashView(showStatus: boolean): void {
     this.showSplashPage = showStatus;
   }
