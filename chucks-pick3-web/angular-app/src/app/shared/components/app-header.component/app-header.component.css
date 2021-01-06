@@ -88,6 +88,16 @@
 
 }
 
+.desktop-nav-button {
+  height:7vh;
+  width: 100%;
+  display: flex;
+}
+
+.desktop-nav-button:hover {
+ cursor: pointer;
+}
+
 .main-nav-bar-container a {
   text-decoration: none;
   color: black;

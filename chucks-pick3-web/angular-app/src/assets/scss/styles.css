@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+*,*:focus,*:hover{
+  outline:none;
+}
+
 html {
   height: 100%;
 }

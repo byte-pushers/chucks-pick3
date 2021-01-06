@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LogInValidationService} from '../../../services/log-in.service';
-import {AppService} from "../../../app.service";
+import {AppService} from '../../../app.service';
 
 
 @Component({
@@ -46,7 +46,11 @@ export class AppHeaderComponent implements OnInit {
     this.logInService.logOut();
   }
 
-  gotoKeyFeatures() {
+  public showY() {
+    console.log(window.scrollY);
+  }
+
+/*  gotoKeyFeatures() {
     document.getElementById('keyFeatures').scrollIntoView({
       behavior: 'smooth'
     });
@@ -58,7 +62,7 @@ export class AppHeaderComponent implements OnInit {
       behavior: 'smooth'
     });
     this.closeNav();
-  }
+  }*/
 
 /*  gotohowToTablet() {
     this.router.navigate(['/home']);
@@ -72,12 +76,12 @@ export class AppHeaderComponent implements OnInit {
     });
   }*/
 
-  gotoDemo() {
+ /* gotoDemo() {
     document.getElementById('demo').scrollIntoView({
       behavior: 'smooth'
     });
     this.closeNav();
-  }
+  }*/
 
   private openCloseMobileNav() {
     const windowCheck = window.innerWidth;

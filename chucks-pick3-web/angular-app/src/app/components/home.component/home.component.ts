@@ -27,13 +27,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fragmentSubscription = this.appService.fragment().subscribe(fragment => {
-      console.log('fragment: ' + fragment);
+    /*  console.log('fragment: ' + fragment);*/
       if (Object.isDefinedAndNotNull(fragment)) {
         // TODO: add scroll into view logic for fragment.
         const targetElement =  document.getElementById(fragment);
-        console.log('targetElement: ' + targetElement);
+       /* console.log('targetElement: ' + targetElement);*/
         if (Object.isDefinedAndNotNull(targetElement)) {
-          console.log('targetElement: ' + targetElement + ' found');
+       /*   console.log('targetElement: ' + targetElement + ' found');*/
           targetElement.scrollIntoView({
             behavior: 'smooth'
           });

@@ -50,15 +50,15 @@
 <div class="navigation sticky hidden-desktop-nav ">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2" style="display: flex" [routerLink]="'/home'" (click)="backToTop();">
+      <div class="col-2 desktop-nav-button" style="display: flex" [routerLink]="'/home'" (click)="saveFragment('null'); backToTop();" >
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
-      <div class="col-1" (click)="gotohowTo()" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">How To</b></div>
-      <div class="col-1" (click)="gotoDemo()" style=" height: 7vh; width: 100%; display: flex "><b style="margin: auto auto">Try It</b></div>
-      <div class="col-6"></div>
-      <div class="col-1" style=" height: 7vh; width: 100%; display: flex"><b style="margin: auto auto">Log In</b></div>
+      <div class="col-1 desktop-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToDesktop')" ><b style="margin: auto auto">How To</b></div>
+      <div class="col-1 desktop-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoDesktop')" ><b style="margin: auto auto">Try It</b></div>
+      <div class="col-7 "></div>
+      <!--<div class="col-1" style=" ><b style="margin: auto auto">Log In</b></div>-->
 
-      <div class="col-1" style=" height: 7vh; width: 100%; background-color: #2dd36f;  display: flex;"><b style="margin: auto auto">Sign Up</b></div>
+      <div class="col-1 desktop-nav-button" [routerLink]="['/sign-up']" style=" background-color: #2dd36f;  "><b style="margin: auto auto">Sign Up</b></div>
 
     </div>
   </div>
@@ -68,9 +68,9 @@
 <div class="mobile-nav-bar-container sticky hidden-mobile-nav">
   <div class="container-fluid">
     <div class="row">
-      <div class=" col-3  allow-hover" routerLinkActive="active">
+      <div class=" col-3  allow-hover">
 
-        <div id="topnav" class="topnav-mobile-menu" (click)=" openCloseMobileNav();"></div>
+        <div id="topnav" class="topnav-mobile-menu" (click)="saveFragment('null'); openCloseMobileNav();"></div>
 
         <div class="side-nav-stick">
 
@@ -80,22 +80,18 @@
 
               <div class="hamburger-menu-section-2">
                 <div class="options">
-
-
-                  <div class="block" (click)="openCloseMobileNav(); gotoKeyFeatures()">
-                    <a (click)="openCloseMobileNav(); gotoKeyFeatures()"><b>Key Features</b></a>
+                  <div class="block" [routerLink]="'/home'"  (click)="closeNav();saveFragment('keyFeaturesMobile')">
+                    <a (click)="closeNav(); saveFragment('keyFeaturesMobile')"><b>Key Features</b></a>
                   </div>
                 </div>
                 <div class="options">
-
-
-                  <div class="block" (click)="closeNav(); gotohowTo()">
-                    <a (click)="closeNav(); gotohowTo()"><b>How To</b></a>
+                  <div class="block" [routerLink]="'/home'" (click)="closeNav();saveFragment('howToMobile')">
+                    <a (click)="closeNav(); saveFragment('howToMobile')"><b>How To</b></a>
                   </div>
                 </div>
                 <div class="options">
-                  <div class="block" (click)="closeNav(); gotoDemo()">
-                    <a (click)="closeNav(); gotoDemo()"><b>Try It</b></a>
+                  <div class="block" [routerLink]="'/home'" (click)="closeNav(); saveFragment('demoMobile')">
+                    <a (click)="closeNav(); saveFragment('demoMobile')"><b>Try It</b></a>
                   </div>
                 </div>
                 <div class="mobile-nav-img"><img src="../../../../assets/images/menuIcons/mobile-nav-image.svg"></div>
@@ -133,7 +129,7 @@
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
       <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToDesktop')"><b style="margin: auto auto">How To</b></div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoDesktop')"><b style="margin: auto auto">Try It</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoDesktop'); showY()"><b style="margin: auto auto">Try It</b></div>
       <div class="col-2 tablet-nav-button"></div>
       <div class="col-2 tablet-nav-button"> <!--[routerLink]="['/log-in']"--><!--<b style="margin: auto auto">Log In</b>--></div>
 
