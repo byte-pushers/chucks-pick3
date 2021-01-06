@@ -19,4 +19,21 @@
 .bp-section-text {
   color: #8c8c8c !important;
   text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bp-section-mobile {
+  background-color: #1c1c1d;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: auto;
+  padding-right: auto;
+
+}
+
+.bp-section-sitemap {
+  background-color: #1c1c1d;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: center;
 }
