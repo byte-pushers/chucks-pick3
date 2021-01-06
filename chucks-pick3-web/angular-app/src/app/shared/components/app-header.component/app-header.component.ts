@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SubNavBarService} from 'src/app/services/sub-nav-bar.service';
-import {ActivatedRoute} from '@angular/router';
-import {map} from 'rxjs/operators';
 import {LogInValidationService} from '../../../services/log-in.service';
-
+import {AppService} from '../../../app.service';
 
 
 @Component({
@@ -13,58 +10,91 @@ import {LogInValidationService} from '../../../services/log-in.service';
 })
 
 export class AppHeaderComponent implements OnInit {
-  constructor(private subNavBarService: SubNavBarService,
-              private route: ActivatedRoute,
+  constructor(private appService: AppService,
               public logInService: LogInValidationService) {
   }
 
   ngOnInit() {
-    this.route.queryParamMap.pipe(map(params => {
-      if (params !== null && params !== undefined) {
-        const showSubNavBarStatus = params.get('showSubNavBar');
 
-        if (showSubNavBarStatus !== null && showSubNavBarStatus !== undefined) {
-          return showSubNavBarStatus.toLowerCase() === 'true' ? true : false;
-        }
-      }
-
-      return false;
-    })).subscribe(subNavBarVisible => {
-      this.subNavBarService.setSubNavBarVisibility(subNavBarVisible);
-    });
   }
 
-  public isSubNavBarVisible(): boolean {
-    return this.subNavBarService.getSubNavBarVisibility();
-  }
-
-  public showSubNavBar(showSubNavBarStatus: boolean): void {
-    this.subNavBarService.setSubNavBarVisibility(showSubNavBarStatus);
+  public saveFragment(fragment: string): void {
+    this.appService.saveFragment(fragment);
   }
 
   /*Side Nav Bar Mobile*/
-  public openNav() {
-    document.getElementById('side-nav-bar').style.width = '250px';
+  public backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   public closeNav() {
-    document.getElementById('side-nav-bar').style.width = '0';
+    const mobileNav = document.getElementById('topnav');
+    document.getElementById('side-nav-bar').style.height = '0';
+    mobileNav.classList.remove('expanded');
   }
 
   onClickedOutside(e: Event) {
-    document.getElementById('side-nav-bar').style.width = '0';
+    document.getElementById('side-nav-bar').style.height = '0';
   }
 
   handleScroll(e: Event) {
-    document.getElementById('side-nav-bar').style.width = '0';
-  }
-
-  public howToActive() {
-    document.getElementById('howTo').style.backgroundColor = '#d0d0d0';
-    document.getElementById('howTo').style.color = 'gray';
+    document.getElementById('side-nav-bar').style.height = '0';
   }
 
   public changeToLogInButton() {
     this.logInService.logOut();
+  }
+
+  public showY() {
+    console.log(window.scrollY);
+  }
+
+/*  gotoKeyFeatures() {
+    document.getElementById('keyFeatures').scrollIntoView({
+      behavior: 'smooth'
+    });
+    this.closeNav();
+  }
+
+  gotohowTo() {
+    document.getElementById('howTo').scrollIntoView({
+      behavior: 'smooth'
+    });
+    this.closeNav();
+  }*/
+
+/*  gotohowToTablet() {
+    this.router.navigate(['/home']);
+
+  }
+
+  gotoDemoTablet() {
+    this.router.navigate(['/', 'home']);
+    document.getElementById('demoDesktop').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }*/
+
+ /* gotoDemo() {
+    document.getElementById('demo').scrollIntoView({
+      behavior: 'smooth'
+    });
+    this.closeNav();
+  }*/
+
+  public openCloseMobileNav() {
+    const windowCheck = window.innerWidth;
+    if (windowCheck <= 480) {
+      const mobileNav = document.getElementById('topnav');
+
+      if (mobileNav.classList.contains('expanded')) {
+        mobileNav.classList.remove('expanded');
+        document.getElementById('side-nav-bar').style.height = '0';
+      } else {
+        mobileNav.classList.add('expanded');
+        document.getElementById('side-nav-bar').style.height = '100%';
+      }
+    }
   }
 }

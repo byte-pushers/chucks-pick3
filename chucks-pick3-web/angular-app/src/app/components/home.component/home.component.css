@@ -8,7 +8,7 @@
   background-color: #1c1c1d;
   width: 100%;
   height: auto;
-  padding-top: 10em;
+  padding-top: 5em;
 }
 
 .header-text-content-mobile {
@@ -201,7 +201,6 @@ h1 {
 
 .how-to-section {
   padding-top: 3%;
-
   vertical-align: middle;
   background-color: #353535;
 }
@@ -248,8 +247,8 @@ h1 {
 
 .how-to-title-text {
   margin-top: 3%;
-  font-size: 30px;
-  font-weight: bolder;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .how-to-text {
