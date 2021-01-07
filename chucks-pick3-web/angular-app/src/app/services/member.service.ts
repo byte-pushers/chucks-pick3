@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
-import {CustomerService} from "./customer.service";
-import {CustomerInfo} from "../models/customer-info";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { CustomerService } from './customer.service';
+import { CustomerInfo } from '../models/customer-info';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { EMPTY, Observable, of, throwError } from 'rxjs';
-import { catchError, delay, mergeMap, retry, retryWhen, shareReplay } from "rxjs/operators";
+import { catchError, delay, mergeMap, retry, retryWhen, shareReplay } from 'rxjs/operators';
+import { DelayedRetryOperator } from '../shared/operators/delayed-retry/delayed-retry.operator';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +33,11 @@ export class MemberService implements CustomerService {
     return this.http.post<CustomerInfo>(environment.SIGN_UP.API.HOST, customerInfo, {
       headers: header,
       responseType: 'json'
-    }).pipe(retryWhen((errors: Observable<any>) => errors.pipe(
-      delay(3),
-      mergeMap(error => retries-- > 0 ? of(error) : throwError(this.getErrorMessage(maxRetry))))
-    ), catchError(() => EMPTY), shareReplay());
+    }).pipe(
+      DelayedRetryOperator.operate(1000, 3),
+      catchError(() => EMPTY),
+      shareReplay()
+    );
   }
 
   addCustomer(newCustomerInfo: CustomerInfo): void {
@@ -50,9 +52,5 @@ export class MemberService implements CustomerService {
 
   getSelectedCustomer(selectedCustomerInfoId: number): Observable<CustomerInfo> {
     return undefined;
-  }
-
-  private getErrorMessage(maxRetry: number) {
-    return `Tried to load Resource over XHR for ${maxRetry} times without success.  Giving up.`;
   }
 }
