@@ -4,7 +4,7 @@
   margin-left: auto;
   margin-right: auto;
   background-color: #1c1c1d;
-  padding-top: 5%;
+  padding-bottom: 1em;
 
 }
 
@@ -24,8 +24,8 @@
 }
 .bp-section-mobile {
   background-color: #1c1c1d;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 3em;
+  padding-bottom: 3em;
   padding-left: auto;
   padding-right: auto;
 
@@ -43,6 +43,20 @@ a b .bp-section-sitemap {
   color: #8c8c8c !important;
 }
 
+.bp-section-sitemap-mobile {
+  padding-bottom: 3em;
+}
+
+.bp-section-sitemap-links-mobile {
+  background-color: #1c1c1d;
+  padding-top: 3em;
+  text-align: center;
+  text-decoration: none;
+}
+a b .bp-section-sitemap-links-mobile {
+  text-decoration: none;
+  color: #8c8c8c !important;
+}
 .footer-link {
   text-decoration: none;
   color: #8c8c8c !important;

@@ -4,41 +4,45 @@
 
     <div class="col-12 bp-section-header">
       <div class="hidden-mobile-nav">
-        <div class="row bp-section-sitemap">
+        <div class="bp-section-sitemap-mobile">
+        <div class="row bp-section-sitemap-links-mobile">
           <div class="col-12 ">
             <a [routerLink]="'/home'" (click)="saveFragment('keyFeaturesMobile')" class="footer-link"><b>Key Features</b></a>
           </div>
         </div>
-        <div class="row bp-section-sitemap">
+        <div class="row bp-section-sitemap-links-mobile">
           <div class="col-12">
             <a [routerLink]="'/home'" (click)="saveFragment('howToMobile')"  class="footer-link"><b>How To</b></a>
           </div>
         </div>
-        <div class="row bp-section-sitemap">
+        <div class="row bp-section-sitemap-links-mobile">
           <div class="col-12">
             <a [routerLink]="'/home'" (click)="saveFragment('demoMobile');" class="footer-link"><b>Try It</b></a>
           </div>
         </div>
-        <div class="row  bp-section-sitemap">
+        <div class="row  bp-section-sitemap-links-mobile">
           <div class="col-12">
             <a [routerLink]="['/sign-up']" (click)="backToTop()" class="footer-link"><b>Sign Up</b></a>
           </div>
         </div>
+        </div>
       </div>
       <div class="hidden-desktop-nav">
-      <div class="row" style="margin-bottom: 5%">
-        <div class="col-3 bp-section-sitemap">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2 bp-section-sitemap">
           <a [routerLink]="'/home'" (click)="saveFragment('keyFeaturesDesktop')"  class="footer-link"><b>Key Features</b></a>
         </div>
-        <div class="col-3 bp-section-sitemap">
+        <div class="col-2 bp-section-sitemap">
           <a [routerLink]="'/home'" (click)="saveFragment('howToDesktop')"  class="footer-link"><b>How To</b></a>
         </div>
-        <div class="col-3 bp-section-sitemap">
+        <div class="col-2 bp-section-sitemap">
           <a [routerLink]="'/home'" (click)="saveFragment('demoDesktop');"  class="footer-link"><b>Try It</b></a>
         </div>
-        <div class="col-3 bp-section-sitemap">
+        <div class="col-2 bp-section-sitemap">
           <a [routerLink]="['/sign-up']"  (click)="backToTop()" class="footer-link"><b>Sign Up</b></a>
         </div>
+        <div class="col-2"></div>
     </div>
       </div>
       <div class="show-on-tablet">
@@ -65,5 +69,7 @@
   </div>
   <div class="row">
   <p class="col-12 copyright"> Copyright &#169; 2020 BytePushers Inc.</p>
+  </div>
+</div>
   </div>
 </div>
