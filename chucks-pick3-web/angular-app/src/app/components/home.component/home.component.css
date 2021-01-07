@@ -119,21 +119,22 @@
 }
 
 .bp-section-header {
-  text-align: left;
+
   color: #8c8c8c;
 
 }
 
-.bp-section-text {
+.bp-section-sitemap {
   color: #8c8c8c;
+
 }
 
 .bp-section {
-  background-color: #1c1c1d;
-  padding-top: 5%;
-  padding-bottom: 5%;
+   background-color: #1c1c1d;
+   padding-top: 5%;
+   padding-bottom: 5%;
 
-}
+ }
 
 h1 {
   font-weight: 700;
