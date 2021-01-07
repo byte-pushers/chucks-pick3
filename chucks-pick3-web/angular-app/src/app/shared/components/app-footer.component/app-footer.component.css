@@ -36,4 +36,14 @@
   padding-top: 5%;
   padding-bottom: 5%;
   text-align: center;
+  text-decoration: none;
+}
+a b .bp-section-sitemap {
+  text-decoration: none;
+  color: #8c8c8c !important;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #8c8c8c !important;
 }

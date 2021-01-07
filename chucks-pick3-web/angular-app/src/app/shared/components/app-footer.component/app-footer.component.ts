@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AppService} from '../../../app.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './app-footer.component.html',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appService: AppService) {
+
+  }
 
   ngOnInit() {
   }
+  public saveFragment(fragment: string): void {
+    this.appService.saveFragment(fragment);
+  }
 
+  public backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 }
