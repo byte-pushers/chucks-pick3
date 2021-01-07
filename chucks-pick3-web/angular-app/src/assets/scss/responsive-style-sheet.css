@@ -922,15 +922,15 @@ margin-top: 3em !important;
 
 @media (min-width: 1281px) {
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: block;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: none;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: none;
   }
 }
@@ -940,18 +940,18 @@ margin-top: 3em !important;
   ##Screen = B/w 1025px to 1280px
 */
 
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1023px) and (max-width: 1280px) {
 
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: block;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: none;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: none;
   }
 }
@@ -961,18 +961,18 @@ margin-top: 3em !important;
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: none;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: none;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: block;
   }
 }
@@ -982,18 +982,18 @@ margin-top: 3em !important;
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
 
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: none;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: none;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: block;
   }
 }
@@ -1006,16 +1006,16 @@ margin-top: 3em !important;
 @media (min-width: 481px) and (max-width: 767px) {
 
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: none;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
+    display: none;
+  }
+
+  .show-tablet {
     display: block;
-  }
-
-  .show-on-tablet {
-    display: none;
   }
 }
 
@@ -1027,15 +1027,15 @@ margin-top: 3em !important;
 @media (min-width: 320px) and (max-width: 480px) {
 
   /* CSS */
-  .hidden-desktop-nav {
+  .show-desktop {
     display: none;
   }
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: block;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: none;
   }
 }
@@ -1043,15 +1043,15 @@ margin-top: 3em !important;
 
 @media (min-width: 280px) and (max-width: 320px) {
 
-  .hidden-mobile-nav {
+  .show-mobile {
     display: block;
   }
 
-  .hidden-desktop-nav {
+  .show-desktop {
     display: none;
   }
 
-  .show-on-tablet {
+  .show-tablet {
     display: none;
   }
 }
