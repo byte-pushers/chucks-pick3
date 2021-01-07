@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
-import validate = WebAssembly.validate;
+import {AppService} from '../../app.service';
+import {Subscription} from 'rxjs';
+import * as Object from 'bytepushers-js-obj-extensions';
 
 
 @Component({
@@ -11,23 +13,41 @@ import validate = WebAssembly.validate;
 })
 
 
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit, OnDestroy {
+  public fragmentSubscription: Subscription;
   public viewField = false;
   public generateField = false;
   public writeField = false;
 
-  constructor(config: NgbCarouselConfig) {
+  constructor(private config: NgbCarouselConfig, private appService: AppService) {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
   }
 
   ngOnInit() {
+    this.fragmentSubscription = this.appService.fragment().subscribe(fragment => {
+    /*  console.log('fragment: ' + fragment);*/
+      if (Object.isDefinedAndNotNull(fragment)) {
+        // TODO: add scroll into view logic for fragment.
+        const targetElement =  document.getElementById(fragment);
+       /* console.log('targetElement: ' + targetElement);*/
+        if (Object.isDefinedAndNotNull(targetElement)) {
+       /*   console.log('targetElement: ' + targetElement + ' found');*/
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
     this.displayFeatureButtonDiv();
     document.getElementById('viewField').style.display = 'block';
     document.getElementById('generateField').style.display = 'none';
     document.getElementById('writeField').style.display = 'none';
+  }
+
+  ngOnDestroy() {
+    this.fragmentSubscription = null;
   }
 
   public isMobileResolution(): boolean {

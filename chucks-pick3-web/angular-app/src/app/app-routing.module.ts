@@ -16,10 +16,12 @@ import {SignUpConfirmationComponent} from 'src/app/components/sign-up-confirmati
 import {CustomerSummaryComponent} from './components/customer-summary.component/customer-summary.component';
 import {CustomerDetailsComponent} from './components/customer-details.component/customer-details.component';
 
+
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'info', component: InfoComponent,},
+  {path: 'info', component: InfoComponent},
   {path: 'generate', component: InfoGenerateComponent},
   {path: 'interface', component: InfoInterfaceComponent},
   {path: 'requirements', component: InfoRequirementsComponent},
