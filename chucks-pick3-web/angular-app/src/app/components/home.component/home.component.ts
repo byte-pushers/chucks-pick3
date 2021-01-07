@@ -44,6 +44,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     document.getElementById('viewField').style.display = 'block';
     document.getElementById('generateField').style.display = 'none';
     document.getElementById('writeField').style.display = 'none';
+
+    document.getElementById('viewFieldTablet').style.display = 'block';
+    document.getElementById('generateFieldTablet').style.display = 'none';
+    document.getElementById('writeFieldTablet').style.display = 'none';
   }
 
   ngOnDestroy() {
@@ -75,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public displayFeatureDiv(input) {
-    const featureFields = ['viewField', 'generateField', 'writeField'];
+    const featureFields = ['viewField', 'generateField', 'writeField', 'viewFieldTablet', 'generateFieldTablet', 'writeFieldTablet'];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < featureFields.length; i++) {
       if (featureFields[i].lastIndexOf(input) === 0) {
