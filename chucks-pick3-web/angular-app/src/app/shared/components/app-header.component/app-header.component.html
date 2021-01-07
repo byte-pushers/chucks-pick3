@@ -47,7 +47,7 @@
  -->
 
 
-<div class="navigation sticky hidden-desktop-nav ">
+<div class="navigation sticky show-desktop ">
   <div class="container-fluid">
     <div class="row">
       <div class="col-2 desktop-nav-button" style="display: flex" [routerLink]="'/home'" (click)="saveFragment('null'); backToTop();" >
@@ -65,7 +65,7 @@
 </div>
 
 
-<div class="mobile-nav-bar-container sticky hidden-mobile-nav">
+<div class="mobile-nav-bar-container sticky show-mobile">
   <div class="container-fluid">
     <div class="row">
       <div class=" col-3  allow-hover">
@@ -122,14 +122,14 @@
   </div>
 </div>
 <!--mobile-nav-bar-container sticky hidden-mobile-nav hidden-mobile-450-nav hidden-mobile-768-nav show-on-tablet-->
-<div class="mobile-nav-bar-container sticky  show-on-tablet">
+<div class="mobile-nav-bar-container sticky  show-tablet">
   <div class="container-fluid">
     <div class="row">
       <div class="col-2"  [routerLink]="'/home'" (click)="saveFragment('null'); backToTop();"  style="display: flex">
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 6vh; margin: auto auto;">
       </div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToDesktop')"><b style="margin: auto auto">How To</b></div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoDesktop'); showY()"><b style="margin: auto auto">Try It</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToTablet')"><b style="margin: auto auto">How To</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoTablet'); showY()"><b style="margin: auto auto">Try It</b></div>
       <div class="col-2 tablet-nav-button"></div>
       <div class="col-2 tablet-nav-button"> <!--[routerLink]="['/log-in']"--><!--<b style="margin: auto auto">Log In</b>--></div>
 
