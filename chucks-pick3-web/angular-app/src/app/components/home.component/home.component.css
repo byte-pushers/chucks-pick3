@@ -8,7 +8,7 @@
   background-color: #1c1c1d;
   width: 100%;
   height: auto;
-  padding-top: 5em;
+  padding-top: 2em;
 }
 
 .header-text-content-mobile {
@@ -286,13 +286,14 @@ h1 {
 
 .how-to-paragraph-title {
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 2.7em;
   color: white;
   text-align: left;
 }
 
 .how-to-paragraph {
   color: white;
+  font-size: 12px;
 }
 
 .circle-stack {
