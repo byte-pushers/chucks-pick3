@@ -84,13 +84,7 @@
         <div class="card-body">
           <span>
             Get live Pick 3 Lottery drawing results at your finger tips!<br>
-            The app will notify you if one of the generated numbers is a winner via:
-            <ul style="margin-left: 20px;">
-              <li>Color System - Green = Winner</li>
-              <li>Color System - Yellow = Generated</li>
-              <li>Color System - Black = Lost</li>
-              <li>Alert - For generated winners</li>
-            </ul>
+            The app will notify you if one of the generated numbers is a winner via the color indicator.
           </span>
         </div>
       </div>
@@ -120,8 +114,14 @@
         <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">1. Draw Date Card</h4>
         <p class="how-to-paragraph-mobile">
           The Draw Date Card show all the draw times for the current date.  Each Draw Time Card has color indicators that
-          indicate the state of your generated numbers for a specific draw time.
+          indicate the state of your generated numbers for a specific draw time:
         </p>
+        <ul class="how-to-paragraph-mobile" style="margin-left: 20px;">
+          <li>Color System - Green = Winner</li>
+          <li>Color System - Yellow = Generated</li>
+          <li>Color System - Black = Lost</li>
+          <li>Alert - For generated winners</li>
+        </ul>
       </div>
       <div class="col-12" style="border-bottom: #606060 solid 1px">
         <img src="../../../assets/images/iphone-generate-screen.png">
@@ -155,7 +155,7 @@
       </div>
       <div class="col-12">
         <img src="../../../assets/images/iphone-writeimage.png">
-        <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">3. Write Them In!</h4>
+        <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">4. Write Them In!</h4>
         <p class="how-to-paragraph-mobile">
           After you've generated picks, you will be presented with a generated number list; that you can choose to
           play at your local Pick3 Lottery sales agent!
@@ -272,20 +272,22 @@
           <div class="card-title">
             <h3 class="features-header">Generate Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"><p> With a previously drawn Pick3 Lottery number and our Pick3 Lottery algorithm, we can generate a list of Pick3 Lottery numbers; which you can
+            then manually play at your local Lottery sales agent!</p></div>
         </div>
         <div class="col-3 card features-card">
 
           <div
-            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsGenerate.svg'); margin-top: 10%; margin-left: 4%; margin-bottom: 5%"></div>
+            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsHistory.svg'); margin-top: 10%; margin-left: 4%; margin-bottom: 5%"></div>
           <div class="card-title">
-            <h3 class="features-header">Generate Picks</h3>
+            <h3 class="features-header">View Winning Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"> <span>
+            Get live Pick 3 Lottery drawing results at your finger tips!<br>
+            The app will notify you if one of the generated numbers is a winner via the color indicator.
+          </span>
+            <br><br>
+          </div>
         </div>
         <div class="col-3 card features-card">
           <div
@@ -293,9 +295,8 @@
           <div class="card-title">
             <h3 class="features-header">View Past Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"><p>See a history of the generated numbers from the past week by simply swiping right!</p><br><br><br><br><br></div>
+
         </div>
         <div class="col-1"></div>
       </div>
@@ -314,13 +315,15 @@
             <img src="../../../assets/images/dots-up.svg" style="height: 6vh;">
           </div>
           <a id="viewButton" class="how-to-title activeHowTo" (click)="displayFeatureDiv('viewField')"><h4
-            class="how-to-title-text">View</h4></a>
+            class="how-to-title-text">1. Draw</h4></a>
           <div><span></span></div>
-          <a id="generateButton" class="how-to-title" (click)="displayFeatureDiv('generateField');"><h4
-            class="how-to-title-text">Generate</h4></a>
+          <a id="selectButton" class="how-to-title" (click)="displayFeatureDiv('selectField');"><h4
+            class="how-to-title-text">2. Select</h4></a>
           <div><span></span></div>
+          <a id="generateButton" class="how-to-title" (click)="displayFeatureDiv('generateField')"><h4
+            class="how-to-title-text">3. Generate</h4></a>
           <a id="writeButton" class="how-to-title" (click)="displayFeatureDiv('writeField')"><h4
-            class="how-to-title-text">Write</h4></a>
+            class="how-to-title-text">4. Write</h4></a>
           <div>
             <img src="../../../assets/images/dots-down.svg" style="height: 6vh;">
           </div>
@@ -336,13 +339,38 @@
                   <img src="../../../assets/images/iphone-view-image.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">View Picks</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">1. Draw Date Card</h1>
+                  <p class="how-to-paragraph">  The Draw Date Card show all the draw times for the current date.  Each Draw Time Card has color indicators that
+                    indicate the state of your generated numbers for a specific draw time:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>Color System - Green = Winner</li>
+                    <li>Color System - Yellow = Generated</li>
+                    <li>Color System - Black = Lost</li>
+                    <li>Alert - For generated winners</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="selectField" class="col-12 how-to-section-info">
+              <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-4">
+                  <img src="../../../assets/images/iphone-generate-image.png" class="how-to-image">
+                </div>
+                <div class="col-7 how-to-text">
+                  <h1 class="how-to-paragraph-title">2. Select Previously Drawn Number</h1>
+                  <p class="how-to-paragraph">  In order to generate a list of numbers you need a previously drawn number by selecting a:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>number from today or yesterday</li>
+                    <li>draw time</li>
+                  </ul>
+                  <p class="how-to-paragraph">  The previously drawn number is displayed at the top of Draw Date Card. <br><br>
+                    Click the Continue button to proceed to the next step in the generate pick process..
+                  </p>
                 </div>
               </div>
             </div>
@@ -353,13 +381,15 @@
                   <img src="../../../assets/images/iphone-generate-screen.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">Generate Picks</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">3. Generate Picks</h1>
+                  <p class="how-to-paragraph"> In order to select the date and time for the new picks select the:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>draw date - either today or tomorrow</li>
+                    <li>draw time</li>
+                  </ul>
+                  <p class="how-to-paragraph"> The previously drawn number is displayed at the top of Draw Date Card.<br><br>
+                    Click the Generate button to generate a number list.</p>
                 </div>
               </div>
             </div>
@@ -372,13 +402,9 @@
                   <img src="../../../assets/images/iphone-writeimage.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">Write Them In!</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">4. Write Them In!</h1>
+                  <p class="how-to-paragraph"> After you've generated picks, you will be presented with a generated number list; that you can choose to
+                    play at your local Pick3 Lottery sales agent!</p>
                 </div>
               </div>
             </div>
@@ -402,10 +428,8 @@
             <h1 class="section-header">Try It Out</h1>
           </div>
           <div style="text-align: left; padding-right: 7vw">
-            <p style="text-align: left; font-size: 22px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              feugiat tristique
-              semper. Nullam lacinia
-              tincidunt lectus vel volutpat. </p>
+            <p style="text-align: left; font-size: 22px"> We're currently hard at work developing the Chuck's Pick3 Lottery app.<br>
+              Take a test drive before it's released!</p>
           </div>
           <div class=" col-6" style="  padding: revert">
             <button class="btn demo-btn"><b>Demo</b></button>
@@ -491,67 +515,61 @@
         </div>
       </div>
     </div>
-    <div id="keyFeaturesTablet"></div>
+    <div id="keyFeaturesDesktop"></div>
   </div>
 
   <div class="features-section show-tablet">
-    <div class="container-fluid" style=" margin-left: auto; margin-right: auto">
+    <div class="container-fluid" style="margin-left: auto; margin-right: auto">
       <div class="row">
         <div class="col-12" style="margin-bottom: 3%">
           <h1>Key Features</h1>
         </div>
       </div>
-    </div>
-    <div class="container-fluid features-card-tablet" style=" margin-left: auto; margin-right: auto">
       <div class="row" style="align-items: center">
-        <div class="col-12 card ">
+        <div class="col-1"></div>
+        <div class="col-3 card features-card">
 
           <div
-            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsGenerate.svg'); margin-top: 5%; margin-left: 4%; margin-bottom: 5%"></div>
+            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsGenerate.svg'); margin-top: 10%; margin-left: 4%; margin-bottom: 5%"></div>
           <div class="card-title">
             <h3 class="features-header">Generate Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"><p> With a previously drawn Pick3 Lottery number and our Pick3 Lottery algorithm, we can generate a list of Pick3 Lottery numbers; which you can
+            then manually play at your local Lottery sales agent!</p></div>
         </div>
-      </div>
-    </div>
-    <div class="container-fluid features-card-tablet" style=" margin-left: auto; margin-right: auto">
-      <div class="row" style="align-items: center">
-        <div class="col-12 card ">
+        <div class="col-3 card features-card">
 
           <div
-            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsGenerate.svg'); margin-top: 5%; margin-left: 4%; margin-bottom: 5%"></div>
+            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsHistory.svg'); margin-top: 10%; margin-left: 4%; margin-bottom: 5%"></div>
           <div class="card-title">
-            <h3 class="features-header">Generate Picks</h3>
+            <h3 class="features-header">View Winning Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"> <span>
+            Get live Pick 3 Lottery drawing results at your finger tips!<br>
+            The app will notify you if one of the generated numbers is a winner via the color indicator.
+          </span>
+            <br><br>
+            <br><br>
+            <br><br>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="container-fluid features-card-tablet" style=" margin-left: auto; margin-right: auto">
-      <div class="row" style="align-items: center">
-        <div class="col-12 card ">
+        <div class="col-3 card features-card">
           <div
-            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsHistory.svg'); margin-top: 5%; margin-left: 4%; margin-bottom: 5%"></div>
+            style="height: 70px; width: 70px; background-image: url('../../../assets/images/cp3WebIconsHistory.svg'); margin-top: 10%; margin-left: 4%; margin-bottom: 5%"></div>
           <div class="card-title">
             <h3 class="features-header">View Past Picks</h3>
           </div>
-          <div class="card-body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique
-            semper. Nullam lacinia
-            tincidunt lectus vel volutpat.</p></div>
+          <div class="card-body"><p>See a history of the generated numbers from the past week by simply swiping right!</p><br><br><br><br><br><br><br><br><br><br></div>
+
         </div>
-      </div>
-
-
+        <div class="col-1"></div>
       </div>
 
 
     </div>
+  </div>
     <div id="howToTablet"></div>
+
 
 
   <div  class="how-to-section show-tablet">
@@ -562,14 +580,16 @@
           <div>
             <img src="../../../assets/images/dots-up.svg" style="height: 6vh;">
           </div>
-          <a id="viewButtonTablet" class="how-to-title activeHowTo" (click)="displayFeatureDiv('viewFieldTablet')"><h4
-            class="how-to-title-text">View</h4></a>
+          <a id="viewButtonTablet" class="how-to-title" (click)="displayFeatureDiv('viewFieldTablet')"><h6
+            class="how-to-title-text">1. Draw</h6></a>
           <div><span></span></div>
-          <a id="generateButtonTablet" class="how-to-title" (click)="displayFeatureDiv('generateFieldTablet');"><h4
-            class="how-to-title-text">Generate</h4></a>
+          <a id="selectButtonTablet" class="how-to-title" (click)="displayFeatureDiv('selectFieldTablet');"><h6
+            class="how-to-title-text">2. Select</h6></a>
           <div><span></span></div>
-          <a id="writeButtonTablet" class="how-to-title" (click)="displayFeatureDiv('writeFieldTablet')"><h4
-            class="how-to-title-text">Write</h4></a>
+          <a id="generateButtonTablet" class="how-to-title" (click)="displayFeatureDiv('generateFieldTablet')"><h6
+            class="how-to-title-text">3. Generate</h6></a>
+          <a id="writeButtonTablet" class="how-to-title" (click)="displayFeatureDiv('writeFieldTablet')"><h6
+            class="how-to-title-text">4. Write</h6></a>
           <div>
             <img src="../../../assets/images/dots-down.svg" style="height: 6vh;">
           </div>
@@ -585,13 +605,38 @@
                   <img src="../../../assets/images/iphone-view-image.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">View Picks</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">1. Draw Date Card</h1>
+                  <p class="how-to-paragraph">  The Draw Date Card show all the draw times for the current date.  Each Draw Time Card has color indicators that
+                    indicate the state of your generated numbers for a specific draw time:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>Color System - Green = Winner</li>
+                    <li>Color System - Yellow = Generated</li>
+                    <li>Color System - Black = Lost</li>
+                    <li>Alert - For generated winners</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="selectFieldTablet" class="col-12 how-to-section-info">
+              <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-4">
+                  <img src="../../../assets/images/iphone-generate-image.png" class="how-to-image">
+                </div>
+                <div class="col-7 how-to-text">
+                  <h1 class="how-to-paragraph-title">2. Select Previously Drawn Number</h1>
+                  <p class="how-to-paragraph">  In order to generate a list of numbers you need a previously drawn number by selecting a:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>number from today or yesterday</li>
+                    <li>draw time</li>
+                  </ul>
+                  <p class="how-to-paragraph">  The previously drawn number is displayed at the top of Draw Date Card. <br><br>
+                    Click the Continue button to proceed to the next step in the generate pick process..
+                  </p>
                 </div>
               </div>
             </div>
@@ -602,13 +647,15 @@
                   <img src="../../../assets/images/iphone-generate-screen.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">Generate Picks</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">3. Generate Picks</h1>
+                  <p class="how-to-paragraph"> In order to select the date and time for the new picks select the:
+                  </p>
+                  <ul class="how-to-paragraph" style="margin-left: 20px;">
+                    <li>draw date - either today or tomorrow</li>
+                    <li>draw time</li>
+                  </ul>
+                  <p class="how-to-paragraph"> The previously drawn number is displayed at the top of Draw Date Card.<br><br>
+                    Click the Generate button to generate a number list.</p>
                 </div>
               </div>
             </div>
@@ -621,13 +668,9 @@
                   <img src="../../../assets/images/iphone-writeimage.png" class="how-to-image">
                 </div>
                 <div class="col-7 how-to-text">
-                  <h1 class="how-to-paragraph-title">Write Them In!</h1>
-                  <p class="how-to-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat
-                    tristique
-                    semper. Nullam lacinia
-                    tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin
-                    sollicitudin
-                    venenatis gravida.</p>
+                  <h1 class="how-to-paragraph-title">4. Write Them In!</h1>
+                  <p class="how-to-paragraph"> After you've generated picks, you will be presented with a generated number list; that you can choose to
+                    play at your local Pick3 Lottery sales agent!</p>
                 </div>
               </div>
             </div>
@@ -651,10 +694,8 @@
             <h1 class="section-header">Try It Out</h1>
           </div>
           <div style="text-align: left; padding-right: 7vw">
-            <p style="text-align: left; font-size: 22px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              feugiat tristique
-              semper. Nullam lacinia
-              tincidunt lectus vel volutpat. </p>
+            <p style="text-align: left; font-size: 22px"> We're currently hard at work developing the Chuck's Pick3 Lottery app.<br>
+              Take a test drive before it's released!</p>
           </div>
           <div class=" col-6" style="  padding: revert">
             <button class="btn demo-btn"><b>Demo</b></button>

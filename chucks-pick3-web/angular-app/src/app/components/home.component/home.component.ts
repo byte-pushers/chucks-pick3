@@ -16,6 +16,7 @@ import * as Object from 'bytepushers-js-obj-extensions';
 export class HomeComponent implements OnInit, OnDestroy {
   public fragmentSubscription: Subscription;
   public viewField = false;
+  public selectField = false;
   public generateField = false;
   public writeField = false;
 
@@ -42,10 +43,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.displayFeatureButtonDiv();
     document.getElementById('viewField').style.display = 'block';
+    document.getElementById('selectField').style.display = 'none';
     document.getElementById('generateField').style.display = 'none';
     document.getElementById('writeField').style.display = 'none';
 
     document.getElementById('viewFieldTablet').style.display = 'block';
+    document.getElementById('selectFieldTablet').style.display = 'none';
     document.getElementById('generateFieldTablet').style.display = 'none';
     document.getElementById('writeFieldTablet').style.display = 'none';
   }
@@ -79,7 +82,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public displayFeatureDiv(input) {
-    const featureFields = ['viewField', 'generateField', 'writeField', 'viewFieldTablet', 'generateFieldTablet', 'writeFieldTablet'];
+    // tslint:disable-next-line:max-line-length
+    const featureFields = ['viewField', 'selectField', 'generateField', 'writeField', 'viewFieldTablet',
+      'selectFieldTablet','generateFieldTablet', 'writeFieldTablet'];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < featureFields.length; i++) {
       if (featureFields[i].lastIndexOf(input) === 0) {
