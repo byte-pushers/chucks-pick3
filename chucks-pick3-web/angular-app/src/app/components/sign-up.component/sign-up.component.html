@@ -1,6 +1,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<div class="main-content container-fluid" *ngIf="isDesktopResolution()">
-  <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+<div class="main-content">
+ <div class="sign-up-hero">
+   <div class="container-fluid">
+     <div class=" row">
+       <div class="col-1"></div>
+       <div class="col-10">
+         <h1 class="sign-up-hero-text">
+           <b class="sign-up-hero-header">Your Luck is Waiting</b>
+           </h1>
+         <p class="sign-up-hero-text">We look forward to presenting you the Chuck's Pick 3 application! For now you can sign up to receive notifications, updates, surveys and demos.</p>
+       </div>
+       <div class="col-1"></div>
+     </div>
+   </div>
+ </div>
+  <div class="sign-up-form">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 py-4">
+          <div class="card">
+            <div class="card-title">
+              test
+            </div>
+            <div class="card-body">
+              test test test <br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <!-- <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
     <div class="row">
       <div class="col-xl-5 mx-auto">
         <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
@@ -223,8 +261,8 @@
           <br>
           <br>
           <br>
-          <!-- [routerLink]="'/thank-you'"
-           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+          &lt;!&ndash; [routerLink]="'/thank-you'"
+           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"&ndash;&gt;
           <button type="submit"
                   class="btn btn btn-success submit btn-lg btn-block"
                   [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
@@ -237,13 +275,13 @@
       <br>
     </div>
     <br>
-  </form>
-  <br>
+  </form>-->
+<!--  <br>
   <div class="footer"></div>
-  <br>
+<br>-->
 
 </div>
-<div class="main-content container-fluid" *ngIf="isMobileResolution()">
+<!--<div class="main-content container-fluid" *ngIf="isMobileResolution()">
   <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
     <div class="row">
       <div class="col-xl-5 mx-auto">
@@ -465,8 +503,8 @@
           <br>
           <br>
           <br>
-          <!-- [routerLink]="'/thank-you'"
-           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+          &lt;!&ndash; [routerLink]="'/thank-you'"
+           routerLinkActive="active" [queryParams]="{showSubNavBar: false}"&ndash;&gt;
           <button type="submit"
                   class="btn btn btn-success submit btn-lg btn-block"
                   [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
@@ -484,5 +522,5 @@
   <br>
   <div class="footer"></div>
   <br>
-</div>
+</div>-->
 <ngx-spinner type="ball-spin-clockwise"></ngx-spinner>
