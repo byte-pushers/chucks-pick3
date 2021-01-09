@@ -1,53 +1,4 @@
-<!--<div class="nav-bar-container">&lt;!&ndash;style="background-color: white"//&ndash;&gt;
-  <div class="main-nav-bar-container sticky hidden-mobile hidden-mobile-450 hidden-mobile-768">
-    <a [routerLink]="'/home'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-      <div class="nav-bar-col-15  allow-hover">
-        <img src="../../../../assets/images/cp3-web-logo.svg" style="height: auto; width: 10vw; vertical-align: middle">
-      </div>
-    </a>
-    <a [routerLink]="'/requirements'" class="info" routerLinkActive="active" [queryParams]="{showSubNavBar: true}">
-      <div class="nav-bar-col-15  allow-hover" routerLinkActive="howToActive" id="howTo">
-        <b>How To</b>
-      </div>
-    </a>
-    <a [routerLink]="['/demo']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-      <div class="nav-bar-col-15 allow-hover">
-        <b>Demo</b>
-      </div>
-    </a>
-    <div class="nav-bar-col-20">
-<br>
-    </div>
-    <div class="nav-bar-col-20">
-      <br>
-    </div>
-    <div class="nav-bar-col-15">
-      <a [routerLink]="['/sign-up']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-50 allow-hover" id="sign-up" style="background-color: #2dd36f">
-          <b>Sign-Up</b>
-        </div>
-      </a>
-      <a [routerLink]="['/customers']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-50 allow-hover" id="summary">
-          <b>Summary</b>
-        </div>
-      </a>
-      <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-50 allow-hover" id="log-in">
-          <b>Log-In</b>
-        </div>
-      </a>
-      <a [routerLink]="['/log-in']" routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-        <div class="nav-bar-col-50 allow-hover" id="log-out" (click)="changeToLogInButton()">
-          <b>Log-Out</b>
-        </div>
-      </a>
-    </div>
-  </div>
- -->
-
-
-<div class="navigation sticky show-desktop">
+<div class="navigation sticky hidden-desktop-nav ">
   <div class="container-fluid">
     <div class="row">
       <div class="col-2 desktop-nav-button" style="display: flex" [routerLink]="'/home'" (click)="saveFragment('null'); backToTop();" >
@@ -63,7 +14,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="mobile-nav-bar-container sticky show-mobile">
   <div class="container-fluid">
@@ -128,8 +78,8 @@
       <div class="col-3"  [routerLink]="'/home'" (click)="saveFragment('null'); backToTop();"  style="display: flex">
         <img src="../../../../assets/images/cp3-web-logo.svg" style="width: auto; height: 8vh; margin: auto auto;">
       </div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToTablet')"><b style="margin: auto auto">How To</b></div>
-      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoTablet'); showY()"><b style="margin: auto auto">Try It</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('howToTablet');"><b style="margin: auto auto">How To</b></div>
+      <div class="col-2 tablet-nav-button" [routerLink]="'/home'" (click)="saveFragment('demoTablet');showY();"><b style="margin: auto auto">Try It</b></div>
       <div class="col-1 tablet-nav-button"></div>
       <div class="col-2 tablet-nav-button"> <!--[routerLink]="['/log-in']"--><!--<b style="margin: auto auto">Log In</b>--></div>
 

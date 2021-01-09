@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { OverlayModule } from '@angular/cdk/overlay';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from 'src/app/shared/components/app.component/app.component';
@@ -76,7 +77,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScrollEventModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OverlayModule
   ],
   providers: [
     MemberService,
