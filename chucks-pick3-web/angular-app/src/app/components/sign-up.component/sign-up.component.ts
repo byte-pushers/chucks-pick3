@@ -83,7 +83,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       this.errorMessage = 'Form was not processed, internal error.';
     }*/
 
-    this.showOverlayModal(this.templatePortalContent);
+    // this.showOverlayModal(this.templatePortalContent);
 
     /*if (!this.signUpForm.valid) {
       this.errorMessage = 'Form was not processed, internal error.';
