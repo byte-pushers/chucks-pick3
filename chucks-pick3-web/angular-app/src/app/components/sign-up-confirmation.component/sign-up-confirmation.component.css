@@ -1,0 +1,21 @@
+.sign-up-confirmation {
+  background-color: #2dd36f;
+
+}
+
+.confirmation-icon {
+  height: 3.5em;
+  width: 3.5em;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.sign-up-card {
+  padding: 10vw 0 10vw 0;
+}
+
+.sign-up-btn {
+  background-color: #2dd36f;
+  color: #1c1c1d;
+}
