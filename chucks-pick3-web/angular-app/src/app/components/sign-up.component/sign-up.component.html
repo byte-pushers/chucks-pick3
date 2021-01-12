@@ -8,7 +8,8 @@
           <h1 class="sign-up-hero-text">
             <b class="sign-up-hero-header">Your Luck is Waiting</b>
           </h1>
-          <p class="sign-up-hero-text">We look forward to presenting you the Chuck's Pick 3 application! For now you can sign up to receive notifications, updates, surveys and demos.</p>
+          <p class="sign-up-hero-text">We look forward to presenting you the Chuck's Pick 3 application! For now you can
+            sign up to receive notifications, updates, surveys and demos.</p>
         </div>
         <div class="col-1"></div>
       </div>
@@ -19,7 +20,7 @@
     <div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-12 py-4">
+          <div class="col-sm-8 m-auto py-4">
             <div class="card">
               <div class="container-fluid">
                 <div class="row">
@@ -30,214 +31,257 @@
                     <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
                       <div class="info-form">
                         <div class="form-row">
-                          <label for="defaultRegisterFormFirstName">First Name</label>
-                          <input id="defaultRegisterFormFirstNameMobile"
-                                 name="firstName"
-                                 class="form-control"
-                                 placeholder="First name"
-                                 [(ngModel)]="customerInfo.firstName"
-                                 minlength="2"
-                                 #firstName="ngModel"
-                                 type="text"
-                                 required ngModel nameValidator>
-                          <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-                            <div *ngIf="firstName.errors.required">- First name is required.</div>
-                            <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
-                            <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
+                          <div class="col-6">
+                            <label for="defaultRegisterFormFirstName">First Name</label>
+                            <input id="defaultRegisterFormFirstNameMobile"
+                                   name="firstName"
+                                   class="form-control"
+                                   placeholder="First name"
+                                   [(ngModel)]="customerInfo.firstName"
+                                   minlength="2"
+                                   #firstName="ngModel"
+                                   type="text"
+                                   required ngModel nameValidator>
+                            <div class="alert alert-danger"
+                                 *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                              <div *ngIf="firstName.errors.required">- First name is required.</div>
+                              <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.
+                              </div>
+                              <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="col-6">
+                            <label for="defaultRegisterFormLastName">Last Name</label>
+                            <input id="defaultRegisterFormLastNameMobile"
+                                   name="lastName"
+                                   #lastName="ngModel"
+                                   [(ngModel)]="customerInfo.lastName"
+                                   type="text"
+                                   minlength="2"
+                                   class="form-control" placeholder="Last name"
+                                   required ngModel nameValidator>
+                            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+                              <div *ngIf="lastName.errors.required">- Last name is required.</div>
+                              <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
+                              <div *ngIf="lastName.errors.nameValidator">- May only use alphabetical characters.</div>
+                            </div>
                           </div>
                         </div>
                         <br>
                         <div class="form-row">
-                          <label for="defaultRegisterFormLastName">Last Name</label>
-                          <input id="defaultRegisterFormLastNameMobile"
-                                 name="lastName"
-                                 #lastName="ngModel"
-                                 [(ngModel)]="customerInfo.lastName"
-                                 type="text"
-                                 minlength="2"
-                                 class="form-control" placeholder="Last name"
-                                 required ngModel nameValidator>
-                          <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
-                            <div *ngIf="lastName.errors.required">- Last name is required.</div>
-                            <div *ngIf="lastName.errors.minlength">- Last name should have minimum 2 characters.</div>
-                            <div *ngIf="lastName.errors.nameValidator">- May only use alphabetical characters.</div>
+                          <div class="col-12">
+                            <label for="defaultRegisterFormEmail">Email</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text ">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                                  </svg>
+                                </div>
+                              </div>
+                            <input
+                              type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
+                              id="defaultRegisterFormEmailMobile"
+                              class="form-control" placeholder="Email"
+                              required ngModel dataValidator emailValidator>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                              <div *ngIf="email.errors.required">- Email is required.</div>
+                              <div *ngIf="email.errors.emailValidator">- Email is not valid.</div>
+                            </div>
                           </div>
                         </div>
                         <br>
                         <div class="form-row">
-                          <label for="defaultRegisterFormEmail">Email</label>
-                          <input
-                            type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
-                            id="defaultRegisterFormEmailMobile"
-                            class="form-control" placeholder="Email"
-                            required ngModel dataValidator emailValidator>
-                          <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
-                            <div *ngIf="email.errors.required">- Email is required.</div>
-                            <div *ngIf="email.errors.emailValidator">- Email is not valid.</div>
+                          <div class="col-6"><label for="defaultRegisterFormPhone">Phone</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text ">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                       class="bi bi-telephone" viewBox="0 0 16 16">
+                                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033
+                          1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                  </svg>
+                                </div>
+                              </div>
+                            <input type="tel" name="phoneNumber"
+                                   #phoneNumber="ngModel"
+                                   [(ngModel)]="customerInfo.phone"
+                                   id="defaultRegisterFormPhoneMobile"
+                                   class="form-control"
+                                   minlength="12"
+                                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                   placeholder="Phone Number"
+                                   required ngModel numberValidator>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
+                              <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
+                              <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
+                              <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
+                              <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="col-6">
+                            <label for="defaultRegisterFormCity">Type Of Phone</label>
+                            <label for="typeOfPhoneId"></label>
+                            <select #dropDownTypeOfPhoneName="ngModel" [(ngModel)]="customerInfo.cellPhoneType"
+                                    name="dropDownTypeOfPhoneName"
+                                    class="custom-select"
+                                    id="typeOfPhoneIdMobile"
+                                    required ngModel>
+                              <option value="" selected>Type Of Phone</option>
+                              <option value="Iphone">Iphone</option>
+                              <option value="Android">Android</option>
+                            </select>
+                            <div class="alert alert-danger"
+                                 *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
+                              <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
+                            </div>
                           </div>
                         </div>
                         <br>
                         <div class="form-row">
-                          <label for="defaultRegisterFormPhone">Phone</label>
-                          <input type="tel" name="phoneNumber"
-                                 #phoneNumber="ngModel"
-                                 [(ngModel)]="customerInfo.phone"
-                                 id="defaultRegisterFormPhoneMobile"
-                                 class="form-control"
-                                 minlength="12"
-                                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                 placeholder="Phone Number"
-                                 required ngModel numberValidator>
-                          <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
-                            <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
-                            <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
-                            <div *ngIf="phoneNumber.errors.numberValidator">- Must only use numeric values.</div>
-                            <div *ngIf="phoneNumber.errors.minlength">- Phone number is not valid.</div>
+                          <div class="col-12">
+                            <label for="defaultRegisterFormCity">City</label>
+                            <input name="cityName" #cityName="ngModel" [(ngModel)]="customerInfo.city"
+                                   type="text"
+                                   id="defaultRegisterFormCityMobile"
+                                   class="form-control"
+                                   placeholder="City"
+                                   minlength="2"
+                                   required ngModel nameValidator>
+                            <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
+                              <div *ngIf="cityName.errors.required">- City name is required.</div>
+                              <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical
+                                characters.
+                              </div>
+                              <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
+                            </div>
                           </div>
                         </div>
                         <br>
                         <div class="form-row">
-                          <label for="defaultRegisterFormCity">City</label>
-                          <input name="cityName" #cityName="ngModel" [(ngModel)]="customerInfo.city"
-                                 type="text"
-                                 id="defaultRegisterFormCityMobile"
-                                 class="form-control"
-                                 placeholder="City"
-                                 minlength="2"
-                                 required ngModel nameValidator>
-                          <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
-                            <div *ngIf="cityName.errors.required">- City name is required.</div>
-                            <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical characters.</div>
-                            <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
-                          </div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                          <label for="defaultRegisterFormCity">State</label>
-                          <label for="stateDropDownId"></label>
-                          <select #stateDropDownInputName="ngModel" [(ngModel)]="customerInfo.state"
-                                  name="stateDropDownInputName"
-                                  class="custom-select" id="stateDropDownIdMobile"
-                                  required ngModel>
-                            <option value="" selected>Select a State</option>
-                            <option value="Alabama">Alabama</option>
-                            <option value="Alaska">Alaska</option>
-                            <option value="Arizona">Arizona</option>
-                            <option value="Arkansas">Arkansas</option>
-                            <option value="5">California</option>
-                            <option value="6">Colorado</option>
-                            <option value="7">Connecticut</option>
-                            <option value="8">Delaware</option>
-                            <option value="1">District Of Columbia</option>
-                            <option value="1">Florida</option>
-                            <option value="1">Georgia</option>
-                            <option value="1">Hawaii</option>
-                            <option value="1">Idaho</option>
-                            <option value="1">Illinois</option>
-                            <option value="1">Indiana</option>
-                            <option value="1">Iowa</option>
-                            <option value="1">Kansas</option>
-                            <option value="1">Kentucky</option>
-                            <option value="1">Louisiana</option>
-                            <option value="1">Maine</option>
-                            <option value="1">Maryland</option>
-                            <option value="1">Massachusetts</option>
-                            <option value="1">Michigan</option>
-                            <option value="1">Minnesota</option>
-                            <option value="1">Mississippi</option>
-                            <option value="1">Missouri</option>
-                            <option value="1">Montana</option>
-                            <option value="1">Nebraska</option>
-                            <option value="1">Nevada</option>
-                            <option value="1">New Hampshire</option>
-                            <option value="1">New Jersey</option>
-                            <option value="1">New Mexico</option>
-                            <option value="1">New York</option>
-                            <option value="1">North Carolina</option>
-                            <option value="1">North Dakota</option>
-                            <option value="1">Ohio</option>
-                            <option value="1">Oklahoma</option>
-                            <option value="1">Oregon</option>
-                            <option value="1">Pennsylvania</option>
-                            <option value="1">Rhode Island</option>
-                            <option value="1">South Carolina</option>
-                            <option value="1">South Dakota</option>
-                            <option value="1">Tennessee</option>
-                            <option value="1">Texas</option>
-                            <option value="1">Utah</option>
-                            <option value="1">Vermont</option>
-                            <option value="1">Virginia</option>
-                            <option value="1">Washington</option>
-                            <option value="1">West Virginia</option>
-                            <option value="1">Wisconsin</option>
-                            <option value="1">Wyoming</option>
-                          </select>
+                          <div class="col-6">
+                            <label for="defaultRegisterFormCity">State</label>
+                            <label for="stateDropDownId"></label>
+                            <select #stateDropDownInputName="ngModel" [(ngModel)]="customerInfo.state"
+                                    name="stateDropDownInputName"
+                                    class="custom-select" id="stateDropDownIdMobile"
+                                    required ngModel>
+                              <option value="" selected>Select a State</option>
+                              <option value="Alabama">Alabama</option>
+                              <option value="Alaska">Alaska</option>
+                              <option value="Arizona">Arizona</option>
+                              <option value="Arkansas">Arkansas</option>
+                              <option value="5">California</option>
+                              <option value="6">Colorado</option>
+                              <option value="7">Connecticut</option>
+                              <option value="8">Delaware</option>
+                              <option value="1">District Of Columbia</option>
+                              <option value="1">Florida</option>
+                              <option value="1">Georgia</option>
+                              <option value="1">Hawaii</option>
+                              <option value="1">Idaho</option>
+                              <option value="1">Illinois</option>
+                              <option value="1">Indiana</option>
+                              <option value="1">Iowa</option>
+                              <option value="1">Kansas</option>
+                              <option value="1">Kentucky</option>
+                              <option value="1">Louisiana</option>
+                              <option value="1">Maine</option>
+                              <option value="1">Maryland</option>
+                              <option value="1">Massachusetts</option>
+                              <option value="1">Michigan</option>
+                              <option value="1">Minnesota</option>
+                              <option value="1">Mississippi</option>
+                              <option value="1">Missouri</option>
+                              <option value="1">Montana</option>
+                              <option value="1">Nebraska</option>
+                              <option value="1">Nevada</option>
+                              <option value="1">New Hampshire</option>
+                              <option value="1">New Jersey</option>
+                              <option value="1">New Mexico</option>
+                              <option value="1">New York</option>
+                              <option value="1">North Carolina</option>
+                              <option value="1">North Dakota</option>
+                              <option value="1">Ohio</option>
+                              <option value="1">Oklahoma</option>
+                              <option value="1">Oregon</option>
+                              <option value="1">Pennsylvania</option>
+                              <option value="1">Rhode Island</option>
+                              <option value="1">South Carolina</option>
+                              <option value="1">South Dakota</option>
+                              <option value="1">Tennessee</option>
+                              <option value="1">Texas</option>
+                              <option value="1">Utah</option>
+                              <option value="1">Vermont</option>
+                              <option value="1">Virginia</option>
+                              <option value="1">Washington</option>
+                              <option value="1">West Virginia</option>
+                              <option value="1">Wisconsin</option>
+                              <option value="1">Wyoming</option>
+                            </select>
 
-                          <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
-                            <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
+                            <div class="alert alert-danger"
+                                 *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
+                              <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="col-6">
+                            <label for="defaultRegisterFormZip">Zip</label>
+                            <input name="zipCode"
+                                   #zipCode="ngModel"
+                                   [(ngModel)]="customerInfo.zipCode"
+                                   type="text"
+                                   minlength="4"
+                                   maxlength="5"
+                                   id="defaultRegisterFormZipMobile" class="form-control"
+                                   placeholder="Zip"
+                                   required ngModel numberValidator>
+                            <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
+                              <div *ngIf="zipCode.errors.required">- Zip code is required.</div>
+                              <div *ngIf="zipCode.errors.numberValidator">- Zip code must only contain numeric
+                                characters.
+                              </div>
+                              <div *ngIf="zipCode.errors.minlength">- Zip code is invalid.</div>
+                            </div>
                           </div>
                         </div>
                         <br>
                         <div class="form-row">
-                          <label for="defaultRegisterFormZip">Zip</label>
-                          <input name="zipCode"
-                                 #zipCode="ngModel"
-                                 [(ngModel)]="customerInfo.zipCode"
-                                 type="text"
-                                 minlength="4"
-                                 maxlength="5"
-                                 id="defaultRegisterFormZipMobile" class="form-control"
-                                 placeholder="Zip"
-                                 required ngModel numberValidator>
-                          <div class="alert alert-danger" *ngIf="zipCode.touched && !zipCode.valid">
-                            <div *ngIf="zipCode.errors.required">- Zip code is required.</div>
-                            <div *ngIf="zipCode.errors.numberValidator">- Zip code must only contain numeric characters.</div>
-                            <div *ngIf="zipCode.errors.minlength">- Zip code is invalid.</div>
+                          <div class="col-12"><label for="defaultRegisterFormCity">How Often Do You Play?</label>
+                            <label for="howOftenId"></label>
+                            <select #dropDownHowOftenName="ngModel" [(ngModel)]="customerInfo.gambleFrequency"
+                                    name="dropDownHowOftenName"
+                                    class="custom-select" id="howOftenIdMobile"
+                                    required ngModel>
+                              <option value="" selected>How Often Do You Play?</option>
+                              <option value="Often">Often</option>
+                              <option value="Sometimes">Sometimes</option>
+                              <option value="Never">Never</option>
+                            </select>
+                            <div class="alert alert-danger"
+                                 *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
+                              <div *ngIf="dropDownHowOftenName.errors.required">- Selection is required.</div>
+                            </div>
                           </div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                          <label for="defaultRegisterFormCity">Type Of Phone</label>
-                          <label for="typeOfPhoneId"></label>
-                          <select #dropDownTypeOfPhoneName="ngModel" [(ngModel)]="customerInfo.cellPhoneType"
-                                  name="dropDownTypeOfPhoneName"
-                                  class="custom-select"
-                                  id="typeOfPhoneIdMobile"
-                                  required ngModel>
-                            <option value="" selected>Type Of Phone</option>
-                            <option value="Iphone">Iphone</option>
-                            <option value="Android">Android</option>
-                          </select>
-                          <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
-                            <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
-                          </div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                          <label for="defaultRegisterFormCity">How Often Do You Play?</label>
-                          <label for="howOftenId"></label>
-                          <select #dropDownHowOftenName="ngModel" [(ngModel)]="customerInfo.gambleFrequency"
-                                  name="dropDownHowOftenName"
-                                  class="custom-select" id="howOftenIdMobile"
-                                  required ngModel>
-                            <option value="" selected>How Often Do You Play?</option>
-                            <option value="Often">Often</option>
-                            <option value="Sometimes">Sometimes</option>
-                            <option value="Never">Never</option>
-                          </select>
-                          <div class="alert alert-danger" *ngIf="dropDownHowOftenName.touched && !dropDownHowOftenName.valid">
-                            <div *ngIf="dropDownHowOftenName.errors.required">- Selection is required.</div>
-                          </div>
+
                           <br>
                           <br>
                           <br>
                           <!-- [routerLink]="'/thank-you'"
                            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
-                          <button type="submit"
-                                  class="btn btn btn-success submit btn-lg btn-block"
-                                  [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
-                            Submit
-                          </button>
+                          <div class="col-4 m-auto">
+                            <button type="submit"
+                                    class="btn btn btn-success submit btn-lg btn-block"
+                                    [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
+                              Submit
+                            </button>
+                          </div>
+
                         </div>
                       </div>
                     </form>
@@ -264,7 +308,7 @@
         <div class="col-sm-12 py-4">
           <div class="card" style="padding-top: 2.1em;">
             <div class="card-title h4 text-center">
-            Sign up
+              Sign up
             </div>
             <div class="card-body">
               <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
@@ -282,7 +326,8 @@
                              #firstName="ngModel"
                              type="text"
                              required ngModel nameValidator>
-                      <div class="alert alert-danger" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                      <div class="alert alert-danger"
+                           *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
                         <div *ngIf="firstName.errors.required">- First name is required.</div>
                         <div *ngIf="firstName.errors.minlength">- First name should have minimum 2 characters.</div>
                         <div *ngIf="firstName.errors.nameValidator">- May only use alphabetical characters.</div>
@@ -312,11 +357,21 @@
                 <div class="form-row">
                   <div class="col-12">
                     <label for="defaultRegisterFormEmail">Email</label>
-                    <input
-                      type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
-                      id="defaultRegisterFormEmail"
-                      class="form-control" placeholder="Email"
-                      required ngModel dataValidator emailValidator>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text ">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <input
+                        type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
+                        id="defaultRegisterFormEmail"
+                        class="form-control" placeholder="Email"
+                        required ngModel dataValidator emailValidator>
+                    </div>
+
                     <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
                       <div *ngIf="email.errors.required">- Email is required.</div>
                       <div *ngIf="email.errors.emailValidator">- Email is not valid.</div>
@@ -328,15 +383,26 @@
                 <div class="form-row">
                   <div class="col-6">
                     <label for="defaultRegisterFormPhone">Phone</label>
-                    <input type="tel" name="phoneNumber"
-                           #phoneNumber="ngModel"
-                           [(ngModel)]="customerInfo.phone"
-                           id="defaultRegisterFormPhone"
-                           class="form-control"
-                           minlength="12"
-                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                           placeholder="Phone Number"
-                           required ngModel numberValidator>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text ">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                               class="bi bi-telephone" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033
+                          1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <input type="tel" name="phoneNumber"
+                             #phoneNumber="ngModel"
+                             [(ngModel)]="customerInfo.phone"
+                             id="defaultRegisterFormPhone"
+                             class="form-control"
+                             minlength="12"
+                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                             placeholder="Phone Number"
+                             required ngModel numberValidator>
+                    </div>
                     <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
                       <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
                       <div *ngIf="phoneNumber.errors.pattern">- Correct format is 555-555-5555.</div>
@@ -358,7 +424,8 @@
                       <option value="Iphone">Iphone</option>
                       <option value="Android">Android</option>
                     </select>
-                    <div class="alert alert-danger" *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
+                    <div class="alert alert-danger"
+                         *ngIf="dropDownTypeOfPhoneName.touched && !dropDownTypeOfPhoneName.valid">
                       <div *ngIf="dropDownTypeOfPhoneName.errors.required">- Selection is required.</div>
                     </div>
                   </div>
@@ -376,7 +443,9 @@
                            required ngModel nameValidator>
                     <div class="alert alert-danger" *ngIf="cityName.touched && !cityName.valid">
                       <div *ngIf="cityName.errors.required">- City name is required.</div>
-                      <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical characters.</div>
+                      <div *ngIf="cityName.errors.nameValidator">- City name must only contain alphabetical
+                        characters.
+                      </div>
                       <div *ngIf="cityName.errors.minlength">- City name is invalid.</div>
                     </div>
                   </div>
@@ -445,7 +514,8 @@
                       <option value="1">Wyoming</option>
                     </select>
 
-                    <div class="alert alert-danger" *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
+                    <div class="alert alert-danger"
+                         *ngIf="stateDropDownInputName.touched && !stateDropDownInputName.valid">
                       <div *ngIf="stateDropDownInputName.errors.required">- State selection is required.</div>
                     </div>
                   </div>
@@ -492,7 +562,8 @@
                   <button type="submit"
                           class="btn btn btn-success submit btn-lg btn-block"
                           [routerLink]="'/sign-up-confirmation'"
-                          routerLinkActive="active" [queryParams]="{showSubNavBar: false}"> <!-- [disabled]="!signUpForm.form.valid" -->
+                          routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
+                    <!-- [disabled]="!signUpForm.form.valid" -->
                     Submit
                   </button>
                 </div>

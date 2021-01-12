@@ -41,6 +41,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from "@angular/material/card";
 import { OverlayModalComponent } from './shared/components/overlay-modal/overlay-modal.component';
+import {A11yModule} from "@angular/cdk/a11y";
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { OverlayModalComponent } from './shared/components/overlay-modal/overlay
     NgxSpinnerModule,
     BrowserAnimationsModule,
     OverlayModule,
-    MatCardModule
+    MatCardModule,
+    A11yModule
   ],
   providers: [
     MemberService,
