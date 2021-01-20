@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {AppAlertOverlayModalService} from "./app-alert-overlay-modal.service";
 
 @Component({
-  selector: 'app-overlay-modal',
-  styleUrls: ['./overlay-modal.component.css'],
+  selector: 'app-alert-overlay-modal',
+  styleUrls: ['./app-alert-overlay-modal.component.css'],
   template:
     `<mat-card>
         <mat-card-header>
@@ -15,9 +16,9 @@ import { Component, OnInit } from '@angular/core';
         </mat-card-content>
     </mat-card>`,
 })
-export class OverlayModalComponent implements OnInit {
+export class AppAlertOverlayModalComponent implements OnInit {
 
-  constructor() {
+  constructor(private appAlertOverlayModalService: AppAlertOverlayModalService) {
 
   }
 
@@ -25,9 +26,6 @@ export class OverlayModalComponent implements OnInit {
   }
 
   public closeModal($event) {
-    /*this.dialogRef.events.next({
-      type: 'close',
-      data: null
-    });*/
+    this.appAlertOverlayModalService.close();
   }
 }

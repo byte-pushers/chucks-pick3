@@ -7,9 +7,11 @@ import { Subscription } from 'rxjs';
 import { CustomerInfo } from '../../models/customer-info';
 import { CustomerInfoModel } from '../../models/customer-info.model';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {GlobalPositionStrategy, Overlay, OverlayConfig} from "@angular/cdk/overlay";
-import {ComponentPortal, TemplatePortal} from "@angular/cdk/portal";
-import {OverlayModalComponent} from "../../shared/components/overlay-modal/overlay-modal.component";
+import { GlobalPositionStrategy, Overlay, OverlayConfig } from "@angular/cdk/overlay";
+import { ComponentPortal, TemplatePortal } from "@angular/cdk/portal";
+import { AppAlertOverlayModalComponent } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component";
+import { AppAlertOverlayModalService } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.service";
+import { AppAlertOverlayModalRef } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal-ref";
 
 @Component({
   selector: 'app-sign-up',
@@ -29,7 +31,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
               public router: Router,
               private spinner: NgxSpinnerService,
               private overlay: Overlay,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private appAlertOverlayModalService: AppAlertOverlayModalService) {
   }
 
   ngOnInit() {
@@ -107,7 +110,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
     });
 
-    const overlayRef = this.overlay.create(configs);
-    overlayRef.attach(new ComponentPortal(OverlayModalComponent));
+    let appAlertModalRef: AppAlertOverlayModalRef = this.appAlertOverlayModalService.open(null);
+
   }
 }
