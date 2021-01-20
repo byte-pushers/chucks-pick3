@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { OverlayModule } from '@angular/cdk/overlay';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from 'src/app/shared/components/app.component/app.component';
@@ -38,6 +39,8 @@ import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from "@angular/material/card";
+import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserNameValidator,
     PasswordValidator,
     CustomerDetailsComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    AppAlertOverlayModalComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScrollEventModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OverlayModule,
+    MatCardModule
   ],
   providers: [
     MemberService,
@@ -84,6 +90,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormValidationService,
     MockCustomerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
+  entryComponents: [
+    // Needs to be added here because otherwise we can't
+    // dynamically render this component at runtime
+    AppAlertOverlayModalComponent
   ],
   bootstrap: [AppComponent]
 })
