@@ -1,16 +1,12 @@
 <ion-app>
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
-      </ion-buttons>
       <ion-buttons slot="primary">
-        <!--<ion-button>
-          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-        </ion-button>-->
-        <!--<ion-icon name="home"></ion-icon>-->
-        <ion-icon src="/assets/icon/home-icon.svg"></ion-icon>
+        <ion-menu-button auto-hide="false"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg></ion-menu-button>
       </ion-buttons>
+
 
       <ion-title></ion-title>
     </ion-toolbar>
@@ -20,9 +16,12 @@
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 
-  <!--<ion-app-footer.component>
+  <ion-app-footer.component>
     <ion-toolbar>
-      <ion-title>Footer</ion-title>
+      <ion-buttons slot="start">
+
+        <ion-icon src="/assets/icon/home-icon.svg"></ion-icon>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-app-footer.component>-->
+  </ion-app-footer.component>
 </ion-app>
