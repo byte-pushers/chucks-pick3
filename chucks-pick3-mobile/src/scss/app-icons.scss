@@ -103,3 +103,52 @@
     font-size: 9vw;
   }
 }
+
+/* Icons for footer and header*/
+ion-icon {
+  font-size: 24px;
+
+  margin-left: 5px;
+
+  @include for-size(iPhone5-SE) {
+    font-size: 30px;
+  }
+  @include for-size(iPhone6-7-8) {
+    font-size: 35px;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    font-size: 40px;
+  }
+  @include for-size(iPhoneX) {
+    font-size: 35px;
+  }
+  @include  for-size(iPad) {
+    font-size: 50px;
+  }
+  @include for-size(iPad-Pro) {
+    font-size: 55px;
+  }
+}
+
+ion-menu-button {
+  color: #353535;
+
+  @include for-size(iPhone5-SE) {
+    font-size: 30px;
+  }
+  @include for-size(iPhone6-7-8) {
+    font-size: 35px;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    font-size: 40px;
+  }
+  @include for-size(iPhoneX) {
+    font-size: 35px;
+  }
+  @include  for-size(iPad) {
+    font-size: 50px;
+  }
+  @include for-size(iPad-Pro) {
+    font-size: 55px;
+  }
+}
