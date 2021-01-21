@@ -3,9 +3,7 @@
 .draw-time-icon {
   display: inline-block;
   width: 40%;
-  height: 11.4vh;
   border: 1px solid green;
-  line-height: 11.4vh;
 
 
 
@@ -32,14 +30,12 @@
 .time-of-day-text {
   text-align: center;
   vertical-align: middle;
-  line-height: 12vh;
   font-size: 7vw;
   font-weight: 500;
 }
 .draw-time-title {
   display: inline-block;
   width: 60%;
-  height: 11.4vh;
   border: 1px solid red;
 
   > span.not-selected {
@@ -55,7 +51,6 @@
   display: inline-block;
   border: 1px solid blue;
   width: 8%;
-  height: 11.3vh;
   line-height: 3em;
   float: right;
   background-color: #d7d7d7;
