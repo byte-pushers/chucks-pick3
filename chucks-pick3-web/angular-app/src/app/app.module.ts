@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { OverlayModule } from '@angular/cdk/overlay';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from 'src/app/shared/components/app.component/app.component';
@@ -39,9 +38,6 @@ import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from "@angular/material/card";
-import { OverlayModalComponent } from './shared/components/overlay-modal/overlay-modal.component';
-import {A11yModule} from "@angular/cdk/a11y";
 
 @NgModule({
   declarations: [
@@ -69,8 +65,7 @@ import {A11yModule} from "@angular/cdk/a11y";
     UserNameValidator,
     PasswordValidator,
     CustomerDetailsComponent,
-    AppFooterComponent,
-    OverlayModalComponent
+    AppFooterComponent
   ],
   imports: [
     BrowserModule,
@@ -81,10 +76,7 @@ import {A11yModule} from "@angular/cdk/a11y";
     ScrollEventModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule,
-    OverlayModule,
-    MatCardModule,
-    A11yModule
+    BrowserAnimationsModule
   ],
   providers: [
     MemberService,

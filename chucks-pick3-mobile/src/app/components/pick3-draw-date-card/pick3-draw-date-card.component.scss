@@ -25,6 +25,37 @@ ion-grid {
 
 .scroll-content{overflow-y: hidden;}
 
+.dot {
+  height: 50px;
+  width: 50px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+  color: black;
+  line-height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+  }
 
 
+}
 
+.view-picks-icon {
+  fill: #FFFFFF;
+  height: 90%;
+  width: 90%;
+  stroke: #FFFFFF;
+  stroke-width: 5px;
+
+  @include for-size(iPhone5-SE) {
+    height: 80%;
+    width: 80%;
+  }
+
+
+}
