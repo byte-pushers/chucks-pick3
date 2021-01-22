@@ -1,16 +1,15 @@
 <ion-app>
-  <ion-header>
-    <ion-toolbar>
+  <ion-header >
+    <ion-toolbar color="transparent">
       <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
+        <b class="language">EN</b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill toolbar-icon" viewBox="0 0 16 16">
+        <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
       </ion-buttons>
       <ion-buttons slot="primary">
-        <!--<ion-button>
-          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-        </ion-button>-->
-        <!--<ion-icon name="home"></ion-icon>-->
-        <ion-icon src="/assets/icon/home-icon.svg"></ion-icon>
+        <ion-icon class="toolbar-icon" src="/assets/icon/menu.svg"></ion-icon>
       </ion-buttons>
+
 
       <ion-title></ion-title>
     </ion-toolbar>
@@ -20,9 +19,12 @@
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
 
-  <!--<ion-app-footer.component>
-    <ion-toolbar>
-      <ion-title>Footer</ion-title>
+  <ion-footer  >
+    <ion-toolbar color="transparent">
+      <ion-buttons slot="start">
+
+        <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-app-footer.component>-->
+  </ion-footer>
 </ion-app>
