@@ -10,7 +10,7 @@
 
 
   > ion-icon.selected {
-    color: #1c1c1d;
+    color: black;
   }
 
   > ion-icon.not-selected {
@@ -18,7 +18,16 @@
   }
 }
 
+.time-of-day-icon {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 12vh;
+  font-size: 15vw;
+  @include for-size(iPhone5-SE) {
+    font-size: 12vw;
+  }
 
+}
 
 .time-of-day-text {
   text-align: center;
@@ -38,7 +47,7 @@
   }
 
   > span.selected {
-    color: #353535;
+    color: black;
   }
 }
 
@@ -61,25 +70,25 @@
 .generated-picks-indicator.not-drawn-yet.selected,
 .generated-picks-indicator.not-drawn.selected,
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
-  background-color: #353535;
+  background-color: black;
   width: 16%;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks {
-  background-color: #ffd743;
+  background-color: yellow;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks.selected {
-  background-color: #ffd743;
+  background-color: yellow;
   width: 16%;
 }
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners {
-  background-color: #2dd36f;
+  background-color: green;
 }
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners.selected {
-  background-color: #2dd36f;
+  background-color: green;
   width: 16%;
 }
 
