@@ -85,7 +85,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     // this.showOverlayModal(this.templatePortalContent);
 
-    /*if (!this.signUpForm.valid) {
+    if (!this.signUpForm.valid) {
       this.errorMessage = 'Form was not processed, internal error.';
       return false;
     } else {
@@ -98,7 +98,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         console.log(this.errorMessage + ': ' + error);
         this.spinner.hide();
       });
-    }*/
+    }
   }
 
   public showOverlayModal(tpl: TemplateRef<any>) {

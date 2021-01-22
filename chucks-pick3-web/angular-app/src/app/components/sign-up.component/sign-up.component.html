@@ -561,9 +561,8 @@
 
                   <button type="submit"
                           class="btn btn btn-success submit btn-lg btn-block"
-                          [routerLink]="'/sign-up-confirmation'"
-                          routerLinkActive="active" [queryParams]="{showSubNavBar: false}">
-                    <!-- [disabled]="!signUpForm.form.valid" -->
+                          [disabled]="!signUpForm.form.valid">
+                    <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
                     Submit
                   </button>
                 </div>
