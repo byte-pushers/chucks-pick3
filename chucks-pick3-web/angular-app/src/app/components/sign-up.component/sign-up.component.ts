@@ -7,11 +7,8 @@ import { Subscription } from 'rxjs';
 import { CustomerInfo } from '../../models/customer-info';
 import { CustomerInfoModel } from '../../models/customer-info.model';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { GlobalPositionStrategy, Overlay, OverlayConfig } from "@angular/cdk/overlay";
-import { ComponentPortal, TemplatePortal } from "@angular/cdk/portal";
-import { AppAlertOverlayModalComponent } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component";
-import { AppAlertOverlayModalService } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.service";
-import { AppAlertOverlayModalRef } from "../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal-ref";
+import { Overlay } from '@angular/cdk/overlay';
+import { AppAlertOverlayModalService } from '../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.service';
 
 @Component({
   selector: 'app-sign-up',
