@@ -84,7 +84,7 @@
 
 .header-image-section-mobile {
   height: auto;
-  width: 10em;
+  width: 13em;
   z-index: 11;
   margin-left: auto;
 
@@ -212,9 +212,29 @@ h1 {
   background-color: #353535;
 }
 
+.mobile-img {
+  margin-bottom: 1em;
+}
+
 .try-it-out-image {
-  vertical-align: middle;
-  width: 45%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}
+
+.try-it-out-image-tablet {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 11.5em;
+}
+
+.try-it-out-image-mobile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
 }
 .try-it-section {
   background-color: white;
@@ -347,5 +367,9 @@ h1 {
 
 
 .section-header {
-  text-align: left
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.7em;
 }
