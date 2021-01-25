@@ -8,7 +8,7 @@ import {AppAlertOverlayModalService} from "./app-alert-overlay-modal.service";
     `<mat-card>
         <mat-card-header>
             <mat-card-title>
-                Fetching data...
+              {{message.value}}
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -17,12 +17,16 @@ import {AppAlertOverlayModalService} from "./app-alert-overlay-modal.service";
     </mat-card>`,
 })
 export class AppAlertOverlayModalComponent implements OnInit {
+  public message: {value: string} = {value: null};
 
   constructor(private appAlertOverlayModalService: AppAlertOverlayModalService) {
 
   }
 
   ngOnInit(): void {
+    this.appAlertOverlayModalService.message().subscribe(msg => {
+      this.message.value = msg;
+    });
   }
 
   public closeModal($event) {

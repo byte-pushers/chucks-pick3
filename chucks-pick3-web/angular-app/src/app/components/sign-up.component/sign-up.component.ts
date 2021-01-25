@@ -23,7 +23,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public errorMessage: string;
   private signUpSubscription: Subscription;
   @ViewChild('signUpForm', {static: false}) signUpForm: any;
-  @ViewChild('tpl', { static: false }) templatePortalContent: TemplateRef<unknown>;
   public customerInfo: CustomerInfo = new CustomerInfoModel(CustomerInfoModel.DEFAULT_CONFIG);
 
   constructor(private formValidationService: FormValidationService,
@@ -73,22 +72,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    /*const isFormValid = this.formValidationService.validateForm();
-    const isAccountCreated = this.memberService.createAccount();
+    this.showOverlayModal('Account was not created, internal error.');
 
-    if (isFormValid === true) {
-      if (isAccountCreated === true) {
-        this.router.navigate(['/sign-up-confirmation']);
-      } else if (isAccountCreated === false) {
-        this.errorMessage = 'Account was not created, internal error.';
-      }
-    } else if (isFormValid === false) {
-      this.errorMessage = 'Form was not processed, internal error.';
-    }*/
-
-    // this.showOverlayModal(this.templatePortalContent);
-
-    if (!this.signUpForm.valid) {
+    /*if (!this.signUpForm.valid) {
       this.errorMessage = 'Form was not processed, internal error.';
       return false;
     } else {
@@ -99,18 +85,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
       }, error => {
         this.errorMessage = 'Account was not created, internal error.';
         console.log(this.errorMessage + ': ' + error);
+        this.showOverlayModal(this.errorMessage);
         this.spinner.hide();
       });
-    }
+    }*/
   }
 
-  public showOverlayModal(tpl: TemplateRef<any>) {
-    const configs = new OverlayConfig({
-      hasBackdrop: true,
-      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
-    });
-
-    let appAlertModalRef: AppAlertOverlayModalRef = this.appAlertOverlayModalService.open(null);
-
+  public showOverlayModal(message?: string) {
+    this.appAlertOverlayModalService.setMessage(message);
+    this.appAlertOverlayModalService.open();
   }
 }
