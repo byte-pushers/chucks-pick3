@@ -4,12 +4,15 @@ import {ComponentPortal} from "@angular/cdk/portal";
 import {AppAlertOverlayModalComponent} from "./app-alert-overlay-modal.component";
 import {AppAlertOverlayModalConfig, AppAlertOverlayModalRef} from "./app-alert-overlay-modal-ref";
 import * as Object from 'bytepushers-js-obj-extensions';
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppAlertOverlayModalService {
   private dialogRef: AppAlertOverlayModalRef;
+  private messageBehaviorSubject: BehaviorSubject<string> = <BehaviorSubject<string>>new BehaviorSubject(null);
+
   // Inject overlay service
   constructor(private overlay: Overlay) { }
 
@@ -20,7 +23,7 @@ export class AppAlertOverlayModalService {
       .centerVertically();
 
     const overlayConfig = new OverlayConfig({
-      hasBackdrop: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.hasBackdrop))? config.hasBackdrop : false,
+      hasBackdrop: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.hasBackdrop))? config.hasBackdrop : true,
       backdropClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.backdropClass))? config.backdropClass : null,
       panelClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.panelClass))? config.panelClass : null,
       scrollStrategy: this.overlay.scrollStrategies.block(),
@@ -38,8 +41,15 @@ export class AppAlertOverlayModalService {
     return this.overlay.create(overlayConfig);
   }
 
-  open(overlayConfig: AppAlertOverlayModalConfig = null): AppAlertOverlayModalRef{
+  open(overlayConfig: AppAlertOverlayModalConfig = null): AppAlertOverlayModalRef {
     const overlayRef = this.createOverlay(overlayConfig);
+
+    // Create ComponentPortal that can be attached to a PortalHost
+    const filePreviewPortal = new ComponentPortal(AppAlertOverlayModalComponent);
+
+    // Attach ComponentPortal to PortalHost
+    overlayRef.attach(filePreviewPortal);
+
     this.dialogRef = new AppAlertOverlayModalRef(overlayRef)
 
     return this.dialogRef;
@@ -47,5 +57,13 @@ export class AppAlertOverlayModalService {
 
   close(): void {
     this.dialogRef.close();
+  }
+
+  public setMessage(msg: string): void {
+    this.messageBehaviorSubject.next(msg);
+  }
+
+  public message(): Observable<string> {
+    return this.messageBehaviorSubject.asObservable();
   }
 }
