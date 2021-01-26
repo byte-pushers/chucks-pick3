@@ -276,7 +276,7 @@
                            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
                           <div class="col-4 m-auto">
                             <button type="submit"
-                                    class="btn btn btn-success submit btn-lg btn-block">
+                                    class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
                               Submit
                             </button>
                             <!-- [disabled]="!signUpForm.form.valid" (click)="onSubmit()" //-->
@@ -560,7 +560,8 @@
                   <br>
 
                   <button type="submit"
-                          class="btn btn btn-success submit btn-lg btn-block">
+                          class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+
                     <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}" [disabled]="!signUpForm.form.valid"-->
                     Submit
                   </button>

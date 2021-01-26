@@ -45,7 +45,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public isMobileResolution(): boolean {
-    let isMobileResolution: boolean = false;
+    let isMobileResolution = false;
 
     if (window.innerWidth < 768) {
       isMobileResolution = true;
@@ -57,7 +57,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public isDesktopResolution(): boolean {
-    let isDesktopResolution: boolean = false;
+    let isDesktopResolution = false;
 
     if (window.innerWidth > 768) {
       isDesktopResolution = true;
@@ -69,9 +69,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    this.showOverlayModal('Account was not created, internal error.');
-
-    /*if (!this.signUpForm.valid) {
+    if (!this.signUpForm.valid) {
       this.errorMessage = 'Form was not processed, internal error.';
       return false;
     } else {
@@ -85,7 +83,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         this.showOverlayModal(this.errorMessage);
         this.spinner.hide();
       });
-    }*/
+    }
   }
 
   public showOverlayModal(message?: string) {
