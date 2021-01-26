@@ -2,12 +2,12 @@ import {OverlayRef} from "@angular/cdk/overlay";
 
 export interface AppAlertOverlayModalConfig {
   backdropClass?: string;
-  hasBackdrop: boolean,
-  panelClass: string,
-  scrollStrategy: any,
-  positionStrategy: any,
-  width: string,
-  height: string
+  hasBackdrop: boolean;
+  panelClass: string;
+  scrollStrategy: any;
+  positionStrategy: any;
+  width: string;
+  height: string;
 }
 
 export class AppAlertOverlayModalRef {
