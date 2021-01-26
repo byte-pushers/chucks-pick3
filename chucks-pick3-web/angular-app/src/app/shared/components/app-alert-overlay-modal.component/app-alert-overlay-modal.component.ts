@@ -11,8 +11,8 @@ import {AppAlertOverlayModalService} from "./app-alert-overlay-modal.service";
               {{message.value}}
             </mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-          <button mat-raised-button color="primary" (click)="closeModal($event)">confirm</button>
+        <mat-card-content class="mx-auto">
+          <button mat-raised-button class="btn  overlay-btn" (click)="closeModal($event)">Ok</button>
         </mat-card-content>
     </mat-card>`,
 })
