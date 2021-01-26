@@ -7,9 +7,8 @@ import { Subscription } from 'rxjs';
 import { CustomerInfo } from '../../models/customer-info';
 import { CustomerInfoModel } from '../../models/customer-info.model';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {GlobalPositionStrategy, Overlay, OverlayConfig} from "@angular/cdk/overlay";
-import {ComponentPortal, TemplatePortal} from "@angular/cdk/portal";
-import {OverlayModalComponent} from "../../shared/components/overlay-modal/overlay-modal.component";
+import { Overlay } from '@angular/cdk/overlay';
+import { AppAlertOverlayModalService } from '../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,7 +20,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public errorMessage: string;
   private signUpSubscription: Subscription;
   @ViewChild('signUpForm', {static: false}) signUpForm: any;
-  @ViewChild('tpl', { static: false }) templatePortalContent: TemplateRef<unknown>;
   public customerInfo: CustomerInfo = new CustomerInfoModel(CustomerInfoModel.DEFAULT_CONFIG);
 
   constructor(private formValidationService: FormValidationService,
@@ -29,7 +27,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
               public router: Router,
               private spinner: NgxSpinnerService,
               private overlay: Overlay,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private appAlertOverlayModalService: AppAlertOverlayModalService) {
   }
 
   ngOnInit() {
@@ -46,7 +45,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public isMobileResolution(): boolean {
-    let isMobileResolution: boolean = false;
+    let isMobileResolution = false;
 
     if (window.innerWidth < 768) {
       isMobileResolution = true;
@@ -58,7 +57,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public isDesktopResolution(): boolean {
-    let isDesktopResolution: boolean = false;
+    let isDesktopResolution = false;
 
     if (window.innerWidth > 768) {
       isDesktopResolution = true;
@@ -70,21 +69,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    /*const isFormValid = this.formValidationService.validateForm();
-    const isAccountCreated = this.memberService.createAccount();
-
-    if (isFormValid === true) {
-      if (isAccountCreated === true) {
-        this.router.navigate(['/sign-up-confirmation']);
-      } else if (isAccountCreated === false) {
-        this.errorMessage = 'Account was not created, internal error.';
-      }
-    } else if (isFormValid === false) {
-      this.errorMessage = 'Form was not processed, internal error.';
-    }*/
-
-    // this.showOverlayModal(this.templatePortalContent);
-
     if (!this.signUpForm.valid) {
       this.errorMessage = 'Form was not processed, internal error.';
       return false;
@@ -96,18 +80,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
       }, error => {
         this.errorMessage = 'Account was not created, internal error.';
         console.log(this.errorMessage + ': ' + error);
+        this.showOverlayModal(this.errorMessage);
         this.spinner.hide();
       });
     }
   }
 
-  public showOverlayModal(tpl: TemplateRef<any>) {
-    const configs = new OverlayConfig({
-      hasBackdrop: true,
-      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
-    });
-
-    const overlayRef = this.overlay.create(configs);
-    overlayRef.attach(new ComponentPortal(OverlayModalComponent));
+  public showOverlayModal(message?: string) {
+    this.appAlertOverlayModalService.setMessage(message);
+    this.appAlertOverlayModalService.open();
   }
 }

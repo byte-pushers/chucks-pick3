@@ -276,10 +276,10 @@
                            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
                           <div class="col-4 m-auto">
                             <button type="submit"
-                                    class="btn btn btn-success submit btn-lg btn-block"
-                                    [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
+                                    class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
                               Submit
                             </button>
+                            <!-- [disabled]="!signUpForm.form.valid" (click)="onSubmit()" //-->
                           </div>
 
                         </div>
@@ -560,9 +560,9 @@
                   <br>
 
                   <button type="submit"
-                          class="btn btn btn-success submit btn-lg btn-block"
-                          [disabled]="!signUpForm.form.valid">
-                    <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+                          class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+
+                    <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}" [disabled]="!signUpForm.form.valid"-->
                     Submit
                   </button>
                 </div>
@@ -578,15 +578,3 @@
   </div>
 </div>
 <ngx-spinner type="ball-spin-clockwise"></ngx-spinner>
-<ng-template #tpl>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Fetching data...
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      Server Error...
-    </mat-card-content>
-  </mat-card>
-</ng-template>
