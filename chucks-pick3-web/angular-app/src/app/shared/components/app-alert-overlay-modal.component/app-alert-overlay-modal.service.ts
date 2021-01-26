@@ -23,9 +23,10 @@ export class AppAlertOverlayModalService {
       .centerVertically();
 
     const overlayConfig = new OverlayConfig({
-      hasBackdrop: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.hasBackdrop))? config.hasBackdrop : true,
-      backdropClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.backdropClass))? config.backdropClass : null,
-      panelClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.panelClass))? config.panelClass : null,
+      hasBackdrop: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.hasBackdrop)) ? config.hasBackdrop : true,
+      // tslint:disable-next-line:max-line-length
+      backdropClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.backdropClass)) ? config.backdropClass : 'dark-backdrop',
+      panelClass: (Object.isDefinedAndNotNull(config) && Object.isDefinedAndNotNull(config.panelClass)) ? config.panelClass : 'tm-file-preview-dialog-panel',
       scrollStrategy: this.overlay.scrollStrategies.block(),
       positionStrategy
     });
