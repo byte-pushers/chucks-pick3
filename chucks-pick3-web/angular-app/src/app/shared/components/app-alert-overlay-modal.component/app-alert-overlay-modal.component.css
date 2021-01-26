@@ -11,4 +11,5 @@
 
 ::ng-deep .overlay-btn {
   background-color: #2dd36f;
+  margin-top: 2em !important;
 }
