@@ -25,10 +25,8 @@ export class MemberService implements CustomerService {
     return true;
   }
 
-  createCustomer(customerInfo: CustomerInfo): Observable<CustomerInfo>{
-    const header: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Accept','application/json');
-    const maxRetry = 3;
-    let retries = maxRetry;
+  createCustomer(customerInfo: CustomerInfo): Observable<CustomerInfo> {
+    const header: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
 
     return this.http.post<CustomerInfo>(environment.SIGN_UP.API.HOST, customerInfo, {
       headers: header,
