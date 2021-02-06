@@ -17,6 +17,12 @@ Parameters:
     Type: String
     Description: "AWS Lambda code file name from s3 bucket"
     Default: ""
+Globals:
+  Api:
+    Cors:
+      AllowMethods: "'*'"
+      AllowHeaders: "'*'"
+      AllowOrigin: "'*'"
 Resources:
   ChucksPick3VpcExecutionRole:
     Type: AWS::IAM::Role
