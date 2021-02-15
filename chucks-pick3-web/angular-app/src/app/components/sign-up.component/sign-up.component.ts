@@ -59,7 +59,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   public isDesktopResolution(): boolean {
     let isDesktopResolution = false;
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 765) {
       isDesktopResolution = true;
     } else {
       isDesktopResolution = false;
