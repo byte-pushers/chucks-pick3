@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   SIGN_UP: {
     API: {
-      HOST: 'https://api-dev.chuckspick3.com/customers',
+      HOST: 'https://chuckspick3.dev/customers',
       EXT: '.json'
     }
   }
