@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  BYTEPUSHERS_URL: null,
   SIGN_UP: {
     API: {
       HOST: null,
