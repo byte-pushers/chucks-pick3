@@ -37,10 +37,11 @@ import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from "@angular/material/card";
+import { MatCardModule } from '@angular/material/card';
 import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
+import { StateListService } from './services/state-list.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { AppAlertOverlayModalComponent } from './shared/components/app-alert-ove
     SubNavBarService,
     FormValidationService,
     MockCustomerService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    StateListService
   ],
   entryComponents: [
     // Needs to be added here because otherwise we can't
