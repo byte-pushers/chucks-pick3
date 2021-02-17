@@ -29,7 +29,7 @@
         Avialable only on Chuck's Pick 3 App soon. </p>
     </div>
     <div class=" col-9" style="margin-bottom: 20%;  margin-right: auto; margin-left:auto;">
-      <button class="btn demo-btn"><b>Demo</b></button>
+      <button [routerLink]="'/sign-up'" class="btn demo-btn"><b>Sign Up</b></button>
     </div>
   </div>
   <div class="row">
@@ -189,7 +189,8 @@
       </p>
     </div>
     <div class=" col-9" style="  margin-right: auto; margin-left:auto;">
-      <button class="btn demo-btn"><b>Demo</b></button>
+      <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens"><button class="btn demo-btn"><b>Demo</b></button></a>
+
     </div>
   </div>
 </div>
@@ -209,7 +210,7 @@
       </p>
     </div>
     <div class=" col-9" style="  margin-right: auto; margin-left:auto;">
-      <button class="btn sign-up-btn"><b>Sign Up</b></button>
+      <button class="btn sign-up-btn" [routerLink]="'/sign-up'"><b>Sign Up</b></button>
     </div>
   </div>
 </div>
@@ -230,7 +231,7 @@
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="'/sign-up'" class="btn header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
@@ -463,7 +464,9 @@
               Take a test drive before it's released!</p>
           </div>
           <div class=" col-6" style="margin-top: 4em; padding: revert">
-            <button class="btn demo-btn"><b>Demo</b></button>
+            <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
+              <button class="btn demo-btn"><b>Demo</b></button>
+            </a>
 
           </div>
         </div>
@@ -485,7 +488,7 @@
             <p style="text-align: center; font-size: 22px">Sign up to find out when Chuck's Pick 3 will be released and
               get notified of any
               updates. </p>
-            <button class="btn sign-up-btn" style="margin-top: 4em;"><b>Sign Up</b></button>
+            <button class="btn sign-up-btn" [routerLink]="['/sign-up']" style="margin-top: 4em;"><b>Sign Up</b></button>
           </div>
           <div class="col-3">
 
@@ -513,7 +516,7 @@
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="['/sign-up']"  class="btn header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
@@ -737,7 +740,9 @@
               Take a test drive before it's released!</p>
           </div>
           <div class=" col-6" style="  padding: revert">
-            <button class="btn demo-btn"><b>Demo</b></button>
+            <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
+              <button class="btn demo-btn"><b>Demo</b></button>
+            </a>
 
           </div>
         </div>
@@ -759,7 +764,7 @@
             <p style="text-align: center;">Sign up to find out when Chuck's Pick 3 will be released and
               get notified of any
               updates. </p>
-            <button class="btn sign-up-btn"><b>Sign Up</b></button>
+            <button [routerLink]="['/sign-up']" class="btn sign-up-btn"><b>Sign Up</b></button>
           </div>
           <div class="col-3">
 
