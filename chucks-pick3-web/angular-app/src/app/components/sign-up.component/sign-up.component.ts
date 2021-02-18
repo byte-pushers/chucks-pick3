@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
               private overlay: Overlay,
               private viewContainerRef: ViewContainerRef,
               private appAlertOverlayModalService: AppAlertOverlayModalService,
-              public list: StateListService) {
+              public stateNameService: StateListService) {
   }
 
   ngOnInit() {
