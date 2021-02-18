@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class StateListService {
-  states: any = [
+  public states: any = [
     'Alabama',
     'Alaska',
     'Arizona',

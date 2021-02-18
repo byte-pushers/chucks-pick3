@@ -171,7 +171,7 @@
                                     class="custom-select" id="stateDropDownIdMobile"
                                     required ngModel>
                               <option [ngValue]="null">Please Select A State</option>
-                              <option *ngFor="let state of list.states" [value]="state">{{state}}</option>
+                              <option *ngFor="let state of stateNameService.states" [value]="state">{{state}}</option>
                             </select>
 
                             <div class="alert alert-danger"
@@ -411,7 +411,7 @@
                             class="custom-select" id="stateDropDownId"
                             required ngModel>
                       <option [ngValue]="null">Please Select A State</option>
-                      <option *ngFor="let state of list.states" [value]="state">{{state}}</option>
+                      <option *ngFor="let state of stateNameService.states" [value]="state">{{state}}</option>
 
                     </select>
 
