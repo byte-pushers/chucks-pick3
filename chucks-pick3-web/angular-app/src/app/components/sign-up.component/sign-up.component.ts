@@ -9,7 +9,7 @@ import { CustomerInfoModel } from '../../models/customer-info.model';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Overlay } from '@angular/cdk/overlay';
 import { AppAlertOverlayModalService } from '../../shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.service';
-import {StateListService } from '../../services/state-list.service';
+import {StateNameService } from '../../services/state-name.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
               private overlay: Overlay,
               private viewContainerRef: ViewContainerRef,
               private appAlertOverlayModalService: AppAlertOverlayModalService,
-              public stateNameService: StateListService) {
+              public stateNameService: StateNameService) {
   }
 
   ngOnInit() {
