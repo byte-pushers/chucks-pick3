@@ -41,7 +41,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
-import { StateListService } from './services/state-list.service';
+import { StateNameService } from './services/state-name.service';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,7 @@ import { StateListService } from './services/state-list.service';
     FormValidationService,
     MockCustomerService,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    StateListService
+    StateNameService
   ],
   entryComponents: [
     // Needs to be added here because otherwise we can't
