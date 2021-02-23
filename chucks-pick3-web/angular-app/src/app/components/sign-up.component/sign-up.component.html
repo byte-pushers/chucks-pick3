@@ -170,58 +170,8 @@
                                     name="stateDropDownInputName"
                                     class="custom-select" id="stateDropDownIdMobile"
                                     required ngModel>
-                              <option value="" selected>Select a State</option>
-                              <option value="Alabama">Alabama</option>
-                              <option value="Alaska">Alaska</option>
-                              <option value="Arizona">Arizona</option>
-                              <option value="Arkansas">Arkansas</option>
-                              <option value="5">California</option>
-                              <option value="6">Colorado</option>
-                              <option value="7">Connecticut</option>
-                              <option value="8">Delaware</option>
-                              <option value="1">District Of Columbia</option>
-                              <option value="1">Florida</option>
-                              <option value="1">Georgia</option>
-                              <option value="1">Hawaii</option>
-                              <option value="1">Idaho</option>
-                              <option value="1">Illinois</option>
-                              <option value="1">Indiana</option>
-                              <option value="1">Iowa</option>
-                              <option value="1">Kansas</option>
-                              <option value="1">Kentucky</option>
-                              <option value="1">Louisiana</option>
-                              <option value="1">Maine</option>
-                              <option value="1">Maryland</option>
-                              <option value="1">Massachusetts</option>
-                              <option value="1">Michigan</option>
-                              <option value="1">Minnesota</option>
-                              <option value="1">Mississippi</option>
-                              <option value="1">Missouri</option>
-                              <option value="1">Montana</option>
-                              <option value="1">Nebraska</option>
-                              <option value="1">Nevada</option>
-                              <option value="1">New Hampshire</option>
-                              <option value="1">New Jersey</option>
-                              <option value="1">New Mexico</option>
-                              <option value="1">New York</option>
-                              <option value="1">North Carolina</option>
-                              <option value="1">North Dakota</option>
-                              <option value="1">Ohio</option>
-                              <option value="1">Oklahoma</option>
-                              <option value="1">Oregon</option>
-                              <option value="1">Pennsylvania</option>
-                              <option value="1">Rhode Island</option>
-                              <option value="1">South Carolina</option>
-                              <option value="1">South Dakota</option>
-                              <option value="1">Tennessee</option>
-                              <option value="1">Texas</option>
-                              <option value="1">Utah</option>
-                              <option value="1">Vermont</option>
-                              <option value="1">Virginia</option>
-                              <option value="1">Washington</option>
-                              <option value="1">West Virginia</option>
-                              <option value="1">Wisconsin</option>
-                              <option value="1">Wyoming</option>
+                              <option [ngValue]="null">Please Select A State</option>
+                              <option *ngFor="let state of stateNameService.states" [value]="state">{{state}}</option>
                             </select>
 
                             <div class="alert alert-danger"
@@ -276,10 +226,10 @@
                            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
                           <div class="col-4 m-auto">
                             <button type="submit"
-                                    class="btn btn btn-success submit btn-lg btn-block"
-                                    [disabled]="!signUpForm.form.valid" (click)="onSubmit()">
+                                    class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
                               Submit
                             </button>
+                            <!-- [disabled]="!signUpForm.form.valid" (click)="onSubmit()" //-->
                           </div>
 
                         </div>
@@ -460,58 +410,9 @@
                             name="stateDropDownInputName"
                             class="custom-select" id="stateDropDownId"
                             required ngModel>
-                      <option value="" selected>Select a State</option>
-                      <option value="Alabama">Alabama</option>
-                      <option value="Alaska">Alaska</option>
-                      <option value="Arizona">Arizona</option>
-                      <option value="Arkansas">Arkansas</option>
-                      <option value="5">California</option>
-                      <option value="6">Colorado</option>
-                      <option value="7">Connecticut</option>
-                      <option value="8">Delaware</option>
-                      <option value="1">District Of Columbia</option>
-                      <option value="1">Florida</option>
-                      <option value="1">Georgia</option>
-                      <option value="1">Hawaii</option>
-                      <option value="1">Idaho</option>
-                      <option value="1">Illinois</option>
-                      <option value="1">Indiana</option>
-                      <option value="1">Iowa</option>
-                      <option value="1">Kansas</option>
-                      <option value="1">Kentucky</option>
-                      <option value="1">Louisiana</option>
-                      <option value="1">Maine</option>
-                      <option value="1">Maryland</option>
-                      <option value="1">Massachusetts</option>
-                      <option value="1">Michigan</option>
-                      <option value="1">Minnesota</option>
-                      <option value="1">Mississippi</option>
-                      <option value="1">Missouri</option>
-                      <option value="1">Montana</option>
-                      <option value="1">Nebraska</option>
-                      <option value="1">Nevada</option>
-                      <option value="1">New Hampshire</option>
-                      <option value="1">New Jersey</option>
-                      <option value="1">New Mexico</option>
-                      <option value="1">New York</option>
-                      <option value="1">North Carolina</option>
-                      <option value="1">North Dakota</option>
-                      <option value="1">Ohio</option>
-                      <option value="1">Oklahoma</option>
-                      <option value="1">Oregon</option>
-                      <option value="1">Pennsylvania</option>
-                      <option value="1">Rhode Island</option>
-                      <option value="1">South Carolina</option>
-                      <option value="1">South Dakota</option>
-                      <option value="1">Tennessee</option>
-                      <option value="1">Texas</option>
-                      <option value="1">Utah</option>
-                      <option value="1">Vermont</option>
-                      <option value="1">Virginia</option>
-                      <option value="1">Washington</option>
-                      <option value="1">West Virginia</option>
-                      <option value="1">Wisconsin</option>
-                      <option value="1">Wyoming</option>
+                      <option [ngValue]="null">Please Select A State</option>
+                      <option *ngFor="let state of stateNameService.states" [value]="state">{{state}}</option>
+
                     </select>
 
                     <div class="alert alert-danger"
@@ -560,9 +461,9 @@
                   <br>
 
                   <button type="submit"
-                          class="btn btn btn-success submit btn-lg btn-block"
-                          [disabled]="!signUpForm.form.valid">
-                    <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
+                          class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+
+                    <!--  [routerLink]="'/sign-up-confirmation'" routerLinkActive="active" [queryParams]="{showSubNavBar: false}" [disabled]="!signUpForm.form.valid"-->
                     Submit
                   </button>
                 </div>
@@ -578,15 +479,3 @@
   </div>
 </div>
 <ngx-spinner type="ball-spin-clockwise"></ngx-spinner>
-<ng-template #tpl>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Fetching data...
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      Server Error...
-    </mat-card-content>
-  </mat-card>
-</ng-template>

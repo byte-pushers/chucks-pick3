@@ -37,11 +37,11 @@ import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from "@angular/material/card";
-import { OverlayModalComponent } from './shared/components/overlay-modal/overlay-modal.component';
-import {A11yModule} from "@angular/cdk/a11y";
+import { MatCardModule } from '@angular/material/card';
+import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
+import { StateNameService } from './services/state-name.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import {A11yModule} from "@angular/cdk/a11y";
     PasswordValidator,
     CustomerDetailsComponent,
     AppFooterComponent,
-    OverlayModalComponent
+    AppAlertOverlayModalComponent
   ],
   imports: [
     BrowserModule,
@@ -83,15 +83,20 @@ import {A11yModule} from "@angular/cdk/a11y";
     NgxSpinnerModule,
     BrowserAnimationsModule,
     OverlayModule,
-    MatCardModule,
-    A11yModule
+    MatCardModule
   ],
   providers: [
     MemberService,
     SubNavBarService,
     FormValidationService,
     MockCustomerService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    StateNameService
+  ],
+  entryComponents: [
+    // Needs to be added here because otherwise we can't
+    // dynamically render this component at runtime
+    AppAlertOverlayModalComponent
   ],
   bootstrap: [AppComponent]
 })

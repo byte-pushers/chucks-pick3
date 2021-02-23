@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverlayModalComponent } from './overlay-modal.component';
+import { AppAlertOverlayModalComponent } from './app-alert-overlay-modal.component';
 
 describe('OverlayModalComponent', () => {
-  let component: OverlayModalComponent;
-  let fixture: ComponentFixture<OverlayModalComponent>;
+  let component: AppAlertOverlayModalComponent;
+  let fixture: ComponentFixture<AppAlertOverlayModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OverlayModalComponent ]
+      declarations: [ AppAlertOverlayModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OverlayModalComponent);
+    fixture = TestBed.createComponent(AppAlertOverlayModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
