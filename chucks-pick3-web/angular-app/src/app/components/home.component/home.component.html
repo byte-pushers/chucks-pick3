@@ -1,24 +1,6 @@
-<!--<div id="homePage">
-  <div id="hero-mobile" class="hero-area-mobile hidden-desktop">
-
-    <div class="header-text-content-mobile">
-      <div class="header-text-mobile">
-        <h1 style="color: #FFFFFF">Your Game,<br><b class="text-emphasis">Our Luck</b></h1>
-      </div>
-      <div class="header-paragraph">
-        Play your state's pick 3 lotto game and create your own luck. Avialable only on Chuck's Pick 3 App soon.
-      </div>
-      <button class="btn header-btn"><b>Sign Up To Get Notified</b></button>
-    </div>
-    <div class="header-image-section-mobile">
-      <div class=" row header-iphone-mobile ">
-        <div class="row">
-          <img src="../../../assets/images/view-screen-image.png">
-        </div>
-      </div>
-    </div>
-  </div>-->
-<div class="hero-area-mobile container-fluid show-mobile">
+<!--Mobile View Content-->
+<div>
+<div class="splash-screen-mobile container-fluid show-mobile">
 
   <div class="row">
     <div class="col-12" style="margin-top: 25vw; ">
@@ -29,13 +11,13 @@
         Avialable only on Chuck's Pick 3 App soon. </p>
     </div>
     <div class=" col-9" style="margin-bottom: 20%;  margin-right: auto; margin-left:auto;">
-      <button [routerLink]="'/sign-up'" class="btn demo-btn"><b>Sign Up</b></button>
+      <button [routerLink]="'/sign-up'" class="btn try-it-btn"><b>Sign Up</b></button>
     </div>
   </div>
   <div class="row">
 
-    <div class="col-12 hero-image-mobile">
-      <img src="../../../assets/images/iphone-view-image.png" class="header-image-section-mobile">
+    <div class="col-12 splash-screen-image-mobile">
+      <img src="../../../assets/images/iphone-view-image.png" class="splash-screen-image-section-mobile">
     </div>
 
   </div>
@@ -189,7 +171,7 @@
       </p>
     </div>
     <div class=" col-9" style="  margin-right: auto; margin-left:auto;">
-      <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens"><button class="btn demo-btn"><b>Demo</b></button></a>
+      <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens"><button class="btn try-it-btn"><b>Demo</b></button></a>
 
     </div>
   </div>
@@ -214,28 +196,29 @@
     </div>
   </div>
 </div>
-
-
+</div>
+<!-- End of Mobile View Content-->
+<!--Desktop View Content-->
 <div>
-  <div id="hero" class="show-desktop hero-area">
+  <div id="hero" class="show-desktop splash-screen">
     <div class=" container-fluid">
       <div class="row">
         <div class="col-1">
 
         </div>
         <div class="col-5">
-          <div class="header-text-content-mobile">
+          <div class="splash-screen-content-mobile">
             <div>
-              <h1 class="header-text">Your Game,<br><b class="text-emphasis">Our Luck</b></h1>
+              <h1 class="splash-screen-header-text">Your Game,<br><b class="text-emphasis">Our Luck</b></h1>
             </div>
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button [routerLink]="'/sign-up'" class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="'/sign-up'" class="btn splash-screen-header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
-          <div class="header-image-section">
+          <div class="splash-screen-header-image-section">
             <div class=" row " style="height: 400px; margin-right: auto; margin-left: auto; ">
 
               <img src="../../../assets/images/DESKTOP-SPLASH-IMAGE.png"
@@ -465,7 +448,7 @@
           </div>
           <div class=" col-6" style="margin-top: 4em; padding: revert">
             <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
-              <button class="btn demo-btn"><b>Demo</b></button>
+              <button class="btn try-it-btn"><b>Demo</b></button>
             </a>
 
           </div>
@@ -499,28 +482,28 @@
   </div>
 
 </div>
-
-
+<!--End of Desktop View Content-->
+<!--Tablet View Content-->
 <div>
-  <div id="heroTablet" class="show-tablet hero-area">
+  <div id="heroTablet" class="show-tablet splash-screen">
     <div class=" container-fluid">
       <div class="row">
         <div class="col-1">
 
         </div>
         <div class="col-5">
-          <div class="header-text-content-mobile">
+          <div class="splash-screen-content-mobile">
             <div>
-              <h1 class="header-text">Your Game,<br><b class="text-emphasis">Our Luck</b></h1>
+              <h1 class="splash-screen-header-text">Your Game,<br><b class="text-emphasis">Our Luck</b></h1>
             </div>
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button [routerLink]="['/sign-up']"  class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="['/sign-up']"  class="btn splash-screen-header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
-          <div class="header-image-section">
+          <div class="splash-screen-header-image-section">
             <div class=" row " style="height: 400px; margin-right: auto; margin-left: auto; ">
 
               <img src="../../../assets/images/DESKTOP-SPLASH-IMAGE.png"
@@ -741,7 +724,7 @@
           </div>
           <div class=" col-6" style="  padding: revert">
             <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
-              <button class="btn demo-btn"><b>Demo</b></button>
+              <button class="btn try-it-btn"><b>Demo</b></button>
             </a>
 
           </div>
@@ -775,3 +758,4 @@
   </div>
 
 </div>
+<!--End of Tablet View Content-->

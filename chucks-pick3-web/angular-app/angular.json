@@ -24,10 +24,10 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/assets/scss/styles.css",
+              "src/assets/scss/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/scss/app-instructions-style-sheet.css",
-              "src/assets/scss/global-style-sheet.css",
+              "src/assets/scss/global-style-sheet.scss",
               "src/assets/scss/navbar.css",
               "src/assets/scss/responsive-style-sheet.css"
             ],
@@ -107,7 +107,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [

@@ -1,0 +1,458 @@
+@font-face {
+  font-family: lato;
+  src: url(../fonts/latoFontFamily/Lato-Regular.ttf) format('truetype');
+}
+
+$chucks-pick-3-green: #2dd36f;
+$chucks-pick-3-yellow: #ffd743;
+$chucks-pick-3-black: #1b1e21;
+$chucks-pick-3-dark-gray: #8c8c8c;
+$chucks-pick-3-gray: #e7e7e7;
+$chucks-pick-3-white: white;
+
+h1 {
+  font-weight: 700;
+  text-align: center;
+  color: $chucks-pick-3-black;
+  font-family: "Lato", sans-serif !important;
+}
+
+
+.text-emphasis {
+  color: $chucks-pick-3-green;
+}
+
+
+.mobile-img {
+  margin-bottom: 1em;
+}
+
+.section-header {
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.7em;
+}
+
+/*-----General Purpose-----*/
+
+
+/*-----For the splash screen section of the page-----*/
+
+/*------Splash Screen Mobile-------*/
+.splash-screen-mobile {
+  background-color: $chucks-pick-3-black;
+  width: 100%;
+  height: auto;
+}
+
+.splash-screen-image-mobile {
+  width: 100%;
+  height: 15vh;
+  text-align: center;
+
+
+}
+
+.splash-screen-image-section-mobile {
+  height: auto;
+  width: 13em;
+  z-index: 11;
+  margin-left: auto;
+
+}
+
+.splash-screen-content-mobile {
+  padding: 100px 25px 15px;
+  color: $chucks-pick-3-white;
+  align-content: center;
+}
+
+/*---End of Splash Screen Mobile---*/
+
+/*------Splash Screen Desktop-------*/
+.splash-screen-header-text {
+  text-align: left;
+  color: $chucks-pick-3-white;
+}
+
+.splash-screen-paragraph-text {
+  font-size: 22px;
+  color: $chucks-pick-3-white;
+  text-align: center;
+}
+
+.splash-screen-ball {
+  width: 100%;
+  z-index: 10;
+}
+
+.splash-screen-ball-back {
+  width: 100%;
+  z-index: 1;
+}
+
+.splash-screen {
+  background-color: #1c1c1d;
+  width: 100%;
+  height: auto;
+  padding-top: 2em;
+}
+
+.splash-screen-header-image-section {
+  height: auto;
+  z-index: 11;
+  margin-left: auto;
+
+}
+
+
+.splash-screen-header-btn {
+  background-color: $chucks-pick-3-green;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+/*------End of Splash Screen Desktop-------*/
+
+/*-----End of splash screen section of the page-----*/
+
+/*--------------------------------------------------------------------------*/
+
+/*-----For the intro screen section of the page-----*/
+
+
+/*------Mobile-------*/
+.intro-section-mobile {
+  margin-top: 15em;
+  margin-bottom: 3em;
+}
+
+/*------Mobile-------*/
+
+
+/*------Desktop-------*/
+.intro-section {
+  margin-top: 7%;
+  margin-bottom: 5%;
+}
+
+/*------Desktop-------*/
+
+
+/*-----End of intro screen section of the page-----*/
+
+
+/*-----For the features screen section of the page-----*/
+/*------Mobile-------*/
+.features-section-mobile {
+  background-color: $chucks-pick-3-green;
+  padding-bottom: 10%;
+}
+
+.features-card-mobile {
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*------Mobile-------*/
+
+/*------Desktop-------*/
+.features-header {
+  text-align: left;
+  padding-left: .6em;
+  font-weight: 700;
+}
+
+.features-section {
+  background-color: $chucks-pick-3-green;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+
+}
+
+.features-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: auto;
+}
+
+/*------Desktop-------*/
+
+/*------Tablet-------*/
+.features-card-tablet {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2em;
+}
+
+/*------Tablet-------*/
+/*-----End of features screen section of the page-----*/
+
+
+/*-----For the how to screen section of the page-----*/
+
+/*------Mobile-------*/
+.how-to-section-mobile {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  margin-top: 3em;
+  margin-bottom: 3em;
+
+}
+
+/*------Mobile-------*/
+
+/*------Desktop-------*/
+.how-to-section {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+  background-color: $chucks-pick-3-black;
+}
+
+.how-to-title {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color: $chucks-pick-3-dark-gray;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.activeHowTo, .how-to-title:hover {
+  color: $chucks-pick-3-green;
+  text-decoration: $chucks-pick-3-green;
+}
+
+.how-to-section-info {
+  opacity: 1;
+  animation: fade .5s linear;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.how-to-title-text {
+  margin-top: 1em;
+
+  font-weight: bold;
+}
+
+.how-to-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+@keyframes fade {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+.how-to-image {
+  height: auto;
+  width: 25vw;
+}
+
+.how-to-list {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.activeFeatureButton {
+  background-color: $chucks-pick-3-green;
+  background-size: 50px, 130px, auto;
+}
+
+
+.how-to-paragraph-title {
+  font-weight: bolder;
+  font-size: 2.7em;
+  color: $chucks-pick-3-white;
+  text-align: left;
+}
+
+.how-to-paragraph {
+  color: $chucks-pick-3-white;
+  font-size: 12px;
+}
+
+.circle-stack {
+  position: absolute;
+  left: 10px;
+  width: 99px;
+  height: 50px;
+
+}
+
+.circle-sm {
+  width: 6.2px;
+  height: 6.2px;
+  border-radius: 50%;
+  background: $chucks-pick-3-green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-md {
+  width: 12.5px;
+  height: 12.5px;
+  border-radius: 50%;
+  background: $chucks-pick-3-green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-lg {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $chucks-pick-3-green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-intro {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $chucks-pick-3-green;
+  z-index: 9;
+  margin-top: -10px;
+  margin-left: 20.5vw;
+  position: absolute;
+}
+
+/*------Desktop-------*/
+
+/*------Tablet-------*/
+.how-to-title-tablet {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color: $chucks-pick-3-gray;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.activeHowTo-tablet, .how-to-title-tablet:hover {
+  color: $chucks-pick-3-green;
+  text-decoration: $chucks-pick-3-green;
+}
+
+/*------Tablet-------*/
+
+/*-----End of how to screen section of the page-----*/
+
+
+/*-----Start of sign up screen section of the page-----*/
+/*------Mobile-------*/
+.sign-up-section-mobile {
+  background-color: $chucks-pick-3-yellow;
+  padding-bottom: 3em;
+  padding-top: 3em;
+  vertical-align: middle;
+}
+
+/*------Mobile-------*/
+
+/*------Desktop-------*/
+.sign-up-section {
+  background-color: $chucks-pick-3-yellow;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+}
+
+.sign-up-btn {
+  background-color: $chucks-pick-3-green;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*------Desktop-------*/
+
+/*-----End of sign up screen section of the page-----*/
+
+
+/*-----Start of try it screen section of the page-----*/
+/*------Mobile-------*/
+.try-it-section-mobile {
+  background-color: $chucks-pick-3-gray;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.try-it-out-image-mobile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
+}
+
+/*------Mobile-------*/
+
+/*------Desktop-------*/
+.try-it-out-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}
+
+.try-it-btn {
+  background-color: $chucks-pick-3-green;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.try-it-section {
+  background-color: $chucks-pick-3-white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+}
+
+/*------Desktop-------*/
+
+/*------Tablet-------*/
+.try-it-out-image-tablet {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 11.5em;
+}
+
+/*------Tablet-------*/
+/*-----End of try it screen section of the page-----*/
+
+
+
+
+
+
+
+
+
+
+
+
