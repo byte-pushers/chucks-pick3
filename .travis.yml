@@ -130,7 +130,7 @@ matrix:
             branch: master
     - language: node_js
       node_js:
-        - “10”
+        - “14”
       dist: trusty
       addons:
         chrome: stable
