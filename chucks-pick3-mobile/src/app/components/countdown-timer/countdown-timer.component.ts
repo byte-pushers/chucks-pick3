@@ -17,17 +17,25 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
               public toastController: ToastController) {
     this.zeroTrigger = new EventEmitter(true);
   }
+
+
   async presentToast() {
     const toast = await this.toastController.create({
-      header: 'Results not available',
-      message: 'please check back later.',
-      duration: 2000,
+      message: 'Results not available yet',
+      duration: 50000,
       position: 'top',
-      color: 'warning'
+      cssClass: 'results-not-available',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'alert-circle-outline',
+          cssClass: 'results-icon'
+        }
+      ]
     });
     await toast.present();
   }
-  
+
 
 
   ngOnInit(): void {
