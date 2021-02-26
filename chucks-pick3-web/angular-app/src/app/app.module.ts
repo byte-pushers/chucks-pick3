@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
 import { FormValidationService } from 'src/app/services/form-validation.service';
 import { NameValidator } from 'src/app/directives/name-validator.directive';
 import { EmailValidator } from 'src/app/directives/email-validator.directive';
-import { NumberValidator } from 'src/app/directives/number-validator.directive';
 import { InfoViewComponent } from 'src/app/components/info-view.component/info-view.component';
 import { InfoInterfaceComponent } from 'src/app/components/info-interface.component/info-interface.component';
 import { InfoGenerateComponent } from 'src/app/components/info-generate.component/info-generate.component';
@@ -42,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
 import { StateNameService } from './services/state-name.service';
+import { PhoneNumberDirective} from "./directives/phone-number.directive";
 
 @NgModule({
   declarations: [
@@ -55,7 +55,6 @@ import { StateNameService } from './services/state-name.service';
     LogInComponent,
     NameValidator,
     EmailValidator,
-    NumberValidator,
     InfoViewComponent,
     InfoInterfaceComponent,
     InfoGenerateComponent,
@@ -70,7 +69,8 @@ import { StateNameService } from './services/state-name.service';
     PasswordValidator,
     CustomerDetailsComponent,
     AppFooterComponent,
-    AppAlertOverlayModalComponent
+    AppAlertOverlayModalComponent,
+    PhoneNumberDirective
   ],
   imports: [
     BrowserModule,
