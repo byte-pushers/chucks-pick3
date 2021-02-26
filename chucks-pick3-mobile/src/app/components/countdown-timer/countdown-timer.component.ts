@@ -21,8 +21,9 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Results not available yet',
-      duration: 50000,
+      header: 'Results not available',
+      message: 'please check back later.',
+      duration: 2000,
       position: 'top',
       cssClass: 'results-not-available',
       buttons: [
