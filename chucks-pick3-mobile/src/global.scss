@@ -37,6 +37,8 @@
 .results-not-available {
   --background: #ffd743;
   font-weight: 200;
+  position: fixed;
+  top:3em;
 }
 
 ion-toast::part(button) {
