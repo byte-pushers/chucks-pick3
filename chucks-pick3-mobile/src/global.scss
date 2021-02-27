@@ -41,6 +41,13 @@
   top:3em;
 }
 
+.internet-not-available {
+  --background: #f32d3e;
+  font-weight: 200;
+  position: fixed;
+  top:3em;
+}
+
 ion-toast::part(button) {
   --button-color: #1b1e21 !important;
   --color: #1b1e21 !important;
