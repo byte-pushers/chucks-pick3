@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, Output,  EventEmitter   } from '@angular/core';
-import {ToastController} from '@ionic/angular';
+import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 
 @Component({
   selector: 'countdown-timer',
@@ -14,34 +14,23 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   timer: any;
   displayTime: any;
   constructor(private el: ElementRef,
-              public toastController: ToastController) {
+              public toastService: IonicToastNotificationService) {
     this.zeroTrigger = new EventEmitter(true);
   }
 
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      header: 'Results not available',
-      message: 'please check back later.',
-      duration: 2000,
-      position: 'top',
-      cssClass: 'results-not-available',
-      buttons: [
-        {
-          side: 'start',
-          icon: 'alert-circle-outline',
-          cssClass: 'results-icon'
-        }
-      ]
-    });
-    await toast.present();
-  }
-
 
 
   ngOnInit(): void {
+    const test = 'red';
+    if (test === 'yellow') {
+  this.toastService.presentToast('Results not available',
+      'Please try again later.', 'results-not-available');
+} else {
+  this.toastService.presentToast('No internet connection',
+      'Please try again later.', 'internet-not-available');
+}
 
-    this.presentToast();
     this.timer = setInterval(() => {
 
       if (this.start) {
