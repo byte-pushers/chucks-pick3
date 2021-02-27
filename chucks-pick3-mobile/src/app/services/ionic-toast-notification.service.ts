@@ -4,16 +4,25 @@ import {ToastController} from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
-export class IonicToastNotificationService {
 
+
+
+
+export class IonicToastNotificationService {
+  private isToastVisible: boolean;
   constructor(public toastController: ToastController) { }
 
   async presentToast(toastHeader: string, toastMessage: string, toastClass: string) {
-    const toast = await this.toastController.create({
+    if (this.isToastVisible) {
+      return;
+    }
+
+    this.isToastVisible = true;
+
+    this.toastController.create({
       header: toastHeader,
       message: toastMessage,
       duration: 2000,
-      position: 'top',
       cssClass: toastClass,
       buttons: [
         {
@@ -21,8 +30,15 @@ export class IonicToastNotificationService {
           icon: 'alert-circle-outline',
           cssClass: 'results-icon'
         }
-      ]
+      ],
+      position: 'top'
+    }).then((toast: HTMLIonToastElement) => {
+
+      toast.onDidDismiss().then(() => {
+        this.isToastVisible = false;
+      });
+
+      toast.present();
     });
-    await toast.present();
   }
 }

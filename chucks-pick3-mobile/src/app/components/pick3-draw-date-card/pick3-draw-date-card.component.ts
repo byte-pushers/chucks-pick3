@@ -8,7 +8,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import * as BytePushers from 'bytepushers-js-core';
-import {IonicToastNotificationService} from "../../services/ionic-toast-notification.service";
+import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 
 @Component({
   selector: 'pick3-draw-date-card',
