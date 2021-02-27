@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy, ElementRef, Output,  EventEmitter   } from '@angular/core';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'countdown-timer',
@@ -12,11 +13,35 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   @Input() timeOnly;
   timer: any;
   displayTime: any;
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef,
+              public toastController: ToastController) {
     this.zeroTrigger = new EventEmitter(true);
   }
 
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      header: 'Results not available',
+      message: 'please check back later.',
+      duration: 2000,
+      position: 'top',
+      cssClass: 'results-not-available',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'alert-circle-outline',
+          cssClass: 'results-icon'
+        }
+      ]
+    });
+    await toast.present();
+  }
+
+
+
   ngOnInit(): void {
+
+    this.presentToast();
     this.timer = setInterval(() => {
 
       if (this.start) {

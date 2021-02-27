@@ -31,3 +31,17 @@
 @import "../src/scss/app-icons"; /* For Icons */
 @import "../src/scss/draw-time-cards";
 @import "../src/scss/app-ui";
+
+
+
+.results-not-available {
+  --background: #ffd743;
+  font-weight: 200;
+  position: fixed;
+  top:3em;
+}
+
+ion-toast::part(button) {
+  --button-color: #1b1e21 !important;
+  --color: #1b1e21 !important;
+}
