@@ -8,6 +8,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import * as BytePushers from 'bytepushers-js-core';
+import {IonicToastNotificationService} from "../../services/ionic-toast-notification.service";
 
 @Component({
   selector: 'pick3-draw-date-card',
@@ -30,7 +31,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
   private pick3StateLottery: Pick3StateLottery;
 
-  constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+  constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
+              public toastService: IonicToastNotificationService) {
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
   }
 
@@ -157,6 +159,9 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     }, error => {
       //TODO: Handle error.
       console.error('TODO: Handle error: ' + error, error);
+      this.toastService.presentToast('Internal Error',
+            'Please try again later.', 'internet-not-available');
+
     });
   }
 
@@ -166,6 +171,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
       }, error => {
         //TODO: Handle error.
         console.error('TODO: Handle error: ' + error, error);
+        this.toastService.presentToast('Internal Error',
+            'Please try again later.', 'internet-not-available');
       });
   }
 
