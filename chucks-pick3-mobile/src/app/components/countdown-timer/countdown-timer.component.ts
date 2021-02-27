@@ -21,16 +21,19 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
 
     ngOnInit(): void {
-
-
         this.timer = setInterval(() => {
-
             if (this.start) {
                 this.displayTime = this.getTimeDiff(this.start, true);
             } else {
                 this.displayTime = this.getTimeDiff(this.end);
             }
         }, 1000);
+
+        this.zeroTrigger.subscribe(message => {
+            if (message === 'reached zero') {
+                clearInterval(this.timer);
+            }
+        });
     }
 
     ngOnDestroy() {
