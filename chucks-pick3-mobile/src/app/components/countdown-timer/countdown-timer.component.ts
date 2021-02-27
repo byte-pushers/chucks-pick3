@@ -22,9 +22,6 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
-        this.toastService.presentToast('Results not available',
-            'Please try again later.', 'results-not-available');
-
 
         this.timer = setInterval(() => {
 
@@ -81,7 +78,6 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
     }
 
     private stopTimer() {
-        clearInterval(this.timer);
         this.timer = undefined;
     }
 }

@@ -45,7 +45,7 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
 
   constructor(private pick3LotteryService: Pick3LotteryService) {
     super();
-    this.service = new Pick3LotteryWebScrapingService(/*/!*'https://www.txlottery.org'*!/TX_PICK3_URL*/);
+    this.service = new Pick3LotteryWebScrapingService(/*'https://www.txlottery.org'*/TX_PICK3_URL);
     // const morningDrawingTime: Date = this.service.getActualMorningDrawingTime('TX');
     // console.log(morningDrawingTime.toDateString(), morningDrawingTime);
   }
