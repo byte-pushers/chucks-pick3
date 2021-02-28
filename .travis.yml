@@ -116,16 +116,15 @@ matrix:
         - cd chucks-pick3-web/angular-app/
       install:
         - npm install
-        - npm run build
       deploy:
         - provider: script
           skip_cleanup: true
-          script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL} && aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"
+          script: npm run devBuild && aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL} && aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"
           on:
             branch: develop
         - provider: script
           skip_cleanup: true
-          script: aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL} && aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"
+          script: npm run build && aws s3 sync dist/* ${STATIC_WEBSITE_S3_BUCKET_URL} && aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"
           on:
             branch: master
     - language: node_js
