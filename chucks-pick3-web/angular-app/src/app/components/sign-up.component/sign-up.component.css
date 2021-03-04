@@ -1,3 +1,22 @@
+.sign-up-hero {
+  background-color: #ffd743;
+  width: 100%;
+  padding-top: 6em;
+  padding-bottom: 3em;
+  place-content: center;
+}
+
+.sign-up-form {
+  background-color: #e7e7e7;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign-up-hero-text {
+
+  text-align: center;
+}
+
 .btn-block {
   margin-top: 0px;
 }
