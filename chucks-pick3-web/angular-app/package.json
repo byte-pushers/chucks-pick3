@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "webdriver": "webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false"
