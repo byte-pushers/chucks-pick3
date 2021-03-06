@@ -17,12 +17,16 @@ Parameters:
     Type: String
     Description: "AWS Lambda code file name from s3 bucket"
     Default: ""
+  CorsOrigin:
+    Type: String
+    Description: "Allowed Cors origin domains"
+    Default: ""
 Globals:
   Api:
     Cors:
       AllowMethods: "'*'"
       AllowHeaders: "'*'"
-      AllowOrigin: "'*'"
+      AllowOrigin: !Ref CorsOrigin
 Resources:
   ChucksPick3VpcExecutionRole:
     Type: AWS::IAM::Role
