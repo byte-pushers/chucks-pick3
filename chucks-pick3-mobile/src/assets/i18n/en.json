@@ -1,6 +1,8 @@
 {
+
+
   "langSwitch": {
-    "test": "EN",
+    "test": "EN", "//comment": "Used to determine which setting the language is on.",
     "language": "ES"
   }
 }
