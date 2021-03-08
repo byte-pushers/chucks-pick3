@@ -4,6 +4,7 @@ import { Pick3DrawDateCardDomain } from '../models/pick3-draw-date-card.domain';
 import {Pick3DrawTimeEnum} from '../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../components/language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +29,11 @@ export class HomePage {
     new Pick3DrawDateCardDomain({}),
   ];
 
-  constructor(private popoverCtrl: PopoverController) {}
+  constructor(private popoverCtrl: PopoverController,
+              public translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+
   async showPopover(ev: any) {
     const popover = await this.popoverCtrl.create({
       component: LanguagePopoverComponent,
@@ -36,6 +41,8 @@ export class HomePage {
       event: ev,
       translucent: true
     });
+    popover.style.cssText = '--min-width: 4em; --max-width: 4em;';
     return await popover.present();
+
   }
 }
