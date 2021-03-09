@@ -3,6 +3,7 @@ import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 import * as Object from 'bytepushers-js-obj-extensions';
+import { DrawStateService } from '../../services/draw-state.service';
 
 @Component({
   selector: 'pick3-draw-time-card',
@@ -23,7 +24,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   };
   doCheckCount = 0;
 
-  constructor() {
+  constructor(private drawStateService: DrawStateService) {
     //console.log('Constructor');
   }
 
@@ -57,7 +58,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
     this.data = null;
     this.oldData = null;
     this.changelog = [];
-    this.drawingTimeCardColorIndicators = null
+    this.drawingTimeCardColorIndicators = null;
     this.doCheckCount = 0;
   }
 
@@ -107,11 +108,16 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
 
     if (this.data.getSelected()) {
       this.setCssClass(this.drawingTimeCardColorIndicators, 'selected', true);
+      this.retrieveDrawTimeCardColorIndicators(this.drawingTimeCardColorIndicators);
+
     }
 
     this.setCssClass(this.drawingTimeCardColorIndicators, attributeName, booleanValue);
   }
 
+  private retrieveDrawTimeCardColorIndicators(colorIndicators) {
+    this.drawStateService.passState(colorIndicators);
+  }
   private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
     for(let property in drawingTimeCardColorIndicators){
       if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {
