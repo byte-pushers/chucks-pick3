@@ -73,7 +73,6 @@ ion-grid {
 .picks-indicator {
   height: 20px;
   width: 20px;
-  background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -102,14 +101,14 @@ ion-grid {
 .picks-indicator.not-drawn-yet,
 .picks-indicator.drawn,
 .picks-indicator.drawn-with-generated-picks-with-no-winners {
-  background-color: #d7d7d7;
+  background-color: transparent;
 }
 .picks-indicator.drawn.selected,
 .picks-indicator.not-drawn-yet.selected,
 .picks-indicator.not-drawn.selected,
 .picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
-  background-color: black;
-  width: 16%;
+  background-color: transparent;
+
 }
 
 .indicator.not-drawn-yet-with-generated-picks {
@@ -118,7 +117,6 @@ ion-grid {
 
 .picks-indicator.not-drawn-yet-with-generated-picks.selected {
   background-color: yellow;
-  width: 16%;
 }
 
 .picks-indicator.drawn-with-generated-picks-with-winners {
@@ -127,7 +125,6 @@ ion-grid {
 
 .picks-indicator.drawn-with-generated-picks-with-winners.selected {
   background-color: green;
-  width: 16%;
 }
 
 
