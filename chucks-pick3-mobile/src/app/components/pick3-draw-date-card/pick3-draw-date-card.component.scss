@@ -99,3 +99,35 @@ ion-grid {
   }
 }
 
+.picks-indicator.not-drawn-yet,
+.picks-indicator.drawn,
+.picks-indicator.drawn-with-generated-picks-with-no-winners {
+  background-color: #d7d7d7;
+}
+.picks-indicator.drawn.selected,
+.picks-indicator.not-drawn-yet.selected,
+.picks-indicator.not-drawn.selected,
+.picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
+  background-color: black;
+  width: 16%;
+}
+
+.indicator.not-drawn-yet-with-generated-picks {
+  background-color: yellow;
+}
+
+.picks-indicator.not-drawn-yet-with-generated-picks.selected {
+  background-color: yellow;
+  width: 16%;
+}
+
+.picks-indicator.drawn-with-generated-picks-with-winners {
+  background-color: green;
+}
+
+.picks-indicator.drawn-with-generated-picks-with-winners.selected {
+  background-color: green;
+  width: 16%;
+}
+
+
