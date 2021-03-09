@@ -5,7 +5,7 @@ import {stringify} from 'querystring';
     providedIn: 'root'
 })
 export class DrawStateService {
-  picksIndicator = [];
+    picksIndicator = [];
 
     constructor() {
     }
@@ -16,7 +16,9 @@ export class DrawStateService {
     }
 
     private sortState(currentState): void {
-        for (let i = 0; i < currentState.length; i++) {
+        if (this.picksIndicator !== null && this.picksIndicator !== undefined) {
+            this.picksIndicator.splice(0,this.picksIndicator.length);
+            for (let i = 0; i < currentState.length; i++) {
             const keyNames = Object(currentState[i]);
             if (keyNames[1] === false) {
                 delete currentState[i];
@@ -24,21 +26,17 @@ export class DrawStateService {
                 this.applyState(keyNames, keyNames[0], keyNames[1]);
             }
         }
+        }
     }
 
     private applyState(drawStateColorIndicators: any, attributeName: string, booleanValue: boolean): void {
         /*console.log(test);*/
-        const newAttributes = [];
         for (let property in drawStateColorIndicators) {
             if (drawStateColorIndicators.hasOwnProperty(property)) {
-                newAttributes.push(attributeName);
+                this.picksIndicator.push(attributeName);
+                console.log(this.picksIndicator);
                 break;
             }
-            console.log(newAttributes);
         }
-    }
-
-    private checkPicksIndicator(attributeName): void {
-
     }
 }
