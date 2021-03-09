@@ -25,6 +25,77 @@ ion-grid {
 
 .scroll-content{overflow-y: hidden;}
 
+.dot {
+  height: 50px;
+  width: 50px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+  color: black;
+  line-height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+  }
 
 
+}
+.generate-picks-icon {
+  fill: #FFFFFF;
+  height: 90%;
+  width: 90%;
+  stroke: #FFFFFF;
+  stroke-width: 5px;
+  margin-top: 10vh;
+
+  @include for-size(iPhone5-SE) {
+    height: 80%;
+    width: 80%;
+  }
+
+
+}
+.view-picks-icon {
+  fill: #FFFFFF;
+  height: 90%;
+  width: 90%;
+  stroke: #FFFFFF;
+  stroke-width: 5px;
+  margin-top: 13vh;
+
+
+
+}
+.picks-indicator {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  bottom: -3em;
+  right: -2em;
+
+  @include  for-size(iPhone5-SE) {
+    bottom: -25vh;
+    right: -1.5em;
+
+  }
+  @include  for-size(iPhoneX) {
+    bottom: -28vh;
+    right: -1.9em;
+  }
+  @include  for-size(iPhone6-7-8) {
+    bottom: -27.6vh;
+    right: -1.9em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    bottom: -27.5vh;
+    right: -2.3em;
+  }
+}
 
