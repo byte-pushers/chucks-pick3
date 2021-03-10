@@ -2,28 +2,16 @@
 <ion-menu menuId="main-menu" contentId="main" side="end" type="push">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>Navigate</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list>
-      <ion-menu-toggle>
-      <ion-item>
-        <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-label>Inbox</ion-label>
-      </ion-item>
-      </ion-menu-toggle>
-      <ion-menu-toggle>
-      <ion-item>
-        <ion-icon name="person" slot="start"></ion-icon>
-        <ion-label>Account</ion-label>
-      </ion-item>
-      </ion-menu-toggle>
-      <ion-menu-toggle>
-      <ion-item>
-        <ion-icon name="settings" slot="start"></ion-icon>
-        <ion-label>Settings</ion-label>
-      </ion-item>
+    <ion-list *ngFor="let pages of navigate">
+      <ion-menu-toggle auto-hide="true">
+        <ion-item [routerLink]="pages.url" routerDirection="forward">
+          <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+          {{pages.title}}
+        </ion-item>
       </ion-menu-toggle>
     </ion-list>
   </ion-content>
@@ -34,7 +22,7 @@
 
   <ion-footer>
     <ion-toolbar color="transparent">
-      <ion-buttons slot="start">
+      <ion-buttons slot="start" routerLink="/home">
 
         <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
       </ion-buttons>
