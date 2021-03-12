@@ -19,7 +19,7 @@
 .time-of-day-icon {
   text-align: center;
   vertical-align: middle;
-  line-height: 12vh;
+  line-height: 10vh;
   font-size: 15vw;
   @include for-size(iPhone5-SE) {
     font-size: 12vw;
@@ -30,7 +30,7 @@
   text-align: center;
   vertical-align: middle;
   font-size: 7vw;
-  font-weight: 500;
+  font-weight: 700;
 }
 .draw-time-title {
   display: inline-block;
