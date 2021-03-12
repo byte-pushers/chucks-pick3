@@ -1,18 +1,18 @@
 @import "../../../breakpoints";
+@import "../../../theme/variables";
 
 .draw-time-icon {
   display: inline-block;
   width: 40%;
-  border: 1px solid green;
 
 
 
   > ion-icon.selected {
-    color: black;
+    color: $chucksPick3Black;
   }
 
   > ion-icon.not-selected {
-    color: #d7d7d7;
+    color: $chucksPick3LightGray;
   }
 }
 
@@ -24,7 +24,6 @@
   @include for-size(iPhone5-SE) {
     font-size: 12vw;
   }
-
 }
 
 .time-of-day-text {
@@ -36,54 +35,52 @@
 .draw-time-title {
   display: inline-block;
   width: 60%;
-  border: 1px solid red;
 
   > span.not-selected {
-    color: #d7d7d7;
+    color: $chucksPick3Gray;
   }
 
   > span.selected {
-    color: black;
+    color: #1c1c1d;
   }
 }
 
 .generated-picks-indicator {
   display: inline-block;
-  border: 1px solid blue;
   width: 8%;
   line-height: 3em;
   float: right;
-  background-color: #d7d7d7;
+  background-color: $chucksPick3LightGray;
 }
 
 .generated-picks-indicator.not-drawn-yet,
 .generated-picks-indicator.drawn,
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners {
-  background-color: #d7d7d7;
+  background-color: $chucksPick3LightGray;
 }
 .generated-picks-indicator.drawn.selected,
 .generated-picks-indicator.not-drawn-yet.selected,
 .generated-picks-indicator.not-drawn.selected,
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
-  background-color: black;
+  background-color: $chucksPick3Black;
   width: 16%;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks {
-  background-color: yellow;
+  background-color: $chucksPick3Yellow;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks.selected {
-  background-color: yellow;
+  background-color: $chucksPick3Yellow;
   width: 16%;
 }
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners {
-  background-color: green;
+  background-color: $chucksPick3Green;
 }
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners.selected {
-  background-color: green;
+  background-color: $chucksPick3Green;
   width: 16%;
 }
 
