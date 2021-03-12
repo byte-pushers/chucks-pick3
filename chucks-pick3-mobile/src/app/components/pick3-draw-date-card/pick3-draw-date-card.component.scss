@@ -1,4 +1,5 @@
 @import "../../../breakpoints";
+@import "../../../theme/variables";
 ion-grid {
   height: 100%;
   padding: 0px;
@@ -10,7 +11,9 @@ ion-grid {
 
   ion-row.drawing-time {
     height: 12.5%;
-    border: 1px solid darkgray;
+    border-style: solid;
+    border-color: $chucksPick3Gray;
+    border-width: 2px 1px 2px 1px;
 
     ion-col {
       padding: 0px;
@@ -20,7 +23,7 @@ ion-grid {
 }
 
 .draw-date-text {
-  color: #FFFFFF;
+  color: $chucksPick3White;
 }
 
 .scroll-content{overflow-y: hidden;}
@@ -28,11 +31,11 @@ ion-grid {
 .dot {
   height: 50px;
   width: 50px;
-  background-color: #FFFFFF;
+  background-color: $chucksPick3White;
   border-radius: 50%;
   display: inline-block;
   margin: 2px;
-  color: black;
+  color: $chucksPick3Black;
   line-height: 2em;
   font-size: 1.5em;
   font-weight: bold;
@@ -45,10 +48,10 @@ ion-grid {
 
 }
 .generate-picks-icon {
-  fill: #FFFFFF;
+  fill: $chucksPick3White;
   height: 90%;
   width: 90%;
-  stroke: #FFFFFF;
+  stroke: $chucksPick3White;
   stroke-width: 5px;
   margin-top: 10vh;
 
@@ -60,10 +63,10 @@ ion-grid {
 
 }
 .view-picks-icon {
-  fill: #FFFFFF;
+  fill: $chucksPick3White;
   height: 90%;
   width: 90%;
-  stroke: #FFFFFF;
+  stroke: $chucksPick3White;
   stroke-width: 5px;
   margin-top: 13vh;
 
@@ -78,6 +81,7 @@ ion-grid {
   position: relative;
   bottom: -3em;
   right: -2em;
+  z-index: 99;
 
   @include  for-size(iPhone5-SE) {
     bottom: -25vh;
@@ -112,19 +116,19 @@ ion-grid {
 }
 
 .indicator.not-drawn-yet-with-generated-picks {
-  background-color: yellow;
+  background-color: $chucksPick3Yellow;
 }
 
 .picks-indicator.not-drawn-yet-with-generated-picks.selected {
-  background-color: yellow;
+  background-color: $chucksPick3Yellow;
 }
 
 .picks-indicator.drawn-with-generated-picks-with-winners {
-  background-color: green;
+  background-color: $chucksPick3Green;
 }
 
 .picks-indicator.drawn-with-generated-picks-with-winners.selected {
-  background-color: green;
+  background-color: $chucksPick3Green;
 }
 
 
