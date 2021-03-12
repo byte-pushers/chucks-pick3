@@ -1,17 +1,15 @@
-<div class="sign-up-confirmation">
-<div class="container d-flex sign-up-card justify-content-center align-items-center">
-  <div class=" text-center align-items-center card  m-5 p-5">
-    <img class="confirmation-icon" src="../../../assets/images/menuIcons/sign-up-confirmation.svg">
-    <h1><b>You're On The List!</b></h1>
-    We look forward to presenting you the best lotto experience around.<br> Stay tuned for any notifications and releases!
+<div class="container d-flex justify-content-center align-items-center" id="container-jumbotron">
+  <div class=" jumbotron jumbotron-fluid w-50 p-3">
+    <h1 class="display-4 text-success">Successful Signup!</h1>
     <hr>
-
-    <p><a class="btn sign-up-btn btn-sm" [routerLink]="'/home'"
-          routerLinkActive="active"
+    <p>Reached this page in error? <a [routerLink]="'/home'"
+                                      routerLinkActive="active" [queryParams]="{showSubNavBar: false}">Click Here</a>
+    </p>
+    <p><a class="btn btn-primary btn-sm" [routerLink]="'/home'"
+          routerLinkActive="active" [queryParams]="{showSubNavBar: false}"
           role="button">
       Continue to Home
     </a>
     </p>
   </div>
-</div>
 </div>

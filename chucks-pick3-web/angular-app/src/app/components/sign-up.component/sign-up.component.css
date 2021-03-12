@@ -1,24 +1,3 @@
-.sign-up-hero {
-  background-color: #ffd743;
-  width: 100%;
-  padding-top: 10em;
-  padding-bottom: 3em;
-  place-content: center;
-}
-
-.sign-up-form {
-  background-color: #e7e7e7;
-  width: 100%;
-
-}
-
-
-
-.sign-up-hero-text {
-
-  text-align: center;
-}
-
 .btn-block {
   margin-top: 0px;
 }
@@ -48,7 +27,7 @@
 }
 
 label {
-  text-align: left;
+  text-align: left ;
 }
 
 /**ANDROID**/
