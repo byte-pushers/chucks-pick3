@@ -23,7 +23,6 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
               "src/assets/scss/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/scss/app-instructions-style-sheet.css",

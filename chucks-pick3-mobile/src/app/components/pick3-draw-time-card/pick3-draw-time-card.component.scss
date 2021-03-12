@@ -16,7 +16,16 @@
   }
 }
 
+.time-of-day-icon {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 12vh;
+  font-size: 15vw;
+  @include for-size(iPhone5-SE) {
+    font-size: 12vw;
+  }
 
+}
 
 .time-of-day-text {
   text-align: center;
