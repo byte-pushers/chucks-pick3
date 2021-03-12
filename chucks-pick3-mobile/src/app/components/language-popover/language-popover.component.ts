@@ -8,7 +8,6 @@ import {PopoverController} from '@ionic/angular';
     styleUrls: ['./language-popover.component.scss'],
 })
 export class LanguagePopoverComponent implements OnInit {
-lang = 'en';
     constructor(public translate: TranslateService,
                 public popoverCtrl: PopoverController) {
         translate.setDefaultLang('en');

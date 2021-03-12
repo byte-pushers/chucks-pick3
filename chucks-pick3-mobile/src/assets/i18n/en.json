@@ -2,7 +2,7 @@
 
 
   "langSwitch": {
-    "test": "EN", "//comment": "Used to determine which setting the language is on.",
-    "language": "ES"
+    "selectedLanguage": "EN", "//comment": "Used to determine which setting the language is on."
+
   }
 }
