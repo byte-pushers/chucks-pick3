@@ -7,7 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { Pick3DrawDateCardComponent } from '../components/pick3-draw-date-card/pick3-draw-date-card.component';
 import { Pick3DrawTimeCardComponent } from '../components/pick3-draw-time-card/pick3-draw-time-card.component';
-import { CountdownTimerComponent } from "../components/countdown-timer/countdown-timer.component";
+import { CountdownTimerComponent } from '../components/countdown-timer/countdown-timer.component';
 import {TranslateModule} from '@ngx-translate/core';
 
 
