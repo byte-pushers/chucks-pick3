@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       }
     });
-    this.displayFeatureButtonDiv();
+    this.displayFeatureButtonDesktop();
+    this.displayFeatureButtonTablet();
     document.getElementById('viewField').style.display = 'block';
     document.getElementById('selectField').style.display = 'none';
     document.getElementById('generateField').style.display = 'none';
@@ -81,10 +82,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     return isDesktopResolution;
   }
 
-  public displayFeatureDiv(input) {
+  public displayFeatureDivDesktop(input) {
     // tslint:disable-next-line:max-line-length
-    const featureFields = ['viewField', 'selectField', 'generateField', 'writeField', 'viewFieldTablet',
-      'selectFieldTablet','generateFieldTablet', 'writeFieldTablet'];
+    const featureFields = ['viewField', 'selectField', 'generateField', 'writeField'];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < featureFields.length; i++) {
+      if (featureFields[i].lastIndexOf(input) === 0) {
+        document.getElementById(featureFields[i]).style.display = 'block';
+        featureFields.splice(i, 1);
+        this.removeFeatureDiv(featureFields);
+      }
+    }
+  }
+
+  public displayFeatureDivTablet(input) {
+    // tslint:disable-next-line:max-line-length
+    const featureFields = [ 'viewFieldTablet',
+      'selectFieldTablet', 'generateFieldTablet', 'writeFieldTablet'];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < featureFields.length; i++) {
       if (featureFields[i].lastIndexOf(input) === 0) {
@@ -102,7 +116,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public displayFeatureButtonDiv() {
+  public displayFeatureButtonDesktop() {
     const header = document.getElementById('featureButtonSection');
     const btns = header.getElementsByClassName('how-to-title');
     // tslint:disable-next-line:prefer-for-of
@@ -113,6 +127,19 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.className += ' activeHowTo';
       });
   }
+  }
+
+  public displayFeatureButtonTablet() {
+    const header = document.getElementById('featureButtonSectionTablet');
+    const btns = header.getElementsByClassName('how-to-title-tablet');
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+        const current = document.getElementsByClassName('activeHowTo-tablet');
+        current[0].className = current[0].className.replace(' activeHowTo-tablet', '');
+        this.className += ' activeHowTo-tablet';
+      });
+    }
   }
 
 }

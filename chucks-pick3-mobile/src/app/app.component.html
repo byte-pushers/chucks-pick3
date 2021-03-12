@@ -1,28 +1,43 @@
 <ion-app>
+<ion-menu menuId="main-menu" contentId="main" side="end" type="push">
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
-      </ion-buttons>
-      <ion-buttons slot="primary">
-        <!--<ion-button>
-          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-        </ion-button>-->
-        <!--<ion-icon name="home"></ion-icon>-->
-        <ion-icon src="/assets/icon/home-icon.svg"></ion-icon>
-      </ion-buttons>
-
-      <ion-title></ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+      <ion-item>
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Inbox</ion-label>
+      </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+      <ion-item>
+        <ion-icon name="person" slot="start"></ion-icon>
+        <ion-label>Account</ion-label>
+      </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+      <ion-item>
+        <ion-icon name="settings" slot="start"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
   <ion-content class="ion-padding">
-    <ion-router-outlet></ion-router-outlet>
+    <ion-router-outlet id="main"></ion-router-outlet>
   </ion-content>
 
-  <!--<ion-app-footer.component>
-    <ion-toolbar>
-      <ion-title>Footer</ion-title>
+  <ion-footer>
+    <ion-toolbar color="transparent">
+      <ion-buttons slot="start">
+
+        <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-app-footer.component>-->
+  </ion-footer>
 </ion-app>

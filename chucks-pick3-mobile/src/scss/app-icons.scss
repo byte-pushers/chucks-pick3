@@ -1,0 +1,158 @@
+@import "../../src/breakpoints.scss";
+
+/* Icons for draw date component */
+.dot {
+  height: 50px;
+  width: 50px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+  color: black;
+  line-height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 50px;
+    width: 50px;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 60px;
+    width: 60px;
+  }
+  @include for-size(iPhoneX) {
+    height: 55px;
+    width: 55px;
+  }
+  @include for-size(iPad) {
+    height: 80px;
+    width: 80px;
+  }
+  @include for-size(iPad-Pro) {
+    height: 85px;
+    width: 85px;
+  }
+
+
+}
+
+.view-picks-icon {
+  fill: #FFFFFF;
+  height: 90%;
+  width: 90%;
+  stroke: #FFFFFF;
+  stroke-width: 5px;
+
+  @include for-size(iPhone5-SE) {
+    height: 75%;
+    width: 75%;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 75%;
+    width: 75%;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 75%;
+    width: 75%;
+  }
+  @include for-size(iPhoneX) {
+    height: 85%;
+    width: 85%;
+  }
+  @include for-size(iPad) {
+    height: 55%;
+    width: 55%;
+  }
+  @include for-size(iPad-Pro) {
+    height: 55%;
+    width: 55%;
+  }
+
+
+}
+
+
+/* Icons for draw time component*/
+
+.time-of-day-icon {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 12vh;
+  font-size: 15vw;
+  @include for-size(iPhone5-SE) {
+    font-size: 9.8vw;
+  }
+  @include for-size(iPhone6-7-8) {
+    font-size: 11vw;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    font-size: 10.3vw;
+  }
+  @include for-size(iPhoneX) {
+    font-size: 11.6vw;
+  }
+  @include  for-size(iPad) {
+    font-size: 9.3vw;
+  }
+  @include for-size(iPad-Pro) {
+    font-size: 9vw;
+  }
+}
+
+/* Icons for footer and header*/
+ion-icon {
+  font-size: 24px;
+
+  margin-left: 5px;
+
+  @include for-size(iPhone5-SE) {
+    font-size: 30px;
+  }
+  @include for-size(iPhone6-7-8) {
+    font-size: 35px;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    font-size: 40px;
+  }
+  @include for-size(iPhoneX) {
+    font-size: 35px;
+  }
+  @include  for-size(iPad) {
+    font-size: 50px;
+  }
+  @include for-size(iPad-Pro) {
+    font-size: 55px;
+  }
+}
+
+ion-menu-button {
+  color: #353535;
+
+  @include for-size(iPhone5-SE) {
+    font-size: 30px;
+  }
+  @include for-size(iPhone6-7-8) {
+    font-size: 35px;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    font-size: 40px;
+  }
+  @include for-size(iPhoneX) {
+    font-size: 35px;
+  }
+  @include  for-size(iPad) {
+    font-size: 50px;
+  }
+  @include for-size(iPad-Pro) {
+    font-size: 55px;
+  }
+}
+
+.toolbar-icon {
+  color: #d7d7d7;
+}

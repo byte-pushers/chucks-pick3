@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { OverlayModule } from '@angular/cdk/overlay';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from 'src/app/shared/components/app.component/app.component';
@@ -17,7 +18,6 @@ import { FormsModule } from '@angular/forms';
 import { FormValidationService } from 'src/app/services/form-validation.service';
 import { NameValidator } from 'src/app/directives/name-validator.directive';
 import { EmailValidator } from 'src/app/directives/email-validator.directive';
-import { NumberValidator } from 'src/app/directives/number-validator.directive';
 import { InfoViewComponent } from 'src/app/components/info-view.component/info-view.component';
 import { InfoInterfaceComponent } from 'src/app/components/info-interface.component/info-interface.component';
 import { InfoGenerateComponent } from 'src/app/components/info-generate.component/info-generate.component';
@@ -36,8 +36,12 @@ import { UserNameValidator } from './directives/user-name-validator.directive';
 import { PasswordValidator } from './directives/password.directive';
 import { MockCustomerService } from './services/mock-customer.service';
 import { CustomerDetailsComponent } from './components/customer-details.component/customer-details.component';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { AppAlertOverlayModalComponent } from './shared/components/app-alert-overlay-modal.component/app-alert-overlay-modal.component';
+import { StateNameService } from './services/state-name.service';
+import { PhoneNumberDirective} from "./directives/phone-number.directive";
 
 @NgModule({
   declarations: [
@@ -51,7 +55,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LogInComponent,
     NameValidator,
     EmailValidator,
-    NumberValidator,
     InfoViewComponent,
     InfoInterfaceComponent,
     InfoGenerateComponent,
@@ -65,7 +68,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserNameValidator,
     PasswordValidator,
     CustomerDetailsComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    AppAlertOverlayModalComponent,
+    PhoneNumberDirective
   ],
   imports: [
     BrowserModule,
@@ -76,14 +81,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScrollEventModule,
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OverlayModule,
+    MatCardModule
   ],
   providers: [
     MemberService,
     SubNavBarService,
     FormValidationService,
     MockCustomerService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    StateNameService
+  ],
+  entryComponents: [
+    // Needs to be added here because otherwise we can't
+    // dynamically render this component at runtime
+    AppAlertOverlayModalComponent
   ],
   bootstrap: [AppComponent]
 })

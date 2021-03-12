@@ -1,0 +1,15 @@
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background-color: rgba(13, 13, 13, 0.4);
+}
+
+
+::ng-deep mat-card {
+  padding: 5em !important;
+  text-align: center;
+}
+
+
+::ng-deep .overlay-btn {
+  background-color: #2dd36f;
+  margin-top: 2em !important;
+}

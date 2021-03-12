@@ -116,7 +116,14 @@ matrix:
         - cd chucks-pick3-web/angular-app/
       install:
         - npm install
-        - npm run build
+      script:
+        - if [ $TRAVIS_BRANCH = "master" ]; then
+          echo -e "Running npm run build --prod";
+          npm run build -- --prod;
+          else
+          echo -e "Running npm run build --configuration dev";
+          npm run build -- --configuration dev;
+          fi;
       deploy:
         - provider: script
           skip_cleanup: true

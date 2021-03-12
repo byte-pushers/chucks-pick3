@@ -1,0 +1,13 @@
+@import ".././breakpoints";
+@import "../theme/variables.scss";
+
+ion-toolbar {
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: $darkModeToolbar;
+}
+
+.language {
+  color: $darkModeToolbarItems;
+  font-size: .9em;
+}

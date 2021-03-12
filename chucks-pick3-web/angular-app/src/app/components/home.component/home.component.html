@@ -29,13 +29,13 @@
         Avialable only on Chuck's Pick 3 App soon. </p>
     </div>
     <div class=" col-9" style="margin-bottom: 20%;  margin-right: auto; margin-left:auto;">
-      <button class="btn demo-btn"><b>Demo</b></button>
+      <button [routerLink]="'/sign-up'" class="btn demo-btn"><b>Sign Up</b></button>
     </div>
   </div>
   <div class="row">
 
     <div class="col-12 hero-image-mobile">
-      <img src="../../../assets/images/write-picks-mock-up.png" class="header-image-section-mobile">
+      <img src="../../../assets/images/iphone-view-image.png" class="header-image-section-mobile">
     </div>
 
   </div>
@@ -72,7 +72,7 @@
             style="height: 70px; width: 70px; background-image:
              url('../../../assets/images/cp3WebIconsGenerate.svg');
               margin-top: 10%; margin-bottom: 5%"></div>
-          <h3 class="card-title">Generate Picks</h3>
+          <h3 class="card-title"><b>Generate Picks</b></h3>
           <p class="card-text"> With a previously drawn Pick3 Lottery number and our Pick3 Lottery algorithm, we
             can generate a list of Pick3 Lottery numbers; which you can
             then manually play at your local Lottery sales agent!</p>
@@ -88,7 +88,7 @@
             style="height: 70px; width: 70px; background-image:
              url('../../../assets/images/cp3WebIconsWinning.svg');
               margin-top: 10%;  margin-bottom: 5%"></div>
-          <h3 class="card-title">View Winning Picks</h3>
+          <h3 class="card-title"><b>View Winning Picks</b></h3>
           <p class="card-text"> Get live Pick 3 Lottery drawing results at your finger tips!<br>
             The app will notify you if one of the generated numbers is a winner via the color indicator.</p>
         </div>
@@ -103,7 +103,7 @@
             style="height: 70px; width: 70px;
              background-image: url('../../../assets/images/cp3WebIconsHistory.svg');
              margin-top: 10%; margin-bottom: 5%"></div>
-          <h3 class="card-title">View Past Picks</h3>
+          <h3 class="card-title"><b>View Past Picks</b></h3>
           <p class="card-text">See a history of the generated numbers from the past week by simply swiping
             right!</p>
         </div>
@@ -120,7 +120,7 @@
     </div>
     <div class="col-12 " style="border-bottom: #606060 solid 1px">
       <img src="../../../assets/images/iphone-view-image.png">
-      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">1. Draw Date Card</h4>
+      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;"><b>1. Draw Date Card</b></h4>
       <p class="how-to-paragraph-mobile">
         The Draw Date Card show all the draw times for the current date. Each Draw Time Card has color indicators that
         indicate the state of your generated numbers for a specific draw time:
@@ -134,7 +134,7 @@
     </div>
     <div class="col-12" style="border-bottom: #606060 solid 1px">
       <img src="../../../assets/images/iphone-generate-screen.png">
-      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">2. Select Previous Winner</h4>
+      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;"><b>2. Select Previous Winner</b></h4>
       <p class="how-to-paragraph-mobile">
         In order to generate a list of numbers you need a previously drawn number by selecting a:
       </p>
@@ -149,7 +149,7 @@
     </div>
     <div class="col-12" style="border-bottom: #606060 solid 1px">
       <img src="../../../assets/images/iphone-generate-image.png">
-      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">3. Generate Picks</h4>
+      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;"><b>3. Generate Picks</b></h4>
       <p class="how-to-paragraph-mobile">
         In order to select the date and time for the new picks select the:
       </p>
@@ -164,7 +164,7 @@
     </div>
     <div class="col-12">
       <img src="../../../assets/images/iphone-writeimage.png">
-      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;">4. Write Them In</h4>
+      <h4 class="how-to-paragraph-title-mobile" style="margin-top: 3%;"><b>4. Write Them In</b></h4>
       <p class="how-to-paragraph-mobile">
         After you've generated picks, you will be presented with a generated number list; that you can choose to
         play at your local Pick3 Lottery sales agent!
@@ -176,6 +176,9 @@
 
 <div class="container-fluid try-it-section-mobile show-mobile">
   <div class="row">
+    <div class="col-12 mobile-img">
+      <img src="../../../assets/images/web-design.svg" class="try-it-out-image-mobile">
+    </div>
     <div class="col-12">
       <h1>Try It Out</h1>
     </div>
@@ -185,8 +188,9 @@
         Take a test drive before it's released!
       </p>
     </div>
-    <div class=" col-12" style="  margin-right: auto; margin-left:auto;">
-      <button class="btn demo-btn"><b>Demo</b></button>
+    <div class=" col-9" style="  margin-right: auto; margin-left:auto;">
+      <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens"><button class="btn demo-btn"><b>Demo</b></button></a>
+
     </div>
   </div>
 </div>
@@ -206,7 +210,7 @@
       </p>
     </div>
     <div class=" col-9" style="  margin-right: auto; margin-left:auto;">
-      <button class="btn sign-up-btn"><b>Sign Up</b></button>
+      <button class="btn sign-up-btn" [routerLink]="'/sign-up'"><b>Sign Up</b></button>
     </div>
   </div>
 </div>
@@ -227,7 +231,7 @@
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="'/sign-up'" class="btn header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
@@ -330,23 +334,27 @@
 
         <div id="featureButtonSection" class="col-2 how-to-list">
           <div>
-            <img src="../../../assets/images/dots-up.svg" style="height: 6vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2dd36f" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
           </div>
-          <a id="viewButton" class="how-to-title activeHowTo" (click)="displayFeatureDiv('viewField')"><h4
+          <a id="viewButton" class="how-to-title activeHowTo" (click)="displayFeatureDivDesktop('viewField')"><h4
             class="how-to-title-text">Draw</h4></a>
           <div><span></span></div>
-          <a id="selectButton" class="how-to-title" (click)="displayFeatureDiv('selectField');"><h4
+          <a id="selectButton" class="how-to-title" (click)="displayFeatureDivDesktop('selectField');"><h4
             class="how-to-title-text">Select</h4></a>
           <div><span></span></div>
-          <a id="generateButton" class="how-to-title" (click)="displayFeatureDiv('generateField')"><h4
+          <a id="generateButton" class="how-to-title" (click)="displayFeatureDivDesktop('generateField')"><h4
             class="how-to-title-text">Generate</h4></a>
-          <a id="writeButton" class="how-to-title" (click)="displayFeatureDiv('writeField')"><h4
+          <a id="writeButton" class="how-to-title" (click)="displayFeatureDivDesktop('writeField')"><h4
             class="how-to-title-text">Write</h4></a>
           <div>
-            <img src="../../../assets/images/dots-down.svg" style="height: 6vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#2dd36f" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
           </div>
         </div>
-        <div class="col-10">
+        <div class="col-8 mx-auto">
           <div class="row">
             <div id="viewField" class="col-12 how-to-section-info ">
               <div class="row">
@@ -455,8 +463,10 @@
               Lottery app.<br>
               Take a test drive before it's released!</p>
           </div>
-          <div class=" col-6" style="  padding: revert">
-            <button class="btn demo-btn"><b>Demo</b></button>
+          <div class=" col-6" style="margin-top: 4em; padding: revert">
+            <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
+              <button class="btn demo-btn"><b>Demo</b></button>
+            </a>
 
           </div>
         </div>
@@ -478,7 +488,7 @@
             <p style="text-align: center; font-size: 22px">Sign up to find out when Chuck's Pick 3 will be released and
               get notified of any
               updates. </p>
-            <button class="btn sign-up-btn"><b>Sign Up</b></button>
+            <button class="btn sign-up-btn" [routerLink]="['/sign-up']" style="margin-top: 4em;"><b>Sign Up</b></button>
           </div>
           <div class="col-3">
 
@@ -506,7 +516,7 @@
             <div>
               Play your state's pick 3 lotto game and create your own luck. Available only on Chuck's Pick 3 App soon.
             </div>
-            <button class="btn header-btn"><b>Sign Up To Get Notified</b></button>
+            <button [routerLink]="['/sign-up']"  class="btn header-btn"><b>Sign Up To Get Notified</b></button>
           </div>
         </div>
         <div class="col-5">
@@ -526,12 +536,12 @@
     </div>
   </div>
   <div class="intro-section show-tablet">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
+    <div class="container-fluid ">
+      <div class="row ">
+        <div class="col-10 mx-auto">
           <h1>The Game Has Changed</h1>
         </div>
-        <div class="col-12">
+        <div class="col-9 mx-auto">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tristique semper. Nullam lacinia
             tincidunt lectus vel volutpat. Vivamus vitae urna convallis, aliquet velit at, varius ex. Proin sollicitudin
             venenatis gravida. In non velit at felis iaculis dignissim nec sed lectus. Integer dignissim tempor risus ac
@@ -543,8 +553,8 @@
   </div>
   <div class="features-section show-tablet">
     <div class="container-fluid" style="margin-left: auto; margin-right: auto">
-      <div class="row">
-        <div class="col-12" style="margin-bottom: 3%">
+      <div class="row ">
+        <div class="col-10 mx-auto ">
           <h1>Key Features</h1>
         </div>
       </div>
@@ -556,7 +566,7 @@
                 style="height: 70px; width: 70px; background-image:
              url('../../../assets/images/cp3WebIconsGenerate.svg');
               margin-top: 10%; margin-bottom: 5%"></div>
-              <h3 class="card-title">Generate Picks</h3>
+              <h3 class="card-title"><b>Generate Picks</b></h3>
               <p class="card-text"> With a previously drawn Pick3 Lottery number and our Pick3 Lottery algorithm, we
                 can generate a list of Pick3 Lottery numbers; which you can
                 then manually play at your local Lottery sales agent!</p>
@@ -570,7 +580,7 @@
                 style="height: 70px; width: 70px; background-image:
              url('../../../assets/images/cp3WebIconsWinning.svg');
               margin-top: 10%;  margin-bottom: 5%"></div>
-              <h3 class="card-title">View Winning Picks</h3>
+              <h3 class="card-title"><b>View Winning Picks</b></h3>
               <p class="card-text"> Get live Pick 3 Lottery drawing results at your finger tips!<br>
                 The app will notify you if one of the generated numbers is a winner via the color indicator.</p>
             </div>
@@ -583,7 +593,7 @@
                 style="height: 70px; width: 70px;
              background-image: url('../../../assets/images/cp3WebIconsHistory.svg');
              margin-top: 10%; margin-bottom: 5%"></div>
-              <h3 class="card-title">View Past Picks</h3>
+              <h3 class="card-title"><b>View Past Picks</b></h3>
               <p class="card-text">See a history of the generated numbers from the past week by simply swiping
                 right!</p>
             </div>
@@ -601,23 +611,27 @@
 
         <div id="featureButtonSectionTablet" class="col-2 how-to-list">
           <div>
-            <img src="../../../assets/images/dots-up.svg" style="height: 6vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#2dd36f" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+            </svg>
           </div>
-          <a id="viewButtonTablet" class="how-to-title" (click)="displayFeatureDiv('viewFieldTablet')"><h6
+          <a id="viewButtonTablet" class="how-to-title-tablet activeHowTo-tablet" (click)="displayFeatureDivTablet('viewFieldTablet')"><h6
             class="how-to-title-text">Draw</h6></a>
           <div><span></span></div>
-          <a id="selectButtonTablet" class="how-to-title" (click)="displayFeatureDiv('selectFieldTablet');"><h6
+          <a id="selectButtonTablet" class="how-to-title-tablet" (click)="displayFeatureDivTablet('selectFieldTablet');"><h6
             class="how-to-title-text">Select</h6></a>
           <div><span></span></div>
-          <a id="generateButtonTablet" class="how-to-title" (click)="displayFeatureDiv('generateFieldTablet')"><h6
+          <a id="generateButtonTablet" class="how-to-title-tablet" (click)="displayFeatureDivTablet('generateFieldTablet')"><h6
             class="how-to-title-text">Generate</h6></a>
-          <a id="writeButtonTablet" class="how-to-title" (click)="displayFeatureDiv('writeFieldTablet')"><h6
+          <a id="writeButtonTablet" class="how-to-title-tablet" (click)="displayFeatureDivTablet('writeFieldTablet')"><h6
             class="how-to-title-text">Write</h6></a>
           <div>
-            <img src="../../../assets/images/dots-down.svg" style="height: 6vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#2dd36f" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
           </div>
         </div>
-        <div class="col-10">
+        <div class="col-8 mx-auto">
           <div class="row">
             <div id="viewFieldTablet" class="col-12 how-to-section-info ">
               <div class="row">
@@ -714,19 +728,21 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <img src="../../../assets/images/web-design.svg" class="try-it-out-image">
+          <img src="../../../assets/images/web-design.svg" class="try-it-out-image-tablet">
         </div>
         <div class="col-6">
           <div>
             <h1 class="section-header">Try It Out</h1>
           </div>
           <div style="text-align: left; padding-right: 7vw">
-            <p style="text-align: left; font-size: 22px"> We're currently hard at work developing the Chuck's Pick3
+            <p style="text-align: left;"> We're currently hard at work developing the Chuck's Pick3
               Lottery app.<br>
               Take a test drive before it's released!</p>
           </div>
           <div class=" col-6" style="  padding: revert">
-            <button class="btn demo-btn"><b>Demo</b></button>
+            <a href="https://projects.invisionapp.com/share/V6PRHMQAZS8#/screens">
+              <button class="btn demo-btn"><b>Demo</b></button>
+            </a>
 
           </div>
         </div>
@@ -745,10 +761,10 @@
 
           </div>
           <div class="col-6">
-            <p style="text-align: center; font-size: 22px">Sign up to find out when Chuck's Pick 3 will be released and
+            <p style="text-align: center;">Sign up to find out when Chuck's Pick 3 will be released and
               get notified of any
               updates. </p>
-            <button class="btn sign-up-btn"><b>Sign Up</b></button>
+            <button [routerLink]="['/sign-up']" class="btn sign-up-btn"><b>Sign Up</b></button>
           </div>
           <div class="col-3">
 
