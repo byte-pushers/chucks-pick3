@@ -194,8 +194,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         }, error => {
             //TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
-            this.toastService.presentToast('Internal Error',
-                'Please try again later.', 'internet-not-available');
+            this.toastService.presentToast('Results Not Available',
+                'Please try again later.', 'results-not-available');
         });
     }
 
