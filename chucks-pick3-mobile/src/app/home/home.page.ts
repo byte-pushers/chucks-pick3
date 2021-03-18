@@ -41,7 +41,7 @@ export class HomePage {
       event: ev,
       translucent: true
     });
-    popover.style.cssText = '--min-width: 4em; --max-width: 4em;';
+    popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     return await popover.present();
 
   }

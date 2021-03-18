@@ -7,7 +7,7 @@
     <ion-col size="8">
       <ion-row>
         <ion-col>
-          <span style="font-size: 7.5vw;font-weight: bolder;" class="draw-date-text">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
+          <span style="font-size: 7.5vw;font-weight: bolder;" class="draw-date-title draw-date-text">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
           <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
             <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg" class="time-of-day-icon"></ion-icon>
             {{data.getDrawTimeAsString()}}
@@ -26,12 +26,13 @@
           <div style="display: inline" *ngIf="showCountDownToDrawing === true">
             <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
           </div>
+          <p style="color: white">{{slideNumber}}</p>
         </ion-col>
       </ion-row>
     </ion-col>
     <ion-col size="2" style=" margin-left: 0px">
       <ion-icon src="../../../assets/generate-picks-icon.svg" class="view-picks-icon" style="float: left"></ion-icon>
-      <p>{{slideNumber}}</p>
+
     </ion-col>
   </ion-row>
   <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
