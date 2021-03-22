@@ -1,11 +1,16 @@
 import * as Object from 'bytepushers-js-obj-extensions';
+import {TranslateCheckService} from '../services/translate-check.service';
 
 export namespace Pick3DrawTimeEnum {
     export enum Pick3DrawTimeEnum {
         MORNING,
-        DAY ,
+        DAY,
         EVENING,
-        NIGHT
+        NIGHT,
+        MANANA,
+        DIA,
+        TARDE,
+        NOCHE
     }
 
     export function toString(pick3DrawTimeEnum: Pick3DrawTimeEnum): string {
@@ -25,7 +30,7 @@ export namespace Pick3DrawTimeEnum {
                     }
                 }
             } else if (typeof keyOrValue === 'number') {
-                switch(keyOrValue) {
+                switch (keyOrValue) {
                     case Pick3DrawTimeEnum.MORNING:
                         pick3DrawTimeEnum = Pick3DrawTimeEnum.MORNING;
                         break;
@@ -37,6 +42,18 @@ export namespace Pick3DrawTimeEnum {
                         break;
                     case Pick3DrawTimeEnum.NIGHT:
                         pick3DrawTimeEnum = Pick3DrawTimeEnum.NIGHT;
+                        break;
+                    case Pick3DrawTimeEnum.MANANA:
+                        pick3DrawTimeEnum = Pick3DrawTimeEnum.MANANA;
+                        break;
+                    case Pick3DrawTimeEnum.DIA:
+                        pick3DrawTimeEnum = Pick3DrawTimeEnum.DIA;
+                        break;
+                    case Pick3DrawTimeEnum.TARDE:
+                        pick3DrawTimeEnum = Pick3DrawTimeEnum.TARDE;
+                        break;
+                    case Pick3DrawTimeEnum.NOCHE:
+                        pick3DrawTimeEnum = Pick3DrawTimeEnum.NOCHE;
                         break;
                 }
             }

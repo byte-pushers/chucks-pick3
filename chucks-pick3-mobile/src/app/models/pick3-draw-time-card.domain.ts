@@ -3,6 +3,7 @@ import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
 import { Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
 import { Pick3DrawDateCard } from "./pick3-draw-date-card";
 import * as Object from 'bytepushers-js-obj-extensions';
+import {toTitleCase} from 'codelyzer/util/utils';
 
 export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private pick3DrawCardId: number;
@@ -36,7 +37,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     setIcon(icon: string): void {
-        this.icon = icon
+        this.icon = icon;
     }
 
     getState(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum {
@@ -48,7 +49,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     getTitle(): string {
-        return this.title;
+        return toTitleCase(this.title);
     }
 
     setTitle(title: string): void {

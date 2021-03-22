@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {TranslateCheckService} from './services/translate-check.service';
+
 // import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 // import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
 // import { Platform } from '@ionic/angular';
@@ -43,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
+        TranslateCheckService
         /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/
     ],
     bootstrap: [AppComponent]

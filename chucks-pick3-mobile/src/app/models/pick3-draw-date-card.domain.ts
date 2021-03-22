@@ -1,5 +1,6 @@
 import {Pick3DrawDateCard} from "./pick3-draw-date-card";
 import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+import {toTitleCase} from 'codelyzer/util/utils';
 
 export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private readonly TITLE: string = 'Pick 3 Lottery';
@@ -25,7 +26,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     }
 
     getDrawTimeAsString(): string {
-        return Pick3DrawTimeEnum.toString(this.drawTime);
+        return toTitleCase(Pick3DrawTimeEnum.toString(this.drawTime));
     }
 
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {

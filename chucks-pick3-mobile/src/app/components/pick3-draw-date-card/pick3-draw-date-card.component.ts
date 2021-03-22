@@ -10,6 +10,7 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
+import {TranslateCheckService} from '../../services/translate-check.service';
 import {title} from 'ionic/lib/color';
 
 @Component({
@@ -22,26 +23,26 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
-    public showCountDownToDrawing: boolean = false;
-
+    public showCountDownToDrawing = false;
+    setLanguage = 'es';
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING),
+            title: this.switchLangMorning(this.setLanguage),
             icon: 'morning-icon',
             dateTime: new Date().setHours(10, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY),
+            title: this.switchLangDay(this.setLanguage),
             icon: 'day-icon',
             dateTime: new Date().setHours(11, 45, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING),
+            title: this.switchLangEvening(this.setLanguage),
             icon: 'evening-icon',
             dateTime: new Date().setHours(17, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT),
+            title: this.switchLangNight(this.setLanguage),
             icon: 'night-icon',
             dateTime: new Date().setHours(21, 30, 0, 0)
         })
@@ -51,21 +52,23 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
-                public drawStateService: DrawStateService) {
+                public drawStateService: DrawStateService,
+                public checkLang: TranslateCheckService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
     ngOnInit() {
-        //console.log("OnInit - slide#: " + this.slideNumber);
+        // console.log("OnInit - slide#: " + this.slideNumber);
         const someDateTime = new Date();
-        //someDateTime.setDate(someDateTime.getDate() - 1);
-        //someDateTime.setHours(17, 30, 0, 0);
-        let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
+        // someDateTime.setDate(someDateTime.getDate() - 1);
+        // someDateTime.setHours(17, 30, 0, 0);
+        const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
-        //this.setDrawTimeCardsState();
-        //console.log("setData() start.");
+        // this.setDrawTimeCardsState();
+        // console.log("setData() start.");
+        // tslint:disable-next-line:max-line-length
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
-        //console.log("setData() end.");
+        // console.log("setData() end.");
     }
 
     ngOnDestroy() {
@@ -75,6 +78,46 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.showCountDownToDrawing = false;
         this.drawTimes = [];
         this.pick3StateLottery = null;
+    }
+
+    public switchLangMorning(lang) {
+        if (lang === 'en') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING);
+            return lang;
+        } else if (lang === 'es') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MANANA);
+            return lang;
+        }
+    }
+
+    public switchLangDay(lang) {
+        if (lang === 'en') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+            return lang;
+        } else if (lang === 'es'){
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DIA);
+            return lang;
+        }
+    }
+
+    public switchLangEvening(lang) {
+        if (lang === 'en') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING);
+            return lang;
+        } else if (lang === 'es') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.TARDE);
+            return lang;
+        }
+    }
+
+    public switchLangNight(lang) {
+        if (lang === 'en') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT);
+            return lang;
+        } else if (lang === 'es') {
+            lang = Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NOCHE);
+            return lang;
+        }
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
@@ -142,7 +185,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
-            //const compareResult = drawTime.compareTo(pick3DrawDateCard);
+            // const compareResult = drawTime.compareTo(pick3DrawDateCard);
 
             if (drawTime.getTitle().toUpperCase() === Pick3DrawTimeEnum.toString(pick3DrawDateCard.getDrawTime())) {
                 drawTime.setSelected(true);
@@ -180,7 +223,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
+            // TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
@@ -192,7 +235,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
+            // TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
@@ -237,11 +280,11 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
             drawTime.setPick3DrawCardId(this.slideNumber);
 
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                //drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
             }
         });
 
-        //console.log("randomlyMockDrawTimeCardStates() end.");
+        // console.log("randomlyMockDrawTimeCardStates() end.");
     }
 
     private randomEnum<T>(anEnum: T): T[keyof T] {
