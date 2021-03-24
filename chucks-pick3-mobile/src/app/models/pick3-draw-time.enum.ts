@@ -2,10 +2,10 @@ import * as Object from 'bytepushers-js-obj-extensions';
 
 export namespace Pick3DrawTimeEnum {
     export enum Pick3DrawTimeEnum {
-        MORNING,
-        DAY ,
-        EVENING,
-        NIGHT
+        MORNING = 'MORNING',
+        DAY = 'DAY' ,
+        EVENING = 'EVENING',
+        NIGHT = 'NIGHT'
     }
 
     export function toString(pick3DrawTimeEnum: Pick3DrawTimeEnum): string {

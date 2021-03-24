@@ -4,6 +4,8 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 import * as Object from 'bytepushers-js-obj-extensions';
 import { DrawStateService } from '../../services/draw-state.service';
+import {TranslateService} from '@ngx-translate/core';
+import {concat, Observable} from 'rxjs';
 
 @Component({
   selector: 'pick3-draw-time-card',
@@ -24,8 +26,9 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   };
   doCheckCount = 0;
 
-  constructor(private drawStateService: DrawStateService) {
-    //console.log('Constructor');
+  constructor(private drawStateService: DrawStateService,
+              public translate: TranslateService) {
+    translate.setDefaultLang('es');
   }
 
   ngOnInit() {
