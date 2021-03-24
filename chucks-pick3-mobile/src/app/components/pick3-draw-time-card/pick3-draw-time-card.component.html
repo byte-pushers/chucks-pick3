@@ -5,7 +5,7 @@
   </div>
   <div class="draw-time-title" align="left">&nbsp;
     <span  class="time-of-day-text" [ngClass]="getSelectedState()">
-      {{data.getTitle()}}
+      {{"langSwitch." + data.getTitle() | translate}}
     </span>
     <div class="generated-picks-indicator" [ngClass]="drawingTimeCardColorIndicators"></div>
   </div>

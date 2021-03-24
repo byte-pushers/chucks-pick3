@@ -1,6 +1,10 @@
 {
   "langSwitch": {
-    "selectedLanguage": "EN", "//comment": "Used to determine which setting the language is on."
+    "selectedLanguage": "EN", "//comment": "Used to determine which setting the language is on.",
+    "MORNING": "Morning",
+    "DAY": "Day",
+    "EVENING": "Evening",
+    "NIGHT": "Night"
 
   }
 }
