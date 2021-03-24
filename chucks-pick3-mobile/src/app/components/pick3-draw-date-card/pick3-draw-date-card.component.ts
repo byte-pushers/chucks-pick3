@@ -24,6 +24,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     public showCountDownToDrawing: boolean = false;
 
+    debugger;
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: Pick3DrawTimeEnum.toString(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING),
@@ -114,7 +115,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
      */
     private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawDateIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
-        this.data.setDrawState(stateName);
+        this.data.setDrawState(stateName);debugger;
         this.data.setDrawTime(Pick3DrawTimeEnum.toEnum(pick3DrawTime.getType()));
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setDrawDateIcon(drawDateIcon);
@@ -161,7 +162,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         });
     }
 
-    public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+    public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {debugger;
         const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery
             .getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()));
         this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
@@ -205,7 +206,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
             drawTime: winningNumber.time,
             drawResult: winningNumber.number,
         };
-        const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
+        const selectedPick3DrawTime = this.drawTimes.find(drawTime => {debugger;
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeType.toUpperCase()]) {
                 return drawTime;
             }

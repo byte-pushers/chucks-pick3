@@ -1,9 +1,7 @@
 {
-  "langSwitch": {
-    "selectedLanguage": "ES", "//comment": "Used to determine which setting the language is on.",
-    "MORNING": "Mañana",
-    "DAY": "Dia",
-    "EVENING": "Tarde",
-    "NIGHT": "Noche"
-  }
+  "language": "ES",
+  "MORNING": "Mañana",
+  "DAY": "Dia",
+  "EVENING": "Tarde",
+  "NIGHT": "Noche"
 }
