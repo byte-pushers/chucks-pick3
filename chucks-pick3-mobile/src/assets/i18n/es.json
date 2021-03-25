@@ -1,7 +1,7 @@
 {
   "language": "ES",
-  "MORNING": "Mañana",
-  "DAY": "Dia",
-  "EVENING": "Tarde",
-  "NIGHT": "Noche"
+  "draw.time.enum.morning": "Mañana",
+  "draw.time.enum.day": "Dia",
+  "draw.time.enum.evening": "Tarde",
+  "draw.time.enum.night": "Noche"
 }

@@ -1,7 +1,7 @@
 {
   "language": "EN",
-  "MORNING": "Morning",
-  "DAY": "Day",
-  "EVENING": "Evening",
-  "NIGHT": "Night"
+  "draw.time.enum.morning": "Morning",
+  "draw.time.enum.day": "Day",
+  "draw.time.enum.evening": "Evening",
+  "draw.time.enum.night": "Night"
 }
