@@ -58,6 +58,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
                 public drawStateService: DrawStateService) {
+        this.isEnumOrString('test');
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -261,9 +262,9 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private isEnumOrString(value) {
         if (value === '[object Object]' || value instanceof Object) {
-
+console.log('is enum');
         } else if (typeof value === 'string' || value instanceof String) {
-
+console.log('is string');
         }
     }
 }
