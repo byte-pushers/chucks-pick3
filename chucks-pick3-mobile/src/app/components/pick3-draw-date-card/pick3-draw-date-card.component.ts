@@ -10,9 +10,6 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
-import {title} from 'ionic/lib/color';
-import {EnumValue} from '@angular/compiler-cli/src/ngtsc/partial_evaluator';
-import {type} from 'os';
 
 @Component({
     selector: 'pick3-draw-date-card',
@@ -260,13 +257,5 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         const item = Math.floor(Math.random() * Object.keys(anEnum).length);
         const i2 = Object.keys(anEnum)[item];
         return anEnum[i2];
-    }
-
-    private isEnumOrString(value) {
-        if (value === '[object Object]' || value instanceof Object) {
-console.log('is enum');
-        } else if (typeof value === 'string' || value instanceof String) {
-console.log('is string');
-        }
     }
 }
