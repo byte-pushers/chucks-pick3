@@ -166,9 +166,11 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]' + Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]);
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"]' + Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"]);
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[\'draw.time.enum.morning\']' + Pick3DrawTimeEnum.Pick3DrawTimeEnum['draw.time.enum.morning']);
+        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()] = ' + Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]);
+        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"] =' + Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"]);
+        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[\'draw.time.enum.morning\'] =' + Pick3DrawTimeEnum.Pick3DrawTimeEnum['draw.time.enum.morning']);
+
+        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.toEnum(\'draw.time.enum.morning\') =' + Pick3DrawTimeEnum.toEnum('draw.time.enum.morning'));
         const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery
             .getDrawingTimeByName(Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]);
         this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
