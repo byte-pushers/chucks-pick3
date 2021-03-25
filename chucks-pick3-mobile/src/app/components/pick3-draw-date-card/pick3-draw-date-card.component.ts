@@ -55,7 +55,6 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
                 public drawStateService: DrawStateService) {
-        this.isEnumOrString('test');
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
