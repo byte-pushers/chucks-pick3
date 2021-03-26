@@ -17,7 +17,11 @@ const routes: Routes = [
   },{
     path: 'settings',
     loadChildren: () => import('./components/settings/settings.module').then( m => m.SettingsPageModule)
+  },  {
+    path: 'generate-picks',
+    loadChildren: () => import('./components/generate-picks/generate-picks.module').then( m => m.GeneratePicksPageModule)
   }
+
 ];
 
 @NgModule({
