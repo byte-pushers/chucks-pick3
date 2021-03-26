@@ -1,64 +1,65 @@
 import * as Object from 'bytepushers-js-obj-extensions';
+import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
 
 export namespace Pick3DrawTimeCardStateEnum {
     export enum Pick3DrawTimeCardStateEnum {
-        NOT_DRAWN_YET = "not.drawn.yet", // gray
-        NOT_DRAWN_YET_WITH_GENERATED_PICKS = "not.drawn.yet.with.generated.picks", // yellow
-        DRAWN = "drawn", // gray
-        DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS = "drawn.with.generated.picks.with.no.winners", // black
-        DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS = "drawn.with.generated.picks.with.winners" // green
+        NOT_DRAWN_YET , // gray
+        NOT_DRAWN_YET_WITH_GENERATED_PICKS, // yellow
+        DRAWN, // gray
+        DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS, // black
+        DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS // green
     }
 
-    export function isDynamicDisplayType(pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum): boolean {
-        switch (pick3DrawTimeCardStateEnum) {
+    export function getPropertyKey(e: Pick3DrawTimeCardStateEnum): string {
+        let propertyKey: string = null;
+
+        switch(e) {
             case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET:
+                propertyKey = 'card.draw.time.state.not.drawn.yet';
+                break;
             case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+                propertyKey = 'card.draw.time.state.not.drawn.yet.with.generated.picks';
+                break;
             case Pick3DrawTimeCardStateEnum.DRAWN:
+                propertyKey = 'card.draw.time.state.drawn';
+                break;
             case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+                propertyKey = 'card.draw.time.state.draw.time.enum.night';
+                break;
             case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    export function get(keyOrValue: string):  Pick3DrawTimeCardStateEnum {
-        let pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum = null;
-
-        if (Object.isDefinedAndNotNull(keyOrValue)) {
-            if (typeof keyOrValue === 'string') {
-                keyOrValue = keyOrValue.toUpperCase();
-                for (const value in Pick3DrawTimeCardStateEnum) {
-                    if (value === keyOrValue) {
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum[keyOrValue];
-                        break;
-                    }
-                }
-            } else if (typeof keyOrValue === 'number') {
-                switch(keyOrValue) {
-                    case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET:
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
-                        break;
-                    case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS;
-                        break;
-                    case Pick3DrawTimeCardStateEnum.DRAWN:
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN;
-                        break;
-                    case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS;
-                        break;
-                    case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
-                        pick3DrawTimeCardStateEnum = Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS;
-                        break;
-                }
-            }
+                propertyKey = 'card.draw.time.state.drawn.with.generated.picks.with.winners';
+                break;
         }
 
-        return pick3DrawTimeCardStateEnum;
+        return propertyKey
     }
 
-    export function toString(pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum): string {
-        return Pick3DrawTimeCardStateEnum[pick3DrawTimeCardStateEnum];
+    export function toString(e: Pick3DrawTimeCardStateEnum|string): string {
+        let enumString: string = null;
+
+        if (typeof e === "string") {
+            e = e.toUpperCase();
+            e = Pick3DrawTimeCardStateEnum[e];
+        }
+
+        switch(e) {
+            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET:
+                enumString = 'NOT_DRAWN_YET';
+                break;
+            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+                enumString = 'NOT_DRAWN_YET_WITH_GENERATED_PICKS';
+                break;
+            case Pick3DrawTimeCardStateEnum.DRAWN:
+                enumString = 'DRAWN';
+                break;
+            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+                enumString = 'DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS';
+                break;
+            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
+                enumString = 'DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS';
+                break;
+        }
+
+        return enumString;
     }
 }

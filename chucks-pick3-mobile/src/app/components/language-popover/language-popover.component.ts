@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {PopoverController} from '@ionic/angular';
-import {I18nService} from '../../services/i18n.service';
 
 @Component({
     selector: 'app-language-popover',
@@ -9,15 +8,12 @@ import {I18nService} from '../../services/i18n.service';
     styleUrls: ['./language-popover.component.scss'],
 })
 export class LanguagePopoverComponent implements OnInit {
-    constructor(public translate: TranslateService,
-                public popoverCtrl: PopoverController,
-                public passLang: I18nService) {
-    translate.setDefaultLang('en');
+    constructor(public translateService: TranslateService,
+                public popoverCtrl: PopoverController) {
 }
 
 switchLanguage(lang: string) {
-    this.passLang.setLanguage(lang);
-    this.translate.use(lang);
+    this.translateService.use(lang);
 }
 
 
