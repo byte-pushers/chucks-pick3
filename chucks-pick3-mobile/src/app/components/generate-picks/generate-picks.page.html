@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>generate-picks</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="generate-options-title">Previous Drawing Date:</div>
+  <ion-row class="generate-picks-button-section">
+    <ion-col>
+      <button class="generate-picks-button">Yesterday</button>
+    </ion-col>
+    <ion-col>
+      <button class="generate-picks-button" style="background-color: #2fdf75">Today</button>
+    </ion-col>
+  </ion-row>
+  <div class="generate-options-title">Previous Drawing Time:</div>
+  <ion-row class="generate-picks-button-section">
+    <ion-item >
+      <ion-select value="time-of-day" interface="action-sheet">
+        <ion-select-option value="enable">Morning</ion-select-option>
+        <ion-select-option value="mute">Day</ion-select-option>
+        <ion-select-option value="mute_week">Evening</ion-select-option>
+        <ion-select-option value="mute_year">Night</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
+  <ion-row class="generate-picks-button-section">
+    <button class="generate-picks-button">Continue</button>
+  </ion-row>
+</ion-content>

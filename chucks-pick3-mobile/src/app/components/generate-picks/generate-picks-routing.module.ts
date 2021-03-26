@@ -4,14 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { GeneratePicksPage } from './generate-picks.page';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: GeneratePicksPage
-    }
+  {
+    path: '',
+    component: GeneratePicksPage
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class GeneratePicksPageRoutingModule {}
