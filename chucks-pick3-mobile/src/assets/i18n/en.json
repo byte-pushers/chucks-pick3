@@ -3,5 +3,11 @@
   "draw.time.enum.morning": "Morning",
   "draw.time.enum.day": "Day",
   "draw.time.enum.evening": "Evening",
-  "draw.time.enum.night": "Night"
+  "draw.time.enum.night": "Night",
+  "card.state.title": "Texas",
+  "card.draw.time.state.not.drawn.yet": "",
+  "card.draw.time.state.not.drawn.yet.with.generated.picks": "",
+  "card.draw.time.state.drawn":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.no.winners":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.winners": ""
 }

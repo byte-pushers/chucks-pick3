@@ -14,6 +14,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private drawDateIcon: string;
 
     constructor(private readonly config: any) {
+
     }
 
     getDrawDate(): Date {
@@ -25,11 +26,22 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     }
 
     getDrawTimeAsString(): string {
-        return this.drawTime;
+        return Pick3DrawTimeEnum.toString(this.drawTime);
     }
 
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
-        return this.drawTime;
+        let dt: any;
+
+        if (typeof this.drawTime === "string") {
+            let key: any = this.drawTime;
+
+            key = key.toUpperCase();
+            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+        } else {
+            dt = this.drawTime;
+        }
+
+        return dt;
     }
 
     getTitle(): string {
@@ -52,8 +64,19 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this.drawState = drawState;
     }
 
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
-        this.drawTime = drawTime;
+    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+        let dt: any;
+
+        if (typeof drawTime === "string") {
+            let key: any = drawTime;
+
+            key = key.toUpperCase();
+            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+        } else {
+            dt = drawTime;
+        }
+
+        this.drawTime = dt;
     }
 
     getBackgroundImage(): string {

@@ -7,6 +7,7 @@ import { Pick3LotteryWebScrapingService } from '@byte-pushers/pick3-lottery-web-
 import { Pick3WebScrapingInterfaceService } from './pick3-web-scraping-interface.service';
 import { Pick3StateLottery } from '../../models/pick3-state-lottery';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
+import { Pick3DrawTimeEnum } from "../../models/pick3-draw-time.enum";
 
 @Injectable()
 export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService implements Pick3WebScrapingInterfaceService{
@@ -78,14 +79,18 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
     });
   }
 
-  public getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
+  public getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): Promise<DrawingResult> {
+    let dt = Pick3DrawTimeEnum.toString(drawingTime).toLowerCase();
+
     return this.service.findRegisteredStateLottery(drawingState)
-        .retrievePastWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
+        .retrievePastWinningNumber('TX', drawingDate, dt.charAt(0).toUpperCase() + dt.slice(1), this, this.pageReader);
   }
 
-  public getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: string): Promise<DrawingResult> {
+  public getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): Promise<DrawingResult> {
+    let dt = Pick3DrawTimeEnum.toString(drawingTime).toLowerCase();
+
     return this.service.findRegisteredStateLottery(drawingState)
-        .retrieveCurrentWinningNumber('TX', drawingDate, drawingTime, this, this.pageReader);
+        .retrieveCurrentWinningNumber('TX', drawingDate, dt.charAt(0).toUpperCase() + dt.slice(1), this, this.pageReader);
   }
 
   public findRegisteredStateLottery = function(drawingState: string): Pick3StateLottery {

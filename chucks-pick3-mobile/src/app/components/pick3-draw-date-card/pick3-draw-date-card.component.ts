@@ -25,26 +25,26 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-            drawTime: 'Morning',
+            title: 'draw.time.enum.morning',
+            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
             icon: 'morning-icon',
             dateTime: new Date().setHours(10, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
-            drawTime: 'Day',
+            title: 'draw.time.enum.day',
+            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
             icon: 'day-icon',
             dateTime: new Date().setHours(11, 45, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
-            drawTime: 'Evening',
+            title: 'draw.time.enum.evening',
+            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
             icon: 'evening-icon',
             dateTime: new Date().setHours(17, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
-            drawTime: 'Night',
+            title: 'draw.time.enum.night',
+            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
             icon: 'night-icon',
             dateTime: new Date().setHours(21, 30, 0, 0)
         })
@@ -82,7 +82,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
-            if (drawTime.getTitle().toUpperCase() === pick3DrawTime.getType().toUpperCase()) {
+            if (drawTime.getDrawTime() === pick3DrawTime.getType()) {
                 return true;
             }
         });
@@ -92,10 +92,6 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     public getCurrentDrawTime(): Pick3DrawTime {
         return this.pick3StateLottery.getCurrentDrawingTime();
-    }
-
-    private formatWording(word) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
     private getDrawTime(someDateTime: Date): Pick3DrawTime {
@@ -118,7 +114,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     private setData(stateName: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawDateIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(stateName);
-        this.data.setDrawTime(Pick3DrawTimeEnum.toEnum(pick3DrawTime.getType()));
+        this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setDrawDateIcon(drawDateIcon);
 
@@ -147,7 +143,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
             //const compareResult = drawTime.compareTo(pick3DrawDateCard);
 
-            if (drawTime.getTitle().toUpperCase() === pick3DrawDateCard.getDrawTime()) {
+            if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 drawTime.setState(pick3DrawTimeCardStateEnum);
             } else {
@@ -165,13 +161,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()] = ' + Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]);
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"] =' + Pick3DrawTimeEnum.Pick3DrawTimeEnum["MORNING"]);
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.Pick3DrawTimeEnum[\'draw.time.enum.morning\'] =' + Pick3DrawTimeEnum.Pick3DrawTimeEnum['draw.time.enum.morning']);
-
-        console.log('selectDrawingTimeCard() method - Pick3DrawTimeEnum.toEnum(\'draw.time.enum.morning\') =' + Pick3DrawTimeEnum.toEnum('draw.time.enum.morning'));
-        const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery
-            .getDrawingTimeByName(Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeCard.getDrawTime()]);
+        const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
         this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
@@ -184,7 +174,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
     }
 
-    private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: string): void {
+    private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
@@ -196,7 +186,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         });
     }
 
-    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: string): void {
+    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
@@ -207,14 +197,23 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         });
     }
 
-    private setCardState(winningNumber: any, pick3DrawTimeType: string): void {
+    private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         const drawingResult = {
             drawDate: winningNumber.date,
             drawTime: winningNumber.time,
             drawResult: winningNumber.number,
         };
+        let p3dtt: any;
+
+        if (typeof pick3DrawTimeType === "string") {
+            let p: any = pick3DrawTimeType;
+            p3dtt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[p.toUpperCase()];
+        } else {
+            p3dtt = pick3DrawTimeType;
+        }
+
         const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
-            if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum[pick3DrawTimeType.toUpperCase()]) {
+            if (drawTime.getDrawTime() === p3dtt) {
                 return drawTime;
             }
         });
