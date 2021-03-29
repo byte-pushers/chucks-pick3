@@ -1,9 +1,12 @@
 {
-  "langSwitch": {
-    "selectedLanguage": "ES", "//comment": "Used to determine which setting the language is on.",
-    "MORNING": "Mañana",
-    "DAY": "Dia",
-    "EVENING": "Tarde",
-    "NIGHT": "Noche"
-  }
+  "language": "ES",
+  "draw.time.enum.morning": "Mañana",
+  "draw.time.enum.day": "Dia",
+  "draw.time.enum.evening": "Tarde",
+  "draw.time.enum.night": "Noche",
+  "card.draw.time.state.not.drawn.yet": "",
+  "card.draw.time.state.not.drawn.yet.with.generated.picks": "",
+  "card.draw.time.state.drawn":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.no.winners":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.winners": ""
 }

@@ -30,8 +30,8 @@ export class HomePage {
   ];
 
   constructor(private popoverCtrl: PopoverController,
-              public translate: TranslateService) {
-    translate.setDefaultLang('en');
+              public translateService: TranslateService) {
+    translateService.setDefaultLang('en');
   }
 
   async showPopover(ev: any) {
