@@ -15,9 +15,9 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
 
     constructor(config:any) {
         this.icon = (config) ? config.icon : null;
-        this.title = (config) ? config.title : null;
-        this.drawTime = (config) ? config.drawTime ? Pick3DrawTimeEnum.toEnum(config.drawTime) : Pick3DrawTimeEnum.toEnum(this.title): null;
-        this.state = (config) ? Pick3DrawTimeCardStateEnum.get(config.state) : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+        this.title = (config) ? Object.isDefinedAndNotNull(config.title) ? config.title : null : null;
+        this.drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === "string") ?  Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+        this.state = (config) ? config.state ? (typeof config.state === "string") ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this.selected = (config) ? (typeof config.selected === "boolean") ? config.selected : false: false;
         this.dateTime = (config) ? (Object.isDate(config.dateTime))? this.dateTime : new Date(config.dateTime) : null;
         this.pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
@@ -56,11 +56,33 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
-        return this.drawTime;
+        let dt: any;
+
+        if (typeof this.drawTime === "string") {
+            let key: any = this.drawTime;
+
+            key = key.toUpperCase();
+            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+        } else {
+            dt = this.drawTime;
+        }
+
+        return dt;
     }
 
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
-        this.drawTime = drawTime;
+    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+        let dt: any;
+
+        if (typeof drawTime === "string") {
+            let key: any = drawTime;
+
+            key = key.toUpperCase();
+            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+        } else {
+            dt = drawTime;
+        }
+
+        this.drawTime = dt;
     }
 
     getSelected(): boolean {
