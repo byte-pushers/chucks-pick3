@@ -31,8 +31,8 @@
       </ion-row>
     </ion-col>
     <ion-col size="2" style=" margin-left: 0px">
-      <ion-icon src="../../../assets/generate-picks-icon.svg" class="view-picks-icon" style="float: left"></ion-icon>
-
+      <ion-icon src="../../../assets/generate-picks-icon.svg" class="view-picks-icon" style="float: left"
+                [routerLink]="['/generate-picks']" routerDirection="forward"></ion-icon>
     </ion-col>
   </ion-row>
   <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
