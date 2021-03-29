@@ -14,6 +14,7 @@ import {LanguagePopoverComponent} from './components/language-popover/language-p
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
+import {GeneratePicksPageModule} from './components/generate-picks/generate-picks.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        GeneratePicksPageModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
