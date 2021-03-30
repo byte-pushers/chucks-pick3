@@ -14,9 +14,13 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./components/account/account.module').then( m => m.AccountPageModule)
-  },{
+  }, {
     path: 'settings',
     loadChildren: () => import('./components/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'generate-picks',
+    loadChildren: () => import('./components/generate-picks/generate-picks.module').then( m => m.GeneratePicksPageModule)
   }
 ];
 
