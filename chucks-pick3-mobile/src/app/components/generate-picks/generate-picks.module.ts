@@ -8,6 +8,8 @@ import { GeneratePicksPageRoutingModule } from './generate-picks-routing.module'
 
 import { GeneratePicksPage } from './generate-picks.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {HomePageModule} from '../../home/home.module';
+import {GenerateDrawTimeCardComponent} from '../generate-draw-time-card/generate-draw-time-card.component';
 
 @NgModule({
     imports: [
@@ -15,8 +17,9 @@ import {TranslateModule} from '@ngx-translate/core';
         FormsModule,
         IonicModule,
         GeneratePicksPageRoutingModule,
-        TranslateModule
+        TranslateModule,
+        HomePageModule
     ],
-  declarations: [GeneratePicksPage]
+    declarations: [GeneratePicksPage, GenerateDrawTimeCardComponent]
 })
 export class GeneratePicksPageModule {}

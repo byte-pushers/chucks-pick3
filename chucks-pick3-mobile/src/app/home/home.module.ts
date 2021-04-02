@@ -19,11 +19,15 @@ import { TranslateModule } from '@ngx-translate/core';
         HomePageRoutingModule,
         TranslateModule
     ],
-  declarations: [
-    HomePage,
-    Pick3DrawDateCardComponent,
-    Pick3DrawTimeCardComponent,
-    CountdownTimerComponent
-  ]
+    exports: [
+        Pick3DrawDateCardComponent,
+        CountdownTimerComponent
+    ],
+    declarations: [
+        HomePage,
+        Pick3DrawDateCardComponent,
+        Pick3DrawTimeCardComponent,
+        CountdownTimerComponent
+    ]
 })
 export class HomePageModule {}
