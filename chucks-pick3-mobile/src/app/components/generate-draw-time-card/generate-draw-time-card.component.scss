@@ -2,7 +2,6 @@
 @import "../../../theme/variables";
 
 
-
 ion-grid {
   height: 100%;
   padding: 0px;
@@ -18,7 +17,7 @@ ion-grid {
       height: 17.4em;
     }
     @include for-size(iPhoneX) {
-      height: 19.5em;
+      height: 20em;
     }
 
   }
@@ -94,6 +93,7 @@ ion-grid {
 ion-icon.view-picks-icon {
   stroke: $chucksPick3White !important;
 }
+
 .view-picks-icon {
   fill: $chucksPick3White;
   height: 50px;
@@ -157,7 +157,6 @@ ion-icon.view-picks-icon {
 }
 
 
-
 #continue {
   display: block;
 }
@@ -174,6 +173,10 @@ ion-icon.view-picks-icon {
   color: $chucksPick3White;
   line-height: 2em;
 
+  @include for-size(iPhone5-SE) {
+    height: 1.5em !important;
+    line-height: 1.6em;
+  }
   ion-col {
     padding: 0px;
   }
@@ -182,6 +185,13 @@ ion-icon.view-picks-icon {
 .generate-picks-button-section {
   padding: 0px;
   height: 10.6vh;
+
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 11.5vh;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.6vh;
+  }
 
   ion-col {
     padding: 0px;
@@ -209,7 +219,9 @@ ion-select {
   height: 4.5em;
   margin-left: 2em;
   text-align: center;
-
+  @include for-size(iPhone5-SE) {
+    height: 3.5em !important;
+  }
   @include for-size(iPhone6-7-8-Plus) {
     height: 5em !important;
   }
@@ -225,13 +237,18 @@ ion-select {
   color: #1a1a1a;
   font-weight: 600;
   font-size: 18px;
+  vertical-align: center;
 
   @include for-size(iPhone6-7-8-Plus) {
     height: 4.9em !important;
   }
 
+  @include for-size(iPhone5-SE) {
+    height: 4em !important;
+  }
+
   @include for-size(iPhoneX) {
-    height: 4.9em !important;
+    height: 6.5em !important;
   }
 }
 
