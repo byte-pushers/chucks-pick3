@@ -55,12 +55,11 @@
       </ion-row>
       <div class="generate-options-title">Previous Drawing Time:</div>
       <ion-row class="generate-picks-button-section">
-        <ion-item class="ion-no-padding" style="width: 100%;" >
-          <ion-select class="timeOfDayDropDown"  value="time-of-day" interface="action-sheet" style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;" [interfaceOptions]="{cssClass: 'remove-select-padding'}">
-            <ion-select-option value="enable" >Morning</ion-select-option>
-            <ion-select-option value="mute">Day</ion-select-option>
-            <ion-select-option value="mute_week">Evening</ion-select-option>
-            <ion-select-option value="mute_year">Night</ion-select-option>
+        <ion-item class="ion-no-padding"  style="width: 100%;" >
+          <ion-select class="timeOfDayDropDown" [(ngModel)]="continueChoice" placeholder="Select a Time of Day"
+                      style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
+                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice)">
+            <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
@@ -81,12 +80,11 @@
       </ion-row>
       <div class="generate-options-title">Drawing Time:</div>
       <ion-row class="generate-picks-button-section">
-        <ion-item class="ion-no-padding" style="width: 100%;">
-          <ion-select class="timeOfDayDropDown" value="time-of-day" interface="action-sheet"  [interfaceOptions]="{cssClass: 'remove-select-padding'}">
-            <ion-select-option value="enable" >Morning</ion-select-option>
-            <ion-select-option value="mute">Day</ion-select-option>
-            <ion-select-option value="mute_week">Evening</ion-select-option>
-            <ion-select-option value="mute_year">Night</ion-select-option>
+        <ion-item class="ion-no-padding"  style="width: 100%;" >
+          <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day"
+                      style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
+                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(generateChoice)">
+            <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
