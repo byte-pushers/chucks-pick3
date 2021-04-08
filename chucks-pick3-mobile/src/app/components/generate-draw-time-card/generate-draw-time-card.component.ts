@@ -52,6 +52,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     ];
 
     private pick3StateLottery: Pick3StateLottery;
+    generateChoice: any;
+    continueChoice: any;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
@@ -275,7 +277,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     public showSecondBackButton(secondBtn, firstBtn) {
         secondBtn.style.display = 'block';
         firstBtn.style.display = 'none';
-}
+    }
 
     public showFirstBackButton(firstBtn, secondBtn) {
         firstBtn.style.display = 'block';

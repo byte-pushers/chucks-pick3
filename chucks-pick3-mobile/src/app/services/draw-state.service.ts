@@ -12,6 +12,7 @@ export class DrawStateService {
 
     public passState(drawState): void {
         const drawStateNames = Object.entries(drawState);
+        console.log(drawStateNames);
         this.sortState(drawStateNames);
     }
 
