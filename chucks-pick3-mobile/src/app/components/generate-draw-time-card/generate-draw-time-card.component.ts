@@ -22,7 +22,10 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
-    public showCountDownToDrawing: boolean = false;
+    public showCountDownToDrawing = false;
+
+    timesNotAvailable = [];
+    timesToGenerate = [];
 
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
@@ -65,7 +68,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
         const someDateTime = new Date();
         document.getElementById('generate').style.display = 'none';
-        let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
+        const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
 
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
@@ -101,6 +104,13 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     private getDrawState(): string {
         return this.pick3StateLottery.getState();
+    }
+
+    public setGenerateDrawTime() {
+        this.setTimesNotAvailable();
+        for (const i of this.drawTimes) {
+          this.selectDrawingTimeCard(i);
+        }
     }
 
     /**
@@ -165,7 +175,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
+            // TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
@@ -177,12 +187,21 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
+            // TODO: Handle error.
+            this.timesNotAvailable.push(pick3DrawTimeType.toString());
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
         });
     }
+
+    private setTimesNotAvailable() {
+
+        if (this.timesNotAvailable !== null && this.timesNotAvailable !== undefined) {
+            this.timesNotAvailable.splice(0, this.timesNotAvailable.length);
+        }
+
+}
 
     private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         const drawingResult = {
@@ -193,7 +212,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         let p3dtt: any;
 
         if (typeof pick3DrawTimeType === 'string') {
-            let p: any = pick3DrawTimeType;
+            const p: any = pick3DrawTimeType;
             p3dtt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[p.toUpperCase()];
         } else {
             p3dtt = pick3DrawTimeType;
@@ -231,7 +250,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             drawTime.setPick3DrawCardId(this.slideNumber);
 
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                //drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
             }
         });
 
@@ -282,5 +301,13 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     public showFirstBackButton(firstBtn, secondBtn) {
         firstBtn.style.display = 'block';
         secondBtn.style.display = 'none';
+    }
+
+    retrieveGenerateDrawTime(generateChoice) {
+
+        if (this.timesToGenerate !== null && this.timesToGenerate !== undefined) {
+            this.timesToGenerate.splice(0, this.timesToGenerate.length);
+            this.timesToGenerate.push(generateChoice);
+        }
     }
 }

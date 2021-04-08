@@ -12,7 +12,6 @@ export class DrawStateService {
 
     public passState(drawState): void {
         const drawStateNames = Object.entries(drawState);
-        console.log(drawStateNames);
         this.sortState(drawStateNames);
     }
 
@@ -31,11 +30,9 @@ export class DrawStateService {
     }
 
     private applyState(drawStateColorIndicators: any, attributeName: string, booleanValue: boolean): void {
-        /*console.log(test);*/
         for (let property in drawStateColorIndicators) {
             if (drawStateColorIndicators.hasOwnProperty(property)) {
                 this.picksIndicator.push(attributeName);
-                console.log(this.picksIndicator);
                 break;
             }
         }
