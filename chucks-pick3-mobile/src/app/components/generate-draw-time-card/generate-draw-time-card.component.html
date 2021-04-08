@@ -1,0 +1,98 @@
+<ion-grid>
+  <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
+    <ion-col size="2" style=" margin-right: 0px">
+      <div #firstBackButton style=" display: block;">
+      <ion-icon  [routerLink]="['/home']"  class="view-picks-icon" style="float: left" name="caret-back" color="white" routerDirection="back" ></ion-icon>
+      </div>
+      <div  #secondBackButton style=" display: none;">
+      <ion-icon  (click)="submitGenerate(generate, continue); showFirstBackButton(firstBackButton, secondBackButton)"  class="view-picks-icon" style="float: left;" name="caret-back" color="white"  ></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col size="8">
+      <ion-row>
+        <ion-col>
+                    <span style="font-size: 7.5vw;font-weight: bolder;"
+                          class="draw-date-title draw-date-text">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
+          <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
+            <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg"
+                      class="time-of-day-icon"></ion-icon>
+            {{data.getDrawTimeAsString()}}
+          </span>
+          <br><br>
+          <span style="font-size: 4.6vw;font-weight: bold;"
+                class="draw-date-text">{{data.getDrawDate() | date}}</span><br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+            <span class="dot">{{data.getWinningNumberDigit1()}}</span>
+            <span class="dot">{{data.getWinningNumberDigit2()}}</span>
+            <span class="dot">{{data.getWinningNumberDigit3()}}</span>
+          </div>
+          <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+            <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
+          </div>
+          <p style="color: white">{{slideNumber}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size="2" style=" margin-left: 0px">
+
+
+    </ion-col>
+  </ion-row>
+  <ion-row class="drawing-time" style="z-index: 99; display: block; height: 40%">
+    <div style="height: 50%" #continue>
+      <div class="generate-options-title">Previous Drawing Date:</div>
+      <ion-row class="generate-picks-button-section">
+        <ion-col id="yesterdayPreviousDrawingDate">
+          <button  #yesterdayPreviousDrawingDate class="generate-picks-button" (click)="selectYesterdayPrevDrawingDate(yesterdayPreviousDrawingDate, todayPreviousDrawingDate);">Yesterday</button>
+        </ion-col>
+        <ion-col id="todayPreviousDrawingDate" >
+          <button #todayPreviousDrawingDate  class="generate-picks-button" (click)="selectTodayPrevDrawingDate(todayPreviousDrawingDate, yesterdayPreviousDrawingDate);" style="background-color: #2fdf75">Today</button>
+        </ion-col>
+      </ion-row>
+      <div class="generate-options-title">Previous Drawing Time:</div>
+      <ion-row class="generate-picks-button-section">
+        <ion-item class="ion-no-padding" style="width: 100%;" >
+          <ion-select class="timeOfDayDropDown"  value="time-of-day" interface="action-sheet" style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;" [interfaceOptions]="{cssClass: 'remove-select-padding'}">
+            <ion-select-option value="enable" >Morning</ion-select-option>
+            <ion-select-option value="mute">Day</ion-select-option>
+            <ion-select-option value="mute_week">Evening</ion-select-option>
+            <ion-select-option value="mute_year">Night</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <button class=" continue-generate-btn generate-picks-button"   (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton) ">Continue</button>
+
+      </ion-row>
+    </div>
+    <div style="height: 50%" id="generate" #generate>
+      <div class="generate-options-title">Drawing Date:</div>
+      <ion-row class="generate-picks-button-section">
+        <ion-col>
+          <button  #todayDrawingDate class="generate-picks-button" (click)="selectTodayDrawingDate(todayDrawingDate, tomorrowDrawingDate )">Today</button>
+        </ion-col>
+        <ion-col>
+          <button  #tomorrowDrawingDate class="generate-picks-button" (click)="selectTomorrowDrawingDate(tomorrowDrawingDate, todayDrawingDate)" style="background-color: #2fdf75">Tomorrow</button>
+        </ion-col>
+      </ion-row>
+      <div class="generate-options-title">Drawing Time:</div>
+      <ion-row class="generate-picks-button-section">
+        <ion-item class="ion-no-padding" style="width: 100%;">
+          <ion-select class="timeOfDayDropDown" value="time-of-day" interface="action-sheet"  [interfaceOptions]="{cssClass: 'remove-select-padding'}">
+            <ion-select-option value="enable" >Morning</ion-select-option>
+            <ion-select-option value="mute">Day</ion-select-option>
+            <ion-select-option value="mute_week">Evening</ion-select-option>
+            <ion-select-option value="mute_year">Night</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row class="generate-picks-button-section">
+        <button class="generate-picks-button continue-generate-btn" routerLink="/home" (click)="submitGenerate(generate, continue);">Generate</button>
+      </ion-row>
+    </div>
+  </ion-row>
+</ion-grid>
