@@ -18,14 +18,22 @@ import {LanguagePopoverComponent} from '../language-popover/language-popover.com
     styleUrls: ['./generate-draw-time-card.component.scss'],
 })
 export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
+
+    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                public toastService: IonicToastNotificationService,
+                public drawStateService: DrawStateService) {
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+    }
+
+    public currentDate = new Date().getDate();
+    defaultDrawingTimes = ['draw.time.enum.morning', 'draw.time.enum.day', 'draw.time.enum.evening', 'draw.time.enum.night'];
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     public showCountDownToDrawing = false;
 
-    timesNotAvailable = [];
-    timesToGenerate = [];
+    newDrawingTimes = [];
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: 'draw.time.enum.morning',
@@ -58,12 +66,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     continueChoice: any;
     continueButton = true;
 
-    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
-                public toastService: IonicToastNotificationService,
-                public drawStateService: DrawStateService) {
-        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-    }
-
     ngOnInit() {
         const someDateTime = new Date();
         document.getElementById('generate').style.display = 'none';
@@ -81,6 +83,22 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.showCountDownToDrawing = false;
         this.drawTimes = [];
         this.pick3StateLottery = null;
+    }
+
+    public setDrawingTimeMenuItems(selectedDrawTime, timeOfDay) {
+        const drawingTimeMenuItem = [];
+        const date = new Date().getDate();
+
+        if (timeOfDay === date) {
+            this.resetDrawingTimes();
+            for (const i of this.drawTimes) {
+                this.selectDrawingTimeCard(i);
+            }
+
+        } else {
+            this.newDrawingTimes = this.defaultDrawingTimes;
+        }
+
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
@@ -105,12 +123,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         return this.pick3StateLottery.getState();
     }
 
-    public setGenerateDrawTime() {
-        this.setTimesNotAvailable();
-        for (const i of this.drawTimes) {
-          this.selectDrawingTimeCard(i);
-        }
-    }
+
 
     /**
      * Helper method to set all the data for the Pick3 Draw Date Card.
@@ -187,20 +200,20 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
-            this.timesNotAvailable.push(pick3DrawTimeType.toString());
+            this.newDrawingTimes.push(pick3DrawTimeType.toString());
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
         });
     }
 
-    private setTimesNotAvailable() {
+    private resetDrawingTimes() {
 
-        if (this.timesNotAvailable !== null && this.timesNotAvailable !== undefined) {
-            this.timesNotAvailable.splice(0, this.timesNotAvailable.length);
+        if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length);
         }
 
-}
+    }
 
     private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         const drawingResult = {
@@ -273,13 +286,20 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public selectTomorrowDrawingDate(tomorrow, today) {
+        const tomorrowsDate = new Date();
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
+
+        this.setDrawingTimeMenuItems('today', tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
     }
 
     public selectTodayDrawingDate(today, tomorrow) {
+        const todaysDate = new Date().getDate();
+        const tomorrowsDate = new Date(todaysDate);
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
+        this.setDrawingTimeMenuItems('tomorrow', todaysDate);
+
     }
 
     public submitGenerate(generateDisplay, continueDisplay) {
@@ -302,13 +322,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         secondBtn.style.display = 'none';
     }
 
-    retrieveGenerateDrawTime(generateChoice) {
 
-        if (this.timesToGenerate !== null && this.timesToGenerate !== undefined) {
-            this.timesToGenerate.splice(0, this.timesToGenerate.length);
-            this.timesToGenerate.push(generateChoice);
-        }
-    }
     logForm() {
         console.log(this.continueChoice);
     }

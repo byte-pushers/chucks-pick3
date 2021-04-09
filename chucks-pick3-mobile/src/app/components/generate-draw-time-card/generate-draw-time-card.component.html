@@ -65,7 +65,7 @@
         </ion-item>
       </ion-row>
       <ion-row>
-        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton); setGenerateDrawTime(); ">Continue</button>
+        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton); setDrawingTimeMenuItems('today',currentDate) ">Continue</button>
       </ion-row>
       </form>
     </div>
@@ -84,8 +84,8 @@
         <ion-item class="ion-no-padding"  style="width: 100%;" >
           <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day"
                       style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                      interface="action-sheet" (ionChange)="retrieveGenerateDrawTime(generateChoice)">
-            <ion-select-option *ngFor="let timeNotAvailable of timesNotAvailable" [value]="timeNotAvailable"> {{timeNotAvailable}}</ion-select-option>
+                      interface="action-sheet" (ionChange)="null">
+            <ion-select-option *ngFor="let newDrawingTime of newDrawingTimes" [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
