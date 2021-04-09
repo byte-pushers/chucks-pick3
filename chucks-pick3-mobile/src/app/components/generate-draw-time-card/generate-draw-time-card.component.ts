@@ -26,7 +26,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     timesNotAvailable = [];
     timesToGenerate = [];
-
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: 'draw.time.enum.morning',
@@ -57,6 +56,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     private pick3StateLottery: Pick3StateLottery;
     generateChoice: any;
     continueChoice: any;
+    continueButton = true;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
@@ -65,7 +65,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-
         const someDateTime = new Date();
         document.getElementById('generate').style.display = 'none';
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
@@ -310,4 +309,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             this.timesToGenerate.push(generateChoice);
         }
     }
+    logForm() {
+        console.log(this.continueChoice);
+    }
+
 }

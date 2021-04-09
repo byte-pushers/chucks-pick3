@@ -54,19 +54,20 @@
         </ion-col>
       </ion-row>
       <div class="generate-options-title">Previous Drawing Time:</div>
+      <form #generateForm="ngForm" (ngSubmit)="logForm()">
       <ion-row class="generate-picks-button-section">
         <ion-item class="ion-no-padding"  style="width: 100%;" >
-          <ion-select class="timeOfDayDropDown" [(ngModel)]="continueChoice" placeholder="Select a Time of Day"
+          <ion-select class="timeOfDayDropDown" name="continueChoice" [(ngModel)]="continueChoice" placeholder="Select a Time of Day"
                       style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice)">
+                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice); continueButton = false;">
             <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
       <ion-row>
-        <button class=" continue-generate-btn generate-picks-button"   (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton); setGenerateDrawTime(); ">Continue</button>
-
+        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton); setGenerateDrawTime(); ">Continue</button>
       </ion-row>
+      </form>
     </div>
     <div style="height: 50%" id="generate" #generate>
       <div class="generate-options-title">Drawing Date:</div>
