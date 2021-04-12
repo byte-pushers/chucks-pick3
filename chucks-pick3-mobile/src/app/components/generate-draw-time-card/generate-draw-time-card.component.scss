@@ -166,7 +166,7 @@ ion-icon.view-picks-icon {
 }
 
 .generate-options-title {
-  height: 10%;
+  height: 30%;
   text-align: center;
   background-color: $chucksPick3Black;
   font-weight: 700;
@@ -174,9 +174,15 @@ ion-icon.view-picks-icon {
   line-height: 2em;
 
   @include for-size(iPhone5-SE) {
-    height: 1.5em !important;
-    line-height: 1.6em;
+    height: 30%;
+    line-height: 2.3em;
+    font-size: small;
   }
+
+  @include for-size(iPhoneX) {
+    line-height: 2.3em;
+  }
+
   ion-col {
     padding: 0px;
   }

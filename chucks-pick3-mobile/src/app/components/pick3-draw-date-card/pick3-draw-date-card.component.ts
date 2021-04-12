@@ -244,11 +244,11 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
             drawTime.setPick3DrawCardId(this.slideNumber);
 
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                //drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
             }
         });
 
-        //console.log("randomlyMockDrawTimeCardStates() end.");
+        // console.log("randomlyMockDrawTimeCardStates() end.");
     }
 
     private randomEnum<T>(anEnum: T): T[keyof T] {

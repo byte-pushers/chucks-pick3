@@ -17,7 +17,6 @@ import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
-import {tar} from 'ionic/lib/utils/archive';
 
 @Component({
     selector: 'app-generate-draw-time-card',
