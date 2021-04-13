@@ -37,12 +37,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     public showCountDownToDrawing = false;
 
-    newDrawingTimes: any[] = [];
-    currentDateDay: number = new Date().getDate();
-    currentDateMonth: number = new Date().getMonth() + 1;
-    currentDateYear: number = new Date().getFullYear();
-    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
-
+    newDrawingTimes = [];
+    drawingTimeMenuItem = [];
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: MORNING_DRAW_TIME_KEY,
@@ -100,11 +96,23 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
-                this.selectDrawingTimeCard(drawTime);
+                this.test(drawTime);
             }
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
+        this.newDrawingTimes = this.drawingTimeMenuItem;
+    }
+
+
+    private test(timenotAvailable) {
+        const currentDrawTime = this.pick3StateLottery.getCurrentDrawingTime().getDateTime().getHours();
+
+
+        if (timenotAvailable.getDateTime().getHours() > currentDrawTime) {
+            this.drawingTimeMenuItem.push(timenotAvailable.getTitle());
+        }
+
 
     }
 
@@ -296,8 +304,12 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
+        const date = new Date();
+        const tomorrowsDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
+
+        this.setDrawingTimeMenuItems(tomorrowsDate);
     }
 
     public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
