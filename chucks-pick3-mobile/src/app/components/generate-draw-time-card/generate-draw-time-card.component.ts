@@ -103,8 +103,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 this.selectDrawingTimeCard(drawTime);
             }
         } else {
-
-            this.newDrawingTimes = this.defaultDrawingTimes;
+            this.resetDrawingTimes();
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
 
     }
@@ -221,9 +221,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     private resetDrawingTimes(): void {
-
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
-            this.newDrawingTimes.splice(0, this.newDrawingTimes.length);
+            this.newDrawingTimes.length = 0;
         }
 
     }
