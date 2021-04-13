@@ -100,10 +100,18 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
-                this.selectDrawingTimeCard(drawTime);
+                this.test(drawTime);
             }
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+        }
+
+    }
+
+    private test(timenotAvailable,pick3DrawDateCard: Pick3DrawDateCard) {
+        const d = new Date();
+        if (timenotAvailable.drawTime !==  pick3DrawDateCard.getDrawTime()) {
+            console.log(timenotAvailable);
         }
 
     }
