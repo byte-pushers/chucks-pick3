@@ -95,20 +95,18 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.resetDrawingTimes();
-            for (const drawTime of this.drawTimes) {
-                this.test(drawTime);
+            for (const i of this.drawTimes) {
+                this.setTodayDrawingTimes(i);
             }
+            this.newDrawingTimes = this.drawingTimeMenuItem;
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
-        this.newDrawingTimes = this.drawingTimeMenuItem;
     }
 
 
-    private test(timenotAvailable) {
+    private setTodayDrawingTimes(timenotAvailable) {
         const currentDrawTime = this.pick3StateLottery.getCurrentDrawingTime().getDateTime().getHours();
-
-
         if (timenotAvailable.getDateTime().getHours() > currentDrawTime) {
             this.drawingTimeMenuItem.push(timenotAvailable.getTitle());
         }
@@ -220,7 +218,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 this.setCardState(winningNumber, pick3DrawTimeType);
             }, error => {
                 // TODO: Handle error.
-                this.newDrawingTimes.push(pick3DrawTimeType.toString());
                 console.error('TODO: Handle error: ' + error, error);
                 this.toastService.presentToast('Results Not Available',
                     'Please try again later.', 'results-not-available');
