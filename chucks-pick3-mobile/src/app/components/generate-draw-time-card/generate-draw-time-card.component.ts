@@ -37,12 +37,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     public showCountDownToDrawing = false;
 
-    newDrawingTimes: any[] = [];
-    currentDateDay: number = new Date().getDate();
-    currentDateMonth: number = new Date().getMonth() + 1;
-    currentDateYear: number = new Date().getFullYear();
-    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
-
+    newDrawingTimes = [];
+    drawingTimeMenuItem = [];
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: MORNING_DRAW_TIME_KEY,
@@ -105,14 +101,18 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
-
+        this.newDrawingTimes = this.drawingTimeMenuItem;
     }
 
-    private test(timenotAvailable,pick3DrawDateCard: Pick3DrawDateCard) {
-        const d = new Date();
-        if (timenotAvailable.drawTime !==  pick3DrawDateCard.getDrawTime()) {
-            console.log(timenotAvailable);
+
+    private test(timenotAvailable) {
+        const currentDrawTime = this.pick3StateLottery.getCurrentDrawingTime().getDateTime().getHours();
+
+
+        if (timenotAvailable.getDateTime().getHours() > currentDrawTime) {
+            this.drawingTimeMenuItem.push(timenotAvailable.getTitle());
         }
+
 
     }
 
