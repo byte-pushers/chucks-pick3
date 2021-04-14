@@ -98,7 +98,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             for (const drawTime of this.drawTimes) {
                 this.setTodayDrawingTimes(drawTime);
             }
-            this.newDrawingTimes = this.drawingTimeMenuItem;
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.drawingTimeMenuItem);
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
