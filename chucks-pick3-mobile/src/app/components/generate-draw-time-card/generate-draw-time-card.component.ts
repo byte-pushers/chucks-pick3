@@ -98,7 +98,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             for (const i of this.drawTimes) {
                 this.setTodayDrawingTimes(i);
             }
-            this.newDrawingTimes = this.drawingTimeMenuItem;
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.drawingTimeMenuItem);
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
@@ -307,7 +307,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
-
+        tomorrow.style.backgroundColor = '#2fdf75';
+        today.style.backgroundColor = '#e5e5e5';
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
         console.log(tomorrowFullDate);
         this.setDrawingTimeMenuItems(tomorrowFullDate);
