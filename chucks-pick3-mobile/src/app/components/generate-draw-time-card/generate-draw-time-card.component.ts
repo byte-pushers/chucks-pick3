@@ -40,6 +40,11 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     public showCountDownToDrawing = false;
 
     newDrawingTimes: any[] = [];
+    currentDateDay: number = new Date().getDate();
+    currentDateMonth: number = new Date().getMonth() + 1;
+    currentDateYear: number = new Date().getFullYear();
+    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
+
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: MORNING_DRAW_TIME_KEY,
@@ -91,10 +96,9 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = null;
     }
 
-    public setDrawingTimeMenuItems(targetDayOfMonth: number): void {
-        const dayOfMonth:number = new Date().getDate();
-
-        if (targetDayOfMonth === dayOfMonth) { //TODO: Check the actual date (month/day/year);
+    public setDrawingTimeMenuItems(targetCurrentDate: Date): void {
+        const currentDate: Date = this.fullDate;
+        if (targetCurrentDate === currentDate) {
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
                 this.selectDrawingTimeCard(drawTime);
@@ -126,7 +130,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     private getDrawState(): string {
         return this.pick3StateLottery.getState();
     }
-
 
 
     /**
@@ -282,7 +285,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectDrawingDateMenuItemForToday(today: any, yesterday: any ): void {
+    public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
     }
@@ -293,13 +296,16 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
-        const tomorrowsDate = new Date();
-        this.setDrawingTimeMenuItems(tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
+        const tomorrowDateDay: number = new Date().getDate() + 1;
+        const tomorrowDateMonth: number = new Date().getMonth() + 1;
+        const tomorrowDateYear: number = new Date().getFullYear();
+        const tomorrowFullDate: any = tomorrowDateMonth + '/' + tomorrowDateDay + '/' + tomorrowDateYear;
+        this.setDrawingTimeMenuItems(tomorrowFullDate);
         this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
     public selectTodayDrawingDate(today: any, tomorrow: any): void {
-        const dayOfMonth = new Date().getDate();
+        const dayOfMonth: Date = this.fullDate;
 
         this.setDrawingTimeMenuItems(dayOfMonth);
         this.selectDrawingDateMenuItemForToday(tomorrow, today);
