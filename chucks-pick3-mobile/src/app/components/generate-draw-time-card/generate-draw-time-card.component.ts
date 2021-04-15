@@ -91,8 +91,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = null;
     }
 
-    public setDrawingTimeMenuItems(selectedDrawTime, timeOfDay): void {
-        const drawingTimeMenuItem = [];
+    public setDrawingTimeMenuItems(timeOfDay: number): void {
+
         const date = new Date().getDate();
 
         if (timeOfDay === date) {
@@ -279,49 +279,49 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
 
-    public selectYesterdayPrevDrawingDate(yesterday, today): void {
+    public selectYesterdayPrevDrawingDate(yesterday: any, today: any): void {
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTodayPrevDrawingDate(today, yesterday): void {
+    public selectTodayPrevDrawingDate(today: any, yesterday: any ): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTomorrowDrawingDate(tomorrow, today): void {
+    public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
         const tomorrowsDate = new Date();
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
 
-        this.setDrawingTimeMenuItems('today', tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
+        this.setDrawingTimeMenuItems( tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
     }
 
-    public selectTodayDrawingDate(today, tomorrow): void {
+    public selectTodayDrawingDate(today: any, tomorrow: any): void {
         const todaysDate = new Date().getDate();
-        const tomorrowsDate = new Date(todaysDate);
+
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
-        this.setDrawingTimeMenuItems('tomorrow', todaysDate);
+        this.setDrawingTimeMenuItems( todaysDate);
 
     }
 
-    public submitGenerate(generateDisplay, continueDisplay): void {
+    public submitGenerate(generateDisplay: any, continueDisplay: any): void {
         continueDisplay.style.display = 'block';
         generateDisplay.style.display = 'none';
     }
 
-    public continueGenerate(continueDisplay, generateDisplay): void {
+    public continueGenerate(continueDisplay: any, generateDisplay: any): void {
         continueDisplay.style.display = 'none';
         generateDisplay.style.display = 'block';
     }
 
-    public showSecondBackButton(secondBtn, firstBtn): void {
+    public showSecondBackButton(secondBtn: any, firstBtn: any): void {
         secondBtn.style.display = 'block';
         firstBtn.style.display = 'none';
     }
 
-    public showFirstBackButton(firstBtn, secondBtn): void {
+    public showFirstBackButton(firstBtn: any, secondBtn: any): void {
         firstBtn.style.display = 'block';
         secondBtn.style.display = 'none';
     }
