@@ -91,16 +91,14 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = null;
     }
 
-    public setDrawingTimeMenuItems(timeOfDay: number): void {
+    public setDrawingTimeMenuItems(targetDayOfMonth: number): void {
+        const dayOfMonth:number = new Date().getDate();
 
-        const date = new Date().getDate();
-
-        if (timeOfDay === date) {
+        if (targetDayOfMonth === dayOfMonth) { //TODO: Check the actual date (month/day/year);
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
                 this.selectDrawingTimeCard(drawTime);
             }
-
         } else {
             this.newDrawingTimes = this.defaultDrawingTimes;
         }
@@ -279,31 +277,32 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
 
-    public selectYesterdayPrevDrawingDate(yesterday: any, today: any): void {
+    public selectDrawingDateMenuItemForYesterday(yesterday: any, today: any): void {
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTodayPrevDrawingDate(today: any, yesterday: any ): void {
+    public selectDrawingDateMenuItemForToday(today: any, yesterday: any ): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
-        const tomorrowsDate = new Date();
+    public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
+    }
 
-        this.setDrawingTimeMenuItems( tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
+    public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
+        const tomorrowsDate = new Date();
+        this.setDrawingTimeMenuItems(tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
+        this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
     public selectTodayDrawingDate(today: any, tomorrow: any): void {
-        const todaysDate = new Date().getDate();
+        const dayOfMonth = new Date().getDate();
 
-        today.style.backgroundColor = '#2fdf75';
-        tomorrow.style.backgroundColor = '#e5e5e5';
-        this.setDrawingTimeMenuItems( todaysDate);
-
+        this.setDrawingTimeMenuItems(dayOfMonth);
+        this.selectDrawingDateMenuItemForToday(tomorrow, today);
     }
 
     public submitGenerate(generateDisplay: any, continueDisplay: any): void {
@@ -311,17 +310,17 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         generateDisplay.style.display = 'none';
     }
 
-    public continueGenerate(continueDisplay: any, generateDisplay: any): void {
+    public showGeneratePage(continueDisplay: any, generateDisplay: any): void {
         continueDisplay.style.display = 'none';
         generateDisplay.style.display = 'block';
     }
 
-    public showSecondBackButton(secondBtn: any, firstBtn: any): void {
+    public showGenerateBackButton(secondBtn: any, firstBtn: any): void {
         secondBtn.style.display = 'block';
         firstBtn.style.display = 'none';
     }
 
-    public showFirstBackButton(firstBtn: any, secondBtn: any): void {
+    public showContinueBackButton(firstBtn: any, secondBtn: any): void {
         firstBtn.style.display = 'block';
         secondBtn.style.display = 'none';
     }
