@@ -2,7 +2,13 @@ import {Component, Input, ElementRef, OnDestroy, OnInit, ViewChild} from '@angul
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
-import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {
+    DAY_DRAW_TIME_KEY,
+    EVENING_DRAW_TIME_KEY,
+    MORNING_DRAW_TIME_KEY,
+    NIGHT_DRAW_TIME_KEY,
+    Pick3DrawTimeEnum
+} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
@@ -26,35 +32,35 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public currentDate = new Date().getDate();
-    defaultDrawingTimes = ['draw.time.enum.morning', 'draw.time.enum.day', 'draw.time.enum.evening', 'draw.time.enum.night'];
+    defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     public showCountDownToDrawing = false;
 
-    newDrawingTimes = [];
+    newDrawingTimes: any[] = [];
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.morning',
+            title: MORNING_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
             icon: 'morning-icon',
             dateTime: new Date().setHours(10, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.day',
+            title: DAY_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
             icon: 'day-icon',
             dateTime: new Date().setHours(11, 45, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.evening',
+            title: EVENING_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
             icon: 'evening-icon',
             dateTime: new Date().setHours(17, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.night',
+            title: NIGHT_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
             icon: 'night-icon',
             dateTime: new Date().setHours(21, 30, 0, 0)
@@ -85,14 +91,14 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = null;
     }
 
-    public setDrawingTimeMenuItems(selectedDrawTime, timeOfDay) {
+    public setDrawingTimeMenuItems(selectedDrawTime, timeOfDay): void {
         const drawingTimeMenuItem = [];
         const date = new Date().getDate();
 
         if (timeOfDay === date) {
             this.resetDrawingTimes();
-            for (const i of this.drawTimes) {
-                this.selectDrawingTimeCard(i);
+            for (const drawTime of this.drawTimes) {
+                this.selectDrawingTimeCard(drawTime);
             }
 
         } else {
@@ -207,7 +213,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         });
     }
 
-    private resetDrawingTimes() {
+    private resetDrawingTimes(): void {
 
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length);
@@ -256,13 +262,11 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     private randomlyMockDrawTimeCardStates(): void {
-        // console.log("randomlyMockDrawTimeCardStates() start.");
         this.drawTimes.forEach(drawTime => {
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(this.slideNumber);
 
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
             }
         });
 
@@ -275,17 +279,17 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
 
-    public selectYesterdayPrevDrawingDate(yesterday, today) {
+    public selectYesterdayPrevDrawingDate(yesterday, today): void {
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTodayPrevDrawingDate(today, yesterday) {
+    public selectTodayPrevDrawingDate(today, yesterday): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTomorrowDrawingDate(tomorrow, today) {
+    public selectTomorrowDrawingDate(tomorrow, today): void {
         const tomorrowsDate = new Date();
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
@@ -293,7 +297,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.setDrawingTimeMenuItems('today', tomorrowsDate.setDate(tomorrowsDate.getDate() + 1));
     }
 
-    public selectTodayDrawingDate(today, tomorrow) {
+    public selectTodayDrawingDate(today, tomorrow): void {
         const todaysDate = new Date().getDate();
         const tomorrowsDate = new Date(todaysDate);
         today.style.backgroundColor = '#2fdf75';
@@ -302,28 +306,28 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     }
 
-    public submitGenerate(generateDisplay, continueDisplay) {
+    public submitGenerate(generateDisplay, continueDisplay): void {
         continueDisplay.style.display = 'block';
         generateDisplay.style.display = 'none';
     }
 
-    public continueGenerate(continueDisplay, generateDisplay) {
+    public continueGenerate(continueDisplay, generateDisplay): void {
         continueDisplay.style.display = 'none';
         generateDisplay.style.display = 'block';
     }
 
-    public showSecondBackButton(secondBtn, firstBtn) {
+    public showSecondBackButton(secondBtn, firstBtn): void {
         secondBtn.style.display = 'block';
         firstBtn.style.display = 'none';
     }
 
-    public showFirstBackButton(firstBtn, secondBtn) {
+    public showFirstBackButton(firstBtn, secondBtn): void {
         firstBtn.style.display = 'block';
         secondBtn.style.display = 'none';
     }
 
 
-    logForm() {
+    logForm(): void {
         console.log(this.continueChoice);
     }
 

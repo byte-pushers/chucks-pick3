@@ -1,45 +1,53 @@
 import * as Object from 'bytepushers-js-obj-extensions';
 
+export const MORNING_DRAW_TIME_KEY = 'draw.time.enum.morning';
+export const DAY_DRAW_TIME_KEY = 'draw.time.enum.day';
+export const EVENING_DRAW_TIME_KEY = 'draw.time.enum.evening';
+export const NIGHT_DRAW_TIME_KEY = 'draw.time.enum.night';
 export namespace Pick3DrawTimeEnum {
     export enum Pick3DrawTimeEnum {
         MORNING,
-        DAY ,
+        DAY,
         EVENING,
         NIGHT
     }
 
     export function getPropertyKey(e: Pick3DrawTimeEnum): string {
         let propertyKey: string = null;
-
-        switch(e) {
+        switch (e) {
             case Pick3DrawTimeEnum.MORNING:
-                propertyKey = 'draw.time.enum.morning';
+                propertyKey = MORNING_DRAW_TIME_KEY;
+
                 break;
             case Pick3DrawTimeEnum.DAY:
-                propertyKey = 'draw.time.enum.day';
+                propertyKey = DAY_DRAW_TIME_KEY;
+
                 break;
             case Pick3DrawTimeEnum.EVENING:
-                propertyKey = 'draw.time.enum.evening';
+                propertyKey = EVENING_DRAW_TIME_KEY;
+
                 break;
             case Pick3DrawTimeEnum.NIGHT:
-                propertyKey = 'draw.time.enum.night';
+                propertyKey = NIGHT_DRAW_TIME_KEY;
+
                 break;
         }
 
-        return propertyKey
+        return propertyKey;
     }
 
-    export function toString(e: Pick3DrawTimeEnum|string): string {
+    export function toString(e: Pick3DrawTimeEnum | string): string {
         let enumString: string = null;
 
-        if (typeof e === "string") {
+        if (typeof e === 'string') {
             e = e.toUpperCase();
             e = Pick3DrawTimeEnum[e];
         }
 
-        switch(e) {
+        switch (e) {
             case Pick3DrawTimeEnum.MORNING:
                 enumString = 'MORNING';
+                const morningTime = 'draw.time.enum.morning';
                 break;
             case Pick3DrawTimeEnum.DAY:
                 enumString = 'DAY';
@@ -54,4 +62,8 @@ export namespace Pick3DrawTimeEnum {
 
         return enumString;
     }
+
+    const day = 'draw.time.enum.day';
+    const evening = 'draw.time.enum.evening';
+    const night = 'draw.time.enum.night';
 }
