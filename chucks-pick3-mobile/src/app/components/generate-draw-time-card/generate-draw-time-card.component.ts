@@ -17,6 +17,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
+import {tar} from 'ionic/lib/utils/archive';
 
 @Component({
     selector: 'app-generate-draw-time-card',
@@ -97,13 +98,14 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public setDrawingTimeMenuItems(targetCurrentDate: Date): void {
-        const currentDate: Date = this.fullDate;
-        if (targetCurrentDate === currentDate) {
+
+        if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
                 this.selectDrawingTimeCard(drawTime);
             }
         } else {
+
             this.newDrawingTimes = this.defaultDrawingTimes;
         }
 
@@ -296,18 +298,20 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
-        const tomorrowDateDay: number = new Date().getDate() + 1;
-        const tomorrowDateMonth: number = new Date().getMonth() + 1;
-        const tomorrowDateYear: number = new Date().getFullYear();
-        const tomorrowFullDate: any = tomorrowDateMonth + '/' + tomorrowDateDay + '/' + tomorrowDateYear;
+        const date = new Date();
+
+        const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+        console.log(tomorrowFullDate);
         this.setDrawingTimeMenuItems(tomorrowFullDate);
         this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
     public selectTodayDrawingDate(today: any, tomorrow: any): void {
-        const dayOfMonth: Date = this.fullDate;
+        const date = new Date();
 
-        this.setDrawingTimeMenuItems(dayOfMonth);
+        const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+        console.log(todayFullDate);
+        this.setDrawingTimeMenuItems(todayFullDate);
         this.selectDrawingDateMenuItemForToday(tomorrow, today);
     }
 
