@@ -29,7 +29,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
-    public currentDate = new Date().getDate();
+    public currentDate = new Date();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
@@ -300,6 +300,11 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
+    public selectDrawingDateMenuItemForTodayGenerate(tomorrow: any, today: any) {
+        tomorrow.style.backgroundColor = '#2fdf75';
+        today.style.backgroundColor = '#e5e5e5';
+    }
+
     public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
@@ -315,11 +320,12 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
-    public selectTodayDrawingDate(today: any, tomorrow: any): void {
+    public selectTodayDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
 
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-        console.log(todayFullDate);
+        today.style.backgroundColor = '#2fdf75';
+        tomorrow.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(todayFullDate);
         this.selectDrawingDateMenuItemForToday(tomorrow, today);
     }
