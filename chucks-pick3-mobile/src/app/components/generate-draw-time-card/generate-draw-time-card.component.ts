@@ -103,7 +103,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 this.selectDrawingTimeCard(drawTime);
             }
         } else {
-            this.resetDrawingTimes();
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
 
