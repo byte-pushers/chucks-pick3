@@ -39,6 +39,18 @@ export class GeneratePicksPage implements OnInit, AfterViewInit {
         translate.setDefaultLang('en');
     }
 
+    async showPopover(ev: any) {
+        const popover = await this.popoverCtrl.create({
+            component: LanguagePopoverComponent,
+            cssClass: 'my-custom-class',
+            event: ev,
+            translucent: true
+        });
+        popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+        return await popover.present();
+
+    }
+
     ngOnInit() {
     }
 
