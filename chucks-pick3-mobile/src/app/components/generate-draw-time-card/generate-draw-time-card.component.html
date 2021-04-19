@@ -5,7 +5,7 @@
       <ion-icon  [routerLink]="['/home']"  class="view-picks-icon" style="float: left" name="caret-back" color="white" routerDirection="back" ></ion-icon>
       </div>
       <div  #secondBackButton style=" display: none;">
-      <ion-icon  (click)="submitGenerate(generate, continue); showFirstBackButton(firstBackButton, secondBackButton)"  class="view-picks-icon" style="float: left;" name="caret-back" color="white"  ></ion-icon>
+      <ion-icon (click)="submitGenerate(generate, continue); showContinueBackButton(firstBackButton, secondBackButton)" class="view-picks-icon" style="float: left;" name="caret-back" color="white"  ></ion-icon>
       </div>
     </ion-col>
     <ion-col size="8">
@@ -47,10 +47,10 @@
       <div class="generate-options-title">Previous Drawing Date:</div>
       <ion-row class="generate-picks-button-section">
         <ion-col id="yesterdayPreviousDrawingDate">
-          <button  #yesterdayPreviousDrawingDate class="generate-picks-button" (click)="selectYesterdayPrevDrawingDate(yesterdayPreviousDrawingDate, todayPreviousDrawingDate);">Yesterday</button>
+          <button  #yesterdayPreviousDrawingDate class="generate-picks-button" (click)="selectDrawingDateMenuItemForYesterday(yesterdayPreviousDrawingDate, todayPreviousDrawingDate);">Yesterday</button>
         </ion-col>
         <ion-col id="todayPreviousDrawingDate" >
-          <button #todayPreviousDrawingDate  class="generate-picks-button" (click)="selectTodayPrevDrawingDate(todayPreviousDrawingDate, yesterdayPreviousDrawingDate);" style="background-color: #2fdf75">Today</button>
+          <button #todayPreviousDrawingDate class="generate-picks-button" (click)="selectDrawingDateMenuItemForToday(todayPreviousDrawingDate, yesterdayPreviousDrawingDate);" style="background-color: #2fdf75">Today</button>
         </ion-col>
       </ion-row>
       <div class="generate-options-title">Previous Drawing Time:</div>
@@ -65,7 +65,7 @@
         </ion-item>
       </ion-row>
       <ion-row>
-        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="continueGenerate(continue, generate); showSecondBackButton(secondBackButton, firstBackButton); setGenerateDrawTime(); ">Continue</button>
+        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="showGeneratePage(continue, generate); showGenerateBackButton(secondBackButton, firstBackButton); setDrawingTimeMenuItems('today',currentDate) ">Continue</button>
       </ion-row>
       </form>
     </div>
@@ -84,8 +84,8 @@
         <ion-item class="ion-no-padding"  style="width: 100%;" >
           <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day"
                       style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                      interface="action-sheet" (ionChange)="retrieveGenerateDrawTime(generateChoice)">
-            <ion-select-option *ngFor="let timeNotAvailable of timesNotAvailable" [value]="timeNotAvailable"> {{timeNotAvailable}}</ion-select-option>
+                      interface="action-sheet" (ionChange)="null">
+            <ion-select-option *ngFor="let newDrawingTime of newDrawingTimes" [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>

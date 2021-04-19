@@ -2,7 +2,13 @@ import {Component, Input, ElementRef, OnDestroy, OnInit, ViewChild} from '@angul
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
-import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {
+    DAY_DRAW_TIME_KEY,
+    EVENING_DRAW_TIME_KEY,
+    MORNING_DRAW_TIME_KEY,
+    NIGHT_DRAW_TIME_KEY,
+    Pick3DrawTimeEnum
+} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
@@ -11,6 +17,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
+import {tar} from 'ionic/lib/utils/archive';
 
 @Component({
     selector: 'app-generate-draw-time-card',
@@ -18,35 +25,48 @@ import {LanguagePopoverComponent} from '../language-popover/language-popover.com
     styleUrls: ['./generate-draw-time-card.component.scss'],
 })
 export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
+
+    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                public toastService: IonicToastNotificationService,
+                public drawStateService: DrawStateService) {
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+    }
+
+    public currentDate = new Date().getDate();
+    defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     public showCountDownToDrawing = false;
 
-    timesNotAvailable = [];
-    timesToGenerate = [];
+    newDrawingTimes: any[] = [];
+    currentDateDay: number = new Date().getDate();
+    currentDateMonth: number = new Date().getMonth() + 1;
+    currentDateYear: number = new Date().getFullYear();
+    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
+
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.morning',
+            title: MORNING_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
             icon: 'morning-icon',
             dateTime: new Date().setHours(10, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.day',
+            title: DAY_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
             icon: 'day-icon',
             dateTime: new Date().setHours(11, 45, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.evening',
+            title: EVENING_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
             icon: 'evening-icon',
             dateTime: new Date().setHours(17, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.night',
+            title: NIGHT_DRAW_TIME_KEY,
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
             icon: 'night-icon',
             dateTime: new Date().setHours(21, 30, 0, 0)
@@ -57,12 +77,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     generateChoice: any;
     continueChoice: any;
     continueButton = true;
-
-    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
-                public toastService: IonicToastNotificationService,
-                public drawStateService: DrawStateService) {
-        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-    }
 
     ngOnInit() {
         const someDateTime = new Date();
@@ -81,6 +95,20 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.showCountDownToDrawing = false;
         this.drawTimes = [];
         this.pick3StateLottery = null;
+    }
+
+    public setDrawingTimeMenuItems(targetCurrentDate: Date): void {
+
+        if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
+            this.resetDrawingTimes();
+            for (const drawTime of this.drawTimes) {
+                this.selectDrawingTimeCard(drawTime);
+            }
+        } else {
+
+            this.newDrawingTimes = this.defaultDrawingTimes;
+        }
+
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
@@ -105,12 +133,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         return this.pick3StateLottery.getState();
     }
 
-    public setGenerateDrawTime() {
-        this.setTimesNotAvailable();
-        for (const i of this.drawTimes) {
-          this.selectDrawingTimeCard(i);
-        }
-    }
 
     /**
      * Helper method to set all the data for the Pick3 Draw Date Card.
@@ -187,20 +209,20 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
-            this.timesNotAvailable.push(pick3DrawTimeType.toString());
+            this.newDrawingTimes.push(pick3DrawTimeType.toString());
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
         });
     }
 
-    private setTimesNotAvailable() {
+    private resetDrawingTimes(): void {
 
-        if (this.timesNotAvailable !== null && this.timesNotAvailable !== undefined) {
-            this.timesNotAvailable.splice(0, this.timesNotAvailable.length);
+        if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length);
         }
 
-}
+    }
 
     private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         const drawingResult = {
@@ -243,13 +265,11 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     private randomlyMockDrawTimeCardStates(): void {
-        // console.log("randomlyMockDrawTimeCardStates() start.");
         this.drawTimes.forEach(drawTime => {
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(this.slideNumber);
 
             if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
             }
         });
 
@@ -262,54 +282,61 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
 
-    public selectYesterdayPrevDrawingDate(yesterday, today) {
+    public selectDrawingDateMenuItemForYesterday(yesterday: any, today: any): void {
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTodayPrevDrawingDate(today, yesterday) {
+    public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTomorrowDrawingDate(tomorrow, today) {
+    public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectTodayDrawingDate(today, tomorrow) {
-        today.style.backgroundColor = '#2fdf75';
-        tomorrow.style.backgroundColor = '#e5e5e5';
+    public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
+        const date = new Date();
+
+        const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+        console.log(tomorrowFullDate);
+        this.setDrawingTimeMenuItems(tomorrowFullDate);
+        this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
-    public submitGenerate(generateDisplay, continueDisplay) {
+    public selectTodayDrawingDate(today: any, tomorrow: any): void {
+        const date = new Date();
+
+        const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+        console.log(todayFullDate);
+        this.setDrawingTimeMenuItems(todayFullDate);
+        this.selectDrawingDateMenuItemForToday(tomorrow, today);
+    }
+
+    public submitGenerate(generateDisplay: any, continueDisplay: any): void {
         continueDisplay.style.display = 'block';
         generateDisplay.style.display = 'none';
     }
 
-    public continueGenerate(continueDisplay, generateDisplay) {
+    public showGeneratePage(continueDisplay: any, generateDisplay: any): void {
         continueDisplay.style.display = 'none';
         generateDisplay.style.display = 'block';
     }
 
-    public showSecondBackButton(secondBtn, firstBtn) {
+    public showGenerateBackButton(secondBtn: any, firstBtn: any): void {
         secondBtn.style.display = 'block';
         firstBtn.style.display = 'none';
     }
 
-    public showFirstBackButton(firstBtn, secondBtn) {
+    public showContinueBackButton(firstBtn: any, secondBtn: any): void {
         firstBtn.style.display = 'block';
         secondBtn.style.display = 'none';
     }
 
-    retrieveGenerateDrawTime(generateChoice) {
 
-        if (this.timesToGenerate !== null && this.timesToGenerate !== undefined) {
-            this.timesToGenerate.splice(0, this.timesToGenerate.length);
-            this.timesToGenerate.push(generateChoice);
-        }
-    }
-    logForm() {
+    logForm(): void {
         console.log(this.continueChoice);
     }
 
