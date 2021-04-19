@@ -15,8 +15,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
-import {DrawStateService} from '../../services/draw-state.service';
-import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
+
 
 @Component({
     selector: 'app-generate-draw-time-card',
@@ -26,8 +25,7 @@ import {LanguagePopoverComponent} from '../language-popover/language-popover.com
 export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
-                public toastService: IonicToastNotificationService,
-                public drawStateService: DrawStateService) {
+                public toastService: IonicToastNotificationService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -83,7 +81,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
 
-        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
+        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
+            this.getCurrentDrawTimeIcon(pick3DrawTime));
 
     }
 
@@ -149,7 +148,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setDrawDateIcon(drawDateIcon);
 
-        if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
+        if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
                 this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
             } else {
@@ -165,7 +164,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
+    private setDrawState(pick3DrawDateCard: Pick3DrawDateCard,
+                         pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);
@@ -178,7 +178,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
+        const pick3DrawTime: Pick3DrawTime =
+            this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
         this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
@@ -191,28 +192,32 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
     }
 
-    private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
-        this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-            this.setCardState(winningNumber, pick3DrawTimeType);
-        }, error => {
-            // TODO: Handle error.
-            console.error('TODO: Handle error: ' + error, error);
-            this.toastService.presentToast('Internal Error',
-                'Please try again later.', 'internet-not-available');
+    private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date,
+                                        pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+        this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType)
+            .then((winningNumber: any) => {
+                this.setCardState(winningNumber, pick3DrawTimeType);
+            }, error => {
+                // TODO: Handle error.
+                console.error('TODO: Handle error: ' + error, error);
+                this.toastService.presentToast('Internal Error',
+                    'Please try again later.', 'internet-not-available');
 
-        });
+            });
     }
 
-    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
-        this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-            this.setCardState(winningNumber, pick3DrawTimeType);
-        }, error => {
-            // TODO: Handle error.
-            this.newDrawingTimes.push(pick3DrawTimeType.toString());
-            console.error('TODO: Handle error: ' + error, error);
-            this.toastService.presentToast('Results Not Available',
-                'Please try again later.', 'results-not-available');
-        });
+    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date,
+                                           pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+        this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType)
+            .then((winningNumber: any) => {
+                this.setCardState(winningNumber, pick3DrawTimeType);
+            }, error => {
+                // TODO: Handle error.
+                this.newDrawingTimes.push(pick3DrawTimeType.toString());
+                console.error('TODO: Handle error: ' + error, error);
+                this.toastService.presentToast('Results Not Available',
+                    'Please try again later.', 'results-not-available');
+            });
     }
 
     private resetDrawingTimes(): void {
@@ -249,7 +254,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
                 break;
             case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+                this.setDrawState(this.data,
+                    Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
                 break;
             case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN:
                 this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
