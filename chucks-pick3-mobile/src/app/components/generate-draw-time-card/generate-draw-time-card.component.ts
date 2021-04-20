@@ -226,7 +226,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
-            this.newDrawingTimes = [];
+            this.newDrawingTimes.length = 0;
+            this.drawingTimeMenuItem.length = 0;
         }
 
     }
