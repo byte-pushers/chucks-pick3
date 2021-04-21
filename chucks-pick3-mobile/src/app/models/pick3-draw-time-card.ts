@@ -1,6 +1,6 @@
 import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import {Pick3DrawDateCard} from "./pick3-draw-date-card";
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import {Pick3DrawDateCard} from './pick3-draw-date-card';
 
 export interface Pick3DrawTimeCard {
     setPick3DrawCardId(pick3DrawCardId: number): void;

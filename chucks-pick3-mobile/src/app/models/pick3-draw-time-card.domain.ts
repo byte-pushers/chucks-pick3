@@ -36,7 +36,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     setIcon(icon: string): void {
-        this.icon = icon
+        this.icon = icon;
     }
 
     getState(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum {
