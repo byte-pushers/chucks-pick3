@@ -1,5 +1,5 @@
-import {Pick3DrawDateCard} from "./pick3-draw-date-card";
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
+import {Pick3DrawDateCard} from './pick3-draw-date-card';
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 
 export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private readonly TITLE: string = 'Pick 3 Lottery';
@@ -14,7 +14,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private drawDateIcon: string;
 
     constructor(private readonly config: any) {
-
+        this.drawDateIcon = (config) ? config.drawDateIcon : null;
     }
 
     getDrawDate(): Date {
@@ -32,7 +32,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
         let dt: any;
 
-        if (typeof this.drawTime === "string") {
+        if (typeof this.drawTime === 'string') {
             let key: any = this.drawTime;
 
             key = key.toUpperCase();
@@ -67,7 +67,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         let dt: any;
 
-        if (typeof drawTime === "string") {
+        if (typeof drawTime === 'string') {
             let key: any = drawTime;
 
             key = key.toUpperCase();
@@ -102,8 +102,8 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this.winningNumberDigits = [];
 
         while (winningNumber > 0) {
-            this.winningNumberDigits.push(winningNumber%10);
-            winningNumber = Math.floor(winningNumber/10);
+            this.winningNumberDigits.push(winningNumber % 10);
+            winningNumber = Math.floor(winningNumber / 10);
         }
     }
 

@@ -12,6 +12,7 @@ export interface Pick3DrawTimeCard {
     getState(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     setState(state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum): void;
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
     getSelected(): boolean;
     setSelected(selected: boolean): void;

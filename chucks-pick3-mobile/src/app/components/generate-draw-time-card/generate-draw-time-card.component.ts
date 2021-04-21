@@ -110,7 +110,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
-            if (drawTime.getDrawTime() === pick3DrawTime.getType()) {
+            if (drawTime.getDrawTimeValue() === pick3DrawTime.getType()) {
                 return true;
             }
         });

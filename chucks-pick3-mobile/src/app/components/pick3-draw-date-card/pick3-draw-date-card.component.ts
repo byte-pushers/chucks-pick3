@@ -59,16 +59,10 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        //console.log("OnInit - slide#: " + this.slideNumber);
         const someDateTime = new Date();
-        //someDateTime.setDate(someDateTime.getDate() - 1);
-        //someDateTime.setHours(17, 30, 0, 0);
         let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
-        //this.setDrawTimeCardsState();
-        //console.log("setData() start.");
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
-        //console.log("setData() end.");
     }
 
     ngOnDestroy() {
@@ -82,11 +76,10 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
-            if (drawTime.getDrawTime() === pick3DrawTime.getType()) {
+            if (drawTime.getDrawTimeValue() === pick3DrawTime.getType()) {
                 return true;
             }
         });
-
         return (pick3DrawTimeCard === null || pick3DrawTimeCard === undefined) ? null : pick3DrawTimeCard.getIcon();
     }
 
@@ -205,7 +198,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         };
         let p3dtt: any;
 
-        if (typeof pick3DrawTimeType === "string") {
+        if (typeof pick3DrawTimeType === 'string') {
             let p: any = pick3DrawTimeType;
             p3dtt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[p.toUpperCase()];
         } else {
