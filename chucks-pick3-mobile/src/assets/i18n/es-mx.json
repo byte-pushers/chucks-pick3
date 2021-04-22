@@ -1,0 +1,23 @@
+{
+  "language": "ES",
+  "draw.time.enum.morning": "Mañana",
+  "draw.time.enum.day": "Dia",
+  "draw.time.enum.evening": "Tarde",
+  "draw.time.enum.night": "Noche",
+  "card.state.title": "Tejas",
+  "card.draw.time.state.not.drawn.yet": "",
+  "card.draw.time.state.not.drawn.yet.with.generated.picks": "",
+  "card.draw.time.state.drawn":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.no.winners":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.winners": "",
+  "pick3.draw.date.card.placeholder": "Elija una Hora Del Día",
+  "pick3.draw.date.card.yesterday": "Ayer",
+  "pick3.draw.date.card.today": "Hoy",
+  "pick3.draw.date.card.tomorrow": "Mañana",
+  "pick3.draw.date.card.continue": "Seguir",
+  "pick3.draw.date.card.generate": "Generar",
+  "pick3.draw.date.card.previous.drawing.date": "Fecha de Sorteo Anterior",
+  "pick3.draw.date.card.previous.drawing.time": "Tiempo de Sorteo Anterior",
+  "pick3.draw.date.card.current.drawing.date": "Fecha de Sorteo",
+  "pick3.draw.date.card.current.drawing.time": "Tiempo de Sorteo"
+}

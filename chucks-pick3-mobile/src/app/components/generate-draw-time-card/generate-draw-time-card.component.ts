@@ -15,6 +15,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
+import {I18nService} from '../../services/i18n.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ import {IonicToastNotificationService} from '../../services/ionic-toast-notifica
 export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
-                public toastService: IonicToastNotificationService) {
+                public toastService: IonicToastNotificationService,
+                public translate: I18nService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -36,7 +38,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     public showCountDownToDrawing = false;
-
+    options = {year: 'numeric', month: 'long', day: 'numeric'};
     newDrawingTimes: any[] = [];
     currentDateDay: number = new Date().getDate();
     currentDateMonth: number = new Date().getMonth() + 1;
@@ -290,9 +292,14 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         today.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
+    public selectPreviousDrawingDateMenuItemForToday(today: any, yesterday: any): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
+    }
+
+    public selectDrawingDateMenuItemForToday(tomorrow: any, today: any) {
+        today.style.backgroundColor = '#2fdf75';
+        tomorrow.style.backgroundColor = '#e5e5e5';
     }
 
     public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
@@ -302,7 +309,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
-
+        this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
         console.log(tomorrowFullDate);
         this.setDrawingTimeMenuItems(tomorrowFullDate);
