@@ -12,11 +12,11 @@
       <ion-row>
         <ion-col>
                     <span style="font-size: 7.5vw;font-weight: bolder;"
-                          class="draw-date-title draw-date-text">{{data.getDrawState()}} {{data.getTitle()}}</span><br><br>
+                          class="draw-date-title draw-date-text">{{data.getDrawState()}} {{data.getTitle() | translate}}</span><br><br>
           <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
             <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg"
                       class="time-of-day-icon"></ion-icon>
-            {{data.getDrawTimeAsString()}}
+            {{data.getDrawTimeAsString() | translate}}
           </span>
           <br><br>
           <span style="font-size: 4.6vw;font-weight: bold;"
