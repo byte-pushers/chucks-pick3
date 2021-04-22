@@ -37,7 +37,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     constructor(private readonly config: any) {
         this._drawDate = (config) ? Object.isDefinedAndNotNull(config._drawDate) ? (typeof config._drawDate === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._drawDate.toUpperCase()] : config.drawDate : null : null;
         this._drawState = (config) ? Object.isDefinedAndNotNull(config._drawState) ? config.drawState : null : null;
-        this._drawTime = (config) ? Object.isDefinedAndNotNull(config._drawTime) ? (typeof config.drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+        this._drawTime = (config) ? Object.isDefinedAndNotNull(config._drawTime) ? (typeof config._drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
         this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config._upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
         this._hasWinner = (config) ? (typeof config._hasWinner === 'boolean') ? config.hasWinner : false : false;
         this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config._backgroundImage) ? config.backgroundImage : null : null;
@@ -170,12 +170,29 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._drawTime = dt;
     }
 
+    get backgroundImage(): string {
+        return this._backgroundImage;
+    }
+
+    set backgroundImage(backgroundImage: string) {
+        this._backgroundImage = backgroundImage;
+    }
+
     getBackgroundImage(): string {
         return this._backgroundImage;
     }
 
     setBackgroundImage(backgroundImage: string): void {
         this._backgroundImage = backgroundImage;
+    }
+
+    get winningNumber(): number {
+        return this._winningNumber;
+    }
+
+    set winningNumber(winningNumber: number) {
+        this._winningNumber = winningNumber;
+        this.setWinningNumberDigits(this._winningNumber);
     }
 
     getWinningNumber(): number {
@@ -188,7 +205,6 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     }
 
     private setWinningNumberDigits(winningNumber: number) {
-        let mod;
 
         this._winningNumberDigits = [];
 
@@ -244,6 +260,14 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         }
 
         return digit;
+    }
+
+    get drawDateIcon(): string {
+        return this._drawDateIcon;
+    }
+
+    set drawDateIcon(drawDateIcon: string) {
+        this._drawDateIcon = drawDateIcon;
     }
 
     getDrawDateIcon(): string {
