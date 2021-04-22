@@ -31,20 +31,16 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
-    public currentDate = new Date().getDate();
+    public currentDate = new Date();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     public showCountDownToDrawing = false;
-    options = {year: 'numeric', month: 'long', day: 'numeric'};
-    newDrawingTimes: any[] = [];
-    currentDateDay: number = new Date().getDate();
-    currentDateMonth: number = new Date().getMonth() + 1;
-    currentDateYear: number = new Date().getFullYear();
-    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
 
+    newDrawingTimes = [];
+    drawingTimeMenuItem = [];
     drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
             title: MORNING_DRAW_TIME_KEY,
@@ -101,12 +97,22 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.resetDrawingTimes();
-            for (const drawTime of this.drawTimes) {
-                this.selectDrawingTimeCard(drawTime);
+            for (const i of this.drawTimes) {
+                this.setTodayDrawingTimes(i);
             }
+            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.drawingTimeMenuItem);
         } else {
             this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
         }
+    }
+
+
+    private setTodayDrawingTimes(timenotAvailable) {
+        const currentDrawTime = this.pick3StateLottery.getCurrentDrawingTime().getDateTime().getHours();
+        if (timenotAvailable.getDateTime().getHours() > currentDrawTime) {
+            this.drawingTimeMenuItem.push(timenotAvailable.getTitle());
+        }
+
 
     }
 
@@ -214,7 +220,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 this.setCardState(winningNumber, pick3DrawTimeType);
             }, error => {
                 // TODO: Handle error.
-                this.newDrawingTimes.push(pick3DrawTimeType.toString());
                 console.error('TODO: Handle error: ' + error, error);
                 this.toastService.presentToast('Results Not Available',
                     'Please try again later.', 'results-not-available');
@@ -223,7 +228,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
-            this.newDrawingTimes = [];
+            this.newDrawingTimes.length = 0;
+            this.drawingTimeMenuItem.length = 0;
         }
 
     }
@@ -301,6 +307,10 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
     }
+    public selectDrawingDateMenuItemForTodayGenerate(tomorrow: any, today: any) {
+        tomorrow.style.backgroundColor = '#2fdf75';
+        today.style.backgroundColor = '#e5e5e5';
+    }
 
     public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
         tomorrow.style.backgroundColor = '#2fdf75';
@@ -316,11 +326,12 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
-    public selectTodayDrawingDate(today: any, tomorrow: any): void {
+    public selectTodayDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
 
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-        console.log(todayFullDate);
+        today.style.backgroundColor = '#2fdf75';
+        tomorrow.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(todayFullDate);
         this.selectDrawingDateMenuItemForToday(tomorrow, today);
     }
