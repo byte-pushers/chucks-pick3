@@ -1,7 +1,7 @@
 import { Pick3DrawTimeCard } from './pick3-draw-time-card';
 import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
-import { Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import { Pick3DrawDateCard } from "./pick3-draw-date-card";
+import { Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import { Pick3DrawDateCard } from './pick3-draw-date-card';
 import * as Object from 'bytepushers-js-obj-extensions';
 
 export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
@@ -11,15 +11,15 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private dateTime: Date;
     private drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     private state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
-    private selected: boolean = false;
+    private selected = false;
 
-    constructor(config:any) {
+    constructor(config: any) {
         this.icon = (config) ? config.icon : null;
         this.title = (config) ? Object.isDefinedAndNotNull(config.title) ? config.title : null : null;
-        this.drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === "string") ?  Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
-        this.state = (config) ? config.state ? (typeof config.state === "string") ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
-        this.selected = (config) ? (typeof config.selected === "boolean") ? config.selected : false: false;
-        this.dateTime = (config) ? (Object.isDate(config.dateTime))? this.dateTime : new Date(config.dateTime) : null;
+        this.drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string') ?  Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+        this.state = (config) ? config.state ? (typeof config.state === 'string') ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+        this.selected = (config) ? (typeof config.selected === 'boolean') ? config.selected : false : false;
+        this.dateTime = (config) ? (Object.isDate(config.dateTime)) ? this.dateTime : new Date(config.dateTime) : null;
         this.pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
     }
 
@@ -36,7 +36,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     setIcon(icon: string): void {
-        this.icon = icon
+        this.icon = icon;
     }
 
     getState(): Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum {
@@ -58,7 +58,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
         let dt: any;
 
-        if (typeof this.drawTime === "string") {
+        if (typeof this.drawTime === 'string') {
             let key: any = this.drawTime;
 
             key = key.toUpperCase();
@@ -70,10 +70,25 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         return dt;
     }
 
+    getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+        let dt: any;
+
+        if (typeof this.drawTime === 'string') {
+            let key: any = this.drawTime;
+
+            key = key.toUpperCase();
+            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+        } else {
+            dt = Pick3DrawTimeEnum.getPropertyValue(this.drawTime);
+        }
+
+        return dt;
+    }
+
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         let dt: any;
 
-        if (typeof drawTime === "string") {
+        if (typeof drawTime === 'string') {
             let key: any = drawTime;
 
             key = key.toUpperCase();
