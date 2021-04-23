@@ -1,0 +1,23 @@
+{
+  "language": "EN",
+  "draw.time.enum.morning": "Morning",
+  "draw.time.enum.day": "Day",
+  "draw.time.enum.evening": "Evening",
+  "draw.time.enum.night": "Night",
+  "card.state.title": "Texas",
+  "card.draw.time.state.not.drawn.yet": "",
+  "card.draw.time.state.not.drawn.yet.with.generated.picks": "",
+  "card.draw.time.state.drawn":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.no.winners":  "",
+  "card.draw.time.state.drawn.with.generated.picks.with.winners": "",
+  "pick3.draw.date.card.placeholder": "Pick a Time Of Day",
+  "pick3.draw.date.card.yesterday": "Yesterday",
+  "pick3.draw.date.card.today": "Today",
+  "pick3.draw.date.card.tomorrow": "Tomorrow",
+  "pick3.draw.date.card.continue": "Continue",
+  "pick3.draw.date.card.generate": "Generate",
+  "pick3.draw.date.card.previous.drawing.date": "Previous Drawing Date",
+  "pick3.draw.date.card.previous.drawing.time": "Previous Drawing Time",
+  "pick3.draw.date.card.current.drawing.date": "Drawing Date",
+  "pick3.draw.date.card.current.drawing.time": "Drawing Time"
+}
