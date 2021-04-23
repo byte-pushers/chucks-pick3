@@ -79,6 +79,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
+            // TODO We need to convert what is coming from scraper to the real enum
+            // TODO Then we want to use drawTime.toString
             if (drawTime.getDrawTimeValue() === pick3DrawTime.getType()) {
                 return true;
             }
