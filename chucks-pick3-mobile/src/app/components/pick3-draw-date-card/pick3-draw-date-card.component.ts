@@ -10,6 +10,8 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
+import {TranslateService} from '@ngx-translate/core';
+import {I18nService} from '../../services/i18n.service';
 
 @Component({
     selector: 'pick3-draw-date-card',
@@ -54,7 +56,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
-                public drawStateService: DrawStateService) {
+                public drawStateService: DrawStateService,
+                public translate: I18nService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
