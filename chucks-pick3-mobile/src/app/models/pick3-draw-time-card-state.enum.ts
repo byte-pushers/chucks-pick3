@@ -31,7 +31,7 @@ export namespace Pick3DrawTimeCardStateEnum {
                 break;
         }
 
-        return propertyKey
+        return propertyKey;
     }
 
     export function toString(e: Pick3DrawTimeCardStateEnum|string): string {
