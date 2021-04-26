@@ -15,6 +15,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
 
+
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }

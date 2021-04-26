@@ -36,7 +36,7 @@ export class GeneratePicksPage implements OnInit, AfterViewInit {
 
     constructor(private popoverCtrl: PopoverController,
                 public translate: TranslateService) {
-        translate.setDefaultLang('en');
+        translate.setDefaultLang('en-US');
     }
 
     async showPopover(ev: any) {

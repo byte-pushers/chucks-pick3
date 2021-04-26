@@ -12,6 +12,9 @@ import {IonicToastNotificationService} from '../../services/ionic-toast-notifica
 import {DrawStateService} from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../../services/i18n.service';
+import {registerLocaleData} from '@angular/common';
+import localeEsMx from '@angular/common/locales/es-MX';
+import localeEnUS from '@angular/common/locales/en-US-POSIX';
 
 @Component({
     selector: 'pick3-draw-date-card',
@@ -57,7 +60,8 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
                 public drawStateService: DrawStateService,
-                public translate: I18nService) {
+                public translate: I18nService,
+                public translateService: TranslateService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -65,7 +69,10 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         const someDateTime = new Date();
         let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
-        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
+        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
+            this.getCurrentDrawTimeIcon(pick3DrawTime));
+        registerLocaleData(localeEsMx, 'es-MX');
+        registerLocaleData(localeEnUS, 'en-US');
     }
 
     ngOnDestroy() {

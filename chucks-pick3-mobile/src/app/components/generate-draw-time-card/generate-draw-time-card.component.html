@@ -20,7 +20,7 @@
           </span>
           <br><br>
           <span style="font-size: 4.6vw;font-weight: bold;"
-                class="draw-date-text">{{data.getDrawDate() | date}}</span><br>
+                class="draw-date-text">{{data.getDrawDate() | date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
         </ion-col>
       </ion-row>
       <ion-row>
