@@ -10,7 +10,6 @@ import { GeneratePicksPage } from './generate-picks.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {HomePageModule} from '../../home/home.module';
 import {GenerateDrawTimeCardComponent} from '../generate-draw-time-card/generate-draw-time-card.component';
-import {DateTranslatePipe} from '../../pipes/date-translate.pipe';
 
 @NgModule({
     imports: [
@@ -21,6 +20,6 @@ import {DateTranslatePipe} from '../../pipes/date-translate.pipe';
         TranslateModule,
         HomePageModule
     ],
-    declarations: [GeneratePicksPage, GenerateDrawTimeCardComponent, DateTranslatePipe]
+    declarations: [GeneratePicksPage, GenerateDrawTimeCardComponent]
 })
 export class GeneratePicksPageModule {}
