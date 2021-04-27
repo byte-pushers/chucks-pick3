@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, ElementRef, OnDestroy, OnInit, ViewChild, NgModule} from '@angular/core';
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
@@ -16,7 +16,10 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import * as BytePushers from 'bytepushers-js-core';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {I18nService} from '../../services/i18n.service';
-
+import {TranslateService} from '@ngx-translate/core';
+import {registerLocaleData} from '@angular/common';
+import localeEsMx from '@angular/common/locales/es-MX';
+import localeEnUS from '@angular/common/locales/en-US-POSIX';
 
 @Component({
     selector: 'app-generate-draw-time-card',
@@ -27,7 +30,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
-                public translate: I18nService) {
+                public translate: I18nService,
+                public translateService: TranslateService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -78,6 +82,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         document.getElementById('generate').style.display = 'none';
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.randomlyMockDrawTimeCardStates();
+        registerLocaleData(localeEsMx, 'es-MX');
+        registerLocaleData(localeEnUS, 'en-US');
 
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
             this.getCurrentDrawTimeIcon(pick3DrawTime));

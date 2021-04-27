@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Pick3DrawDateCard } from '../models/pick3-draw-date-card';
 import { Pick3DrawDateCardDomain } from '../models/pick3-draw-date-card.domain';
 import {Pick3DrawTimeEnum} from '../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../components/language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {registerLocaleData} from '@angular/common';
+import localeEsMx from '@angular/common/locales/es-MX';
+import localeEnUS from '@angular/common/locales/en-US-POSIX';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   default = {
     drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
   };
@@ -31,7 +34,12 @@ export class HomePage {
 
   constructor(private popoverCtrl: PopoverController,
               public translateService: TranslateService) {
-    translateService.setDefaultLang('en');
+    translateService.setDefaultLang('en-US');
+  }
+
+  ngOnInit() {
+    registerLocaleData(localeEsMx, 'es-MX');
+    registerLocaleData(localeEnUS, 'en-US');
   }
 
   async showPopover(ev: any) {
