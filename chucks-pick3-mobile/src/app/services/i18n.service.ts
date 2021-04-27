@@ -6,7 +6,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class I18nService {
   setLang: string;
-  langUpdated: EventEmitter<any> = new EventEmitter();
   constructor(public translateService: TranslateService) {
     translateService.setDefaultLang('en-US');
     this.setLang = 'en-US';
@@ -14,10 +13,5 @@ export class I18nService {
 
   public setLanguage(lang) {
     this.setLang = lang;
-    this.langUpdated.emit(this.setLang);
-  }
-
-  getLang() {
-    return this.setLang;
   }
 }
