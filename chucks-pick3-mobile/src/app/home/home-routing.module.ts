@@ -6,6 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children: [
+      {
+        path: 'card',
+        outlet: 'card',
+        loadChildren: '../card.module#Pick3DrawDateInfoSectionModule'
+      }
+    ]
   }
 ];
 

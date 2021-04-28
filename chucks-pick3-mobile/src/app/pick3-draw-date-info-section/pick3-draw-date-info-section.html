@@ -1,0 +1,47 @@
+<!--<pick3-draw-date-card style="height: 100%; width: 100%;"
+                      [slideNumber]="slideNumber"
+                      [data]="data"
+                      [defaultDrawDateTime]="defaultDrawDateTime">
+</pick3-draw-date-card>-->
+<ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
+    <ion-col size="2" style=" margin-right: 0px">
+        <div class="picks-indicator " [ngClass]="this.drawStateService.picksIndicator" style="float: left"></div>
+        <ion-icon src="../../../assets/view-picks-icon.svg" class="generate-picks-icon"
+                  style="float: right"></ion-icon>
+    </ion-col>
+    <ion-col size="8">
+        <ion-row>
+            <ion-col>
+                    <span style="font-size: 7.5vw;font-weight: bolder;"
+                          class="draw-date-title draw-date-text">{{'card.state.title' | translate}}</span><br><br>
+                <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
+            <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg"
+                      class="time-of-day-icon"></ion-icon>
+                    {{data.getDrawTimeAsString() | translate}}
+          </span>
+                <br><br>
+                <span style="font-size: 4.6vw;font-weight: bold;"
+                      class="draw-date-text">{{data.getDrawDate() | date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+                    <span class="dot">{{data.getWinningNumberDigit1()}}</span>
+                    <span class="dot">{{data.getWinningNumberDigit2()}}</span>
+                    <span class="dot">{{data.getWinningNumberDigit3()}}</span>
+                </div>
+                <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+                    <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
+                </div>
+                <p style="color: white">{{slideNumber}}</p>
+            </ion-col>
+        </ion-row>
+    </ion-col>
+    <ion-col size="2" style=" margin-left: 0px">
+        <ion-icon [routerLink]="['/generate-picks']" [state]="{ selectedDrawing: data}"
+                  src="../../../assets/generate-picks-icon.svg"
+                  class="view-picks-icon" style="float: left"></ion-icon>
+
+    </ion-col>
+</ion-row>
