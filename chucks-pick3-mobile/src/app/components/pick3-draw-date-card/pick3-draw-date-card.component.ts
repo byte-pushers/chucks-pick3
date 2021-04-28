@@ -8,6 +8,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import * as BytePushers from 'bytepushers-js-core';
+import * as String from 'bytepushers-js-string-extensions';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {DrawStateService} from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -87,8 +88,10 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
             // TODO We need to convert what is coming from scraper to the real enum
-            // TODO Then we want to use drawTime.toString
-            if (drawTime.getDrawTimeValue() === pick3DrawTime.getType()) {
+            // TODO Then we want to use drawTime.toString DAY Day
+            let drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
+
+            if (drawTimeValue === Pick3DrawTimeEnum.toString(pick3DrawTime.getType())) {
                 return true;
             }
         });

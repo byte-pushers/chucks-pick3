@@ -69,7 +69,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
             });
             this.data.drawStateBackgroundImageUrl = selectedDrawing.getBackgroundImage();
             this.data.drawingTimeIcon = selectedDrawing.getDrawDateIcon();
-            this.data.drawingTime = Pick3DrawTimeEnum.toString(selectedDrawing.getDrawTime());
+            this.data.drawingTime = Pick3DrawTimeEnum.getPropertyKey(selectedDrawing.getDrawTime());
             this.data.drawingDate = selectedDrawing.getDrawDate();
             this.data.winningNumber = {
                 digit1: selectedDrawing.getWinningNumberDigit1(),
@@ -77,6 +77,8 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 digit3: selectedDrawing.getWinningNumberDigit3()
             };
         });
+
+        this.setDrawingTimeMenuItems();
     }
 
     ngOnDestroy() {
@@ -89,7 +91,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     public setDrawingTimeMenuItems(targetCurrentDate: Date = new Date()): void {
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             if (Array.isArray(this.drawingTimes)) {
-                const drawingTime = Pick3DrawTimeEnum.toString(this?.pick3StateLottery?.getCurrentDrawingTime()?.getType());
+                const drawingTime= Pick3DrawTimeEnum.toString(this?.pick3StateLottery?.getCurrentDrawingTime()?.getType());
                 const availableDrawingTimes = this.pick3StateLottery.getAvailableDrawingTimes(drawingTime);
                 this.drawingTimes = [];
 

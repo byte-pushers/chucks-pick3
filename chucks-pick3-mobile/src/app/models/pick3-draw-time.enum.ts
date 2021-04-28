@@ -12,8 +12,14 @@ export namespace Pick3DrawTimeEnum {
         NIGHT
     }
 
-    export function getPropertyKey(e: Pick3DrawTimeEnum): string {
+    export function getPropertyKey(e: Pick3DrawTimeEnum | string): string {
         let propertyKey: string = null;
+
+        if (typeof e === 'string') {
+            e = e.toUpperCase();
+            e = Pick3DrawTimeEnum[e];
+        }
+
         switch (e) {
             case Pick3DrawTimeEnum.MORNING:
                 propertyKey = MORNING_DRAW_TIME_KEY;
@@ -71,7 +77,6 @@ export namespace Pick3DrawTimeEnum {
         switch (e) {
             case Pick3DrawTimeEnum.MORNING:
                 enumString = 'MORNING';
-                const morningTime = 'draw.time.enum.morning';
                 break;
             case Pick3DrawTimeEnum.DAY:
                 enumString = 'DAY';

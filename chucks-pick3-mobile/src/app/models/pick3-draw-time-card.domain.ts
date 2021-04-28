@@ -150,18 +150,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
-        let dt: any;
-
-        if (typeof this.drawTime === 'string') {
-            let key: any = this.drawTime;
-
-            key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
-        } else {
-            dt = Pick3DrawTimeEnum.getPropertyValue(this.drawTime);
-        }
-
-        return dt;
+        return this.drawTime; // dt;
     }
 
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
