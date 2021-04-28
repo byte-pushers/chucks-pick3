@@ -13,11 +13,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true" class="scroll-content">
-    <ion-slide  *ngFor="let card of pick3DrawDateDecks; index as i">
-      <app-generate-draw-time-card style="height: 100%; width: 100%;"
-                                   [slideNumber]="1"
-                                   [data]="card"
-                                   [defaultDrawDateTime]="default.drawDateTime">
-      </app-generate-draw-time-card></ion-slide>
-
+      <app-generate-draw-time-card style="height: 100%; width: 100%;">
+      </app-generate-draw-time-card>
 </ion-content>

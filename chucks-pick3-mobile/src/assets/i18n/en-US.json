@@ -5,6 +5,7 @@
   "draw.time.enum.evening": "Evening",
   "draw.time.enum.night": "Night",
   "card.state.title": "Texas",
+  "state.tx": "Texas",
   "card.draw.time.state.not.drawn.yet": "",
   "card.draw.time.state.not.drawn.yet.with.generated.picks": "",
   "card.draw.time.state.drawn":  "",

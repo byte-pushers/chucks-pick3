@@ -1,39 +1,35 @@
 <ion-grid>
-  <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
+  <ion-row class="primary-view" [style.background]="'url(' + data.drawStateBackgroundImageUrl + ')'">
     <ion-col size="2" style=" margin-right: 0px">
       <div #firstBackButton style=" display: block;">
       <ion-icon  [routerLink]="['/home']"  class="view-picks-icon" style="float: left" name="caret-back" color="white" routerDirection="back" ></ion-icon>
       </div>
       <div  #secondBackButton style=" display: none;">
-      <ion-icon (click)="submitGenerate(generate, continue); showContinueBackButton(firstBackButton, secondBackButton)" class="view-picks-icon" style="float: left;" name="caret-back" color="white"  ></ion-icon>
+      <ion-icon (click)="submitGenerate(generate, continue); showContinueBackButton(firstBackButton, secondBackButton)" class="view-picks-icon" style="float: left;" name="caret-back" color="white"></ion-icon>
       </div>
     </ion-col>
     <ion-col size="8">
       <ion-row>
         <ion-col>
                     <span style="font-size: 7.5vw;font-weight: bolder;"
-                          class="draw-date-title draw-date-text">{{'card.state.title' | translate}}</span><br><br>
+                          class="draw-date-title draw-date-text">{{data.drawState | translate}}</span><br><br>
           <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
-            <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg"
+            <ion-icon *ngIf="data.drawingTimeIcon" src="/assets/icon/{{data.drawingTimeIcon}}.svg"
                       class="time-of-day-icon"></ion-icon>
-            {{data.getDrawTimeAsString() | translate}}
+            {{data.drawingTime | translate}}
           </span>
           <br><br>
           <span style="font-size: 4.6vw;font-weight: bold;"
-                class="draw-date-text">{{data.getDrawDate() | date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
+                class="draw-date-text">{{data.drawingDate | date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <div style="display: inline" *ngIf="showCountDownToDrawing === false">
-            <span class="dot">{{data.getWinningNumberDigit1()}}</span>
-            <span class="dot">{{data.getWinningNumberDigit2()}}</span>
-            <span class="dot">{{data.getWinningNumberDigit3()}}</span>
+            <span class="dot">{{data.winningNumber.digit1}}</span>
+            <span class="dot">{{data.winningNumber.digit2}}</span>
+            <span class="dot">{{data.winningNumber.digit3}}</span>
           </div>
-          <div style="display: inline" *ngIf="showCountDownToDrawing === true">
-            <countdown-timer [end]="data.getDrawDate()"></countdown-timer>
-          </div>
-          <p style="color: white">{{slideNumber}}</p>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -55,18 +51,18 @@
       </ion-row>
       <div class="generate-options-title">{{'pick3.draw.date.card.previous.drawing.time' | translate}}:</div>
       <form #generateForm="ngForm" (ngSubmit)="logForm()">
-      <ion-row class="generate-picks-button-section">
-        <ion-item class="ion-no-padding"  style="width: 100%;" >
-          <ion-select class="timeOfDayDropDown" name="continueChoice" [(ngModel)]="continueChoice" placeholder= "{{'pick3.draw.date.card.placeholder' | translate}}"
-                      style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice); continueButton = false;">
-            <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-row>
-      <ion-row>
-        <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="showGeneratePage(continue, generate); showGenerateBackButton(secondBackButton, firstBackButton); setDrawingTimeMenuItems(currentDate) ">{{'pick3.draw.date.card.continue' | translate}}</button>
-      </ion-row>
+        <ion-row class="generate-picks-button-section">
+          <ion-item class="ion-no-padding"  style="width: 100%;" >
+            <ion-select class="timeOfDayDropDown" name="continueChoice" [(ngModel)]="continueChoice" placeholder= "{{'pick3.draw.date.card.placeholder' | translate}}"
+                        style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
+                        interface="action-sheet" (ionChange)="(continueChoice); continueButton = false;">
+              <ion-select-option *ngFor="let drawTime of drawingTimes" [value]="drawTime"> {{drawTime | translate}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <button [disabled]="continueButton" class=" continue-generate-btn generate-picks-button" [value]="continueButton" type="submit"  (click)="showGeneratePage(continue, generate); showGenerateBackButton(secondBackButton, firstBackButton); setDrawingTimeMenuItems() ">{{'pick3.draw.date.card.continue' | translate}}</button>
+        </ion-row>
       </form>
     </div>
     <div style="height: 50%" id="generate" #generate>
@@ -85,7 +81,7 @@
           <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="{{'pick3.draw.date.card.placeholder' | translate}}"
                       style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
                       interface="action-sheet" (ionChange)="null">
-            <ion-select-option *ngFor="let newDrawingTime of newDrawingTimes" [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
+            <ion-select-option *ngFor="let newDrawingTime of drawingTimes" [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>

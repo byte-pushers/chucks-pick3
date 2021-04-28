@@ -86,4 +86,8 @@ export namespace Pick3DrawTimeEnum {
 
         return enumString;
     }
+
+    export function getIcon(e: Pick3DrawTimeEnum | string): string {
+        return toString(e).toLowerCase() + "-icon";
+    }
 }
