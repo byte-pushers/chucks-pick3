@@ -19,7 +19,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {registerLocaleData} from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
-import {Observable, of} from "rxjs";
+import {Observable, of, Subscription} from "rxjs";
 import {Pick3DrawDateCardDomain} from "../../models/pick3-draw-date-card.domain";
 
 @Component({
@@ -47,14 +47,13 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     generateChoice: any;
     continueChoice: any;
     continueButton = true;
-    private selectedDrawingObservable: Observable<Pick3DrawDateCard>;
+    private selectedDrawingSubscription: Subscription;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
                 public i18nService: I18nService,
                 public translateService: TranslateService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-
     }
 
     ngOnInit() {
@@ -62,8 +61,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-        this.selectedDrawingObservable = of(window.history.state.selectedDrawing);
-        this.selectedDrawingObservable.subscribe(selectedDrawing => {
+        this.selectedDrawingSubscription = of(window.history.state.selectedDrawing).subscribe(selectedDrawing => {
             selectedDrawing = new Pick3DrawDateCardDomain(selectedDrawing);
 
             this.translateService.get(this.pick3StateLottery.getStateName()).subscribe(someDrawState => {
@@ -79,13 +77,13 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
                 digit3: selectedDrawing.getWinningNumberDigit3()
             };
         });
-
-
     }
 
     ngOnDestroy() {
         this.data = null;
         this.pick3StateLottery = null;
+        this.selectedDrawingSubscription.unsubscribe();
+        this.selectedDrawingSubscription = null;
     }
 
     public setDrawingTimeMenuItems(targetCurrentDate: Date = new Date()): void {
@@ -106,14 +104,6 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
 
     public getCurrentDrawTime(): Pick3DrawTime {
         return this.pick3StateLottery.getCurrentDrawingTime();
-    }
-
-    private getDrawTime(someDateTime: Date): Pick3DrawTime {
-        return this.pick3StateLottery.getDrawingTime(someDateTime);
-    }
-
-    private getDrawState(): string {
-        return this.pick3StateLottery.getState();
     }
 
     public selectDrawingDateMenuItemForYesterday(yesterday: any, today: any): void {
@@ -179,9 +169,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         secondBtn.style.display = 'none';
     }
 
-
     logForm(): void {
         console.log(this.continueChoice);
     }
-
 }
