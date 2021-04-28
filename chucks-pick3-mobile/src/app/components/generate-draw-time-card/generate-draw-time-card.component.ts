@@ -19,6 +19,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {registerLocaleData} from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
+import {Observable, of} from "rxjs";
 import {Pick3DrawDateCardDomain} from "../../models/pick3-draw-date-card.domain";
 
 @Component({
@@ -34,9 +35,9 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         drawingTime: 'draw.time.enum.morning',
         drawingDate: new Date(),
         winningNumber: {
-            digit1: '0',
-            digit2: '2',
-            digit3: '3'
+            digit1: 0,
+            digit2: 2,
+            digit3: 3
         }
     };
     public showCountDownToDrawing =  false;
@@ -46,6 +47,7 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
     generateChoice: any;
     continueChoice: any;
     continueButton = true;
+    private selectedDrawingObservable: Observable<Pick3DrawDateCard>;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 public toastService: IonicToastNotificationService,
@@ -60,14 +62,25 @@ export class GenerateDrawTimeCardComponent implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-        this.translateService.get(this.pick3StateLottery.getStateName()).subscribe(someDrawState => {
-            this.data.drawState = someDrawState;
+        this.selectedDrawingObservable = of(window.history.state.selectedDrawing);
+        this.selectedDrawingObservable.subscribe(selectedDrawing => {
+            selectedDrawing = new Pick3DrawDateCardDomain(selectedDrawing);
+
+            this.translateService.get(this.pick3StateLottery.getStateName()).subscribe(someDrawState => {
+                this.data.drawState = someDrawState;
+            });
+            this.data.drawStateBackgroundImageUrl = selectedDrawing.getBackgroundImage();
+            this.data.drawingTimeIcon = selectedDrawing.getDrawDateIcon();
+            this.data.drawingTime = Pick3DrawTimeEnum.toString(selectedDrawing.getDrawTime());
+            this.data.drawingDate = selectedDrawing.getDrawDate();
+            this.data.winningNumber = {
+                digit1: selectedDrawing.getWinningNumberDigit1(),
+                digit2: selectedDrawing.getWinningNumberDigit2(),
+                digit3: selectedDrawing.getWinningNumberDigit3()
+            };
         });
-        this.data.drawStateBackgroundImageUrl = this.pick3StateLottery.getBackgroundImageUrl();
-        this.data.drawingTimeIcon = Pick3DrawTimeEnum.getIcon(this?.pick3StateLottery?.getCurrentDrawingTime()?.getType());
-        this.data.drawingTime = Pick3DrawTimeEnum.toString(this?.pick3StateLottery?.getCurrentDrawingTime()?.getType());
-        this.data.drawingDate = new Date();
-        this.data.winningNumber = {digit1: '0', digit2: '2', digit3: '3'};
+
+
     }
 
     ngOnDestroy() {

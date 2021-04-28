@@ -35,15 +35,15 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private _drawDateIcon: string;
 
     constructor(private readonly config: any) {
-        this._drawDate = (config) ? Object.isDefinedAndNotNull(config._drawDate) ? (typeof config._drawDate === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._drawDate.toUpperCase()] : config.drawDate : null : null;
-        this._drawState = (config) ? Object.isDefinedAndNotNull(config._drawState) ? config.drawState : null : null;
-        this._drawTime = (config) ? Object.isDefinedAndNotNull(config._drawTime) ? (typeof config._drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
-        this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config._upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
-        this._hasWinner = (config) ? (typeof config._hasWinner === 'boolean') ? config.hasWinner : false : false;
-        this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config._backgroundImage) ? config.backgroundImage : null : null;
-        this._winningNumber = (config) ? (config._winningNumber) ? config.winningNumber : null : null;
-        this._winningNumberDigits = (config) ? (config._winningNumberDigits) ? config.winningNumberDigits : null : null;
-        this._drawDateIcon = (config) ? config.drawDateIcon : null;
+        this._drawDate = (config) ? Object.isDefinedAndNotNull(config._drawDate) ? (typeof config._drawDate === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._drawDate.toUpperCase()] : config._drawDate : null : null;
+        this._drawState = (config) ? Object.isDefinedAndNotNull(config._drawState) ? config._drawState : null : null;
+        this._drawTime = (config) ? Object.isDefinedAndNotNull(config._drawTime) ? (typeof config._drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._drawTime.toUpperCase()] : config._drawTime : null : null;
+        this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config._upcomingDrawTime) ? (typeof config._upcomingDrawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._upcomingDrawTime.toUpperCase()] : config._upcomingDrawTime : null : null;
+        this._hasWinner = (config) ? (typeof config._hasWinner === 'boolean') ? config._hasWinner : false : false;
+        this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config._backgroundImage) ? config._backgroundImage : null : null;
+        this._winningNumber = (config) ? (config._winningNumber) ? config._winningNumber : null : null;
+        this._winningNumberDigits = (config) ? (config._winningNumberDigits) ? config._winningNumberDigits : null : null;
+        this._drawDateIcon = (config) ? config._drawDateIcon : null;
     }
 
     get drawDate(): Date {
