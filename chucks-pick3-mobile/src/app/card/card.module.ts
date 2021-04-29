@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { CardPage } from "./card.page";
+
 
 
 @NgModule({
@@ -12,7 +12,6 @@ import { CardPage } from "./card.page";
     exports: [
     ],
     declarations: [
-        CardPage
     ]
 })
 export class CardPageModule {}

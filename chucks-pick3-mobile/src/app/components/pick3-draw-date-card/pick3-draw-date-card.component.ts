@@ -124,7 +124,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
         this.data.setDrawState(stateName);
         this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
-        this.data.setDrawDateIcon(drawDateIcon);
+        this.data.setIcon(drawDateIcon);
 
         if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
@@ -170,7 +170,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
-        this.data.setDrawDateIcon(pick3DrawTimeCard.getIcon());
+        this.data.setIcon(pick3DrawTimeCard.getIcon());
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);

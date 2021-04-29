@@ -11,7 +11,7 @@ import {Pick3DrawDateCardDomain} from "../models/pick3-draw-date-card.domain";
 })
 export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
     public slideNumber: number;
-    public data= Pick3DrawDateCardDomain.DEFAULT_CONFIG;
+    public data = Pick3DrawDateCardDomain.DEFAULT_CONFIG;
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     constructor(private cardContextService: CardContextService) {

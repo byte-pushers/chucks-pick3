@@ -14,6 +14,7 @@ import {LanguagePopoverComponent} from './components/language-popover/language-p
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
+import {CardContextService} from './services/card-context.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     providers: [
         StatusBar,
         SplashScreen,
+        CardContextService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
         /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/

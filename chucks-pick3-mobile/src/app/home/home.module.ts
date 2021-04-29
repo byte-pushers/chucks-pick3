@@ -9,8 +9,8 @@ import { Pick3DrawDateCardComponent } from '../components/pick3-draw-date-card/p
 import { Pick3DrawTimeCardComponent } from '../components/pick3-draw-time-card/pick3-draw-time-card.component';
 import { CountdownTimerComponent } from '../components/countdown-timer/countdown-timer.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { CardPageModule } from "../card/card.module";
-import {CardPage} from "../card/card.page";
+import { CardPageModule } from '../card/card.module';
+import {CardPage} from '../card/card.page';
 
 @NgModule({
     imports: [

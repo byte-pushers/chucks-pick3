@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { Pick3DrawDateInfoSection } from './pick3-draw-date-info-section';
+import { Pick3DrawDateInfoSectionPage } from './pick3-draw-date-info-section-page';
 
 const routes: Routes = [
-    { path: '', component: Pick3DrawDateInfoSection, outlet: 'one' }
+    { path: '', component: Pick3DrawDateInfoSectionPage, outlet: 'one' }
 ];
 
 @NgModule({
