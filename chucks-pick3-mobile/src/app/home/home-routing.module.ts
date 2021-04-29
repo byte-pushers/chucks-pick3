@@ -10,7 +10,7 @@ const routes: Routes = [
       {
         path: 'card',
         outlet: 'card',
-        loadChildren: '../card.module#Pick3DrawDateInfoSectionModule'
+        loadChildren: '../card.module#CardModule'
       }
     ]
   }
