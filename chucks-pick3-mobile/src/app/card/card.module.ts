@@ -15,4 +15,4 @@ import { CardPage } from "./card.page";
         CardPage
     ]
 })
-export class HomePageModule {}
+export class CardPageModule {}

@@ -16,7 +16,7 @@
 <ion-content [fullscreen]="true" class="scroll-content">
   <ion-slides pages [options]="slideOpts">
     <ion-slide style="background-color: white;" *ngFor="let card of pick3DrawDateDecks; index as i">
-        <ion-router-outlet name="card" [slideNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></ion-router-outlet>
+        <card name="card" [slideNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></card>
     </ion-slide>
   </ion-slides>
 </ion-content>

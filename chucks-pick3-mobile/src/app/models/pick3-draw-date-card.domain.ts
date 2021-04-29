@@ -214,7 +214,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         }
     }
 
-    getWinningNumberDigit1(): number {
+    get winningNumberDigit1(): number {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
@@ -230,7 +230,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return digit;
     }
 
-    getWinningNumberDigit2(): number {
+    get winningNumberDigit2(): number {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
@@ -246,7 +246,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return digit;
     }
 
-    getWinningNumberDigit3(): number {
+    get winningNumberDigit3(): number {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {

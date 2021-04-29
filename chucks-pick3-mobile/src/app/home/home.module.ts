@@ -9,7 +9,8 @@ import { Pick3DrawDateCardComponent } from '../components/pick3-draw-date-card/p
 import { Pick3DrawTimeCardComponent } from '../components/pick3-draw-time-card/pick3-draw-time-card.component';
 import { CountdownTimerComponent } from '../components/countdown-timer/countdown-timer.component';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { CardPageModule } from "../card/card.module";
+import {CardPage} from "../card/card.page";
 
 @NgModule({
     imports: [
@@ -17,17 +18,20 @@ import { TranslateModule } from '@ngx-translate/core';
         FormsModule,
         IonicModule,
         HomePageRoutingModule,
-        TranslateModule
+        TranslateModule,
+        CardPageModule
     ],
     exports: [
         Pick3DrawDateCardComponent,
-        CountdownTimerComponent
+        CountdownTimerComponent,
+        CardPage
     ],
     declarations: [
         HomePage,
         Pick3DrawDateCardComponent,
         Pick3DrawTimeCardComponent,
-        CountdownTimerComponent
+        CountdownTimerComponent,
+        CardPage
     ]
 })
 export class HomePageModule {}
