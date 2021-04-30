@@ -4,13 +4,23 @@ import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home/(card-page:card-page)',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     component: HomePage,
     children: [
       {
         path: 'card-page',
         outlet: 'card-page',
-        loadChildren: '../card/card.page.module#CardPageModule'
+        loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/home/(card-page:card-page)',
+        pathMatch: 'full'
       }
     ]
   }
