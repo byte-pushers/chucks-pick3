@@ -15,7 +15,7 @@ const routes: Routes = [
       {
         path: 'card-page',
         outlet: 'card-page',
-        loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule)
+        loadChildren: '../card/card.page.module#CardPageModule'
       },
       {
         path: '',

@@ -11,6 +11,7 @@ import { Pick3DrawTimeInfoSectionPageRoutingModule } from './pick3-draw-time-inf
         Pick3DrawTimeInfoSectionPageRoutingModule
     ],
     exports: [
+        Pick3DrawTimeInfoSectionPage
     ],
     declarations: [
         Pick3DrawTimeInfoSectionPage

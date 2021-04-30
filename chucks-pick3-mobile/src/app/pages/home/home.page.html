@@ -13,13 +13,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="scroll-content" style="background-color: lightskyblue">
+<ion-content [fullscreen]="true" class="scroll-content" >
   Hello World!
   <!--<card name="card" [slideNumber]="1" [data]="pick3DrawDateDecks[0]" [defaultDrawDateTime]="default.drawDateTime"></card>-->
   <!--<ion-slides [options]="slideOpts">
     <ion-slide style="background-color: lightskyblue;" *ngFor="let card of pick3DrawDateDecks; index as i">-->
         <!--<card name="card" [slideNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></card>-->
-        <ion-router-outlet name="card-page" style="background-color: lightskyblue"></ion-router-outlet>
+        <ion-router-outlet name="card-page">
+            <card-page></card-page>
+        </ion-router-outlet>
     <!--</ion-slide>
   </ion-slides>-->
 </ion-content>

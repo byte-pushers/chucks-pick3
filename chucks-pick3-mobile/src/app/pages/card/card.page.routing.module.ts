@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CardPage } from "./card.page";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CardPage} from './card.page';
 
 const routes: Routes = [
     {
@@ -10,12 +10,12 @@ const routes: Routes = [
             {
                 path: 'pick3-draw-date-info-section',
                 outlet: 'pick3-draw-date-info-section',
-                loadChildren: () => import('../pick3-draw-date-info-section/pick3-draw-date-info-section.module').then(m => m.Pick3DrawDateInfoSectionPageModule)
+                loadChildren: '../pick3-draw-date-info-section/pick3-draw-date-info-section.module#Pick3DrawDateInfoSection'
             },
             {
                 path: 'pick3-draw-time-info-section',
                 outlet: 'pick3-draw-time-info-section',
-                loadChildren: () => import('../pick3-draw-time-info-section/pick3-draw-time-info-section.module').then(m => m.Pick3DrawTimeInfoSectionPageModule)
+                loadChildren: '../pick3-draw-time-info-section/pick3-draw-time-info-section.module#Pick3DrawTimeInfoSectionModule'
             }
             /*,
             {
@@ -46,4 +46,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class CardPageRoutingModule { }
+export class CardPageRoutingModule {
+}
