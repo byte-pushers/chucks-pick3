@@ -8,19 +8,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: 'account',
-    loadChildren: () => import('./components/account/account.module').then( m => m.AccountPageModule)
+    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
   }, {
     path: 'settings',
-    loadChildren: () => import('./components/settings/settings.module').then( m => m.SettingsPageModule)
-  },
-  {
-    path: 'generate-picks',
-    loadChildren: () => import('./components/generate-picks/generate-picks.module').then( m => m.GeneratePicksPageModule)
+    loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
   }
 ];
 

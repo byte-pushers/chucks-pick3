@@ -7,14 +7,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-// import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
-// import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
-// import { Platform } from '@ionic/angular';
-import {LanguagePopoverComponent} from './components/language-popover/language-popover.component';
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
-import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
-import {CardContextService} from './services/card-context.service';
+import { LanguagePopoverComponent } from './components/language-popover/language-popover.component';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { Pick3WebScrapingProviderService } from './providers/web-scraping/pick3-web-scraping-provider.service';
+import { CardContextService } from './services/card-context.service';
+import { HomePageModule } from "./pages/home/home.page.module";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient]
             }
-        })
+        }),
+        HomePageModule
     ],
     providers: [
         StatusBar,

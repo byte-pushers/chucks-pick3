@@ -17,7 +17,7 @@ export interface Pick3DrawDateCard extends Pick3DrawDateCardProperties{
     setWinningNumber(winningNumber: number): void;
     getWinningNumberDigit1(): number;
     getWinningNumberDigit2(): number;
-    getWinningNumberDigit3(): number;
+    getWinningNumberDigit3?(): number;
     getIcon(): string;
     setIcon(icon: string): void;
 }
