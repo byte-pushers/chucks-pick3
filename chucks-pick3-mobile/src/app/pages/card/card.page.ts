@@ -4,7 +4,7 @@ import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 
 @Component({
-    selector: 'card',
+    selector: 'card-page',
     templateUrl: './card.page.html',
     styleUrls: ['./card.page.scss'],
 })

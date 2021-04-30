@@ -4,7 +4,7 @@ import { CardPage } from "./card.page";
 
 const routes: Routes = [
     {
-        path: 'card',
+        path: 'card-page',
         component: CardPage,
         children: [
             {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import { HomePage } from './home.page';
 
 const routes: Routes = [
@@ -8,8 +8,8 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'card',
-        outlet: 'card',
+        path: 'card-page',
+        outlet: 'card-page',
         loadChildren: '../card/card.page.module#CardPageModule'
       }
     ]
@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes),],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class HomePageRoutingModule {}

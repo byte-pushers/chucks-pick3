@@ -16,8 +16,9 @@
 <ion-content [fullscreen]="true" class="scroll-content">Hello World!
   <ion-slides pages [options]="slideOpts">
     <ion-slide style="background-color: white;" *ngFor="let card of pick3DrawDateDecks; index as i">
-        <!--<card name="card" [slideNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></card>-->
-        <ion-router-outlet name="card"></ion-router-outlet>
+        {{card.getWinningNumberDigit1()}} <br>
+        <!--<card name="card" [sligit deNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></card>-->
+        <ion-router-outlet name="card-page"></ion-router-outlet>
     </ion-slide>
   </ion-slides>
 </ion-content>
