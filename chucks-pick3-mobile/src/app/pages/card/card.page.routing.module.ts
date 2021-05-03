@@ -10,12 +10,12 @@ const routes: Routes = [
             {
                 path: 'pick3-draw-date-info-section',
                 outlet: 'pick3-draw-date-info-section',
-                loadChildren: '../pick3-draw-date-info-section/pick3-draw-date-info-section.module#Pick3DrawDateInfoSection'
+                loadChildren: '../pick3-draw-date-info-section/pick3-draw-date-info-section.module#Pick3DrawDateInfoSectionPageModule'
             },
             {
                 path: 'pick3-draw-time-info-section',
                 outlet: 'pick3-draw-time-info-section',
-                loadChildren: '../pick3-draw-time-info-section/pick3-draw-time-info-section.module#Pick3DrawTimeInfoSectionModule'
+                loadChildren: '../pick3-draw-time-info-section/pick3-draw-time-info-section.module#Pick3DrawTimeInfoSectionPageModule'
             }
             /*,
             {

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
 // import { CardComponent } from "../../components/card/card.component";
-import { HomePageRoutingModule } from "./home.page.routing.module";
+import { HomePageRoutingModule } from './home.page.routing.module';
 import {CardPageModule} from '../card/card.page.module';
 
 @NgModule({
