@@ -15,7 +15,6 @@ import {Pick3DrawTimeInfoSectionPageModule} from '../pick3-draw-time-info-sectio
         Pick3DrawTimeInfoSectionPageModule
     ],
     exports: [
-        CardPage
     ],
     declarations: [
         CardPage
