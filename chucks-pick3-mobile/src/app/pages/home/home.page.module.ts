@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
-// import { CardComponent } from "../../components/card/card.component";
 import { HomePageRoutingModule } from "./home.page.routing.module";
 import {CardPageModule} from '../card/card.page.module';
 
@@ -21,8 +20,11 @@ import {CardPageModule} from '../card/card.page.module';
 
     ],
     declarations: [
-        HomePage/*,
-        CardComponent*/
+        HomePage
     ]
 })
-export class HomePageModule {}
+export class HomePageModule {
+    constructor() {
+        console.log('HomePageModule')
+    }
+}

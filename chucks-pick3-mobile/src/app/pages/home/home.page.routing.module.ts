@@ -10,23 +10,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        outlet: 'card-page',
-        component: CardPage
-      },{
-        path: 'card-page',
-        outlet: 'card-page',
         loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule)
-      },
-      {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-      }/*,
-      {
-        path: '',
-        redirectTo: '/home/card-page',
-        pathMatch: 'full'
-      }*!/*/
+      }
     ]
   }
 ];
@@ -35,4 +20,9 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule {
+  constructor() {
+    console.log('HomePageRoutingModule');
+  }
+
+}

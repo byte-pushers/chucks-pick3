@@ -15,11 +15,16 @@ import {Pick3DrawTimeInfoSectionPageModule} from '../pick3-draw-time-info-sectio
         Pick3DrawTimeInfoSectionPageModule
     ],
     exports: [
+
     ],
     declarations: [
         CardPage
     ]
 })
 export class CardPageModule {
+
+    constructor() {
+        console.log('CardPageModule');
+    }
 
 }

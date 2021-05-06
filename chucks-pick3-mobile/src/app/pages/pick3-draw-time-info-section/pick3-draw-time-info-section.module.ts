@@ -11,10 +11,13 @@ import { Pick3DrawTimeInfoSectionPageRoutingModule } from './pick3-draw-time-inf
         Pick3DrawTimeInfoSectionPageRoutingModule
     ],
     exports: [
-        Pick3DrawTimeInfoSectionPage
     ],
     declarations: [
         Pick3DrawTimeInfoSectionPage
     ]
 })
-export class Pick3DrawTimeInfoSectionPageModule {}
+export class Pick3DrawTimeInfoSectionPageModule {
+    constructor() {
+        console.log('Pick3DrawTimeInfoSectionPageModule');
+    }
+}

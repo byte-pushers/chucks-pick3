@@ -15,7 +15,6 @@ import { Pick3DrawDateInfoSectionPageRoutingModule } from './pick3-draw-date-inf
         Pick3DrawDateInfoSectionPageRoutingModule
     ],
     exports: [
-        Pick3DrawDateInfoSectionPage
     ],
     declarations: [
         Pick3DrawDateInfoSectionPage,
@@ -23,4 +22,7 @@ import { Pick3DrawDateInfoSectionPageRoutingModule } from './pick3-draw-date-inf
     ]
 })
 export class Pick3DrawDateInfoSectionPageModule {
+    constructor() {
+        console.log('Pick3DrawDateInfoSectionPageModule');
+    }
 }
