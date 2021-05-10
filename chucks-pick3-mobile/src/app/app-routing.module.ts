@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-  }, {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
   }

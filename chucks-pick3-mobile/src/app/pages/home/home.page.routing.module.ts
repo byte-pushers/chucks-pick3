@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HomePage } from './home.page';
-import {CardPage} from "../card/card.page";
 
 const routes: Routes = [
   {
@@ -24,5 +23,4 @@ export class HomePageRoutingModule {
   constructor() {
     console.log('HomePageRoutingModule');
   }
-
 }

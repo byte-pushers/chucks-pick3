@@ -1,24 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CardPage } from './card.page';
+import {Pick3DrawDateInfoSectionPage} from "../pick3-draw-date-info-section/pick3-draw-date-info-section-page";
+import {Pick3DrawTimeInfoSectionPage} from "../pick3-draw-time-info-section/pick3-draw-time-info-section.page";
 
 const routes: Routes = [
     {
         path: '',
         outlet: 'card-page',
         component: CardPage,
-        /*children: [
+        children: [
             {
                 path: '',
                 outlet: 'pick3-draw-date-info-section',
-                loadChildren: () => import('../pick3-draw-date-info-section/pick3-draw-date-info-section.module').then(m => m.Pick3DrawDateInfoSectionPageModule)
+                component: Pick3DrawDateInfoSectionPage
+                /*loadChildren: () => import('../pick3-draw-date-info-section/pick3-draw-date-info-section.module').then(m => m.Pick3DrawDateInfoSectionPageModule)*/
             },
             {
                 path: '',
                 outlet: 'pick3-draw-time-info-section',
-                loadChildren: () => import('../pick3-draw-time-info-section/pick3-draw-time-info-section.module').then(m => m.Pick3DrawTimeInfoSectionPageModule)
+                component: Pick3DrawTimeInfoSectionPage
+                /*loadChildren: () => import('../pick3-draw-time-info-section/pick3-draw-time-info-section.module').then(m => m.Pick3DrawTimeInfoSectionPageModule)*/
             }
-        ]*/
+        ]
     }
 ];
 

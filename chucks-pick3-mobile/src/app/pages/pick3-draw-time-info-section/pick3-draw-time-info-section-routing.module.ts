@@ -4,7 +4,7 @@ import { Pick3DrawTimeInfoSectionPage } from './pick3-draw-time-info-section.pag
 
 const routes: Routes = [
     { path: 'pick3-draw-time-info-section', outlet: 'pick3-draw-time-info-section', component: Pick3DrawTimeInfoSectionPage},
-    { path: '', component: Pick3DrawTimeInfoSectionPage}
+    { path: '', outlet: 'pick3-draw-time-info-section', component: Pick3DrawTimeInfoSectionPage}
 ];
 
 @NgModule({
