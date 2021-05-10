@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { HomePageRoutingModule } from "./home.page.routing.module";
-import {CardPageModule} from '../card/card.page.module';
+import { CardPageModule } from '../card/card.page.module';
+import {CardComponent} from "../../components/card/card.component";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {CardPageModule} from '../card/card.page.module';
 
     ],
     declarations: [
-        HomePage
+        HomePage,
+        CardComponent
     ]
 })
 export class HomePageModule {

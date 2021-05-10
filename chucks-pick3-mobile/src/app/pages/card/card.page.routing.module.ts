@@ -14,13 +14,11 @@ const routes: Routes = [
                 path: '',
                 outlet: 'pick3-draw-date-info-section',
                 component: Pick3DrawDateInfoSectionPage
-                /*loadChildren: () => import('../pick3-draw-date-info-section/pick3-draw-date-info-section.module').then(m => m.Pick3DrawDateInfoSectionPageModule)*/
             },
             {
                 path: '',
                 outlet: 'pick3-draw-time-info-section',
                 component: Pick3DrawTimeInfoSectionPage
-                /*loadChildren: () => import('../pick3-draw-time-info-section/pick3-draw-time-info-section.module').then(m => m.Pick3DrawTimeInfoSectionPageModule)*/
             }
         ]
     }

@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule)
+        loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule),
       }
     ]
   }
