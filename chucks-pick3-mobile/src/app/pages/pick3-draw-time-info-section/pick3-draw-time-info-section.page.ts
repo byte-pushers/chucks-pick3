@@ -7,7 +7,6 @@ import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain"
 import {Pick3DrawTime} from "../../models/pick3-draw-time";
 import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
 import {Pick3StateLottery} from "../../models/pick3-state-lottery";
-import {Pick3DrawDateCardProperties} from "../../models/pick3-draw-date-card.properties";
 import {Pick3DrawDateCard} from "../../models/pick3-draw-date-card";
 
 @Component({
@@ -19,32 +18,7 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    public drawTimes: Array<Pick3DrawTimeCard> = [
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.morning',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-            icon: 'morning-icon',
-            dateTime: new Date().setHours(10, 15, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.day',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
-            icon: 'day-icon',
-            dateTime: new Date().setHours(11, 45, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.evening',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
-            icon: 'evening-icon',
-            dateTime: new Date().setHours(17, 15, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.night',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
-            icon: 'night-icon',
-            dateTime: new Date().setHours(21, 30, 0, 0)
-        })
-    ];
+    public drawTimes: Array<Pick3DrawTimeCard> = [];
     private pick3StateLottery: Pick3StateLottery;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
@@ -57,6 +31,7 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
             this.slideNumber = context.slideNumber;
             this.data = new Pick3DrawDateCardDomain(context.data);
             this.defaultDrawDateTime = context.defaultDrawDateTime;
+            this.drawTimes = this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
     }
 

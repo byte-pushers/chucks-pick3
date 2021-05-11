@@ -1,0 +1,87 @@
+@import "../../../breakpoints";
+@import "../../../theme/variables";
+
+.draw-time-icon {
+  display: inline-block;
+  width: 40%;
+
+
+
+  > ion-icon.selected {
+    color: $chucksPick3Black;
+  }
+
+  > ion-icon.not-selected {
+    color: $chucksPick3LightGray;
+  }
+}
+
+.time-of-day-icon {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 10vh;
+  font-size: 15vw;
+  @include for-size(iPhone5-SE) {
+    font-size: 12vw;
+  }
+}
+
+.time-of-day-text {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 7vw;
+  font-weight: 700;
+}
+.draw-time-title {
+  display: inline-block;
+  width: 60%;
+
+  > span.not-selected {
+    color: $chucksPick3Gray;
+  }
+
+  > span.selected {
+    color: #1c1c1d;
+  }
+}
+
+.generated-picks-indicator {
+  display: inline-block;
+  width: 8%;
+  line-height: 3em;
+  float: right;
+  background-color: $chucksPick3LightGray;
+}
+
+.generated-picks-indicator.not-drawn-yet,
+.generated-picks-indicator.drawn,
+.generated-picks-indicator.drawn-with-generated-picks-with-no-winners {
+  background-color: $chucksPick3LightGray;
+}
+.generated-picks-indicator.drawn.selected,
+.generated-picks-indicator.not-drawn-yet.selected,
+.generated-picks-indicator.not-drawn.selected,
+.generated-picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
+  background-color: $chucksPick3Black;
+  width: 16%;
+}
+
+.generated-picks-indicator.not-drawn-yet-with-generated-picks {
+  background-color: $chucksPick3Yellow;
+}
+
+.generated-picks-indicator.not-drawn-yet-with-generated-picks.selected {
+  background-color: $chucksPick3Yellow;
+  width: 16%;
+}
+
+.generated-picks-indicator.drawn-with-generated-picks-with-winners {
+  background-color: $chucksPick3Green;
+}
+
+.generated-picks-indicator.drawn-with-generated-picks-with-winners.selected {
+  background-color: $chucksPick3Green;
+  width: 16%;
+}
+
+
