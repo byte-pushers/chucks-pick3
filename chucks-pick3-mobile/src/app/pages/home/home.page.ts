@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
     speed: 400
   };
   pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
-    new Pick3DrawDateCardDomain({})/*,
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG)/*,
     new Pick3DrawDateCardDomain({}),
     new Pick3DrawDateCardDomain({}),
     new Pick3DrawDateCardDomain({}),
@@ -36,6 +36,7 @@ export class HomePage implements OnInit {
   constructor(private popoverCtrl: PopoverController,
               public translate: I18nService,
               public translateService: TranslateService) {
+    console.log('HomePage(): constructor.');
     translateService.setDefaultLang('en-US');
   }
 
@@ -53,6 +54,5 @@ export class HomePage implements OnInit {
     });
     popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     return await popover.present();
-
   }
 }

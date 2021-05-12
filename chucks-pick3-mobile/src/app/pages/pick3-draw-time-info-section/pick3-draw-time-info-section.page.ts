@@ -3,7 +3,6 @@ import {CardContextService} from '../../services/card-context.service';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawDateCardDomain} from '../../models/pick3-draw-date-card.domain';
 import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
-import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 import {Pick3DrawTime} from "../../models/pick3-draw-time";
 import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
 import {Pick3StateLottery} from "../../models/pick3-state-lottery";
@@ -31,7 +30,7 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
             this.slideNumber = context.slideNumber;
             this.data = new Pick3DrawDateCardDomain(context.data);
             this.defaultDrawDateTime = context.defaultDrawDateTime;
-            this.drawTimes = this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+            this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
     }
 
@@ -59,23 +58,5 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
         this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setIcon(drawTimeIcon);
-
-        /*this.cardContextService.addContext(
-            {
-                slideNumber: this.slideNumber,
-                data: {
-                    drawDate: this.data.getDrawDate(),
-                    drawState: this.data.getDrawState(),
-                    drawTime: this.data.getDrawTime(),
-                    backgroundImage: this.data.getBackgroundImage(),
-                    winningNumber:
-                        this.data.getWinningNumberDigit1()*100 +
-                        this.data.getWinningNumberDigit2()*10 +
-                        this.data.getWinningNumberDigit3()*1,
-                    icon: this.data.getDrawDateIcon(),
-                },
-                defaultDrawDateTime: this.defaultDrawDateTime
-            }
-        );*/
     }
 }

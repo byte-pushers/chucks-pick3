@@ -43,7 +43,7 @@ export class CardComponent implements OnInit, OnDestroy {
     ];
 
     constructor(private cardContextService: CardContextService) {
-
+        console.log('CardComponent(): constructor.');
     }
 
     ngOnInit(): void {

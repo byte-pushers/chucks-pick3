@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CardContextService} from '../../services/card-context.service';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawDateCardDomain} from '../../models/pick3-draw-date-card.domain';
-import {Pick3DrawDateCardProperties} from '../../models/pick3-draw-date-card.properties';
 import {DrawStateService} from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../../services/i18n.service';
@@ -28,7 +27,6 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing: boolean = false;
-
     private drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
 
@@ -38,7 +36,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
                 public translate: I18nService,
                 public translateService: TranslateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-
+        console.log('Pick3DrawDateInfoSectionPage() constructor.');
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -50,12 +48,11 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-
         this.cardContextService.context$.subscribe(context => {
             this.slideNumber = context.slideNumber;
             this.data = new Pick3DrawDateCardDomain(context.data);
             this.defaultDrawDateTime = context.defaultDrawDateTime;
-            this.drawTimes = context.drawTimes;
+            this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
     }
 
@@ -73,6 +70,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setIcon(drawTimeIcon);
+
         if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
                 this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
@@ -87,24 +85,6 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
             }
             this.showCountDownToDrawing = true;
         }
-
-        this.cardContextService.addContext(
-            {
-                slideNumber: this.slideNumber,
-                data: {
-                    drawDate: this.data.getDrawDate(),
-                    drawState: this.data.getDrawState(),
-                    drawTime: this.data.getDrawTime(),
-                    backgroundImage: this.data.getBackgroundImage(),
-                    winningNumber:
-                        this.data.getWinningNumberDigit1()*100 +
-                        this.data.getWinningNumberDigit2()*10 +
-                        this.data.getWinningNumberDigit3()*1,
-                    icon: this.data.getDrawDateIcon(),
-                },
-                defaultDrawDateTime: this.defaultDrawDateTime
-            }
-        );
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
@@ -215,23 +195,28 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
                 return drawTime;
             }
         });
+
         this.data.setWinningNumber(drawingResult.drawResult);
-        switch (selectedPick3DrawTime.getState()) {
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
-                break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
-                break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
-                break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS);
-                break;
-            default:
-                this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+
+        if (selectedPick3DrawTime) {
+            switch (selectedPick3DrawTime.getState()) {
+                case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS:
+                    this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS);
+                    break;
+                case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS:
+                    this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+                    break;
+                case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN:
+                    this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+                    break;
+                case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS:
+                    this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS);
+                    break;
+                default:
+                    this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+            }
         }
+
         this.showCountDownToDrawing = false;
     }
 }

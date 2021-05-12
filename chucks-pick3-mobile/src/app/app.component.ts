@@ -24,24 +24,21 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
-
         });
     }
 
-    sideMenu()
-    {
-        this.navigate =
-            [
-                {
-                    title : 'Account',
-                    url   : 'account',
-                    icon  : 'person'
-                },
-                {
-                    title : 'Settings',
-                    url   : 'settings',
-                    icon  : 'cog'
-                }
-            ];
+    sideMenu() {
+        this.navigate = [
+            {
+                title : 'Account',
+                url   : 'account',
+                icon  : 'person'
+            },
+            {
+                title : 'Settings',
+                url   : 'settings',
+                icon  : 'cog'
+            }
+        ];
     }
 }

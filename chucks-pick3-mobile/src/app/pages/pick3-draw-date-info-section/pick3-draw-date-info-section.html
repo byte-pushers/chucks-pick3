@@ -1,6 +1,7 @@
+data-backgroundImage = {{data.backgroundImage}}
 <ion-row class="primary-view" [style.background]="'url(' + data.backgroundImage + ')'">
     <ion-col size="2" style=" margin-right: 0px">
-        <div class="picks-indicator " [ngClass]="this.drawStateService.picksIndicator" style="float: left"></div>
+        <div class="picks-indicator " [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
         <ion-icon src="../../../assets/view-picks-icon.svg" class="generate-picks-icon"
                   style="float: right"></ion-icon>
     </ion-col>
