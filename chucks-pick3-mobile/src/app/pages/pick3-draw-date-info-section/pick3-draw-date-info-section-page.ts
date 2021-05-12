@@ -30,7 +30,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
     public showCountDownToDrawing: boolean = false;
 
     private drawTimes: Array<Pick3DrawTimeCard> = [];
-    private pick3StateLottery: Pick3StateLottery;
+    public pick3StateLottery: Pick3StateLottery;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -88,7 +88,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
             this.showCountDownToDrawing = true;
         }
 
-        /*this.cardContextService.addContext(
+        this.cardContextService.addContext(
             {
                 slideNumber: this.slideNumber,
                 data: {
@@ -104,7 +104,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
                 },
                 defaultDrawDateTime: this.defaultDrawDateTime
             }
-        );*/
+        );
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
@@ -189,7 +189,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             //TODO: Handle error.
-            console.error('TODO: Handle error: ' + error, error);
+          /*  console.error('TODO: Handle error: ' + error, error);*/
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
         });

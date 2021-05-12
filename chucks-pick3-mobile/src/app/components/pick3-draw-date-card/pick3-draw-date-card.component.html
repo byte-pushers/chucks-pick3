@@ -1,5 +1,5 @@
 <ion-grid>
-    <ion-row class="primary-view" [style.background]="'url(' + data.getBackgroundImage() + ')'">
+    <ion-row class="primary-view" [style.background]="'url(' +  + ')'">
         <ion-col size="2" style=" margin-right: 0px">
             <div class="picks-indicator " [ngClass]="this.drawStateService.picksIndicator" style="float: left"></div>
             <ion-icon src="../../../assets/view-picks-icon.svg" class="generate-picks-icon"
@@ -11,7 +11,7 @@
                     <span style="font-size: 7.5vw;font-weight: bolder;"
                           class="draw-date-title draw-date-text">{{'card.state.title' | translate}}</span><br><br>
                     <span style="font-size: 5vw;font-weight: 500;" class="draw-date-text">
-            <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.getDrawDateIcon()}}.svg"
+            <ion-icon *ngIf="data.getDrawDateIcon()" src="/assets/icon/{{data.icon}}.svg"
                       class="time-of-day-icon"></ion-icon>
                         {{data.getDrawTimeAsString() | translate}}
           </span>
