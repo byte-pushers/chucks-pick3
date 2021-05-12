@@ -37,6 +37,5 @@ import { HomePageModule } from "./pages/home/home.page.module";
 })
 export class AppModule {
     constructor() {
-        console.log('AppModule');
     }
 }

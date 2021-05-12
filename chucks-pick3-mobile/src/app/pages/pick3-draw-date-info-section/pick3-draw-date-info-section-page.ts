@@ -33,10 +33,10 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
     private pick3StateLottery: Pick3StateLottery;
 
     constructor(private cardContextService: CardContextService,
-                private drawStateService: DrawStateService,
+                public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
                 public translate: I18nService,
-                private translateService: TranslateService,
+                public translateService: TranslateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -73,7 +73,6 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setIcon(drawTimeIcon);
-
         if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
                 this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());

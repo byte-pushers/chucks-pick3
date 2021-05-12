@@ -30,6 +30,5 @@ const routes: Routes = [
 })
 export class CardPageRoutingModule {
     constructor() {
-        console.log('CardPageRoutingModule');
     }
 }

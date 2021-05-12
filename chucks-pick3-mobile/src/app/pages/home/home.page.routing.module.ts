@@ -21,6 +21,5 @@ const routes: Routes = [
 })
 export class HomePageRoutingModule {
   constructor() {
-    console.log('HomePageRoutingModule');
   }
 }

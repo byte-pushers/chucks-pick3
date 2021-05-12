@@ -41,6 +41,5 @@ export function HttpLoaderFactory(http: HttpClient) {
 })
 export class HomePageModule {
     constructor() {
-        console.log('HomePageModule')
     }
 }
