@@ -50,7 +50,6 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
 
         this.cardContextService.context$.subscribe(context => {
             this.slideNumber = context.slideNumber;
-            this.data = new Pick3DrawDateCardDomain(context.data);
             this.defaultDrawDateTime = context.defaultDrawDateTime;
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });

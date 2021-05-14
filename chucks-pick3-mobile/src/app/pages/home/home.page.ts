@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
     new Pick3DrawDateCardDomain({}),
     new Pick3DrawDateCardDomain({}),
     new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({}),*/
+    new Pick3DrawDateCardDomain({})*/
   ];
 
   constructor(private popoverCtrl: PopoverController,
