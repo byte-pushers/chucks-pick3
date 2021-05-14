@@ -90,16 +90,16 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, DoCheck, OnDestroy 
             }
         });
 
-        this.setData(this.pick3StateLottery.get, pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
-    }
+    /*    this.setData(this.pick3StateLottery.get, pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
+*/    }
 
-    private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
+/*    private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
         this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setIcon(drawTimeIcon);
-    }
+    }*/
 
     public getSelectedState(): {'not-selected': boolean, selected: boolean} {
         let selectedStateCssClass = {
