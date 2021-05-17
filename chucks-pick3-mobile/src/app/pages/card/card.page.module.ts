@@ -10,6 +10,7 @@ import {Pick3DrawDateInfoSectionPage} from "../pick3-draw-date-info-section/pick
 import {Pick3DrawTimeInfoSectionPage} from "../pick3-draw-time-info-section/pick3-draw-time-info-section.page";
 import {I18nService} from "../../services/i18n.service";
 import {CountdownTimerComponent} from "../../components/countdown-timer/countdown-timer.component";
+import {Pick3DrawTimeCardComponent} from "../../components/pick3-draw-time-card/pick3-draw-time-card.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [
         CardPage,
         CountdownTimerComponent,
+        Pick3DrawTimeCardComponent,
         Pick3DrawDateInfoSectionPage,
         Pick3DrawTimeInfoSectionPage
     ]

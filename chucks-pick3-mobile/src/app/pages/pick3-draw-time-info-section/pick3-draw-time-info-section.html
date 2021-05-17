@@ -1,14 +1,14 @@
 <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
     <ion-col>
-        <!--<pick3-draw-time-card [data]="data" (click)="selectDrawingTimeCard(drawTime)"></pick3-draw-time-card>-->
+        <pick3-draw-time-card [data]="drawTime" (click)="selectDrawingTimeCard(drawTime)"></pick3-draw-time-card>
         <!--<div style="display: flex">
             <div class="draw-time-icon">
-                <span *ngIf="!data.getIcon()">[icon here]</span>
-                <ion-icon *ngIf="data.getIcon()" src="/assets/icon/{{data.getIcon()}}.svg" [ngClass]="getSelectedState()" class="time-of-day-icon"></ion-icon>
+                <span *ngIf="!data.icon">[icon here]</span>
+                <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg" [ngClass]="selectedState" class="time-of-day-icon"></ion-icon>
             </div>
             <div class="draw-time-title" align="left">&nbsp;
-                <span  class="time-of-day-text" [ngClass]="getSelectedState()">
-                  {{data.getTitle() | translate}}
+                <span  class="time-of-day-text" [ngClass]="selectedState">
+                  {{data.title | translate}}
                 </span>
                 <div class="generated-picks-indicator" [ngClass]="drawingTimeCardColorIndicators"></div>
             </div>
