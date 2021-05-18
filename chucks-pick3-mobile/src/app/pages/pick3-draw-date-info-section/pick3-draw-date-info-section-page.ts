@@ -16,6 +16,7 @@ import localeEnUS from "@angular/common/locales/en-US-POSIX";
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
 import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
+import {DrawTimeService} from '../../services/draw-time.service';
 
 @Component({
     selector: 'pick3-draw-date-info-section',
@@ -35,8 +36,14 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
                 private toastService: IonicToastNotificationService,
                 public translate: I18nService,
                 public translateService: TranslateService,
+                private drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-        console.log('Pick3DrawDateInfoSectionPage() constructor.');
+        drawTimeService.pick3DrawTime$.subscribe(
+            drawTime => {
+               let pick3DrawTime: Pick3DrawTime = this.getDrawTime(drawTime.getDateTime());
+                this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
+            }
+        );
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
