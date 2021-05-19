@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CardPage } from './card.page';
-import {Pick3DrawDateInfoSectionPage} from "../pick3-draw-date-info-section/pick3-draw-date-info-section-page";
-import {Pick3DrawTimeInfoSectionPage} from "../pick3-draw-time-info-section/pick3-draw-time-info-section.page";
+import {Pick3DrawDateInfoSection} from "../pick3-draw-date-info-section/pick3-draw-date-info-section";
+import {Pick3DrawTimeInfoSection} from "../pick3-draw-time-info-section/pick3-draw-time-info-section";
 
 const routes: Routes = [
     {
@@ -13,12 +13,12 @@ const routes: Routes = [
             {
                 path: '',
                 outlet: 'pick3-draw-date-info-section',
-                component: Pick3DrawDateInfoSectionPage
+                component: Pick3DrawDateInfoSection
             },
             {
                 path: '',
                 outlet: 'pick3-draw-time-info-section',
-                component: Pick3DrawTimeInfoSectionPage
+                component: Pick3DrawTimeInfoSection
             }
         ]
     }

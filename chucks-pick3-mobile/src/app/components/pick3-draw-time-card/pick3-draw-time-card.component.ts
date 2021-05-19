@@ -30,7 +30,6 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   ngOnInit() {
-    //console.log('OnInit- DrawType: ' + this.data.getTitle());
     this.setDrawingTimeCardState();
   }
 

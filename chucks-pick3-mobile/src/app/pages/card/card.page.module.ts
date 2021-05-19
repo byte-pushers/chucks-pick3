@@ -6,8 +6,8 @@ import { CardPageRoutingModule } from './card.page.routing.module';
 import { TranslateModule, TranslateLoader, TranslateStore } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClient} from "@angular/common/http";
-import {Pick3DrawDateInfoSectionPage} from "../pick3-draw-date-info-section/pick3-draw-date-info-section-page";
-import {Pick3DrawTimeInfoSectionPage} from "../pick3-draw-time-info-section/pick3-draw-time-info-section.page";
+import {Pick3DrawDateInfoSection} from "../pick3-draw-date-info-section/pick3-draw-date-info-section";
+import {Pick3DrawTimeInfoSection} from "../pick3-draw-time-info-section/pick3-draw-time-info-section";
 import {I18nService} from "../../services/i18n.service";
 import {CountdownTimerComponent} from "../../components/countdown-timer/countdown-timer.component";
 import {Pick3DrawTimeCardComponent} from "../../components/pick3-draw-time-card/pick3-draw-time-card.component";
@@ -41,8 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         CardPage,
         CountdownTimerComponent,
         Pick3DrawTimeCardComponent,
-        Pick3DrawDateInfoSectionPage,
-        Pick3DrawTimeInfoSectionPage
+        Pick3DrawDateInfoSection,
+        Pick3DrawTimeInfoSection
     ]
 })
 export class CardPageModule {

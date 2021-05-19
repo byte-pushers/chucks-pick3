@@ -25,7 +25,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
     templateUrl: './pick3-draw-date-info-section.html',
     styleUrls: ['pick3-draw-date-info-section.scss']
 })
-export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
+export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -47,14 +47,21 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
-        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
-            this.getCurrentDrawTimeIcon(pick3DrawTime));
+        this.setData(
+            this.getDrawState(),
+            pick3DrawTime,
+            this.pick3StateLottery.getBackgroundImageUrl(),
+            this.getCurrentDrawTimeIcon(pick3DrawTime)
+        );
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.pick3DrawTime$.subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
-                this.setData(this.getDrawState(), currentPick3DrawTimeCard.getPick3DrawTime(), this.pick3StateLottery.getBackgroundImageUrl(),
-                    this.getCurrentDrawTimeIcon(currentPick3DrawTimeCard.getPick3DrawTime()));
+                this.setData(
+                    this.getDrawState(),
+                    currentPick3DrawTimeCard.getPick3DrawTime(),
+                    this.pick3StateLottery.getBackgroundImageUrl(),
+                    currentPick3DrawTimeCard.getIcon());
             }
         );
 

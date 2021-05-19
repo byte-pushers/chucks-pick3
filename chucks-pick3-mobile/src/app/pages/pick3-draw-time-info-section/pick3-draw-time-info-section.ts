@@ -20,7 +20,7 @@ import {Subscription} from 'rxjs';
     templateUrl: 'pick3-draw-time-info-section.html',
     styleUrls: ['pick3-draw-time-info-section.scss']
 })
-export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
+export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     subscription: Subscription;

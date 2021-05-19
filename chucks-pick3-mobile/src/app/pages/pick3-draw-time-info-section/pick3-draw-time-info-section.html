@@ -1,6 +1,6 @@
-<ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
+<ion-row class="drawing-time" *ngFor="let drawTime of drawTimes" (click)="selectDrawingTimeCard(drawTime)">
     <ion-col style="padding: 0">
-        <pick3-draw-time-card [data]="drawTime" (click)="selectDrawingTimeCard(drawTime)"></pick3-draw-time-card>
+        <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
         <!--<div style="display: flex">
             <div class="draw-time-icon">
                 <span *ngIf="!data.icon">[icon here]</span>
