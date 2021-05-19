@@ -7,18 +7,20 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../../services/i18n.service';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
-import {Pick3StateLottery} from "../../models/pick3-state-lottery";
-import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
-import {IonicToastNotificationService} from "../../services/ionic-toast-notification.service";
-import {registerLocaleData} from "@angular/common";
-import localeEsMx from "@angular/common/locales/es-MX";
-import localeEnUS from "@angular/common/locales/en-US-POSIX";
+import {Pick3StateLottery} from '../../models/pick3-state-lottery';
+import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
+import {registerLocaleData} from '@angular/common';
+import localeEsMx from '@angular/common/locales/es-MX';
+import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
-import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
-import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
+import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
+import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {DrawTimeService} from '../../services/draw-time.service';
 
+
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'pick3-draw-date-info-section',
     templateUrl: './pick3-draw-date-info-section.html',
     styleUrls: ['pick3-draw-date-info-section.scss']
@@ -27,7 +29,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    public showCountDownToDrawing: boolean = false;
+    public showCountDownToDrawing = false;
     private drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
 
@@ -38,22 +40,23 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
                 public translateService: TranslateService,
                 private drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-        drawTimeService.pick3DrawTime$.subscribe(
-            drawTime => {
-               let pick3DrawTime: Pick3DrawTime = this.getDrawTime(drawTime.getDateTime());
-                this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), this.getCurrentDrawTimeIcon(pick3DrawTime));
-            }
-        );
+
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
     ngOnInit(): void {
         const someDateTime = new Date();
-        let pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
+        const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
             this.getCurrentDrawTimeIcon(pick3DrawTime));
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
+
+        this.drawTimeService.pick3DrawTime$.subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+                this.setData(this.getDrawState(), currentPick3DrawTimeCard.getPick3DrawTime(), this.pick3StateLottery.getBackgroundImageUrl(),
+                    this.getCurrentDrawTimeIcon(currentPick3DrawTimeCard.getPick3DrawTime()));
+            }
+        );
 
         this.cardContextService.context$.subscribe(context => {
             this.slideNumber = context.slideNumber;
@@ -97,7 +100,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
             // TODO We need to convert what is coming from scraper to the real enum
             // TODO Then we want to use drawTime.toString DAY Day
-            let drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
+            const drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
 
             if (drawTimeValue === Pick3DrawTimeEnum.toString(pick3DrawTime.getType())) {
                 return true;
@@ -125,7 +128,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
-            //const compareResult = drawTime.compareTo(pick3DrawDateCard);
+            // const compareResult = drawTime.compareTo(pick3DrawDateCard);
 
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);
@@ -162,7 +165,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
+            // TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
@@ -170,12 +173,13 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         });
     }
 
-    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+    private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date,
+                                           pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
-            //TODO: Handle error.
-          /*  console.error('TODO: Handle error: ' + error, error);*/
+            // TODO: Handle error.
+            /*  console.error('TODO: Handle error: ' + error, error);*/
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
         });
@@ -190,7 +194,7 @@ export class Pick3DrawDateInfoSectionPage implements OnInit, OnDestroy {
         let p3dtt: any;
 
         if (typeof pick3DrawTimeType === 'string') {
-            let p: any = pick3DrawTimeType;
+            const p: any = pick3DrawTimeType;
             p3dtt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[p.toUpperCase()];
         } else {
             p3dtt = pick3DrawTimeType;

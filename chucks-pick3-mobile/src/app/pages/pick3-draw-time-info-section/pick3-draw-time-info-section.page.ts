@@ -15,13 +15,12 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {Subscription} from 'rxjs';
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'pick3-draw-time-info-section',
     templateUrl: 'pick3-draw-time-info-section.html',
     styleUrls: ['pick3-draw-time-info-section.scss']
 })
 export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
-    @Input() drawTime: Pick3DrawTimeCard;
-    private data: Pick3DrawDateCard;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     subscription: Subscription;
@@ -43,8 +42,8 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
-        /* this.data.setIcon(pick3DrawTimeCard.getIcon());*/
+        const pick3DrawTime: Pick3DrawTime =
+            this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
@@ -53,10 +52,9 @@ export class Pick3DrawTimeInfoSectionPage implements OnInit, OnDestroy {
             }
         });
 
-        // TODO: Either need to invoke Event or update a Service with update Pick3DrawDateCard data.
-        this.drawTimeService.retrieveCurrentDrawTime(pick3DrawTimeCard);
+        this.drawTimeService.updateCurrentDrawTime(pick3DrawTimeCard);
 
-        /*  this.setData(this.pick3StateLottery.getStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
-          this.cardContextService.addContext(newContext);*/
+        /*  this.setData(this.pick3StateLottery.getStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
+         pick3DrawTimeCard.getIcon()); this.cardContextService.addContext(newContext);*/
     }
 }

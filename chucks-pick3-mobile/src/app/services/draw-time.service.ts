@@ -15,7 +15,7 @@ export class DrawTimeService {
     constructor() {
     }
 
-    public retrieveCurrentDrawTime(drawTime: Pick3DrawTimeCard) {
+    public updateCurrentDrawTime(drawTime: Pick3DrawTimeCard) {
         this.pick3DrawTimeSource.next(drawTime);
     }
 }

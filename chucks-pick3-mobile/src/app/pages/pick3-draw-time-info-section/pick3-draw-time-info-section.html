@@ -1,5 +1,5 @@
 <ion-row class="drawing-time" *ngFor="let drawTime of drawTimes">
-    <ion-col>
+    <ion-col style="padding: 0">
         <pick3-draw-time-card [data]="drawTime" (click)="selectDrawingTimeCard(drawTime)"></pick3-draw-time-card>
         <!--<div style="display: flex">
             <div class="draw-time-icon">

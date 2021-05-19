@@ -4,6 +4,9 @@ import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
 import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
+import {Pick3DrawTime} from '../../models/pick3-draw-time';
+import {Pick3StateLottery} from '../../models/pick3-state-lottery';
+import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 
 @Component({
     selector: 'card',
@@ -41,12 +44,18 @@ export class CardComponent implements OnInit, OnDestroy {
             dateTime: new Date().setHours(21, 30, 0, 0)
         })
     ];
-
-    constructor(private cardContextService: CardContextService) {
+    pick3StateLottery: Pick3StateLottery;
+    constructor(private cardContextService: CardContextService,
+                private pick3WebScrappingService: Pick3WebScrapingProviderService) {
         console.log('CardComponent(): constructor.');
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
     ngOnInit(): void {
+        this.drawTimes.forEach(drawTime => {
+            drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
+        });
+
         this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,
@@ -58,5 +67,7 @@ export class CardComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
 
     }
-
+    private getDrawTime(someDateTime: Date): Pick3DrawTime {
+        return this.pick3StateLottery.getDrawingTime(someDateTime);
+    }
 }
