@@ -149,7 +149,7 @@ export class Pick3DrawDateCardComponent implements OnInit, OnDestroy {
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
-            //const compareResult = drawTime.compareTo(pick3DrawDateCard);
+            // const compareResult = drawTime.compareTo(pick3DrawDateCard);
 
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);

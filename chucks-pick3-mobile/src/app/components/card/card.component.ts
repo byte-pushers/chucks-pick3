@@ -7,6 +7,7 @@ import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain"
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 
 @Component({
     selector: 'card',
@@ -55,7 +56,7 @@ export class CardComponent implements OnInit, OnDestroy {
         this.drawTimes.forEach(drawTime => {
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
         });
-
+this.randomlyMockDrawTimeCardStates();
         this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,
@@ -70,4 +71,24 @@ export class CardComponent implements OnInit, OnDestroy {
     private getDrawTime(someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
     }
+    private randomlyMockDrawTimeCardStates(): void {
+        // console.log("randomlyMockDrawTimeCardStates() start.");
+        this.drawTimes.forEach(drawTime => {
+            drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
+            drawTime.setPick3DrawCardId(this.slideNumber);
+
+            if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
+                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
+            }
+        });
+
+        // console.log("randomlyMockDrawTimeCardStates() end.");
+    }
+
+    private randomEnum<T>(anEnum: T): T[keyof T] {
+        const item = Math.floor(Math.random() * Object.keys(anEnum).length);
+        const i2 = Object.keys(anEnum)[item];
+        return anEnum[i2];
+    }
+
 }

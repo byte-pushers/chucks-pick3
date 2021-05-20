@@ -1,12 +1,13 @@
 import {Component, DoCheck, Input, OnDestroy, OnInit} from '@angular/core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
+import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
 import * as Object from 'bytepushers-js-obj-extensions';
 import { DrawStateService } from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'pick3-draw-time-card',
   templateUrl: './pick3-draw-time-card.component.html',
   styleUrls: ['./pick3-draw-time-card.component.scss'],
@@ -18,10 +19,10 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   drawingTimeCardColorIndicators = {
     'not-drawn-yet': false,
     'not-drawn-yet-with-generated-picks': false,
-    'drawn': false,
+    drawn: false,
     'drawn-with-generated-picks-with-no-winners': false,
     'drawn-with-generated-picks-with-winners': false,
-    'selected': false
+    selected: false
   };
   doCheckCount = 0;
 
@@ -34,9 +35,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   ngDoCheck() {
-    //console.log('DoCheck');
     this.doCheckCount++;
-    //console.log(JSON.stringify(changes));
 
     const to  = JSON.stringify(this.data);
     const from = JSON.stringify(this.oldData);
@@ -65,13 +64,13 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   public getSelectedState(): {'not-selected': boolean, selected: boolean} {
     let selectedStateCssClass = {
       'not-selected': true,
-      'selected': false
+      selected: false
     };
 
     if (this.data.getSelected()) {
       selectedStateCssClass = {
         'not-selected': false,
-        'selected': true
+        selected: true
       };
     }
 
@@ -82,23 +81,23 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
     const pick3DrawTimeCardStateEnum = this.data.getState();
 
     switch (pick3DrawTimeCardStateEnum) {
-      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: //gray
+      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
         this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);
         break;
-      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: //yellow
+      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: // yellow
         this.setDrawingTimeCardColorIndicators('not-drawn-yet-with-generated-picks', true);
         break;
-      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN: //gray
+      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN: // gray
         this.setDrawingTimeCardColorIndicators('drawn', true);
         break;
-      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS://black
+      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS: // black
         this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-no-winners', true);
         break;
-      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS://green
+      case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS: // green
         this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-winners', true);
         break;
       default:
-        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);//gray
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true); // gray
     }
 
     return this.drawingTimeCardColorIndicators;
@@ -119,7 +118,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
     this.drawStateService.passState(colorIndicators);
   }
   private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
-    for(let property in drawingTimeCardColorIndicators){
+    for (const property in drawingTimeCardColorIndicators){
       if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {
         if (property === attributeName) {
           drawingTimeCardColorIndicators[property] = booleanValue;

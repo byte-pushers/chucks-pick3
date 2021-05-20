@@ -32,6 +32,7 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+
         this.cardContextService.context$.subscribe(context => {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
@@ -57,4 +58,7 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
         /*  this.setData(this.pick3StateLottery.getStateName(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(),
          pick3DrawTimeCard.getIcon()); this.cardContextService.addContext(newContext);*/
     }
+
+
+
 }
