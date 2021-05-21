@@ -75,6 +75,11 @@
   width: 16%;
 }
 
+.generated-picks-indicator.not-drawn-yet-with-generated-picks.not-selected {
+  background-color: $chucksPick3Yellow;
+  width: 8%;
+}
+
 .generated-picks-indicator.drawn-with-generated-picks-with-winners {
   background-color: $chucksPick3Green;
 }
