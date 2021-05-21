@@ -7,7 +7,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class CardPage implements OnInit, OnDestroy {
     constructor() {
-        console.log('CardPage(): constructor.');
     }
 
     ngOnInit(): void {

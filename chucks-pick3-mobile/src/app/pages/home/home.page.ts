@@ -36,7 +36,6 @@ export class HomePage implements OnInit {
   constructor(private popoverCtrl: PopoverController,
               public translate: I18nService,
               public translateService: TranslateService) {
-    console.log('HomePage(): constructor.');
     translateService.setDefaultLang('en-US');
   }
 

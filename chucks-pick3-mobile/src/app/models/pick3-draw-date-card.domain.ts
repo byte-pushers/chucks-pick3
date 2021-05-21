@@ -188,7 +188,6 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     setBackgroundImage(backgroundImage: string): void {
         this._backgroundImage = backgroundImage;
-        console.log(this._backgroundImage);
     }
 
     get winningNumber(): number {

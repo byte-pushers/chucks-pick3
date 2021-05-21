@@ -48,7 +48,6 @@ export class CardComponent implements OnInit, OnDestroy {
     pick3StateLottery: Pick3StateLottery;
     constructor(private cardContextService: CardContextService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-        console.log('CardComponent(): constructor.');
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 

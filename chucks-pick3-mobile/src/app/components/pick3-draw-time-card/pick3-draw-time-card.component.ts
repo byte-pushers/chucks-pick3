@@ -112,8 +112,6 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
             this.retrieveDrawTimeCardColorIndicators(this.drawingTimeCardColorIndicators);
 
         }
-        console.log(attributeName);
-        console.log(booleanValue);
         this.setCssClass(this.drawingTimeCardColorIndicators, attributeName, booleanValue);
     }
 
