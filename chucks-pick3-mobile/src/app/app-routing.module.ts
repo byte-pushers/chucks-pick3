@@ -3,24 +3,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'account',
-    loadChildren: () => import('./components/account/account.module').then( m => m.AccountPageModule)
-  }, {
-    path: 'settings',
-    loadChildren: () => import('./components/settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
   },
   {
-    path: 'generate-picks',
-    loadChildren: () => import('./components/generate-picks/generate-picks.module').then( m => m.GeneratePicksPageModule)
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
   }
 ];
 
@@ -30,4 +23,7 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  constructor() {
+  }
+}

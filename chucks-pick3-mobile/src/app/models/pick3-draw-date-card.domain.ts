@@ -7,6 +7,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         drawDate: null,
         drawState: null,
         drawTime: null,
+        drawTimeAsString: null,
         upcomingDrawTime: null,
         hasWinner: false,
         backgroundImage: null,
@@ -35,14 +36,17 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private _drawDateIcon: string;
 
     constructor(private readonly config: any) {
-        this._drawDate = (config) ? Object.isDefinedAndNotNull(config._drawDate) ? (typeof config._drawDate === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config._drawDate.toUpperCase()] : config.drawDate : null : null;
-        this._drawState = (config) ? Object.isDefinedAndNotNull(config._drawState) ? config.drawState : null : null;
-        this._drawTime = (config) ? Object.isDefinedAndNotNull(config._drawTime) ? (typeof config._drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
-        this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config._upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
-        this._hasWinner = (config) ? (typeof config._hasWinner === 'boolean') ? config.hasWinner : false : false;
-        this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config._backgroundImage) ? config.backgroundImage : null : null;
-        this._winningNumber = (config) ? (config._winningNumber) ? config.winningNumber : null : null;
-        this._winningNumberDigits = (config) ? (config._winningNumberDigits) ? config.winningNumberDigits : null : null;
+        this._drawDate = (config) ? Object.isDefinedAndNotNull(config.drawDate) ? (typeof config.drawDate === 'string')
+            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawDate.toUpperCase()] : config.drawDate : null : null;
+        this._drawState = (config) ? Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null : null;
+        this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string')
+            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+        this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config.upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string')
+            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
+        this._hasWinner = (config) ? (typeof config.hasWinner === 'boolean') ? config.hasWinner : false : false;
+        this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config.backgroundImage) ? config.backgroundImage : null : null;
+        this._winningNumber = (config) ? (config.winningNumber) ? config.winningNumber : null : null;
+        this._winningNumberDigits = (config) ? (config.winningNumberDigits) ? config.winningNumberDigits : null : null;
         this._drawDateIcon = (config) ? config.drawDateIcon : null;
     }
 
@@ -70,7 +74,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return this._drawState;
     }
 
-    getDrawTimeAsString(): string {
+    get drawTimeAsString(): string {
         return Pick3DrawTimeEnum.getPropertyKey(this.drawTime);
     }
 
@@ -204,8 +208,11 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this.setWinningNumberDigits(this._winningNumber);
     }
 
-    private setWinningNumberDigits(winningNumber: number) {
+    get winningNumberDigits(): number[] {
+        return this._winningNumberDigits;
+    }
 
+    private setWinningNumberDigits(winningNumber: number) {
         this._winningNumberDigits = [];
 
         while (winningNumber > 0) {
@@ -214,15 +221,63 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         }
     }
 
+    get winningNumberDigit1(): number {
+        let digit = null;
+
+        if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
+            if (this._winningNumberDigits.length === 1) {
+                digit = 0;
+            } else if (this._winningNumberDigits.length === 2) {
+                digit = 0;
+            } else if (this._winningNumberDigits.length === 3) {
+                digit = this._winningNumberDigits[2];
+            }
+        }
+
+        return digit;
+    }
+
+    get winningNumberDigit2(): number {
+        let digit = null;
+
+        if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
+            if (this._winningNumberDigits.length === 1) {
+                digit = 0;
+            } else if (this._winningNumberDigits.length === 2) {
+                digit = this._winningNumberDigits[1];
+            } else if (this._winningNumberDigits.length === 3) {
+                digit = this._winningNumberDigits[1];
+            }
+        }
+
+        return digit;
+    }
+
+    get winningNumberDigit3(): number {
+        let digit = null;
+
+        if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
+            if (this._winningNumberDigits.length === 1) {
+                digit = 0;
+            } else if (this._winningNumberDigits.length === 2) {
+                digit = this._winningNumberDigits[0];
+            } else if (this._winningNumberDigits.length === 3) {
+                digit = this._winningNumberDigits[0];
+            }
+        }
+
+        return digit;
+    }
+
     getWinningNumberDigit1(): number {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
-            if (this._winningNumberDigits.length == 1) {
+            if (this._winningNumberDigits.length === 1) {
                 digit = 0;
-            } else if (this._winningNumberDigits.length == 2) {
+            } else if (this._winningNumberDigits.length === 2) {
                 digit = 0;
-            } else if (this._winningNumberDigits.length == 3) {
+            } else if (this._winningNumberDigits.length === 3) {
                 digit = this._winningNumberDigits[2];
             }
         }
@@ -234,11 +289,11 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
-            if (this._winningNumberDigits.length == 1) {
+            if (this._winningNumberDigits.length === 1) {
                 digit = 0;
-            } else if (this._winningNumberDigits.length == 2) {
+            } else if (this._winningNumberDigits.length === 2) {
                 digit = this._winningNumberDigits[1];
-            } else if (this._winningNumberDigits.length == 3) {
+            } else if (this._winningNumberDigits.length === 3) {
                 digit = this._winningNumberDigits[1];
             }
         }
@@ -250,11 +305,11 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         let digit = null;
 
         if (this._winningNumberDigits && this._winningNumberDigits.length > 0) {
-            if (this._winningNumberDigits.length == 1) {
+            if (this._winningNumberDigits.length === 1) {
                 digit = 0;
-            } else if (this._winningNumberDigits.length == 2) {
+            } else if (this._winningNumberDigits.length === 2) {
                 digit = this._winningNumberDigits[0];
-            } else if (this._winningNumberDigits.length == 3) {
+            } else if (this._winningNumberDigits.length === 3) {
                 digit = this._winningNumberDigits[0];
             }
         }
@@ -262,19 +317,19 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return digit;
     }
 
-    get drawDateIcon(): string {
+    get icon(): string {
         return this._drawDateIcon;
     }
 
-    set drawDateIcon(drawDateIcon: string) {
-        this._drawDateIcon = drawDateIcon;
+    set icon(icon: string) {
+        this._drawDateIcon = icon;
     }
 
-    getDrawDateIcon(): string {
+    getIcon(): string {
         return this._drawDateIcon;
     }
 
-    setDrawDateIcon(drawDateIcon: string): void {
+    setIcon(drawDateIcon: string): void {
         this._drawDateIcon = drawDateIcon;
     }
 }

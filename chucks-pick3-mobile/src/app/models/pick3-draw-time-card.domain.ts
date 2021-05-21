@@ -3,16 +3,18 @@ import {Pick3DrawTimeCardStateEnum} from './pick3-draw-time-card-state.enum';
 import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 import {Pick3DrawDateCard} from './pick3-draw-date-card';
 import * as Object from 'bytepushers-js-obj-extensions';
+import {Pick3DrawTime} from './pick3-draw-time';
 
 export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     static readonly DEFAULT_CONFIG: any = {
-    pick3DrawCardId: null,
-    icon: null,
-    title: null,
-    dateTime: null,
-    drawTime: null,
-    state: null,
-    selected: false
+        pick3DrawCardId: null,
+        icon: null,
+        title: null,
+        pick3DrawTime: null,
+        dateTime: null,
+        drawTime: null,
+        state: null,
+        selected: false
     };
 
     // tslint:disable-next-line:variable-name
@@ -26,6 +28,8 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     // tslint:disable-next-line:variable-name
     private _drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     // tslint:disable-next-line:variable-name
+    private _pick3DrawTime: Pick3DrawTime;
+    // tslint:disable-next-line:variable-name
     private _state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     // tslint:disable-next-line:variable-name
     private _selected: boolean;
@@ -33,11 +37,17 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     constructor(config: any) {
         this._icon = (config) ? config.icon : null;
         this._title = (config) ? Object.isDefinedAndNotNull(config.title) ? config.title : null : null;
-        this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string') ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
-        this._state = (config) ? config.state ? (typeof config.state === 'string') ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET : Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+        this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string') ?
+            Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+        this._state = (config) ? config.state ? (typeof config.state === 'string')
+            ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state :
+            Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET :
+            Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this._selected = (config) ? (typeof config.selected === 'boolean') ? config.selected : false : false;
         this._dateTime = (config) ? (Object.isDate(config.dateTime)) ? this.dateTime : new Date(config.dateTime) : null;
         this._pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
+        this._pick3DrawTime = (config) ? Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null : null;
+
     }
 
     set pick3DrawCardId(pick3DrawCardId: number) {
@@ -104,6 +114,22 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this._title = title;
     }
 
+    get pick3DrawTime() {
+        return this._pick3DrawTime;
+    }
+
+    set pick3DrawTime(pick3DrawTime: Pick3DrawTime) {
+        this._pick3DrawTime = pick3DrawTime;
+    }
+
+    getPick3DrawTime(): Pick3DrawTime {
+        return this._pick3DrawTime;
+    }
+
+    setPick3DrawTime(pick3DrawTime: Pick3DrawTime) {
+        this._pick3DrawTime = pick3DrawTime;
+    }
+
     get drawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
         let dt: any;
 
@@ -150,18 +176,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     }
 
     getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
-        let dt: any;
-
-        if (typeof this.drawTime === 'string') {
-            let key: any = this.drawTime;
-
-            key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
-        } else {
-            dt = Pick3DrawTimeEnum.getPropertyValue(this.drawTime);
-        }
-
-        return dt;
+        return this.drawTime; // dt;
     }
 
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {

@@ -6,8 +6,8 @@ ion-grid {
   padding: 0px;
 
 
-  ion-row.primary-view {
-    height: 50%;
+  ion-row {
+    height: 100%;
 
   }
 
@@ -34,7 +34,7 @@ ion-grid {
   @include for-size(iPhone5-SE) {
     font-size: 7vw !important;
   }
-  }
+}
 
 
 .scroll-content {
@@ -154,5 +154,3 @@ ion-grid {
 .picks-indicator.drawn-with-generated-picks-with-winners.selected {
   background-color: $chucksPick3Green;
 }
-
-
