@@ -1,6 +1,39 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 50%;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  ._25 {
+    flex: 2.5;
+  }
+  ._55 {
+    flex: 5.5;
+  }
+  ._20 {
+    flex: 2;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 ion-grid {
   height: 100%;
   padding: 0px;
@@ -10,6 +43,9 @@ ion-grid {
     height: 100%;
 
   }
+ .draw-time-string {
+  line-height: 2.7em;
+}
 
   ion-row.drawing-time {
     height: 12.5%;

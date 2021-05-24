@@ -1,27 +1,7 @@
 @import "../../src/breakpoints.scss";
 
 .generated-picks-indicator {
-  @include for-size(iPhone5-SE) {
-    height: 9.9vh !important;
-  }
-  @include for-size(iPhone6-7-8) {
-    height: 10.3vh !important;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 10.5vh !important;
-  }
-  @include for-size(iPhoneX) {
-    height: 10.7vh !important;
-  }
-  @include for-size(iPad) {
-    height: 10vh ;
-  }
-  @include for-size(iPad-Pro) {
-    height: 11.3vh !important;
-  }
-  @include for-size(pixel2) {
-    height: 10vh !important;
-  }
+height: 100%;
 }
 
 .draw-time-title {
