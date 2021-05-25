@@ -24,13 +24,13 @@ export class HomePage implements OnInit {
     speed: 400
   };
   pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
-    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG)/*,
-    new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({}),
-    new Pick3DrawDateCardDomain({})*/
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
+/*    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),*/
+/*    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG)*/
   ];
 
   constructor(private popoverCtrl: PopoverController,

@@ -67,6 +67,8 @@ ion-grid {
 .draw-date-title {
   font-size: 7.5vw;
   font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
   @include for-size(iPhone5-SE) {
     font-size: 7vw !important;
   }
