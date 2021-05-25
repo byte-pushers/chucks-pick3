@@ -19,7 +19,7 @@ height: 100%;
     line-height: 10.7vh !important;
   }
   @include for-size(iPhoneX) {
-    height: 10.9vh;
+    height: 10.7vh;
     line-height: 10.9vh;
   }
   @include for-size(iPad) {

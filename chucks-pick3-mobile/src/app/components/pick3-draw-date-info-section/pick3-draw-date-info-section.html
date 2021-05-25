@@ -7,11 +7,18 @@
     <ion-col size="8">
         <ion-row>
             <ion-col>
-                    <span style="font-size: 7.5vw;font-weight: bolder;"
-                          class="draw-date-title draw-date-text">{{'card.state.title' | translate}}</span><br><br>
-                <div class="container draw-date-text" style="font-size: 5vw;font-weight: 500;">
+                <div class="container">
                     <div class="row">
-                        <div class="column _55" style="text-align: right; padding-right: .5em">
+                        <div class="column _55 draw-date-title" style="text-align: center">
+                    <span style="font-size: 7.5vw;"
+                          class=" draw-date-text">{{'card.state.title' | translate}}</span>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <div class="container draw-date-text" style="font-size: 5.5vw;font-weight: 500;">
+                    <div class="row">
+                        <div class="column _55" style="text-align: right; padding-right: 1em">
                             <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg"
                                       class="time-of-day-icon"></ion-icon>
                         </div>
@@ -25,7 +32,7 @@
                       class="time-of-day-icon"></ion-icon>
                     {{data.drawTimeAsString | translate}}
           </span>-->
-                <br><br>
+                <br>
                 <span style="font-size: 4.6vw;font-weight: bold;"
                       class="draw-date-text">{{data.drawDate| date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
             </ion-col>
