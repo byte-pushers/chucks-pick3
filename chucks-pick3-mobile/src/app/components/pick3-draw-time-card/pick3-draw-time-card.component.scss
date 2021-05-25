@@ -1,6 +1,41 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 33.3%;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  ._25 {
+    flex: 2.5;
+  }
+  ._55 {
+    flex: 5.5;
+  }
+  ._20 {
+    flex: 2;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: $chucksPick3Gray 1px solid;
+  border-bottom: $chucksPick3Gray 1px solid;
+}
+
 .draw-time-icon {
   display: inline-block;
   width: 40%;
@@ -27,7 +62,7 @@
 }
 
 .time-of-day-text {
-  text-align: center;
+ float: left;
   vertical-align: middle;
   font-size: 7vw;
   font-weight: 700;
@@ -47,7 +82,7 @@
 
 .generated-picks-indicator {
   display: inline-block;
-  width: 8%;
+  width: 16%;
   line-height: 3em;
   float: right;
   background-color: $chucksPick3LightGray;
@@ -63,7 +98,7 @@
 .generated-picks-indicator.not-drawn.selected,
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
   background-color: $chucksPick3Black;
-  width: 16%;
+  width: 32%;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks {
@@ -72,12 +107,11 @@
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks.selected {
   background-color: $chucksPick3Yellow;
-  width: 16%;
+  width: 32%;
 }
 
 .generated-picks-indicator.not-drawn-yet-with-generated-picks.not-selected {
   background-color: $chucksPick3Yellow;
-  width: 8%;
 }
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners {
@@ -86,7 +120,7 @@
 
 .generated-picks-indicator.drawn-with-generated-picks-with-winners.selected {
   background-color: $chucksPick3Green;
-  width: 16%;
+  width: 32%;
 }
 
 
