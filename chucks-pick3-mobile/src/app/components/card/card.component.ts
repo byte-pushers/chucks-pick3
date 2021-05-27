@@ -16,6 +16,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
     styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnDestroy {
+    @Input() eventName: string;
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -51,6 +52,7 @@ export class CardComponent implements OnInit, OnDestroy {
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private drawTimeService: DrawTimeService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        console.log("car component constructor");
     }
 
     ngOnInit(): void {

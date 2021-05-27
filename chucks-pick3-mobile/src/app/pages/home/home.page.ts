@@ -20,12 +20,12 @@ export class HomePage implements OnInit {
     drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
   };
   slideOpts = {
-    initialSlide: 7,
+    initialSlide: 2,
     speed: 400
   };
   pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
     new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-/*    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),*/
+    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG)
 /*    new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
     new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
     new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
