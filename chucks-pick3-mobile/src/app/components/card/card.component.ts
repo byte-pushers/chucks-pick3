@@ -15,6 +15,7 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
     styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnDestroy {
+    @Input() eventName: string;
     @Input() slideNumber: number;
     @Input() data: Pick3DrawDateCard;
     @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -49,13 +50,14 @@ export class CardComponent implements OnInit, OnDestroy {
     constructor(private cardContextService: CardContextService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        console.log("car component constructor");
     }
 
     ngOnInit(): void {
         this.drawTimes.forEach(drawTime => {
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
         });
-this.randomlyMockDrawTimeCardStates();
+        this.randomlyMockDrawTimeCardStates();
         this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,

@@ -7,7 +7,24 @@ import {Pick3DrawTimeInfoSection} from "../../components/pick3-draw-time-info-se
 const routes: Routes = [
     {
         path: '',
-        outlet: 'card-page',
+        outlet: 'card-page-1',
+        component: CardPage,
+        children: [
+            {
+                path: '',
+                outlet: 'pick3-draw-date-info-section',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                path: '',
+                outlet: 'pick3-draw-time-info-section',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        path: '',
+        outlet: 'card-page-2',
         component: CardPage,
         children: [
             {
