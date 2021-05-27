@@ -42,10 +42,10 @@
 }
 
 .view-picks-icon {
-  fill: #FFFFFF;
+
   height: 90%;
   width: 90%;
-  stroke: #FFFFFF;
+  margin-left: -3px;
   stroke-width: 5px;
 
   @include for-size(iPhone5-SE) {
@@ -59,6 +59,7 @@
   @include for-size(iPhone6-7-8-Plus) {
     height: 75%;
     width: 75%;
+    margin-left: -1px;
   }
   @include for-size(iPhoneX) {
     height: 85%;

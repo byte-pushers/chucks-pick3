@@ -101,10 +101,10 @@ ion-grid {
 }
 
 .generate-picks-icon {
-  fill: $chucksPick3White;
+
   height: 50px;
   width: 50px;
-  stroke: $chucksPick3White;
+
   stroke-width: 5px;
   margin-top: 25vh;
 
@@ -118,10 +118,10 @@ ion-grid {
 }
 
 .view-picks-icon {
-  fill: $chucksPick3White;
+
   height: 50px;
   width: 50px;
-  stroke: $chucksPick3White;
+
   stroke-width: 5px;
   margin-top: 27.5vh;
   @include for-size(iPhone5-SE) {
