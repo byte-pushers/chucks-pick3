@@ -144,22 +144,22 @@ ion-grid {
 
   @include for-size(iPhone5-SE) {
     bottom: -27vh;
-    right: -1.5em;
+    right: -2.3em;
     height: 15px;
     width: 15px;
 
   }
   @include for-size(iPhoneX) {
-    bottom: -27vh;
+    bottom: -26.7vh;
     right: -1.9em;
   }
   @include for-size(iPhone6-7-8) {
     bottom: -27vh;
-    right: -1.9em;
+    right: -2.7em;
   }
   @include for-size(iPhone6-7-8-Plus) {
     bottom: -27vh;
-    right: -2.3em;
+    right: -2.7em;
   }
 }
 

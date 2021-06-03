@@ -45,7 +45,7 @@
 
   height: 90%;
   width: 90%;
-  margin-left: -3px;
+  margin-left: -10px;
   stroke-width: 5px;
 
   @include for-size(iPhone5-SE) {
@@ -83,6 +83,7 @@
 .time-of-day-icon {
   text-align: center;
   vertical-align: middle;
+  right: 5px;
   line-height: 12vh;
   font-size: 15vw;
   @include for-size(iPhone5-SE) {
