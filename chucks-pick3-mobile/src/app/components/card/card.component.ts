@@ -8,6 +8,7 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
+import {DrawTimeService} from '../../services/draw-time.service';
 
 @Component({
     selector: 'card',
@@ -47,15 +48,22 @@ export class CardComponent implements OnInit, OnDestroy {
     ];
     pick3StateLottery: Pick3StateLottery;
     constructor(private cardContextService: CardContextService,
-                private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+                private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private drawTimeService: DrawTimeService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
     ngOnInit(): void {
+        const date = new Date();
+        const hour = date.getHours();
         this.drawTimes.forEach(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
+            if (hour >=  drawTimeHour && drawTimeHour <= hour) {
+                this.drawTimeService.collectDrawTime(drawTime);
+            }
         });
-this.randomlyMockDrawTimeCardStates();
+        this.randomlyMockDrawTimeCardStates();
         this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,

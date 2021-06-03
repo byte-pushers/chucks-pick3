@@ -32,7 +32,8 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-
+        const currentDrawingTime = this.drawTimeService.currentDrawTime;
+        this.selectDrawingTimeCard(currentDrawingTime);
         this.cardContextService.context$.subscribe(context => {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
@@ -43,8 +44,8 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        const pick3DrawTime: Pick3DrawTime =
-            this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
+     /*   const pick3DrawTime: Pick3DrawTime =
+            this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());*/
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);

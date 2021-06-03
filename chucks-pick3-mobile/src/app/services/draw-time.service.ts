@@ -12,7 +12,13 @@ export class DrawTimeService {
 
     pick3DrawTime$ = this.pick3DrawTimeSource.asObservable();
 
+    public currentDrawTime = null;
+
     constructor() {
+    }
+
+    public collectDrawTime(drawTime: Pick3DrawTimeCard) {
+      this.currentDrawTime = drawTime;
     }
 
     public updateCurrentDrawTime(drawTime: Pick3DrawTimeCard) {
