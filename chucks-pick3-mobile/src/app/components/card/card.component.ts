@@ -54,13 +54,13 @@ export class CardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        const date = new Date();
-        const hour = date.getHours();
+        const currentHour = new Date().getHours();
         this.drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
-            if (hour >=  drawTimeHour && drawTimeHour <= hour) {
-                this.drawTimeService.collectDrawTime(drawTime);
+
+            if (currentHour >=  drawTimeHour && drawTimeHour <= currentHour) {
+                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
         });
         this.randomlyMockDrawTimeCardStates();
@@ -75,21 +75,15 @@ export class CardComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
 
     }
+
     private getDrawTime(someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
     }
     private randomlyMockDrawTimeCardStates(): void {
-        // console.log("randomlyMockDrawTimeCardStates() start.");
         this.drawTimes.forEach(drawTime => {
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(this.slideNumber);
-
-            if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
-            }
         });
-
-        // console.log("randomlyMockDrawTimeCardStates() end.");
     }
 
     private randomEnum<T>(anEnum: T): T[keyof T] {

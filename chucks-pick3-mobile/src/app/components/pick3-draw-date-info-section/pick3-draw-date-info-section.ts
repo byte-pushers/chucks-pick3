@@ -56,7 +56,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-        this.drawTimeService.pick3DrawTime$.subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+        this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
                 this.setData(
                     this.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
@@ -128,29 +128,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         return this.pick3StateLottery.getState();
     }
 
-    /*private displayDrawTime(drawDate: Date): void {
-      const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTime(drawDate);
-      this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl());
-    }*/
-
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
-            // const compareResult = drawTime.compareTo(pick3DrawDateCard);
-
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 drawTime.setState(pick3DrawTimeCardStateEnum);
             } else {
                 drawTime.setSelected(false);
             }
-
-            /*if (compareResult === 0) {
-              drawTime.setState(pick3DrawTimeCardStateEnum);
-            } else if (compareResult === -1) {
-              drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
-            } else if (compareResult === 1) {
-              drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
-            }*/
         });
     }
 
