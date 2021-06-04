@@ -1,25 +1,16 @@
-<!--<div style="display: flex;">
-  <div class="">
-
-  </div>
-  <div class="" align="left">&nbsp;
-
-  </div>
-
-</div>-->
 <div class="container">
-<div class="row">
-  <div class="column _20 draw-time-icon">
-    <span *ngIf="!data.icon">[icon here]</span>
-    <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg" [ngClass]="getSelectedState()" class="time-of-day-icon"></ion-icon>
-  </div>
-  <div class="column _20 draw-time-title">
- <span  class="time-of-day-text" [ngClass]="getSelectedState()">
-      {{data.title | translate}}
-    </span>
-  </div>
-  <div class="column _20">
-    <div class="generated-picks-indicator" [ngClass]="drawingTimeCardColorIndicators"></div>
-  </div>
-</div>
+    <div class="row">
+      <div class="column _20 draw-time-icon">
+        <span *ngIf="!data.icon">[icon here]</span>
+        <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg" [ngClass]="getSelectedState()" class="time-of-day-icon"></ion-icon>
+      </div>
+      <div class="column _20 draw-time-title">
+     <span  class="time-of-day-text" [ngClass]="getSelectedState()">
+          {{data.title | translate}}
+        </span>
+      </div>
+      <div class="column _20">
+        <div class="generated-picks-indicator" [ngClass]="drawingTimeCardColorIndicators"></div>
+      </div>
+    </div>
 </div>

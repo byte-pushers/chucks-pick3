@@ -8,6 +8,7 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
+import {DrawTimeService} from '../../services/draw-time.service';
 
 @Component({
     selector: 'card',
@@ -47,15 +48,22 @@ export class CardComponent implements OnInit, OnDestroy {
     ];
     pick3StateLottery: Pick3StateLottery;
     constructor(private cardContextService: CardContextService,
-                private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+                private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private drawTimeService: DrawTimeService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
     ngOnInit(): void {
+        const currentHour = new Date().getHours();
         this.drawTimes.forEach(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
+
+            if (currentHour >=  drawTimeHour && drawTimeHour <= currentHour) {
+                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+            }
         });
-this.randomlyMockDrawTimeCardStates();
+        this.randomlyMockDrawTimeCardStates();
         this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,
@@ -67,21 +75,15 @@ this.randomlyMockDrawTimeCardStates();
     ngOnDestroy(): void {
 
     }
+
     private getDrawTime(someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
     }
     private randomlyMockDrawTimeCardStates(): void {
-        // console.log("randomlyMockDrawTimeCardStates() start.");
         this.drawTimes.forEach(drawTime => {
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(this.slideNumber);
-
-            if (drawTime.getDrawTime() === Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY) {
-                // drawTime.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS);
-            }
         });
-
-        // console.log("randomlyMockDrawTimeCardStates() end.");
     }
 
     private randomEnum<T>(anEnum: T): T[keyof T] {

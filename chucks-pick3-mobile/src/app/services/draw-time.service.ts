@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
-import {Pick3DrawDateCardDomain} from '../models/pick3-draw-date-card.domain';
-import {Pick3DrawDateCard} from '../models/pick3-draw-date-card';
 import {Pick3DrawTimeCard} from '../models/pick3-draw-time-card';
 
 @Injectable({
@@ -9,13 +7,21 @@ import {Pick3DrawTimeCard} from '../models/pick3-draw-time-card';
 })
 export class DrawTimeService {
     private pick3DrawTimeSource = new Subject<Pick3DrawTimeCard>();
-
-    pick3DrawTime$ = this.pick3DrawTimeSource.asObservable();
+    private currentDrawTimeCard: Pick3DrawTimeCard = null;
 
     constructor() {
     }
 
-    public updateCurrentDrawTime(drawTime: Pick3DrawTimeCard) {
-        this.pick3DrawTimeSource.next(drawTime);
+    public getPick3DrawTime$() {
+        return this.pick3DrawTimeSource.asObservable();
+    }
+
+    public setCurrentDrawTimeCard(someDrawTimeCard: Pick3DrawTimeCard) {
+        this.currentDrawTimeCard = someDrawTimeCard;
+        this.pick3DrawTimeSource.next(this.currentDrawTimeCard);
+    }
+
+    public getCurrentDrawTimeCard(): Pick3DrawTimeCard {
+        return this.currentDrawTimeCard;
     }
 }
