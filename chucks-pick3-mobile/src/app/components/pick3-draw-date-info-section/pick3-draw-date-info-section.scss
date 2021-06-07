@@ -102,32 +102,72 @@ ion-grid {
 
 .generate-picks-icon {
 
-  height: 50px;
-  width: 50px;
+  width: 100%;
 
   stroke-width: 5px;
   margin-top: 25vh;
 
   @include for-size(iPhone5-SE) {
-    height: 40px;
-    width: 40px;
-    margin-top: 25vh;
+    width: 100%;
+    margin-top: 27vh;
+  }
+  @include for-size(iPhone5-SE) {
+    height: 10.2vh;
+    line-height: 10.2vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 10.6vh;
+    line-height: 10.6vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 10.7vh !important;
+    line-height: 10.7vh !important;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.9vh;
+    line-height: 10.9vh;
+  }
+  @include for-size(iPad) {
+    height: 10.9vh !important;
+    line-height: 10.9vh !important;
+  }
+  @include for-size(iPad-Pro) {
+    height: 11.6vh !important;
+    line-height: 11.6vh !important;
   }
 
 
 }
 
 .view-picks-icon {
-
-  height: 50px;
-  width: 50px;
-
+  width: 100%;
   stroke-width: 5px;
   margin-top: 27.5vh;
+  padding-right: 10px;
   @include for-size(iPhone5-SE) {
-    height: 40px;
-    width: 40px;
+    height: 10.2vh;
+    line-height: 10.2vh;
     margin-top: 28vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 10.6vh;
+    line-height: 10.6vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 10.7vh !important;
+    line-height: 10.7vh !important;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.9vh;
+    line-height: 10.9vh;
+  }
+  @include for-size(iPad) {
+    height: 10.9vh !important;
+    line-height: 10.9vh !important;
+  }
+  @include for-size(iPad-Pro) {
+    height: 11.6vh !important;
+    line-height: 11.6vh !important;
   }
 
 }
@@ -138,8 +178,8 @@ ion-grid {
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  bottom: -3em;
-  right: -2em;
+  bottom: -5em;
+  right: -2.5em;
   z-index: 99;
 
   @include for-size(iPhone5-SE) {
@@ -158,8 +198,8 @@ ion-grid {
     right: -2.7em;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    bottom: -27vh;
-    right: -2.7em;
+    bottom: -27.6vh;
+    right: -2.9em;
   }
 }
 
