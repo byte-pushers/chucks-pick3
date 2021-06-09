@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneratePicksCardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log("constructor");
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("ngOnInit");
+  }
 
 }
