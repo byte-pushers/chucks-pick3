@@ -1,8 +1,8 @@
 <ion-row style="margin: 0; height: 100%" [style.background]="'url(' + data.backgroundImage + ')'">
     <ion-col size="2" style=" margin-right: 0px">
         <div class="picks-indicator " [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
-        <ion-icon src="../../../assets/view-picks-icon.svg" class="generate-picks-icon"
-                  style="float: right"></ion-icon>
+        <ion-icon src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
+                  style=" padding-left: 10px"></ion-icon>
     </ion-col>
     <ion-col size="8">
         <ion-row>
@@ -51,12 +51,12 @@
             </ion-col>
         </ion-row>
     </ion-col>
-    <ion-col size="2" style=" margin-left: 0px">
+    <ion-col size="2" style=" margin-left: -15px">
         <!--<ion-icon [routerLink]="['/generate-picks']" [state]="{ selectedDrawing: data}"
                   src="../../../assets/generate-picks-icon.svg"
                   class="view-picks-icon" style="float: left"></ion-icon>-->
         <ion-icon src="../../../assets/generate-picks-icon.svg"
-                  class="view-picks-icon" style="float: left"></ion-icon>
+                  class="generate-picks-icon" style=" padding-right: 20px" ></ion-icon>
 
     </ion-col>
 </ion-row>
