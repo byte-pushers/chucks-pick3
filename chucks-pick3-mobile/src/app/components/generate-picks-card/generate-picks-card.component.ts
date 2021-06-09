@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-generate-picks-card',
+  // tslint:disable-next-line:component-selector
+  selector: 'generate-picks-card',
   templateUrl: './generate-picks-card.component.html',
   styleUrls: ['./generate-picks-card.component.scss'],
 })
