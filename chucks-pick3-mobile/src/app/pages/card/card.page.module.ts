@@ -12,6 +12,7 @@ import {I18nService} from '../../services/i18n.service';
 import {CountdownTimerComponent} from '../../components/countdown-timer/countdown-timer.component';
 import {Pick3DrawTimeCardComponent} from '../../components/pick3-draw-time-card/pick3-draw-time-card.component';
 import {GeneratePicksCardComponent} from '../../components/generate-picks-card/generate-picks-card.component';
+import {RouterModule} from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
