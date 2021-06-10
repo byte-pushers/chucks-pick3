@@ -41,40 +41,6 @@
 
 }
 
-.view-picks-icon {
-  fill: #FFFFFF;
-  height: 90%;
-  width: 90%;
-  stroke: #FFFFFF;
-  stroke-width: 5px;
-
-  @include for-size(iPhone5-SE) {
-    height: 75%;
-    width: 75%;
-  }
-  @include for-size(iPhone6-7-8) {
-    height: 75%;
-    width: 75%;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 75%;
-    width: 75%;
-  }
-  @include for-size(iPhoneX) {
-    height: 85%;
-    width: 85%;
-  }
-  @include for-size(iPad) {
-    height: 55%;
-    width: 55%;
-  }
-  @include for-size(iPad-Pro) {
-    height: 55%;
-    width: 55%;
-  }
-
-
-}
 
 
 /* Icons for draw time component*/
@@ -82,6 +48,7 @@
 .time-of-day-icon {
   text-align: center;
   vertical-align: middle;
+  right: 5px;
   line-height: 12vh;
   font-size: 15vw;
   @include for-size(iPhone5-SE) {

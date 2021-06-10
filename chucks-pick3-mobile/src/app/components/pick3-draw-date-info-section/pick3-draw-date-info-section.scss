@@ -101,33 +101,68 @@ ion-grid {
 }
 
 .generate-picks-icon {
-  fill: $chucksPick3White;
-  height: 50px;
-  width: 50px;
-  stroke: $chucksPick3White;
+  width: 100%;
   stroke-width: 5px;
-  margin-top: 25vh;
 
+  margin-top: 27.8vh;
   @include for-size(iPhone5-SE) {
-    height: 40px;
-    width: 40px;
-    margin-top: 25vh;
+    height: 10.2vh;
+    line-height: 10.2vh;
+    margin-top: 27.8vh;
   }
-
+  @include for-size(iPhone6-7-8) {
+    height: 10.6vh;
+    line-height: 10.6vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 10.7vh !important;
+    line-height: 10.7vh !important;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.9vh;
+    line-height: 10.9vh;
+  }
+  @include for-size(iPad) {
+    height: 10.9vh !important;
+    line-height: 10.9vh !important;
+  }
+  @include for-size(iPad-Pro) {
+    height: 11.6vh !important;
+    line-height: 11.6vh !important;
+  }
 
 }
 
 .view-picks-icon {
-  fill: $chucksPick3White;
-  height: 50px;
-  width: 50px;
-  stroke: $chucksPick3White;
+  width: 100%;
   stroke-width: 5px;
-  margin-top: 27.5vh;
+
+  margin-top: 25vh;
   @include for-size(iPhone5-SE) {
-    height: 40px;
-    width: 40px;
-    margin-top: 28vh;
+    height: 10.2vh;
+    line-height: 10.2vh;
+    margin-top: 26vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 10.6vh;
+    line-height: 10.6vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 10.7vh !important;
+    line-height: 10.7vh !important;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.9vh;
+    line-height: 10.9vh;
+    margin-top: 25.5vh;
+  }
+  @include for-size(iPad) {
+    height: 10.9vh !important;
+    line-height: 10.9vh !important;
+  }
+  @include for-size(iPad-Pro) {
+    height: 11.6vh !important;
+    line-height: 11.6vh !important;
   }
 
 }
@@ -138,28 +173,28 @@ ion-grid {
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  bottom: -3em;
-  right: -2em;
+  bottom: -5em;
+  right: -2.5em;
   z-index: 99;
 
   @include for-size(iPhone5-SE) {
-    bottom: -27vh;
-    right: -1.5em;
+    bottom: -29vh;
+    right: -2.3em;
     height: 15px;
     width: 15px;
 
   }
   @include for-size(iPhoneX) {
-    bottom: -27vh;
+    bottom: -29vh !important;
     right: -1.9em;
   }
   @include for-size(iPhone6-7-8) {
-    bottom: -27vh;
-    right: -1.9em;
+    bottom: -28vh;
+    right: -2.7em;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    bottom: -27vh;
-    right: -2.3em;
+    bottom: -28vh;
+    right: -2.9em;
   }
 }
 

@@ -7,28 +7,39 @@ import {GeneratePicksCardComponent} from '../../components/generate-picks-card/g
 
 const routes: Routes = [
     {
-        path: '',
         outlet: 'card-page',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        path: 'generate-picks',
         component: CardPage,
         children: [
             {
                 path: '',
-                outlet: 'pick3-draw-date-info-section',
+                outlet: 'primary',
                 component: Pick3DrawDateInfoSection
             },
             {
                 path: '',
-                component: Pick3DrawTimeInfoSection,
-                outlet: 'secondary'
-            },
-            {
-                path: 'generate-picks',
-                component: GeneratePicksCardComponent,
-                outlet: 'secondary'
+                outlet: 'secondary',
+                component: GeneratePicksCardComponent
             }
         ]
-    },
-    ];
+    }
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
