@@ -55,8 +55,12 @@
         <!--<ion-icon [routerLink]="['/generate-picks']" [state]="{ selectedDrawing: data}"
                   src="../../../assets/generate-picks-icon.svg"
                   class="view-picks-icon" style="float: left"></ion-icon>-->
-        <ion-icon [routerLink]="[{ outlets: { 'secondary': ['/generate-picks'] } }]" src="../../../assets/generate-picks-icon.svg"
+        <ion-icon [routerLink]="['/generate-picks']" src="../../../assets/generate-picks-icon.svg"
                   class="view-picks-icon" style="float: left"></ion-icon>
 
+        <!--<ion-icon [routerLink]="[{ outlets: { primary: ['home'], secondary: ['home'] } }]"
+                  src="../../../assets/generate-picks-icon.svg"
+                  class="view-picks-icon" style="float: left">
+        </ion-icon>-->
     </ion-col>
 </ion-row>
