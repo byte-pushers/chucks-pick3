@@ -16,11 +16,11 @@ export class AppComponent {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-    private popoverCtrl: PopoverController,
-        private translate: TranslateService) {
+        private popoverController: PopoverController,
+        private translateService: TranslateService) {
         this.initializeApp();
         this.sideMenu();
-        this.translate.setDefaultLang('en-US');
+        this.translateService.setDefaultLang('en-US');
     }
 
     initializeApp() {

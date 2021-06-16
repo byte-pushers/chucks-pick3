@@ -33,8 +33,7 @@ export class HomePage implements OnInit {
     new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG)*/
   ];
 
-  constructor(private popoverCtrl: PopoverController,
-              public translate: I18nService,
+  constructor(private popoverController: PopoverController,
               public translateService: TranslateService) {
     translateService.setDefaultLang('en-US');
   }
@@ -45,7 +44,7 @@ export class HomePage implements OnInit {
   }
 
   async showPopover(ev: any) {
-    const popover = await this.popoverCtrl.create({
+    const popover = await this.popoverController.create({
       component: LanguagePopoverComponent,
       cssClass: 'my-custom-class',
       event: ev,
