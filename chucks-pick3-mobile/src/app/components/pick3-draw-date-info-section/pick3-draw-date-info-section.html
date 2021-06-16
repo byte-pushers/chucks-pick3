@@ -47,16 +47,16 @@
                 <div style="display: inline" *ngIf="showCountDownToDrawing === true">
                     <countdown-timer [end]="data.drawDate"></countdown-timer>
                 </div>
-                <p style="color: white">{{slideNumber}}</p>
+                <p class="slideNumber">{{slideNumber}}</p>
             </ion-col>
         </ion-row>
     </ion-col>
-    <ion-col size="2" style=" margin-left: -15px">
+    <ion-col size="2" class="generate-picks-col" style=" ">
         <!--<ion-icon [routerLink]="['/generate-picks']" [state]="{ selectedDrawing: data}"
                   src="../../../assets/generate-picks-icon.svg"
                   class="view-picks-icon" style="float: left"></ion-icon>-->
         <ion-icon src="../../../assets/generate-picks-icon.svg"
-                  class="generate-picks-icon" style=" padding-right: 20px" ></ion-icon>
+                  class="generate-picks-icon" style=" padding-right: 25px" ></ion-icon>
 
     </ion-col>
 </ion-row>
