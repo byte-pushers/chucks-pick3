@@ -108,14 +108,16 @@ ion-grid {
   @include for-size(iPhone5-SE) {
     height: 10.2vh;
     line-height: 10.2vh;
-    margin-top: 27.8vh;
+    margin-top: 29vh;
   }
   @include for-size(iPhone6-7-8) {
-    height: 10.6vh;
+    height: 11vh;
+    width: 8.8vh;
     line-height: 10.6vh;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    height: 10.7vh !important;
+    height: 11vh !important;
+    width: 9.6vh;
     line-height: 10.7vh !important;
   }
   @include for-size(iPhoneX) {
@@ -133,6 +135,52 @@ ion-grid {
 
 }
 
+.generate-picks-col{
+  margin-left: -2.5em;
+
+  @include for-size(iPhone5-SE) {
+    margin-left: -1em;
+  }
+  @include for-size(iPhone6-7-8) {
+    margin-left: -1.5em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    margin-left: -2em;
+  }
+  @include for-size(iPhoneX) {
+    margin-left: -2.5em;
+  }
+  @include for-size(iPad) {
+
+  }
+  @include for-size(iPad-Pro) {
+
+  }
+}
+
+.slideNumber {
+  color: white;
+  @include for-size(iPhone5-SE) {
+    font-size: 4vw;
+    padding-top: 1em;
+  }
+  @include for-size(iPhone6-7-8) {
+    padding-top: 2em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    padding-top: 2.5em;
+  }
+  @include for-size(iPhoneX) {
+    padding-top: 5.5em;
+  }
+  @include for-size(iPad) {
+
+  }
+  @include for-size(iPad-Pro) {
+
+  }
+}
+
 .view-picks-icon {
   width: 100%;
   stroke-width: 5px;
@@ -144,11 +192,13 @@ ion-grid {
     margin-top: 26vh;
   }
   @include for-size(iPhone6-7-8) {
-    height: 10.6vh;
+    height: 11vh;
+    width: 8.8vh;
     line-height: 10.6vh;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    height: 10.7vh !important;
+    height: 11vh !important;
+    width: 9.6vh;
     line-height: 10.7vh !important;
   }
   @include for-size(iPhoneX) {
