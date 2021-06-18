@@ -32,13 +32,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public showCountDownToDrawing = false;
     private drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
+    public item: Pick3DrawTimeCard;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
                 public translate: I18nService,
                 public translateService: TranslateService,
-                private drawTimeService: DrawTimeService,
+                public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -62,6 +63,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.pick3StateLottery.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon());
+                this.item = currentPick3DrawTimeCard;
             }
         );
 
@@ -71,6 +73,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
     }
+
 
     ngOnDestroy(): void {
         this.slideNumber = -1;

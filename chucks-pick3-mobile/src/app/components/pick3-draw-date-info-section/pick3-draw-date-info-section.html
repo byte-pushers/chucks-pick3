@@ -52,7 +52,7 @@
         </ion-row>
     </ion-col>
     <ion-col size="2" style=" margin-left: -15px">
-        <ion-icon [routerLink]="['/generate-picks']" src="../../../assets/generate-picks-icon.svg"
+        <ion-icon [routerLink]="['/generate-picks']" [state]="{ data: drawTimeService.getCurrentDrawTimeCard().getPick3DrawTime().getDateTime()}" src="../../../assets/generate-picks-icon.svg"
                   class="view-picks-icon" style="float: left"></ion-icon>
     </ion-col>
 </ion-row>

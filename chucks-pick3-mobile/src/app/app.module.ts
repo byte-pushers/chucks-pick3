@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { Pick3WebScrapingProviderService } from './providers/web-scraping/pick3-web-scraping-provider.service';
 import { CardContextService } from './services/card-context.service';
 import { HomePageModule } from "./pages/home/home.page.module";
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { HomePageModule } from "./pages/home/home.page.module";
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
-        HomePageModule
+        HomePageModule,
+        TranslateModule
     ],
     providers: [
         StatusBar,
