@@ -27,12 +27,12 @@ export class GeneratePicksCardComponent implements OnInit {
     this.selectDrawingTimeCard(window.history.state);
   }
   public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-    console.log(pick3DrawTimeCard);
     this.drawTimes.forEach(drawTime => {
       if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
         drawTime.setSelected(false);
       } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
         drawTime.setSelected(true);
+        console.log(pick3DrawTimeCard);
         this.drawTimeService.setCurrentDrawTimeCard(drawTime);
       }
     });
