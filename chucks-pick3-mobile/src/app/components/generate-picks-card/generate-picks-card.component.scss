@@ -1,0 +1,262 @@
+@import "../../../breakpoints";
+@import "../../../theme/variables";
+
+
+ion-grid {
+  height: 100%;
+  padding: 0px;
+
+
+  ion-row.primary-view {
+    height: 15.7em;
+
+    @include for-size(iPhone5-SE) {
+      height: 12.9em;
+    }
+    @include for-size(iPhone6-7-8-Plus) {
+      height: 17.4em;
+    }
+    @include for-size(iPhoneX) {
+      height: 20em;
+    }
+
+  }
+
+  ion-row.drawing-time {
+    height: 12.5%;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: $chucksPick3Gray;
+
+    ion-col {
+      padding: 0px;
+    }
+  }
+
+}
+
+.draw-date-text {
+  color: $chucksPick3White;
+}
+
+.draw-date-title {
+  font-size: 7.5vw;
+  font-weight: bolder;
+  @include for-size(iPhone5-SE) {
+    font-size: 7vw !important;
+  }
+}
+
+
+.scroll-content {
+  overflow-y: hidden;
+}
+
+.dot {
+  height: 50px;
+  width: 50px;
+  background-color: $chucksPick3White;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 2px;
+  color: $chucksPick3Black;
+  line-height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+    line-height: 1.6em;
+  }
+
+
+}
+
+.generate-picks-icon {
+  fill: $chucksPick3White;
+  height: 50px;
+  width: 50px;
+  stroke: $chucksPick3White;
+  stroke-width: 5px;
+  margin-top: 25vh;
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+    margin-top: 25vh;
+  }
+
+
+}
+
+ion-icon.view-picks-icon {
+  stroke: $chucksPick3White !important;
+}
+
+.view-picks-icon {
+  fill: $chucksPick3White;
+  height: 50px;
+  width: 50px;
+
+  stroke-width: 5px;
+  margin-top: 27.5vh;
+
+
+  @include for-size(iPhone5-SE) {
+    height: 40px;
+    width: 40px;
+    margin-top: 28vh;
+  }
+
+}
+
+.picks-indicator {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  bottom: -3em;
+  right: -2em;
+  z-index: 99;
+
+  @include for-size(iPhone5-SE) {
+    bottom: -27vh;
+    right: -1.5em;
+    height: 15px;
+    width: 15px;
+
+  }
+  @include for-size(iPhoneX) {
+    bottom: -27vh;
+    right: -1.9em;
+  }
+  @include for-size(iPhone6-7-8) {
+    bottom: -27vh;
+    right: -1.9em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    bottom: -27vh;
+    right: -2.3em;
+  }
+}
+
+.picks-indicator.not-drawn-yet,
+.picks-indicator.drawn,
+.picks-indicator.drawn-with-generated-picks-with-no-winners {
+  background-color: transparent;
+}
+
+.picks-indicator.drawn.selected,
+.picks-indicator.not-drawn-yet.selected,
+.picks-indicator.not-drawn.selected,
+.picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
+  background-color: transparent;
+
+}
+
+
+#continue {
+  display: block;
+}
+
+#generate {
+  display: none;
+}
+
+.generate-options-title {
+  height: 30%;
+  text-align: center;
+  background-color: $chucksPick3Black;
+  font-weight: 700;
+  color: $chucksPick3White;
+  line-height: 2em;
+
+  @include for-size(iPhone5-SE) {
+    height: 30%;
+    line-height: 2.3em;
+    font-size: small;
+  }
+
+  @include for-size(iPhoneX) {
+    line-height: 2.3em;
+  }
+
+  ion-col {
+    padding: 0px;
+  }
+}
+
+.generate-picks-button-section {
+  padding: 0px;
+  height: 10.6vh;
+
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 11.5vh;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.6vh;
+  }
+
+  ion-col {
+    padding: 0px;
+  }
+}
+
+ion-select {
+  height: 95%;
+
+
+}
+
+.generate-picks-button {
+  width: 100%;
+  height: 100%;
+
+  .item-native .item-inner {
+    padding: 0px !important;
+  }
+
+}
+
+.timeOfDayDropDown {
+  width: 100%;
+  height: 4.5em;
+  margin-left: 2em;
+  text-align: center;
+  @include for-size(iPhone5-SE) {
+    height: 3.5em !important;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 5em !important;
+  }
+
+  @include for-size(iPhoneX) {
+    height: 5.4em !important;
+  }
+}
+
+.continue-generate-btn {
+  height: 4.9em !important;
+  background-color: #ffd948;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 18px;
+  vertical-align: center;
+
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 4.9em !important;
+  }
+
+  @include for-size(iPhone5-SE) {
+    height: 4em !important;
+  }
+
+  @include for-size(iPhoneX) {
+    height: 6.5em !important;
+  }
+}
+
+
+
