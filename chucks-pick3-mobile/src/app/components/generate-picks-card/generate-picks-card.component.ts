@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {map} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import * as BytePushers from 'bytepushers-js-core';
@@ -13,6 +13,8 @@ import {
     NIGHT_DRAW_TIME_KEY,
     Pick3DrawTimeEnum
 } from '../../models/pick3-draw-time.enum';
+import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import {CardContextService} from '../../services/card-context.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -20,30 +22,48 @@ import {
     templateUrl: './generate-picks-card.component.html',
     styleUrls: ['./generate-picks-card.component.scss'],
 })
-export class GeneratePicksCardComponent implements OnInit {
-    @Input() defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
+export class GeneratePicksCardComponent implements OnInit, OnDestroy {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    state$: Observable<object>;
+    private subscription: Subscription;
+    private componentState;
+    public currentDate = new Date().getDate();
+    defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
+    generateChoice: any;
+    continueChoice: any;
+    continueButton = true;
+
     newDrawingTimes: any[] = [];
     currentDateDay: number = new Date().getDate();
     currentDateMonth: number = new Date().getMonth() + 1;
     currentDateYear: number = new Date().getFullYear();
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
-    generateChoice: any;
-    continueChoice: any;
-    continueButton = true;
 
-    constructor(public activatedRoute: ActivatedRoute,
+    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private cardContextService: CardContextService,
                 private drawTimeService: DrawTimeService) {
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        this.componentState = 'instantiated';
 
     }
 
     ngOnInit(): void {
-        this.state$ = this.activatedRoute.paramMap
-            .pipe(map(() => window.history.state));
-        this.selectDrawingTimeCard(window.history.state);
+        this.componentState = 'initializing';
+        this.cardContextService.context$.subscribe(context => {
+            this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+            console.log(context.drawTimes);
+            if (this.componentState === 'initializing') {
+                const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
+                this.selectDrawingTimeCard(currentDrawingTime);
+            }
+        });
+        this.componentState = 'initialized';
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+        this.drawTimes = [];
+        this.pick3StateLottery = null;
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
@@ -52,7 +72,6 @@ export class GeneratePicksCardComponent implements OnInit {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-                console.log(pick3DrawTimeCard);
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
         });
@@ -71,6 +90,7 @@ export class GeneratePicksCardComponent implements OnInit {
         }
 
     }
+
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
             this.newDrawingTimes.length = 0;
@@ -135,6 +155,4 @@ export class GeneratePicksCardComponent implements OnInit {
     logForm(): void {
         console.log(this.continueChoice);
     }
-
-
 }

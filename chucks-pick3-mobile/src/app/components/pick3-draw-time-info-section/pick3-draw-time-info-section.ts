@@ -44,6 +44,7 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+        document.getElementById('continueButton').style.backgroundColor = '#FFFFFF';
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);

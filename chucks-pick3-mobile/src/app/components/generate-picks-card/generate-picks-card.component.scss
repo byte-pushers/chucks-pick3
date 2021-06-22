@@ -239,8 +239,8 @@ ion-select {
 
 .continue-generate-btn {
   height: 4.9em !important;
-  background-color: #ffd948;
-  color: #1a1a1a;
+  background-color: $chucksPick3Gray;
+  color: $chucksPick3LightGray;
   font-weight: 600;
   font-size: 18px;
   vertical-align: center;
@@ -257,6 +257,7 @@ ion-select {
     height: 6.5em !important;
   }
 }
+
 
 
 
