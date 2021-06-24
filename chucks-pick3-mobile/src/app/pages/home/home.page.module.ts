@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import { TranslateHttpLoader} from "@ngx-translate/http-loader";
-import { HttpClient} from "@angular/common/http";
-import { HomePageRoutingModule } from "./home.page.routing.module";
+import { HomePageRoutingModule } from './home.page.routing.module';
 import { CardPageModule} from '../card/card.page.module';
-import { CardComponent} from "../../components/card/card.component";
+import { CardComponent} from '../../components/card/card.component';
+import {  HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -23,10 +22,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
+                useFactory: createTranslateLoader,
                 deps: [HttpClient]
-            },
-            isolate: true
+            }
         }),
         HomePageRoutingModule,
         CardPageModule

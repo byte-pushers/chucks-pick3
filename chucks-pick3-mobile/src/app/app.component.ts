@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {LanguagePopoverComponent} from './components/language-popover/language-popover.component';
 import {Platform, PopoverController} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {TranslateService} from '@ngx-translate/core';
 import {registerLocaleData} from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
@@ -20,11 +20,12 @@ export class AppComponent implements OnInit {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        public translateService: TranslateService,
-        private popoverCtrl: PopoverController) {
+        private popoverController: PopoverController,
+        private translateService: TranslateService) {
         translateService.setDefaultLang('en-US');
         this.initializeApp();
         this.sideMenu();
+        this.translateService.setDefaultLang('en-US');
     }
 
     initializeApp() {
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
         registerLocaleData(localeEnUS, 'en-US');
     }
     async showPopover(ev: any) {
-        const popover = await this.popoverCtrl.create({
+        const popover = await this.popoverController.create({
             component: LanguagePopoverComponent,
             cssClass: 'my-custom-class',
             event: ev,
