@@ -3,6 +3,8 @@
         <div class="picks-indicator " [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
         <ion-icon src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
                   style=" padding-left: 10px"></ion-icon>
+        <ion-icon src="../../../assets/view-picks-icon.svg" class="back-icon"
+                  style=" padding-left: 10px"></ion-icon>
     </ion-col>
     <ion-col size="8">
         <ion-row>
@@ -28,8 +30,12 @@
                     </div>
                 </div>
                 <br>
-                <span style="font-size: 4.6vw;font-weight: bold;"
-                      class="draw-date-text">{{data.drawDate| date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
+                <div class="row">
+                    <div class="column _55" style="text-align: right; margin-left: auto; margin-right: auto">
+                                   <span style="font-size: 4.6vw;font-weight: bold;"
+                                         class="draw-date-text">{{data.drawDate| date: 'mediumDate' : '' : translateService.currentLang}}</span><br>
+                    </div>
+                </div>
             </ion-col>
         </ion-row>
         <ion-row>
@@ -42,7 +48,12 @@
                 <div style="display: inline" *ngIf="showCountDownToDrawing === true">
                     <countdown-timer [end]="data.drawDate"></countdown-timer>
                 </div>
-                <p class="slideNumber">{{slideNumber}}</p>
+                <div class="row">
+                    <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
+                        <p class="slideNumber">{{slideNumber}}</p>
+                    </div>
+                </div>
+
             </ion-col>
         </ion-row>
     </ion-col>
