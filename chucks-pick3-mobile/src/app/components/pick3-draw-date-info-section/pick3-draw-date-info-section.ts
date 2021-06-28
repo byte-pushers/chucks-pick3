@@ -17,6 +17,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {DrawTimeService} from '../../services/draw-time.service';
+import {Route, Router} from '@angular/router';
 
 
 @Component({
@@ -25,6 +26,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
     templateUrl: './pick3-draw-date-info-section.html',
     styleUrls: ['pick3-draw-date-info-section.scss']
 })
+// tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
@@ -33,10 +35,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     public item: Pick3DrawTimeCard;
+    generateNavigation: any;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
+                private router: Router,
                 public translate: I18nService,
                 public translateService: TranslateService,
                 public drawTimeService: DrawTimeService,
@@ -65,8 +69,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     currentPick3DrawTimeCard.getIcon());
                 this.item = currentPick3DrawTimeCard;
             }
-        );
-
+    );
+        this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
             this.slideNumber = context.slideNumber;
             this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -223,5 +227,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
 
         this.showCountDownToDrawing = false;
+    }
+
+    showBackButton(subSection: any) {
+        this.drawStateService.generateNavigationChoice = subSection;
     }
 }
