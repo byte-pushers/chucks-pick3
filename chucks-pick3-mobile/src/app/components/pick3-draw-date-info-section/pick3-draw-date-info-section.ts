@@ -27,7 +27,7 @@ import {Route, Router} from '@angular/router';
     styleUrls: ['pick3-draw-date-info-section.scss']
 })
 // tslint:disable-next-line:component-class-suffix
-export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
+export class Pick3DrawDateInfoSection implements OnInit{
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -79,13 +79,13 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
 
-    ngOnDestroy(): void {
+    /*ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.pick3StateLottery = null;
-    }
+    }*/
 
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);

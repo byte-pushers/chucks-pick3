@@ -22,7 +22,7 @@ import {CardContextService} from '../../services/card-context.service';
     templateUrl: './generate-picks-card.component.html',
     styleUrls: ['./generate-picks-card.component.scss'],
 })
-export class GeneratePicksCardComponent implements OnInit, OnDestroy {
+export class GeneratePicksCardComponent implements OnInit{
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     private subscription: Subscription;
@@ -60,11 +60,6 @@ export class GeneratePicksCardComponent implements OnInit, OnDestroy {
         this.componentState = 'initialized';
     }
 
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-        this.drawTimes = [];
-        this.pick3StateLottery = null;
-    }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
