@@ -136,17 +136,6 @@ export class GeneratePicksCardComponent implements OnInit{
         generateDisplay.style.display = 'block';
     }
 
-    public showGenerateBackButton(secondBtn: any, firstBtn: any): void {
-        secondBtn.style.display = 'block';
-        firstBtn.style.display = 'none';
-    }
-
-    public showContinueBackButton(firstBtn: any, secondBtn: any): void {
-        firstBtn.style.display = 'block';
-        secondBtn.style.display = 'none';
-    }
-
-
     logForm(): void {
         console.log(this.continueChoice);
     }
