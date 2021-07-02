@@ -25,7 +25,6 @@ import {CardContextService} from '../../services/card-context.service';
 export class GeneratePicksCardComponent implements OnInit {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    private subscription: Subscription;
     private componentState;
     public currentDate = new Date().getDate();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
@@ -103,32 +102,23 @@ export class GeneratePicksCardComponent implements OnInit {
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
-    public selectDrawingDateMenuItemForTodayGenerate(today: any, tomorrow: any): void {
-        today.style.backgroundColor = '#2fdf75';
-        tomorrow.style.backgroundColor = '#e5e5e5';
-    }
-
-    public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
-        tomorrow.style.backgroundColor = '#2fdf75';
-        today.style.backgroundColor = '#e5e5e5';
-    }
-
-    public selectTomorrowDrawingDate(tomorrow: any, today: any): void {
+    public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
 
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
-        console.log(tomorrowFullDate);
+        tomorrow.style.backgroundColor = '#2fdf75';
+        today.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(tomorrowFullDate);
-        this.selectDrawingDateMenuItemForTomorrow(tomorrow, today);
     }
 
-    public selectTodayDrawingDate(today: any, tomorrow: any): void {
+    public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
         const date = new Date();
 
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-        console.log(todayFullDate);
+        today.style.backgroundColor = '#2fdf75';
+        tomorrow.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(todayFullDate);
-        this.selectDrawingDateMenuItemForTodayGenerate(today, tomorrow);
+
     }
 
     public submitGenerate(generateDisplay: any, continueDisplay: any): void {

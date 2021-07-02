@@ -29,10 +29,10 @@
         <div class="generate-options-title">Drawing Date:</div>
         <ion-row class="generate-picks-button-section">
             <ion-col>
-                <button  #todayDrawingDate class="generate-picks-button" style="background-color: #2fdf75" (click)="selectTodayDrawingDate(todayDrawingDate, tomorrowDrawingDate )">Today</button>
+                <button  #todayDrawingDate class="generate-picks-button" style="background-color: #2fdf75" (click)="selectTodayGenerateDrawingDate(todayDrawingDate, tomorrowDrawingDate )">Today</button>
             </ion-col>
             <ion-col>
-                <button  #tomorrowDrawingDate class="generate-picks-button" (click)="selectTomorrowDrawingDate(tomorrowDrawingDate, todayDrawingDate)" >Tomorrow</button>
+                <button  #tomorrowDrawingDate class="generate-picks-button" (click)="selectTomorrowGenerateDrawingDate(tomorrowDrawingDate, todayDrawingDate)" >Tomorrow</button>
             </ion-col>
         </ion-row>
         <div class="generate-options-title">Drawing Time:</div>
