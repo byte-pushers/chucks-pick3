@@ -22,7 +22,7 @@ import {CardContextService} from '../../services/card-context.service';
     templateUrl: './generate-picks-card.component.html',
     styleUrls: ['./generate-picks-card.component.scss'],
 })
-export class GeneratePicksCardComponent implements OnInit{
+export class GeneratePicksCardComponent implements OnInit {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     private subscription: Subscription;
@@ -103,6 +103,11 @@ export class GeneratePicksCardComponent implements OnInit{
         yesterday.style.backgroundColor = '#e5e5e5';
     }
 
+    public selectDrawingDateMenuItemForTodayGenerate(today: any, tomorrow: any): void {
+        today.style.backgroundColor = '#2fdf75';
+        tomorrow.style.backgroundColor = '#e5e5e5';
+    }
+
     public selectDrawingDateMenuItemForTomorrow(tomorrow: any, today: any) {
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
@@ -123,7 +128,7 @@ export class GeneratePicksCardComponent implements OnInit{
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
         console.log(todayFullDate);
         this.setDrawingTimeMenuItems(todayFullDate);
-        this.selectDrawingDateMenuItemForToday(tomorrow, today);
+        this.selectDrawingDateMenuItemForTodayGenerate(today, tomorrow);
     }
 
     public submitGenerate(generateDisplay: any, continueDisplay: any): void {
