@@ -121,6 +121,16 @@ export class GeneratePicksCardComponent implements OnInit {
 
     }
 
+    public enableContinue() {
+        const element = document.getElementById('continueButton');
+        if (this.continueButton === true) {
+            this.continueButton = false;
+            element.classList.add('continue-btn-enabled');
+        }
+
+
+    }
+
     public submitGenerate(generateDisplay: any, continueDisplay: any): void {
         continueDisplay.style.display = 'block';
         generateDisplay.style.display = 'none';

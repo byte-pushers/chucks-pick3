@@ -210,7 +210,7 @@ ion-select {
 
 }
 
-.generate-picks-button {
+.confirmation-button {
   width: 100%;
   height: 100%;
 
@@ -237,7 +237,28 @@ ion-select {
   }
 }
 
-.continue-generate-btn {
+.generate-button {
+  height: 4.9em !important;
+  background-color: $chucksPick3Yellow;
+  color: $chucksPick3Black;
+  font-weight: 600;
+  font-size: 18px;
+  vertical-align: center;
+
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 4.9em !important;
+  }
+
+  @include for-size(iPhone5-SE) {
+    height: 4em !important;
+  }
+
+  @include for-size(iPhoneX) {
+    height: 6.5em !important;
+  }
+}
+
+.continue-button {
   height: 4.9em !important;
   background-color: $chucksPick3Gray;
   color: $chucksPick3LightGray;
@@ -256,6 +277,11 @@ ion-select {
   @include for-size(iPhoneX) {
     height: 6.5em !important;
   }
+}
+
+.continue-button-enabled {
+  background-color: $chucksPick3Yellow !important;
+  color: $chucksPick3Black !important;
 }
 
 
