@@ -11,6 +11,8 @@ import {Pick3DrawTimeCardComponent} from '../../components/pick3-draw-time-card/
 import {  HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {GeneratePicksCardComponent} from '../../components/generate-picks-card/generate-picks-card.component';
+import {FormsModule} from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        FormsModule,
     ],
     providers: [
         I18nService
@@ -39,6 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
         CardPage,
         CountdownTimerComponent,
         Pick3DrawTimeCardComponent,
+        GeneratePicksCardComponent,
         Pick3DrawDateInfoSection,
         Pick3DrawTimeInfoSection
     ]

@@ -17,6 +17,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {DrawTimeService} from '../../services/draw-time.service';
+import {Route, Router} from '@angular/router';
 
 
 @Component({
@@ -25,20 +26,24 @@ import {DrawTimeService} from '../../services/draw-time.service';
     templateUrl: './pick3-draw-date-info-section.html',
     styleUrls: ['pick3-draw-date-info-section.scss']
 })
-export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
+// tslint:disable-next-line:component-class-suffix
+export class Pick3DrawDateInfoSection implements OnInit{
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing = false;
     private drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
+    public item: Pick3DrawTimeCard;
+    generateNavigation: any;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
+                private router: Router,
                 public translate: I18nService,
                 public translateService: TranslateService,
-                private drawTimeService: DrawTimeService,
+                public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -62,9 +67,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.pick3StateLottery.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon());
+                this.item = currentPick3DrawTimeCard;
             }
-        );
-
+    );
+        this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
             this.slideNumber = context.slideNumber;
             this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -72,13 +78,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy(): void {
+
+    /*ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.pick3StateLottery = null;
-    }
+    }*/
 
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
@@ -220,5 +227,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
 
         this.showCountDownToDrawing = false;
+    }
+
+    showBackButton(subSection: any) {
+        this.drawStateService.generateNavigationChoice = subSection;
     }
 }

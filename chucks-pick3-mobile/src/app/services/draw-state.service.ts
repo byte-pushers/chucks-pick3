@@ -6,6 +6,7 @@ import {stringify} from 'querystring';
 })
 export class DrawStateService {
     picksIndicator = [];
+    generateNavigationChoice: 1;
 
     constructor() {
     }
