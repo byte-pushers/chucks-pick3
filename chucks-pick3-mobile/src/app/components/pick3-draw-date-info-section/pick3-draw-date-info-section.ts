@@ -38,7 +38,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private toastService: IonicToastNotificationService,
                 public translate: I18nService,
                 public translateService: TranslateService,
-                private drawTimeService: DrawTimeService,
+                public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -50,7 +50,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.setData(
             this.getDrawState(),
             pick3DrawTime,
-            this.pick3StateLottery.getBackgroundImageUrl(),
+            this.getBackground(),
             this.getCurrentDrawTimeIcon(pick3DrawTime)
         );
         registerLocaleData(localeEsMx, 'es-MX');
@@ -60,7 +60,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 this.setData(
                     this.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
-                    this.pick3StateLottery.getBackgroundImageUrl(),
+                    this.getBackground(),
                     currentPick3DrawTimeCard.getIcon());
             }
         );
@@ -125,7 +125,21 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     private getDrawState(): string {
-        return this.pick3StateLottery.getState();
+        if (this.pick3StateLottery === null) {
+            const drawState = 'TX';
+            return drawState;
+        } else {
+            return this.pick3StateLottery.getState();
+        }
+    }
+
+    private getBackground(): string {
+        if (this.pick3StateLottery === null) {
+            const backgroundImageURL = 'https://blairhouseinn.com/wp-content/uploads/2020/02/Bluebonnets-in-Texas-Hill-Country-1170x475.jpg';
+            return backgroundImageURL;
+        } else {
+            return this.pick3StateLottery.getBackgroundImageUrl();
+        }
     }
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
