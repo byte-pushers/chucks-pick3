@@ -4,6 +4,7 @@ import { CardPage } from './card.page';
 import {Pick3DrawDateInfoSection} from '../../components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import {Pick3DrawTimeInfoSection} from '../../components/pick3-draw-time-info-section/pick3-draw-time-info-section';
 import {ViewPicksCardComponent} from '../../components/view-picks-card/view-picks-card.component';
+import {GeneratePicksCardComponent} from "../../components/generate-picks-card/generate-picks-card.component";
 
 const routes: Routes = [
     {
@@ -36,6 +37,22 @@ const routes: Routes = [
                 path: '',
                 outlet: 'secondary',
                 component: ViewPicksCardComponent
+            }
+        ]
+    },
+    {
+        path: 'generate-picks',
+        component: CardPage,
+        children: [
+            {
+                path: '',
+                outlet: 'primary',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                path: '',
+                outlet: 'secondary',
+                component: GeneratePicksCardComponent
             }
         ]
     }
