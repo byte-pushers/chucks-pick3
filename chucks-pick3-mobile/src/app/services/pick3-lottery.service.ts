@@ -1,7 +1,8 @@
 import {Injectable/*, InjectionToken*/} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 // import { HTTP } from '@ionic-native/http/ngx';
-import { Observable } from "rxjs";
+import {Observable, of} from "rxjs";
+import * as TxPick3Numbers from 'src/assets/pick3/numbers.json';
 
 export interface IPick3LotteryService {
   getPick3LotteryPastWinningNumbers(url: string): Observable<string>;
@@ -31,7 +32,8 @@ export class Pick3LotteryService implements IPick3LotteryService{
       headers: headersConfig,
       responseType: 'text'
     }
-    return this.httpClient.get<string>(url, requestOptions);
+    // return this.httpClient.get<string>(url, requestOptions);
+    return of(TxPick3Numbers.data);
   }
 
   /*getPick3LotteryPastWinningNumbers2(url: string): Observable<string> {

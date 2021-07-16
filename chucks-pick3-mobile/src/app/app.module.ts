@@ -1,22 +1,21 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-// import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
-// import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
-// import { Platform } from '@ionic/angular';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouteReuseStrategy} from '@angular/router';
+import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {LanguagePopoverComponent} from './components/language-popover/language-popover.component';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
+import {CardContextService} from './services/card-context.service';
+import {HomePageModule} from './pages/home/home.page.module';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -30,10 +29,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        HomePageModule,
+        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
+                useFactory: (createTranslateLoader),
                 deps: [HttpClient]
             }
         })
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     providers: [
         StatusBar,
         SplashScreen,
+        CardContextService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
         /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/
@@ -48,4 +50,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     bootstrap: [AppComponent]
 })
 export class AppModule {
+    constructor() {
+    }
 }

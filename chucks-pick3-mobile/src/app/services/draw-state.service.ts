@@ -6,6 +6,8 @@ import {stringify} from 'querystring';
 })
 export class DrawStateService {
     picksIndicator = [];
+    generateNavigationChoice: 1;
+    viewNavigationChoice: 1;
 
     constructor() {
     }
@@ -30,11 +32,9 @@ export class DrawStateService {
     }
 
     private applyState(drawStateColorIndicators: any, attributeName: string, booleanValue: boolean): void {
-        /*console.log(test);*/
         for (let property in drawStateColorIndicators) {
             if (drawStateColorIndicators.hasOwnProperty(property)) {
                 this.picksIndicator.push(attributeName);
-                console.log(this.picksIndicator);
                 break;
             }
         }

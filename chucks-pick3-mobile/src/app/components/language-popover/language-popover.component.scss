@@ -1,0 +1,8 @@
+@import "../../../theme/variables.scss";
+
+.ion-item-seperator {
+  border: .2px solid black;
+  border-color: $chucksPick3Gray;
+  margin-left: 1em;
+  margin-right: 1em;
+}

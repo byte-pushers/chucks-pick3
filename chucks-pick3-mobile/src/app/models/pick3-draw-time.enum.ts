@@ -1,47 +1,98 @@
 import * as Object from 'bytepushers-js-obj-extensions';
 
+export const MORNING_DRAW_TIME_KEY = 'draw.time.enum.morning';
+export const DAY_DRAW_TIME_KEY = 'draw.time.enum.day';
+export const EVENING_DRAW_TIME_KEY = 'draw.time.enum.evening';
+export const NIGHT_DRAW_TIME_KEY = 'draw.time.enum.night';
 export namespace Pick3DrawTimeEnum {
     export enum Pick3DrawTimeEnum {
         MORNING,
-        DAY ,
+        DAY,
         EVENING,
         NIGHT
     }
 
-    export function toString(pick3DrawTimeEnum: Pick3DrawTimeEnum): string {
-        return Pick3DrawTimeEnum[pick3DrawTimeEnum];
-    }
+    export function getPropertyKey(e: Pick3DrawTimeEnum | string): string {
+        let propertyKey: string = null;
 
-    export function toEnum(keyOrValue: string): Pick3DrawTimeEnum {
-        let pick3DrawTimeEnum: Pick3DrawTimeEnum = null;
-
-        if (Object.isDefinedAndNotNull(keyOrValue)) {
-            if (typeof keyOrValue === 'string') {
-                keyOrValue = keyOrValue.toUpperCase();
-                for (const value in Pick3DrawTimeEnum) {
-                    if (value === keyOrValue) {
-                        pick3DrawTimeEnum = Pick3DrawTimeEnum[keyOrValue];
-                        break;
-                    }
-                }
-            } else if (typeof keyOrValue === 'number') {
-                switch(keyOrValue) {
-                    case Pick3DrawTimeEnum.MORNING:
-                        pick3DrawTimeEnum = Pick3DrawTimeEnum.MORNING;
-                        break;
-                    case Pick3DrawTimeEnum.DAY:
-                        pick3DrawTimeEnum = Pick3DrawTimeEnum.DAY;
-                        break;
-                    case Pick3DrawTimeEnum.EVENING:
-                        pick3DrawTimeEnum = Pick3DrawTimeEnum.EVENING;
-                        break;
-                    case Pick3DrawTimeEnum.NIGHT:
-                        pick3DrawTimeEnum = Pick3DrawTimeEnum.NIGHT;
-                        break;
-                }
-            }
+        if (typeof e === 'string') {
+            e = e.toUpperCase();
+            e = Pick3DrawTimeEnum[e];
         }
 
-        return pick3DrawTimeEnum;
+        switch (e) {
+            case Pick3DrawTimeEnum.MORNING:
+                propertyKey = MORNING_DRAW_TIME_KEY;
+
+                break;
+            case Pick3DrawTimeEnum.DAY:
+                propertyKey = DAY_DRAW_TIME_KEY;
+
+                break;
+            case Pick3DrawTimeEnum.EVENING:
+                propertyKey = EVENING_DRAW_TIME_KEY;
+
+                break;
+            case Pick3DrawTimeEnum.NIGHT:
+                propertyKey = NIGHT_DRAW_TIME_KEY;
+
+                break;
+        }
+
+        return propertyKey;
+    }
+
+    export function getPropertyValue(e: Pick3DrawTimeEnum): string {
+        let propertyKey: string = null;
+        switch (e) {
+            case Pick3DrawTimeEnum.MORNING:
+                propertyKey = 'Morning';
+
+                break;
+            case Pick3DrawTimeEnum.DAY:
+                propertyKey = 'Day';
+
+                break;
+            case Pick3DrawTimeEnum.EVENING:
+                propertyKey = 'Evening';
+
+                break;
+            case Pick3DrawTimeEnum.NIGHT:
+                propertyKey = 'Night';
+
+                break;
+        }
+
+        return propertyKey;
+    }
+
+    export function toString(e: Pick3DrawTimeEnum | string): string {
+        let enumString: string = null;
+
+        if (typeof e === 'string') {
+            e = e.toUpperCase();
+            e = Pick3DrawTimeEnum[e];
+        }
+
+        switch (e) {
+            case Pick3DrawTimeEnum.MORNING:
+                enumString = 'MORNING';
+                break;
+            case Pick3DrawTimeEnum.DAY:
+                enumString = 'DAY';
+                break;
+            case Pick3DrawTimeEnum.EVENING:
+                enumString = 'EVENING';
+                break;
+            case Pick3DrawTimeEnum.NIGHT:
+                enumString = 'NIGHT';
+                break;
+        }
+
+        return enumString;
+    }
+
+    export function getIcon(e: Pick3DrawTimeEnum | string): string {
+        return toString(e).toLowerCase() + "-icon";
     }
 }

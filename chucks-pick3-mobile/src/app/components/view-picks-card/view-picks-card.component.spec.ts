@@ -1,27 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { HomePage } from './home.page';
+import { ViewPicksCardComponent } from './view-picks-card.component';
 
-describe('HomePage', () => {
-  /*let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('ViewPicksCardComponent', () => {
+  let component: ViewPicksCardComponent;
+  let fixture: ComponentFixture<ViewPicksCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
+      declarations: [ ViewPicksCardComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(ViewPicksCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });*/
-  it('time-of-day-text', () => {
-    expect(true).toBe(true);
   });
 });
