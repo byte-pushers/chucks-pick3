@@ -62,6 +62,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
 
 
     ngOnInit(): void {
+        this.checkIfOnHome();
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(
@@ -89,6 +90,16 @@ export class Pick3DrawDateInfoSection implements OnInit {
             this.defaultDrawDateTime = context.defaultDrawDateTime;
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
         });
+    }
+
+    private checkIfOnHome() {
+        const path = location.pathname;
+        console.log(path);
+        if (path !== '/home') {
+            this.showCountDownToDrawing = false;
+        } else {
+            this.showCountDownToDrawing = true;
+        }
     }
 
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
@@ -230,7 +241,6 @@ export class Pick3DrawDateInfoSection implements OnInit {
             }
         }
 
-        this.showCountDownToDrawing = false;
     }
 
     showBackButton(subSection: any) {
