@@ -52,6 +52,7 @@ export class GeneratePicksCardComponent implements OnInit {
       this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
       if (this.componentState === 'initializing') {
         const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
+        console.log(currentDrawingTime);
         this.selectDrawingTimeCard(currentDrawingTime);
       }
     });
