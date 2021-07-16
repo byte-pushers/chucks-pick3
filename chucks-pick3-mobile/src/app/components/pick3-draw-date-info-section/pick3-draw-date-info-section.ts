@@ -62,7 +62,6 @@ export class Pick3DrawDateInfoSection implements OnInit {
 
 
     ngOnInit(): void {
-        this.checkIfOnHome();
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(
@@ -92,15 +91,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
         });
     }
 
-    private checkIfOnHome() {
-        const path = location.pathname;
-        console.log(path);
-        if (path !== '/home') {
-            this.showCountDownToDrawing = false;
-        } else {
-            this.showCountDownToDrawing = true;
-        }
-    }
+
 
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
@@ -121,7 +112,12 @@ export class Pick3DrawDateInfoSection implements OnInit {
             } else {
                 this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
             }
-            this.showCountDownToDrawing = true;
+            const path = location.pathname;
+            if (path !== '/home') {
+                this.showCountDownToDrawing = false;
+            } else {
+                this.showCountDownToDrawing = true;
+            }
         }
     }
 
@@ -240,7 +236,12 @@ export class Pick3DrawDateInfoSection implements OnInit {
                     this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
             }
         }
-
+        const path = location.pathname;
+        if (path !== '/home') {
+            this.showCountDownToDrawing = false;
+        } else {
+            this.showCountDownToDrawing = true;
+        }
     }
 
     showBackButton(subSection: any) {
