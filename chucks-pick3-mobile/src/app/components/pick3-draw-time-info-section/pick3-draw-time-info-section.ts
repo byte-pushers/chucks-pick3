@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
     templateUrl: 'pick3-draw-time-info-section.html',
     styleUrls: ['pick3-draw-time-info-section.scss']
 })
-export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
+export class Pick3DrawTimeInfoSection implements OnInit {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     private subscription: Subscription;
@@ -39,9 +39,9 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
         this.componentState = 'initialized';
     }
 
-    ngOnDestroy(): void {
+ /*   ngOnDestroy(): void {
         this.subscription.unsubscribe();
-    }
+    }*/
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {

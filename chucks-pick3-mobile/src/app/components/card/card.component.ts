@@ -2,8 +2,8 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CardContextService} from '../../services/card-context.service';
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
-import {Pick3DrawTimeCard} from "../../models/pick3-draw-time-card";
-import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
+import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
+import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
@@ -25,7 +25,7 @@ export class CardComponent implements OnInit, OnDestroy {
             title: 'draw.time.enum.morning',
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
             icon: 'morning-icon',
-            dateTime: new Date().setHours(10, 15, 0, 0)
+            dateTime: new Date().setHours(7, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
             title: 'draw.time.enum.day',

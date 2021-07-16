@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {LanguagePopoverComponent} from './components/language-popover/language-popover.component';
 import {Platform, PopoverController} from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
+import {DrawStateService} from "./services/draw-state.service";
 
 @Component({
     selector: 'app-root',
@@ -12,10 +13,12 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
     navigate: any;
+
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
+        private drawState: DrawStateService,
         private popoverController: PopoverController,
         private translateService: TranslateService) {
         this.initializeApp();
@@ -33,15 +36,20 @@ export class AppComponent {
     sideMenu() {
         this.navigate = [
             {
-                title : 'Account',
-                url   : 'account',
-                icon  : 'person'
+                title: 'Account',
+                url: 'account',
+                icon: 'person'
             },
             {
-                title : 'Settings',
-                url   : 'settings',
-                icon  : 'cog'
+                title: 'Settings',
+                url: 'settings',
+                icon: 'cog'
             }
         ];
+    }
+
+    public resetButtons(subSection: any) {
+        this.drawState.generateNavigationChoice = subSection;
+        this.drawState.viewNavigationChoice = subSection;
     }
 }

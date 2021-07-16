@@ -11,6 +11,9 @@ import {Pick3DrawTimeCardComponent} from '../../components/pick3-draw-time-card/
 import {  HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {ViewPicksCardComponent} from '../../components/view-picks-card/view-picks-card.component';
+import {GeneratePicksCardComponent} from '../../components/generate-picks-card/generate-picks-card.component';
+import {FormsModule} from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -19,6 +22,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         IonicModule,
         CardPageRoutingModule,
         TranslateModule.forChild({
@@ -40,7 +44,9 @@ export function createTranslateLoader(http: HttpClient) {
         CountdownTimerComponent,
         Pick3DrawTimeCardComponent,
         Pick3DrawDateInfoSection,
-        Pick3DrawTimeInfoSection
+        Pick3DrawTimeInfoSection,
+        ViewPicksCardComponent,
+        GeneratePicksCardComponent
     ]
 })
 export class CardPageModule {
