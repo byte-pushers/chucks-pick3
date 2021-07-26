@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {map} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
@@ -15,6 +15,7 @@ import {
 } from '../../models/pick3-draw-time.enum';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {CardContextService} from '../../services/card-context.service';
+import {DrawStateService} from '../../services/draw-state.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -40,7 +41,9 @@ export class GeneratePicksCardComponent implements OnInit {
 
   constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
               private cardContextService: CardContextService,
-              private drawTimeService: DrawTimeService) {
+              private drawTimeService: DrawTimeService,
+              private drawStateService: DrawStateService,
+              private router: Router) {
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.componentState = 'instantiated';
 
@@ -134,8 +137,18 @@ export class GeneratePicksCardComponent implements OnInit {
   public submitGenerate(generateDisplay: any, continueDisplay: any): void {
     continueDisplay.style.display = 'block';
     generateDisplay.style.display = 'none';
+
+
+    const generatedNumbers = this.getRandomIntInclusive();
+    this.changeNavigation(4);
+    this.drawTimeService.viewPicksArray = generatedNumbers;
+    this.router.navigate(['/view-picks']);
   }
 
+  private  changeNavigation(route) {
+    this.drawStateService.generateNavigationChoice = route;
+    this.drawStateService.viewNavigationChoice = route;
+  }
   public showGeneratePage(continueDisplay: any, generateDisplay: any): void {
     continueDisplay.style.display = 'none';
     generateDisplay.style.display = 'block';
@@ -144,4 +157,10 @@ export class GeneratePicksCardComponent implements OnInit {
   logForm(): void {
     console.log(this.continueChoice);
   }
+
+  private getRandomIntInclusive() {
+   const generatedNumberArray =  Array.from({length: 40}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
+   return generatedNumberArray;
+  }
+
 }
