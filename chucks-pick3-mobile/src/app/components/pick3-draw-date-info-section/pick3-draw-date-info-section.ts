@@ -17,7 +17,9 @@ import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {DrawTimeService} from '../../services/draw-time.service';
-import {Route, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
+import {PopoverController} from '@ionic/angular';
 
 
 @Component({
@@ -36,7 +38,9 @@ export class Pick3DrawDateInfoSection implements OnInit {
                 public translate: I18nService,
                 public translateService: TranslateService,
                 public drawTimeService: DrawTimeService,
-                private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+                private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private popoverController: PopoverController) {
+
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -91,6 +95,17 @@ export class Pick3DrawDateInfoSection implements OnInit {
         });
     }
 
+    async showPopover(ev: any) {
+        const popover = await this.popoverController.create({
+            component: LanguagePopoverComponent,
+            cssClass: 'my-custom-class',
+            event: ev,
+            translucent: true
+        });
+        popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+        return await popover.present();
+    }
+
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
@@ -110,7 +125,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
             } else {
                 this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
             }
-            this.showCountDownToDrawing = true;
+            this.checkIfCountdownIsDisplayed();
         }
     }
 
@@ -229,8 +244,16 @@ export class Pick3DrawDateInfoSection implements OnInit {
                     this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
             }
         }
+        this.checkIfCountdownIsDisplayed();
+    }
 
-        this.showCountDownToDrawing = false;
+    private checkIfCountdownIsDisplayed() {
+        const path = location.pathname;
+        if (path !== '/home') {
+            this.showCountDownToDrawing = false;
+        } else {
+            this.showCountDownToDrawing = true;
+        }
     }
 
     showBackButton(subSection: any) {
