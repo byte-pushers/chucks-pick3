@@ -37,7 +37,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
                 public translateService: TranslateService,
                 public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-
+        this.checkIfViewPicksIsEnabled();
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     }
 
@@ -62,6 +62,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
 
 
     ngOnInit(): void {
+
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(
@@ -237,5 +238,11 @@ export class Pick3DrawDateInfoSection implements OnInit {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
 
+    }
+
+    private checkIfViewPicksIsEnabled() {
+        if (this.drawTimeService.viewPicksArray === undefined) {
+            this.showBackButton(5);
+        }
     }
 }

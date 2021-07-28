@@ -21,7 +21,7 @@ export class ViewPicksCardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.addTable();
+        this.retrieveNumbers();
         this.componentState = 'initializing';
         this.cardContextService.context$.subscribe(context => {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
@@ -46,14 +46,35 @@ export class ViewPicksCardComponent implements OnInit {
         });
     }
 
-    private addTable() {
+    private retrieveNumbers() {
+        console.log('retrieveNumbers');
         const generatedArray = this.drawTimeService.viewPicksArray;
         const generatedPicksArray: any = [];
-        document.getElementById('myDynamicTable').innerHTML = '';
-        for ( let i = 0; i < 3; i++){
+        for ( let i = 0; i < 12; i++){
             generatedPicksArray.push(generatedArray.splice(Math.floor(Math.random() * generatedArray.length), 1));
         }
-        document.getElementById('myDynamicTable').innerHTML = generatedArray.join(', ');
+        this.createTable(generatedPicksArray);
+    }
+    private createTable(generatedArray) {
+        const newArray = generatedArray;
+        const myTableDiv = document.getElementById('myDynamicTable');
+        const table = document.createElement('TABLE');
+        const tableBody = document.createElement('TBODY');
+        table.appendChild(tableBody);
+
+        for (let i = 0; i < 4; i++) {
+            const tr = document.createElement('ion-row');
+            tableBody.appendChild(tr);
+
+            for (let j = 0; j < 3; j++) {
+                const generatedNumber = newArray.slice(0, 1);
+                const td = document.createElement('ion-col');
+                td.appendChild(document.createTextNode(generatedNumber));
+                tr.appendChild(td);
+                newArray.splice(0, 1);
+            }
+        }
+        myTableDiv.appendChild(table);
     }
 
 

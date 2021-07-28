@@ -15,6 +15,8 @@
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
         <ion-icon *ngSwitchCase="4"></ion-icon>
+        <ion-icon *ngSwitchCase="5"  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
+                  style=" padding-left: 15px; opacity: 30%"></ion-icon>
         <ion-icon *ngSwitchDefault [routerLink]="['/view-picks']" (click)="showBackButton(4)" routerDirection="back"  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
                   style=" padding-left: 15px"></ion-icon>
     </ion-col>
@@ -93,6 +95,15 @@
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
-
+        <ion-icon
+                (click)="showBackButton(2);"
+                *ngSwitchCase="5"
+                [routerLink]="['/generate-picks']"
+                [state]="{ data: drawTimeService.getCurrentDrawTimeCard().getPick3DrawTime().getDateTime(),
+                subContent: this.generateNavigation
+                }"
+                routerDirection="back"
+                src="../../../assets/generate-picks-icon.svg"
+                class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
     </ion-col>
 </ion-row>

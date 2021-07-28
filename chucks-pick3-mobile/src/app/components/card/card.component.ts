@@ -25,7 +25,7 @@ export class CardComponent implements OnInit, OnDestroy {
             title: 'draw.time.enum.morning',
             drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
             icon: 'morning-icon',
-            dateTime: new Date().setHours(7, 15, 0, 0)
+            dateTime: new Date().setHours(0, 15, 0, 0)
         }),
         new Pick3DrawTimeCardDomain({
             title: 'draw.time.enum.day',
