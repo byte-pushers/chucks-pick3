@@ -92,7 +92,6 @@ export class Pick3DrawDateInfoSection implements OnInit {
     }
 
 
-
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
@@ -112,12 +111,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
             } else {
                 this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
             }
-            const path = location.pathname;
-            if (path !== '/home') {
-                this.showCountDownToDrawing = false;
-            } else {
-                this.showCountDownToDrawing = true;
-            }
+            this.checkIfCountdownIsDisplayed();
         }
     }
 
@@ -236,6 +230,10 @@ export class Pick3DrawDateInfoSection implements OnInit {
                     this.setDrawState(this.data, Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
             }
         }
+        this.checkIfCountdownIsDisplayed();
+    }
+
+    private checkIfCountdownIsDisplayed() {
         const path = location.pathname;
         if (path !== '/home') {
             this.showCountDownToDrawing = false;
