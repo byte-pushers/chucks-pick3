@@ -55,7 +55,6 @@ export class GeneratePicksCardComponent implements OnInit {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
             if (this.componentState === 'initializing') {
                 const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
-                console.log(currentDrawingTime);
                 this.selectDrawingTimeCard(currentDrawingTime);
             }
         });
@@ -165,7 +164,7 @@ export class GeneratePicksCardComponent implements OnInit {
     }
 
     private getRandomIntInclusive() {
-        const generatedNumberArray = Array.from({length: 40}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
+        const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
         return generatedNumberArray;
     }
 

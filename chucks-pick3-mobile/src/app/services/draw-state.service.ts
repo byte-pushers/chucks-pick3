@@ -19,7 +19,7 @@ export class DrawStateService {
 
     private sortState(currentState): void {
         if (this.picksIndicator !== null && this.picksIndicator !== undefined) {
-            this.picksIndicator.splice(0,this.picksIndicator.length);
+            this.picksIndicator.splice(0, this.picksIndicator.length);
             for (let i = 0; i < currentState.length; i++) {
             const keyNames = Object(currentState[i]);
             if (keyNames[1] === false) {

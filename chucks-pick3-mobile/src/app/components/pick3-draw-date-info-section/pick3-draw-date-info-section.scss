@@ -235,7 +235,41 @@ ion-grid {
   }
 
 }
+.undefined-view-picks-icon {
+  width: 100%;
+  stroke-width: 5px;
 
+  margin-top: 27.5vh;
+  @include for-size(iPhone5-SE) {
+    height: 10.2vh;
+    line-height: 10.2vh;
+    margin-top: 29vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    height: 11vh;
+    width: 8.8vh;
+    line-height: 10.6vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    height: 11vh !important;
+    width: 9.6vh;
+    line-height: 10.7vh !important;
+  }
+  @include for-size(iPhoneX) {
+    height: 10.9vh;
+    line-height: 10.9vh;
+    margin-top: 27.5vh;
+  }
+  @include for-size(iPad) {
+    height: 10.9vh !important;
+    line-height: 10.9vh !important;
+  }
+  @include for-size(iPad-Pro) {
+    height: 11.6vh !important;
+    line-height: 11.6vh !important;
+  }
+
+}
 .picks-indicator {
   height: 20px;
   width: 20px;

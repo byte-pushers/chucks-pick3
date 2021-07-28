@@ -15,6 +15,7 @@ export class ViewPicksCardComponent implements OnInit {
     private componentState;
     public generatedNumbers: any;
      generatedPicksArray: any[];
+    private savedArray: any[];
 
     constructor(private cardContextService: CardContextService,
                 private drawTimeService: DrawTimeService) {
@@ -27,7 +28,6 @@ export class ViewPicksCardComponent implements OnInit {
             this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
             if (this.componentState === 'initializing') {
                 const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
-                console.log(currentDrawingTime);
                 this.selectDrawingTimeCard(currentDrawingTime);
             }
         });
@@ -47,16 +47,17 @@ export class ViewPicksCardComponent implements OnInit {
     }
 
     private retrieveNumbers() {
-        console.log('retrieveNumbers');
         const generatedArray = this.drawTimeService.viewPicksArray;
-        const generatedPicksArray: any = [];
+        const copiedArray = Object.assign([], generatedArray);
+        const ArrayToBeSetToTable: any = [];
         for ( let i = 0; i < 12; i++){
-            generatedPicksArray.push(generatedArray.splice(Math.floor(Math.random() * generatedArray.length), 1));
+            ArrayToBeSetToTable.push(copiedArray.splice(Math.floor(Math.random() * copiedArray.length), 1));
         }
-        this.createTable(generatedPicksArray);
+        this.savedArray = Object.assign([], copiedArray);
+        this.createTable(ArrayToBeSetToTable);
     }
-    private createTable(generatedArray) {
-        const newArray = generatedArray;
+    private createTable(ArrayToBeSetToTable) {
+        const newArray = Object.assign([], ArrayToBeSetToTable);
         const myTableDiv = document.getElementById('myDynamicTable');
         const table = document.createElement('TABLE');
         const tableBody = document.createElement('TBODY');
