@@ -1,17 +1,18 @@
+
 <ion-row style="margin: 0; height: 100%" [style.background]="'url(' + data.backgroundImage + ')'">
     <ion-col size="2" style=" margin-right: 0px" [ngSwitch]="generateNavigation">
         <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
-        <ion-icon *ngSwitchCase="1" [routerLink]="['/view-picks']" (click)="showBackButton(4)" routerDirection="back"  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
+        <ion-icon *ngSwitchCase="1" [routerLink]="['/view-picks']" (click)="showBackButton(4)" routerDirection="forward"  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
-                  [routerLink]="['/home']"
-                  routerDirection="back"
+                  [routerLink]="['/select-picks']"
+                  routerDirection="forward"
                   (click)="showBackButton(1)"
                   class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
 
-        <ion-icon *ngSwitchCase="3" routerDirection="back" [routerLink]="['/home']"  class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
+        <ion-icon *ngSwitchCase="3" routerDirection="forward" [routerLink]="['/select-picks']"  class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
         <ion-icon *ngSwitchCase="4"></ion-icon>
@@ -81,7 +82,7 @@
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
         <ion-icon *ngSwitchCase="2"></ion-icon>
-        <ion-icon *ngSwitchCase="4" routerDirection="back" [routerLink]="['/home']"  (click)="showBackButton(1)" class="generate-back-button" src="../../../assets/icon/forward-arrow.svg"></ion-icon>
+        <ion-icon *ngSwitchCase="4" routerDirection="back" [routerLink]="['/select-picks']"  (click)="showBackButton(1)" class="generate-back-button" src="../../../assets/icon/forward-arrow.svg"></ion-icon>
 
         <ion-icon
                 (click)="showBackButton(2);"

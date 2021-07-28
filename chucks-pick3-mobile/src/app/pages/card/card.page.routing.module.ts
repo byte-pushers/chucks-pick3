@@ -55,7 +55,23 @@ const routes: Routes = [
                 component: GeneratePicksCardComponent
             }
         ]
-    }
+    },
+    {
+        path: 'select-picks',
+        component: CardPage,
+        children: [
+            {
+                path: '',
+                outlet: 'primary',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                path: '',
+                outlet: 'secondary',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
 ];
 
 @NgModule({

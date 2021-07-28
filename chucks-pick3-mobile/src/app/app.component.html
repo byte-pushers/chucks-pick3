@@ -1,10 +1,6 @@
 <ion-app>
 <ion-menu menuId="main-menu" contentId="main" side="end" type="push">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Navigate</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
   <ion-content>
     <ion-list *ngFor="let pages of navigate">
       <ion-menu-toggle auto-hide="true">
@@ -22,7 +18,7 @@
 
   <ion-footer>
     <ion-toolbar color="transparent">
-      <ion-buttons slot="start" routerLink="/home"  routerDirection="back" (click)="resetButtons(1)">
+      <ion-buttons slot="start" routerLink="/select-picks"  routerDirection="root" (click)="resetButtons(1)">
         <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
       </ion-buttons>
     </ion-toolbar>
