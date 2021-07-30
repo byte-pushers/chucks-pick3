@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ionic start",
+    "start": "ionic serve",
     "build": "ionic build",
     "test": "ng test",
     "test:dev": "ng test --browsers=ChromeHeadless",

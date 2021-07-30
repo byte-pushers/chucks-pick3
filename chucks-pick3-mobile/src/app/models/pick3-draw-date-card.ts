@@ -20,4 +20,10 @@ export interface Pick3DrawDateCard extends Pick3DrawDateCardProperties{
     getWinningNumberDigit3?(): number;
     getIcon(): string;
     setIcon(icon: string): void;
+    getSlideNumber(): number;
+    setSlideNumber(slideNumber: number): void;
+    getSlideName(): string;
+    setSlideName(slideName: string): void;
+    getDefaultDrawDateTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    setDefaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
 }

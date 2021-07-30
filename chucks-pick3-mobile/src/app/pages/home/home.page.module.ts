@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home.page.routing.module';
 import { CardPageModule} from '../card/card.page.module';
-import { CardComponent} from '../../components/card/card.component';
-import {  HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -33,8 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
 
     ],
     declarations: [
-        HomePage,
-        CardComponent
+        HomePage
     ]
 })
 export class HomePageModule {

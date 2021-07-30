@@ -1,8 +1,11 @@
 <ion-content [fullscreen]="true" class="scroll-content">
-  <ion-slides pages [options]="slideOpts">
-    <ion-slide style="background-color: white;" *ngFor="let card of pick3DrawDateDecks; index as i">
-        <card name="card" [slideNumber]="i+1" [data]="card" [defaultDrawDateTime]="default.drawDateTime"></card>
-        <ion-router-outlet name="card-page"></ion-router-outlet>
-    </ion-slide>
-  </ion-slides>
+    <ion-slides pages [options]="slideOpts" #pick3DrawDateCards
+                (ionSlideTransitionStart)="initializePick3DrawDateCard($event)">
+        <ion-slide style="background-color: white;">
+            <ion-router-outlet name="card-page-1"></ion-router-outlet>
+        </ion-slide>
+        <ion-slide style="background-color: white;">
+            <ion-router-outlet name="card-page-2"></ion-router-outlet>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
