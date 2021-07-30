@@ -5,8 +5,6 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-	@FindBy(css="")
-	private WebElement webElement;
     "start": "ionic serve",
     "build": "ionic build",
     "test": "ng test",
