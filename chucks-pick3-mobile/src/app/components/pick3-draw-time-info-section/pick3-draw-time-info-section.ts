@@ -13,6 +13,8 @@ import {Subscription} from 'rxjs';
     styleUrls: ['pick3-draw-time-info-section.scss']
 })
 export class Pick3DrawTimeInfoSection implements OnInit {
+    private static counter = 0;
+    private readonly componentInstanceNumber;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     private subscription: Subscription;
@@ -21,17 +23,24 @@ export class Pick3DrawTimeInfoSection implements OnInit {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
                 private drawTimeService: DrawTimeService) {
+        console.log("Pick3DrawTimeInfoSection() constructor.");
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.componentState = 'instantiated';
-
+        this.componentInstanceNumber = Pick3DrawTimeInfoSection.counter++;
     }
 
     ngOnInit(): void {
         this.componentState = 'initializing';
         this.cardContextService.context$.subscribe(context => {
-            this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+            console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);
+            if (context) {
+                //if (this.componentInstanceNumber === context.slideNumber) {
+                    this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+                //}
+            }
 
             if (this.componentState === 'initializing') {
+                console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() initializing... ');
                 const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
                 this.selectDrawingTimeCard(currentDrawingTime);
             }

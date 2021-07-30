@@ -34,6 +34,9 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private _winningNumberDigits: number[] = [];
     // tslint:disable-next-line:variable-name
     private _drawDateIcon: string;
+    private _slideNumber: number;
+    private _slideName: string;
+    private _defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 
     constructor(private readonly config: any) {
         this._drawDate = (config) ? Object.isDefinedAndNotNull(config.drawDate) ? (typeof config.drawDate === 'string')
@@ -48,6 +51,10 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._winningNumber = (config) ? (config.winningNumber) ? config.winningNumber : null : null;
         this._winningNumberDigits = (config) ? (config.winningNumberDigits) ? config.winningNumberDigits : null : null;
         this._drawDateIcon = (config) ? config.drawDateIcon : null;
+        this._slideNumber = (config) ? config.slideNumber : -1;
+        this._slideName = (config) ? config.slideName : null;
+        this._defaultDrawDateTime = (config) ? Object.isDefinedAndNotNull(config.defaultDrawDateTime) ? (typeof config.defaultDrawDateTime === 'string')
+            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime : null : null;
     }
 
     get drawDate(): Date {
@@ -331,5 +338,53 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     setIcon(drawDateIcon: string): void {
         this._drawDateIcon = drawDateIcon;
+    }
+
+    get slideNumber(): number {
+        return this._slideNumber;
+    }
+
+    set slideNumber(slideNumber: number) {
+        this._slideNumber = slideNumber;
+    }
+
+    getSlideNumber(): number {
+        return this._slideNumber;
+    }
+
+    setSlideNumber(slideNumber: number): void {
+        this._slideNumber = slideNumber;
+    }
+
+    get slideName(): string {
+        return this._slideName;
+    }
+
+    set slideName(slideName: string) {
+        this._slideName = slideName;
+    }
+
+    getSlideName(): string {
+        return this._slideName;
+    }
+
+    setSlideName(slideName: string): void {
+        this._slideName = slideName;
+    }
+
+    get defaultDrawDateTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+        return this._defaultDrawDateTime;
+    }
+
+    set defaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
+        this._defaultDrawDateTime = defaultDrawDateTime;
+    }
+
+    getDefaultDrawDateTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+        return this._defaultDrawDateTime;
+    }
+
+    setDefaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+        this._defaultDrawDateTime = defaultDrawDateTime;
     }
 }

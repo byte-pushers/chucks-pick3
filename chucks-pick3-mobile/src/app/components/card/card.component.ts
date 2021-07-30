@@ -66,12 +66,12 @@ export class CardComponent implements OnInit, OnDestroy {
             }
         });
         this.randomlyMockDrawTimeCardStates();
-        this.cardContextService.addContext({
+        /*this.cardContextService.addContext({
             slideNumber: this.slideNumber,
             data: this.data,
             defaultDrawDateTime: this.defaultDrawDateTime,
             drawTimes: this.drawTimes
-        });
+        });*/
     }
 
     ngOnDestroy(): void {
