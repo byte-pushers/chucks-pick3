@@ -65,6 +65,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
 
 
     ngOnInit(): void {
+        console.log(location.pathname);
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(
