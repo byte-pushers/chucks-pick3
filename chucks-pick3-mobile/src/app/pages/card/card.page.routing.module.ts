@@ -8,7 +8,24 @@ import {GeneratePicksCardComponent} from '../../components/generate-picks-card/g
 
 const routes: Routes = [
     {
-        outlet: 'card-page',
+        outlet: 'card-page-1',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        outlet: 'card-page-2',
         path: '',
         component: CardPage,
         children: [

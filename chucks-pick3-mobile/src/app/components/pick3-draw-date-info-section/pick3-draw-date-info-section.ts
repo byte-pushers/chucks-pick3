@@ -30,6 +30,8 @@ import {PopoverController} from '@ionic/angular';
 })
 // tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit {
+    private static counter = 0;
+    private readonly componentInstanceNumber;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -40,8 +42,9 @@ export class Pick3DrawDateInfoSection implements OnInit {
                 public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private popoverController: PopoverController) {
-
+        console.log("Pick3DrawDateInfoSection() constructor.");
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        this.componentInstanceNumber = Pick3DrawDateInfoSection.counter++;
     }
 
     public slideNumber: number;
@@ -89,9 +92,15 @@ export class Pick3DrawDateInfoSection implements OnInit {
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
-            this.slideNumber = context.slideNumber;
-            this.defaultDrawDateTime = context.defaultDrawDateTime;
-            this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+            console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
+
+            if (context) {
+                //if (this.componentInstanceNumber === context.slideNumber) {
+                    this.slideNumber = context.slideNumber;
+                    this.defaultDrawDateTime = context.defaultDrawDateTime;
+                    this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+                //}
+            }
         });
     }
 
