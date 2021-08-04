@@ -29,7 +29,7 @@ import {PopoverController} from '@ionic/angular';
     styleUrls: ['pick3-draw-date-info-section.scss']
 })
 // tslint:disable-next-line:component-class-suffix
-export class Pick3DrawDateInfoSection implements OnInit {
+export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly componentInstanceNumber;
 
@@ -42,7 +42,7 @@ export class Pick3DrawDateInfoSection implements OnInit {
                 public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private popoverController: PopoverController) {
-        console.log("Pick3DrawDateInfoSection() constructor.");
+        /*console.log('Pick3DrawDateInfoSection() constructor.');*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.componentInstanceNumber = Pick3DrawDateInfoSection.counter++;
     }
@@ -58,13 +58,13 @@ export class Pick3DrawDateInfoSection implements OnInit {
     public viewNavigation: any;
 
 
-    /*ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.pick3StateLottery = null;
-    }*/
+    }
 
 
     ngOnInit(): void {
@@ -92,14 +92,14 @@ export class Pick3DrawDateInfoSection implements OnInit {
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
-            console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
+            /*console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
 
             if (context) {
-                //if (this.componentInstanceNumber === context.slideNumber) {
-                    this.slideNumber = context.slideNumber;
-                    this.defaultDrawDateTime = context.defaultDrawDateTime;
-                    this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
-                //}
+                // if (this.componentInstanceNumber === context.slideNumber) {
+                this.slideNumber = context.slideNumber;
+                this.defaultDrawDateTime = context.defaultDrawDateTime;
+                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+                // }
             }
         });
     }

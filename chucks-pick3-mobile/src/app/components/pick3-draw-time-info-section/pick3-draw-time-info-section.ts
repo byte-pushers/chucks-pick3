@@ -34,13 +34,14 @@ export class Pick3DrawTimeInfoSection implements OnInit {
         this.cardContextService.context$.subscribe(context => {
             console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);
             if (context) {
+                console.log(context);
                 //if (this.componentInstanceNumber === context.slideNumber) {
-                    this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
                 //}
             }
 
             if (this.componentState === 'initializing') {
-                console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() initializing... ');
+                /*console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() initializing... ');*/
                 const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
                 this.selectDrawingTimeCard(currentDrawingTime);
             }
@@ -54,6 +55,7 @@ export class Pick3DrawTimeInfoSection implements OnInit {
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
+            console.log(drawTime.getPick3DrawTime());
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
