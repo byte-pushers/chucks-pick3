@@ -35,9 +35,9 @@ export class Pick3DrawTimeInfoSection implements OnInit {
            /* console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
             if (context) {
                 /*console.log(context);*/
-                //if (this.componentInstanceNumber === context.slideNumber) {
+                // if (this.componentInstanceNumber === context.slideNumber) {
                 this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
-                //}
+                // }
             }
 
             if (this.componentState === 'initializing') {

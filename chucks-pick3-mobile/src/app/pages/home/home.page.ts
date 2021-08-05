@@ -132,7 +132,6 @@ export class HomePage implements OnInit {
     public initializePick3DrawDateCard(event: any): void {
         this.ionSlides.getActiveIndex().then(activeIndex => {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
-            console.log(activeIndex);
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
             this.cardContextService.addContext({
                 slideNumber: activeIndex + 1,
