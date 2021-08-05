@@ -32,6 +32,7 @@ import {PopoverController} from '@ionic/angular';
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly componentInstanceNumber;
+    private currentCard = this.drawTimeService.currentDrawTimeCard;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -58,6 +59,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public viewNavigation: any;
 
 
+
     ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
@@ -68,7 +70,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
 
     ngOnInit(): void {
-        console.log(location.pathname);
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
         this.setData(
@@ -118,8 +119,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
-        this.data.setDrawTime(pick3DrawTime.getType());
-        this.data.setDrawDate(pick3DrawTime.getDateTime());
+        this.data.setDrawTime(this.currentCard.drawTime);
+        this.data.setDrawDate(this.currentCard.getDateTime());
         this.data.setIcon(drawTimeIcon);
 
         if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {

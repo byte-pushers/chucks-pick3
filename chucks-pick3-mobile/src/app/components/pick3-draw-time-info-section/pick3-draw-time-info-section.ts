@@ -23,7 +23,7 @@ export class Pick3DrawTimeInfoSection implements OnInit {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
                 private drawTimeService: DrawTimeService) {
-        console.log("Pick3DrawTimeInfoSection() constructor.");
+        /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.componentState = 'instantiated';
         this.componentInstanceNumber = Pick3DrawTimeInfoSection.counter++;
@@ -32,9 +32,9 @@ export class Pick3DrawTimeInfoSection implements OnInit {
     ngOnInit(): void {
         this.componentState = 'initializing';
         this.cardContextService.context$.subscribe(context => {
-            console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);
+           /* console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
             if (context) {
-                console.log(context);
+                /*console.log(context);*/
                 //if (this.componentInstanceNumber === context.slideNumber) {
                 this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
                 //}
@@ -55,7 +55,7 @@ export class Pick3DrawTimeInfoSection implements OnInit {
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
-            console.log(drawTime.getPick3DrawTime());
+           /* console.log(drawTime.getPick3DrawTime());*/
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
@@ -64,4 +64,5 @@ export class Pick3DrawTimeInfoSection implements OnInit {
             }
         });
     }
+
 }

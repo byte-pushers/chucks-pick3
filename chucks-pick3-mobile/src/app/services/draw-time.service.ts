@@ -7,7 +7,7 @@ import {Pick3DrawTimeCard} from '../models/pick3-draw-time-card';
 })
 export class DrawTimeService {
     private pick3DrawTimeSource = new Subject<Pick3DrawTimeCard>();
-    private currentDrawTimeCard: Pick3DrawTimeCard = null;
+    public currentDrawTimeCard: Pick3DrawTimeCard = null;
 
     constructor() {
     }
@@ -17,7 +17,6 @@ export class DrawTimeService {
     }
 
     public setCurrentDrawTimeCard(someDrawTimeCard: Pick3DrawTimeCard) {
-        console.log(someDrawTimeCard);
         this.currentDrawTimeCard = someDrawTimeCard;
         this.pick3DrawTimeSource.next(this.currentDrawTimeCard);
     }

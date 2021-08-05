@@ -17,7 +17,8 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
-import {logger} from 'codelyzer/util/logger';
+import * as BytePushers from 'bytepushers-js-core';
+
 
 @Component({
     selector: 'app-home',
@@ -30,20 +31,27 @@ export class HomePage implements OnInit {
         drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
     };
     slideOpts = {
-        initialSlide: 2,
+        initialSlide: 7,
         speed: 400
     };
-    Pick3DrawDateCardContextPast: Pick3DrawDateCard = null;
-    Pick3DrawDateCardContextPresent: Pick3DrawDateCard = null;
-    Pick3DrawDateCardContextFuture: Pick3DrawDateCard = null;
+    card1 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card2 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card3 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card4 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card5 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card6 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    card7 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    Pick3DrawDateCardContextPast: Pick3DrawTimeCard = null;
+    Pick3DrawDateCardContextPresent: Pick3DrawTimeCard = null;
+    Pick3DrawDateCardContextFuture: Pick3DrawTimeCard = null;
     pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
-        new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-        new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-        new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-        /* new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-         new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-         new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG),
-         new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG) */
+        this.card1,
+        this.card2,
+        this.card3,
+        this.card4,
+        this.card5,
+        this.card6,
+        this.card7
     ];
     private drawTimes: Array<Pick3DrawTimeCard> = [
         new Pick3DrawTimeCardDomain({
@@ -78,9 +86,15 @@ export class HomePage implements OnInit {
                 public translateService: TranslateService,
                 private drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
-        /*    console.log("HomePage() constructor.");*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         translateService.setDefaultLang('en-US');
+        this.card7.setDrawDate(new Date());
+        this.card6.setDrawDate(this.getSlideDate(2));
+        this.card5.setDrawDate(this.getSlideDate(3));
+        this.card4.setDrawDate(this.getSlideDate(4));
+        this.card3.setDrawDate(this.getSlideDate(5));
+        this.card2.setDrawDate(this.getSlideDate(6));
+        this.card1.setDrawDate(this.getSlideDate(7));
     }
 
     ngOnInit() {
@@ -118,6 +132,7 @@ export class HomePage implements OnInit {
     public initializePick3DrawDateCard(event: any): void {
         this.ionSlides.getActiveIndex().then(activeIndex => {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
+            console.log(activeIndex);
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
             this.cardContextService.addContext({
                 slideNumber: activeIndex + 1,
@@ -137,21 +152,13 @@ export class HomePage implements OnInit {
     }
 
     private randomlyMockDrawTimeCardStates(slideNumber: number): void {
-        const today = new Date();
-        let slideDate: Date = null;
         // Date that could be used for the checking the current, past and future slides
-        if (slideNumber === 1) {
-            slideDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - slideNumber,
-                today.getHours(), today.getMinutes(), today.getMilliseconds());
-        } else {
-            slideDate = today;
-        }
         this.drawTimes.forEach(drawTime => {
-            drawTime.setDateTime(slideDate);
+            drawTime.setDateTime(this.pick3DrawDateDecks[slideNumber - 1].getDrawDate());
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(slideNumber);
-            this.drawTimeService.setCurrentDrawTimeCard(drawTime);
 
+            this.drawTimeService.setCurrentDrawTimeCard(drawTime);
         });
     }
 
@@ -161,22 +168,18 @@ export class HomePage implements OnInit {
         return anEnum[i2];
     }
 
-/*    private saveSlideContext(slideContext) {
-        switch (slideContext) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
+
+    private getSlideDate(slideNumber) {
+        const today = new Date();
+        let slideDate: Date = null;
+        if (slideNumber === 1) {
+            slideDate = today;
+        } else {
+            slideDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (slideNumber - 1),
+                today.getHours(), today.getMinutes(), today.getMilliseconds());
         }
-    }*/
+
+        return slideDate;
+    }
+
 }
