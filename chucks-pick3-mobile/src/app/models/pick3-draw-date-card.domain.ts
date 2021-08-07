@@ -69,6 +69,10 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return this._drawDate;
     }
 
+    setDrawDate(drawDate: Date): void {
+        this._drawDate = drawDate;
+    }
+
     get drawState() {
         return this._drawState;
     }
@@ -158,9 +162,6 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return this._hasWinner;
     }
 
-    setDrawDate(drawDate: Date): void {
-        this._drawDate = drawDate;
-    }
 
     setDrawState(drawState: string): void {
         this._drawState = drawState;

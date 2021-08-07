@@ -42,6 +42,91 @@ const routes: Routes = [
         ]
     },
     {
+        outlet: 'card-page-3',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        outlet: 'card-page-4',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        outlet: 'card-page-5',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        outlet: 'card-page-6',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
+        outlet: 'card-page-7',
+        path: '',
+        component: CardPage,
+        children: [
+            {
+                outlet: 'primary',
+                path: '',
+                component: Pick3DrawDateInfoSection
+            },
+            {
+                outlet: 'secondary',
+                path: '',
+                component: Pick3DrawTimeInfoSection
+            }
+        ]
+    },
+    {
         path: 'view-picks',
         component: CardPage,
         children: [
