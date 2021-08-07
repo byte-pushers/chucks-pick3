@@ -20,6 +20,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
+import {AppService} from "../../app.service";
 
 
 @Component({
@@ -31,8 +32,15 @@ import {PopoverController} from '@ionic/angular';
 // tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
-    private readonly componentInstanceNumber;
     private currentCard = this.drawTimeService.currentDrawTimeCard;
+    public slideNumber: number;
+    public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
+    public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    public showCountDownToDrawing = false;
+    private drawTimes: Array<Pick3DrawTimeCard> = [];
+    public item: Pick3DrawTimeCard;
+    public generateNavigation: any;
+    public viewNavigation: any;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -42,50 +50,39 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 public translateService: TranslateService,
                 public drawTimeService: DrawTimeService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private appService: AppService,
                 private popoverController: PopoverController) {
         /*console.log('Pick3DrawDateInfoSection() constructor.');*/
-        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-        this.componentInstanceNumber = Pick3DrawDateInfoSection.counter++;
     }
-
-    public slideNumber: number;
-    public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    public showCountDownToDrawing = false;
-    private drawTimes: Array<Pick3DrawTimeCard> = [];
-    public pick3StateLottery: Pick3StateLottery;
-    public item: Pick3DrawTimeCard;
-    public generateNavigation: any;
-    public viewNavigation: any;
-
-
+    
     ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
-        this.pick3StateLottery = null;
+        this.appService = null;
     }
 
 
     ngOnInit(): void {
         const someDateTime = new Date();
-        const pick3DrawTime: Pick3DrawTime = this.getDrawTime(someDateTime);
+        const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
         this.setData(
-            this.getDrawState(),
+            this.appService.getDrawState(),
             pick3DrawTime,
-            this.pick3StateLottery.getBackgroundImageUrl(),
+            this.appService.getBackgroundImageUrl(),
             this.getCurrentDrawTimeIcon(pick3DrawTime)
         );
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
-                this.setData(
-                    this.getDrawState(),
+                /*this.setData(
+                    this.appService.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
-                    this.pick3StateLottery.getBackgroundImageUrl(),
-                    currentPick3DrawTimeCard.getIcon());
+                    this.appService.getBackgroundImageUrl(),
+                    currentPick3DrawTimeCard.getIcon()
+                );*/
                 this.item = currentPick3DrawTimeCard;
             }
         );
@@ -95,11 +92,17 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             /*console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
 
             if (context) {
-                // if (this.componentInstanceNumber === context.slideNumber) {
+                const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
+
                 this.slideNumber = context.slideNumber;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
                 this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
-                // }
+                this.setData(
+                    pick3DrawDateCard.getDrawState(),
+                    (this.item) ? this.item.getPick3DrawTime() : null,
+                    this.appService.getBackgroundImageUrl(),
+                    (this.item) ? this.item.getIcon() : null
+                );
             }
         });
     }
@@ -122,7 +125,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.data.setDrawDate(this.currentCard.getDateTime());
         this.data.setIcon(drawTimeIcon);
         /*console.log(pick3DrawTime.getType());*/
-        if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
+        if (this.appService.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.appService.getNextDrawingTime(pick3DrawTime)*/) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
                 this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
             } else {
@@ -151,18 +154,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         return (pick3DrawTimeCard === null || pick3DrawTimeCard === undefined) ? null : pick3DrawTimeCard.getIcon();
     }
 
-    public getCurrentDrawTime(): Pick3DrawTime {
-        return this.pick3StateLottery.getCurrentDrawingTime();
-    }
-
-    private getDrawTime(someDateTime: Date): Pick3DrawTime {
-        return this.pick3StateLottery.getDrawingTime(someDateTime);
-    }
-
-    private getDrawState(): string {
-        return this.pick3StateLottery.getState();
-    }
-
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
         this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
@@ -175,7 +166,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        const pick3DrawTime: Pick3DrawTime = this.pick3StateLottery.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
+        const pick3DrawTime: Pick3DrawTime = this.appService.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
         this.data.setIcon(pick3DrawTimeCard.getIcon());
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
@@ -185,7 +176,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             }
         });
 
-        this.setData(this.getDrawState(), pick3DrawTime, this.pick3StateLottery.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
+        this.setData(this.appService.getDrawState(), pick3DrawTime, this.appService.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
     }
 
     private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {

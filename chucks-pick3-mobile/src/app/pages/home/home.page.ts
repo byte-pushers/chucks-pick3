@@ -18,6 +18,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import * as BytePushers from 'bytepushers-js-core';
+import {AppService} from "../../app.service";
 
 
 @Component({
@@ -34,83 +35,39 @@ export class HomePage implements OnInit {
         initialSlide: 7,
         speed: 400
     };
-    card1 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card2 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card3 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card4 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card5 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card6 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    card7 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
-        this.card1,
-        this.card2,
-        this.card3,
-        this.card4,
-        this.card5,
-        this.card6,
-        this.card7
-    ];
-    private drawTimes: Array<Pick3DrawTimeCard> = [
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.morning',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-            icon: 'morning-icon',
-            dateTime: new Date().setHours(7, 15, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.day',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
-            icon: 'day-icon',
-            dateTime: new Date().setHours(11, 45, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.evening',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
-            icon: 'evening-icon',
-            dateTime: new Date().setHours(17, 15, 0, 0)
-        }),
-        new Pick3DrawTimeCardDomain({
-            title: 'draw.time.enum.night',
-            drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
-            icon: 'night-icon',
-            dateTime: new Date().setHours(21, 30, 0, 0)
-        })
-    ];
+
     pick3StateLottery: Pick3StateLottery;
 
     constructor(private cardContextService: CardContextService,
                 private popoverController: PopoverController,
                 public translateService: TranslateService,
                 private drawTimeService: DrawTimeService,
+                private appService: AppService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         translateService.setDefaultLang('en-US');
-        this.card7.setDrawDate(new Date());
-        this.card6.setDrawDate(this.getSlideDate(2));
-        this.card5.setDrawDate(this.getSlideDate(3));
-        this.card4.setDrawDate(this.getSlideDate(4));
-        this.card3.setDrawDate(this.getSlideDate(5));
-        this.card2.setDrawDate(this.getSlideDate(6));
-        this.card1.setDrawDate(this.getSlideDate(7));
     }
 
     ngOnInit() {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
         const currentHour = new Date().getHours();
-        this.drawTimes.forEach(drawTime => {
+        const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+        const drawTimes = this.appService.getDrawTimes();
+        drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
             if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
         });
-        this.randomlyMockDrawTimeCardStates(this.pick3DrawDateDecks.length);
+        this.randomlyMockDrawTimeCardStates(pick3DrawDateDecks.length);
         this.cardContextService.addContext({
-            slideNumber: this.pick3DrawDateDecks.length,
-            data: this.pick3DrawDateDecks[this.pick3DrawDateDecks.length - 1],
+            slideNumber: pick3DrawDateDecks.length,
+            data: pick3DrawDateDecks[pick3DrawDateDecks.length - 1],
             defaultDrawDateTime: this.default.drawDateTime,
-            drawTimes: this.drawTimes
+            currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+            drawTimes: drawTimes
         });
     }
 
@@ -128,12 +85,17 @@ export class HomePage implements OnInit {
     public initializePick3DrawDateCard(event: any): void {
         this.ionSlides.getActiveIndex().then(activeIndex => {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
+            //const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
+            const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+            const drawTimes = this.appService.getDrawTimes();
+
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
             this.cardContextService.addContext({
                 slideNumber: activeIndex + 1,
-                data: this.pick3DrawDateDecks[activeIndex],
+                data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
-                drawTimes: this.drawTimes
+                currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+                drawTimes: drawTimes
             });
         });
 
@@ -148,8 +110,10 @@ export class HomePage implements OnInit {
 
     private randomlyMockDrawTimeCardStates(slideNumber: number): void {
         // Date that could be used for the checking the current, past and future slides
-        this.drawTimes.forEach(drawTime => {
-            drawTime.setDateTime(this.pick3DrawDateDecks[slideNumber - 1].getDrawDate());
+        const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+        const drawTimes = this.appService.getDrawTimes();
+        drawTimes.forEach(drawTime => {
+            drawTime.setDateTime(pick3DrawDateDecks[slideNumber - 1].getDrawDate());
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(slideNumber);
 
@@ -162,18 +126,4 @@ export class HomePage implements OnInit {
         const i2 = Object.keys(anEnum)[item];
         return anEnum[i2];
     }
-
-
-    private getSlideDate(slideNumber) {
-        const today = new Date();
-        let slideDate: Date = null;
-        if (slideNumber === 1) {
-            slideDate = today;
-        } else {
-            slideDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (slideNumber - 1));
-        }
-
-        return slideDate;
-    }
-
 }

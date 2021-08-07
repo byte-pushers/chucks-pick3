@@ -13,6 +13,7 @@ import {HomePageModule} from './pages/home/home.page.module';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {AppService} from "./app.service";
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,6 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
         StatusBar,
         SplashScreen,
         CardContextService,
+        AppService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
         /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/

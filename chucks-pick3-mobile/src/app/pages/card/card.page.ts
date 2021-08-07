@@ -12,9 +12,14 @@ import {PopoverController} from '@ionic/angular';
     styleUrls: ['./card.page.scss'],
 })
 export class CardPage implements OnInit, OnDestroy {
+    private static instanceCount = 0;
+    private id: number;
+
     constructor(public translateService: TranslateService,
                 private popoverController: PopoverController) {
         translateService.setDefaultLang('en-US');
+        this.id = ++CardPage.instanceCount;
+        console.log(`CardPage.constructor: id: ${this.id}`);
     }
 
     ngOnInit(): void {
@@ -35,4 +40,7 @@ export class CardPage implements OnInit, OnDestroy {
 
     }
 
+    public updateCard(): void {
+
+    }
 }
