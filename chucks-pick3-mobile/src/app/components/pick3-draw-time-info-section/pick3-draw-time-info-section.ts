@@ -43,6 +43,7 @@ export class Pick3DrawTimeInfoSection implements OnInit {
             if (this.componentState === 'initializing') {
                 /*console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() initializing... ');*/
                 const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
+                console.log(currentDrawingTime);
                 this.selectDrawingTimeCard(currentDrawingTime);
             }
         });

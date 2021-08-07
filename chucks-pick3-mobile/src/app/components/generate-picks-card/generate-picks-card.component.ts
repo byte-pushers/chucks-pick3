@@ -15,6 +15,7 @@ import {
 } from '../../models/pick3-draw-time.enum';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {CardContextService} from '../../services/card-context.service';
+import {DrawStateService} from "../../services/draw-state.service";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -40,7 +41,8 @@ export class GeneratePicksCardComponent implements OnInit {
 
   constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
               private cardContextService: CardContextService,
-              private drawTimeService: DrawTimeService) {
+              private drawTimeService: DrawTimeService,
+              private drawStateService: DrawStateService) {
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.componentState = 'instantiated';
 
@@ -134,6 +136,9 @@ export class GeneratePicksCardComponent implements OnInit {
   public submitGenerate(generateDisplay: any, continueDisplay: any): void {
     continueDisplay.style.display = 'block';
     generateDisplay.style.display = 'none';
+
+    this.drawStateService.generateNavigationChoice = 4;
+    this.drawStateService.viewNavigationChoice = 4;
   }
 
   public showGeneratePage(continueDisplay: any, generateDisplay: any): void {

@@ -41,9 +41,6 @@ export class HomePage implements OnInit {
     card5 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     card6 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     card7 = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-    Pick3DrawDateCardContextPast: Pick3DrawTimeCard = null;
-    Pick3DrawDateCardContextPresent: Pick3DrawTimeCard = null;
-    Pick3DrawDateCardContextFuture: Pick3DrawTimeCard = null;
     pick3DrawDateDecks: Array<Pick3DrawDateCard> = [
         this.card1,
         this.card2,
@@ -104,7 +101,6 @@ export class HomePage implements OnInit {
         this.drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
-
             if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
@@ -174,8 +170,7 @@ export class HomePage implements OnInit {
         if (slideNumber === 1) {
             slideDate = today;
         } else {
-            slideDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (slideNumber - 1),
-                today.getHours(), today.getMinutes(), today.getMilliseconds());
+            slideDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (slideNumber - 1));
         }
 
         return slideDate;

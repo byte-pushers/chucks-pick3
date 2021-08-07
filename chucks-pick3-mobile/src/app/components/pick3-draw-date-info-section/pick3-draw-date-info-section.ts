@@ -59,7 +59,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public viewNavigation: any;
 
 
-
     ngOnDestroy(): void {
         this.slideNumber = -1;
         this.data = null;
@@ -119,10 +118,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private setData(drawState: string, pick3DrawTime: Pick3DrawTime, backgroundImageUrl: string, drawTimeIcon: string): void {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
-        this.data.setDrawTime(this.currentCard.drawTime);
+        this.data.setDrawTime(pick3DrawTime.getType());
         this.data.setDrawDate(this.currentCard.getDateTime());
         this.data.setIcon(drawTimeIcon);
-
+        /*console.log(pick3DrawTime.getType());*/
         if (this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.pick3StateLottery.getNextDrawingTime(pick3DrawTime)*/) {
             if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
                 this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
