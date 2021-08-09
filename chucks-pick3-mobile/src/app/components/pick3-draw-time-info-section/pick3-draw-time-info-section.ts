@@ -14,10 +14,9 @@ import {Subscription} from 'rxjs';
 })
 export class Pick3DrawTimeInfoSection implements OnInit {
     private static counter = 0;
-    private readonly componentInstanceNumber;
+    private readonly id: number;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    private subscription: Subscription;
     private componentState;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
@@ -26,7 +25,7 @@ export class Pick3DrawTimeInfoSection implements OnInit {
         /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.componentState = 'instantiated';
-        this.componentInstanceNumber = Pick3DrawTimeInfoSection.counter++;
+        this.id = ++Pick3DrawTimeInfoSection.counter;
     }
 
     ngOnInit(): void {

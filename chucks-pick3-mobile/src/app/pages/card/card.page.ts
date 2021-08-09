@@ -12,13 +12,13 @@ import {PopoverController} from '@ionic/angular';
     styleUrls: ['./card.page.scss'],
 })
 export class CardPage implements OnInit, OnDestroy {
-    private static instanceCount = 0;
-    private id: number;
+    private static couter = 0;
+    private readonly id: number;
 
     constructor(public translateService: TranslateService,
                 private popoverController: PopoverController) {
         translateService.setDefaultLang('en-US');
-        this.id = ++CardPage.instanceCount;
+        this.id = ++CardPage.couter;
         console.log(`CardPage.constructor: id: ${this.id}`);
     }
 

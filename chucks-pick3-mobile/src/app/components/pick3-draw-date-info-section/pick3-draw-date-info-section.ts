@@ -32,13 +32,14 @@ import {AppService} from "../../app.service";
 // tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
+    private readonly id: number;
     private currentCard = this.drawTimeService.currentDrawTimeCard;
     public slideNumber: number;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing = false;
     private drawTimes: Array<Pick3DrawTimeCard> = [];
-    public item: Pick3DrawTimeCard;
+    // public item: Pick3DrawTimeCard;
     public generateNavigation: any;
     public viewNavigation: any;
 
@@ -53,6 +54,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private appService: AppService,
                 private popoverController: PopoverController) {
         /*console.log('Pick3DrawDateInfoSection() constructor.');*/
+        this.id = ++Pick3DrawDateInfoSection.counter;
     }
     
     ngOnDestroy(): void {
@@ -77,13 +79,13 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
-                /*this.setData(
+                this.setData(
                     this.appService.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon()
-                );*/
-                this.item = currentPick3DrawTimeCard;
+                );
+                // this.item = currentPick3DrawTimeCard;
             }
         );
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
@@ -93,15 +95,15 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
             if (context) {
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
-
+                const currentPick3DrawTimeCard = this.drawTimeService.getCurrentDrawTimeCard();
                 this.slideNumber = context.slideNumber;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
                 this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
                 this.setData(
                     pick3DrawDateCard.getDrawState(),
-                    (this.item) ? this.item.getPick3DrawTime() : null,
+                    currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
-                    (this.item) ? this.item.getIcon() : null
+                    currentPick3DrawTimeCard.getIcon()
                 );
             }
         });
