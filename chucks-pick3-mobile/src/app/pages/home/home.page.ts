@@ -66,7 +66,7 @@ export class HomePage implements OnInit {
             slideNumber: pick3DrawDateDecks.length,
             data: pick3DrawDateDecks[pick3DrawDateDecks.length - 1],
             defaultDrawDateTime: this.default.drawDateTime,
-            currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+            //currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
             drawTimes: drawTimes
         });
     }
@@ -94,7 +94,7 @@ export class HomePage implements OnInit {
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
-                currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+                //currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
                 drawTimes: drawTimes
             });
         });

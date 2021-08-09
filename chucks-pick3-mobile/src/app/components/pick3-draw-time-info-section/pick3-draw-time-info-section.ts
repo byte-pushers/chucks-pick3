@@ -5,6 +5,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {Subscription} from 'rxjs';
+import {AppService} from "../../app.service";
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -17,39 +18,24 @@ export class Pick3DrawTimeInfoSection implements OnInit {
     private readonly id: number;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    private componentState;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
-                private drawTimeService: DrawTimeService) {
+                private drawTimeService: DrawTimeService,
+                private appService: AppService) {
         /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-        this.componentState = 'instantiated';
         this.id = ++Pick3DrawTimeInfoSection.counter;
+        this.drawTimes = this.appService.getDrawTimes().map(drawTime => ({...drawTime}));
     }
 
     ngOnInit(): void {
-        this.componentState = 'initializing';
         this.cardContextService.context$.subscribe(context => {
-           /* console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
-            if (context) {
-                /*console.log(context);*/
-                // if (this.componentInstanceNumber === context.slideNumber) {
-                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
-                // }
-            }
 
-            if (this.componentState === 'initializing') {
-                /*console.log('Pick3DrawTimeInfoSection.cardContextService.context$.subscribe() initializing... ');*/
-                const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
-                console.log(currentDrawingTime);
-                this.selectDrawingTimeCard(currentDrawingTime);
-            }
         });
-        this.componentState = 'initialized';
     }
 
- /*   ngOnDestroy(): void {
+    /* ngOnDestroy(): void {
         this.subscription.unsubscribe();
     }*/
 

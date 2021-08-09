@@ -6,6 +6,6 @@ export interface CardContext {
     slideNumber: number;
     data: Pick3DrawDateCardProperties;
     defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    currentDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    // currentDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     drawTimes: Array<Pick3DrawTimeCard>;
 }

@@ -39,8 +39,4 @@ export class CardPage implements OnInit, OnDestroy {
     ngOnDestroy(): void {
 
     }
-
-    public updateCard(): void {
-
-    }
 }

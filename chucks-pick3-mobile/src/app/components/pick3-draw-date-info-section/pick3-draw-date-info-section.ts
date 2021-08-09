@@ -21,6 +21,7 @@ import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {AppService} from "../../app.service";
+import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
 
 
 @Component({
@@ -33,13 +34,12 @@ import {AppService} from "../../app.service";
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly id: number;
-    private currentCard = this.drawTimeService.currentDrawTimeCard;
-    public slideNumber: number;
+    private readonly defaultDrawTimeCard: Pick3DrawTimeCard;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing = false;
     private drawTimes: Array<Pick3DrawTimeCard> = [];
-    // public item: Pick3DrawTimeCard;
+    public drawTimeCard: Pick3DrawTimeCard;
     public generateNavigation: any;
     public viewNavigation: any;
 
@@ -55,10 +55,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private popoverController: PopoverController) {
         /*console.log('Pick3DrawDateInfoSection() constructor.');*/
         this.id = ++Pick3DrawDateInfoSection.counter;
+        this.defaultDrawTimeCard = this.appService.getDrawTimes()[0];
     }
     
     ngOnDestroy(): void {
-        this.slideNumber = -1;
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
@@ -79,15 +79,16 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+            if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
                 this.setData(
                     this.appService.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon()
                 );
-                // this.item = currentPick3DrawTimeCard;
+                this.drawTimeCard = currentPick3DrawTimeCard;
             }
-        );
+        });
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
@@ -95,16 +96,16 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
             if (context) {
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
-                const currentPick3DrawTimeCard = this.drawTimeService.getCurrentDrawTimeCard();
-                this.slideNumber = context.slideNumber;
+                const currentPick3DrawTimeCard = (this.drawTimeCard)? this.drawTimeCard: this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
-                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
+                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes.map(drawTime => ({...drawTime})));
                 this.setData(
                     pick3DrawDateCard.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon()
                 );
+
             }
         });
     }
@@ -124,7 +125,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
         this.data.setDrawTime(pick3DrawTime.getType());
-        this.data.setDrawDate(this.currentCard.getDateTime());
+        this.data.setDrawDate(pick3DrawTime.getDateTime());
         this.data.setIcon(drawTimeIcon);
         /*console.log(pick3DrawTime.getType());*/
         if (this.appService.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.appService.getNextDrawingTime(pick3DrawTime)*/) {
