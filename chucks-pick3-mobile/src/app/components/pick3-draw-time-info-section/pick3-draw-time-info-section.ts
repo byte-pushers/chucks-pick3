@@ -31,7 +31,11 @@ export class Pick3DrawTimeInfoSection implements OnInit {
 
     ngOnInit(): void {
         this.cardContextService.context$.subscribe(context => {
-
+            if (context) {
+                console.log(this.drawTimes);
+                this.drawTimes.splice(0, this.drawTimes.length, ...context.drawTimes);
+                console.log('Test' + this.drawTimes);
+            }
         });
     }
 

@@ -6,6 +6,7 @@ import * as Object from 'bytepushers-js-obj-extensions';
 import {DrawStateService} from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
 import {DrawTimeService} from "../../services/draw-time.service";
+import {AppService} from '../../app.service';
 
 @Component({
     // tslint:disable-next-line:component-selector

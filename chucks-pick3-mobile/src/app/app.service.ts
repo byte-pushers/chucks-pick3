@@ -1,12 +1,12 @@
-import {Injectable} from "@angular/core";
-import {Pick3DrawDateCardDomain} from "./models/pick3-draw-date-card.domain";
-import {Pick3DrawDateCard} from "./models/pick3-draw-date-card";
-import {Pick3DrawTimeCard} from "./models/pick3-draw-time-card";
-import {Pick3DrawTimeCardDomain} from "./models/pick3-draw-time-card.domain";
-import {Pick3DrawTimeEnum} from "./models/pick3-draw-time.enum";
-import {Pick3WebScrapingProviderService} from "./providers/web-scraping/pick3-web-scraping-provider.service";
-import {Pick3StateLottery} from "./models/pick3-state-lottery";
-import {Pick3DrawTime} from "./models/pick3-draw-time";
+import {Injectable} from '@angular/core';
+import {Pick3DrawDateCardDomain} from './models/pick3-draw-date-card.domain';
+import {Pick3DrawDateCard} from './models/pick3-draw-date-card';
+import {Pick3DrawTimeCard} from './models/pick3-draw-time-card';
+import {Pick3DrawTimeCardDomain} from './models/pick3-draw-time-card.domain';
+import {Pick3DrawTimeEnum} from './models/pick3-draw-time.enum';
+import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
+import {Pick3StateLottery} from './models/pick3-state-lottery';
+import {Pick3DrawTime} from './models/pick3-draw-time';
 
 @Injectable()
 
