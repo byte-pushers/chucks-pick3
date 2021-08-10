@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
-import {Pick3DrawDateCardDomain} from '../../models/pick3-draw-date-card.domain';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {IonSlides, PopoverController} from '@ionic/angular';
@@ -8,16 +6,12 @@ import {TranslateService} from '@ngx-translate/core';
 import {registerLocaleData} from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
-import {I18nService} from '../../services/i18n.service';
 import {CardContextService} from '../../services/card-context.service';
-import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
-import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
-import * as BytePushers from 'bytepushers-js-core';
 import {AppService} from "../../app.service";
 
 
@@ -53,7 +47,7 @@ export class HomePage implements OnInit {
         registerLocaleData(localeEnUS, 'en-US');
         const currentHour = new Date().getHours();
         const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-        const drawTimes = this.appService.getDrawTimes();
+        const drawTimes = this.appService.getPick3DrawTimes();
         drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
@@ -87,7 +81,7 @@ export class HomePage implements OnInit {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
             //const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
             const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-            const drawTimes = this.appService.getDrawTimes();
+            const drawTimes = this.appService.getPick3DrawTimes();
 
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
             this.cardContextService.addContext({
@@ -111,7 +105,7 @@ export class HomePage implements OnInit {
     private randomlyMockDrawTimeCardStates(slideNumber: number): void {
         // Date that could be used for the checking the current, past and future slides
         const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-        const drawTimes = this.appService.getDrawTimes();
+        const drawTimes = this.appService.getPick3DrawTimes();
         drawTimes.forEach(drawTime => {
             drawTime.setDateTime(pick3DrawDateDecks[slideNumber - 1].getDrawDate());
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));

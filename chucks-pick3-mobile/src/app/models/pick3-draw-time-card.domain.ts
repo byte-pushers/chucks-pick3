@@ -44,7 +44,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
             Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET :
             Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this._selected = (config) ? (typeof config.selected === 'boolean') ? config.selected : false : false;
-        this._dateTime = (config) ? (Object.isDate(config.dateTime)) ? this.dateTime : new Date(config.dateTime) : null;
+        this._dateTime = (config) ? (Object.isDate(config.dateTime)) ? config.dateTime : new Date(config.dateTime) : null;
         this._pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
         this._pick3DrawTime = (config) ? Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null : null;
 

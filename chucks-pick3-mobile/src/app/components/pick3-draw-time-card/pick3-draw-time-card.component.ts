@@ -6,7 +6,6 @@ import * as Object from 'bytepushers-js-obj-extensions';
 import {DrawStateService} from '../../services/draw-state.service';
 import {TranslateService} from '@ngx-translate/core';
 import {DrawTimeService} from "../../services/draw-time.service";
-import {AppService} from '../../app.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -15,7 +14,7 @@ import {AppService} from '../../app.service';
     styleUrls: ['./pick3-draw-time-card.component.scss'],
 })
 export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
-    @Input() data: Pick3DrawTimeCard = this.drawTimeService.currentDrawTimeCard;
+    @Input() data: Pick3DrawTimeCard;
     oldData: Pick3DrawTimeCard = new Pick3DrawTimeCardDomain(null);
     changelog: string[] = [];
     drawingTimeCardColorIndicators = {

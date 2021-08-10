@@ -55,7 +55,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private popoverController: PopoverController) {
         /*console.log('Pick3DrawDateInfoSection() constructor.');*/
         this.id = ++Pick3DrawDateInfoSection.counter;
-        this.defaultDrawTimeCard = this.appService.getDrawTimes()[0];
+        this.defaultDrawTimeCard = this.appService.getPick3DrawTimes()[0];
     }
     
     ngOnDestroy(): void {

@@ -75,8 +75,8 @@ export class AppService {
         this.setPick3DrawDates();
     }
 
-    public getDrawTimes(): Pick3DrawTimeCard[] {
-        return this.pick3DrawTimes;
+    public getPick3DrawTimes(): Pick3DrawTimeCard[] {
+        return this.pick3DrawTimes.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
     }
 
     public getPick3DrawDateDecks(): Pick3DrawDateCard[] {

@@ -4,16 +4,14 @@ import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {DrawTimeService} from '../../services/draw-time.service';
-import {Subscription} from 'rxjs';
 import {AppService} from "../../app.service";
-
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'pick3-draw-time-info-section',
     templateUrl: 'pick3-draw-time-info-section.html',
     styleUrls: ['pick3-draw-time-info-section.scss']
 })
-export class Pick3DrawTimeInfoSection implements OnInit {
+export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly id: number;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
@@ -26,22 +24,29 @@ export class Pick3DrawTimeInfoSection implements OnInit {
         /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
-        this.drawTimes = this.appService.getDrawTimes().map(drawTime => ({...drawTime}));
+        this.drawTimes = this.appService.getPick3DrawTimes();
+        console.log(this.drawTimes);
     }
 
     ngOnInit(): void {
         this.cardContextService.context$.subscribe(context => {
-            if (context) {
+            /*if (context) {
                 console.log(this.drawTimes);
                 this.drawTimes.splice(0, this.drawTimes.length, ...context.drawTimes);
                 console.log('Test' + this.drawTimes);
+            }*/
+        });
+
+        this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+            if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
+                this.selectDrawingTimeCard(currentPick3DrawTimeCard);
             }
         });
     }
 
-    /* ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }*/
+    ngOnDestroy(): void {
+        // this.subscription.unsubscribe();
+    }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
