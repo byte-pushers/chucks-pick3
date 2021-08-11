@@ -81,14 +81,18 @@
                 (click)="showBackButton(2);"
                 *ngSwitchCase="1"
                 [routerLink]="['/','generate-picks']"
-                [state]="{ data: drawTimeCard.getPick3DrawTime().getDateTime(),
+                [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
                 subContent: this.generateNavigation
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
         <ion-icon *ngSwitchCase="2"></ion-icon>
-        <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']" routerDirection="back"
+        <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
+                  [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
+                subContent: this.generateNavigation
+                }"
+                  routerDirection="back"
                   (click)="showBackButton(1)" class="generate-back-button"
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
 
@@ -96,7 +100,7 @@
                 (click)="showBackButton(2);"
                 *ngSwitchDefault
                 [routerLink]="['/','generate-picks']"
-                [state]="{ data: drawTimeService.getCurrentDrawTimeCard().getPick3DrawTime().getDateTime(),
+                [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
                 subContent: this.generateNavigation
                 }"
                 routerDirection="back"

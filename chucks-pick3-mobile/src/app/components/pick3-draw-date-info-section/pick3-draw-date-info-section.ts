@@ -7,7 +7,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {I18nService} from '../../services/i18n.service';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
-import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
 import {registerLocaleData} from '@angular/common';
@@ -20,9 +19,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
-import {AppService} from "../../app.service";
-import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
-
+import {AppService} from '../../app.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -57,7 +54,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.id = ++Pick3DrawDateInfoSection.counter;
         this.defaultDrawTimeCard = this.appService.getPick3DrawTimes()[0];
     }
-    
+
     ngOnDestroy(): void {
         this.data = null;
         this.defaultDrawDateTime = null;
@@ -69,6 +66,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
+        console.log(pick3DrawTime);
         this.setData(
             this.appService.getDrawState(),
             pick3DrawTime,
@@ -96,9 +94,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
             if (context) {
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
-                const currentPick3DrawTimeCard = (this.drawTimeCard)? this.drawTimeCard: this.defaultDrawTimeCard;
+                const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
-                this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes.map(drawTime => ({...drawTime})));
+                this.appService.getPick3DrawTimes().splice(0, this.drawTimes.length, ...context.drawTimes.map(drawTime => ({...drawTime})));
+                console.log(this.appService.getPick3DrawTimes());
                 this.setData(
                     pick3DrawDateCard.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
@@ -145,7 +144,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
-        const pick3DrawTimeCard: Pick3DrawTimeCard = this.drawTimes.find(drawTime => {
+        const pick3DrawTimeCard: Pick3DrawTimeCard = this.appService.getPick3DrawTimes().find(drawTime => {
             // TODO We need to convert what is coming from scraper to the real enum
             // TODO Then we want to use drawTime.toString DAY Day
             const drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
@@ -158,7 +157,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
-        this.drawTimes.forEach((drawTime, drawTimeIndex, drawTimeArray) => {
+        this.appService.getPick3DrawTimes().forEach((drawTime, drawTimeIndex, drawTimeArray) => {
             if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 drawTime.setState(pick3DrawTimeCardStateEnum);
@@ -171,7 +170,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
         this.data.setIcon(pick3DrawTimeCard.getIcon());
-        this.drawTimes.forEach(drawTime => {
+        this.appService.getPick3DrawTimes().forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
@@ -221,7 +220,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             p3dtt = pick3DrawTimeType;
         }
 
-        const selectedPick3DrawTime = this.drawTimes.find(drawTime => {
+        const selectedPick3DrawTime = this.appService.getPick3DrawTimes().find(drawTime => {
             if (drawTime.getDrawTime() === p3dtt) {
                 return drawTime;
             }

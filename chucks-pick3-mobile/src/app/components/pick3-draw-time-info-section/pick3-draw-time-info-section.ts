@@ -4,7 +4,8 @@ import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {DrawTimeService} from '../../services/draw-time.service';
-import {AppService} from "../../app.service";
+import {AppService} from '../../app.service';
+
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'pick3-draw-time-info-section',
@@ -25,17 +26,13 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
         this.drawTimes = this.appService.getPick3DrawTimes();
-        console.log(this.drawTimes);
     }
 
     ngOnInit(): void {
         this.cardContextService.context$.subscribe(context => {
-            /*if (context) {
-                console.log(this.drawTimes);
-                this.drawTimes.splice(0, this.drawTimes.length, ...context.drawTimes);
-                console.log('Test' + this.drawTimes);
-            }*/
+
         });
+
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
             if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
@@ -50,11 +47,12 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
-           /* console.log(drawTime.getPick3DrawTime());*/
+            /* console.log(drawTime.getPick3DrawTime());*/
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
+                console.log(drawTime);
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
         });

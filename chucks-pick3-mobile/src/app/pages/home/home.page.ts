@@ -81,7 +81,6 @@ export class HomePage implements OnInit {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
             //const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
             const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-            const drawTimes = this.appService.getPick3DrawTimes();
 
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
             this.cardContextService.addContext({
@@ -89,7 +88,7 @@ export class HomePage implements OnInit {
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
                 //currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
-                drawTimes: drawTimes
+                drawTimes: this.appService.getPick3DrawTimes()
             });
         });
 
