@@ -77,6 +77,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+            currentPick3DrawTimeCard.setPick3DrawCardId(currentPick3DrawTimeCard.get)
             if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
                 this.setData(
                     this.appService.getDrawState(),

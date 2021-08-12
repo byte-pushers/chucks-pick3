@@ -12,7 +12,7 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
-import {AppService} from "../../app.service";
+import {AppService} from '../../app.service';
 
 
 @Component({
@@ -60,9 +60,10 @@ export class HomePage implements OnInit {
             slideNumber: pick3DrawDateDecks.length,
             data: pick3DrawDateDecks[pick3DrawDateDecks.length - 1],
             defaultDrawDateTime: this.default.drawDateTime,
-            //currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+            // currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
             drawTimes: drawTimes
         });
+        console.log(pick3DrawDateDecks.length);
     }
 
     async showPopover(ev: any) {
@@ -79,7 +80,7 @@ export class HomePage implements OnInit {
     public initializePick3DrawDateCard(event: any): void {
         this.ionSlides.getActiveIndex().then(activeIndex => {
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
-            //const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
+            // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
             const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
 
             this.randomlyMockDrawTimeCardStates(activeIndex + 1);
@@ -87,7 +88,7 @@ export class HomePage implements OnInit {
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
-                //currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
+                // currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
                 drawTimes: this.appService.getPick3DrawTimes()
             });
         });
