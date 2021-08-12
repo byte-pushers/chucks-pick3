@@ -7,6 +7,7 @@ import {Pick3DrawTimeEnum} from './models/pick3-draw-time.enum';
 import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from './models/pick3-state-lottery';
 import {Pick3DrawTime} from './models/pick3-draw-time';
+import {DrawTimeService} from './services/draw-time.service';
 
 @Injectable()
 
@@ -23,7 +24,8 @@ export class AppService {
     private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
     private pick3DrawTimes: Array<Pick3DrawTimeCard> = [];
 
-    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+    constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
+                private drawTimeService: DrawTimeService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.init();
     }
@@ -71,8 +73,16 @@ export class AppService {
                 dateTime: new Date().setHours(21, 30, 0, 0)
             })
         ];
+        const currentHour = new Date().getHours();
+        this.pick3DrawTimes.forEach(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
+            drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
+            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+            }
 
-        this.setPick3DrawDates();
+            this.setPick3DrawDates();
+        });
     }
 
     public getPick3DrawTimes(): Pick3DrawTimeCard[] {
@@ -132,4 +142,6 @@ export class AppService {
     public winningNumberHasBeenDrawn(pick3DrawTime: Pick3DrawTime): Boolean {
         return this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime);
     }
+
+
 }
