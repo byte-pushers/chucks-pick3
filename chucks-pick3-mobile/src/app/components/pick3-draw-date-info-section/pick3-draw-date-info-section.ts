@@ -66,7 +66,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
-        console.log(pick3DrawTime);
         this.setData(
             this.appService.getDrawState(),
             pick3DrawTime,
@@ -77,8 +76,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
-            currentPick3DrawTimeCard.setPick3DrawCardId(currentPick3DrawTimeCard.get)
-            if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
+
+            if (currentPick3DrawTimeCard.getPick3DrawCardId() ) {
                 this.setData(
                     this.appService.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
@@ -87,6 +86,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 );
                 this.drawTimeCard = currentPick3DrawTimeCard;
             }
+
         });
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
@@ -98,7 +98,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
                 this.appService.getPick3DrawTimes().splice(0, this.drawTimes.length, ...context.drawTimes.map(drawTime => ({...drawTime})));
-                console.log(this.appService.getPick3DrawTimes());
                 this.setData(
                     pick3DrawDateCard.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),

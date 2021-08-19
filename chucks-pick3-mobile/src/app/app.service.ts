@@ -76,11 +76,14 @@ export class AppService {
         const currentHour = new Date().getHours();
         this.pick3DrawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
-            drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
-            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+            const currentHour = new Date().getHours();
+            for (let i = this.pick3DrawTimes.length; i <= 7; i++) {
+                drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
+                if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+                    console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
+                    this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+                }
             }
-
             this.setPick3DrawDates();
         });
     }

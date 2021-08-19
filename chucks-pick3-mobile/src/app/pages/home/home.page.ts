@@ -43,15 +43,17 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit() {
-        registerLocaleData(localeEsMx, 'es-MX');
+        /* registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
         const currentHour = new Date().getHours();
         const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
         const drawTimes = this.appService.getPick3DrawTimes();
         drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
+            /* drawTime.setPick3DrawCardId(this.appService.getPick3DrawDateDecks().length);* * /
             drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
             if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+                console.log(`HomePage.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
             }
         });
@@ -63,7 +65,7 @@ export class HomePage implements OnInit {
             // currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
             drawTimes: drawTimes
         });
-        console.log(pick3DrawDateDecks.length);
+        console.log(pick3DrawDateDecks.length); */
     }
 
     async showPopover(ev: any) {
@@ -98,9 +100,9 @@ export class HomePage implements OnInit {
         });
     }
 
-    private getDrawTime(someDateTime: Date): Pick3DrawTime {
+   /* private getDrawTime(someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
-    }
+    }*/
 
     private randomlyMockDrawTimeCardStates(slideNumber: number): void {
         // Date that could be used for the checking the current, past and future slides
@@ -110,7 +112,7 @@ export class HomePage implements OnInit {
             drawTime.setDateTime(pick3DrawDateDecks[slideNumber - 1].getDrawDate());
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(slideNumber);
-
+            console.log(`HomePage.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
             this.drawTimeService.setCurrentDrawTimeCard(drawTime);
         });
     }

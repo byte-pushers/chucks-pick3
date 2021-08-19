@@ -19,14 +19,14 @@ export class ViewPicksCardComponent implements OnInit {
 
   ngOnInit() {
     this.componentState = 'initializing';
-    this.cardContextService.context$.subscribe(context => {
+    /*this.cardContextService.context$.subscribe(context => {
       this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
       if (this.componentState === 'initializing') {
         const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
-        console.log(currentDrawingTime);
+        console.log(`ViewPicksCardComponent.ngOnInit() method:about fire event[pick3DrawTimeSource]: currentDrawingTime: ${currentDrawingTime}`, currentDrawingTime);
         this.selectDrawingTimeCard(currentDrawingTime);
       }
-    });
+    });*/
     this.componentState = 'initialized';
   }
 
