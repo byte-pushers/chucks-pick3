@@ -80,7 +80,7 @@ export class AppService {
             for (let i = this.pick3DrawTimes.length; i <= 7; i++) {
                 drawTime.setPick3DrawTime(this.getDrawTime(drawTime.getDateTime()));
                 if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-                    console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
+                  /*  console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);*/
                     this.drawTimeService.setCurrentDrawTimeCard(drawTime);
                 }
             }

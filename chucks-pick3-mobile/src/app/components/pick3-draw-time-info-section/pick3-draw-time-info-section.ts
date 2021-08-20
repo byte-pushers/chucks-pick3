@@ -28,14 +28,12 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
         this.drawTimes = this.appService.getPick3DrawTimes();
     }
 
-    ngOnInit(): void { debugger;
+    ngOnInit(): void {
         this.drawTimes.forEach(drawTime => {
             drawTime.setPick3DrawCardId(this.id);
         }, this);
-        this.cardContextService.context$.subscribe(context => {
-        });
 
-
+        this.selectDrawingTimeCard(this.drawTimeService.currentDrawTimeCard);
     }
 
     ngOnDestroy(): void {

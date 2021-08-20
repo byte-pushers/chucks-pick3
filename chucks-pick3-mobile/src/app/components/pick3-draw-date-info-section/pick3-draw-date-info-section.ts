@@ -86,6 +86,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 );
                 this.drawTimeCard = currentPick3DrawTimeCard;
             }
+            this.selectDrawingTimeCard(currentPick3DrawTimeCard);
 
         });
         this.generateNavigation = this.drawStateService.generateNavigationChoice;

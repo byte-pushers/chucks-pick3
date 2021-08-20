@@ -21,6 +21,7 @@ import {AppService} from '../../app.service';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+    prevActiveIndex = 7;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
         drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
@@ -80,12 +81,21 @@ export class HomePage implements OnInit {
     }
 
     public initializePick3DrawDateCard(event: any): void {
+        let slideDirection = null;
         this.ionSlides.getActiveIndex().then(activeIndex => {
+            if (activeIndex < this.prevActiveIndex){
+                this.prevActiveIndex = activeIndex;
+                slideDirection = -1;
+            } else if (activeIndex >= this.prevActiveIndex){
+                this.prevActiveIndex = activeIndex;
+                slideDirection =  1;
+            }
+            // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
             // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
             const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-
-            this.randomlyMockDrawTimeCardStates(activeIndex + 1);
+      /*      console.log(`HomePage.initializePick3DrawDateCard() method activeIndex:${activeIndex}, (${activeIndex} + 1) = ${activeIndex + 1}`);*/
+            this.randomlyMockDrawTimeCardStates(activeIndex, slideDirection);
             this.cardContextService.addContext({
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
@@ -100,19 +110,36 @@ export class HomePage implements OnInit {
         });
     }
 
-   /* private getDrawTime(someDateTime: Date): Pick3DrawTime {
-        return this.pick3StateLottery.getDrawingTime(someDateTime);
-    }*/
+    checkActiveIndex(activeIndex) {
+        let slideDirection = null;
+        if (activeIndex < this.prevActiveIndex) {
+                this.prevActiveIndex = activeIndex;
+                return slideDirection = -1;
+            } else if (activeIndex >= this.prevActiveIndex) {
+                this.prevActiveIndex = activeIndex;
+                return  slideDirection = 1;
+            }
+    }
 
-    private randomlyMockDrawTimeCardStates(slideNumber: number): void {
+    /* private getDrawTime(someDateTime: Date): Pick3DrawTime {
+         return this.pick3StateLottery.getDrawingTime(someDateTime);
+     }*/
+    private randomlyMockDrawTimeCardStates(slideNumber: number, slide1Direction: number): void {
+        if (slideNumber === 6 || slideNumber === 7) {
+            slide1Direction = 0;
+        } else if (slideNumber === 0 || slideNumber === 1) {
+            slideNumber = 1;
+            slide1Direction = 0;
+        }
         // Date that could be used for the checking the current, past and future slides
         const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
         const drawTimes = this.appService.getPick3DrawTimes();
         drawTimes.forEach(drawTime => {
-            drawTime.setDateTime(pick3DrawDateDecks[slideNumber - 1].getDrawDate());
+           /* console.log(pick3DrawDateDecks[slideNumber + slide1Direction]);*/
+            drawTime.setDateTime(pick3DrawDateDecks[slideNumber + slide1Direction].getDrawDate());
             drawTime.setState(this.randomEnum(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum));
             drawTime.setPick3DrawCardId(slideNumber);
-            console.log(`HomePage.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
+            /*console.log(`HomePage.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);*/
             this.drawTimeService.setCurrentDrawTimeCard(drawTime);
         });
     }
