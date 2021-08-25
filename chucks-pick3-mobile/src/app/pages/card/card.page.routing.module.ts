@@ -125,7 +125,7 @@ const routes: Routes = [
                 component: Pick3DrawTimeInfoSection
             }
         ]
-    },
+    }/*,
     {
         path: 'view-picks',
         component: CardPage,
@@ -157,7 +157,7 @@ const routes: Routes = [
                 component: GeneratePicksCardComponent
             }
         ]
-    }
+    }*/
 ];
 
 @NgModule({

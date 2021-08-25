@@ -24,14 +24,14 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
                 private drawTimeService: DrawTimeService,
                 private drawDateService: DrawDateService,
                 private appService: AppService) {
-        /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
+
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
         this.drawTimes = this.appService.getPick3DrawTimes();
+        console.log("Pick3DrawTimeInfoSection() constructor. id: " + this.id);
     }
 
     ngOnInit(): void {
-
         console.log(this.drawTimes);
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
@@ -42,7 +42,7 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
                 drawTime.setState(currentPick3DrawTimeCard.getState());
                 drawTime.setSelected(currentPick3DrawTimeCard.getSelected());
             }, this);
-            if (currentPick3DrawTimeCard.getPick3DrawCardId()) {
+            if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
                 console.log(currentPick3DrawTimeCard.getDateTime());
                 this.selectDrawingTimeCard(currentPick3DrawTimeCard);
             }
@@ -68,13 +68,4 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
             }
         });
     }
-
-    private checkIdNumber() {
-        if (this.drawTimeService.currentDrawTimeCard.getPick3DrawCardId() === null) {
-            this.drawTimeService.currentDrawTimeCard.setPick3DrawCardId(this.id);
-        } else if (this.drawTimeService.currentDrawTimeCard.getPick3DrawCardId() === this.id) {
-            return;
-        }
-    }
-
 }

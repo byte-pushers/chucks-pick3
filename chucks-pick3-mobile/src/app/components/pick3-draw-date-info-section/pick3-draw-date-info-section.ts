@@ -15,7 +15,6 @@ import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {DrawTimeService} from '../../services/draw-time.service';
 import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
@@ -47,13 +46,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private router: Router,
                 public translate: I18nService,
                 public translateService: TranslateService,
-                public drawDateService: DrawDateService,
+                private drawDateService: DrawDateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private appService: AppService,
                 private popoverController: PopoverController) {
-        /*console.log('Pick3DrawDateInfoSection() constructor.');*/
+
         this.id = ++Pick3DrawDateInfoSection.counter;
         this.defaultDrawTimeCard = this.appService.getPick3DrawTimes()[0];
+        console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
     }
 
     ngOnDestroy(): void {
@@ -93,20 +93,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextService.context$.subscribe(context => {
-            /*console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);*/
+            console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
 
             if (context) {
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
-                this.appService.getPick3DrawTimes().splice(0, this.drawTimes.length, ...context.drawTimes.map(drawTime => ({...drawTime})));
                 this.setData(
                     pick3DrawDateCard.getDrawState(),
                     currentPick3DrawTimeCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
                     currentPick3DrawTimeCard.getIcon()
                 );
-
             }
         });
     }
