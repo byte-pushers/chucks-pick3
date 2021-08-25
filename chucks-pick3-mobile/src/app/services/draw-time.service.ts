@@ -17,7 +17,6 @@ export class DrawTimeService {
     }
 
     public setCurrentDrawTimeCard(someDrawTimeCard: Pick3DrawTimeCard) {
-        console.log(someDrawTimeCard);
         this.currentDrawTimeCard = someDrawTimeCard;
         this.pick3DrawTimeSource.next(this.currentDrawTimeCard);
     }

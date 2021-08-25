@@ -14,4 +14,7 @@ export interface Pick3DrawDateCardProperties {
     winningNumberDigit2?: number;
     winningNumberDigit3?: number;
     icon: string;
+    slideNumber: number;
+    slideName: string;
+    defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
 }

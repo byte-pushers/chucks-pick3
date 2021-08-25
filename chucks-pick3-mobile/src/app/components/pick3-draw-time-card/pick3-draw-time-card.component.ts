@@ -14,7 +14,7 @@ import {DrawTimeService} from "../../services/draw-time.service";
     styleUrls: ['./pick3-draw-time-card.component.scss'],
 })
 export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
-    @Input() data: Pick3DrawTimeCard = this.drawTimeService.currentDrawTimeCard;
+    @Input() data: Pick3DrawTimeCard;
     oldData: Pick3DrawTimeCard = new Pick3DrawTimeCardDomain(null);
     changelog: string[] = [];
     drawingTimeCardColorIndicators = {
