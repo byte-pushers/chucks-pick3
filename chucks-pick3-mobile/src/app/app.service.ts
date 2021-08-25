@@ -73,8 +73,6 @@ export class AppService {
                 dateTime: new Date().setHours(21, 30, 0, 0)
             })
         ];
-
-        /**/
     }
 
     public getPick3DrawTimes(slideNumber?:number): Pick3DrawTimeCard[] {

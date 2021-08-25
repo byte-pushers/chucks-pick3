@@ -79,7 +79,7 @@ export class HomePage implements OnInit {
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
                 // currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
-                drawTimes: this.appService.getPick3DrawTimes()
+                drawTimes: this.appService.getPick3DrawTimes(activeIndex + 1)
             });
         });
     }

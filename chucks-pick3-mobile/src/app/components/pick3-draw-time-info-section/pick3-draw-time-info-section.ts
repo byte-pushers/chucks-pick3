@@ -27,7 +27,7 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
-        this.drawTimes = this.appService.getPick3DrawTimes();
+        this.drawTimes = this.appService.getPick3DrawTimes(this.id);
         console.log("Pick3DrawTimeInfoSection() constructor. id: " + this.id);
     }
 
