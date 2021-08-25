@@ -20,6 +20,7 @@ import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
+import {DrawDateService} from '../../services/draw-date.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -46,7 +47,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private router: Router,
                 public translate: I18nService,
                 public translateService: TranslateService,
-                public drawTimeService: DrawTimeService,
+                public drawDateService: DrawDateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private appService: AppService,
                 private popoverController: PopoverController) {
@@ -75,18 +76,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-        this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+        this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
 
-            if (currentPick3DrawTimeCard.getPick3DrawCardId() ) {
+            if (currentPick3DrawDateCard.getPick3DrawCardId() ) {
                 this.setData(
                     this.appService.getDrawState(),
-                    currentPick3DrawTimeCard.getPick3DrawTime(),
+                    currentPick3DrawDateCard.getPick3DrawTime(),
                     this.appService.getBackgroundImageUrl(),
-                    currentPick3DrawTimeCard.getIcon()
+                    currentPick3DrawDateCard.getIcon()
                 );
-                this.drawTimeCard = currentPick3DrawTimeCard;
+                this.drawTimeCard = currentPick3DrawDateCard;
             }
-            this.selectDrawingTimeCard(currentPick3DrawTimeCard);
+            this.selectDrawingTimeCard(currentPick3DrawDateCard);
 
         });
         this.generateNavigation = this.drawStateService.generateNavigationChoice;

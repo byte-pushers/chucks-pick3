@@ -13,6 +13,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {AppService} from '../../app.service';
+import {DrawDateService} from '../../services/draw-date.service';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class HomePage implements OnInit {
                 private popoverController: PopoverController,
                 public translateService: TranslateService,
                 private drawTimeService: DrawTimeService,
+                private drawDateService: DrawDateService,
                 private appService: AppService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -141,6 +143,7 @@ export class HomePage implements OnInit {
             drawTime.setPick3DrawCardId(slideNumber);
             /*console.log(`HomePage.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);*/
             this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+            this.drawDateService.setCurrentDrawDateCard(drawTime);
         });
     }
 
