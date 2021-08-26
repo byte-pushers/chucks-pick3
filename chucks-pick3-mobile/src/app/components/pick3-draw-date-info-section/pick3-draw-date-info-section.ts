@@ -66,12 +66,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
+
         this.setData(
             this.appService.getDrawState(),
             pick3DrawTime,
             this.appService.getBackgroundImageUrl(),
             this.getCurrentDrawTimeIcon(pick3DrawTime)
         );
+
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
@@ -87,9 +89,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 );
                 this.drawTimeCard = currentPick3DrawDateCard;
             }
-
-            //this.selectDrawingTimeCard(currentPick3DrawDateCard);
-
         });
 
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
@@ -166,20 +165,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 drawTime.setSelected(false);
             }
         });
-    }
-
-    public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        const pick3DrawTime: Pick3DrawTime = this.appService.getDrawingTimeByName(Pick3DrawTimeEnum.toString(pick3DrawTimeCard.getDrawTime()).toUpperCase());
-        this.data.setIcon(pick3DrawTimeCard.getIcon());
-        this.appService.getPick3DrawTimes(this.id).forEach(drawTime => {
-            if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
-                drawTime.setSelected(false);
-            } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
-                drawTime.setSelected(true);
-            }
-        });
-
-        this.setData(this.appService.getDrawState(), pick3DrawTime, this.appService.getBackgroundImageUrl(), pick3DrawTimeCard.getIcon());
     }
 
     private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {

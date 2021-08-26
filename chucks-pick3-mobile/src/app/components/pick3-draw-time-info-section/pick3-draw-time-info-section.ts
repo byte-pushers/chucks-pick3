@@ -55,17 +55,13 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log('being selected');
-        console.log(pick3DrawTimeCard.getDateTime());
         this.drawTimes.forEach(drawTime => {
             console.log(pick3DrawTimeCard.getDateTime());
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
-             /*   console.log(`false`);
-                console.log(`Pick3DrawTimeInfoSection.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);*/
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-                this.drawDateService.setCurrentDrawDateCard(pick3DrawTimeCard);
+                this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
             }
         });
     }
