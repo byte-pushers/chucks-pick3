@@ -133,14 +133,14 @@ export class AppService {
                 slideDate.setDate(slideDate.getDate() - 6);
                 break;
             default:
-                throw `SlideNumber: '${slideNumber}' not supported.`
+                throw `SlideNumber: '${slideNumber}' not supported.`;
         }
 
         return slideDate;
     }
 
     public getPick3DrawDateCard(cardNumber: number): Pick3DrawDateCard {
-        return this.pick3DrawDateDecks.find(pick3DrawDateDeck => pick3DrawDateDeck.slideNumber === (cardNumber-1));
+        return this.pick3DrawDateDecks.find(pick3DrawDateDeck => pick3DrawDateDeck.slideNumber === (cardNumber - 1));
     }
 
     public getBackgroundImageUrl(): string {
