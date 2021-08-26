@@ -90,6 +90,8 @@ export class AppService {
                 someDrawTime.getDateTime().setDate(slideDate.getDate());
                 someDrawTime.getDateTime().setMonth(slideDate.getMonth());
                 someDrawTime.getDateTime().setFullYear(slideDate.getFullYear());
+
+                drawTime.setPick3DrawCardId(slideNumber);
             }
 
             drawTime.setPick3DrawTime(someDrawTime);
@@ -140,7 +142,7 @@ export class AppService {
     }
 
     public getPick3DrawDateCard(cardNumber: number): Pick3DrawDateCard {
-        return this.pick3DrawDateDecks.find(pick3DrawDateDeck => pick3DrawDateDeck.slideNumber === (cardNumber - 1));
+        return this.pick3DrawDateDecks.find(pick3DrawDateDeck => pick3DrawDateDeck.slideNumber === (cardNumber));
     }
 
     public getBackgroundImageUrl(): string {

@@ -3,13 +3,7 @@ import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {IonSlides, PopoverController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {registerLocaleData} from '@angular/common';
-import localeEsMx from '@angular/common/locales/es-MX';
-import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import {CardContextService} from '../../services/card-context.service';
-import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {Pick3DrawTime} from '../../models/pick3-draw-time';
-import {DrawTimeService} from '../../services/draw-time.service';
 import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {AppService} from '../../app.service';
@@ -37,7 +31,6 @@ export class HomePage implements OnInit {
     constructor(private cardContextService: CardContextService,
                 private popoverController: PopoverController,
                 public translateService: TranslateService,
-                private drawTimeService: DrawTimeService,
                 private drawDateService: DrawDateService,
                 private appService: AppService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
@@ -78,8 +71,7 @@ export class HomePage implements OnInit {
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
-                // currentDrawDateTime: this.drawTimeService.getCurrentDrawTimeCard().getDrawTime(),
-                drawTimes: this.appService.getPick3DrawTimes(activeIndex)
+                drawTimes: this.appService.getPick3DrawTimes(activeIndex + 1)
             });
         });
     }

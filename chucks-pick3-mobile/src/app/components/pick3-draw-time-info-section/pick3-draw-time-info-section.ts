@@ -35,14 +35,15 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
         console.log(this.drawTimes);
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
-            this.drawTimes.forEach(drawTime => {
-                drawTime.setPick3DrawCardId(this.id);
-                drawTime.setPick3DrawTime(currentPick3DrawTimeCard.getPick3DrawTime());
-                drawTime.setDateTime(currentPick3DrawTimeCard.getDateTime());
-                drawTime.setState(currentPick3DrawTimeCard.getState());
-                drawTime.setSelected(currentPick3DrawTimeCard.getSelected());
-            }, this);
-            if (currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
+            if (currentPick3DrawTimeCard && currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
+                this.drawTimes.forEach(drawTime => {
+                    drawTime.setPick3DrawCardId(this.id);
+                    drawTime.setPick3DrawTime(currentPick3DrawTimeCard.getPick3DrawTime());
+                    drawTime.setDateTime(currentPick3DrawTimeCard.getDateTime());
+                    drawTime.setState(currentPick3DrawTimeCard.getState());
+                    drawTime.setSelected(currentPick3DrawTimeCard.getSelected());
+                }, this);
+
                 console.log(currentPick3DrawTimeCard.getDateTime());
                 this.selectDrawingTimeCard(currentPick3DrawTimeCard);
             }
