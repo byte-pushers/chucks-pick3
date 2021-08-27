@@ -1,6 +1,6 @@
 {
   "/txPick3": {
-    "target": "https://www.txlottery.org",
+    "target": "https://www.txlottery.com",
     "secure": true,
     "logLevel": "debug",
     "changeOrigin": true,
