@@ -129,7 +129,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
         this.data.setDrawTime(pick3DrawTime.getType());
-        this.data.setDrawDate(pick3DrawTime.getDateTime());
+        this.data.setDrawDate(new Date(pick3DrawTime.getDateTime()));
         this.data.setIcon(drawTimeIcon);
 
         if (this.appService.winningNumberHasBeenDrawn(pick3DrawTime)/* && this.appService.getNextDrawingTime(pick3DrawTime)*/) {
