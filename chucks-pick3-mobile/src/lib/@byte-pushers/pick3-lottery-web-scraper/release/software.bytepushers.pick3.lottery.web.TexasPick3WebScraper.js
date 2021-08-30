@@ -9,7 +9,7 @@ var DrawingYearNotAvailableException = require('./software.bytepushers.pick3.lot
 
 function TexasPick3WebScraper(TxPick3WebScraperConfig) {
     'use strict';
-    
+
     TexasPick3WebScraper.prototype.superclass.apply(this, [TxPick3WebScraperConfig]);
     var $ = this.getPageReader(),
         self = this;
@@ -94,7 +94,10 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
 
         // Iterate over the td elements and separate them into morning, day, evening, and night buckets
         // based on the column the element lies in.
-        tdElements.each(function (ignore, $tdElement) {
+        /**
+         Old legacy html format here.  Since then they have simplied their html format.
+
+         tdElements.each(function (ignore, $tdElement) {
             if ($tdElement.attribs && $tdElement.attribs.colspan) {
                 columnCount += parseInt($tdElement.attribs.colspan);
             } else {
@@ -110,7 +113,12 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
             } else if (14 <= columnCount && columnCount <= 16) {
                 result.nightTdElements.push($tdElement);
             }
-        });
+        });*/
+
+        result.morningTdElements.push(tdElements[1]);
+        result.dayTdElements.push(tdElements[3]);
+        result.eveningTdElements.push(tdElements[5]);
+        result.nightTdElements.push(tdElements[7]);
 
         return result;
     }
@@ -118,39 +126,39 @@ function TexasPick3WebScraper(TxPick3WebScraperConfig) {
     function scrapeWinningNumber(parsedDrawDateSection) {
         var num1, num2, num3, winningNumber;
 
-        if (parsedDrawDateSection.length !== 3) {
-            throw new DrawingTimeNotFoundException(self.getDrawingTime(), self.getDrawingDate());
-        }
-
-        num1 = (parsedDrawDateSection[0] &&
+        if (parsedDrawDateSection.length === 3 || parsedDrawDateSection.length === 1) {
+            num1 = (parsedDrawDateSection[0] &&
                 parsedDrawDateSection[0].children[0] &&
                 parsedDrawDateSection[0].children[0].data) ?
-            trimForNumbersOnly(parsedDrawDateSection[0].children[0].data) : (parsedDrawDateSection[0] && parsedDrawDateSection[0].innerText) ? trimForNumbersOnly(parsedDrawDateSection[0].innerText) : null;
+                trimForNumbersOnly(parsedDrawDateSection[0].children[0].data) : (parsedDrawDateSection[0] && parsedDrawDateSection[0].innerText) ? trimForNumbersOnly(parsedDrawDateSection[0].innerText) : null;
 
 
-        if (num1.length === 1) {
-            num2 = (parsedDrawDateSection[1] &&
-                parsedDrawDateSection[1].children[0] &&
-                parsedDrawDateSection[1].children[0].data) ?
-                trimForNumbersOnly(parsedDrawDateSection[1].children[0].data) : (parsedDrawDateSection[1] && parsedDrawDateSection[1].innerText) ? trimForNumbersOnly(parsedDrawDateSection[1].innerText) : null;
-            num3 = (parsedDrawDateSection[2] &&
-                parsedDrawDateSection[2].children[0] &&
-                parsedDrawDateSection[2].children[0].data) ?
-                trimForNumbersOnly(parsedDrawDateSection[2].children[0].data) : (parsedDrawDateSection[2] && parsedDrawDateSection[2].innerText) ? trimForNumbersOnly(parsedDrawDateSection[2].innerText) : null;
+            if (num1.length === 1) {
+                num2 = (parsedDrawDateSection[1] &&
+                    parsedDrawDateSection[1].children[0] &&
+                    parsedDrawDateSection[1].children[0].data) ?
+                    trimForNumbersOnly(parsedDrawDateSection[1].children[0].data) : (parsedDrawDateSection[1] && parsedDrawDateSection[1].innerText) ? trimForNumbersOnly(parsedDrawDateSection[1].innerText) : null;
+                num3 = (parsedDrawDateSection[2] &&
+                    parsedDrawDateSection[2].children[0] &&
+                    parsedDrawDateSection[2].children[0].data) ?
+                    trimForNumbersOnly(parsedDrawDateSection[2].children[0].data) : (parsedDrawDateSection[2] && parsedDrawDateSection[2].innerText) ? trimForNumbersOnly(parsedDrawDateSection[2].innerText) : null;
 
-            if (num1 && num2 && num3) {
-                winningNumber = 100 * num1 + 10 * num2 + 1 * num3;
-            } else {
-                console.error("Could not convert number: num1: " + num1 + ", num2: " + num2 + ", num3: " + num3);
-                throw new WinningNumberNotFoundException(num1, num2, num3);
+                if (num1 && num2 && num3) {
+                    winningNumber = 100 * num1 + 10 * num2 + 1 * num3;
+                } else {
+                    console.error("Could not convert number: num1: " + num1 + ", num2: " + num2 + ", num3: " + num3);
+                    throw new WinningNumberNotFoundException(num1, num2, num3);
+                }
+            } else if (num1.length === 3) {
+                try {
+                    winningNumber = parseInt(num1, 10);
+                } catch(e) {
+                    console.error("Could not convert number: num1:" + num1 + " into a number.");
+                    throw new WinningNumberNotFoundException(num1, num2, num3);
+                }
             }
-        } else if (num1.length === 3) {
-            try {
-                winningNumber = parseInt(num1, 10);
-            } catch(e) {
-                console.error("Could not convert number: num1:" + num1 + " into a number.");
-                throw new WinningNumberNotFoundException(num1, num2, num3);
-            }
+        } else {
+            throw new DrawingTimeNotFoundException(self.getDrawingTime(), self.getDrawingDate());
         }
 
         return winningNumber;
