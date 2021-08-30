@@ -27,12 +27,22 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
-        this.drawTimes = this.appService.getPick3DrawTimes(this.id);
+        this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
         console.log("Pick3DrawTimeInfoSection() constructor. id: " + this.id);
     }
 
     ngOnInit(): void {
+        const currentHour = new Date().getHours();
+
         console.log(this.drawTimes);
+
+        this.drawTimes.forEach(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
+            drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
+            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+                this.selectDrawingTimeCard(drawTime);
+            }
+        });
 
         this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
             if (currentPick3DrawTimeCard && currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
@@ -61,7 +71,10 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
+                // pick3DrawTimeCard.showCountDownToDrawing = false;
+
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
+
             }
         });
     }

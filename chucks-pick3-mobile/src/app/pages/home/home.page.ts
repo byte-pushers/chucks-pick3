@@ -71,7 +71,7 @@ export class HomePage implements OnInit {
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
                 defaultDrawDateTime: this.default.drawDateTime,
-                drawTimes: this.appService.getPick3DrawTimes(activeIndex + 1)
+                drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1)
             });
         });
     }

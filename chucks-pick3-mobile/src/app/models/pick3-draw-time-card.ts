@@ -20,6 +20,8 @@ export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
     setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
     getSelected(): boolean;
     setSelected(selected: boolean): void;
+    getShowCountDownToDrawing(): boolean;
+    setShowCountDownToDrawing(showCountDownToDrawing: boolean): void;
     getDateTime(): Date;
     setDateTime(dateTime: Date): void;
     compareTo(pick3DrawDateCard: Pick3DrawDateCard): number;

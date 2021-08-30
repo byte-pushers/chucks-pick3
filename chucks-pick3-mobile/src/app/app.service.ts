@@ -22,7 +22,7 @@ export class AppService {
     private card6: Pick3DrawDateCard;
     private card7: Pick3DrawDateCard;
     private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
-    private pick3DrawTimes: Array<Pick3DrawTimeCard> = [];
+    private pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private drawTimeService: DrawTimeService) {
@@ -47,38 +47,42 @@ export class AppService {
             this.card6,
             this.card7
         ];
-        this.pick3DrawTimes = [
+        this.pick3DrawTimeCards = [
             new Pick3DrawTimeCardDomain({
                 title: 'draw.time.enum.morning',
                 drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
                 icon: 'morning-icon',
-                dateTime: new Date().setHours(7, 15, 0, 0)
+                dateTime: new Date().setHours(7, 15, 0, 0),
+                showCountDownToDrawing: false
             }),
             new Pick3DrawTimeCardDomain({
                 title: 'draw.time.enum.day',
                 drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
                 icon: 'day-icon',
-                dateTime: new Date().setHours(11, 45, 0, 0)
+                dateTime: new Date().setHours(11, 45, 0, 0),
+                showCountDownToDrawing: false
             }),
             new Pick3DrawTimeCardDomain({
                 title: 'draw.time.enum.evening',
                 drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
                 icon: 'evening-icon',
-                dateTime: new Date().setHours(17, 15, 0, 0)
+                dateTime: new Date().setHours(17, 15, 0, 0),
+                showCountDownToDrawing: false
             }),
             new Pick3DrawTimeCardDomain({
                 title: 'draw.time.enum.night',
                 drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
                 icon: 'night-icon',
-                dateTime: new Date().setHours(21, 30, 0, 0)
+                dateTime: new Date().setHours(21, 30, 0, 0),
+                showCountDownToDrawing: false
             })
         ];
     }
 
-    public getPick3DrawTimes(slideNumber?:number): Pick3DrawTimeCard[] {
-        const pick3DrawTimes = this.pick3DrawTimes.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
+    public getPick3DrawTimeCards(slideNumber?:number): Pick3DrawTimeCard[] {
+        const pick3DrawTimes = this.pick3DrawTimeCards.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
 
-        const currentHour = new Date().getHours();
+        // const currentHour = new Date().getHours();
         pick3DrawTimes.forEach((drawTime, drawTimeIndex) => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             const currentHour = new Date().getHours();
@@ -104,6 +108,21 @@ export class AppService {
         });
 
         return pick3DrawTimes;
+    }
+
+    public getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime: Pick3DrawTime): Pick3DrawTimeCard {
+        const pick3DrawTimeCards = this.pick3DrawTimeCards.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
+
+        // const currentHour = new Date().getHours();
+        const pick3DrawTimeCard = pick3DrawTimeCards.find(pick3DrawTimeCard =>
+            Pick3DrawTimeEnum.getPropertyKey(pick3DrawTimeCard.getDrawTime()) === Pick3DrawTimeEnum.getPropertyKey(pick3DrawTime.getType()) &&
+            pick3DrawTimeCard.getDateTime().getHours() === pick3DrawTime.getDateTime().getHours() &&
+            pick3DrawTimeCard.getDateTime().getMinutes() === pick3DrawTime.getDateTime().getMinutes() &&
+            pick3DrawTimeCard.getDateTime().getSeconds() === pick3DrawTime.getDateTime().getSeconds());
+
+        pick3DrawTimeCard.setPick3DrawTime(pick3DrawTime);
+
+        return pick3DrawTimeCard;
     }
 
     public getPick3DrawDateDecks(): Pick3DrawDateCard[] {
@@ -156,6 +175,7 @@ export class AppService {
     public getDrawTime(someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
     }
+
 
     public getDrawState(): string {
         return this.pick3StateLottery.getState();

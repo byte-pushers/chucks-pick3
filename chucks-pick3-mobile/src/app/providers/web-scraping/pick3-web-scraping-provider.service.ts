@@ -1,4 +1,3 @@
-import * as $ from 'jquery';
 import { Injectable } from '@angular/core';
 import { TX_PICK3_URL } from 'src/app/app.config';
 import { DrawingResult} from 'src/app/models/drawing-result';
@@ -8,41 +7,12 @@ import { Pick3WebScrapingInterfaceService } from './pick3-web-scraping-interface
 import { Pick3StateLottery } from '../../models/pick3-state-lottery';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
 import { Pick3DrawTimeEnum } from "../../models/pick3-draw-time.enum";
+import {PageReader} from "./page.reader";
 
 @Injectable()
 export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService implements Pick3WebScrapingInterfaceService{
   private service: any;
-  private jQuery = $;
-  private $html = null;
-  private pageReader = {
-    getPreviouslyReadHtml: (): any => {
-      return this.$html;
-    },
-    read: (html): any => {
-      html = html.replace(/<img[^>]*>/g, '');
-      this.$html = this.jQuery(html);
-      return this.$html;
-    },
-    read2: (html): any => {
-      const jq = this.jQuery;
-      html = html.replace(/<img[^>]*>/g, '');
-      const r = this.jQuery(html).find('#LastDraw');
-      /*this.jQuery(html).each((a, b) => {
-        if (b.localName === "table") {
-          r = jq(b);
-          // console.log("a: " + a + ", b: " + b)
-        }
-      });*/
-      /*this.jQuery(html).each(data.items, function(item){
-        $("<li/>").value().appendTo("#data");
-      });*/
-      this.$html = r;
-      return this.$html;
-    },
-    get: (): any => {
-      return this.jQuery;
-    }
-  };
+  private pageReader = new PageReader();
 
   constructor(private pick3LotteryService: Pick3LotteryService) {
     super();
