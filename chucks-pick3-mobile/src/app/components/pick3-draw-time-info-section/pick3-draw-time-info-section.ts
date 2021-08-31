@@ -5,6 +5,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
+import {DrawDateService} from '../../services/draw-date.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -21,19 +22,42 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
                 private drawTimeService: DrawTimeService,
+                private drawDateService: DrawDateService,
                 private appService: AppService) {
-        /*console.log("Pick3DrawTimeInfoSection() constructor.");*/
+
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.id = ++Pick3DrawTimeInfoSection.counter;
-        this.drawTimes = this.appService.getPick3DrawTimes();
+        this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
+        console.log("Pick3DrawTimeInfoSection() constructor. id: " + this.id);
     }
 
     ngOnInit(): void {
-        this.drawTimes.forEach(drawTime => {
-            drawTime.setPick3DrawCardId(this.id);
-        }, this);
+        const currentHour = new Date().getHours();
 
-        this.selectDrawingTimeCard(this.drawTimeService.currentDrawTimeCard);
+        console.log(this.drawTimes);
+
+        this.drawTimes.forEach(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
+            drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
+            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+                this.selectDrawingTimeCard(drawTime);
+            }
+        });
+
+        this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+            if (currentPick3DrawTimeCard && currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
+                this.drawTimes.forEach(drawTime => {
+                    drawTime.setPick3DrawCardId(this.id);
+                    drawTime.setPick3DrawTime(currentPick3DrawTimeCard.getPick3DrawTime());
+                    drawTime.setDateTime(currentPick3DrawTimeCard.getDateTime());
+                    drawTime.setState(currentPick3DrawTimeCard.getState());
+                    drawTime.setSelected(currentPick3DrawTimeCard.getSelected());
+                }, this);
+
+                console.log(currentPick3DrawTimeCard.getDateTime());
+                this.selectDrawingTimeCard(currentPick3DrawTimeCard);
+            }
+        });
     }
 
     ngOnDestroy(): void {
@@ -41,26 +65,17 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log('being selected');
         this.drawTimes.forEach(drawTime => {
+            console.log(pick3DrawTimeCard.getDateTime());
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
-                console.log(`false`);
-                console.log(`Pick3DrawTimeInfoSection.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-                console.log(`Pick3DrawTimeInfoSection.ngOnInit() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
-                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+                // pick3DrawTimeCard.showCountDownToDrawing = false;
+
+                this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
+
             }
         });
     }
-
-    private checkIdNumber() {
-        if (this.drawTimeService.currentDrawTimeCard.getPick3DrawCardId() === null) {
-            this.drawTimeService.currentDrawTimeCard.setPick3DrawCardId(this.id);
-        } else if (this.drawTimeService.currentDrawTimeCard.getPick3DrawCardId() === this.id) {
-            return;
-        }
-    }
-
 }

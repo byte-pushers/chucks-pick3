@@ -14,7 +14,8 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         dateTime: null,
         drawTime: null,
         state: null,
-        selected: false
+        selected: false,
+        showCountDownToDrawing: true
     };
 
     // tslint:disable-next-line:variable-name
@@ -33,6 +34,8 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private _state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     // tslint:disable-next-line:variable-name
     private _selected: boolean;
+    // tslint:disable-next-line:variable-name
+    private _showCountDownToDrawing: boolean;
 
     constructor(config: any) {
         this._icon = (config) ? config.icon : null;
@@ -47,7 +50,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this._dateTime = (config) ? (Object.isDate(config.dateTime)) ? config.dateTime : new Date(config.dateTime) : null;
         this._pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
         this._pick3DrawTime = (config) ? Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null : null;
-
+        this._showCountDownToDrawing = (config) ? (typeof config.showCountDownToDrawing === 'boolean') ? config.showCountDownToDrawing : true : true;
     }
 
     set pick3DrawCardId(pick3DrawCardId: number) {
@@ -192,6 +195,22 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         }
 
         this._drawTime = dt;
+    }
+
+    get showCountDownToDrawing(): boolean {
+        return this._showCountDownToDrawing;
+    }
+
+    set showCountDownToDrawing(showCountDownToDrawing: boolean) {
+        this._showCountDownToDrawing = showCountDownToDrawing;
+    }
+
+    getShowCountDownToDrawing(): boolean {
+        return this._showCountDownToDrawing;
+    }
+
+    setShowCountDownToDrawing(showCountDownToDrawing: boolean): void {
+        this._showCountDownToDrawing = showCountDownToDrawing;
     }
 
     get selected(): boolean {

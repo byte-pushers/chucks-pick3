@@ -9,4 +9,5 @@ export interface Pick3DrawTimeCardProperties {
     drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum;
     selected: boolean;
+    showCountDownToDrawing: boolean;
 }
