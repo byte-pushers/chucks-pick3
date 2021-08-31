@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TX_PICK3_URL } from 'src/app/app.config';
 import { DrawingResult} from 'src/app/models/drawing-result';
 import { Pick3WebScrapingBaseService } from './pick3-web-scraping-base.service';
-import { Pick3LotteryWebScrapingService } from '@byte-pushers/pick3-lottery-web-scraper';
+import { Pick3LotteryWebScrapingService } from '@byte-pushers/pick3-lottery-web-scraper/release';
 import { Pick3WebScrapingInterfaceService } from './pick3-web-scraping-interface.service';
 import { Pick3StateLottery } from '../../models/pick3-state-lottery';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
