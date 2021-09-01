@@ -20,6 +20,7 @@ import {LanguagePopoverComponent} from '../language-popover/language-popover.com
 import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
+import {Subscription} from 'rxjs';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -38,6 +39,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public drawTimeCard: Pick3DrawTimeCard;
     public generateNavigation: any;
     public viewNavigation: any;
+    private drawDateSubscription: Subscription;
+    private cardContextSubscription: Subscription;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -60,6 +63,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.appService = null;
+        this.drawDateSubscription?.unsubscribe();
+        this.cardContextSubscription?.unsubscribe();
     }
 
 
@@ -78,7 +83,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
-        this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+        this.drawDateSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
 
             if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
@@ -95,7 +100,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
-        this.cardContextService.context$.subscribe(context => {
+       this.cardContextSubscription =  this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
                 console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
