@@ -141,7 +141,7 @@ const routes: Routes = [
                 component: ViewPicksCardComponent
             }
         ]
-    },
+    }*/ ,
     {
         path: 'generate-picks',
         component: CardPage,
@@ -157,7 +157,7 @@ const routes: Routes = [
                 component: GeneratePicksCardComponent
             }
         ]
-    }*/
+    }
 ];
 
 @NgModule({

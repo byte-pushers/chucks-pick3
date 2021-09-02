@@ -14,10 +14,6 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
-  },
-  {
-    path: 'generate-picks',
-    loadChildren: () => import('./pages/generate/generate.module').then(m => m.GeneratePageModule)
   }
 ];
 
