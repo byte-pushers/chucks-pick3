@@ -16,8 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
-    path: 'select-picks',
-    loadChildren: () => import('./pages/generate/generate.module').then(m => m.GeneratePageModule)
+    path: 'select',
+    redirectTo: 'select-picks',
+    pathMatch: 'full'
+    //loadChildren: () => import('./pages/generate/generate.page.module').then(m => m.GeneratePageModule)
   }
 ];
 

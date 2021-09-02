@@ -80,7 +80,7 @@
         <ion-icon
                 (click)="showBackButton(2);"
                 *ngSwitchCase="1"
-                [routerLink]="['/','select-picks']"
+                [routerLink]="['/','select']"
                 [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
                 subContent: this.generateNavigation
                 }"
@@ -99,7 +99,7 @@
         <ion-icon
                 (click)="showBackButton(2);"
                 *ngSwitchDefault
-                [routerLink]="['/','select-picks']"
+                [routerLink]="['/','select']"
                 [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
                 subContent: this.generateNavigation
                 }"
