@@ -54,7 +54,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private popoverController: PopoverController) {
 
         this.id = ++Pick3DrawDateInfoSection.counter;
-        this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
+
+        try {
+            this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
+        } catch (error) {
+            if (this.id >= 1 && this.id <= 7) {
+                throw error;
+            }
+        }
         console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
     }
 
@@ -155,27 +162,41 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
-        const pick3DrawTimeCard: Pick3DrawTimeCard = this.appService.getPick3DrawTimeCards(this.id).find(drawTime => {
-            // TODO We need to convert what is coming from scraper to the real enum
-            // TODO Then we want to use drawTime.toString DAY Day
-            const drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
+        let pick3DrawTimeCard: Pick3DrawTimeCard;
 
-            if (drawTimeValue === Pick3DrawTimeEnum.toString(pick3DrawTime.getType())) {
-                return true;
+        try {
+            pick3DrawTimeCard = this.appService.getPick3DrawTimeCards(this.id).find(drawTime => {
+                // TODO We need to convert what is coming from scraper to the real enum
+                // TODO Then we want to use drawTime.toString DAY Day
+                const drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
+
+                if (drawTimeValue === Pick3DrawTimeEnum.toString(pick3DrawTime.getType())) {
+                    return true;
+                }
+            });
+        } catch (error) {
+            if (this.id >= 1 && this.id <= 7) {
+                throw error;
             }
-        });
+        }
         return (pick3DrawTimeCard === null || pick3DrawTimeCard === undefined) ? null : pick3DrawTimeCard.getIcon();
     }
 
     private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum) {
-        this.appService.getPick3DrawTimeCards(this.id).forEach((drawTime, drawTimeIndex, drawTimeArray) => {
-            if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
-                drawTime.setSelected(true);
-                drawTime.setState(pick3DrawTimeCardStateEnum);
-            } else {
-                drawTime.setSelected(false);
+        try {
+            this.appService.getPick3DrawTimeCards(this.id).forEach((drawTime, drawTimeIndex, drawTimeArray) => {
+                if (drawTime.getDrawTime() === pick3DrawDateCard.getDrawTime()) {
+                    drawTime.setSelected(true);
+                    drawTime.setState(pick3DrawTimeCardStateEnum);
+                } else {
+                    drawTime.setSelected(false);
+                }
+            });
+        } catch (error) {
+            if (this.id >= 1 && this.id <= 7) {
+                throw error;
             }
-        });
+        }
     }
 
     private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
@@ -218,11 +239,19 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             p3dtt = pick3DrawTimeType;
         }
 
-        const selectedPick3DrawTime = this.appService.getPick3DrawTimeCards(this.id).find(drawTime => {
-            if (drawTime.getDrawTime() === p3dtt) {
-                return drawTime;
+        let selectedPick3DrawTime;
+
+        try {
+            selectedPick3DrawTime = this.appService.getPick3DrawTimeCards(this.id).find(drawTime => {
+                if (drawTime.getDrawTime() === p3dtt) {
+                    return drawTime;
+                }
+            });
+        } catch (error) {
+            if (this.id >= 1 && this.id <= 7) {
+                throw error;
             }
-        });
+        }
 
         this.data.setWinningNumber(drawingResult?.drawResult);
 

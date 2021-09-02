@@ -14,7 +14,7 @@ export class GeneratePage implements OnInit {
   }
 
   ngOnInit() {
-    console.info("GeneratePage.Inside ngOnInit() method.")
+    console.info("GeneratePage.ngOnInit() method: Inside ngOnInit() method.")
   }
   async showPopover(ev: any) {
     const popover = await this.popoverController.create({
