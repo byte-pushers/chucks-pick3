@@ -34,8 +34,6 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     ngOnInit(): void {
         const currentHour = new Date().getHours();
 
-        console.log(this.drawTimes);
-
         this.drawTimes.forEach(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
@@ -54,7 +52,6 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
                     drawTime.setSelected(currentPick3DrawTimeCard.getSelected());
                 }, this);
 
-                console.log(currentPick3DrawTimeCard.getDateTime());
                 this.selectDrawingTimeCard(currentPick3DrawTimeCard);
             }
         });
@@ -66,7 +63,6 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
         this.drawTimes.forEach(drawTime => {
-            console.log(pick3DrawTimeCard.getDateTime());
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {

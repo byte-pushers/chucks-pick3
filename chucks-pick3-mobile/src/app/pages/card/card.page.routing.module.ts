@@ -4,7 +4,8 @@ import { CardPage } from './card.page';
 import {Pick3DrawDateInfoSection} from '../../components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import {Pick3DrawTimeInfoSection} from '../../components/pick3-draw-time-info-section/pick3-draw-time-info-section';
 import {ViewPicksCardComponent} from '../../components/view-picks-card/view-picks-card.component';
-import {GeneratePicksCardComponent} from '../../components/generate-picks-card/generate-picks-card.component';
+import {PreviousWinningNumberCardComponent} from '../../components/previous-winning-number-card/previous-winning-number-card.component';
+import {GeneratePage} from '../generate/generate.page';
 
 const routes: Routes = [
     {
@@ -141,23 +142,7 @@ const routes: Routes = [
                 component: ViewPicksCardComponent
             }
         ]
-    }*/ ,
-    {
-        path: 'generate-picks',
-        component: CardPage,
-        children: [
-            {
-                path: '',
-                outlet: 'primary',
-                component: Pick3DrawDateInfoSection
-            },
-            {
-                path: '',
-                outlet: 'secondary',
-                component: GeneratePicksCardComponent
-            }
-        ]
-    }
+    }*/
 ];
 
 @NgModule({

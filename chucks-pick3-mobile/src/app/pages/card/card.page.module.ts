@@ -12,7 +12,7 @@ import {  HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {ViewPicksCardComponent} from '../../components/view-picks-card/view-picks-card.component';
-import {GeneratePicksCardComponent} from '../../components/generate-picks-card/generate-picks-card.component';
+import {PreviousWinningNumberCardComponent} from '../../components/previous-winning-number-card/previous-winning-number-card.component';
 import {FormsModule} from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -46,7 +46,7 @@ export function createTranslateLoader(http: HttpClient) {
         Pick3DrawDateInfoSection,
         Pick3DrawTimeInfoSection,
         ViewPicksCardComponent,
-        GeneratePicksCardComponent
+        PreviousWinningNumberCardComponent
     ]
 })
 export class CardPageModule {
