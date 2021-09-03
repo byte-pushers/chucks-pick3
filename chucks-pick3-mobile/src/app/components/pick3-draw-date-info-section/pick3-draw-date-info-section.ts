@@ -15,7 +15,7 @@ import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
@@ -31,7 +31,7 @@ import {Subscription} from 'rxjs';
 // tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
-    private readonly id: number;
+    public readonly id: number;
     private readonly defaultDrawTimeCard: Pick3DrawTimeCard;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -41,37 +41,48 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public viewNavigation: any;
     private drawDateSubscription: Subscription;
     private cardContextSubscription: Subscription;
+    public currentSlideNumber: number;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
                 private router: Router,
+                private route: ActivatedRoute,
                 public translate: I18nService,
                 public translateService: TranslateService,
                 private drawDateService: DrawDateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private appService: AppService,
                 private popoverController: PopoverController) {
-
-        this.id = ++Pick3DrawDateInfoSection.counter;
-
-        try {
-            this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
-        } catch (error) {
-            if (this.id >= 1 && this.id <= 7) {
-                throw error;
-            }
-        }
         console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
+        const routerState = this.router.getCurrentNavigation().extras.state;
+        const routerUrl = this.router.url;
+
+        if (routerUrl === '/home') {
+            this.id = ++Pick3DrawDateInfoSection.counter;
+            try {
+                this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
+            } catch (error) {
+                if (this.id >= 1 && this.id <= 7) {
+                    throw error;
+                }
+            }
+            console.log('current slide number: ' + routerState?.currentSlideNumber);
+
+        } else if (routerUrl === '/select-picks') {
+            this.currentSlideNumber = routerState?.currentSlideNumber;
+        }
     }
 
     ngOnDestroy(): void {
+        console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.appService = null;
         this.drawDateSubscription?.unsubscribe();
         this.cardContextSubscription?.unsubscribe();
+        Pick3DrawDateInfoSection.counter--;
     }
 
 
@@ -107,7 +118,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
         this.generateNavigation = this.drawStateService.generateNavigationChoice;
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
-        this.cardContextSubscription =  this.cardContextService.context$.subscribe(context => {
+        this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
                 console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);

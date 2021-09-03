@@ -10,10 +10,10 @@ import {Subscription} from 'rxjs';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'pick3-draw-time-info-section',
-    templateUrl: 'pick3-draw-time-info-section.html',
-    styleUrls: ['pick3-draw-time-info-section.scss']
+    templateUrl: 'pick3-draw-time-info-section.component.html',
+    styleUrls: ['pick3-draw-time-info-section.component.scss']
 })
-export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
+export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly id: number;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
@@ -26,9 +26,9 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
                 private appService: AppService) {
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-        this.id = ++Pick3DrawTimeInfoSection.counter;
+        this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
         this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
-        console.log('Pick3DrawTimeInfoSection() constructor. id: ' + this.id);
+        console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
     }
 
     ngOnInit(): void {
@@ -58,7 +58,9 @@ export class Pick3DrawTimeInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: id: ${this.id}`);
         this.drawTimeSubscription?.unsubscribe();
+        Pick3DrawTimeInfoSectionComponent.counter--;
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {

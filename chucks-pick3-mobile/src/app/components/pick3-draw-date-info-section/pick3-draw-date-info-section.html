@@ -12,7 +12,11 @@
                   class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
 
-        <ion-icon *ngSwitchCase="3" routerDirection="forward" [routerLink]="['/', 'home']" class="generate-back-button"
+        <ion-icon *ngSwitchCase="3" routerDirection="forward" [routerLink]="['/', 'home']"
+                  [state]="{
+                   currentSlideNumber: this.currentSlideNumber
+                  }"
+                  class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
@@ -56,15 +60,16 @@
         <ion-row>
             <ion-col>
                 <div class="row">
-                    <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 100%">
-                <div style="display: inline" *ngIf="showCountDownToDrawing === false">
-                    <span class="dot">{{data.winningNumberDigit1}}</span>
-                    <span class="dot">{{data.winningNumberDigit2}}</span>
-                    <span class="dot">{{data.winningNumberDigit3}}</span>
-                </div>
-                <div style="display: inline" *ngIf="showCountDownToDrawing === true">
-                    <countdown-timer [end]="data.drawDate"></countdown-timer>
-                </div>
+                    <div class="column _55"
+                         style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 100%">
+                        <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+                            <span class="dot">{{data.winningNumberDigit1}}</span>
+                            <span class="dot">{{data.winningNumberDigit2}}</span>
+                            <span class="dot">{{data.winningNumberDigit3}}</span>
+                        </div>
+                        <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+                            <countdown-timer [end]="data.drawDate"></countdown-timer>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -81,17 +86,18 @@
                 (click)="showBackButton(2);"
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
-                [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
-                subContent: this.generateNavigation
+                [state]="{
+                    currentSlideNumber: this.id
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
         <ion-icon *ngSwitchCase="2"></ion-icon>
         <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
-                  [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
-                subContent: this.generateNavigation
-                }"
+                  [state]="{
+                      currentSlideNumber: this.currentSlideNumber,
+                      subContent: this.generateNavigation
+                    }"
                   routerDirection="back"
                   (click)="showBackButton(1)" class="generate-back-button"
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
@@ -100,8 +106,8 @@
                 (click)="showBackButton(2);"
                 *ngSwitchDefault
                 [routerLink]="['/','select']"
-                [state]="{ data: appService.getCurrentDrawTime().getDateTime(),
-                subContent: this.generateNavigation
+                [state]="{
+                    currentSlideNumber:  this.id
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"

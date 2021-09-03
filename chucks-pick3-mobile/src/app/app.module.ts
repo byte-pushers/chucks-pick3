@@ -13,9 +13,10 @@ import {HomePageModule} from './pages/home/home.page.module';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {AppService} from "./app.service";
-import {GeneratePageModule} from "./pages/generate/generate.page.module";
-import {Pick3DrawDateInfoSection} from "./components/pick3-draw-date-info-section/pick3-draw-date-info-section";
+import {AppService} from './app.service';
+import {GeneratePageModule} from './pages/generate/generate.page.module';
+import {Pick3DrawDateInfoSection} from './components/pick3-draw-date-info-section/pick3-draw-date-info-section';
+import {CardPageModule} from './pages/card/card.page.module';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,7 +43,8 @@ export function createTranslateLoader(http: HttpClient) {
                 useFactory: (createTranslateLoader),
                 deps: [HttpClient]
             }
-        })
+        }),
+        CardPageModule
     ],
     providers: [
         StatusBar,

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { CardPage } from './card.page';
 import { CardPageRoutingModule } from './card.page.routing.module';
-import { Pick3DrawTimeInfoSection } from '../../components/pick3-draw-time-info-section/pick3-draw-time-info-section';
+import { Pick3DrawTimeInfoSectionComponent } from '../../components/pick3-draw-time-info-section/pick3-draw-time-info-section.component';
 import { I18nService } from '../../services/i18n.service';
 import { CountdownTimerComponent } from '../../components/countdown-timer/countdown-timer.component';
 import { Pick3DrawTimeCardComponent } from '../../components/pick3-draw-time-card/pick3-draw-time-card.component';
@@ -35,13 +35,14 @@ export function createTranslateLoader(http: HttpClient) {
         I18nService
     ],
     exports: [
-        CardPage
+        CardPage,
+        CountdownTimerComponent
     ],
     declarations: [
         CardPage,
         CountdownTimerComponent,
         Pick3DrawTimeCardComponent,
-        Pick3DrawTimeInfoSection,
+        Pick3DrawTimeInfoSectionComponent,
         ViewPicksCardComponent
     ]
 })
