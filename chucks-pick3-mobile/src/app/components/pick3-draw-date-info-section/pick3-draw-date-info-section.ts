@@ -21,6 +21,7 @@ import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
+import {SlideTransitionService} from "../../services/slide-transition.service";
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -53,7 +54,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private drawDateService: DrawDateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private appService: AppService,
-                private popoverController: PopoverController) {
+                private popoverController: PopoverController,
+                private slideTransitionService: SlideTransitionService) {
         console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
         const routerState = this.router.getCurrentNavigation().extras.state;
         const routerUrl = this.router.url;
@@ -72,17 +74,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         } else if (routerUrl === '/select-picks') {
             this.currentSlideNumber = routerState?.currentSlideNumber;
         }
-    }
-
-    ngOnDestroy(): void {
-        console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
-        this.data = null;
-        this.defaultDrawDateTime = null;
-        this.showCountDownToDrawing = false;
-        this.appService = null;
-        this.drawDateSubscription?.unsubscribe();
-        this.cardContextSubscription?.unsubscribe();
-        Pick3DrawDateInfoSection.counter--;
     }
 
 
@@ -120,7 +111,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
+                this.slideTransitionService.dispatchCurrentSlideNumberEvent(context.slideNumber);
                 console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
+                this.slideTransitionService.dispatchCurrentSlideNumberEvent(context.slideNumber);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -133,6 +126,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        console.log(this.slideTransitionService.currentSlideNumber);
+        console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
+        this.data = null;
+        this.defaultDrawDateTime = null;
+        this.showCountDownToDrawing = false;
+        this.appService = null;
+        this.drawDateSubscription?.unsubscribe();
+        this.cardContextSubscription?.unsubscribe();
+        Pick3DrawDateInfoSection.counter--;
     }
 
     async showPopover(ev: any) {

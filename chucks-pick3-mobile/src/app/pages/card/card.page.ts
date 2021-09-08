@@ -26,9 +26,10 @@ export class CardPage implements OnInit, OnDestroy {
 
         if (routerUrl === '/home') {
             this.id = ++CardPage.counter;
-            console.log('current slide number: ' + routerState?.currentSlideNumber);
+            console.log('Card Page current slide number: ' + routerState?.currentSlideNumber);
         } else if (routerUrl === '/select-picks') {
             this.currentSlideNumber = routerState?.currentSlideNumber;
+            console.log('Card page on select-picks: ' + this.currentSlideNumber);
         }
         console.log(`CardPage.constructor: id: ${this.id}`);
     }
