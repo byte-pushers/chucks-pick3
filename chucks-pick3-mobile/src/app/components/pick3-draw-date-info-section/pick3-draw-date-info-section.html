@@ -86,7 +86,7 @@
     </ion-col>
     <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
         <ion-icon
-                (click)="showBackButton(2);"
+                (click)="showBackButton(2); passData(); "
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
@@ -106,7 +106,7 @@
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
 
         <ion-icon
-                (click)="showBackButton(2);"
+                (click)="showBackButton(2); passData(); "
                 *ngSwitchDefault
                 [routerLink]="['/','select-picks']"
                 [state]="{

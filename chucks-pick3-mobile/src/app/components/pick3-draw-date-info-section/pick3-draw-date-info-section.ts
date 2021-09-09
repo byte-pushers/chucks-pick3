@@ -43,6 +43,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private drawDateSubscription: Subscription;
     private cardContextSubscription: Subscription;
     public currentSlideNumber: number;
+    private routerUrl = this.router.url;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -58,9 +59,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private slideTransitionService: SlideTransitionService) {
         console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
         const routerState = this.router.getCurrentNavigation().extras.state;
-        const routerUrl = this.router.url;
 
-        if (routerUrl === '/home') {
+
+        if (this.routerUrl === '/home') {
             this.id = ++Pick3DrawDateInfoSection.counter;
             try {
                 this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
@@ -71,8 +72,16 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             }
             console.log('current slide number: ' + routerState?.currentSlideNumber);
 
-        } else if (routerUrl === '/select-picks') {
+        } else if (this.routerUrl === '/select-picks') {
+            const pick3DrawTime = this.slideTransitionService.currentPick3DrawTime;
+            this.setData(
+                this.appService.getDrawState(),
+                pick3DrawTime,
+                this.appService.getBackgroundImageUrl(),
+                this.getCurrentDrawTimeIcon(pick3DrawTime.getPick3DrawTime()));
+
             this.currentSlideNumber = routerState?.currentSlideNumber;
+
         }
     }
 
@@ -82,13 +91,21 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
         const pick3DrawDateCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
 
-        this.setData(
-            this.appService.getDrawState(),
-            pick3DrawDateCard,
-            this.appService.getBackgroundImageUrl(),
-            this.getCurrentDrawTimeIcon(pick3DrawTime)
-        );
-
+        if (this.routerUrl === '/home') {
+            this.setData(
+                this.appService.getDrawState(),
+                pick3DrawDateCard,
+                this.appService.getBackgroundImageUrl(),
+                this.getCurrentDrawTimeIcon(pick3DrawTime)
+            );
+        } else if (this.routerUrl === '/select-picks') {
+            const pick3DrawTime = this.slideTransitionService.currentPick3DrawTime;
+            this.setData(
+                this.appService.getDrawState(),
+                pick3DrawTime,
+                this.appService.getBackgroundImageUrl(),
+                this.getCurrentDrawTimeIcon(pick3DrawTime.getPick3DrawTime()));
+        }
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
@@ -294,5 +311,19 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     showBackButton(subSection: any) {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
+    }
+
+    public passData() {
+        const currentSlideNumber = this.slideTransitionService.currentSlideNumber;
+        const pick3DrawTime = this.retrievePick3DrawTime(currentSlideNumber);
+        this.slideTransitionService.setTransitionalPick3DrawTimeCard(pick3DrawTime);
+    }
+
+    private retrievePick3DrawTime(currentSlideNumber) {
+        const date = this.appService.getSlideDate(currentSlideNumber);
+        const drawTime = this.appService.getDrawTime(date);
+        const pick3DrawTime = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
+
+        return pick3DrawTime;
     }
 }
