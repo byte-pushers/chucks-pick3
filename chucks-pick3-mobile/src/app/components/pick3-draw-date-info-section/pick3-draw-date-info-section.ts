@@ -22,6 +22,7 @@ import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
 import {SlideTransitionService} from "../../services/slide-transition.service";
+import {Pick3DrawTimeCardProperties} from "../../models/pick3-draw-time-card.properties";
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -38,6 +39,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing = false;
     public drawTimeCard: Pick3DrawTimeCard;
+    public selectedDrawTimeCard: Pick3DrawTimeCardProperties;
     public generateNavigation: any;
     public viewNavigation: any;
     private drawDateSubscription: Subscription;
@@ -317,13 +319,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         const currentSlideNumber = this.slideTransitionService.currentSlideNumber;
         const pick3DrawTime = this.retrievePick3DrawTime(currentSlideNumber);
         this.slideTransitionService.setTransitionalPick3DrawTimeCard(pick3DrawTime);
+        this.selectedDrawTimeCard = this.retrievePick3DrawTimeAsJSON(currentSlideNumber);
     }
 
-    private retrievePick3DrawTime(currentSlideNumber) {
+    private retrievePick3DrawTime(currentSlideNumber): Pick3DrawTimeCard {
         const date = this.appService.getSlideDate(currentSlideNumber);
         const drawTime = this.appService.getDrawTime(date);
         const pick3DrawTime = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
 
         return pick3DrawTime;
+    }
+
+    private retrievePick3DrawTimeAsJSON(currentSlideNumber): any {
+        return JSON.parse(JSON.stringify(this.retrievePick3DrawTime(currentSlideNumber)));
     }
 }

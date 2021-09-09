@@ -90,11 +90,12 @@
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
-                    currentSlideNumber: this.id
+                    currentSlideNumber: this.id,
+                    pick3DrawnNumber: this.selectedDrawTimeCard
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
-                class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
+                class="generate-picks-icon" style="background-color: yellow; padding-right: 25px"></ion-icon>
         <ion-icon *ngSwitchCase="2"></ion-icon>
         <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
                   [state]="{
@@ -114,7 +115,7 @@
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
-                class="generate-picks-icon" style=" padding-right: 25px"></ion-icon>
+                class="generate-picks-icon" style="background-color: red; padding-right: 25px"></ion-icon>
 
     </ion-col>
 </ion-row>
