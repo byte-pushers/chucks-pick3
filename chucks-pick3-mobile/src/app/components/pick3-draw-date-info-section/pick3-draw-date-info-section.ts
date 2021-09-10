@@ -61,7 +61,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private slideTransitionService: SlideTransitionService) {
         console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
         const routerState = this.router.getCurrentNavigation().extras.state;
-
+        console.log(routerState);
 
         if (this.routerUrl === '/home') {
             this.id = ++Pick3DrawDateInfoSection.counter;
@@ -75,7 +75,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             console.log('current slide number: ' + routerState?.currentSlideNumber);
 
         } else if (this.routerUrl === '/select-picks') {
-            const pick3DrawTime = this.slideTransitionService.currentPick3DrawTime;
+            this.id = routerState?.currentSlideNumber;
+            const pick3DrawTime = this.retrievePick3DrawTime(routerState?.currentSlideNumber);
             this.setData(
                 this.appService.getDrawState(),
                 pick3DrawTime,
@@ -316,7 +317,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     public passData() {
-        const currentSlideNumber = this.slideTransitionService.currentSlideNumber;
+        const currentSlideNumber = this.router.getCurrentNavigation().extras.state.currentSlideNumber;
         const pick3DrawTime = this.retrievePick3DrawTime(currentSlideNumber);
         this.slideTransitionService.setTransitionalPick3DrawTimeCard(pick3DrawTime);
         this.selectedDrawTimeCard = this.retrievePick3DrawTimeAsJSON(currentSlideNumber);

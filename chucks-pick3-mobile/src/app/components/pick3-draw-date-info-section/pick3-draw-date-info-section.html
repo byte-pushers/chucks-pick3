@@ -86,12 +86,12 @@
     </ion-col>
     <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
         <ion-icon
-                (click)="showBackButton(2); passData(); "
+                (click)="showBackButton(2);"
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
                     currentSlideNumber: this.id,
-                    pick3DrawnNumber: this.selectedDrawTimeCard
+                    id: this.id
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
@@ -107,11 +107,12 @@
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
 
         <ion-icon
-                (click)="showBackButton(2); passData(); "
+                (click)="showBackButton(2)"
                 *ngSwitchDefault
                 [routerLink]="['/','select-picks']"
                 [state]="{
-                    currentSlideNumber:  this.id
+                      currentSlideNumber: this.id,
+                    id: this.id
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
