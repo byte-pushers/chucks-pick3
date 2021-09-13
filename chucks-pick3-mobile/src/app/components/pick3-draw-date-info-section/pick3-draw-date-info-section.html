@@ -7,9 +7,7 @@
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
                   [routerLink]="['/', 'home']"
-                  [state]="{
-                   currentSlideNumber: this.currentSlideNumber
-                  }"
+                  [state]="{currentSlideNumber: this.currentSlideNumber}"
                   routerDirection="forward"
                   (click)="showBackButton(1)"
                   class="generate-back-button"
@@ -92,7 +90,7 @@
                 [routerLink]="['/','select']"
                 [state]="{
                     currentSlideNumber: this.id
-                                    }"
+                }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style="background-color: yellow; padding-right: 25px"></ion-icon>

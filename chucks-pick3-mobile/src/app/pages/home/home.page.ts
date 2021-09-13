@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, ViewChild} from '@angular/core';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {IonSlides, PopoverController} from '@ionic/angular';
@@ -8,6 +8,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {DrawDateService} from '../../services/draw-date.service';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements AfterViewInit, OnDestroy {
     prevActiveIndex = 7;
     cardContext = this.cardContextService.context$;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
@@ -34,13 +35,21 @@ export class HomePage implements OnInit, OnDestroy {
                 public translateService: TranslateService,
                 private drawDateService: DrawDateService,
                 private appService: AppService,
+                private router: Router,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         translateService.setDefaultLang('en-US');
         console.log(`HomePage constructor.`);
     }
 
-    ngOnInit() {
+    ngAfterViewInit() {
+        const routerState = this.router.getCurrentNavigation().extras.state;
+        if (this.router.url === '/home') {
+            const currentSlideNumber = routerState?.currentSlideNumber;
+            if (currentSlideNumber) {
+                this.next(currentSlideNumber-1);
+            }
+        }
     }
 
     ngOnDestroy() {
@@ -80,5 +89,9 @@ export class HomePage implements OnInit, OnDestroy {
                 drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1)
             });
         });
+    }
+
+    private next(index) {
+        this.ionSlides.slideTo(index, this.slideOpts.speed)
     }
 }
