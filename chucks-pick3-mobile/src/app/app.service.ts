@@ -129,7 +129,7 @@ export class AppService {
         return this.pick3DrawDateDecks;
     }
 
-    private getSlideDate(slideNumber): Date {
+    public getSlideDate(slideNumber): Date {
         const slideDate: Date = new Date();
 
         switch (slideNumber) {

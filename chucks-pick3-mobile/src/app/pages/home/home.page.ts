@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {IonSlides, PopoverController} from '@ionic/angular';
@@ -15,8 +15,9 @@ import {DrawDateService} from '../../services/draw-date.service';
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
     prevActiveIndex = 7;
+    cardContext = this.cardContextService.context$;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
         drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
@@ -39,7 +40,12 @@ export class HomePage implements OnInit {
         console.log(`HomePage constructor.`);
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
+
+    ngOnDestroy() {
+        this.cardContext = null;
+    }
 
     async showPopover(ev: any) {
         const popover = await this.popoverController.create({
@@ -55,12 +61,12 @@ export class HomePage implements OnInit {
     public initializePick3DrawDateCard(event: any): void {
         let slideDirection = null;
         this.ionSlides.getActiveIndex().then(activeIndex => {
-            if (activeIndex < this.prevActiveIndex){
+            if (activeIndex < this.prevActiveIndex) {
                 this.prevActiveIndex = activeIndex;
                 slideDirection = -1;
-            } else if (activeIndex >= this.prevActiveIndex){
+            } else if (activeIndex >= this.prevActiveIndex) {
                 this.prevActiveIndex = activeIndex;
-                slideDirection =  1;
+                slideDirection = 1;
             }
             // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
             /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
