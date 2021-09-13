@@ -89,8 +89,8 @@
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
-                    currentSlideNumber: this.id
-                }"
+                    currentSlideNumber: this.id,
+                currentDay: this.data.getDrawDate()}"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style="background-color: yellow; padding-right: 25px"></ion-icon>

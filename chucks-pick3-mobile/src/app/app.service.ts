@@ -31,13 +31,62 @@ export class AppService {
     }
 
     private init() {
-        this.card1 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 1, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(1)}});
-        this.card2 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 2, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(2)}});
-        this.card3 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 3, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(3)}});
-        this.card4 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 4, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(4)}});
-        this.card5 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 5, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(5)}});
-        this.card6 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 6, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(6)}});
-        this.card7 = new Pick3DrawDateCardDomain({...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{slideNumber: 7, backgroundImageUrl: this.getBackgroundImageUrl(), drawState: this.getDrawState(), drawDate: this.getSlideDate(7)}});
+        this.card1 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 1,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(1)
+            }
+        });
+        this.card2 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 2,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(2)
+            }
+        });
+        this.card3 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 3,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(3)
+            }
+        });
+        this.card4 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 4,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(4)
+            }
+        });
+        this.card5 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 5,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(5)
+            }
+        });
+        this.card6 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 6,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(6)
+            }
+        });
+        this.card7 = new Pick3DrawDateCardDomain({
+            ...Pick3DrawDateCardDomain.DEFAULT_CONFIG, ...{
+                slideNumber: 7,
+                backgroundImageUrl: this.getBackgroundImageUrl(),
+                drawState: this.getDrawState(),
+                drawDate: this.getSlideDate(7)
+            }
+        });
         this.pick3DrawDateDecks = [
             this.card1,
             this.card2,
@@ -79,7 +128,7 @@ export class AppService {
         ];
     }
 
-    public getPick3DrawTimeCards(slideNumber?:number): Pick3DrawTimeCard[] {
+    public getPick3DrawTimeCards(slideNumber?: number): Pick3DrawTimeCard[] {
         const pick3DrawTimes = this.pick3DrawTimeCards.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
 
         // const currentHour = new Date().getHours();
@@ -197,5 +246,11 @@ export class AppService {
         return pick3DrawTime;
     }
 
+    public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
+        const pick3DrawDateCard = this.getPick3DrawDateCard(currentSlideNumber);
+        const drawTime = this.getDrawTime(currentDrawTime);
+        const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
+        return pick3DrawTime;
+    }
 
 }

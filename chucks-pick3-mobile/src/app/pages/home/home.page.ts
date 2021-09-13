@@ -92,6 +92,6 @@ export class HomePage implements AfterViewInit, OnDestroy {
     }
 
     private next(index) {
-        this.ionSlides.slideTo(index, this.slideOpts.speed)
+        this.ionSlides.slideTo(index, this.slideOpts.speed);
     }
 }

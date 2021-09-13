@@ -90,7 +90,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 this.getCurrentDrawTimeIcon(pick3DrawTime)
             );
         } else if (this.routerUrl === '/select-picks') {
-            const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawTime(routerState?.currentSlideNumber);
+            console.log(routerState);
+            const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawDate(routerState?.currentSlideNumber, routerState?.currentDay);
 
             this.setData(
                 this.appService.getDrawState(),
