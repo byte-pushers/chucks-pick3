@@ -53,7 +53,8 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important;">
+                    <div class="column _55"
+                         style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important;">
                                    <span style="font-size: 4.6vw;font-weight: bold;"
                                          class="draw-date-text">{{data.drawDate| date: 'EEE, MMM d, y ' : '' : translateService.currentLang}}</span><br>
                     </div>
@@ -90,9 +91,8 @@
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
-                    currentSlideNumber: this.id,
-                    id: this.id
-                }"
+                    currentSlideNumber: this.id
+                                    }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="generate-picks-icon" style="background-color: yellow; padding-right: 25px"></ion-icon>
@@ -111,8 +111,7 @@
                 *ngSwitchDefault
                 [routerLink]="['/','select-picks']"
                 [state]="{
-                      currentSlideNumber: this.id,
-                    id: this.id
+                  currentSlideNumber: this.id
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
