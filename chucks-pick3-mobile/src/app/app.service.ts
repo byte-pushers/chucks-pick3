@@ -189,5 +189,13 @@ export class AppService {
         return this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime);
     }
 
+    public retrievePick3DrawTime(currentSlideNumber): Pick3DrawTimeCard {
+        const date = this.getSlideDate(currentSlideNumber);
+        const drawTime = this.getDrawTime(date);
+        const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
+
+        return pick3DrawTime;
+    }
+
 
 }

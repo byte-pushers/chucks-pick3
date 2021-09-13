@@ -21,7 +21,6 @@ import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
-import {SlideTransitionService} from '../../services/slide-transition.service';
 import {Pick3DrawTimeCardProperties} from '../../models/pick3-draw-time-card.properties';
 
 @Component({
@@ -57,14 +56,15 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private drawDateService: DrawDateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private appService: AppService,
-                private popoverController: PopoverController,
-                private slideTransitionService: SlideTransitionService) {
+                private popoverController: PopoverController) {
         const routerState = this.router.getCurrentNavigation().extras.state;
-        console.log(routerState);
+        console.log('routerState: ' + routerState);
+        console.log('current slide number: ' + routerState?.currentSlideNumber);
 
         if (this.routerUrl === '/home') {
             this.id = ++Pick3DrawDateInfoSection.counter;
             console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
+
             try {
                 this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
             } catch (error) {
@@ -72,20 +72,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     throw error;
                 }
             }
-            console.log('current slide number: ' + routerState?.currentSlideNumber);
-
-        } else if (this.routerUrl === '/select-picks') {
-            this.id = routerState?.currentSlideNumber;
-            console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
-            const pick3DrawTime = this.retrievePick3DrawTime(routerState?.currentSlideNumber);
-            this.setData(
-                this.appService.getDrawState(),
-                pick3DrawTime,
-                this.appService.getBackgroundImageUrl(),
-                pick3DrawTime.getIcon());
-
-            this.currentSlideNumber = routerState?.currentSlideNumber;
-
         }
     }
 
@@ -93,27 +79,28 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
-        const pick3DrawDateCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
+        const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
         const routerState = this.router.getCurrentNavigation().extras.state;
-        console.log(routerState);
+
         if (this.routerUrl === '/home') {
             this.setData(
                 this.appService.getDrawState(),
-                pick3DrawDateCard,
+                currentPick3DrawTimeCard,
                 this.appService.getBackgroundImageUrl(),
                 this.getCurrentDrawTimeIcon(pick3DrawTime)
             );
         } else if (this.routerUrl === '/select-picks') {
-            console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
-            const pick3DrawTimeSet = this.retrievePick3DrawTime(routerState?.currentSlideNumber);
+            const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawTime(routerState?.currentSlideNumber);
+
             this.setData(
                 this.appService.getDrawState(),
-                pick3DrawTimeSet,
+                selectedPick3DrawTimeCard,
                 this.appService.getBackgroundImageUrl(),
-                pick3DrawTimeSet.getIcon());
+                selectedPick3DrawTimeCard.getIcon());
 
             this.currentSlideNumber = routerState?.currentSlideNumber;
         }
+
         registerLocaleData(localeEsMx, 'es-MX');
         registerLocaleData(localeEnUS, 'en-US');
 
@@ -136,9 +123,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
-                this.slideTransitionService.dispatchCurrentSlideNumberEvent(context.slideNumber);
                 console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
-                this.slideTransitionService.dispatchCurrentSlideNumberEvent(context.slideNumber);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -154,7 +139,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        console.log(this.slideTransitionService.currentSlideNumber);
         console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
         this.data = null;
         this.defaultDrawDateTime = null;
@@ -319,24 +303,5 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     showBackButton(subSection: any) {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
-    }
-
-    public passData() {
-        const currentSlideNumber = this.router.getCurrentNavigation().extras.state.currentSlideNumber;
-        const pick3DrawTime = this.retrievePick3DrawTime(currentSlideNumber);
-        this.slideTransitionService.setTransitionalPick3DrawTimeCard(pick3DrawTime);
-        this.selectedDrawTimeCard = this.retrievePick3DrawTimeAsJSON(currentSlideNumber);
-    }
-
-    private retrievePick3DrawTime(currentSlideNumber): Pick3DrawTimeCard {
-        const date = this.appService.getSlideDate(currentSlideNumber);
-        const drawTime = this.appService.getDrawTime(date);
-        const pick3DrawTime = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
-
-        return pick3DrawTime;
-    }
-
-    private retrievePick3DrawTimeAsJSON(currentSlideNumber): any {
-        return JSON.parse(JSON.stringify(this.retrievePick3DrawTime(currentSlideNumber)));
     }
 }
