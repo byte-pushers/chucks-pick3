@@ -34,7 +34,7 @@ export class PreviousWinningNumberCardComponent implements OnInit {
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     continueChoice: any;
     continueButton = true;
-
+    routerState = this.router.getCurrentNavigation().extras.state;
     newDrawingTimes: any[] = [];
     currentDateDay: number = new Date().getDate();
     currentDateMonth: number = new Date().getMonth() + 1;
@@ -55,16 +55,18 @@ export class PreviousWinningNumberCardComponent implements OnInit {
 
     ngOnInit(): void {
         const someDateTime = new Date();
+        const yesterdaysDate: Date = new Date(this.currentDateYear, this.currentDateMonth, this.currentDateDay - 1, someDateTime.getHours());
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
         const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
-        const routerState = this.router.getCurrentNavigation().extras.state;
         const today: HTMLElement = document.getElementById('today');
         const yesterday: HTMLElement = document.getElementById('yesterday');
-        const passedDate = routerState?.currentDay.getDate();
+        const passedDate = this.routerState?.currentDay.getDate();
         if (this.currentDateDay !== passedDate) {
             this.selectDrawingDateMenuItemForYesterday(yesterday, today);
+            this.setDrawingTimeMenuItems(yesterdaysDate, this.routerState?.currentSlideNumber);
         } else {
             this.selectDrawingDateMenuItemForToday(today, yesterday);
+            this.setDrawingTimeMenuItems(this.routerState?.currentDay, this.routerState?.currentSlideNumber);
         }
     }
 
@@ -76,25 +78,34 @@ export class PreviousWinningNumberCardComponent implements OnInit {
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 // pick3DrawTimeCard.showCountDownToDrawing = false;
-
+                console.log(pick3DrawTimeCard);
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
 
             }
         });
     }
 
-    public setDrawingTimeMenuItems(targetCurrentDate: Date): void {
-
+    public setDrawingTimeMenuItems(targetCurrentDate: Date, slideNumber: number): void {
+        /*const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(targetCurrentDate);*/
+        console.log(targetCurrentDate);
+        const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCards(slideNumber);
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
+            this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
+            console.log(currentPick3DrawTimeCard);
             for (const drawTime of this.drawTimes) {
-                this.selectDrawingTimeCard(drawTime);
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
         } else {
+            this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
-            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
-        }
+            console.log(currentPick3DrawTimeCard);
+            for (const drawTime of this.drawTimes) {
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
+                this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+            }
 
+        }
     }
 
     private resetDrawingTimes(): void {
@@ -105,13 +116,17 @@ export class PreviousWinningNumberCardComponent implements OnInit {
     }
 
     public selectDrawingDateMenuItemForYesterday(yesterday: any, today: any): void {
+
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
+
+        this.setDrawingTimeMenuItems(this.routerState?.currentDay, this.routerState.currentSlideNumber);
     }
 
     public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
+        this.setDrawingTimeMenuItems(this.routerState?.currentDay, this.routerState.currentSlideNumber);
     }
 
     public fetchTodaysDrawingCard() {
