@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {map} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
@@ -18,6 +18,7 @@ import {CardContextService} from '../../services/card-context.service';
 import {DrawStateService} from '../../services/draw-state.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {AppService} from '../../app.service';
+import {Pick3DrawTime} from '../../models/pick3-draw-time';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -45,22 +46,26 @@ export class PreviousWinningNumberCardComponent implements OnInit {
                 private drawTimeService: DrawTimeService,
                 private drawDateService: DrawDateService,
                 private appService: AppService,
-                private drawStateService: DrawStateService) {
+                private drawStateService: DrawStateService,
+                private router: Router) {
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
         this.componentState = 'instantiated';
 
     }
 
     ngOnInit(): void {
-        const currentHour = new Date().getHours();
-        this.drawTimes.forEach(drawTime => {
-            const drawTimeHour = drawTime.getDateTime().getHours();
-            drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
-            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-                this.selectDrawingTimeCard(drawTime);
-            }
-        });
-
+        const someDateTime = new Date();
+        const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
+        const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
+        const routerState = this.router.getCurrentNavigation().extras.state;
+        const today: HTMLElement = document.getElementById('today');
+        const yesterday: HTMLElement = document.getElementById('yesterday');
+        const passedDate = routerState?.currentDay.getDate();
+        if (this.currentDateDay !== passedDate) {
+            this.selectDrawingDateMenuItemForYesterday(yesterday, today);
+        } else {
+            this.selectDrawingDateMenuItemForToday(today, yesterday);
+        }
     }
 
 
@@ -107,6 +112,9 @@ export class PreviousWinningNumberCardComponent implements OnInit {
     public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
+    }
+
+    public fetchTodaysDrawingCard() {
     }
 
 
