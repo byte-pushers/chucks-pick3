@@ -56,8 +56,6 @@ export class PreviousWinningNumberCardComponent implements OnInit {
     ngOnInit(): void {
         const someDateTime = new Date();
         const yesterdaysDate: Date = new Date(this.currentDateYear, this.currentDateMonth, this.currentDateDay - 1, someDateTime.getHours());
-        const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
-        const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
         const today: HTMLElement = document.getElementById('today');
         const yesterday: HTMLElement = document.getElementById('yesterday');
         const passedDate = this.routerState?.currentDay.getDate();
@@ -77,8 +75,7 @@ export class PreviousWinningNumberCardComponent implements OnInit {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-                // pick3DrawTimeCard.showCountDownToDrawing = false;
-                console.log(pick3DrawTimeCard);
+
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
 
             }
@@ -86,8 +83,6 @@ export class PreviousWinningNumberCardComponent implements OnInit {
     }
 
     public setDrawingTimeMenuItems(targetCurrentDate: Date, slideNumber: number): void {
-        /*const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(targetCurrentDate);*/
-        console.log(targetCurrentDate);
         const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCards(slideNumber);
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.drawTimes = currentPick3DrawTimeCard;
@@ -128,10 +123,6 @@ export class PreviousWinningNumberCardComponent implements OnInit {
         yesterday.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(this.routerState?.currentDay, this.routerState.currentSlideNumber);
     }
-
-    public fetchTodaysDrawingCard() {
-    }
-
 
     public enableContinue() {
         const element = document.getElementById('continueButton');
