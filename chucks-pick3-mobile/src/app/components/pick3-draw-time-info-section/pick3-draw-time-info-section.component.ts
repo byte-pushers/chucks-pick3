@@ -34,12 +34,16 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const currentHour = new Date().getHours();
 
-        this.drawTimes.forEach(drawTime => {
+        this.drawTimes.some(drawTime => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
-            if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+
+            if (currentHour < drawTimeHour) {
                 this.selectDrawingTimeCard(drawTime);
+                return true;
             }
+
+            return false;
         });
 
        this.drawTimeSubscription =  this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {

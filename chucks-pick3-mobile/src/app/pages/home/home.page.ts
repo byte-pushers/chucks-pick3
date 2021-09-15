@@ -44,7 +44,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         const routerState = this.router.getCurrentNavigation().extras.state;
-        if (this.router.url === '/home') {
+        if (routerState && this.router.url === '/home') {
             const currentSlideNumber = routerState?.currentSlideNumber;
             if (currentSlideNumber) {
                 this.next(currentSlideNumber-1);
