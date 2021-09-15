@@ -15,7 +15,7 @@ import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
@@ -32,7 +32,7 @@ import {Pick3DrawTimeCardProperties} from '../../models/pick3-draw-time-card.pro
 // tslint:disable-next-line:component-class-suffix
 export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private static counter = 0;
-    public readonly id: number;
+    public id: number = -1;
     private readonly defaultDrawTimeCard: Pick3DrawTimeCard;
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
@@ -45,13 +45,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private drawDateSubscription: Subscription;
     private cardContextSubscription: Subscription;
     public currentSlideNumber: number;
-    private routerUrl = this.router.url;
+    private routerUrl;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
                 private toastService: IonicToastNotificationService,
                 private router: Router,
-                private route: ActivatedRoute,
                 public translate: I18nService,
                 public translateService: TranslateService,
                 private drawDateService: DrawDateService,
@@ -59,9 +58,15 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private appService: AppService,
                 private popoverController: PopoverController) {
         const routerState = this.router.getCurrentNavigation().extras.state;
+        console.log('Pick3DrawDateInfoSection.constructor(): routerState: ' + routerState);
+        console.log('Pick3DrawDateInfoSection.constructor(): current slide number: ' + routerState?.currentSlideNumber);
+
+        this.routerUrl = this.router.url;
 
         if (this.routerUrl === '/home') {
             this.id = ++Pick3DrawDateInfoSection.counter;
+            console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
+
             try {
                 this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
             } catch (error) {
@@ -72,12 +77,16 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
     }
 
+    ionViewDidEnter() {
+        console.log(`Pick3DrawDateInfoSection.ionViewDidEnter(): `);
+    }
 
     ngOnInit(): void {
         const someDateTime = new Date();
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
         const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
         const routerState = this.router.getCurrentNavigation().extras.state;
+
         if (this.routerUrl === '/home') {
             this.setData(
                 this.appService.getDrawState(),
@@ -86,7 +95,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 this.getCurrentDrawTimeIcon(pick3DrawTime)
             );
         } else if (this.routerUrl === '/select-picks') {
+            console.log(`Pick3DrawDateInfoSection.ngOnInit(): routerState: ${routerState}`);
             const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawDate(routerState?.currentSlideNumber, routerState?.currentDay);
+
             this.setData(
                 this.appService.getDrawState(),
                 selectedPick3DrawTimeCard,
@@ -129,6 +140,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
+                console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -144,14 +156,17 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
         this.appService = null;
         this.drawDateSubscription?.unsubscribe();
         this.cardContextSubscription?.unsubscribe();
+
         if (this.routerUrl === '/home') {
             Pick3DrawDateInfoSection.counter--;
+            console.log(`Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3DrawDateInfoSection.counter}`);
         }
     }
 
@@ -168,6 +183,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     private setData(drawState: string, pick3DrawTimeCard: Pick3DrawTimeCard, backgroundImageUrl: string, drawTimeIcon: string): void {
         const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
+
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
         this.data.setDrawTime(pick3DrawTime.getType());
@@ -234,6 +250,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
+            console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
             this.setCardState(null, pick3DrawTimeType);
@@ -246,6 +263,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
+            console.warn('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
             this.setCardState(null, pick3DrawTimeType);
@@ -307,5 +325,4 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
     }
-
 }
