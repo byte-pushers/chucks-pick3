@@ -81,7 +81,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
         const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
         const routerState = this.router.getCurrentNavigation().extras.state;
-
         if (this.routerUrl === '/home') {
             this.setData(
                 this.appService.getDrawState(),
@@ -90,9 +89,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 this.getCurrentDrawTimeIcon(pick3DrawTime)
             );
         } else if (this.routerUrl === '/select-picks') {
-            console.log(routerState);
             const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawDate(routerState?.currentSlideNumber, routerState?.currentDay);
-
             this.setData(
                 this.appService.getDrawState(),
                 selectedPick3DrawTimeCard,
@@ -108,7 +105,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.drawDateSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
 
-            if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
+            if (this.routerUrl === '/home') {
+                if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
+                    this.setData(
+                        this.appService.getDrawState(),
+                        currentPick3DrawDateCard,
+                        this.appService.getBackgroundImageUrl(),
+                        currentPick3DrawDateCard.getIcon()
+                    );
+                    this.drawTimeCard = currentPick3DrawDateCard;
+                    this.showCountDownToDrawing = currentPick3DrawDateCard.showCountDownToDrawing;
+                }
+            } else if (this.routerUrl === '/select-picks') {
                 this.setData(
                     this.appService.getDrawState(),
                     currentPick3DrawDateCard,
