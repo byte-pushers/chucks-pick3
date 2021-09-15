@@ -42,6 +42,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
     private drawDateSubscription: Subscription;
     private someDateTime: Date = new Date();
+    private currentDrawingCard: Pick3DrawTimeCard;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
@@ -72,16 +73,18 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+        if (pick3DrawTimeCard) {
             this.drawTimes.forEach(drawTime => {
                 if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                     drawTime.setSelected(false);
                 } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                     drawTime.setSelected(true);
-
+                    this.currentDrawingCard = pick3DrawTimeCard;
                     this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
 
                 }
             });
+        }
     }
 
     public setDrawingTimeMenuItems(targetCurrentDate: Date, slideNumber: number): void {
@@ -93,6 +96,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
             for (const drawTime of sortedDrawTimes) {
                 this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
+            this.selectCurrentCard(this.drawTimes);
         } else {
             this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
@@ -100,7 +104,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
                 this.newDrawingTimes.push(drawTime.getDrawTimeValue());
                 this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
             }
-
+            this.selectCurrentCard(this.drawTimes);
         }
     }
 
@@ -158,5 +162,16 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
     logForm(): void {
         console.log(this.continueChoice);
+    }
+
+    private selectCurrentCard(drawTimes) {
+        if (this.currentDrawingCard) {
+            for (const drawTime of drawTimes) {
+                if (this.currentDrawingCard.getDrawTime() === drawTime.getDrawTime()) {
+                    this.currentDrawingCard = drawTime;
+                    this.selectDrawingTimeCard(this.currentDrawingCard);
+                }
+            }
+        }
     }
 }
