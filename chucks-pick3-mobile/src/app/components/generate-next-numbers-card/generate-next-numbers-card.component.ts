@@ -2,7 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {DrawDateService} from '../../services/draw-date.service';
-import {DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, MORNING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY} from '../../models/pick3-draw-time.enum';
+import {
+    DAY_DRAW_TIME_KEY,
+    EVENING_DRAW_TIME_KEY,
+    MORNING_DRAW_TIME_KEY,
+    NIGHT_DRAW_TIME_KEY
+} from '../../models/pick3-draw-time.enum';
+import {Pick3WebScrapingProviderService} from "../../providers/web-scraping/pick3-web-scraping-provider.service";
+import {Pick3StateLottery} from "../../models/pick3-state-lottery";
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -10,6 +17,8 @@ import {DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, MORNING_DRAW_TIME_KEY, NIGHT_D
     styleUrls: ['./generate-next-numbers-card.component.scss'],
 })
 export class GenerateNextNumbersCardComponent implements OnInit {
+    private componentState;
+    public pick3StateLottery: Pick3StateLottery;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     newDrawingTimes: any[] = [];
     currentDateDay: number = new Date().getDate();
@@ -19,7 +28,11 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
-    constructor(private drawDateService: DrawDateService) {
+
+    constructor(private drawDateService: DrawDateService,
+                private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        this.componentState = 'instantiated';
     }
 
     ngOnInit() {

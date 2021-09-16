@@ -18,9 +18,9 @@
             <ion-item class="ion-no-padding" style="width: 100%;">
                 <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day"
                             style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                            interface="action-sheet" (ionChange)="null">
-                    <ion-select-option *ngFor="let newDrawingTime of newDrawingTimes"
-                                       [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
+                            interface="action-sheet" (ionChange)="selectDrawingTimeCard(generateChoice)">
+                    <ion-select-option *ngFor="let drawTime of drawTimes"
+                                       [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-row>

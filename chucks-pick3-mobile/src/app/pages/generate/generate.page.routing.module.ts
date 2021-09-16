@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { GeneratePage } from './generate.page';
 import { Pick3DrawDateInfoSection } from '../../components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-card/previous-winning-number-card.component';
+import {GenerateNextNumbersCardComponent} from "../../components/generate-next-numbers-card/generate-next-numbers-card.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
         component: PreviousWinningNumberCardComponent
       }
     ]
-  }/*,
+  },
   {
     path: 'generate-picks',
     component: GeneratePage,
@@ -36,7 +37,7 @@ const routes: Routes = [
         component: GenerateNextNumbersCardComponent
       }
     ]
-  }*/
+  }
 ];
 
 @NgModule({
