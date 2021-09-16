@@ -58,13 +58,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 private appService: AppService,
                 private popoverController: PopoverController) {
         const routerState = this.router.getCurrentNavigation().extras.state;
-        console.log('routerState: ' + routerState);
-        console.log('current slide number: ' + routerState?.currentSlideNumber);
 
         if (this.routerUrl === '/home') {
             this.id = ++Pick3DrawDateInfoSection.counter;
-            console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
-
             try {
                 this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
             } catch (error) {
@@ -104,8 +100,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
         this.drawDateSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
-
             if (this.routerUrl === '/home') {
+                this.checkIdForGenerateButton();
                 if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
                     this.setData(
                         this.appService.getDrawState(),
@@ -132,7 +128,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
-                console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -148,7 +143,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
         this.data = null;
         this.defaultDrawDateTime = null;
         this.showCountDownToDrawing = false;
@@ -171,7 +165,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     private setData(drawState: string, pick3DrawTimeCard: Pick3DrawTimeCard, backgroundImageUrl: string, drawTimeIcon: string): void {
         const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
-
         this.data.setBackgroundImage(backgroundImageUrl);
         this.data.setDrawState(drawState);
         this.data.setDrawTime(pick3DrawTime.getType());
@@ -238,7 +231,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
-            console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
             this.setCardState(null, pick3DrawTimeType);
@@ -251,7 +243,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.setCardState(winningNumber, pick3DrawTimeType);
         }, error => {
             // TODO: Handle error.
-            console.warn('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Results Not Available',
                 'Please try again later.', 'results-not-available');
             this.setCardState(null, pick3DrawTimeType);
@@ -309,8 +300,18 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
     }
 
-    showBackButton(subSection: any) {
+    public switchDrawDateButtons(subSection: any) {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
     }
+
+    private checkIdForGenerateButton() {
+
+        if (this.id < 5) {
+            this.switchDrawDateButtons(5);
+        } else {
+            this.switchDrawDateButtons(1);
+        }
+    }
+
 }

@@ -81,7 +81,11 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
                     drawTime.setSelected(true);
                     this.currentDrawingCard = pick3DrawTimeCard;
                     this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
-
+                    if (this.continueChoice) {
+                        this.continueButton = false;
+                    } else {
+                        this.continueButton = true;
+                    }
                 }
             });
         }
@@ -92,8 +96,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
             this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
-            const sortedDrawTimes = this.sortDrawTimes(this.drawTimes);
-            for (const drawTime of sortedDrawTimes) {
+            for (const drawTime of this.drawTimes) {
                 this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
             this.selectCurrentCard(this.drawTimes);
@@ -131,6 +134,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         const yesterdaysDate: Date = new Date(this.currentDateYear, this.currentDateMonth - 1, this.currentDateDay - 1, someDateTime.getHours());
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
+        this.continueChoice = undefined;
         this.setDrawingTimeMenuItems(yesterdaysDate, 6);
     }
 
@@ -138,6 +142,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         const currentDate = new Date();
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
+        this.continueChoice = undefined;
         this.setDrawingTimeMenuItems(currentDate, 7);
     }
 
