@@ -3,10 +3,10 @@
     <div class="generate-options-title">Previous Drawing Date:</div>
     <ion-row class="generate-picks-button-section">
       <ion-col id="yesterdayPreviousDrawingDate">
-        <button #yesterdayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForYesterday(yesterdayPreviousDrawingDate, todayPreviousDrawingDate);">Yesterday</button>
+        <button id="yesterday" #yesterdayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForYesterday(yesterdayPreviousDrawingDate, todayPreviousDrawingDate);">Yesterday</button>
       </ion-col>
       <ion-col id="todayPreviousDrawingDate" >
-        <button #todayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForToday(todayPreviousDrawingDate, yesterdayPreviousDrawingDate);" style="background-color: #2fdf75">Today</button>
+        <button id="today" #todayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForToday(todayPreviousDrawingDate, yesterdayPreviousDrawingDate);" style="background-color: #2fdf75">Today</button>
       </ion-col>
     </ion-row>
     <div class="generate-options-title">Previous Drawing Time:</div>
@@ -15,13 +15,13 @@
         <ion-item class="ion-no-padding"  style="width: 100%;" >
           <ion-select class="timeOfDayDropDown" name="continueChoice" [(ngModel)]="continueChoice" placeholder="Select a Time of Day"
                       style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice); enableContinue()">
+                      interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice);">
             <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{drawTime.getTitle() | translate}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
       <ion-row>
-        <button id="continueButton"  class=" continue-button confirmation-button" [value]="continueButton" type="submit" [routerLink]="['generate-picks']" routerDirection="forward" >Continue</button>
+        <button id="continueButton" [disabled]="continueButton" [class.continue-button]="continueButton" class=" continue-button-disabled confirmation-button" [value]="continueButton" type="submit" [routerLink]="['generate-picks']" routerDirection="forward" >Continue</button>
       </ion-row>
     </form>
   </div>

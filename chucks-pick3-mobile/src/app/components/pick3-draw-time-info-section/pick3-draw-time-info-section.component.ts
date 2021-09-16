@@ -46,7 +46,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
             return false;
         });
 
-       this.drawTimeSubscription =  this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
+        this.drawTimeSubscription = this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
             if (currentPick3DrawTimeCard && currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
                 this.drawTimes.forEach(drawTime => {
                     drawTime.setPick3DrawCardId(this.id);

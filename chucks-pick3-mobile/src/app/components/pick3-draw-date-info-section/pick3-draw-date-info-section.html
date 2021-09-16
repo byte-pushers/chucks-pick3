@@ -2,14 +2,14 @@
     <ion-col size="2" style=" margin-right: 0px" [ngSwitch]="generateNavigation">
         <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
-        <ion-icon *ngSwitchCase="1" [routerLink]="['/','view-picks']" (click)="showBackButton(4)" routerDirection="back"
-                  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
+        <ion-icon *ngSwitchCase="1" [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+                  src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
                   [routerLink]="['/', 'home']"
                   [state]="{currentSlideNumber: this.currentSlideNumber}"
                   routerDirection="forward"
-                  (click)="showBackButton(1)"
+                  (click)="switchDrawDateButtons(1)"
                   class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
 
@@ -22,9 +22,13 @@
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
         <ion-icon *ngSwitchCase="4"></ion-icon>
-        <ion-icon *ngSwitchDefault [routerLink]="['/','view-picks']" (click)="showBackButton(4)" routerDirection="back"
-                  src="../../../assets/view-picks-icon.svg" class="view-picks-icon"
+        <ion-icon *ngSwitchDefault [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+                  src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
+        <ion-icon *ngSwitchCase="5" [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+                  src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
+                  style=" padding-left: 15px"></ion-icon>
+
     </ion-col>
     <ion-col size="8">
         <ion-row>
@@ -85,7 +89,7 @@
     </ion-col>
     <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
         <ion-icon
-                (click)="showBackButton(2);"
+                (click)="switchDrawDateButtons(2);"
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
@@ -93,7 +97,7 @@
                 currentDay: this.data.getDrawDate()}"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
-                class="generate-picks-icon" style="background-color: yellow; padding-right: 25px"></ion-icon>
+                class="generate-picks-icon" style="padding-right: 25px"></ion-icon>
         <ion-icon *ngSwitchCase="2"></ion-icon>
         <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
                   [state]="{
@@ -101,11 +105,15 @@
                       subContent: this.generateNavigation
                     }"
                   routerDirection="back"
-                  (click)="showBackButton(1)" class="generate-back-button"
+                  (click)="switchDrawDateButtons(1)" class="generate-back-button"
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
+        <ion-icon
+                *ngSwitchCase="5"
+                src="../../../assets/generate-picks-icon.svg"
+                class="general-draw-date-button-sizing" style="opacity: 40%; padding-right: 25px"></ion-icon>
 
         <ion-icon
-                (click)="showBackButton(2)"
+                (click)="switchDrawDateButtons(2)"
                 *ngSwitchDefault
                 [routerLink]="['/','select-picks']"
                 [state]="{
@@ -113,7 +121,7 @@
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
-                class="generate-picks-icon" style="background-color: red; padding-right: 25px"></ion-icon>
+                class="general-draw-date-button-sizing" style="padding-right: 25px"></ion-icon>
 
     </ion-col>
 </ion-row>
