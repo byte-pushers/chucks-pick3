@@ -45,9 +45,10 @@ export class HomePage implements AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         const routerState = this.router.getCurrentNavigation().extras.state;
         if (routerState && this.router.url === '/home') {
-            const currentSlideNumber = routerState?.currentSlideNumber;
+            const currentSlideNumber = this.appService.pick3CardId;
             if (currentSlideNumber) {
-                this.next(currentSlideNumber-1);
+                console.log('home page: ' + currentSlideNumber);
+                this.next(currentSlideNumber - 1);
             }
         }
     }
@@ -69,6 +70,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
 
     public initializePick3DrawDateCard(event: any): void {
         let slideDirection = null;
+        this.storeId();
         this.ionSlides.getActiveIndex().then(activeIndex => {
             if (activeIndex < this.prevActiveIndex) {
                 this.prevActiveIndex = activeIndex;
@@ -93,5 +95,14 @@ export class HomePage implements AfterViewInit, OnDestroy {
 
     private next(index) {
         this.ionSlides.slideTo(index, this.slideOpts.speed);
+    }
+
+    private storeId() {
+        this.ionSlides.getActiveIndex().then(activeIndex => {
+            if (activeIndex !== this.prevActiveIndex) {
+                this.appService.pick3CardId = (activeIndex + 1);
+                console.log(this.appService.pick3CardId);
+            }
+        });
     }
 }

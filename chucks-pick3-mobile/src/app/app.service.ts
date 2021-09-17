@@ -13,6 +13,7 @@ import {DrawTimeService} from './services/draw-time.service';
 
 export class AppService {
     private pick3StateLottery: Pick3StateLottery;
+    public pick3CardId: number;
 
     private card1: Pick3DrawDateCard;
     private card2: Pick3DrawDateCard;

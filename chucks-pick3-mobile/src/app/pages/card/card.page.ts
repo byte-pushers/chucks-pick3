@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AppService} from "../../app.service";
 
 @Component({
     selector: 'card-page',
@@ -16,19 +17,21 @@ export class CardPage implements OnInit, OnDestroy {
     private static counter = 0;
     private readonly id: number;
     public currentSlideNumber: number;
+    private routerUrl: string;
 
     constructor(public translateService: TranslateService,
                 private popoverController: PopoverController,
-                private router: Router) {
+                private router: Router,
+                private appService: AppService) {
         const routerState = this.router.getCurrentNavigation().extras.state;
-        const routerUrl = this.router.url;
+        this.routerUrl = this.router.url;
         translateService.setDefaultLang('en-US');
 
-        if (routerUrl === '/home') {
+        if (this.routerUrl === '/home') {
             this.id = ++CardPage.counter;
             console.log('Card Page current slide number: ' + routerState?.currentSlideNumber);
-        } else if (routerUrl === '/select-picks') {
-            this.currentSlideNumber = routerState?.currentSlideNumber;
+        } else if (this.routerUrl === '/select-picks') {
+            this.currentSlideNumber = this.appService.pick3CardId;
             console.log('Card page on select-picks: ' + this.currentSlideNumber);
         }
         console.log(`CardPage.constructor: id: ${this.id}`);
@@ -52,6 +55,10 @@ export class CardPage implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         console.log(`CardPage.ngOnDestroy: id: ${this.id}`);
-        CardPage.counter--;
+        if (this.routerUrl === '/home') {
+            CardPage.counter--;
+        } else if (this.routerUrl === '/select-picks') {
+
+        }
     }
 }
