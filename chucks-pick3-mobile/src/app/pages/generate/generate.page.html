@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar color="transparent">
+    <ion-text class="header-text">
+      <p><b>{{'generate-header' | translate}}</b></p>
+    </ion-text>
+
     <ion-buttons slot="start" (click)="showPopover($event)">
       <ion-button menu="lang-menu" >
         <b class="language">{{'language' | translate}}</b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill toolbar-icon" viewBox="0 0 16 16">
