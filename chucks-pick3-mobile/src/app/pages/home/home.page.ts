@@ -17,8 +17,9 @@ import {Router} from '@angular/router';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements AfterViewInit, OnDestroy {
-    prevActiveIndex = 7;
-    cardContext = this.cardContextService.context$;
+    prevActiveIndex:number = 7;
+    private cardContext = this.cardContextService.context$;
+    private slidesLoaded = false;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
         drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
@@ -67,26 +68,41 @@ export class HomePage implements AfterViewInit, OnDestroy {
         return await popover.present();
     }
 
-    public initializePick3DrawDateCard(event: any): void {
-        let slideDirection = null;
-        this.storeId();
-        this.ionSlides.getActiveIndex().then(activeIndex => {
-            if (activeIndex < this.prevActiveIndex) {
-                this.prevActiveIndex = activeIndex;
-                slideDirection = -1;
-            } else if (activeIndex >= this.prevActiveIndex) {
-                this.prevActiveIndex = activeIndex;
-                slideDirection = 1;
-            }
-            // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
-            const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-            this.cardContextService.addContext({
-                slideNumber: activeIndex + 1,
-                data: pick3DrawDateDecks[activeIndex],
-                defaultDrawDateTime: this.default.drawDateTime,
-                drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1)
-            });
+    public initializePick3DrawDateCards(event: any): void {
+        this.ionSlides.length().then(count => {
+            console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
+            this.slidesLoaded = true;
+            this.initializePick3DrawDateCard(event);
         });
+    }
+
+    public initializePick3DrawDateCard(event: any): void {
+        if (this.slidesLoaded) {
+            this.storeId();
+            this.ionSlides.getActiveIndex().then(activeIndex => {
+                // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
+                console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
+                // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
+                const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+                /* console.log(`HomePage.initializePick3DrawDateCard() method activeIndex:${activeIndex}, (${activeIndex} + 1) = ${activeIndex + 1}`);*/
+
+                if (activeIndex <= 6) {
+                    this.cardContextService.addContext({
+                        slideNumber: activeIndex + 1,
+                        data: pick3DrawDateDecks[activeIndex],
+                        defaultDrawDateTime: this.default.drawDateTime,
+                        drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1)
+                    });
+                } else {
+                    /*this.cardContextService.addContext({
+                        slideNumber: 7,
+                        data: pick3DrawDateDecks[6],
+                        defaultDrawDateTime: this.default.drawDateTime,
+                        drawTimes: this.appService.getPick3DrawTimeCards(7)
+                    });*/
+                }
+            });
+        }
     }
 
     private next(index) {

@@ -6,6 +6,7 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
+import {Router} from "@angular/router";
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -15,20 +16,27 @@ import {Subscription} from 'rxjs';
 })
 export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     private static counter = 0;
-    private readonly id: number;
+    public id: number = -1;
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
     private drawTimeSubscription: Subscription;
+    private routerUrl;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private drawTimeService: DrawTimeService,
                 private drawDateService: DrawDateService,
+                private router: Router,
                 private appService: AppService) {
+        this.routerUrl = this.router.url;
+
+        if (this.routerUrl === '/home') {
+            this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
+            console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
+
+            this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
+        }
 
         this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
-        this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
-        this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
-        console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
     }
 
     ngOnInit(): void {
@@ -64,7 +72,11 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: id: ${this.id}`);
         this.drawTimeSubscription?.unsubscribe();
-        Pick3DrawTimeInfoSectionComponent.counter--;
+
+        if (this.routerUrl === '/home') {
+            Pick3DrawTimeInfoSectionComponent.counter--;
+            console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: counter: ${Pick3DrawTimeInfoSectionComponent.counter}`);
+        }
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
@@ -76,7 +88,6 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
                 // pick3DrawTimeCard.showCountDownToDrawing = false;
 
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
-
             }
         });
     }
