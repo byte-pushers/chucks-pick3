@@ -37,6 +37,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
     public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
     public showCountDownToDrawing = false;
+    public pick3GenerateId: number;
     public drawTimeCard: Pick3DrawTimeCard;
     public selectedDrawTimeCard: Pick3DrawTimeCardProperties;
     public generateNavigation: any;
@@ -91,7 +92,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                 selectedPick3DrawTimeCard,
                 this.appService.getBackgroundImageUrl(),
                 selectedPick3DrawTimeCard.getIcon());
-
             this.currentSlideNumber = routerState?.currentSlideNumber;
         }
 
@@ -99,9 +99,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         registerLocaleData(localeEnUS, 'en-US');
 
         this.drawDateSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+            this.pick3GenerateId = this.appService.pick3CardId;
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
             if (this.routerUrl === '/home') {
-                this.checkIdForGenerateButton();
                 if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
                     this.setData(
                         this.appService.getDrawState(),
@@ -113,6 +113,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     this.showCountDownToDrawing = currentPick3DrawDateCard.showCountDownToDrawing;
                 }
             } else if (this.routerUrl === '/select-picks') {
+                this.currentSlideNumber = this.appService.pick3CardId;
                 this.setData(
                     this.appService.getDrawState(),
                     currentPick3DrawDateCard,
@@ -149,7 +150,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.appService = null;
         this.drawDateSubscription?.unsubscribe();
         this.cardContextSubscription?.unsubscribe();
-        Pick3DrawDateInfoSection.counter--;
+        if (this.routerUrl === '/home') {
+            Pick3DrawDateInfoSection.counter--;
+        }
     }
 
     async showPopover(ev: any) {
@@ -303,15 +306,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public switchDrawDateButtons(subSection: any) {
         this.drawStateService.generateNavigationChoice = subSection;
         this.drawStateService.viewNavigationChoice = subSection;
-    }
-
-    private checkIdForGenerateButton() {
-
-        if (this.id < 5) {
-            this.switchDrawDateButtons(5);
-        } else {
-            this.switchDrawDateButtons(1);
-        }
     }
 
 }

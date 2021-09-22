@@ -8,12 +8,14 @@ import {Pick3WebScrapingProviderService} from './providers/web-scraping/pick3-we
 import {Pick3StateLottery} from './models/pick3-state-lottery';
 import {Pick3DrawTime} from './models/pick3-draw-time';
 import {DrawTimeService} from './services/draw-time.service';
+import {Subject} from 'rxjs';
 
 @Injectable()
 
 export class AppService {
     private pick3StateLottery: Pick3StateLottery;
-
+    public pick3CardId: number;
+    private pick3DrawCardIdSource = new Subject<number>();
     private card1: Pick3DrawDateCard;
     private card2: Pick3DrawDateCard;
     private card3: Pick3DrawDateCard;
@@ -251,6 +253,15 @@ export class AppService {
         const drawTime = this.getDrawTime(currentDrawTime);
         const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
         return pick3DrawTime;
+    }
+
+
+    public getPick3DrawCardId$() {
+        return this.pick3DrawCardIdSource.asObservable();
+    }
+
+    public dispatchCurrentDrawCardIdEvent(someCardId: number) {
+        this.pick3DrawCardIdSource.next(someCardId);
     }
 
 }

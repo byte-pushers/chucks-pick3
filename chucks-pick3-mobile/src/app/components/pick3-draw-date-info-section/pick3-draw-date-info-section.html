@@ -7,7 +7,7 @@
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
                   [routerLink]="['/', 'home']"
-                  [state]="{currentSlideNumber: this.currentSlideNumber}"
+                  [state]="{currentSlideNumber: this.pick3GenerateId}"
                   routerDirection="forward"
                   (click)="switchDrawDateButtons(1)"
                   class="generate-back-button"
@@ -15,7 +15,7 @@
 
         <ion-icon *ngSwitchCase="3" routerDirection="forward" [routerLink]="['/', 'home']"
                   [state]="{
-                   currentSlideNumber: this.currentSlideNumber
+                   currentSlideNumber: this.pick3GenerateId
                   }"
                   class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
@@ -93,7 +93,7 @@
                 *ngSwitchCase="1"
                 [routerLink]="['/','select']"
                 [state]="{
-                    currentSlideNumber: this.id,
+                    currentSlideNumber: this.pick3GenerateId,
                 currentDay: this.data.getDrawDate()}"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
@@ -101,7 +101,7 @@
         <ion-icon *ngSwitchCase="2"></ion-icon>
         <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
                   [state]="{
-                      currentSlideNumber: this.currentSlideNumber,
+                      currentSlideNumber: this.pick3GenerateId,
                       subContent: this.generateNavigation
                     }"
                   routerDirection="back"
@@ -117,7 +117,7 @@
                 *ngSwitchDefault
                 [routerLink]="['/','select-picks']"
                 [state]="{
-                  currentSlideNumber: this.id
+                  currentSlideNumber: this.pick3GenerateId
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"

@@ -29,6 +29,7 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
+    private id: number;
     private componentState;
     public currentDate = new Date().getDate();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
@@ -40,7 +41,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     currentDateMonth: number = new Date().getMonth() + 1;
     currentDateYear: number = new Date().getFullYear();
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
-    private drawDateSubscription: Subscription;
+    pick3CardIdSubscription: Subscription;
     private someDateTime: Date = new Date();
     private currentDrawingCard: Pick3DrawTimeCard;
 
@@ -67,6 +68,16 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else {
             this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
+        this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
+            if (this.router.url === '/home') {
+                this.continueButton = true;
+                if (slideNumber === 6) {
+                    this.selectDrawingDateMenuItemForYesterday(yesterday, today);
+                } else if (slideNumber === 7) {
+                    this.selectDrawingDateMenuItemForToday(today, yesterday);
+                }
+            }
+        });
     }
 
     ngOnDestroy() {
@@ -99,7 +110,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
             for (const drawTime of this.drawTimes) {
                 this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
-            this.selectCurrentCard(this.drawTimes);
+            if (this.router.url === '/select-picks') {
+                this.selectCurrentCard(this.drawTimes);
+            }
         } else {
             this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
@@ -107,11 +120,13 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
                 this.newDrawingTimes.push(drawTime.getDrawTimeValue());
                 this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
             }
-            this.selectCurrentCard(this.drawTimes);
+            if (this.router.url === '/select-picks') {
+                this.selectCurrentCard(this.drawTimes);
+            }
         }
     }
 
-    private sortDrawTimes(drawTimes) {
+   /* private sortDrawTimes(drawTimes) {
         const currentHour = new Date().getHours();
         for (const drawTime of drawTimes) {
             const index = drawTimes.indexOf(drawTime);
@@ -120,7 +135,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
             }
         }
         return drawTimes;
-    }
+    }*/
 
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
@@ -135,6 +150,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
         this.continueChoice = undefined;
+        this.appService.pick3CardId = 6;
         this.setDrawingTimeMenuItems(yesterdaysDate, 6);
     }
 
@@ -143,6 +159,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
         this.continueChoice = undefined;
+        this.appService.pick3CardId = 7;
         this.setDrawingTimeMenuItems(currentDate, 7);
     }
 

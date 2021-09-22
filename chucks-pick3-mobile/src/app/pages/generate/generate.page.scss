@@ -1,3 +1,4 @@
+@import "src/theme/variables";
 #container {
   text-align: center;
 
@@ -45,4 +46,9 @@ ion-grid {
 ion-slides {
   height: 100%;
   width: 100%;
+}
+
+.header-text {
+  text-align: center;
+  color: $chucksPick3White
 }
