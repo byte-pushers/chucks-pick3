@@ -1,6 +1,7 @@
 <ion-content [fullscreen]="true" class="scroll-content">
     <ion-slides pages [options]="slideOpts" #pick3DrawDateCards
-                (ionSlideTransitionStart)="initializePick3DrawDateCard($event)">
+                (ionSlideTransitionStart)="initializePick3DrawDateCard($event)"
+                (ionSlidesDidLoad)="initializePick3DrawDateCards($event)">
         <ion-slide  style="background-color: white;">
             <ion-router-outlet name="card-page-1"></ion-router-outlet>
         </ion-slide>

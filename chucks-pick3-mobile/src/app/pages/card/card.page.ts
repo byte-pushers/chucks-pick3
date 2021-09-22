@@ -15,7 +15,7 @@ import {AppService} from "../../app.service";
 })
 export class CardPage implements OnInit, OnDestroy {
     private static counter = 0;
-    private readonly id: number;
+    public id: number = -1;
     public currentSlideNumber: number;
     private routerUrl: string;
 
@@ -24,6 +24,11 @@ export class CardPage implements OnInit, OnDestroy {
                 private router: Router,
                 private appService: AppService) {
         const routerState = this.router.getCurrentNavigation().extras.state;
+        this.routerUrl = this.router.url;
+
+        console.log('CardPage.constructor(): routerState: ' + routerState);
+        console.log('CardPage.constructor(): current slide number: ' + routerState?.currentSlideNumber);
+
         this.routerUrl = this.router.url;
         translateService.setDefaultLang('en-US');
 
@@ -57,6 +62,7 @@ export class CardPage implements OnInit, OnDestroy {
         console.log(`CardPage.ngOnDestroy: id: ${this.id}`);
         if (this.routerUrl === '/home') {
             CardPage.counter--;
+            console.log(`CardPage.ngOnDestroy: counter: ${CardPage.counter}`);
         } else if (this.routerUrl === '/select-picks') {
 
         }
