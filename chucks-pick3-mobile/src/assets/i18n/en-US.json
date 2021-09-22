@@ -21,5 +21,6 @@
   "pick3.draw.date.card.previous.drawing.time": "Previous Drawing Time",
   "pick3.draw.date.card.current.drawing.date": "Drawing Date",
   "pick3.draw.date.card.current.drawing.time": "Drawing Time",
-  "generate-header": "Previous Winning Number"
+  "select-header": "Previous Winning Numbers",
+  "generate-header": "Generate New Numbers"
 }

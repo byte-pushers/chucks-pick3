@@ -8,6 +8,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Router} from '@angular/router';
 import {DrawTimeService} from '../../services/draw-time.service';
+import {AppService} from '../../app.service';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -26,9 +27,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
-
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
+                private appService: AppService,
                 private router: Router,
                 private drawStateService: DrawStateService,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService,
@@ -38,6 +39,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     ngOnInit() {
+        const today: HTMLElement = document.getElementById('today');
+        const yesterday: HTMLElement = document.getElementById('yesterday');
+        this.selectTodayGenerateDrawingDate(today, yesterday);
     }
 
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -60,11 +64,15 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public setDrawingTimeMenuItems(targetCurrentDate: Date): void {
-
+        const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCards(7);
         if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
+            this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
-            for (const drawTime of this.drawTimes) {
+            const drawTimes = this.sortDrawTimes(this.drawTimes);
+            for (const drawTime of drawTimes) {
+                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
+                this.newDrawingTimes.push(drawTime.getTitle());
             }
         } else {
             this.resetDrawingTimes();
@@ -95,7 +103,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public submitGenerate(): void {
-        this.changeNavigation(4);
+        this.changeNavigation(1);
         this.replaceGeneratedNumbers();
         console.log(this.drawTimeService.viewPicksArray);
         /*this.router.navigate(['/view-picks']);*/
@@ -113,6 +121,20 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
         oldArray.push.apply(oldArray, newArray);
     }
+
+    private sortDrawTimes(drawTimes) {
+        const currentHour = new Date().getHours();
+        for (const drawTime of drawTimes) {
+            const drawTimeHour = drawTime.getPick3DrawTime().getDateTime().getHours();
+            const index = drawTimes.indexOf(drawTime);
+            console.log(drawTimeHour);
+            if (drawTimeHour <= currentHour) {
+                drawTimes.splice(index, 1);
+            }
+        }
+        return drawTimes;
+    }
+
 
     private getRandomIntInclusive() {
         const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
