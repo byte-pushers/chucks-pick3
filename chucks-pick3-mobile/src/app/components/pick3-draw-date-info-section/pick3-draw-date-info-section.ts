@@ -129,7 +129,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.viewNavigation = this.drawStateService.viewNavigationChoice;
         this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
             if (context && context.slideNumber === this.id) {
-                console.log('context slide Number: ' + context.slideNumber);
                 const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
                 const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
                 this.defaultDrawDateTime = context.defaultDrawDateTime;

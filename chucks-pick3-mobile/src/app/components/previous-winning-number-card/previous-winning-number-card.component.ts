@@ -41,10 +41,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     currentDateMonth: number = new Date().getMonth() + 1;
     currentDateYear: number = new Date().getFullYear();
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
-    private drawDateSubscription: Subscription;
+    pick3CardIdSubscription: Subscription;
     private someDateTime: Date = new Date();
     private currentDrawingCard: Pick3DrawTimeCard;
-    private currentSlideNumber: number;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
@@ -69,19 +68,14 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else {
             this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
-
-        this.drawDateSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-
-            console.log(this.appService.pick3CardId);
+        this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
             if (this.router.url === '/home') {
                 this.continueButton = true;
-                if (this.appService.pick3CardId === 6) {
-                    console.log('yesterday');
+                if (slideNumber === 6) {
                     this.selectDrawingDateMenuItemForYesterday(yesterday, today);
-                } else if (this.appService.pick3CardId === 7) {
+                } else if (slideNumber === 7) {
                     this.selectDrawingDateMenuItemForToday(today, yesterday);
                 }
-                console.log('im checking the current number: ' + this.appService.pick3CardId);
             }
         });
     }
@@ -132,7 +126,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         }
     }
 
-    private sortDrawTimes(drawTimes) {
+   /* private sortDrawTimes(drawTimes) {
         const currentHour = new Date().getHours();
         for (const drawTime of drawTimes) {
             const index = drawTimes.indexOf(drawTime);
@@ -141,7 +135,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
             }
         }
         return drawTimes;
-    }
+    }*/
 
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
@@ -157,7 +151,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         today.style.backgroundColor = '#e5e5e5';
         this.continueChoice = undefined;
         this.appService.pick3CardId = 6;
-        console.log(this.appService.pick3CardId);
         this.setDrawingTimeMenuItems(yesterdaysDate, 6);
     }
 
@@ -167,7 +160,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         yesterday.style.backgroundColor = '#e5e5e5';
         this.continueChoice = undefined;
         this.appService.pick3CardId = 7;
-        console.log(this.appService.pick3CardId);
         this.setDrawingTimeMenuItems(currentDate, 7);
     }
 

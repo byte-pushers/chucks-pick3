@@ -8,7 +8,7 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -47,7 +47,6 @@ export class HomePage implements AfterViewInit, OnDestroy {
         if (routerState && this.router.url === '/home') {
             const currentSlideNumber = this.appService.pick3CardId;
             if (currentSlideNumber) {
-                console.log('home page: ' + currentSlideNumber);
                 this.next(currentSlideNumber - 1);
             }
         }
@@ -80,10 +79,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
                 slideDirection = 1;
             }
             // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
-            /* console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);*/
-            // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
             const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-            /* console.log(`HomePage.initializePick3DrawDateCard() method activeIndex:${activeIndex}, (${activeIndex} + 1) = ${activeIndex + 1}`);*/
             this.cardContextService.addContext({
                 slideNumber: activeIndex + 1,
                 data: pick3DrawDateDecks[activeIndex],
@@ -102,7 +98,14 @@ export class HomePage implements AfterViewInit, OnDestroy {
             if (activeIndex !== this.prevActiveIndex) {
                 this.appService.pick3CardId = (activeIndex + 1);
                 console.log(this.appService.pick3CardId);
+                this.passIdToGenerate(activeIndex + 1);
             }
         });
+    }
+
+    private passIdToGenerate(slideNumber) {
+        if (slideNumber >= 6) {
+            this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
+        }
     }
 }
