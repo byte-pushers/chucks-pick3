@@ -2,7 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {DrawDateService} from '../../services/draw-date.service';
+import {DrawStateService} from '../../services/draw-state.service';
 import {DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, MORNING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY} from '../../models/pick3-draw-time.enum';
+import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import {Pick3StateLottery} from '../../models/pick3-state-lottery';
+import {Router} from '@angular/router';
+import {DrawTimeService} from '../../services/draw-time.service';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -15,11 +20,21 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     currentDateDay: number = new Date().getDate();
     currentDateMonth: number = new Date().getMonth() + 1;
     currentDateYear: number = new Date().getFullYear();
+    public pick3StateLottery: Pick3StateLottery;
+    private componentState;
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
-    constructor(private drawDateService: DrawDateService) {
+
+    constructor(private drawDateService: DrawDateService,
+                private drawTimeService: DrawTimeService,
+                private router: Router,
+                private drawStateService: DrawStateService,
+                private pick3WebScrappingService: Pick3WebScrapingProviderService,
+    ) {
+        this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
+        this.componentState = 'instantiated';
     }
 
     ngOnInit() {
@@ -77,5 +92,30 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.newDrawingTimes.length = 0;
         }
 
+    }
+
+    public submitGenerate(): void {
+        this.changeNavigation(4);
+        this.replaceGeneratedNumbers();
+        console.log(this.drawTimeService.viewPicksArray);
+        /*this.router.navigate(['/view-picks']);*/
+    }
+
+    private changeNavigation(route) {
+        this.drawStateService.generateNavigationChoice = route;
+        this.drawStateService.viewNavigationChoice = route;
+    }
+
+    private replaceGeneratedNumbers() {
+        const oldArray = this.drawTimeService.viewPicksArray;
+        const newArray = this.getRandomIntInclusive();
+        oldArray.length = 0;
+
+        oldArray.push.apply(oldArray, newArray);
+    }
+
+    private getRandomIntInclusive() {
+        const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
+        return generatedNumberArray;
     }
 }

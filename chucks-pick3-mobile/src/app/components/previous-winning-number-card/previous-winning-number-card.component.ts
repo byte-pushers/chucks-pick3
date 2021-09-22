@@ -29,7 +29,6 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    private id: number;
     private componentState;
     public currentDate = new Date().getDate();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];

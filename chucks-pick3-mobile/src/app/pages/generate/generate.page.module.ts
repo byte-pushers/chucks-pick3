@@ -9,6 +9,7 @@ import { GeneratePageRoutingModule } from './generate.page.routing.module';
 import { GeneratePage } from './generate.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { PreviousWinningNumberCardComponent } from "../../components/previous-winning-number-card/previous-winning-number-card.component";
+import {GenerateNextNumbersCardComponent} from '../../components/generate-next-numbers-card/generate-next-numbers-card.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { PreviousWinningNumberCardComponent } from "../../components/previous-wi
   ],
   declarations: [
       GeneratePage,
-      PreviousWinningNumberCardComponent
+      PreviousWinningNumberCardComponent,
+      GenerateNextNumbersCardComponent
   ]
 })
 export class GeneratePageModule {
