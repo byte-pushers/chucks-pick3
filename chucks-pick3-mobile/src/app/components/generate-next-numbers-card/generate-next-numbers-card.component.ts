@@ -18,12 +18,8 @@ import {AppService} from '../../app.service';
 export class GenerateNextNumbersCardComponent implements OnInit {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     newDrawingTimes: any[] = [];
-    currentDateDay: number = new Date().getDate();
-    currentDateMonth: number = new Date().getMonth() + 1;
-    currentDateYear: number = new Date().getFullYear();
     public pick3StateLottery: Pick3StateLottery;
     private componentState;
-    fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
@@ -70,7 +66,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.resetDrawingTimes();
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
-                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
                 this.newDrawingTimes.push(drawTime.getTitle());
             }
@@ -87,7 +82,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-                // pick3DrawTimeCard.showCountDownToDrawing = false;
 
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
 
@@ -127,7 +121,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         for (const drawTime of drawTimes) {
             const drawTimeHour = drawTime.getPick3DrawTime().getDateTime().getHours();
             const index = drawTimes.indexOf(drawTime);
-            console.log(drawTimeHour);
             if (drawTimeHour <= currentHour) {
                 drawTimes.splice(index, 1);
             }
