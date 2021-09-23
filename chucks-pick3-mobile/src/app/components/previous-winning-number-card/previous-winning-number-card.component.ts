@@ -29,7 +29,6 @@ import {Pick3DrawTime} from '../../models/pick3-draw-time';
 export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     public drawTimes: Array<Pick3DrawTimeCard> = [];
     public pick3StateLottery: Pick3StateLottery;
-    private id: number;
     private componentState;
     public currentDate = new Date().getDate();
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
@@ -43,7 +42,8 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
     pick3CardIdSubscription: Subscription;
     private someDateTime: Date = new Date();
-    private currentDrawingCard: Pick3DrawTimeCard;
+    public pick3Id: number;
+    public currentDrawingCard: Pick3DrawTimeCard;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
@@ -69,6 +69,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
             this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
         this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
+
             if (this.router.url === '/home') {
                 this.continueButton = true;
                 if (slideNumber === 6) {

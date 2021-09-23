@@ -8,6 +8,7 @@ import {Pick3DrawTimeCard} from '../models/pick3-draw-time-card';
 export class DrawTimeService {
     private pick3DrawTimeSource = new Subject<Pick3DrawTimeCard>();
     public currentDrawTimeCard: Pick3DrawTimeCard = null;
+    public viewPicksArray =  [] ;
 
     constructor() {
     }

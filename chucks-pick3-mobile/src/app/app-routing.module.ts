@@ -19,7 +19,13 @@ const routes: Routes = [
     path: 'select',
     redirectTo: 'select-picks',
     pathMatch: 'full'
-    //loadChildren: () => import('./pages/generate/generate.page.module').then(m => m.GeneratePageModule)
+    // loadChildren: () => import('./pages/generate/generate.page.module').then(m => m.GeneratePageModule)
+  },
+  {
+    path: 'generate',
+    redirectTo: 'generate-picks',
+    pathMatch: 'full'
+    // loadChildren: () => import('./pages/generate/generate.page.module').then(m => m.GeneratePageModule)
   }
 ];
 

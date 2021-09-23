@@ -21,4 +21,5 @@
   "pick3.draw.date.card.previous.drawing.time": "Tiempo de Sorteo Anterior",
   "pick3.draw.date.card.current.drawing.date": "Fecha de Sorteo",
   "pick3.draw.date.card.current.drawing.time": "Tiempo de Sorteo",
-  "generate-header": "Número Ganador Anterior"}
+  "select-header": "Número Ganador Anterior",
+  "generate-header": "Generar Nuevos Numeros"}
