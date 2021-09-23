@@ -26,7 +26,14 @@ const routes: Routes = [
     redirectTo: 'generate-picks',
     pathMatch: 'full'
     // loadChildren: () => import('./pages/generate/generate.page.module').then(m => m.GeneratePageModule)
-  }
+  },
+  {
+    path: 'view',
+    redirectTo: 'view-picks',
+    pathMatch: 'full'
+   /* loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
+*/  }
+
 ];
 
 @NgModule({

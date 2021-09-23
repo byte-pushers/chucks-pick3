@@ -42,8 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
         CardPage,
         CountdownTimerComponent,
         Pick3DrawTimeCardComponent,
-        Pick3DrawTimeInfoSectionComponent,
-        ViewPicksCardComponent
+        Pick3DrawTimeInfoSectionComponent
     ]
 })
 export class CardPageModule {

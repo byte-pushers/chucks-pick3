@@ -17,6 +17,7 @@ import {AppService} from './app.service';
 import {GeneratePageModule} from './pages/generate/generate.page.module';
 import {Pick3DrawDateInfoSection} from './components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import {CardPageModule} from './pages/card/card.page.module';
+import {ViewPageModule} from './pages/view/view.module';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,7 +45,8 @@ export function createTranslateLoader(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
-        CardPageModule
+        CardPageModule,
+        ViewPageModule
     ],
     providers: [
         StatusBar,
