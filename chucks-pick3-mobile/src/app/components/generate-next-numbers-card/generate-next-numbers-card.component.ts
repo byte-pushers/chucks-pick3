@@ -23,6 +23,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
+    private pick3CardToGenerate: Pick3DrawTimeCard;
+
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
                 private appService: AppService,
@@ -67,24 +69,27 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
                 this.selectDrawingTimeCard(drawTime);
-                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.push(drawTime);
             }
         } else {
+            /*this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
-            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+            for (const drawTime of this.drawTimes) {
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
+                this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+            }*/
         }
 
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+        console.log(pick3DrawTimeCard);
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-
-                this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
-
+                this.pick3CardToGenerate = pick3DrawTimeCard;
             }
         });
     }
@@ -99,8 +104,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     public submitGenerate(): void {
         this.changeNavigation(1);
         this.replaceGeneratedNumbers();
-        console.log(this.drawTimeService.viewPicksArray);
-        /*this.router.navigate(['/view-picks']);*/
+        this.changeNavigation(4);
+        this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
+        this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
+        this.router.navigate(['/view-picks']);
     }
 
     private changeNavigation(route) {
@@ -109,11 +116,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     private replaceGeneratedNumbers() {
-        const oldArray = this.drawTimeService.viewPicksArray;
         const newArray = this.getRandomIntInclusive();
-        oldArray.length = 0;
-
-        oldArray.push.apply(oldArray, newArray);
+        /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
+        this.pick3CardToGenerate.setPick3DrawTimeArray(newArray);
     }
 
     private sortDrawTimes(drawTimes) {

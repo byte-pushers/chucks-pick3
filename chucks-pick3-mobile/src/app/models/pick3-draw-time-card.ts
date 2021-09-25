@@ -25,4 +25,6 @@ export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
     getDateTime(): Date;
     setDateTime(dateTime: Date): void;
     compareTo(pick3DrawDateCard: Pick3DrawDateCard): number;
+    getPick3DrawTimeArray(): number[];
+    setPick3DrawTimeArray(pick3DrawTimeArray: number[]);
 }
