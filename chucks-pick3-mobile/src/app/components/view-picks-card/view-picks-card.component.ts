@@ -48,7 +48,7 @@ export class ViewPicksCardComponent implements OnInit {
   }
 
   private retrieveNumbers() {
-    const generatedArray = this.drawTimeService.viewPicksArray;
+    const generatedArray = this.drawTimeService.getCurrentDrawTimeCard().getPick3DrawTimeArray();
     const copiedArray = Object.assign([], generatedArray);
     const ArrayToBeSetToTable: any = [];
     for ( let i = 0; i < 12; i++){
