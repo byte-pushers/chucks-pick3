@@ -2,7 +2,7 @@
     <ion-col size="2" style=" margin-right: 0px" [ngSwitch]="generateNavigation">
         <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
-        <ion-icon *ngSwitchCase="1" [routerLink]="['view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+        <ion-icon *ngSwitchCase="1" [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
@@ -22,10 +22,10 @@
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
         <ion-icon *ngSwitchCase="4"></ion-icon>
-        <ion-icon *ngSwitchDefault [routerLink]="['view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+        <ion-icon *ngSwitchDefault [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
-        <ion-icon *ngSwitchCase="5" [routerLink]="['view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
+        <ion-icon *ngSwitchCase="5" [routerLink]="['/','view-picks']" (click)="switchDrawDateButtons(4)" routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
 
