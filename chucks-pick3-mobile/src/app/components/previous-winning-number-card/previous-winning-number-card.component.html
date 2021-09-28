@@ -30,7 +30,7 @@
             </ion-row>
             <ion-row>
                 <button id="continueButton" [disabled]="continueButton" [class.continue-button]="continueButton"
-                        class=" continue-button-disabled confirmation-button" [value]="continueButton" type="submit"
+                        class=" continue-button-enabled confirmation-button" [value]="continueButton" type="submit"
                         (click)="setDrawDateButtons('gotoGenerateNumber')"
                         [routerLink]="['/','generate']"
                         [state]="{

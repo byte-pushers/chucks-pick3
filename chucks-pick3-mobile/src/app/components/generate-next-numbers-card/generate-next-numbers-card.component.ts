@@ -23,6 +23,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
+    generateButton = true;
 
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
@@ -133,5 +134,13 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private getRandomIntInclusive() {
         const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
         return generatedNumberArray;
+    }
+
+    enableGenerateButton() {
+        if (this.generateChoice) {
+            this.generateButton = false;
+        } else {
+            this.generateButton = true;
+        }
     }
 }
