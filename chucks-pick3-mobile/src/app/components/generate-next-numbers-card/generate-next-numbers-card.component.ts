@@ -23,6 +23,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
+
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
                 private appService: AppService,
@@ -42,8 +43,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
-
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+        this.generateChoice = undefined;
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(tomorrowFullDate);
@@ -51,8 +52,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
         const date = new Date();
-
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+        this.generateChoice = undefined;
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(todayFullDate);
