@@ -15,6 +15,7 @@ import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
 import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
+import {NavigationEnum} from '../../models/navigate.enum';
 import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
@@ -321,9 +322,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
     }
 
-    public switchDrawDateButtons(subSection: any) {
-        console.log('tap tap');
-        this.drawStateService.generateNavigationChoice = subSection;
-        this.drawStateService.viewNavigationChoice = subSection;
+    public switchDrawDateButtons(drawDateButtonString: any) {
+        const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
+        console.log(drawDateButtonValue);
+        this.drawStateService.generateNavigationChoice = drawDateButtonValue;
+        this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
 }
