@@ -47,6 +47,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private cardContextSubscription: Subscription;
     public currentSlideNumber: number;
     private routerUrl;
+    slideNumberClass: boolean;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -65,6 +66,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.routerUrl = this.router.url;
 
         if (this.routerUrl === '/home') {
+            this.slideNumberClass = true;
             this.id = ++Pick3DrawDateInfoSection.counter;
             console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
 
@@ -75,6 +77,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     throw error;
                 }
             }
+        } else {
+            this.slideNumberClass = false;
         }
     }
 
