@@ -29,6 +29,9 @@
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="5" [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
+                  style="opacity: 40%; padding-left: 15px"></ion-icon>
+        <ion-icon *ngSwitchCase="6" [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
+                  src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
 
     </ion-col>
@@ -112,6 +115,10 @@
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
         <ion-icon
                 *ngSwitchCase="5"
+                src="../../../assets/generate-picks-icon.svg"
+                class="general-draw-date-button-sizing" style="padding-right: 25px"></ion-icon>
+        <ion-icon
+                *ngSwitchCase="6"
                 src="../../../assets/generate-picks-icon.svg"
                 class="general-draw-date-button-sizing" style="opacity: 40%; padding-right: 25px"></ion-icon>
 

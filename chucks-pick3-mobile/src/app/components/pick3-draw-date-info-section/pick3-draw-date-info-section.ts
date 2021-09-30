@@ -115,6 +115,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
             if (this.routerUrl === '/home') {
                 if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
+                    console.log(this.currentSlideNumber);
+                    this.disableButtonOnCard(currentPick3DrawDateCardId);
                     this.setData(
                         this.appService.getDrawState(),
                         currentPick3DrawDateCard,
@@ -327,5 +329,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         console.log(drawDateButtonValue);
         this.drawStateService.generateNavigationChoice = drawDateButtonValue;
         this.drawStateService.viewNavigationChoice = drawDateButtonValue;
+    }
+
+    private disableButtonOnCard(slideNumber) {
+        console.log(slideNumber);
+        if (slideNumber < 6) {
+            this.switchDrawDateButtons('generatePicksDisabled');
+        } else {
+            this.switchDrawDateButtons('default')
+        }
     }
 }

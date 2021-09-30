@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {stringify} from 'querystring';
+import {NavigationEnum} from '../models/navigate.enum';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DrawStateService {
     picksIndicator = [];
-    generateNavigationChoice = 1;
-    viewNavigationChoice = 1;
+    generateNavigationChoice: NavigationEnum.NavigationEnum ;
+    viewNavigationChoice: NavigationEnum.NavigationEnum ;
 
     constructor() {
     }
