@@ -19,6 +19,7 @@ import {DrawStateService} from '../../services/draw-state.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {AppService} from '../../app.service';
 import {Pick3DrawTime} from '../../models/pick3-draw-time';
+import {NavigationEnum} from '../../models/navigate.enum';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -174,12 +175,10 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
     }
 
-    public submitGenerate(generateDisplay: any, continueDisplay: any): void {
-        continueDisplay.style.display = 'block';
-        generateDisplay.style.display = 'none';
-
-        this.drawStateService.generateNavigationChoice = 4;
-        this.drawStateService.viewNavigationChoice = 4;
+    public setDrawDateButtons(drawDateButtonString: any): void {
+        const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
+        this.drawStateService.generateNavigationChoice = drawDateButtonValue;
+        this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
 
 

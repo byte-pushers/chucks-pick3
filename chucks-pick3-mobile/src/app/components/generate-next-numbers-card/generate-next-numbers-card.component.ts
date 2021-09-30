@@ -23,6 +23,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
+    generateButton = true;
+
     private pick3CardToGenerate: Pick3DrawTimeCard;
 
     constructor(private drawDateService: DrawDateService,
@@ -44,7 +46,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
-
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
@@ -53,7 +54,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
     public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
         const date = new Date();
-
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
@@ -137,5 +137,13 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private getRandomIntInclusive() {
         const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
         return generatedNumberArray;
+    }
+
+    enableGenerateButton() {
+        if (this.generateChoice) {
+            this.generateButton = false;
+        } else {
+            this.generateButton = true;
+        }
     }
 }

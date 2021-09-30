@@ -18,14 +18,15 @@
             <ion-item class="ion-no-padding" style="width: 100%;">
                 <ion-select class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day"
                             style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center;"
-                            interface="action-sheet" (ionChange)="selectDrawingTimeCard(generateChoice)">
+                            interface="action-sheet" (ionChange)="enableGenerateButton()">
                     <ion-select-option *ngFor="let newDrawingTime of newDrawingTimes"
-                                       [value]="newDrawingTime"> {{newDrawingTime.getTitle() | translate}}</ion-select-option>
+                                       [value]="newDrawingTime"> {{newDrawingTime | translate}}</ion-select-option>
                 </ion-select>
             </ion-item>
         </ion-row>
         <ion-row class="generate-picks-button-section">
-            <button class="confirmation-button generate-button" routerLink="/home" (click)="submitGenerate();">
+            <button class="confirmation-button generate-button generate-button-enabled"
+                    [disabled]="generateButton" [class.generate-button]="generateButton" [value]="generateButton" routerLink="/home" (click)="submitGenerate();">
                 Generate
             </button>
         </ion-row>
