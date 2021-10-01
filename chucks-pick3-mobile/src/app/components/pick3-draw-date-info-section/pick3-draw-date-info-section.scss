@@ -177,20 +177,20 @@ ion-grid {
   }
 }
 
-.slideNumber {
+.slideNumberClass {
   color: white;
   @include for-size(iPhone5-SE) {
     font-size: 4vw;
-    padding-top: 1em;
+    padding-top: .5em;
   }
   @include for-size(iPhone6-7-8) {
-    padding-top: 2em;
+    padding-top: 1.5em;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    padding-top: 2.5em;
+    padding-top: 2.6em;
   }
   @include for-size(iPhoneX) {
-    padding-top: 5.5em;
+    padding-top: 5em;
   }
   @include for-size(iPad) {
 

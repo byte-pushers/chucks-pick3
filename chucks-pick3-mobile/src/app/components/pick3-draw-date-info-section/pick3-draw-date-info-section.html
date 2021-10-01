@@ -84,8 +84,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
-                        <p class="slideNumber">{{id}}</p>
+                    <div  class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
+                        <p  [class.slideNumberClass]="slideNumberClass">{{id}}</p>
                     </div>
                 </div>
 
@@ -132,7 +132,7 @@
                 }"
                 routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
-                class="general-draw-date-button-sizing" style="padding-right: 25px"></ion-icon>
+                class="generate-picks-icon" style="padding-right: 25px"></ion-icon>
 
     </ion-col>
 </ion-row>
