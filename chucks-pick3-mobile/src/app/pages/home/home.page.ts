@@ -9,6 +9,8 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Router} from '@angular/router';
+import {DrawStateService} from '../../services/draw-state.service';
+import {NavigationEnum} from '../../models/navigate.enum';
 
 
 @Component({
@@ -17,7 +19,7 @@ import {Router} from '@angular/router';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements AfterViewInit, OnDestroy {
-    prevActiveIndex:number = 7;
+    prevActiveIndex: number = 7;
     private cardContext = this.cardContextService.context$;
     private slidesLoaded = false;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
@@ -35,6 +37,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
                 private popoverController: PopoverController,
                 public translateService: TranslateService,
                 private drawDateService: DrawDateService,
+                private drawStateService: DrawStateService,
                 private appService: AppService,
                 private router: Router,
                 private pick3WebScrappingService: Pick3WebScrapingProviderService) {
