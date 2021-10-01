@@ -9,6 +9,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Router} from '@angular/router';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
+import {NavigationEnum} from '../../models/navigate.enum';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -68,16 +69,17 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.resetDrawingTimes();
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
+                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
-                this.newDrawingTimes.push(drawTime);
+                this.newDrawingTimes.push(drawTime.getTitle());
             }
         } else {
-            /*this.drawTimes = currentPick3DrawTimeCard;
+            this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
-                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
+                this.newDrawingTimes.push(drawTime.getTitle());
                 this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
-            }*/
+            }
         }
 
     }
@@ -102,17 +104,18 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public submitGenerate(): void {
-        this.changeNavigation(1);
         this.replaceGeneratedNumbers();
-        this.changeNavigation(4);
+        this.changeNavigation('gotoViewPicks');
         this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
+        console.log(this.pick3CardToGenerate)
         this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
         this.router.navigate(['/view-picks']);
     }
 
     private changeNavigation(route) {
-        this.drawStateService.generateNavigationChoice = route;
-        this.drawStateService.viewNavigationChoice = route;
+        const routeDirection = NavigationEnum.retrieveNavigation(route);
+        this.drawStateService.generateNavigationChoice = routeDirection;
+        this.drawStateService.viewNavigationChoice = routeDirection;
     }
 
     private replaceGeneratedNumbers() {
