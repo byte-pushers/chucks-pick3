@@ -93,12 +93,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
                 } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                     drawTime.setSelected(true);
                     this.currentDrawingCard = pick3DrawTimeCard;
+                    console.log(this.currentDrawingCard);
                     this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
-                    if (this.continueChoice) {
-                        this.continueButton = false;
-                    } else {
-                        this.continueButton = true;
-                    }
+                    this.validatePreviousWinningNumberComp();
                 }
             });
         }
@@ -128,16 +125,16 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         }
     }
 
-   /* private sortDrawTimes(drawTimes) {
-        const currentHour = new Date().getHours();
-        for (const drawTime of drawTimes) {
-            const index = drawTimes.indexOf(drawTime);
-            if (currentHour <= drawTime.getPick3DrawTime().getDateTime().getHours()) {
-                drawTimes.splice(index, index);
-            }
-        }
-        return drawTimes;
-    }*/
+    /* private sortDrawTimes(drawTimes) {
+         const currentHour = new Date().getHours();
+         for (const drawTime of drawTimes) {
+             const index = drawTimes.indexOf(drawTime);
+             if (currentHour <= drawTime.getPick3DrawTime().getDateTime().getHours()) {
+                 drawTimes.splice(index, index);
+             }
+         }
+         return drawTimes;
+     }*/
 
     private resetDrawingTimes(): void {
         if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
@@ -151,7 +148,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         const yesterdaysDate: Date = new Date(this.currentDateYear, this.currentDateMonth - 1, this.currentDateDay - 1, someDateTime.getHours());
         yesterday.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
-        this.continueChoice = undefined;
         this.appService.pick3CardId = 6;
         this.setDrawingTimeMenuItems(yesterdaysDate, 6);
     }
@@ -160,19 +156,8 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         const currentDate = new Date();
         today.style.backgroundColor = '#2fdf75';
         yesterday.style.backgroundColor = '#e5e5e5';
-        this.continueChoice = undefined;
         this.appService.pick3CardId = 7;
         this.setDrawingTimeMenuItems(currentDate, 7);
-    }
-
-    public enableContinue() {
-        const element = document.getElementById('continueButton');
-        if (this.continueButton === true) {
-            this.continueButton = false;
-            element.classList.add('continue-btn-enabled');
-        }
-
-
     }
 
     public setDrawDateButtons(drawDateButtonString: any): void {
@@ -194,6 +179,14 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
                     this.selectDrawingTimeCard(this.currentDrawingCard);
                 }
             }
+        }
+    }
+
+    private validatePreviousWinningNumberComp() {
+        if (this.currentDrawingCard.showCountDownToDrawing === false && this.continueChoice) {
+                this.continueButton = false;
+            } else {
+                this.continueButton = true;
         }
     }
 }

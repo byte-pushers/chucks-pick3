@@ -47,6 +47,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private cardContextSubscription: Subscription;
     public currentSlideNumber: number;
     private routerUrl;
+    slideNumberClass: boolean;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -65,6 +66,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.routerUrl = this.router.url;
 
         if (this.routerUrl === '/home') {
+            this.slideNumberClass = true;
             this.id = ++Pick3DrawDateInfoSection.counter;
             console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
 
@@ -75,6 +77,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     throw error;
                 }
             }
+        } else {
+            this.slideNumberClass = false;
         }
     }
 
@@ -115,6 +119,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
             if (this.routerUrl === '/home') {
                 if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
+                    console.log(this.currentSlideNumber);
+                    this.disableButtonOnCard(currentPick3DrawDateCardId);
                     this.setData(
                         this.appService.getDrawState(),
                         currentPick3DrawDateCard,
@@ -327,5 +333,14 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         console.log(drawDateButtonValue);
         this.drawStateService.generateNavigationChoice = drawDateButtonValue;
         this.drawStateService.viewNavigationChoice = drawDateButtonValue;
+    }
+
+    private disableButtonOnCard(slideNumber) {
+        console.log(slideNumber);
+        if (slideNumber < 6) {
+            this.switchDrawDateButtons('generatePicksDisabled');
+        } else {
+            this.switchDrawDateButtons('default')
+        }
     }
 }
