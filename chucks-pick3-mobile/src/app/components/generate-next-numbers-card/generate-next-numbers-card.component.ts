@@ -107,7 +107,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         this.replaceGeneratedNumbers();
         this.changeNavigation('gotoViewPicks');
         this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
-        console.log(this.pick3CardToGenerate)
+        console.log(this.pick3CardToGenerate);
         this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
         this.router.navigate(['/view-picks']);
     }
@@ -119,9 +119,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     private replaceGeneratedNumbers() {
-        const newArray = this.getRandomIntInclusive();
+        const newGeneratedArray = this.getRandomIntInclusive();
         /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
-        this.pick3CardToGenerate.setPick3DrawTimeArray(newArray);
+        this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
     }
 
     private sortDrawTimes(drawTimes) {
