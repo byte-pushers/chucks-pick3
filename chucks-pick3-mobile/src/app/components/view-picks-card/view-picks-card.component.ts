@@ -25,13 +25,6 @@ export class ViewPicksCardComponent implements OnInit {
   ngOnInit() {
     this.retrieveNumbers();
     this.componentState = 'initializing';
-    this.cardContextService.context$.subscribe(context => {
-      this.drawTimes.splice(0, this.drawTimes.splice.length, ...context.drawTimes);
-      if (this.componentState === 'initializing') {
-        const currentDrawingTime = this.drawTimeService.getCurrentDrawTimeCard();
-        this.selectDrawingTimeCard(currentDrawingTime);
-      }
-    });
     this.componentState = 'initialized';
   }
 
@@ -48,7 +41,7 @@ export class ViewPicksCardComponent implements OnInit {
   }
 
   private retrieveNumbers() {
-    const generatedArray = this.drawTimeService.viewPicksArray;
+    const generatedArray = this.drawTimeService.getCurrentDrawTimeCard().getPick3DrawTimeArray();
     const copiedArray = Object.assign([], generatedArray);
     const ArrayToBeSetToTable: any = [];
     for ( let i = 0; i < 12; i++){

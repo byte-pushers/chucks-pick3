@@ -5,6 +5,7 @@ import {Pick3DrawTimeCardProperties} from './pick3-draw-time-card.properties';
 import {Pick3DrawTime} from './pick3-draw-time';
 
 export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
+    showCountDownToDrawing: boolean;
     setPick3DrawCardId(pick3DrawCardId: number): void;
     getPick3DrawCardId(): number;
     getIcon(): string;
@@ -25,4 +26,6 @@ export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
     getDateTime(): Date;
     setDateTime(dateTime: Date): void;
     compareTo(pick3DrawDateCard: Pick3DrawDateCard): number;
+    getPick3DrawTimeArray(): number[];
+    setPick3DrawTimeArray(pick3DrawTimeArray: number[]);
 }
