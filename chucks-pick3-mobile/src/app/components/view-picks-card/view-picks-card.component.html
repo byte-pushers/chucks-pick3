@@ -1,5 +1,12 @@
 <ion-content class="ion-margin" style="text-align: center">
-  <ion-grid class="ion-margin">
-    <div id="myDynamicTable" class="drawn-number-row"></div>
-  </ion-grid>
+    <ion-grid  class="ion-margin">
+        <div *ngFor="let item of viewPicksArray; let i = index">
+            <div *ngIf="i % 3 == 0" class="drawn-number-row">
+                <b class="drawn-numbers">{{ item }}</b>
+                <div *ngIf="i + 1 < viewPicksArray.length" class="drawn-numbers"><b>{{ viewPicksArray[i + 1] }}</b></div>
+                <div *ngIf="i + 1 < viewPicksArray.length" class="drawn-numbers"><b>{{ viewPicksArray[i + 2] }}</b></div>
+
+            </div>
+        </div>
+    </ion-grid>
 </ion-content>

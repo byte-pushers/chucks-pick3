@@ -138,7 +138,13 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
 
     private getRandomIntInclusive() {
-        const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
+
+        const generatedNumberArray = [];
+        while (generatedNumberArray.length < 12){
+            const r = Math.floor(Math.random() * 999) + 1;
+            if (generatedNumberArray.indexOf(r) === -1) { generatedNumberArray.push(r); }
+        }
+        console.log(generatedNumberArray);
         return generatedNumberArray;
     }
 
