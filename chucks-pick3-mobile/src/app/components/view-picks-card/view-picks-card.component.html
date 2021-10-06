@@ -3,8 +3,8 @@
         <div *ngFor="let item of viewPicksArray; let i = index">
             <div *ngIf="i % 3 == 0" class="drawn-number-row">
                 <b class="drawn-numbers">{{ item }}</b>
-                <div *ngIf="i + 1 < viewPicksArray.length" class="drawn-numbers"><b>{{ viewPicksArray[i + 1] }}</b></div>
-                <div *ngIf="i + 1 < viewPicksArray.length" class="drawn-numbers"><b>{{ viewPicksArray[i + 2] }}</b></div>
+                <b *ngIf="i + 1 < viewPicksArray.length" class="drawn-numbers">{{ viewPicksArray[i + 1] }}</b>
+                <b *ngIf="i + 2 < viewPicksArray.length" class="drawn-numbers">{{ viewPicksArray[i + 2] }}</b>
 
             </div>
         </div>
