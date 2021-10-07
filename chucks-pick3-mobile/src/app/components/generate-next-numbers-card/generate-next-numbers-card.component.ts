@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
 import {NavigationEnum} from '../../models/navigate.enum';
+import {Subscription} from 'rxjs';
+import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -27,6 +29,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     generateButton = true;
 
     private pick3CardToGenerate: Pick3DrawTimeCard;
+    private pick3DrawDateCardSubscription: Subscription;
 
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
@@ -43,6 +46,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         const today: HTMLElement = document.getElementById('today');
         const yesterday: HTMLElement = document.getElementById('yesterday');
         this.selectTodayGenerateDrawingDate(today, yesterday);
+        this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+            console.log(currentPick3DrawDateCard);
+        });
+
     }
 
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -140,9 +147,11 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private getRandomIntInclusive() {
 
         const generatedNumberArray = [];
-        while (generatedNumberArray.length < 12){
+        while (generatedNumberArray.length < 12) {
             const r = Math.floor(Math.random() * 999) + 1;
-            if (generatedNumberArray.indexOf(r) === -1) { generatedNumberArray.push(r); }
+            if (generatedNumberArray.indexOf(r) === -1) {
+                generatedNumberArray.push(r);
+            }
         }
         console.log(generatedNumberArray);
         return generatedNumberArray;

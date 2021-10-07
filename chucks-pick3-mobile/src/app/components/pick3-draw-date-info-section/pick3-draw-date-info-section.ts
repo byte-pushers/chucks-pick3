@@ -48,6 +48,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     public currentSlideNumber: number;
     private routerUrl;
     slideNumberClass: boolean;
+    private selectedWinningNumbers: any;
 
     constructor(private cardContextService: CardContextService,
                 public drawStateService: DrawStateService,
@@ -130,7 +131,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     this.drawTimeCard = currentPick3DrawDateCard;
                     this.showCountDownToDrawing = currentPick3DrawDateCard.showCountDownToDrawing;
                 }
-            } else if (this.routerUrl === '/select-picks') {
+            } else {
                 this.currentSlideNumber = this.appService.pick3CardId;
                 this.setData(
                     this.appService.getDrawState(),
@@ -254,12 +255,17 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
-            this.setCardState(winningNumber, pick3DrawTimeType);
+            if (BytePushers.DateUtility.isSameDate(pick3DrawDateTime, new Date()) && winningNumber != null) {
+                this.setCardState(winningNumber, pick3DrawTimeType);
+                console.log('in get past winning drawing number');
+            }
+            /*this.selectedWinningNumbers = winningNumber;*/
         }, error => {
             // TODO: Handle error.
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
+            console.log('in the error message for past number');
             this.setCardState(null, pick3DrawTimeType);
         });
     }
@@ -268,6 +274,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                                            pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
+            console.log('in get past winning drawing number');
         }, error => {
             // TODO: Handle error.
             console.warn('TODO: Handle error: ' + error, error);
