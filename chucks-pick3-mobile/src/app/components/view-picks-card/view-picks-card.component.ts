@@ -4,6 +4,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {CardContextService} from '../../services/card-context.service';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
+import {NumberUtilityService} from '../../services/numberUtility.service';
 
 @Component({
     selector: 'app-view-picks-card',
@@ -19,14 +20,16 @@ export class ViewPicksCardComponent implements OnInit {
 
     constructor(private cardContextService: CardContextService,
                 private toastService: IonicToastNotificationService,
-                private drawTimeService: DrawTimeService) {
+                private drawTimeService: DrawTimeService,
+                private numbers: NumberUtilityService) {
     }
 
     ngOnInit() {
         const numbersThatWereGenerated = this.drawTimeService.getCurrentDrawTimeCard().getPick3DrawTimeArray();
 
         if (numbersThatWereGenerated !== null && numbersThatWereGenerated !== undefined) {
-           this.viewPicksArray = numbersThatWereGenerated;
+            this.viewPicksArray = numbersThatWereGenerated;
+            this.checkforSingleDigits(this.viewPicksArray);
         } else {
             this.toastService.presentToast('Results Not Available',
                 'Please generate numbers and come back later.', 'results-not-available');
@@ -43,6 +46,16 @@ export class ViewPicksCardComponent implements OnInit {
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+            }
+        });
+    }
+
+    private checkforSingleDigits(arrayTobeChecked) {
+        arrayTobeChecked.forEach(array => {
+            if (array.toString().length < 3) {
+                const index = arrayTobeChecked.indexOf(array);
+                const numberReplacement = this.numbers.padLeft(array, 3);
+                this.viewPicksArray.splice(index, 1, numberReplacement);
             }
         });
     }
