@@ -2,7 +2,8 @@
     <ion-col size="2" style=" margin-right: 0px" [ngSwitch]="generateNavigation">
         <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
-        <ion-icon *ngSwitchCase="1" [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
+        <ion-icon *ngSwitchCase="1" [routerLink]="['/','view']" (click)="switchDrawDateButtons('gotoViewPicks')"
+                  routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
         <ion-icon *ngSwitchCase="2"
@@ -17,20 +18,29 @@
                   routerDirection="back"
                   (click)="switchDrawDateButtons('gotoPreviousWinningNumber')"
                   [state]="{
-                   currentSlideNumber: this.pick3GenerateId
+                    currentSlideNumber: this.pick3GenerateId,
+                  currentDay: this.data.getDrawDate()
                   }"
                   class="generate-back-button"
                   src="../../../assets/icon/back-arrow.svg"></ion-icon>
         <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator"
              style="float: left"></div>
         <ion-icon *ngSwitchCase="4"></ion-icon>
-        <ion-icon *ngSwitchDefault [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
+        <ion-icon *ngSwitchDefault [routerLink]="['/','view']" [state]="{
+                    currentSlideNumber: this.pick3GenerateId,
+                  currentDay: this.data.getDrawDate()
+                  }" (click)="switchDrawDateButtons('gotoViewPicks')"
+                  routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
-        <ion-icon *ngSwitchCase="5" [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
+        <ion-icon *ngSwitchCase="5"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style="opacity: 40%; padding-left: 15px"></ion-icon>
-        <ion-icon *ngSwitchCase="6" [routerLink]="['view-picks']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back"
+        <ion-icon *ngSwitchCase="6" [routerLink]="['/','view']" [state]="{
+                    currentSlideNumber: this.pick3GenerateId,
+                  currentDay: this.data.getDrawDate()
+                  }" (click)="switchDrawDateButtons('gotoViewPicks')"
+                  routerDirection="back"
                   src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing"
                   style=" padding-left: 15px"></ion-icon>
 
@@ -84,8 +94,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div  class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
-                        <p  [class.slideNumberClass]="slideNumberClass">{{id}}</p>
+                    <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
+                        <p [class.slideNumberClass]="slideNumberClass">{{id}}</p>
                     </div>
                 </div>
 
@@ -107,14 +117,21 @@
         <ion-icon *ngSwitchCase="3"></ion-icon>
         <ion-icon *ngSwitchCase="4" [routerLink]="['/', 'home']"
                   [state]="{
-                      currentSlideNumber: this.pick3GenerateId,
-                      currentDay: this.data.getDrawDate()
-                    }"
+                  currentSlideNumber: this.pick3GenerateId,
+                  currentDay: this.data.getDrawDate()
+                }"
                   routerDirection="back"
                   (click)="switchDrawDateButtons('gotoHome')" class="generate-back-button"
                   src="../../../assets/icon/forward-arrow.svg"></ion-icon>
         <ion-icon
                 *ngSwitchCase="5"
+                (click)="switchDrawDateButtons('gotoPreviousWinningNumber');"
+                [routerLink]="['/','select-picks']"
+                [state]="{
+                  currentSlideNumber: this.pick3GenerateId,
+                  currentDay: this.data.getDrawDate()
+                }"
+                routerDirection="back"
                 src="../../../assets/generate-picks-icon.svg"
                 class="general-draw-date-button-sizing" style="padding-right: 25px"></ion-icon>
         <ion-icon
