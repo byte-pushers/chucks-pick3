@@ -132,7 +132,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     this.drawTimeCard = currentPick3DrawDateCard;
                     this.showCountDownToDrawing = currentPick3DrawDateCard.showCountDownToDrawing;
                 }
-            } else {
+            } else if (this.routerUrl === '/select-picks') {
                 this.currentSlideNumber = this.appService.pick3CardId;
                 this.setData(
                     this.appService.getDrawState(),
@@ -337,7 +337,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     public switchDrawDateButtons(drawDateButtonString: any) {
         const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
-        console.log(drawDateButtonValue);
         this.drawStateService.generateNavigationChoice = drawDateButtonValue;
         this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
@@ -347,7 +346,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         if (slideNumber < 6) {
             this.switchDrawDateButtons('generatePicksDisabled');
         } else {
-            this.switchDrawDateButtons('default');
+            this.switchDrawDateButtons('viewPicksDisabled');
         }
     }
 }
