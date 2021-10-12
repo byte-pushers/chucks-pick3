@@ -6,7 +6,9 @@ import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {NavigationEnum} from '../../models/navigate.enum';
+import {DrawStateService} from '../../services/draw-state.service';
 
 @Component({
     // tslint:disable-next-line:component-selector
@@ -24,6 +26,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private drawTimeService: DrawTimeService,
+                private drawStateService: DrawStateService,
                 private drawDateService: DrawDateService,
                 private router: Router,
                 private appService: AppService) {
@@ -86,9 +89,24 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 // pick3DrawTimeCard.showCountDownToDrawing = false;
-
+                console.log(pick3DrawTimeCard);
+                this.checkForGeneratedArray(pick3DrawTimeCard);
                 this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
             }
         });
+    }
+
+    private checkForGeneratedArray(pick3DrawTimeCard) {
+        if (pick3DrawTimeCard.getPick3DrawTimeArray() === null) {
+            this.switchDrawDateButtons('viewPicksDisabled');
+        } else {
+            this.switchDrawDateButtons('viewPicksEnabled');
+        }
+    }
+
+    private switchDrawDateButtons(drawTimeButtonString: string) {
+        const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawTimeButtonString);
+        this.drawStateService.generateNavigationChoice = drawDateButtonValue;
+        this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
 }

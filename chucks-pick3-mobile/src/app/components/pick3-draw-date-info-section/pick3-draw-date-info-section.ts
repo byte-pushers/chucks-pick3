@@ -339,7 +339,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     public switchDrawDateButtons(drawDateButtonString: any) {
         const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
-        console.log(drawDateButtonValue);
         this.drawStateService.generateNavigationChoice = drawDateButtonValue;
         this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
@@ -349,7 +348,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         if (slideNumber < 6) {
             this.switchDrawDateButtons('generatePicksDisabled');
         } else {
-            this.switchDrawDateButtons('default');
+            this.switchDrawDateButtons('viewPicksDisabled');
         }
     }
 }

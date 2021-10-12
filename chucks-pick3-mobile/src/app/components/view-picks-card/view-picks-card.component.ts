@@ -30,6 +30,7 @@ export class ViewPicksCardComponent implements OnInit {
         if (numbersThatWereGenerated !== null && numbersThatWereGenerated !== undefined) {
             this.viewPicksArray = numbersThatWereGenerated;
             this.checkforSingleDigits(this.viewPicksArray);
+            console.log(this.drawTimeService.getCurrentDrawTimeCard());
         } else {
             this.toastService.presentToast('Results Not Available',
                 'Please generate numbers and come back later.', 'results-not-available');
