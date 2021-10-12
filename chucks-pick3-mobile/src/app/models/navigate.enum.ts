@@ -9,7 +9,7 @@ export namespace NavigationEnum {
         gotoViewPicks,
         viewPicksDisabled,
         generatePicksDisabled,
-        onViewDisabled
+        onViewEnabledHome
     }
 
     export function retrieveNavigation(e: string): NavigationEnum {
@@ -37,8 +37,8 @@ export namespace NavigationEnum {
             case 'generatePicksDisabled':
                 propertyKey = NavigationEnum.generatePicksDisabled;
                 break;
-            case 'onViewDisabled':
-                propertyKey = NavigationEnum.onViewDisabled;
+            case 'onViewEnabledHome':
+                propertyKey = NavigationEnum.onViewEnabledHome;
                 break;
         }
 
