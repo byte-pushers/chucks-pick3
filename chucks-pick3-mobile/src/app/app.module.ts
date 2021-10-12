@@ -18,6 +18,7 @@ import {GeneratePageModule} from './pages/generate/generate.page.module';
 import {Pick3DrawDateInfoSection} from './components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import {CardPageModule} from './pages/card/card.page.module';
 import {ViewPageModule} from './pages/view/view.module';
+import {NumberUtilityService} from './services/numberUtility.service';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
         StatusBar,
         SplashScreen,
         CardContextService,
+        NumberUtilityService,
         AppService,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},

@@ -44,7 +44,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     pick3CardIdSubscription: Subscription;
     private someDateTime: Date = new Date();
     public pick3Id: number;
+    initializedPick3DrawTime: any;
     public currentDrawingCard: Pick3DrawTimeCard;
+    private pick3DrawTimeCardSubscription: Subscription;
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
                 private cardContextService: CardContextService,
@@ -64,11 +66,29 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         const today: HTMLElement = document.getElementById('today');
         const yesterday: HTMLElement = document.getElementById('yesterday');
         const passedDate = this.routerState?.currentDay.getDate();
+        const pick3DrawTime = this.appService.getDrawTime(this.routerState?.currentDay);
         if (this.currentDateDay !== passedDate) {
             this.selectDrawingDateMenuItemForYesterday(yesterday, today);
         } else {
             this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
+
+
+        this.drawTimes.some(drawTime => {
+            const drawTimeHour = drawTime.getDateTime().getHours();
+            const currentHour = new Date().getHours();
+            drawTime.setPick3DrawTime(this.appService.getDrawTime(this.routerState?.currentDay));
+            this.selectDrawingTimeCard(drawTime);
+            this.continueChoice = drawTime;
+            if (this.routerState?.currentDay.getHours() === drawTimeHour) {
+                this.selectDrawingTimeCard(drawTime);
+                return true;
+            }
+
+            return false;
+        });
+
+
         this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
 
             if (this.router.url === '/home') {
@@ -184,9 +204,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
     private validatePreviousWinningNumberComp() {
         if (this.currentDrawingCard.showCountDownToDrawing === false && this.continueChoice) {
-                this.continueButton = false;
-            } else {
-                this.continueButton = true;
+            this.continueButton = false;
+        } else {
+            this.continueButton = true;
         }
     }
 }

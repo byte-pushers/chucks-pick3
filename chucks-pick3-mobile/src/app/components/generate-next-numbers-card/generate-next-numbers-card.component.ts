@@ -76,15 +76,14 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.resetDrawingTimes();
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
-                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
-                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
         } else {
             this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
-                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
                 this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
             }
         }
@@ -92,13 +91,13 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log(pick3DrawTimeCard);
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 this.pick3CardToGenerate = pick3DrawTimeCard;
+                this.enableGenerateButton();
             }
         });
     }
@@ -113,10 +112,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     public submitGenerate(): void {
         this.replaceGeneratedNumbers();
         this.changeNavigation('gotoViewPicks');
+        console.log(this.pick3CardToGenerate);
         this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
         console.log(this.pick3CardToGenerate);
         this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
-        this.router.navigate(['/view-picks']);
     }
 
     private changeNavigation(route) {
@@ -158,6 +157,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     enableGenerateButton() {
+        console.log(this.generateChoice);
         if (this.generateChoice) {
             this.generateButton = false;
         } else {
