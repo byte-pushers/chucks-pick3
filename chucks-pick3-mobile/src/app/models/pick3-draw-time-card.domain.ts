@@ -15,7 +15,8 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         drawTime: null,
         state: null,
         selected: false,
-        showCountDownToDrawing: true
+        showCountDownToDrawing: true,
+        pick3DrawTimeArray: null
     };
 
     // tslint:disable-next-line:variable-name
@@ -36,6 +37,8 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     private _selected: boolean;
     // tslint:disable-next-line:variable-name
     private _showCountDownToDrawing: boolean;
+    // tslint:disable-next-line:variable-name
+    private _pick3DrawTimeArray:  number[];
 
     constructor(config: any) {
         this._icon = (config) ? config.icon : null;
@@ -43,14 +46,15 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string') ?
             Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
         this._state = (config) ? config.state ? (typeof config.state === 'string')
-            ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state :
-            Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET :
+                    ? Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state :
+                Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET :
             Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
         this._selected = (config) ? (typeof config.selected === 'boolean') ? config.selected : false : false;
         this._dateTime = (config) ? (Object.isDate(config.dateTime)) ? config.dateTime : new Date(config.dateTime) : null;
         this._pick3DrawCardId = (config) ? (config.pick3DrawCardId) ? config.pick3DrawCardId : null : null;
         this._pick3DrawTime = (config) ? Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null : null;
         this._showCountDownToDrawing = (config) ? (typeof config.showCountDownToDrawing === 'boolean') ? config.showCountDownToDrawing : true : true;
+        this._pick3DrawTimeArray = (config) ? (config.pick3DrawTimeArray) ? config.pick3DrawTimeArray : null : null;
     }
 
     set pick3DrawCardId(pick3DrawCardId: number) {
@@ -257,5 +261,21 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         }
 
         return compareResult;
+    }
+
+    get pick3DrawTimeArray(): number[] {
+        return this._pick3DrawTimeArray;
+    }
+
+    set pick3DrawTimeArray(pick3DrawTimeArray: number[]) {
+        this._pick3DrawTimeArray = pick3DrawTimeArray;
+    }
+
+    getPick3DrawTimeArray(): number[] {
+        return this._pick3DrawTimeArray;
+    }
+
+    setPick3DrawTimeArray(pick3DrawTimeArray: number[]) {
+        this._pick3DrawTimeArray = pick3DrawTimeArray;
     }
 }

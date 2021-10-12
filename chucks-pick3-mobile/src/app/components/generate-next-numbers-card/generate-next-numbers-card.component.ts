@@ -9,6 +9,7 @@ import {Pick3StateLottery} from '../../models/pick3-state-lottery';
 import {Router} from '@angular/router';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
+import {NavigationEnum} from '../../models/navigate.enum';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -24,6 +25,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
     generateChoice: any;
     generateButton = true;
+
+    private pick3CardToGenerate: Pick3DrawTimeCard;
 
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
@@ -45,7 +48,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
         const date = new Date();
         const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
-        this.generateChoice = undefined;
         tomorrow.style.backgroundColor = '#2fdf75';
         today.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(tomorrowFullDate);
@@ -54,7 +56,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
         const date = new Date();
         const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-        this.generateChoice = undefined;
         today.style.backgroundColor = '#2fdf75';
         tomorrow.style.backgroundColor = '#e5e5e5';
         this.setDrawingTimeMenuItems(todayFullDate);
@@ -68,25 +69,29 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.resetDrawingTimes();
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
+                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
                 this.newDrawingTimes.push(drawTime.getTitle());
             }
         } else {
+            this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
-            this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+            for (const drawTime of this.drawTimes) {
+                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
+            }
         }
 
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
+        console.log(pick3DrawTimeCard);
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
-
-                this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
-
+                this.pick3CardToGenerate = pick3DrawTimeCard;
             }
         });
     }
@@ -99,23 +104,24 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public submitGenerate(): void {
-        this.changeNavigation(1);
         this.replaceGeneratedNumbers();
-        console.log(this.drawTimeService.viewPicksArray);
-        /*this.router.navigate(['/view-picks']);*/
+        this.changeNavigation('gotoViewPicks');
+        this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
+        console.log(this.pick3CardToGenerate);
+        this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
+        this.router.navigate(['/view-picks']);
     }
 
     private changeNavigation(route) {
-        this.drawStateService.generateNavigationChoice = route;
-        this.drawStateService.viewNavigationChoice = route;
+        const routeDirection = NavigationEnum.retrieveNavigation(route);
+        this.drawStateService.generateNavigationChoice = routeDirection;
+        this.drawStateService.viewNavigationChoice = routeDirection;
     }
 
     private replaceGeneratedNumbers() {
-        const oldArray = this.drawTimeService.viewPicksArray;
-        const newArray = this.getRandomIntInclusive();
-        oldArray.length = 0;
-
-        oldArray.push.apply(oldArray, newArray);
+        const newGeneratedArray = this.getRandomIntInclusive();
+        /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
+        this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
     }
 
     private sortDrawTimes(drawTimes) {
