@@ -132,7 +132,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                     this.drawTimeCard = currentPick3DrawDateCard;
                     this.showCountDownToDrawing = currentPick3DrawDateCard.showCountDownToDrawing;
                 }
-            } else {
+            } else if (this.routerUrl === '/select-picks') {
                 this.currentSlideNumber = this.appService.pick3CardId;
                 this.setData(
                     this.appService.getDrawState(),
@@ -267,7 +267,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             console.error('TODO: Handle error: ' + error, error);
             this.toastService.presentToast('Internal Error',
                 'Please try again later.', 'internet-not-available');
-            console.log('in the error message for past number');
             this.setCardState(null, pick3DrawTimeType);
         });
     }
@@ -276,7 +275,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
                                            pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
         this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
             this.setCardState(winningNumber, pick3DrawTimeType);
-            console.log('in get past winning drawing number');
         }, error => {
             // TODO: Handle error.
             console.warn('TODO: Handle error: ' + error, error);

@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 import {DrawTimeService} from '../../services/draw-time.service';
 import {AppService} from '../../app.service';
 import {NavigationEnum} from '../../models/navigate.enum';
+import {Subscription} from 'rxjs';
+import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
 
 @Component({
     selector: 'app-generate-next-numbers-card',
@@ -27,6 +29,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     generateButton = true;
 
     private pick3CardToGenerate: Pick3DrawTimeCard;
+    private pick3DrawDateCardSubscription: Subscription;
 
     constructor(private drawDateService: DrawDateService,
                 private drawTimeService: DrawTimeService,
@@ -43,6 +46,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         const today: HTMLElement = document.getElementById('today');
         const yesterday: HTMLElement = document.getElementById('yesterday');
         this.selectTodayGenerateDrawingDate(today, yesterday);
+        this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+            console.log(currentPick3DrawDateCard);
+        });
+
     }
 
     public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -69,15 +76,14 @@ export class GenerateNextNumbersCardComponent implements OnInit {
             this.resetDrawingTimes();
             const drawTimes = this.sortDrawTimes(this.drawTimes);
             for (const drawTime of drawTimes) {
-                console.log(drawTime.getTitle());
                 this.selectDrawingTimeCard(drawTime);
-                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
             }
         } else {
             this.drawTimes = currentPick3DrawTimeCard;
             this.resetDrawingTimes();
             for (const drawTime of this.drawTimes) {
-                this.newDrawingTimes.push(drawTime.getTitle());
+                this.newDrawingTimes.push(drawTime.getDrawTimeValue());
                 this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
             }
         }
@@ -85,13 +91,13 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     }
 
     public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        console.log(pick3DrawTimeCard);
         this.drawTimes.forEach(drawTime => {
             if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(false);
             } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
                 drawTime.setSelected(true);
                 this.pick3CardToGenerate = pick3DrawTimeCard;
+                this.enableGenerateButton();
             }
         });
     }
@@ -106,10 +112,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     public submitGenerate(): void {
         this.replaceGeneratedNumbers();
         this.changeNavigation('gotoViewPicks');
+        console.log(this.pick3CardToGenerate);
         this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
         console.log(this.pick3CardToGenerate);
         this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
-        this.router.navigate(['/view-picks']);
     }
 
     private changeNavigation(route) {
@@ -138,11 +144,20 @@ export class GenerateNextNumbersCardComponent implements OnInit {
 
 
     private getRandomIntInclusive() {
-        const generatedNumberArray = Array.from({length: 12}, () => Math.floor(Math.random() * (999 - 100 + 1) + 100));
+
+        const generatedNumberArray = [];
+        while (generatedNumberArray.length < 12) {
+            const r = Math.floor(Math.random() * 999) + 1;
+            if (generatedNumberArray.indexOf(r) === -1) {
+                generatedNumberArray.push(r);
+            }
+        }
+        console.log(generatedNumberArray);
         return generatedNumberArray;
     }
 
     enableGenerateButton() {
+        console.log(this.generateChoice);
         if (this.generateChoice) {
             this.generateButton = false;
         } else {

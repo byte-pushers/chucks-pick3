@@ -1,4 +1,11 @@
 .drawn-number-row {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.drawn-numbers {
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
