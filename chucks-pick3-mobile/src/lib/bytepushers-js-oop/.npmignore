@@ -1,0 +1,11 @@
+.idea
+build
+node_modules
+src
+.gitignore
+Gruntfile.js
+Gruntfile.original.with.reports.in.release.js
+karma.conf.ci.js
+karma.conf.js
+pom.xml
+test-main.js
