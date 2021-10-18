@@ -6,7 +6,7 @@
  */
 
 var window = window || {};
-// var nodeModule = module || {};
+var nodeModule = module || {};
 
 (function (window) {
     'use strict';
