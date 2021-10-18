@@ -133,7 +133,6 @@ export class AppService {
     public getPick3DrawTimeCards(slideNumber?: number): Pick3DrawTimeCard[] {
         const pick3DrawTimes = this.pick3DrawTimeCards.map(drawTime => new Pick3DrawTimeCardDomain(drawTime));
 
-        // const currentHour = new Date().getHours();
         pick3DrawTimes.forEach((drawTime, drawTimeIndex) => {
             const drawTimeHour = drawTime.getDateTime().getHours();
             const currentHour = new Date().getHours();
