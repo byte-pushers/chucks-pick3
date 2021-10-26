@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+  <ul class="menu">
+    <li><a ui-sref="view1">view1</a></li>
+    <li><a ui-sref="view2">view2</a></li>
+  </ul>
+
+  <div ui-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script src="bower_components/requirejs/require.js" data-main="main"></script>
+</body>
+</html>

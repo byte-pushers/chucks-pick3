@@ -6,7 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {PopoverController} from '@ionic/angular';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AppService} from "../../app.service";
+import {AppService} from '../../app.service';
 
 @Component({
     selector: 'card-page',

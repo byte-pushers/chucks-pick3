@@ -2,7 +2,7 @@
  * App Global CSS
  * ----------------------------------------------------------------------------
  * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
+ * the entire app-vanilla and not just one component. Additionally, this file can be
  * used as an entry point to import other CSS/Sass files to be included in the
  * output CSS.
  * For more information on global stylesheets, visit the documentation:
@@ -17,7 +17,6 @@
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
-@import "breakpoints";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,14 +24,11 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import "../src/theme/variables.scss";
 
 /* SCSS styling for app */
 @import "../src/scss/app-icons"; /* For Icons */
 @import "../src/scss/draw-time-cards";
 @import "../src/scss/app-ui";
-
-
 
 .results-not-available {
   --background: #ffd743;
