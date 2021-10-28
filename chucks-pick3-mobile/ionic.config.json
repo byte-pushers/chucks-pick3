@@ -1,7 +1,5 @@
 {
-  "name": "chucks-pick3-mobile",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "ionic-update",
+  "integrations": {},
   "type": "angular"
 }

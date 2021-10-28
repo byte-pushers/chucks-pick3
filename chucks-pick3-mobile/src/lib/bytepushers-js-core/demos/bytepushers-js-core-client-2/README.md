@@ -1,0 +1,1 @@
+run "npm install" & launch index.html
