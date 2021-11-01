@@ -1,21 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { HomeVanillaPage } from './home-vanilla.page';
-import {CardContextService} from '../../app/services/card-context.service';
+import { HomePage} from "./home.page";
 
 describe('HomePage', () => {
-  let component: HomeVanillaPage;
-  let fixture: ComponentFixture<HomeVanillaPage>;
+  let component: HomePage;
+  let fixture: ComponentFixture<HomePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeVanillaPage ],
-      imports: [IonicModule.forRoot()],
-      providers: [CardContextService]
+      declarations: [ HomePage ],
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeVanillaPage);
+    fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
