@@ -9,7 +9,7 @@ import {ToastController} from '@ionic/angular';
 
 
 export class IonicToastNotificationService {
-  private isToastVisible: boolean;
+  public isToastVisible: boolean;
   constructor(public toastController: ToastController) { }
 
   async presentToast(toastHeader: string, toastMessage: string, toastClass: string) {
