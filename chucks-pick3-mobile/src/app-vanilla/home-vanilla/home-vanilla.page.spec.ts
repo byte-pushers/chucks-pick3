@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomeVanillaPage } from './home-vanilla.page';
 import {CardContextService} from '../../app/services/card-context.service';
 
-describe('HomePage', () => {
+describe('Vanilla Home Page Testing', () => {
   let component: HomeVanillaPage;
   let fixture: ComponentFixture<HomeVanillaPage>;
 
