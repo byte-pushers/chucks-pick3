@@ -18,7 +18,7 @@ export class DrawStateService {
         this.sortState(drawStateNames);
     }
 
-    private sortState(currentState): void {
+    public sortState(currentState) {
         if (this.picksIndicator !== null && this.picksIndicator !== undefined) {
             this.picksIndicator.splice(0, this.picksIndicator.length);
             for (let i = 0; i < currentState.length; i++) {
@@ -31,8 +31,7 @@ export class DrawStateService {
             }
         }
     }
-
-    private applyState(drawStateColorIndicators: any, attributeName: string, booleanValue: boolean): void {
+     public applyState(drawStateColorIndicators: any, attributeName: string, booleanValue: boolean) {
         for (let property in drawStateColorIndicators) {
             if (drawStateColorIndicators.hasOwnProperty(property)) {
                 this.picksIndicator.push(attributeName);
