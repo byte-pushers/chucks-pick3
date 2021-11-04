@@ -26,6 +26,7 @@ module.exports = function (config) {
     },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/ngv'),
+      includeAllSources: true,
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -40,7 +41,6 @@ module.exports = function (config) {
         }
       }
     },
-    includeAllSources: true,
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
