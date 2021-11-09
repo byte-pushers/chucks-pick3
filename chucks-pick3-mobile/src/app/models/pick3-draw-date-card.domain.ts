@@ -152,7 +152,11 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._upcomingDrawTime = upcomingDrawTime;
     }
 
-    getUpcomingDrawingTime(): Date {
+  setUpcomingDrawTime(upcomingDrawTime) {
+    this._upcomingDrawTime = upcomingDrawTime;
+  }
+
+  getUpcomingDrawingTime(): Date {
         return this._upcomingDrawTime;
     }
 
@@ -164,10 +168,13 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._hasWinner = hasWinner;
     }
 
-    hasGeneratedWinner(): boolean {
+  getHasGeneratedWinner() {
         return this._hasWinner;
     }
 
+  setHasGeneratedWinner(hasWinner: boolean): void {
+    this._hasWinner = hasWinner;
+  }
 
     setDrawState(drawState: string): void {
         this._drawState = drawState;
