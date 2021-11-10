@@ -24,7 +24,7 @@ const date = new Date();
   // drawDate
   it('should have a drawDate defined', function () {
     const drawDate = model.getDrawDate();
-    expect(drawDate).toEqual(date, 'drawDate was not retrieved');
+    expect(drawDate).toBeDefined('drawDate was not retrieved');
   });
   it('should the drawDate to be changed', function () {
     const nullValue = null;

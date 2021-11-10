@@ -39,20 +39,6 @@ describe('CardContextService', () => {
       showCountDownToDrawing: false
     })
   ];
-  const pick3DrawDateCardModel = new Pick3DrawDateCardDomain({
-    drawDate : date,
-    drawState : 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-    drawTimeAsString: 'Morning',
-    upcomingDrawTime: date,
-    hasWinner: false,
-    backgroundImage: Pick3LotteryService,
-    winningNumber: 462,
-    winningNumberDigits: [4,6,2],
-    drawDateIcon: date,
-    slideNumber: 7
-
-  });
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -64,8 +50,6 @@ describe('CardContextService', () => {
   });
   it('should  define the card context', function () {
     service.context$.subscribe( context => {
-      context.data = pick3DrawDateCardModel;
-      context.drawTimes = pick3DrawTimeCardModel;
       service.addContext(context);
     });
     expect(service.context$).toBeDefined('context was not subscribed to.');
