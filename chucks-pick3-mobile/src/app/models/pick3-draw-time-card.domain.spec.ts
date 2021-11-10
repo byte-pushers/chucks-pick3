@@ -1,19 +1,16 @@
-import {Pick3DrawTimeCardDomain} from "./pick3-draw-time-card.domain";
-import {TestBed} from "@angular/core/testing";
-import {NumberUtilityService} from "../services/numberUtility.service";
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import {Pick3LotteryService} from "../services/pick3-lottery.service";
-import {IonicToastNotificationService} from "../services/ionic-toast-notification.service";
-describe('Pick3DrawTimeCardDomain', () => {
+import {Pick3DrawTimeCardDomain} from './pick3-draw-time-card.domain';
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 
+describe('Pick3DrawTimeCardDomain', () => {
+  const date = new Date();
   beforeEach(() => {
 
   });
   let model = new Pick3DrawTimeCardDomain({
     pick3DrawCardId : 7,
-    icon : "Morning",
-    title: "Morning",
-    pick3DrawTime: [Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING, new Date()],
+    icon : 'Morning',
+    title: 'Morning',
+    pick3DrawTime: [Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING, date],
     dateTime: new Date,
     drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
     state: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
@@ -55,7 +52,7 @@ describe('Pick3DrawTimeCardDomain', () => {
     const nightValue = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
     model.setDrawTime(nightValue);
     const drawTime = model.getDrawTime();
-    expect(drawTime).toBe(nightValue,'drawTime was not changed')
+    expect(drawTime).toBe(nightValue,'drawTime was not changed');
   });
 
 

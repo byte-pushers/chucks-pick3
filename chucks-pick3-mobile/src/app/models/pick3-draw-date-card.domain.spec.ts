@@ -1,25 +1,22 @@
-import {Pick3DrawDateCardDomain} from "./pick3-draw-date-card.domain";
-import {TestBed} from "@angular/core/testing";
-import {NumberUtilityService} from "../services/numberUtility.service";
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import {Pick3LotteryService} from "../services/pick3-lottery.service";
-import {IonicToastNotificationService} from "../services/ionic-toast-notification.service";
+import {Pick3DrawDateCardDomain} from './pick3-draw-date-card.domain';
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import {Pick3LotteryService} from '../services/pick3-lottery.service';
 describe('Pick3DrawDateCardDomain', () => {
-
+const date = new Date();
   beforeEach(() => {
 
   });
   let model = new Pick3DrawDateCardDomain({
-    drawDate : new Date(),
+    drawDate : date,
     drawState : 'gotoHome',
     drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-    drawTimeAsString: "Morning",
-    upcomingDrawTime: new Date(),
+    drawTimeAsString: 'Morning',
+    upcomingDrawTime: date,
     hasWinner: false,
     backgroundImage: Pick3LotteryService,
     winningNumber: 462,
     winningNumberDigits: [4,6,2],
-    drawDateIcon: new Date(),
+    drawDateIcon: date,
     slideNumber: 7
 
   });
@@ -27,13 +24,13 @@ describe('Pick3DrawDateCardDomain', () => {
   // drawDate
   it('should have a drawDate defined', function () {
     const drawDate = model.getDrawDate();
-    expect(drawDate).toBeDefined();
+    expect(drawDate).toEqual(date, 'drawDate was not retrieved');
   });
   it('should the drawDate to be changed', function () {
     const nullValue = null;
     model.setDrawDate(nullValue);
     const drawDate = model.getDrawDate();
-    expect(drawDate).toBeNull('drawState was not changed');
+    expect(drawDate).toBeNull('drawDate was not changed');
   });
 
   //drawState
@@ -52,7 +49,7 @@ describe('Pick3DrawDateCardDomain', () => {
   // drawTime
   it('should have a drawTime defined', function () {
     const drawTime = model.getDrawTime();
-    expect(drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING, 'drawTime is not defined');
+    expect(drawTime).toBeDefined('drawTime is not defined');
   });
   it('should the drawTime to be changed', function () {
     const nullValue = null;
