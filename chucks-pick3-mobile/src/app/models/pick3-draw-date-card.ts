@@ -10,7 +10,8 @@ export interface Pick3DrawDateCard extends Pick3DrawDateCardProperties{
     getDrawDate(): Date;
     setDrawDate(drawDate: Date): void;
     getUpcomingDrawingTime(): Date;
-    hasGeneratedWinner(): boolean;
+    getHasGeneratedWinner(): boolean;
+    setHasGeneratedWinner(hasWinner: boolean): void;
     getBackgroundImage(): string;
     setBackgroundImage(backgroundImage: string): void;
     getWinningNumber(): number;
