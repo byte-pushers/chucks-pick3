@@ -1,6 +1,6 @@
 
-import {Pick3DrawTimeEnum} from "./pick3-draw-time.enum";
-import {PreviousWinningNumberDomain} from "./previousWinningNumber.domain";
+import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import {PreviousWinningNumberDomain} from './previousWinningNumber.domain';
 describe('PreviousWinningNumberDomain', () => {
   const date = new Date();
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('PreviousWinningNumberDomain', () => {
   // drawDate
   it('should have a drawDate defined', function () {
     const drawDate = model.getDrawDate();
-    expect(drawDate).toEqual(date, 'drawDate was not retrieved');
+    expect(drawDate).toBeDefined('drawDateIsNotDefined');
   });
   it('should the drawDate to be changed', function () {
     const nullValue = null;
