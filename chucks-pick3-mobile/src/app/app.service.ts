@@ -23,7 +23,7 @@ export class AppService {
     private card5: Pick3DrawDateCard;
     private card6: Pick3DrawDateCard;
     private card7: Pick3DrawDateCard;
-    private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
+        private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
     private pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
 
     constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService,
@@ -237,14 +237,6 @@ export class AppService {
 
     public winningNumberHasBeenDrawn(pick3DrawTime: Pick3DrawTime): Boolean {
         return this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime);
-    }
-
-    public retrievePick3DrawTime(currentSlideNumber): Pick3DrawTimeCard {
-        const date = this.getSlideDate(currentSlideNumber);
-        const drawTime = this.getDrawTime(date);
-        const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
-
-        return pick3DrawTime;
     }
 
     public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
