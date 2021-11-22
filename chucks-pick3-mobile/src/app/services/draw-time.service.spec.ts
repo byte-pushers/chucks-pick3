@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {Pick3DrawTimeEnum} from '../models/pick3-draw-time.enum';
 import {Pick3DrawTimeCardDomain} from '../models/pick3-draw-time-card.domain';
 
-describe('I18nService', () => {
+describe('DrawTimeService', () => {
   let service: DrawTimeService;
   const date = new Date ();
   beforeEach(() => {
