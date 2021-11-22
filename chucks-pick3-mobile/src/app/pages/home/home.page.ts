@@ -112,7 +112,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         this.ionSlides.slideTo(index, this.slideOpts.speed);
     }
 
-    private storeId() {
+    public storeId() {
         this.ionSlides.getActiveIndex().then(activeIndex => {
             if (activeIndex !== this.prevActiveIndex) {
                 this.appService.pick3CardId = (activeIndex + 1);
@@ -122,7 +122,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         });
     }
 
-    private passIdToGenerate(slideNumber) {
+    public passIdToGenerate(slideNumber) {
         if (slideNumber >= 6) {
             this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
         }
