@@ -152,7 +152,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         return dt;
     }
 
-    set drawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
+    set drawTime(drawTime) {
         let dt: any;
 
         if (typeof drawTime === 'string') {
@@ -167,7 +167,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this._drawTime = dt;
     }
 
-    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    getDrawTime():  any{
         let dt: any;
 
         if (typeof this._drawTime === 'string') {
@@ -186,7 +186,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         return this.drawTime; // dt;
     }
 
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+    setDrawTime(drawTime: any): void {
         let dt: any;
 
         if (typeof drawTime === 'string') {
