@@ -57,11 +57,11 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
             ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime : null : null;
     }
 
-    update(): void {
+   /* update(): void {
         //todo: update date
         //todo: update time
         //todo: update icon
-    }
+    }*/
 
     get drawDate(): Date {
         return this._drawDate;
