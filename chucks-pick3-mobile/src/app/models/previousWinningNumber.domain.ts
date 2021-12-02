@@ -52,7 +52,7 @@ export class PreviousWinningNumberDomain implements PreviousWinningNumber {
         return this._drawState;
     }
 
-    setDrawState(drawState: string): void {
+    setDrawState(drawState: string) {
         this._drawState = drawState;
     }
 
