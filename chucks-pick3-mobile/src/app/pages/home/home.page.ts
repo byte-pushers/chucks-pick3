@@ -19,9 +19,9 @@ import {NavigationEnum} from '../../models/navigate.enum';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements AfterViewInit, OnDestroy {
-    prevActiveIndex: number = 7;
+    public prevActiveIndex: number = 7;
     private cardContext = this.cardContextService.context$;
-    private slidesLoaded = false;
+    public slidesLoaded = false;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
         drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING

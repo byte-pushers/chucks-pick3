@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, PopoverController} from '@ionic/angular';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -15,6 +15,7 @@ describe('CardPage', () => {
   let component: CardPage;
   let fixture: ComponentFixture<CardPage>;
   let router: Router;
+  let popover: PopoverController;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -25,6 +26,7 @@ describe('CardPage', () => {
       providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
     }).compileComponents();
     router = TestBed.get(Router);
+    popover = TestBed.get(PopoverController);
     spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY } } } as any);
 
     fixture = TestBed.createComponent(CardPage);
@@ -34,5 +36,10 @@ describe('CardPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should go into popover.present', () => {
+    let popoverSpy = spyOn(popover, 'create').and.callThrough();
+    component.showPopover(onclick);
+    expect(popoverSpy).toHaveBeenCalled();
   });
 });
