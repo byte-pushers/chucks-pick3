@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, PopoverController} from '@ionic/angular';
 
 import {ViewPage} from './view.page';
 import {CommonModule} from '@angular/common';
@@ -16,6 +16,8 @@ describe('ViewPage', () => {
   let component: ViewPage;
   let fixture: ComponentFixture<ViewPage>;
   let router: Router;
+  let popover: PopoverController;
+  let popoverSpy = jasmine.createSpyObj('Popover', ['create', 'present', 'onDidDismiss', 'dismiss']);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -23,10 +25,18 @@ describe('ViewPage', () => {
       imports: [CommonModule, IonicModule.forRoot(),
         TranslateModule.forRoot(),
         RouterTestingModule, TranslateModule, HttpClientTestingModule],
-      providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
+      providers: [AppService, Pick3WebScrapingProviderService, CardContextService, PopoverController]
     }).compileComponents();
     router = TestBed.get(Router);
-    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY } } } as any);
+    popover = TestBed.get(PopoverController);
+    spyOn(router, 'getCurrentNavigation').and.returnValue({
+      extras: {
+        state: {
+          currentSlideNumber: 7,
+          currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY
+        }
+      }
+    } as any);
 
     fixture = TestBed.createComponent(ViewPage);
     component = fixture.componentInstance;
@@ -36,4 +46,12 @@ describe('ViewPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should go into popover.present', () => {
+    let popoverSpy = spyOn(popover, 'create').and.callThrough();
+    component.showPopover(onclick);
+    expect(popoverSpy).toHaveBeenCalled();
+  });
+
+
 });

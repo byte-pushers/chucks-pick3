@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, PopoverController} from '@ionic/angular';
 
 import {GeneratePage} from "./generate.page";
 import {CommonModule} from '@angular/common';
@@ -16,6 +16,7 @@ describe('GeneratePage', () => {
   let component: GeneratePage;
   let fixture: ComponentFixture<GeneratePage>;
   let router: Router;
+  let popover: PopoverController;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -26,6 +27,7 @@ describe('GeneratePage', () => {
       providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
     }).compileComponents();
     router = TestBed.get(Router);
+    popover = TestBed.get(PopoverController);
     // eslint-disable-next-line max-len
     spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY } } } as any);
 
@@ -36,5 +38,11 @@ describe('GeneratePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should go into popover.present', () => {
+    let popoverSpy = spyOn(popover, 'create').and.callThrough();
+    component.showPopover(onclick);
+    expect(popoverSpy).toHaveBeenCalled();
   });
 });

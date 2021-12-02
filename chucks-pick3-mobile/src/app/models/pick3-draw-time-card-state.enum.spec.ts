@@ -30,6 +30,11 @@ describe('Pick3DrawTimeCardStateEnum', () => {
     expect(propertyKey).toBe('card.draw.time.state.drawn.with.generated.picks.with.winners', 'did not return a string value');
   });
 
+  xit('should return a string value', function () {
+    const toStringValue = enumValue.toString(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+    console.log(`toStringValue = ${toStringValue}`);
+    expect(toStringValue).toBe('DRAWN', 'did not convert to string');
+  });
   it('should return NOT_DRAWN_YET',  () => {
     const toStringValue = enumValue.toString(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
     expect(toStringValue).toBe('NOT_DRAWN_YET', 'did not convert to string');
