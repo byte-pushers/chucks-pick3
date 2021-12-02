@@ -12,28 +12,28 @@ describe('CardContextService', () => {
   const pick3DrawTimeCardModel = [
     new Pick3DrawTimeCardDomain({
       title: 'draw.time.enum.morning',
-      drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+      drawTime: Pick3DrawTimeEnum.MORNING,
       icon: 'morning-icon',
       dateTime: new Date().setHours(7, 15, 0, 0),
       showCountDownToDrawing: false
     }),
     new Pick3DrawTimeCardDomain({
       title: 'draw.time.enum.day',
-      drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY,
+      drawTime: Pick3DrawTimeEnum.DAY,
       icon: 'day-icon',
       dateTime: new Date().setHours(11, 45, 0, 0),
       showCountDownToDrawing: false
     }),
     new Pick3DrawTimeCardDomain({
       title: 'draw.time.enum.evening',
-      drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.EVENING,
+      drawTime: Pick3DrawTimeEnum.EVENING,
       icon: 'evening-icon',
       dateTime: new Date().setHours(17, 15, 0, 0),
       showCountDownToDrawing: false
     }),
     new Pick3DrawTimeCardDomain({
       title: 'draw.time.enum.night',
-      drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT,
+      drawTime: Pick3DrawTimeEnum.NIGHT,
       icon: 'night-icon',
       dateTime: new Date().setHours(21, 30, 0, 0),
       showCountDownToDrawing: false

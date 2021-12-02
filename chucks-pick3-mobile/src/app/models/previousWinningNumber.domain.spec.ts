@@ -10,7 +10,7 @@ describe('PreviousWinningNumberDomain', () => {
   let model = new PreviousWinningNumberDomain({
     drawDate: date,
     drawState: 'TX',
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY
+    drawTime: Pick3DrawTimeEnum.DAY
 
   });
 
@@ -65,9 +65,9 @@ describe('PreviousWinningNumberDomain', () => {
 
   // drawTime
   it('should have a drawTime defined',  () => {
-    model.setDrawTime(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+    model.setDrawTime(Pick3DrawTimeEnum.DAY);
     const drawTime = model.getDrawTime();
-    expect(drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY, 'drawTime is not defined');
+    expect(drawTime).toEqual(Pick3DrawTimeEnum.DAY, 'drawTime is not defined');
   });
   it('should the drawTime to be changed',  () => {
     const nullValue = null;
@@ -76,13 +76,13 @@ describe('PreviousWinningNumberDomain', () => {
     expect(drawTime).toBeNull('drawTime was not changed');
   });
   it('should have a drawTime defined',  () => {
-    model.setDrawTime(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+    model.setDrawTime(Pick3DrawTimeEnum.DAY);
     const drawTime = model.getDrawTime();
-    expect(drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY, 'drawTime is not defined');
+    expect(drawTime).toEqual(Pick3DrawTimeEnum.DAY, 'drawTime is not defined');
   });
 
   it('should get and set drawTime',  () => {
-    model.drawTime = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
-    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT);
+    model.drawTime = Pick3DrawTimeEnum.NIGHT;
+    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
 });

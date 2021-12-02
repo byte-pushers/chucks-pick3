@@ -21,7 +21,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     // tslint:disable-next-line:variable-name
     private _drawState: string;
     // tslint:disable-next-line:variable-name
-    private _drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    private _drawTime: Pick3DrawTimeEnum;
     // tslint:disable-next-line:variable-name
     private _upcomingDrawTime: Date;
     // tslint:disable-next-line:variable-name
@@ -36,16 +36,16 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     private _drawDateIcon: string;
     private _slideNumber: number;
     private _slideName: string;
-    private _defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    private _defaultDrawDateTime: Pick3DrawTimeEnum;
 
     constructor(private readonly config: any) {
         this._drawDate = (config) ? Object.isDefinedAndNotNull(config.drawDate) ? (typeof config.drawDate === 'string')
-            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawDate.toUpperCase()] : config.drawDate : null : null;
+            ? Pick3DrawTimeEnum[config.drawDate.toUpperCase()] : config.drawDate : null : null;
         this._drawState = (config) ? Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null : null;
         this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string')
-            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+            ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
         this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config.upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string')
-            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
+            ? Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
         this._hasWinner = (config) ? (typeof config.hasWinner === 'boolean') ? config.hasWinner : false : false;
         this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config.backgroundImage) ? config.backgroundImage : null : null;
         this._winningNumber = (config) ? (config.winningNumber) ? config.winningNumber : null : null;
@@ -54,7 +54,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._slideNumber = (config) ? config.slideNumber : -1;
         this._slideName = (config) ? config.slideName : null;
         this._defaultDrawDateTime = (config) ? Object.isDefinedAndNotNull(config.defaultDrawDateTime) ? (typeof config.defaultDrawDateTime === 'string')
-            ? Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime : null : null;
+            ? Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime : null : null;
     }
 
    /* update(): void {
@@ -95,14 +95,14 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return Pick3DrawTimeEnum.getPropertyKey(this.drawTime);
     }
 
-    get drawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    get drawTime(): Pick3DrawTimeEnum {
         let dt: any;
 
         if (typeof this._drawTime === 'string') {
             let key: any = this._drawTime;
 
             key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+            dt = Pick3DrawTimeEnum[key];
         } else {
             dt = this._drawTime;
         }
@@ -110,14 +110,14 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         return dt;
     }
 
-    set drawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
+    set drawTime(drawTime: Pick3DrawTimeEnum) {
         let dt: any;
 
         if (typeof drawTime === 'string') {
             let key: any = drawTime;
 
             key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+            dt = Pick3DrawTimeEnum[key];
         } else {
             dt = drawTime;
         }
@@ -125,14 +125,14 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._drawTime = dt;
     }
 
-    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    getDrawTime(): Pick3DrawTimeEnum {
         let dt: any;
 
         if (typeof this._drawTime === 'string') {
             let key: any = this._drawTime;
 
             key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+            dt = Pick3DrawTimeEnum[key];
         } else {
             dt = this._drawTime;
         }
@@ -180,14 +180,14 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._drawState = drawState;
     }
 
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+    setDrawTime(drawTime: Pick3DrawTimeEnum): void {
         let dt: any;
 
         if (typeof drawTime === 'string') {
             let key: any = drawTime;
 
             key = key.toUpperCase();
-            dt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[key];
+            dt = Pick3DrawTimeEnum[key];
         } else {
             dt = drawTime;
         }
@@ -386,19 +386,19 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
         this._slideName = slideName;
     }
 
-    get defaultDrawDateTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    get defaultDrawDateTime(): Pick3DrawTimeEnum {
         return this._defaultDrawDateTime;
     }
 
-    set defaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
+    set defaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum) {
         this._defaultDrawDateTime = defaultDrawDateTime;
     }
 
-    getDefaultDrawDateTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    getDefaultDrawDateTime(): Pick3DrawTimeEnum {
         return this._defaultDrawDateTime;
     }
 
-    setDefaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+    setDefaultDrawDateTime(defaultDrawDateTime: Pick3DrawTimeEnum): void {
         this._defaultDrawDateTime = defaultDrawDateTime;
     }
 }

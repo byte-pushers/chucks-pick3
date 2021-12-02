@@ -10,7 +10,7 @@ describe('Pick3DrawDateCardDomain', () => {
   let model = new Pick3DrawDateCardDomain({
     drawDate: date,
     drawState: 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+    drawTime: Pick3DrawTimeEnum.MORNING,
     drawTimeAsString: 'Morning',
     upcomingDrawTime: date,
     hasWinner: false,
@@ -41,13 +41,13 @@ describe('Pick3DrawDateCardDomain', () => {
 
   // getDefaultDrawTime
   it('should have a drawState defined', () => {
-    model.setDefaultDrawDateTime(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+    model.setDefaultDrawDateTime(Pick3DrawTimeEnum.DAY);
     const drawState = model.getDefaultDrawDateTime();
-    expect(drawState).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY, 'defaultDrawDateTime is not defined');
+    expect(drawState).toEqual(Pick3DrawTimeEnum.DAY, 'defaultDrawDateTime is not defined');
   });
   it('should get and set defaultDrawDateTime',  () => {
-    model.defaultDrawDateTime = Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY;
-    expect(model.defaultDrawDateTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+    model.defaultDrawDateTime = Pick3DrawTimeEnum.DAY;
+    expect(model.defaultDrawDateTime).toEqual(Pick3DrawTimeEnum.DAY);
   });
   //drawState
   it('should have a drawState defined', () => {
@@ -80,16 +80,16 @@ describe('Pick3DrawDateCardDomain', () => {
   it('should get and set the drawTime',  () => {
     // @ts-ignore
     model.drawTime = 'night';
-    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT);
+    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
   it('should get and set the drawTime',  () => {
     // @ts-ignore
     model.setDrawTime('night');
-    expect(model.getDrawTime()).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT);
+    expect(model.getDrawTime()).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
   it('should get and set the drawTime',  () => {
-    model.drawTime = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
-    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT);
+    model.drawTime = Pick3DrawTimeEnum.NIGHT;
+    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
 
   // backgroundImage

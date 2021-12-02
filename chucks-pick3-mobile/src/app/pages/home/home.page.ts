@@ -24,7 +24,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
     public slidesLoaded = false;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
-        drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
+        drawDateTime: Pick3DrawTimeEnum.MORNING
     };
     slideOpts = {
         initialSlide: 7,

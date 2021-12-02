@@ -1,16 +1,17 @@
-import * as Object from 'bytepushers-js-obj-extensions';
-
 export const MORNING_DRAW_TIME_KEY = 'draw.time.enum.morning';
 export const DAY_DRAW_TIME_KEY = 'draw.time.enum.day';
 export const EVENING_DRAW_TIME_KEY = 'draw.time.enum.evening';
 export const NIGHT_DRAW_TIME_KEY = 'draw.time.enum.night';
+
+export enum Pick3DrawTimeEnum {
+  MORNING,
+  DAY,
+  EVENING,
+  NIGHT
+}
+
 export namespace Pick3DrawTimeEnum {
-    export enum Pick3DrawTimeEnum {
-        MORNING,
-        DAY,
-        EVENING,
-        NIGHT
-    }
+
 
     export function getPropertyKey(e: Pick3DrawTimeEnum | string): string {
         let propertyKey: string = null;
@@ -93,6 +94,6 @@ export namespace Pick3DrawTimeEnum {
     }
 
     export function getIcon(e: Pick3DrawTimeEnum | string): string {
-        return toString(e).toLowerCase() + "-icon";
+        return toString(e).toLowerCase() + '-icon';
     }
 }
