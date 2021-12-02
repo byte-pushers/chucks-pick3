@@ -16,9 +16,9 @@ export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
     setState(state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum): void;
     getPick3DrawTime(): Pick3DrawTime;
     setPick3DrawTime(pick3DrawTime: Pick3DrawTime): void;
-    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    getDrawTime(): any;
     getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
+    setDrawTime(drawTime: any): void;
     getSelected(): boolean;
     setSelected(selected: boolean): void;
     getShowCountDownToDrawing(): boolean;
