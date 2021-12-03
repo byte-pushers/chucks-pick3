@@ -189,7 +189,7 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(model.winningNumberDigit1).toEqual(2);
   });
   it('should get winningNumberDigit2',  () => {
-    expect(model.winningNumberDigit2).toEqual(6);
+    expect(model.winningNumberDigit2).  toEqual(6);
   });
   it('should get winningNumberDigit3',  () => {
     expect(model.winningNumberDigit3).toEqual(4);
