@@ -12,6 +12,7 @@ import {CardContextService} from '../../services/card-context.service';
 import {Router} from '@angular/router';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 
+
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
@@ -57,18 +58,18 @@ describe('HomePage', () => {
     expect(idSpy).toHaveBeenCalled();
   });
 
-  /*it('should check if getActiveIndex was called', () => {
+  it('should check if getActiveIndex was called', () => {
     const ionSlidesSpy = spyOn(component.ionSlides, 'getActiveIndex').and.callThrough();
     component.storeId();
     expect(ionSlidesSpy).toHaveBeenCalled();
-  });*/
+  });
 
-  /*xit('should check if slidesLoaded is false', () => {
+  xit('should check if slidesLoaded is false', () => {
     component.initializePick3DrawDateCard(onclick);
     expect(component.slidesLoaded).toBeFalse();
-  });*/
+  });
 
-  /*it('should check if initializePick3DrawDateCard was called', () => {
+  /*xit('should check if initializePick3DrawDateCard was called', () => {
     $('#pick3DrawDateCards').trigger('click');
     spyOn(component, 'initializePick3DrawDateCard').and.callThrough();
     expect(component.initializePick3DrawDateCard).toHaveBeenCalled();

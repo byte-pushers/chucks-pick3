@@ -134,40 +134,46 @@ describe('AppService', () => {
   });
 
   // getSlideDate()
-  it('should set the date according to the slide number', function() {
+  it('should set the date according to the slide number', () => {
     const dateTest = new Date();
     expect(appService.getSlideDate(7)).toEqual(dateTest);
   });
 
 // retrievePick3DrawDate
-  it('should call to getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime', function() {
+  it('should call to getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime', () => {
     spyOn(appService, 'getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime');
     appService.retrievePick3DrawDate(7, Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING);
     expect(appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime).toHaveBeenCalled();
   });
 
   // pick3StateLottery
-  it('should getPick3DrawDateDecks', function() {
+  it('should getPick3DrawDateDecks', () => {
     expect(appService.getPick3DrawDateDecks()).toBeDefined('getPick3DrawDateDecks is not defined');
   });
-  it('should return getBackgroundImageUrl', function() {
+  it('should return getBackgroundImageUrl', () => {
     expect(appService.getBackgroundImageUrl()).toBeDefined('getBackgroundImageUrl is not defined');
   });
-  it('should return getCurrentDrawTime', function() {
+  it('should return getCurrentDrawTime', () => {
     expect(appService.getCurrentDrawTime()).toBeDefined('getCurrentDrawTime is not defined');
   });
-  it('should return getDrawTime', function() {
+  it('should return getDrawTime', () => {
     expect(appService.getDrawTime(date)).toBeDefined('getCurrentDrawTime is not defined');
   });
-  it('should return getDrawState', function() {
+  it('should return getDrawState', () => {
     expect(appService.getDrawState()).toBeDefined('getDrawState is not defined');
   });
-  it('should return getDrawingTimeByName', function() {
+  it('should return getDrawingTimeByName', () => {
     expect(appService.getDrawingTimeByName('Morning')).toBeDefined('getDrawingTimeByName is not defined');
   });
 
   // dispatchCurrentDrawCardIdEvent
-  it('should retrieve a Pick3DrawCardId', function() {
+  it('should retrieve a Pick3DrawCardId', () => {
     appService.dispatchCurrentDrawCardIdEvent(6);
     expect(appService.getPick3DrawCardId$()).toBeDefined('id number was not defined');});
+
+  xit('should call to getSlideDate', () =>{
+    spyOn(appService, 'getSlideDate');
+    appService.getPick3DrawTimeCards(6);
+    expect(appService.getSlideDate).toHaveBeenCalled();
+  });
 });
