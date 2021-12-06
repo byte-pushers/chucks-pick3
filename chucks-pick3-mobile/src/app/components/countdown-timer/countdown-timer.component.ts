@@ -40,7 +40,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
         this.stopTimer();
     }
 
-    private getTimeDiff(datetime, useAsTimer = false) {
+    public getTimeDiff(datetime, useAsTimer = false) {
         datetime = new Date(datetime).getTime();
         const now = new Date().getTime();
         if (isNaN(datetime)) {
@@ -76,11 +76,11 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
         }
     }
 
-    private twoDigit(number: number) {
+    public twoDigit(number: number) {
         return number > 9 ? '' + number : '0' + number;
     }
 
-    private stopTimer() {
+    public stopTimer() {
         this.timer = undefined;
     }
 }

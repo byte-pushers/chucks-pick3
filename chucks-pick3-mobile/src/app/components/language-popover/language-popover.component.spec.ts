@@ -30,4 +30,5 @@ describe('LanguagePopoverComponent', () => {
     component.switchLanguage('en-US');
     expect(translate.use).toHaveBeenCalled();
   });
+
 });
