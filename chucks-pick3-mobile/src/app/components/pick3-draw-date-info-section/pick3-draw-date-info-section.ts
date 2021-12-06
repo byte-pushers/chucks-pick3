@@ -35,7 +35,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   public id = -1;
   public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
-  public defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+  public defaultDrawDateTime: Pick3DrawTimeEnum;
   public showCountDownToDrawing = false;
   public pick3GenerateId: number;
   public drawTimeCard: Pick3DrawTimeCard;
@@ -256,7 +256,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
   }
 
-  private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+  private getPastWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): void {
     this.pick3WebScrappingService.getPastWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
       if (BytePushers.DateUtility.isSameDate(pick3DrawDateTime, new Date()) && winningNumber != null) {
         this.setCardState(winningNumber, pick3DrawTimeType);
@@ -274,7 +274,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   private getCurrentWinningDrawingNumber(drawState: string, pick3DrawDateTime: Date,
-                                         pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+                                         pick3DrawTimeType: Pick3DrawTimeEnum): void {
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then((winningNumber: any) => {
       this.setCardState(winningNumber, pick3DrawTimeType);
     }, error => {
@@ -286,7 +286,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     });
   }
 
-  private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+  private setCardState(winningNumber: any, pick3DrawTimeType: Pick3DrawTimeEnum): void {
     const drawingResult = {
       drawDate: winningNumber?.date,
       drawTime: winningNumber?.time,
@@ -296,7 +296,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     if (typeof pick3DrawTimeType === 'string') {
       const p: any = pick3DrawTimeType;
-      p3dtt = Pick3DrawTimeEnum.Pick3DrawTimeEnum[p.toUpperCase()];
+      p3dtt = Pick3DrawTimeEnum[p.toUpperCase()];
     } else {
       p3dtt = pick3DrawTimeType;
     }
