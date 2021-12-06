@@ -11,14 +11,19 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {CardContextService} from '../../services/card-context.service';
 import {Router} from '@angular/router';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
+import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
 
 
 describe('HomePage', () => {
+  let date = new Date;
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
   let router: Router;
   let translateService: TranslateService;
   let appService: AppService;
+
+
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -53,7 +58,7 @@ describe('HomePage', () => {
   });
 
   it('should pass the id number to the appService', () => {
-    const idSpy = spyOn(appService,'dispatchCurrentDrawCardIdEvent');
+    const idSpy = spyOn(appService, 'dispatchCurrentDrawCardIdEvent');
     component.passIdToGenerate(7);
     expect(idSpy).toHaveBeenCalled();
   });
