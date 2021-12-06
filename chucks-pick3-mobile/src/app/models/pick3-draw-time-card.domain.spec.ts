@@ -12,7 +12,7 @@ describe('Pick3DrawTimeCardDomain', () => {
   let dateModel = new Pick3DrawDateCardDomain({
     drawDate : date,
     drawState : 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+    drawTime: Pick3DrawTimeEnum.MORNING,
     drawTimeAsString: 'Morning',
     upcomingDrawTime: date,
     hasWinner: false,
@@ -27,10 +27,10 @@ describe('Pick3DrawTimeCardDomain', () => {
     pick3DrawCardId : 7,
     icon : 'Morning',
     title: 'Morning',
-    pick3DrawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+    pick3DrawTime: Pick3DrawTimeEnum.MORNING,
     dateTime: new Date,
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-    state: Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN,
+    drawTime: Pick3DrawTimeEnum.MORNING,
+    state: Pick3DrawTimeCardStateEnum.DRAWN,
     selected: true,
     showCountDownToDrawing: false,
     pick3DrawTimeArray: [33,555,264,346,345]
@@ -59,13 +59,13 @@ describe('Pick3DrawTimeCardDomain', () => {
     expect(drawTime).toBeDefined( 'drawTime is not defined');
   });
   it('should the drawTime to be changed',  () => {
-    const nightValue = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
+    const nightValue = Pick3DrawTimeEnum.NIGHT;
     model.setDrawTime(nightValue);
     const drawTime = model.getDrawTime();
     expect(drawTime).toBe(nightValue,'drawTime was not changed');
   });
   it('should the drawTime to be changed',  () => {
-    const nightValue = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
+    const nightValue = Pick3DrawTimeEnum.NIGHT;
     model.setDrawTime('night');
     const drawTime = model.getDrawTime();
     expect(drawTime).toBe(nightValue,'drawTime was not changed');
@@ -76,8 +76,8 @@ describe('Pick3DrawTimeCardDomain', () => {
     expect(drawTime).toBeDefined( 'drawTime is not defined');
   });
   it('should get and set the drawTime',  () => {
-    model.drawTime = Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY;
-    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY);
+    model.drawTime = Pick3DrawTimeEnum.DAY;
+    expect(model.drawTime).toEqual(Pick3DrawTimeEnum.DAY);
   });
 
   it('should have a state defined',  () => {
@@ -86,19 +86,19 @@ describe('Pick3DrawTimeCardDomain', () => {
   });
 
   it('should set the state', function () {
-    model.setState(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+    model.setState(Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
     const state = model.getState();
-    expect(state).toEqual(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
+    expect(state).toEqual(Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET);
   });
   it('should change the state',  () => {
-    const nightValue = Pick3DrawTimeEnum.Pick3DrawTimeEnum.NIGHT;
+    const nightValue = Pick3DrawTimeEnum.NIGHT;
     model.setDrawTime(nightValue);
     const drawTime = model.getDrawTime();
     expect(drawTime).toBe(nightValue,'drawTime was not changed');
   });
   it('should change the state',  () => {
-    model.state = Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN;
-    expect(model.state).toEqual(Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN);
+    model.state = Pick3DrawTimeCardStateEnum.DRAWN;
+    expect(model.state).toEqual(Pick3DrawTimeCardStateEnum.DRAWN);
   });
 
 

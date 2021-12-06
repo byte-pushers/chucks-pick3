@@ -33,7 +33,7 @@ describe('ViewPage', () => {
       extras: {
         state: {
           currentSlideNumber: 7,
-          currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY
+          currentDay: Pick3DrawTimeEnum.DAY
         }
       }
     } as any);

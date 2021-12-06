@@ -14,13 +14,13 @@ export class PreviousWinningNumberDomain implements PreviousWinningNumber {
     // tslint:disable-next-line:variable-name
     private _drawState: string;
     // tslint:disable-next-line:variable-name
-    private _drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    private _drawTime: Pick3DrawTimeEnum;
 
     constructor(config: any) {
         this._drawDate = (config) ? (Object.isDate(config.drawDate)) ? config.drawDate : new Date(config.drawDate) : null;
         this._drawState = (config) ? Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null : null;
         this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string') ?
-            Pick3DrawTimeEnum.Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
+            Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
     }
 
     get drawDate(): Date {
@@ -56,18 +56,18 @@ export class PreviousWinningNumberDomain implements PreviousWinningNumber {
         this._drawState = drawState;
     }
 
-    get drawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    get drawTime(): Pick3DrawTimeEnum {
         return this._drawTime;
     }
 
-    set drawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum) {
+    set drawTime(drawTime: Pick3DrawTimeEnum) {
         this._drawTime = drawTime;
     }
-    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum {
+    getDrawTime(): Pick3DrawTimeEnum {
         return this._drawTime;
     }
 
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void {
+    setDrawTime(drawTime: Pick3DrawTimeEnum): void {
         this._drawTime = drawTime;
     }
 }

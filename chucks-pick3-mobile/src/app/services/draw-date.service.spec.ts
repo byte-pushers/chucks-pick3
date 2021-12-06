@@ -19,7 +19,7 @@ describe('DrawDateService', () => {
   let model = new Pick3DrawTimeCardDomain({
     drawDate : date,
     drawState : 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+    drawTime: Pick3DrawTimeEnum.MORNING,
     drawTimeAsString: 'Morning',
     upcomingDrawTime: date,
     hasWinner: false,

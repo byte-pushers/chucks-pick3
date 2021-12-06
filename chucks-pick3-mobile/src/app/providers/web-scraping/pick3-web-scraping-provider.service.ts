@@ -49,14 +49,14 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
     });
   }
 
-  public getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): Promise<DrawingResult> {
+  public getPastWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum): Promise<DrawingResult> {
     let dt = Pick3DrawTimeEnum.toString(drawingTime).toLowerCase();
 
     return this.service.findRegisteredStateLottery(drawingState)
         .retrievePastWinningNumber('TX', drawingDate, dt.charAt(0).toUpperCase() + dt.slice(1), this, this.pageReader);
   }
 
-  public getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): Promise<DrawingResult> {
+  public getCurrentWinningDrawingNumber(drawingState: string, drawingDate: Date, drawingTime: Pick3DrawTimeEnum): Promise<DrawingResult> {
     let dt = Pick3DrawTimeEnum.toString(drawingTime).toLowerCase();
 
     return this.service.findRegisteredStateLottery(drawingState)
