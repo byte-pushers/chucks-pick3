@@ -1,11 +1,18 @@
+export enum Pick3DrawTimeCardStateEnum {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  NOT_DRAWN_YET, // gray
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  NOT_DRAWN_YET_WITH_GENERATED_PICKS, // yellow
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  DRAWN, // gray
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS, // black
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS // green
+}
+
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Pick3DrawTimeCardStateEnum {
-  export enum Pick3DrawTimeCardStateEnum {
-    NOT_DRAWN_YET, // gray
-    NOT_DRAWN_YET_WITH_GENERATED_PICKS, // yellow
-    DRAWN, // gray
-    DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS, // black
-    DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS // green
-  }
 
   export function getPropertyKey(e: Pick3DrawTimeCardStateEnum): string {
     let propertyKey: string = null;
