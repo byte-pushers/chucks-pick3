@@ -7,6 +7,6 @@ export interface PreviousWinningNumber {
     getDrawState(): string;
     setDrawState(drawState: string): void;
 
-    getDrawTime(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
-    setDrawTime(drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum): void;
+    getDrawTime(): Pick3DrawTimeEnum;
+    setDrawTime(drawTime: Pick3DrawTimeEnum): void;
 }

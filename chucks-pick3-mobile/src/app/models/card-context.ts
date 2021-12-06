@@ -5,6 +5,6 @@ import {Pick3DrawTimeCard} from './pick3-draw-time-card';
 export interface CardContext {
     slideNumber: number;
     data: Pick3DrawDateCardProperties;
-    defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    defaultDrawDateTime: Pick3DrawTimeEnum;
     drawTimes: Array<Pick3DrawTimeCard>;
 }

@@ -27,7 +27,7 @@ describe('CardPage', () => {
     }).compileComponents();
     router = TestBed.get(Router);
     popover = TestBed.get(PopoverController);
-    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY } } } as any);
+    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.DAY } } } as any);
 
     fixture = TestBed.createComponent(CardPage);
     component = fixture.componentInstance;

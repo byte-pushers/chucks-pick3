@@ -19,10 +19,10 @@ describe('DrawTimeService', () => {
     pick3DrawCardId : 7,
     icon : 'Morning',
     title: 'Morning',
-    pick3DrawTime: [Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING, date],
+    pick3DrawTime: [Pick3DrawTimeEnum.MORNING, date],
     dateTime: new Date,
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
-    state: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING,
+    drawTime: Pick3DrawTimeEnum.MORNING,
+    state: Pick3DrawTimeEnum.MORNING,
     selected: true,
     showCountDownToDrawing: false,
     pick3DrawTimeArray: [33,555,264,346,345]

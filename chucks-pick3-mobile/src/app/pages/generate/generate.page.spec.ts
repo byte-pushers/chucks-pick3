@@ -29,7 +29,7 @@ describe('GeneratePage', () => {
     router = TestBed.get(Router);
     popover = TestBed.get(PopoverController);
     // eslint-disable-next-line max-len
-    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.Pick3DrawTimeEnum.DAY } } } as any);
+    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.DAY } } } as any);
 
     fixture = TestBed.createComponent(GeneratePage);
     component = fixture.componentInstance;

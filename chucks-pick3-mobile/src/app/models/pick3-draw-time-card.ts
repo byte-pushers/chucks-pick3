@@ -17,7 +17,7 @@ export interface Pick3DrawTimeCard extends Pick3DrawTimeCardProperties{
     getPick3DrawTime(): Pick3DrawTime;
     setPick3DrawTime(pick3DrawTime: Pick3DrawTime): void;
     getDrawTime(): any;
-    getDrawTimeValue(): Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    getDrawTimeValue(): Pick3DrawTimeEnum;
     setDrawTime(drawTime: any): void;
     getSelected(): boolean;
     setSelected(selected: boolean): void;

@@ -6,7 +6,7 @@ export interface Pick3DrawTimeCardProperties {
     icon: string;
     title: string;
     dateTime: Date;
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+  drawTime: Pick3DrawTimeEnum;
     state: Pick3DrawTimeCardStateEnum;
     selected: boolean;
     showCountDownToDrawing: boolean;
