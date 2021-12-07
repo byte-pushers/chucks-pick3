@@ -4,22 +4,22 @@ import {Pick3LotteryService} from '../services/pick3-lottery.service';
 
 describe('Pick3DrawDateCardDomain', () => {
   const date = new Date();
+  let model;
   beforeEach(() => {
+    model = new Pick3DrawDateCardDomain({
+      drawDate: date,
+      drawState: 'gotoHome',
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      drawTimeAsString: 'Morning',
+      upcomingDrawTime: date,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [4, 6, 2],
+      drawDateIcon: date,
+      slideNumber: 7
 
-  });
-  let model = new Pick3DrawDateCardDomain({
-    drawDate: date,
-    drawState: 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.MORNING,
-    drawTimeAsString: 'Morning',
-    upcomingDrawTime: date,
-    hasWinner: false,
-    backgroundImage: Pick3LotteryService,
-    winningNumber: 462,
-    winningNumberDigits: [4, 6, 2],
-    drawDateIcon: date,
-    slideNumber: 7
-
+    });
   });
 
   // drawDate
@@ -45,7 +45,7 @@ describe('Pick3DrawDateCardDomain', () => {
     const drawState = model.getDefaultDrawDateTime();
     expect(drawState).toEqual(Pick3DrawTimeEnum.DAY, 'defaultDrawDateTime is not defined');
   });
-  it('should get and set defaultDrawDateTime',  () => {
+  it('should get and set defaultDrawDateTime', () => {
     model.defaultDrawDateTime = Pick3DrawTimeEnum.DAY;
     expect(model.defaultDrawDateTime).toEqual(Pick3DrawTimeEnum.DAY);
   });
@@ -77,17 +77,17 @@ describe('Pick3DrawDateCardDomain', () => {
     const drawTime = model.getDrawTime();
     expect(drawTime).toBeNull('drawTime was not changed');
   });
-  it('should get and set the drawTime',  () => {
+  it('should get and set the drawTime', () => {
     // @ts-ignore
     model.drawTime = 'night';
     expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
-  it('should get and set the drawTime',  () => {
+  it('should get and set the drawTime', () => {
     // @ts-ignore
     model.setDrawTime('night');
     expect(model.getDrawTime()).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
-  it('should get and set the drawTime',  () => {
+  it('should get and set the drawTime', () => {
     model.drawTime = Pick3DrawTimeEnum.NIGHT;
     expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
@@ -121,7 +121,7 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(icon).toBeNull('icon was not changed');
   });
 
-  it('should get and set icon',  () => {
+  it('should get and set icon', () => {
     model.icon = 'day-icon';
     expect(model.icon).toEqual('day-icon')
   });
@@ -138,17 +138,17 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(slideNumber).toBe(5, 'slideNumber was not changed');
   });
 
-  it('should get and set slideNumber',  () => {
+  it('should get and set slideNumber', () => {
     model.slideNumber = 6;
     expect(model.slideNumber).toEqual(6);
   });
 
   //slideName
-  it('should get the slideName and set it via methods',  () => {
+  it('should get the slideName and set it via methods', () => {
     model.setSlideName('Generate New Numbers');
     expect(model.getSlideName()).toEqual('Generate New Numbers');
   });
-  it('should get and set slideName',  () => {
+  it('should get and set slideName', () => {
     model.slideName = 'Generate New Numbers';
     expect(model.slideName).toEqual('Generate New Numbers');
   });
@@ -185,13 +185,13 @@ describe('Pick3DrawDateCardDomain', () => {
     model.winningNumber = 685;
     expect(model.winningNumber).toEqual(685);
   });
-  it('should get winningNumberDigit1',  () => {
+  it('should get winningNumberDigit1', () => {
     expect(model.winningNumberDigit1).toEqual(2);
   });
-  it('should get winningNumberDigit2',  () => {
-    expect(model.winningNumberDigit2).  toEqual(6);
+  it('should get winningNumberDigit2', () => {
+    expect(model.winningNumberDigit2).toEqual(6);
   });
-  it('should get winningNumberDigit3',  () => {
+  it('should get winningNumberDigit3', () => {
     expect(model.winningNumberDigit3).toEqual(4);
   });
 
@@ -216,7 +216,7 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(winningNumberDigit3).toBeDefined('winningNumberDigit3 is not defined');
   });
 
-  it('should return winningNumberDigits',  () => {
+  it('should return winningNumberDigits', () => {
     expect(model.winningNumberDigits).toEqual([4, 6, 2]);
   });
 
