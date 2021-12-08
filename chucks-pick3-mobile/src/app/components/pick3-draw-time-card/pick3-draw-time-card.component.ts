@@ -85,19 +85,19 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
         const pick3DrawTimeCardStateEnum = this.data.getState();
 
         switch (pick3DrawTimeCardStateEnum) {
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
+            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
                 this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);
                 break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: // yellow
+            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: // yellow
                 this.setDrawingTimeCardColorIndicators('not-drawn-yet-with-generated-picks', true);
                 break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN: // gray
+            case Pick3DrawTimeCardStateEnum.DRAWN: // gray
                 this.setDrawingTimeCardColorIndicators('drawn', true);
                 break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS: // black
+            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS: // black
                 this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-no-winners', true);
                 break;
-            case Pick3DrawTimeCardStateEnum.Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS: // green
+            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS: // green
                 this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-winners', true);
                 break;
             default:
