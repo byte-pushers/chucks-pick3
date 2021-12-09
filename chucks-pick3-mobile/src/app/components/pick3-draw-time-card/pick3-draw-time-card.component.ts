@@ -8,127 +8,131 @@ import {TranslateService} from '@ngx-translate/core';
 import {DrawTimeService} from "../../services/draw-time.service";
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: 'pick3-draw-time-card',
-    templateUrl: './pick3-draw-time-card.component.html',
-    styleUrls: ['./pick3-draw-time-card.component.scss'],
+  // tslint:disable-next-line:component-selector
+  selector: 'pick3-draw-time-card',
+  templateUrl: './pick3-draw-time-card.component.html',
+  styleUrls: ['./pick3-draw-time-card.component.scss'],
 })
 export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
-    @Input() data: Pick3DrawTimeCard;
-    oldData: Pick3DrawTimeCard = new Pick3DrawTimeCardDomain(null);
-    changelog: string[] = [];
-    drawingTimeCardColorIndicators = {
-        'not-drawn-yet': false,
-        'not-drawn-yet-with-generated-picks': false,
-        drawn: false,
-        'drawn-with-generated-picks-with-no-winners': false,
-        'drawn-with-generated-picks-with-winners': false,
-        selected: false
+  @Input() data: Pick3DrawTimeCard;
+  oldData: Pick3DrawTimeCard = new Pick3DrawTimeCardDomain(null);
+  changelog: string[] = [];
+  drawingTimeCardColorIndicators = {
+    'not-drawn-yet': false,
+    'not-drawn-yet-with-generated-picks': false,
+    drawn: false,
+    'drawn-with-generated-picks-with-no-winners': false,
+    'drawn-with-generated-picks-with-winners': false,
+    selected: false
+  };
+  doCheckCount = 0;
+
+  constructor(private drawStateService: DrawStateService,
+              public translateService: TranslateService,
+              private drawTimeService: DrawTimeService) {
+  }
+
+  ngOnInit() {
+    this.setDrawingTimeCardState();
+  }
+
+  ngDoCheck() {
+    this.doCheckCount++;
+
+    const to = JSON.stringify(this.data);
+    const from = JSON.stringify(this.oldData);
+    const changeLog = `DoCheck customer: changed from ${from} to ${to} `;
+    this.changelog.push(changeLog);
+
+
+    if (Object.isDefinedAndNotNull(this.oldData)) {
+      /* istanbul ignore if */
+      if (this.oldData.getSelected() !== this.data.getSelected()) {
+        this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
+      }
+    } else {
+      /* istanbul ignore next */
+      this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
+    }
+
+    this.oldData = new Pick3DrawTimeCardDomain(JSON.parse(JSON.stringify(this.data)));
+  }
+
+  /* istanbul ignore next */
+  ngOnDestroy() {
+    this.data = null;
+    this.oldData = null;
+    this.changelog = [];
+    this.drawingTimeCardColorIndicators = null;
+    this.doCheckCount = 0;
+  }
+
+  public getSelectedState(): { 'not-selected': boolean, selected: boolean } {
+    let selectedStateCssClass = {
+      'not-selected': true,
+      selected: false
     };
-    doCheckCount = 0;
+    this.drawingTimeCardColorIndicators.selected = false;
 
-    constructor(private drawStateService: DrawStateService,
-                public translateService: TranslateService,
-                private drawTimeService: DrawTimeService) {
+    if (this.data.getSelected()) {
+      selectedStateCssClass = {
+        'not-selected': false,
+        selected: true
+      };
+      this.drawingTimeCardColorIndicators.selected = true;
     }
 
-    ngOnInit() {
-        this.setDrawingTimeCardState();
+    return selectedStateCssClass;
+  }
+
+  public setDrawingTimeCardState(): string | string[] | Set<string> | { [klass: string]: any; } {
+    const pick3DrawTimeCardStateEnum = this.data.getState();
+
+    switch (pick3DrawTimeCardStateEnum) {
+      case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);
+        break;
+      case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: // yellow
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet-with-generated-picks', true);
+        break;
+      case Pick3DrawTimeCardStateEnum.DRAWN: // gray
+        this.setDrawingTimeCardColorIndicators('drawn', true);
+        break;
+      case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS: // black
+        this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-no-winners', true);
+        break;
+      case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS: // green
+        this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-winners', true);
+        break;
+      default:
+        this.setDrawingTimeCardColorIndicators('not-drawn-yet', true); // gray
     }
 
-    ngDoCheck() {
-        this.doCheckCount++;
+    return this.drawingTimeCardColorIndicators;
+  }
 
-        const to = JSON.stringify(this.data);
-        const from = JSON.stringify(this.oldData);
-        const changeLog = `DoCheck customer: changed from ${from} to ${to} `;
-        this.changelog.push(changeLog);
+  private setDrawingTimeCardColorIndicators(attributeName: string, booleanValue: boolean): void {
 
-        if (Object.isDefinedAndNotNull(this.oldData)) {
-            if (this.oldData.getSelected() !== this.data.getSelected()) {
-                this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
-            }
-        } else {
-            this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
+    if (this.data.getSelected()) {
+      this.setCssClass(this.drawingTimeCardColorIndicators, 'selected', true);
+      this.retrieveDrawTimeCardColorIndicators(this.drawingTimeCardColorIndicators);
+
+    }
+    this.setCssClass(this.drawingTimeCardColorIndicators, attributeName, booleanValue);
+  }
+
+  private retrieveDrawTimeCardColorIndicators(colorIndicators) {
+    this.drawStateService.passState(colorIndicators);
+  }
+
+  private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
+    for (const property in drawingTimeCardColorIndicators) {
+      if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {
+        if (property === attributeName) {
+          drawingTimeCardColorIndicators[property] = booleanValue;
+          break;
         }
-
-        this.oldData = new Pick3DrawTimeCardDomain(JSON.parse(JSON.stringify(this.data)));
+      }
     }
-
-    ngOnDestroy() {
-        this.data = null;
-        this.oldData = null;
-        this.changelog = [];
-        this.drawingTimeCardColorIndicators = null;
-        this.doCheckCount = 0;
-    }
-
-    public getSelectedState(): { 'not-selected': boolean, selected: boolean } {
-        let selectedStateCssClass = {
-            'not-selected': true,
-            selected: false
-        };
-        this.drawingTimeCardColorIndicators.selected = false;
-
-        if (this.data.getSelected()) {
-            selectedStateCssClass = {
-                'not-selected': false,
-                selected: true
-            };
-            this.drawingTimeCardColorIndicators.selected = true;
-        }
-
-        return selectedStateCssClass;
-    }
-
-    public setDrawingTimeCardState(): string | string[] | Set<string> | { [klass: string]: any; } {
-        const pick3DrawTimeCardStateEnum = this.data.getState();
-
-        switch (pick3DrawTimeCardStateEnum) {
-            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
-                this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);
-                break;
-            case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET_WITH_GENERATED_PICKS: // yellow
-                this.setDrawingTimeCardColorIndicators('not-drawn-yet-with-generated-picks', true);
-                break;
-            case Pick3DrawTimeCardStateEnum.DRAWN: // gray
-                this.setDrawingTimeCardColorIndicators('drawn', true);
-                break;
-            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS: // black
-                this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-no-winners', true);
-                break;
-            case Pick3DrawTimeCardStateEnum.DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS: // green
-                this.setDrawingTimeCardColorIndicators('drawn-with-generated-picks-with-winners', true);
-                break;
-            default:
-                this.setDrawingTimeCardColorIndicators('not-drawn-yet', true); // gray
-        }
-
-        return this.drawingTimeCardColorIndicators;
-    }
-
-    private setDrawingTimeCardColorIndicators(attributeName: string, booleanValue: boolean): void {
-
-        if (this.data.getSelected()) {
-            this.setCssClass(this.drawingTimeCardColorIndicators, 'selected', true);
-            this.retrieveDrawTimeCardColorIndicators(this.drawingTimeCardColorIndicators);
-
-        }
-        this.setCssClass(this.drawingTimeCardColorIndicators, attributeName, booleanValue);
-    }
-
-    private retrieveDrawTimeCardColorIndicators(colorIndicators) {
-        this.drawStateService.passState(colorIndicators);
-    }
-
-    private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
-        for (const property in drawingTimeCardColorIndicators) {
-            if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {
-                if (property === attributeName) {
-                    drawingTimeCardColorIndicators[property] = booleanValue;
-                    break;
-                }
-            }
-        }
-    }
+  }
 }

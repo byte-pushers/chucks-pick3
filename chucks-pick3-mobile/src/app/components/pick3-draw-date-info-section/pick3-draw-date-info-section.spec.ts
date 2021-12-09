@@ -62,6 +62,7 @@ describe('Pick3DrawDateInfoSection', () => {
     component = fixture.componentInstance;
     drawDateService = TestBed.get(DrawDateService);
     drawDateService.dispatchCurrentDrawDateCardEvent(model);
+    component.data = model;
     fixture.detectChanges();
   }));
 
