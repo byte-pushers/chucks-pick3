@@ -31,7 +31,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
               private router: Router,
               private appService: AppService) {
     this.routerUrl = this.router.url;
-
+    /* istanbul ignore if */
     if (this.routerUrl === '/home') {
       this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
       console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
@@ -45,6 +45,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const currentHour = new Date().getHours();
 
+    /* istanbul ignore next */
     this.drawTimes.some(drawTime => {
       const drawTimeHour = drawTime.getDateTime().getHours();
       drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
@@ -56,7 +57,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
 
       return false;
     });
-
+    /* istanbul ignore next */
     this.drawTimeSubscription = this.drawTimeService.getPick3DrawTime$().subscribe((currentPick3DrawTimeCard: Pick3DrawTimeCard) => {
       if (currentPick3DrawTimeCard && currentPick3DrawTimeCard.getPick3DrawCardId() === this.id) {
         this.drawTimes.forEach(drawTime => {
@@ -82,7 +83,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: counter: ${Pick3DrawTimeInfoSectionComponent.counter}`);
     }
   }
-
+  /* istanbul ignore next */
   public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
     this.drawTimes.forEach(drawTime => {
       if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
@@ -96,7 +97,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       }
     });
   }
-
+  /* istanbul ignore next */
   private checkForGeneratedArray(pick3DrawTimeCard) {
     if (pick3DrawTimeCard.getPick3DrawTimeArray() === null) {
       this.switchDrawDateButtons('viewPicksDisabled');
@@ -104,7 +105,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       this.switchDrawDateButtons('viewPicksEnabled');
     }
   }
-
+  /* istanbul ignore next */
   private switchDrawDateButtons(drawTimeButtonString: string) {
     const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawTimeButtonString);
     this.drawStateService.generateNavigationChoice = drawDateButtonValue;

@@ -1,5 +1,5 @@
-import {Pick3DrawTime} from "./pick3-draw-time";
-import {Pick3WinningNumber} from "./pick3-winning-number";
+import {Pick3DrawTime} from './pick3-draw-time';
+import {Pick3WinningNumber} from './pick3-winning-number';
 
 export interface Pick3StateLottery {
     getState(): string;

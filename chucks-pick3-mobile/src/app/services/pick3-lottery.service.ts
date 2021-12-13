@@ -14,7 +14,7 @@ export interface IPick3LotteryService {
 export class Pick3LotteryService implements IPick3LotteryService{
 
   constructor(/*private http: HTTP, */private httpClient: HttpClient) { }
-
+  /* istanbul ignore next */
   getPick3LotteryPastWinningNumbers(url: string): Observable<string> {
     const headersConfig: HttpHeaders = new HttpHeaders();
     headersConfig.append('Content-Type', 'text/html');
