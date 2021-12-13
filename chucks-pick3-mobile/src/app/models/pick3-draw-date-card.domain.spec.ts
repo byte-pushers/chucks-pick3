@@ -4,29 +4,31 @@ import {Pick3LotteryService} from '../services/pick3-lottery.service';
 
 describe('Pick3DrawDateCardDomain', () => {
   const date = new Date();
+  let model;
+
   beforeEach(() => {
-
+    model = new Pick3DrawDateCardDomain({
+      drawDate: date,
+      drawState: 'gotoHome',
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      drawTimeAsString: 'Morning',
+      upcomingDrawTime: date,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [4, 6, 2],
+      drawDateIcon: date,
+      slideNumber: 7
+    });
   });
-  let model = new Pick3DrawDateCardDomain({
-    drawDate: date,
-    drawState: 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.MORNING,
-    drawTimeAsString: 'Morning',
-    upcomingDrawTime: date,
-    hasWinner: false,
-    backgroundImage: Pick3LotteryService,
-    winningNumber: 462,
-    winningNumberDigits: [4, 6, 2],
-    drawDateIcon: date,
-    slideNumber: 7
 
-  });
 
   // drawDate
   it('should have a drawDate defined', () => {
     const drawDate = model.getDrawDate();
     expect(drawDate).toBeDefined('drawDate was not retrieved');
   });
+
   it('should the drawDate to be changed', () => {
     const nullValue = null;
     model.setDrawDate(nullValue);

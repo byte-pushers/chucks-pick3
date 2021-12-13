@@ -6,35 +6,36 @@ import {Pick3LotteryService} from "../services/pick3-lottery.service";
 
 describe('Pick3DrawTimeCardDomain', () => {
   const date = new Date();
+  let dateModel, model;
+
   beforeEach(() => {
+    dateModel = new Pick3DrawDateCardDomain({
+      drawDate : date,
+      drawState : 'gotoHome',
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      drawTimeAsString: 'Morning',
+      upcomingDrawTime: date,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [4,6,2],
+      drawDateIcon: date,
+      slideNumber: 7
 
-  });
-  let dateModel = new Pick3DrawDateCardDomain({
-    drawDate : date,
-    drawState : 'gotoHome',
-    drawTime: Pick3DrawTimeEnum.MORNING,
-    drawTimeAsString: 'Morning',
-    upcomingDrawTime: date,
-    hasWinner: false,
-    backgroundImage: Pick3LotteryService,
-    winningNumber: 462,
-    winningNumberDigits: [4,6,2],
-    drawDateIcon: date,
-    slideNumber: 7
+    });
+    model = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId : 7,
+      icon : 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: new Date,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33,555,264,346,345]
 
-  });
-  let model = new Pick3DrawTimeCardDomain({
-    pick3DrawCardId : 7,
-    icon : 'Morning',
-    title: 'Morning',
-    pick3DrawTime: Pick3DrawTimeEnum.MORNING,
-    dateTime: new Date,
-    drawTime: Pick3DrawTimeEnum.MORNING,
-    state: Pick3DrawTimeCardStateEnum.DRAWN,
-    selected: true,
-    showCountDownToDrawing: false,
-    pick3DrawTimeArray: [33,555,264,346,345]
-
+    });
   });
 
   // pick3DrawCardId
