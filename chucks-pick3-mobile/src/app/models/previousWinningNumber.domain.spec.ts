@@ -4,16 +4,15 @@ import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 
 describe('PreviousWinningNumberDomain', () => {
   const date = new Date();
+  let model;
+
   beforeEach(() => {
-
+    model = new PreviousWinningNumberDomain({
+      drawDate: date,
+      drawState: 'TX',
+      drawTime: Pick3DrawTimeEnum.DAY
+    });
   });
-  let model = new PreviousWinningNumberDomain({
-    drawDate: date,
-    drawState: 'TX',
-    drawTime: Pick3DrawTimeEnum.DAY
-
-  });
-
 
   // drawDate
   it('should have a drawDate defined',  () => {
