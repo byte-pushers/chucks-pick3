@@ -25,8 +25,10 @@ describe('Pick3DrawDateInfoSection', () => {
   let component: Pick3DrawDateInfoSection;
   let fixture: ComponentFixture<Pick3DrawDateInfoSection>;
   let model;
+  let drawTimeModel;
   let router: Router;
   let drawDateService: DrawDateService;
+  let drawTimeService: DrawTimeService;
   beforeEach(async(() => {
     model = new Pick3DrawDateCardDomain({
       drawDate: date,
@@ -39,7 +41,23 @@ describe('Pick3DrawDateInfoSection', () => {
       winningNumber: 462,
       winningNumberDigits: [4, 6, 2],
       drawDateIcon: date,
-      slideNumber: 7
+      slideNumber: 7,
+      defaultDrawDateTime: Pick3DrawTimeEnum.MORNING,
+      slideName: 'Home'
+
+    });
+
+    drawTimeModel = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: date,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: date,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345]
 
     });
     TestBed.configureTestingModule({
@@ -47,7 +65,8 @@ describe('Pick3DrawDateInfoSection', () => {
       imports: [CommonModule, IonicModule.forRoot(),
         TranslateModule.forRoot(),
         RouterTestingModule, TranslateModule, HttpClientTestingModule],
-      providers: [CardContextService, NumberUtilityService, I18nService, AppService, Pick3WebScrapingProviderService, DrawDateService]
+      providers: [CardContextService, NumberUtilityService, I18nService,
+        AppService, Pick3WebScrapingProviderService, DrawTimeService, DrawDateService]
     }).compileComponents();
     router = TestBed.get(Router);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
@@ -61,8 +80,11 @@ describe('Pick3DrawDateInfoSection', () => {
     fixture = TestBed.createComponent(Pick3DrawDateInfoSection);
     component = fixture.componentInstance;
     drawDateService = TestBed.get(DrawDateService);
-    drawDateService.dispatchCurrentDrawDateCardEvent(model);
+    drawTimeService = TestBed.get(DrawTimeService);
+    drawDateService.pick3DrawDateSource = model;
+    drawTimeService.setCurrentDrawTimeCard(drawTimeModel);
     component.data = model;
+    drawTimeService.currentDrawTimeCard = drawTimeModel;
     fixture.detectChanges();
   }));
 
