@@ -105,7 +105,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
         this._state = state;
     }
 
-    get title(): string {
+    get  title(): string {
         return this._title;
     }
 

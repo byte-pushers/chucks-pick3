@@ -87,7 +87,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
 
   public setDrawingTimeCardState(): string | string[] | Set<string> | { [klass: string]: any; } {
     const pick3DrawTimeCardStateEnum = this.data.getState();
-
+    /* istanbul ignore next */
     switch (pick3DrawTimeCardStateEnum) {
       case Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET: // gray
         this.setDrawingTimeCardColorIndicators('not-drawn-yet', true);

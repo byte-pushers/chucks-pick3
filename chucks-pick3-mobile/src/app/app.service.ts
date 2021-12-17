@@ -222,7 +222,7 @@ export class AppService {
         return this.pick3StateLottery.getCurrentDrawingTime();
     }
 
-    public getDrawTime(someDateTime: Date): Pick3DrawTime {
+    public getDrawTime( someDateTime: Date): Pick3DrawTime {
         return this.pick3StateLottery.getDrawingTime(someDateTime);
     }
 

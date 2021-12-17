@@ -6,7 +6,7 @@ export class PageReader {
     public constructor() {
 
     }
-
+  /* istanbul ignore next */
     public read(html): any {
         html = html.replace(/<img[^>]*>/g, '');
         return this.jQuery(html);
@@ -27,7 +27,7 @@ export class PageReader {
         });*/
         return this.jQuery(html).find('#LastDraw');
     }
-
+  /* istanbul ignore next */
     public get(): any {
         return this.jQuery;
     }

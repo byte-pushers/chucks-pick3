@@ -21,9 +21,9 @@ describe('LanguagePopoverComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 
   it('should trigger the use method on the translate service', () => {
     spyOn(translate, 'use');

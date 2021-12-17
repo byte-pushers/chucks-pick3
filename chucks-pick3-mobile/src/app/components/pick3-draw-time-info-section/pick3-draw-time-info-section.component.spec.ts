@@ -103,4 +103,5 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
     drawTimeService.getPick3DrawTime$().subscribe(result => expect(result.drawTime).toBeGreaterThan(0));
   }));
 
+
 });
