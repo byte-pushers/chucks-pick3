@@ -171,9 +171,8 @@ describe('AppService', () => {
     appService.dispatchCurrentDrawCardIdEvent(6);
     expect(appService.getPick3DrawCardId$()).toBeDefined('id number was not defined');});
 
-  xit('should call to getSlideDate', () =>{
-    spyOn(appService, 'getSlideDate');
-    appService.getPick3DrawTimeCards(6);
-    expect(appService.getSlideDate).toHaveBeenCalled();
+  it('should return as defined',  () => {
+    const test = appService.getPick3DrawTimeCards(5);
+    expect(test).toBeDefined();
   });
 });

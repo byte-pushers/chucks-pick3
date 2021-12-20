@@ -66,10 +66,4 @@ export class AppComponent {
         popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
         return await popover.present();
     }
-
-  static resetButtons(drawDateButtonString: string) {
-      const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
-      return drawDateButtonValue;
-
-  }
 }
