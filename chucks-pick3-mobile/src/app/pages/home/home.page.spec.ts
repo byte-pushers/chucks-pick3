@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, PopoverController} from '@ionic/angular';
 
 import {HomePage} from './home.page';
 import {CommonModule} from '@angular/common';
@@ -12,7 +12,6 @@ import {CardContextService} from '../../services/card-context.service';
 import {Router} from '@angular/router';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
-import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
 
 
 describe('HomePage', () => {
@@ -22,7 +21,7 @@ describe('HomePage', () => {
   let router: Router;
   let translateService: TranslateService;
   let appService: AppService;
-
+  let popover: PopoverController;
 
 
   beforeEach(waitForAsync(() => {
@@ -34,6 +33,7 @@ describe('HomePage', () => {
       providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
     }).compileComponents();
     router = TestBed.get(Router);
+    popover = TestBed.get(PopoverController);
     appService = TestBed.get(AppService);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
       extras: {
@@ -68,15 +68,9 @@ describe('HomePage', () => {
     component.storeId();
     expect(ionSlidesSpy).toHaveBeenCalled();
   });
-
-  xit('should check if slidesLoaded is false', () => {
-    component.initializePick3DrawDateCard(onclick);
-    expect(component.slidesLoaded).toBeFalse();
+  it('should go into popover.present', () => {
+    let popoverSpy = spyOn(popover, 'create').and.callThrough();
+    component.showPopover(onclick);
+    expect(popoverSpy).toHaveBeenCalled();
   });
-
-  /*xit('should check if initializePick3DrawDateCard was called', () => {
-    $('#pick3DrawDateCards').trigger('click');
-    spyOn(component, 'initializePick3DrawDateCard').and.callThrough();
-    expect(component.initializePick3DrawDateCard).toHaveBeenCalled();
-  });*/
 });
