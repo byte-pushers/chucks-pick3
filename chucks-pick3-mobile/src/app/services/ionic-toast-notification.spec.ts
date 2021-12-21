@@ -1,8 +1,8 @@
 import {TestBed} from '@angular/core/testing';
-import {IonicToastNotificationService} from '../../src/app/services/ionic-toast-notification.service';
+import {IonicToastNotificationService} from './ionic-toast-notification.service';
 
 
-xdescribe('IonicToastNotificationService', () => {
+describe('IonicToastNotificationService', () => {
   let service: IonicToastNotificationService;
 
   beforeEach(() => {

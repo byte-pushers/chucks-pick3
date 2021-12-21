@@ -46,6 +46,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         console.log(`HomePage constructor.`);
     }
 
+  /* istanbul ignore next */
     ngAfterViewInit() {
         const routerState = this.router.getCurrentNavigation().extras.state;
         if (routerState && this.router.url === '/home') {
@@ -55,7 +56,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
             }
         }
     }
-
+  /* istanbul ignore next */
     ngOnDestroy() {
         this.cardContext = null;
     }
@@ -70,7 +71,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
         return await popover.present();
     }
-
+  /* istanbul ignore next */
     public initializePick3DrawDateCards(event: any): void {
         this.ionSlides.length().then(count => {
             console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
@@ -78,7 +79,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
             this.initializePick3DrawDateCard(event);
         });
     }
-
+  /* istanbul ignore next */
     public initializePick3DrawDateCard(event: any): void {
         if (this.slidesLoaded) {
             this.storeId();

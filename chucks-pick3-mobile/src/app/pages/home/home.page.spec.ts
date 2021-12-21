@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import {IonicModule, PopoverController} from '@ionic/angular';
 
 import {HomePage} from './home.page';
 import {CommonModule} from '@angular/common';
@@ -11,13 +11,18 @@ import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick
 import {CardContextService} from '../../services/card-context.service';
 import {Router} from '@angular/router';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
+
 
 describe('HomePage', () => {
+  let date = new Date;
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
   let router: Router;
   let translateService: TranslateService;
   let appService: AppService;
+  let popover: PopoverController;
+
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -28,6 +33,7 @@ describe('HomePage', () => {
       providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
     }).compileComponents();
     router = TestBed.get(Router);
+    popover = TestBed.get(PopoverController);
     appService = TestBed.get(AppService);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
       extras: {
@@ -52,25 +58,19 @@ describe('HomePage', () => {
   });
 
   it('should pass the id number to the appService', () => {
-    const idSpy = spyOn(appService,'dispatchCurrentDrawCardIdEvent');
+    const idSpy = spyOn(appService, 'dispatchCurrentDrawCardIdEvent');
     component.passIdToGenerate(7);
     expect(idSpy).toHaveBeenCalled();
   });
 
-  /*it('should check if getActiveIndex was called', () => {
+  it('should check if getActiveIndex was called', () => {
     const ionSlidesSpy = spyOn(component.ionSlides, 'getActiveIndex').and.callThrough();
     component.storeId();
     expect(ionSlidesSpy).toHaveBeenCalled();
-  });*/
-
-  /*xit('should check if slidesLoaded is false', () => {
-    component.initializePick3DrawDateCard(onclick);
-    expect(component.slidesLoaded).toBeFalse();
-  });*/
-
-  /*it('should check if initializePick3DrawDateCard was called', () => {
-    $('#pick3DrawDateCards').trigger('click');
-    spyOn(component, 'initializePick3DrawDateCard').and.callThrough();
-    expect(component.initializePick3DrawDateCard).toHaveBeenCalled();
-  });*/
+  });
+  it('should go into popover.present', () => {
+    let popoverSpy = spyOn(popover, 'create').and.callThrough();
+    component.showPopover(onclick);
+    expect(popoverSpy).toHaveBeenCalled();
+  });
 });

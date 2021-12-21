@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountdownTimerService {
-  private time: BehaviorSubject<string> = new BehaviorSubject<string>('00:00:00');
-  private timerInSeconds: number; //in seconds
-  private interval;
-  private state: 'start' | 'stop' = 'stop';
+  public time: BehaviorSubject<string> = new BehaviorSubject<string>('00:00:00');
+  public timerInSeconds: number; //in seconds
+  public interval;
+  public state: 'start' | 'stop' = 'stop';
 
   constructor() { }
 

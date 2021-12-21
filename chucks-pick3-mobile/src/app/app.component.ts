@@ -4,7 +4,7 @@ import {Platform, PopoverController} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
-import {DrawStateService} from "./services/draw-state.service";
+import {DrawStateService} from './services/draw-state.service';
 import {NavigationEnum} from './models/navigate.enum';
 
 @Component({
@@ -31,10 +31,10 @@ export class AppComponent {
     initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
-            this.splashScreen.hide();
+            /*this.splashScreen.hide();*/
         });
     }
-
+  /* istanbul ignore next */
     sideMenu() {
         this.navigate = [
             {
@@ -49,12 +49,13 @@ export class AppComponent {
             }
         ];
     }
-
+  /* istanbul ignore next */
     public resetButtons(drawDateButtonString: any) {
       const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
       this.drawStateService.generateNavigationChoice = drawDateButtonValue;
       this.drawStateService.viewNavigationChoice = drawDateButtonValue;
     }
+  /* istanbul ignore next */
     async showPopover(ev: any) {
         const popover = await this.popoverController.create({
             component: LanguagePopoverComponent,
@@ -65,10 +66,4 @@ export class AppComponent {
         popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
         return await popover.present();
     }
-
-  static resetButtons(drawDateButtonString: string) {
-      const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
-      return drawDateButtonValue;
-
-  }
 }
