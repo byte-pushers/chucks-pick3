@@ -26,16 +26,14 @@ export class CardPage implements OnInit, OnDestroy {
     const routerState = this.router.getCurrentNavigation().extras.state;
     this.routerUrl = this.router.url;
 
-    console.log('CardPage.constructor(): routerState: ' + routerState);
-    console.log('CardPage.constructor(): current slide number: ' + routerState?.currentSlideNumber);
-
     this.routerUrl = this.router.url;
     translateService.setDefaultLang('en-US');
     /* istanbul ignore if */
+    /* istanbul ignore else */
     if (this.routerUrl === '/home') {
       this.id = ++CardPage.counter;
+      /* istanbul ignore next */
       console.log('Card Page current slide number: ' + routerState?.currentSlideNumber);
-      /* istanbul ignore else if */
     } else if (this.routerUrl === '/select-picks') {
       this.currentSlideNumber = this.appService.pick3CardId;
       console.log('Card page on select-picks: ' + this.currentSlideNumber);
@@ -63,12 +61,10 @@ export class CardPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     console.log(`CardPage.ngOnDestroy: id: ${this.id}`);
-    /* istanbul ignore if */
+    /* istanbul ignore else */
     if (this.routerUrl === '/home') {
       CardPage.counter--;
       console.log(`CardPage.ngOnDestroy: counter: ${CardPage.counter}`);
-    } else if (this.routerUrl === '/select-picks') {
-
     }
   }
 }

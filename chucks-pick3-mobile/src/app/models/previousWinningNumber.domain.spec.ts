@@ -84,4 +84,24 @@ describe('PreviousWinningNumberDomain', () => {
     model.drawTime = Pick3DrawTimeEnum.NIGHT;
     expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
+
+  it('should have a null drawState  ',  () => {
+   const nullModel = new PreviousWinningNumberDomain({
+      drawDate: null,
+      drawState: null,
+      drawTime: null
+    });
+    new PreviousWinningNumberDomain(nullModel);
+    expect(nullModel.getDrawState()).toBeNull();
+  });
+
+  it('should have a null drawTime',  () => {
+    const nullModel = new PreviousWinningNumberDomain({
+      drawDate: null,
+      drawState: null,
+      drawTime: null
+    });
+    new PreviousWinningNumberDomain(nullModel);
+    expect(nullModel.getDrawTime()).toBeNull();
+  });
 });

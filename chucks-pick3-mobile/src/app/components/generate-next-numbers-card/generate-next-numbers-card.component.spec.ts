@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { GenerateNextNumbersCardComponent } from './generate-next-numbers-card.component';
+import {GenerateNextNumbersCardComponent} from './generate-next-numbers-card.component';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -71,7 +71,7 @@ describe('GenerateNextNumbersCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call setDrawingTimeMenuItems',  () => {
+  it('should call setDrawingTimeMenuItems', () => {
     const setDrawingTimeMenuItemsSpy = spyOn(component, 'setDrawingTimeMenuItems');
     const today: HTMLElement = document.getElementById('today');
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
@@ -82,5 +82,17 @@ describe('GenerateNextNumbersCardComponent', () => {
   it('should generate numbers', () => {
     component.submitGenerate();
     expect(component.pick3CardToGenerate.pick3DrawTimeArray).toBeDefined();
+  });
+
+  it('should retrieve a previous date', () => {
+    const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+    component.setDrawingTimeMenuItems(tomorrowFullDate);
+    expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should have the generateButton = false', () => {
+    component.generateChoice = model;
+    component.enableGenerateButton();
+    expect(component.generateButton).toBeFalse();
   });
 });

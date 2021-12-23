@@ -28,7 +28,10 @@ describe('Pick3DrawDateCardDomain', () => {
     const drawDate = model.getDrawDate();
     expect(drawDate).toBeDefined('drawDate was not retrieved');
   });
-
+  it('should have a drawDate defined', () => {
+    model.setDrawDate(null);
+    expect(model.getDrawDate()).toBeNull('drawDate was not changed');
+  });
   it('should the drawDate to be changed', () => {
     const nullValue = null;
     model.setDrawDate(nullValue);
@@ -125,7 +128,7 @@ describe('Pick3DrawDateCardDomain', () => {
 
   it('should get and set icon', () => {
     model.icon = 'day-icon';
-    expect(model.icon).toEqual('day-icon')
+    expect(model.icon).toEqual('day-icon');
   });
 
   // slideNumber
@@ -145,6 +148,11 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(model.slideNumber).toEqual(6);
   });
 
+  it('should get and set slideNumber', () => {
+    model.setSlideNumber(null);
+    expect(model.getSlideNumber()).toBeNull();
+  });
+
   //slideName
   it('should get the slideName and set it via methods', () => {
     model.setSlideName('Generate New Numbers');
@@ -153,6 +161,10 @@ describe('Pick3DrawDateCardDomain', () => {
   it('should get and set slideName', () => {
     model.slideName = 'Generate New Numbers';
     expect(model.slideName).toEqual('Generate New Numbers');
+  });
+  it('should get and set slideName', () => {
+    model.setSlideName(null);
+    expect(model.getSlideName()).toBeNull('slide name is set to null');
   });
 
   // upcomingDrawTime

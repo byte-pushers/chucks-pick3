@@ -16,6 +16,7 @@ export class PreviousWinningNumberDomain implements PreviousWinningNumber {
     // tslint:disable-next-line:variable-name
     private _drawTime: Pick3DrawTimeEnum;
 
+  /* istanbul ignore next */
     constructor(config: any) {
         this._drawDate = (config) ? (Object.isDate(config.drawDate)) ? config.drawDate : new Date(config.drawDate) : null;
         this._drawState = (config) ? Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null : null;

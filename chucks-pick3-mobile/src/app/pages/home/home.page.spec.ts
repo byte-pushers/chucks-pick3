@@ -73,4 +73,10 @@ describe('HomePage', () => {
     component.showPopover(onclick);
     expect(popoverSpy).toHaveBeenCalled();
   });
+
+  it('should f',  () => {
+    spyOn(component, 'passIdToGenerate');
+    component.storeId();
+    expect(component.ionSlides.getActiveIndex).toBeDefined();
+  });
 });

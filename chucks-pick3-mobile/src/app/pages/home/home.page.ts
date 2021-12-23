@@ -68,7 +68,9 @@ export class HomePage implements AfterViewInit, OnDestroy {
             event: ev,
             translucent: true
         });
+      /* istanbul ignore next */
         popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+      /* istanbul ignore next */
         return await popover.present();
     }
   /* istanbul ignore next */
@@ -108,13 +110,14 @@ export class HomePage implements AfterViewInit, OnDestroy {
             });
         }
     }
-
+  /* istanbul ignore next */
     private next(index) {
         this.ionSlides.slideTo(index, this.slideOpts.speed);
     }
 
     public storeId() {
         this.ionSlides.getActiveIndex().then(activeIndex => {
+          /* istanbul ignore else */
             if (activeIndex !== this.prevActiveIndex) {
                 this.appService.pick3CardId = (activeIndex + 1);
                 console.log(this.appService.pick3CardId);
@@ -124,6 +127,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
     }
 
     public passIdToGenerate(slideNumber) {
+      /* istanbul ignore else */
         if (slideNumber >= 6) {
             this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
         }
