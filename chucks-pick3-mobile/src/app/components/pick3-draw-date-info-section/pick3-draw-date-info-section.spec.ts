@@ -87,6 +87,7 @@ describe('Pick3DrawDateInfoSection', () => {
     drawDateService.dispatchCurrentDrawDateCardEvent(model);
     drawTimeService.setCurrentDrawTimeCard(drawTimeModel);
     component.data = model;
+    component.id = 7;
     drawTimeService.currentDrawTimeCard = drawTimeModel;
     fixture.detectChanges();
   }));

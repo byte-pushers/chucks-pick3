@@ -11,6 +11,7 @@ import {AppService} from '../../app.service';
 import {Router} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DrawStateService} from '../../services/draw-state.service';
+import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 
 describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
@@ -36,6 +37,9 @@ describe('PreviousWinningNumberCardComponent', () => {
         }
       }
     } as any);
+    const mockUrlTree = router.parseUrl('/home');
+    // @ts-ignore: force this private property value for testing.
+    router.currentUrlTree = mockUrlTree;
     fixture = TestBed.createComponent(PreviousWinningNumberCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -66,4 +70,5 @@ describe('PreviousWinningNumberCardComponent', () => {
     component.setDrawingTimeMenuItems(yesterdaysDate, 6);
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
+
 });

@@ -15,6 +15,7 @@ describe('CountdownTimerComponent', () => {
 
     fixture = TestBed.createComponent(CountdownTimerComponent);
     component = fixture.componentInstance;
+    component.start = 58;
     fixture.detectChanges();
   });
 
@@ -50,6 +51,11 @@ describe('CountdownTimerComponent', () => {
 
   it('should return 00:00:00:00',  () => {
     const timeDifferenceTest = component.getTimeDiff(0, false);
+    expect(timeDifferenceTest).toEqual('00:00:00:00');
+  });
+
+  it('should return 00:00:00:00',  () => {
+    const timeDifferenceTest = component.getTimeDiff(5, false);
     expect(timeDifferenceTest).toEqual('00:00:00:00');
   });
 });

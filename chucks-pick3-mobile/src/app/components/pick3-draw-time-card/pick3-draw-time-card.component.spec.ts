@@ -69,4 +69,19 @@ describe('Pick3DrawTimeCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call setDrawingTimeCardColorIndicators',  () => {
+    // @ts-ignore
+    const setDrawingTimeCardColorIndicatorsSpy =  spyOn(component, 'setDrawingTimeCardColorIndicators');
+    component.ngDoCheck();
+    expect(setDrawingTimeCardColorIndicatorsSpy).toHaveBeenCalled();
+  });
+
+  it('should call setDrawingTimeCardColorIndicators',  () => {
+    component.oldData = null;
+    // @ts-ignore
+    const setDrawingTimeCardColorIndicatorsSpy =  spyOn(component, 'setDrawingTimeCardColorIndicators');
+    component.ngDoCheck();
+    expect(setDrawingTimeCardColorIndicatorsSpy).toHaveBeenCalled();
+  });
 });

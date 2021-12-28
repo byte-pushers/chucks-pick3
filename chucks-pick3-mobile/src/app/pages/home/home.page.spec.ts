@@ -43,7 +43,6 @@ describe('HomePage', () => {
         }
       }
     } as any);
-
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -72,5 +71,11 @@ describe('HomePage', () => {
     let popoverSpy = spyOn(popover, 'create').and.callThrough();
     component.showPopover(onclick);
     expect(popoverSpy).toHaveBeenCalled();
+  });
+
+  it('should f',  () => {
+    spyOn(component, 'passIdToGenerate');
+    component.storeId();
+    expect(component.ionSlides.getActiveIndex).toBeDefined();
   });
 });

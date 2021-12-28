@@ -3,11 +3,11 @@ import {IonicModule} from '@ionic/angular';
 
 import {ViewPicksCardComponent} from './view-picks-card.component';
 import {CardContextService} from '../../services/card-context.service';
-import {NumberUtilityService} from "../../services/numberUtility.service";
-import {Pick3DrawTimeCardDomain} from "../../models/pick3-draw-time-card.domain";
-import {Pick3DrawTimeEnum} from "../../models/pick3-draw-time.enum";
-import {Pick3DrawTimeCardStateEnum} from "../../models/pick3-draw-time-card-state.enum";
-import {DrawTimeService} from "../../services/draw-time.service";
+import {NumberUtilityService} from '../../services/numberUtility.service';
+import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
+import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
+import {DrawTimeService} from '../../services/draw-time.service';
 
 describe('ViewPicksCardComponent', () => {
   let component: ViewPicksCardComponent;

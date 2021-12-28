@@ -65,16 +65,18 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const yesterdaysDate: Date = new Date(someDateTime.getFullYear(), someDateTime.getMonth() + 1 - 1, someDateTime.getDate() - 1, someDateTime.getHours());
     const today: HTMLElement = document.getElementById('today');
     const yesterday: HTMLElement = document.getElementById('yesterday');
+    /* istanbul ignore next */
     const passedDate = this.routerState?.currentDay.getDate();
+    /* istanbul ignore next */
     const pick3DrawTime = this.appService.getDrawTime(this.routerState?.currentDay);
-    /* istanbul ignore if */
+    /* istanbul ignore next */
     if (this.currentDateDay !== passedDate) {
       this.selectDrawingDateMenuItemForYesterday(yesterday, today);
     } else {
       this.selectDrawingDateMenuItemForToday(today, yesterday);
     }
 
-
+    /* istanbul ignore next */
     this.drawTimes.some(drawTime => {
       const drawTimeHour = drawTime.getDateTime().getHours();
       const currentHour = new Date().getHours();
@@ -89,13 +91,15 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       return false;
     });
 
-
+    /* istanbul ignore next */
     this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
-
+      /* istanbul ignore if */
       if (this.router.url === '/home') {
         this.continueButton = true;
+        /* istanbul ignore if */
         if (slideNumber === 6) {
           this.selectDrawingDateMenuItemForYesterday(yesterday, today);
+          /* istanbul ignore if */
         } else if (slideNumber === 7) {
           this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
@@ -105,7 +109,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
   }
-
+  /* istanbul ignore next */
   public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
     if (pick3DrawTimeCard) {
       this.drawTimes.forEach(drawTime => {
@@ -157,7 +161,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
        }
        return drawTimes;
    }*/
-
+  /* istanbul ignore next */
   public resetDrawingTimes(): void {
     if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
       this.newDrawingTimes.length = 0;
@@ -192,7 +196,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   logForm(): void {
     console.log(this.continueChoice);
   }
-
+  /* istanbul ignore next */
   private selectCurrentCard(drawTimes) {
     if (this.currentDrawingCard) {
       for (const drawTime of drawTimes) {

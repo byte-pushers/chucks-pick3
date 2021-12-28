@@ -23,6 +23,7 @@ export class ViewPage implements OnInit {
     /* istanbul ignore next */
     this.url = route.url.pipe(map(segments => segments.join('')));
     // route.data includes both `data` and `resolve`
+    /* istanbul ignore next */
     this.pick3DrawnNumber = route.data.pipe(map(d => d.user));
   }
 

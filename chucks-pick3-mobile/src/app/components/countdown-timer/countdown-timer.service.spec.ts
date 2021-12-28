@@ -23,9 +23,26 @@ describe('CountDownTimerService', () => {
     expect(service.state).toEqual('start');
   });
 
+  it('should call updateTimeValue',  () => {
+    const spy = spyOn<any>(service, 'updateTimeValue');
+    service.startTimer(5);
+    expect(spy).toHaveBeenCalled();
+
+  });
+
   it('should stop the timer', () => {
     service.startTimer(0);
     service.stopTimer();
     expect(service.state).toEqual('stop');
+  });
+
+  it('should return an observable',  () => {
+    expect(service.getTime()).toBeDefined();
+  });
+
+  it('should update the timeValue',  () => {
+    const spy = spyOn<any>(service, 'updateTimeValue');
+    service.startTimer(5);
+    expect(spy).toHaveBeenCalled();
   });
 });

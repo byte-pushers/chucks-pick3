@@ -16,6 +16,7 @@ describe('CardPage', () => {
   let fixture: ComponentFixture<CardPage>;
   let router: Router;
   let popover: PopoverController;
+  let appService: AppService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -25,10 +26,22 @@ describe('CardPage', () => {
         RouterTestingModule, TranslateModule, HttpClientTestingModule],
       providers: [AppService, Pick3WebScrapingProviderService, CardContextService]
     }).compileComponents();
+    appService = TestBed.get(AppService);
     router = TestBed.get(Router);
     popover = TestBed.get(PopoverController);
-    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: { currentSlideNumber: 7, currentDay: Pick3DrawTimeEnum.DAY } } } as any);
-
+    router = TestBed.get(Router);
+    spyOn(router, 'getCurrentNavigation').and.returnValue({
+      extras: {
+        state: {
+          currentSlideNumber: 7,
+          currentDay: Pick3DrawTimeEnum.DAY
+        }
+      }
+    } as any);
+    const mockUrlTree = router.parseUrl('/home');
+// @ts-ignore: force this private property value for testing.
+    router.currentUrlTree = mockUrlTree;
+    appService.pick3CardId = 7;
     fixture = TestBed.createComponent(CardPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -42,4 +55,5 @@ describe('CardPage', () => {
     component.showPopover(onclick);
     expect(popoverSpy).toHaveBeenCalled();
   });
-});
+
+ });
