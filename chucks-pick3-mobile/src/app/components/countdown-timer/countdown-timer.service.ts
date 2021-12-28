@@ -22,6 +22,7 @@ export class CountdownTimerService {
     this.timerInSeconds = durationInSeconds;
 
     this.updateTimeValue();
+    /* istanbul ignore next */
     this.interval = setInterval(() => {
       this.updateTimeValue();
     }, 1000);
@@ -35,6 +36,7 @@ export class CountdownTimerService {
 
   private updateTimeValue(): void {
     let hours = this.timerInSeconds / (60 * 60);
+    /* istanbul ignore next */
     let minutes = (this.timerInSeconds >= 59) ?  59 : this.timerInSeconds / 60;
     let seconds = this.timerInSeconds % 60;
 

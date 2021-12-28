@@ -62,25 +62,23 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
               private pick3WebScrappingService: Pick3WebScrapingProviderService,
               private appService: AppService,
               private popoverController: PopoverController) {
-    const routerState = this.router.getCurrentNavigation().extras.state;
-    console.log('Pick3DrawDateInfoSection.constructor(): routerState: ' + routerState);
-    console.log('Pick3DrawDateInfoSection.constructor(): current slide number: ' + routerState?.currentSlideNumber);
-
     this.routerUrl = this.router.url;
 
     if (this.routerUrl === '/home') {
       this.slideNumberClass = true;
       this.id = ++Pick3DrawDateInfoSection.counter;
-      console.log('Pick3DrawDateInfoSection() constructor. id: ' + this.id);
-
+      /* istanbul ignore next */
       try {
         this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(this.id)[0];
       } catch (error) {
+        /* istanbul ignore if */
         if (this.id >= 1 && this.id <= 7) {
           throw error;
         }
       }
+      /* istanbul ignore else */
     } else {
+      /* istanbul ignore next */
       this.slideNumberClass = false;
     }
   }
@@ -94,7 +92,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
     const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
     const routerState = this.router.getCurrentNavigation().extras.state;
-    /* istanbul ignore if */
+    /* istanbul ignore else */
     if (this.routerUrl === '/home') {
       this.setData(
         this.appService.getDrawState(),
@@ -102,10 +100,11 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.appService.getBackgroundImageUrl(),
         this.getCurrentDrawTimeIcon(pick3DrawTime)
       );
+      /* istanbul ignore next */
       this.currentSlideNumber = routerState?.currentSlideNumber;
+      /* istanbul ignore else */
     } else {
       /* istanbul ignore next */
-      console.log(`Pick3DrawDateInfoSection.ngOnInit(): routerState: ${routerState}`);
       const selectedPick3DrawTimeCard = this.appService.retrievePick3DrawDate(routerState?.currentSlideNumber, routerState?.currentDay);
       /* istanbul ignore next */
       this.setData(
@@ -153,7 +152,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.viewNavigation = this.drawStateService.viewNavigationChoice;
     this.cardContextSubscription = this.cardContextService.context$.subscribe(context => {
       /* istanbul ignore if */
-      if (context && context.slideNumber === this.id) {
+      if (context && /* istanbul ignore next */ context.slideNumber === this.id) {
         console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
         const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
         const currentPick3DrawTimeCard = (this.drawTimeCard) ? this.drawTimeCard : this.defaultDrawTimeCard;
@@ -168,7 +167,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     });
   }
-
+  /* istanbul ignore next */
   ngOnDestroy(): void {
     console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
     this.data = null;
@@ -242,7 +241,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
     return (pick3DrawTimeCard === null || pick3DrawTimeCard === undefined) ? null : pick3DrawTimeCard.getIcon();
   }
-
+  /* istanbul ignore next */
   private setDrawState(pick3DrawDateCard: Pick3DrawDateCard, pick3DrawTimeCardStateEnum: Pick3DrawTimeCardStateEnum) {
     try {
       this.appService.getPick3DrawTimeCards(this.id).forEach((drawTime, drawTimeIndex, drawTimeArray) => {

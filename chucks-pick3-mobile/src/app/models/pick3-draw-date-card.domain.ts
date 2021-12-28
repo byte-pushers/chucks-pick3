@@ -128,19 +128,20 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
   getDrawTime(): Pick3DrawTimeEnum {
     let dt: any;
-
+    /* istanbul ignore if */
     if (typeof this._drawTime === 'string') {
       let key: any = this._drawTime;
 
       key = key.toUpperCase();
       dt = Pick3DrawTimeEnum[key];
+      /* istanbul ignore else */
     } else {
       dt = this._drawTime;
     }
 
     return dt;
   }
-
+  /* istanbul ignore next */
   getTitle(): string {
     return this._TITLE;
   }
@@ -233,7 +234,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
   get winningNumberDigits(): number[] {
     return this._winningNumberDigits;
   }
-
+  /* istanbul ignore next */
   private setWinningNumberDigits(winningNumber: number) {
     this._winningNumberDigits = [];
 
@@ -242,7 +243,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
       winningNumber = Math.floor(winningNumber / 10);
     }
   }
-
+  /* istanbul ignore next */
   get winningNumberDigit1(): number {
     let digit = null;
 
@@ -258,7 +259,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     return digit;
   }
-
+  /* istanbul ignore next */
   get winningNumberDigit2(): number {
     let digit = null;
 
@@ -274,7 +275,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     return digit;
   }
-
+  /* istanbul ignore next */
   get winningNumberDigit3(): number {
     let digit = null;
 
@@ -291,6 +292,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     return digit;
   }
 
+  /* istanbul ignore next */
   getWinningNumberDigit1(): number {
     let digit = null;
 
@@ -307,6 +309,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     return digit;
   }
 
+  /* istanbul ignore next */
   getWinningNumberDigit2(): number {
     let digit = null;
 
@@ -323,6 +326,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     return digit;
   }
 
+  /* istanbul ignore next */
   getWinningNumberDigit3(): number {
     let digit = null;
 

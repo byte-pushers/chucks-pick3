@@ -46,12 +46,10 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
 
 
     if (Object.isDefinedAndNotNull(this.oldData)) {
-      /* istanbul ignore if */
       if (this.oldData.getSelected() !== this.data.getSelected()) {
         this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
       }
     } else {
-      /* istanbul ignore next */
       this.setDrawingTimeCardColorIndicators('selected', this.data.getSelected());
     }
 
@@ -110,7 +108,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
 
     return this.drawingTimeCardColorIndicators;
   }
-
+  /* istanbul ignore next */
   private setDrawingTimeCardColorIndicators(attributeName: string, booleanValue: boolean): void {
 
     if (this.data.getSelected()) {
@@ -124,7 +122,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   private retrieveDrawTimeCardColorIndicators(colorIndicators) {
     this.drawStateService.passState(colorIndicators);
   }
-
+  /* istanbul ignore next */
   private setCssClass(drawingTimeCardColorIndicators: any, attributeName: string, booleanValue: boolean): void {
     for (const property in drawingTimeCardColorIndicators) {
       if (drawingTimeCardColorIndicators.hasOwnProperty(property)) {

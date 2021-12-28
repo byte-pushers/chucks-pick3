@@ -43,7 +43,6 @@ describe('HomePage', () => {
         }
       }
     } as any);
-
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();

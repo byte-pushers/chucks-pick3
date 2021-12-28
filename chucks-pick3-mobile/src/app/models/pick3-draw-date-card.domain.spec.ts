@@ -92,11 +92,17 @@ describe('Pick3DrawDateCardDomain', () => {
     model.setDrawTime('night');
     expect(model.getDrawTime()).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
+  it('should get drawtime as string',  () => {
+    model.setDrawTime('Morning');
+    expect(model.getDrawTime()).toBeDefined();
+  });
+  it('should retrieve drawTime',  () => {
+    expect(model.getDrawTime()).toBeDefined();
+  });
   it('should get and set the drawTime', () => {
     model.drawTime = Pick3DrawTimeEnum.NIGHT;
     expect(model.drawTime).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
-
   // backgroundImage
   it('should have a backgroundImage defined', () => {
     const backgroundImage = model.getBackgroundImage();
