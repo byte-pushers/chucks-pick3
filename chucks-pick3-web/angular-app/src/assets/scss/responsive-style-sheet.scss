@@ -1,3 +1,4 @@
+@import "src/assets/scss/variables.scss";
 /* Responsive Buttons---------------------------------- */
 .sign-up {
   display: none;
@@ -52,14 +53,6 @@
     width: 80%;
   }
 }
-
-/*@media screen and (max-width: 805px) {
-    #navbar-wrapper  {
-        display: block;
-
-
-    }
-}*/
 
 @media screen and (max-width: 770px) {
   .header-container {
@@ -139,7 +132,6 @@
     display: block;
     width: 20%;
     height: 100%;
-    background-color: #1704f9;
     float: left;
     margin: 0 auto;
   }
@@ -400,7 +392,7 @@
   }
 
   .how-to-container, .sign-up-container, .demo-container {
-    border-bottom: #BDBDBD;
+    border-bottom: $chucksPick3Gray;
     border-style: solid;
     border-left: none;
     border-right: none;
@@ -514,7 +506,7 @@
   }
 
   .how-to-container, .sign-up-container, .demo-container {
-    border-bottom: #BDBDBD;
+    border-bottom: $chucksPick3Gray;
     border-style: solid;
     border-left: none;
     border-right: none;
@@ -603,7 +595,7 @@
     height: 350px;
     float: left;
     background-size: 261.5px 349px;
-    border-bottom: #BDBDBD;
+    border-bottom: $chucksPick3Gray;
     border-style: solid;
     border-left: none;
     border-right: none;
@@ -630,7 +622,7 @@
     border-left: solid;
     border-right: solid;
     border-width: 1px;
-    border-color: #BDBDBD;
+    border-color: $chucksPick3Gray;
   }
 
   .container-spacing-sign-up {

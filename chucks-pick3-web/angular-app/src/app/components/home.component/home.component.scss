@@ -1,11 +1,12 @@
+@import "src/assets/scss/variables.scss";
 .hero-area-mobile {
-  background-color: #1c1c1d;
+  background-color: $chucksPick3Black;
   width: 100%;
   height: auto;
 }
 
 .hero-area {
-  background-color: #1c1c1d;
+  background-color: $chucksPick3Black;
   width: 100%;
   height: auto;
   padding-top: 2em;
@@ -13,7 +14,7 @@
 
 .header-text-content-mobile {
   padding: 100px 25px 15px;
-  color: white;
+  color: $chucksPick3White;
   align-content: center;
 }
 
@@ -26,7 +27,7 @@
 
 .header-text {
   text-align: left;
-  color: white;
+  color: $chucksPick3White;
 }
 
 .header-paragraph {
@@ -36,11 +37,11 @@
 }
 
 .text-emphasis {
-  color: #2dd36f;
+  color: $chucksPick3Green;
 }
 
 .header-btn {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
@@ -49,7 +50,7 @@
 }
 
 .sign-up-btn {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -57,7 +58,7 @@
 }
 
 .demo-btn {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -120,17 +121,17 @@
 
 .bp-section-header {
 
-  color: #8c8c8c;
+  color: $chucksPick3Gray;
 
 }
 
 .bp-section-sitemap {
-  color: #8c8c8c;
+  color: $chucksPick3Gray;
 
 }
 
 .bp-section {
-   background-color: #1c1c1d;
+   background-color: $chucksPick3Black;
    padding-top: 5%;
    padding-bottom: 5%;
 
@@ -139,12 +140,12 @@
 h1 {
   font-weight: 700;
   text-align: center;
-  color: #1b1e21;
+  color: $chucksPick3Black;
   font-family: "Lato" !important;
 }
 
 .features-section-mobile {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   padding-bottom: 10%;
 }
 
@@ -154,7 +155,7 @@ h1 {
 }
 
 .try-it-section-mobile {
-  background-color: #e7e7e7;
+  background-color: $chucksPick3LightGray;
   padding-top: 3em;
   padding-bottom: 3em;
 }
@@ -166,7 +167,7 @@ h1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .sign-up-section-mobile {
-  background-color: #ffd743;
+  background-color: $chucksPick3Yellow;
   padding-bottom: 3em;
   padding-top: 3em;
   vertical-align: middle;
@@ -180,7 +181,7 @@ h1 {
 }
 
 .features-section {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   padding-top: 5%;
   padding-bottom: 5%;
   vertical-align: middle;
@@ -199,7 +200,7 @@ h1 {
 }
 
 .sign-up-section {
-  background-color: #ffd743;
+  background-color: $chucksPick3Yellow;
   padding-top: 5%;
   padding-bottom: 5%;
   vertical-align: middle;
@@ -210,7 +211,7 @@ h1 {
   padding-top: 5%;
   padding-bottom: 5%;
   vertical-align: middle;
-  background-color: #353535;
+  background-color: $chucksPick3DarkGray;
 }
 
 .mobile-img {
@@ -246,7 +247,7 @@ h1 {
 
 
 .activeFeatureButton {
-  background-color: #2dd36f;
+  background-color: $chucksPick3Green;
   background-size: 50px, 130px, auto;
 }
 
@@ -256,14 +257,14 @@ h1 {
   margin-bottom: 0 !important;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  color: #8c8c8c;
+  color: $chucksPick3Gray;
   cursor: pointer;
   font-size: 28px;
 }
 
 .activeHowTo, .how-to-title:hover {
-  color: #2dd36f;
-  text-decoration: #2dd36f;
+  color: $chucksPick3Green;
+  text-decoration: $chucksPick3Green;
 }
 
 .how-to-title-tablet {
@@ -271,14 +272,14 @@ h1 {
   margin-bottom: 0 !important;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  color: #8c8c8c;
+  color: $chucksPick3Gray;
   cursor: pointer;
   font-size: 28px;
 }
 
 .activeHowTo-tablet, .how-to-title-tablet:hover {
-  color: #2dd36f;
-  text-decoration: #2dd36f;
+  color: $chucksPick3Green;
+  text-decoration: $chucksPick3Green;
 }
 .how-to-section-info {
   opacity: 1;
@@ -343,7 +344,7 @@ h1 {
   width: 6.2px;
   height: 6.2px;
   border-radius: 50%;
-  background: #2dd36f;
+  background: $chucksPick3Green;
   margin-top: 3px;
   margin-left: auto;
   margin-right: auto;
@@ -353,7 +354,7 @@ h1 {
   width: 12.5px;
   height: 12.5px;
   border-radius: 50%;
-  background: #2dd36f;
+  background: $chucksPick3Green;
   margin-top: 3px;
   margin-left: auto;
   margin-right: auto;
@@ -363,7 +364,7 @@ h1 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #2dd36f;
+  background: $chucksPick3Green;
   margin-top: 3px;
   margin-left: auto;
   margin-right: auto;
@@ -373,7 +374,7 @@ h1 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #2dd36f;
+  background: $chucksPick3Green;
   z-index: 9;
   margin-top: -10px;
   margin-left: 20.5vw;

@@ -1,3 +1,11 @@
+@import "src/assets/scss/variables.scss";
+@font-face {
+  font-family: lato;
+  src: url(../fonts/latoFontFamily/Lato-Regular.ttf) format('truetype');
+}
+
+
+
 /* You can add global styles to this file, and also import other style files */
 *,*:focus,*:hover{
   outline:none;
@@ -43,7 +51,7 @@ html {
 
 .header-container {
   display: block;
-  background-color: #ffffff;
+  background-color: $chucksPick3White;
   width: 100%;
   height: 150px;
   padding: 0px;
@@ -89,7 +97,7 @@ p {
 
 .body-container {
   display: block;
-  background-color: #ffffff;
+  background-color: $chucksPick3White;
   width: 60%;
   height: 90%;
   padding: 0;
@@ -123,7 +131,7 @@ p {
 }
 
 .slide a {
-  color: #000;
+  color: $chucksPick3Black;
 
   font-size: 24px;
 
@@ -158,7 +166,6 @@ body {
 .wrapper {
   max-width: 700px;
   margin: 50px auto;
-  background: #6465a5;
   box-sizing: border-box;
   padding: 40px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -213,7 +220,7 @@ body {
 .grediant {
   height: 300px;
   /* background:rgb(201, 201, 201); */
-  border-bottom: solid 2px #000;
+  border-bottom: solid 2px $chucksPick3Black;
   position: relative;
   background-image: linear-gradient(#fff, #fff, #d2d3d3);
 }
@@ -230,7 +237,7 @@ body {
 }
 
 .greenpatch {
-  background: #7ebd56;
+  background: $chucksPick3Green;
   padding: 15px;
   font-size: 12px;
   text-align: left;
@@ -238,23 +245,23 @@ body {
 }
 
 .middlebdr {
-  border-left: solid 1px #bdbdbd !important;
-  border-right: solid 1px #bdbdbd !important;
+  border-left: solid 1px $chucksPick3Gray !important;
+  border-right: solid 1px $chucksPick3Gray !important;
   height: 402px;
 }
 
 @media only screen and (max-width: 1024px) {
   .middlebdr {
-    border-left: solid 1px #bdbdbd !important;
-    border-right: solid 1px #bdbdbd !important;
+    border-left: solid 1px $chucksPick3Gray !important;
+    border-right: solid 1px $chucksPick3Gray !important;
 
   }
 }
 
 @media only screen and (max-width: 768px) {
   .middlebdr {
-    border-left: solid 1px #bdbdbd !important;
-    border-right: solid 1px #bdbdbd !important;
+    border-left: solid 1px $chucksPick3Gray !important;
+    border-right: solid 1px $chucksPick3Gray !important;
 
   }
 }
@@ -263,8 +270,8 @@ body {
   .middlebdr {
     border-left: none !important;
     border-right: none !important;
-    border-bottom: solid 1px #2e2e2e;
-    border-top: solid 1px #2e2e2e;
+    border-bottom: solid 1px $chucksPick3Black;
+    border-top: solid 1px $chucksPick3Black;
     padding-top: 5px;
     padding-bottom: 5px;
 
