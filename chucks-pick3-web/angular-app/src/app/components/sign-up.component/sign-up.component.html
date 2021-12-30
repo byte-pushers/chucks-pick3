@@ -1,21 +1,19 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<div class="main-content">
-  <div class="sign-up-hero">
-    <div class="container-fluid">
-      <div class=" row">
-        <div class="col-1"></div>
-        <div class="col-10">
-          <h1 class="sign-up-hero-text">
-            <b class="sign-up-hero-header">Your Luck is Waiting</b>
-          </h1>
-          <p class="sign-up-hero-text">We look forward to presenting you the Chuck's Pick 3 application! For now you can
-            sign up to receive notifications, updates, surveys and demos.</p>
+<div class="main-content" style="background-color: #d7d7d7">
+  <div class="container-fluid text-center p-5">
+    <div class="row ">
+      <div class="col-sm-12">
+        <div class="pt-5">
+          <h1>Your Luck is Waiting</h1>
         </div>
-        <div class="col-1"></div>
+      </div>
+  </div>
+    <div class="row  ">
+      <div class="col-sm-12">
+        <p class="text-center">We look forward to presenting you the Chuck's Pick 3 application! For now you can
+          sign up to receive notifications, updates, surveys and demos.</p>
       </div>
     </div>
   </div>
-
   <div class="sign-up-form" *ngIf="isDesktopResolution()">
     <div>
       <div class="container-fluid">
@@ -31,7 +29,7 @@
                     <form class="needs-validation" novalidate (ngSubmit)="onSubmit()" #signUpForm="ngForm">
                       <div class="info-form">
                         <div class="form-row">
-                          <div class="col-6">
+                          <div class="col-sm-6">
                             <label for="defaultRegisterFormFirstName">First Name</label>
                             <input id="defaultRegisterFormFirstNameMobile"
                                    name="firstName"
@@ -51,7 +49,7 @@
                             </div>
                           </div>
                           <br>
-                          <div class="col-6">
+                          <div class="col-sm-6">
                             <label for="defaultRegisterFormLastName">Last Name</label>
                             <input id="defaultRegisterFormLastNameMobile"
                                    name="lastName"
@@ -70,21 +68,23 @@
                         </div>
                         <br>
                         <div class="form-row">
-                          <div class="col-12">
+                          <div class="col-sm-12">
                             <label for="defaultRegisterFormEmail">Email</label>
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <div class="input-group-text ">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                       class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path
+                                      d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                                   </svg>
                                 </div>
                               </div>
-                            <input
-                              type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
-                              id="defaultRegisterFormEmailMobile"
-                              class="form-control" placeholder="Email"
-                              required ngModel dataValidator emailValidator>
+                              <input
+                                type="email" name="email" email #email="ngModel" [(ngModel)]="customerInfo.email"
+                                id="defaultRegisterFormEmailMobile"
+                                class="form-control" placeholder="Email"
+                                required ngModel dataValidator emailValidator>
                             </div>
                             <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
                               <div *ngIf="email.errors.required">- Email is required.</div>
@@ -94,7 +94,7 @@
                         </div>
                         <br>
                         <div class="form-row">
-                          <div class="col-6"><label for="defaultRegisterFormPhone">Phone</label>
+                          <div class="col-sm-6"><label for="defaultRegisterFormPhone">Phone</label>
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <div class="input-group-text ">
@@ -105,13 +105,13 @@
                                   </svg>
                                 </div>
                               </div>
-                            <input type="text" name="phoneNumber"
-                                   #phoneNumber="ngModel"
-                                   [(ngModel)]="customerInfo.phone"
-                                   id="defaultRegisterFormPhoneMobile"
-                                   class="form-control"
-                                   placeholder="Phone Number"
-                                   required ngModel phoneNumber>
+                              <input type="text" name="phoneNumber"
+                                     #phoneNumber="ngModel"
+                                     [(ngModel)]="customerInfo.phone"
+                                     id="defaultRegisterFormPhoneMobile"
+                                     class="form-control"
+                                     placeholder="Phone Number"
+                                     required ngModel phoneNumber>
                             </div>
                             <div class="alert alert-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid">
                               <div *ngIf="phoneNumber.errors.required">- Phone number is required.</div>
@@ -119,7 +119,7 @@
                             </div>
                           </div>
                           <br>
-                          <div class="col-6">
+                          <div class="col-sm-6">
                             <label for="defaultRegisterFormCity">Type Of Phone</label>
                             <label for="typeOfPhoneId"></label>
                             <select #dropDownTypeOfPhoneName="ngModel" [(ngModel)]="customerInfo.cellPhoneType"
@@ -139,7 +139,7 @@
                         </div>
                         <br>
                         <div class="form-row">
-                          <div class="col-12">
+                          <div class="col-sm-12">
                             <label for="defaultRegisterFormCity">City</label>
                             <input name="cityName" #cityName="ngModel" [(ngModel)]="customerInfo.city"
                                    type="text"
@@ -159,7 +159,7 @@
                         </div>
                         <br>
                         <div class="form-row">
-                          <div class="col-6">
+                          <div class="col-sm-6 mb-sm-2">
                             <label for="defaultRegisterFormCity">State</label>
                             <label for="stateDropDownId"></label>
                             <select #stateDropDownInputName="ngModel" [(ngModel)]="customerInfo.state"
@@ -176,7 +176,7 @@
                             </div>
                           </div>
                           <br>
-                          <div class="col-6">
+                          <div class="col-sm-6">
                             <label for="defaultRegisterFormZip">Zip</label>
                             <input name="zipCode"
                                    #zipCode="ngModel"
@@ -198,7 +198,7 @@
                         </div>
                         <br>
                         <div class="form-row">
-                          <div class="col-12"><label for="defaultRegisterFormCity">How Often Do You Play?</label>
+                          <div class="col-sm-12"><label for="defaultRegisterFormCity">How Often Do You Play?</label>
                             <label for="howOftenId"></label>
                             <select #dropDownHowOftenName="ngModel" [(ngModel)]="customerInfo.gambleFrequency"
                                     name="dropDownHowOftenName"
@@ -220,9 +220,10 @@
                           <br>
                           <!-- [routerLink]="'/thank-you'"
                            routerLinkActive="active" [queryParams]="{showSubNavBar: false}"-->
-                          <div class="col-4 m-auto">
+                          <div class="col-sm-4 m-auto">
                             <button type="submit"
-                                    class="btn btn btn-success submit btn-lg btn-block" [disabled]="!signUpForm.form.valid">
+                                    class="btn btn btn-success submit btn-lg btn-block"
+                                    [disabled]="!signUpForm.form.valid">
                               Submit
                             </button>
                             <!-- [disabled]="!signUpForm.form.valid" (click)="onSubmit()" //-->
@@ -306,8 +307,10 @@
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text ">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                               class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path
+                              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                           </svg>
                         </div>
                       </div>
