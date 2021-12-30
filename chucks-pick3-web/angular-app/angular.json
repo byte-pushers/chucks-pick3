@@ -8,7 +8,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,12 +27,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/scss/styles.css",
+              "src/assets/scss/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/scss/app-instructions-style-sheet.css",
-              "src/assets/scss/global-style-sheet.css",
               "src/assets/scss/navbar.css",
-              "src/assets/scss/responsive-style-sheet.css"
+              "src/assets/scss/responsive-style-sheet.scss",
+              "src/assets/scss/variables.scss"
             ],
             "scripts": [
               "node_modules/bytepushers-js-string-extensions/release/bytepushers-js-string-extensions.js"
