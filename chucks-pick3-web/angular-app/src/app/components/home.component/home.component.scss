@@ -1,4 +1,6 @@
 @import "src/assets/scss/variables.scss";
+@import "src/assets/scss/breakpoints";
+
 .hero-area-mobile {
   background-color: $chucksPick3Black;
   width: 100%;
@@ -54,7 +56,8 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-
+  height: 8vh;
+  filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.4));
 }
 
 .demo-btn {
@@ -62,6 +65,8 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  height: 8vh;
+  filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.4));
 
 }
 
@@ -91,7 +96,7 @@
 
 }
 
-.header-image-section{
+.header-image-section {
   height: auto;
   z-index: 11;
   margin-left: auto;
@@ -114,8 +119,7 @@
   width: 100%;
   height: 100%;
   text-align: left;
-  margin-top: 3em;
-  margin-bottom: 3em;
+  background-color: $chucksPick3LightGray;
 
 }
 
@@ -131,17 +135,18 @@
 }
 
 .bp-section {
-   background-color: $chucksPick3Black;
-   padding-top: 5%;
-   padding-bottom: 5%;
+  background-color: $chucksPick3Black;
+  padding-top: 5%;
+  padding-bottom: 5%;
 
- }
+}
 
 h1 {
   font-weight: 700;
   text-align: center;
   color: $chucksPick3Black;
-  font-family: "Lato" !important;
+  font-size: 2.7em;
+  font-family: "Lato", sans-serif !important;
 }
 
 .features-section-mobile {
@@ -166,18 +171,45 @@ h1 {
   margin-right: 5%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .sign-up-section-mobile {
   background-color: $chucksPick3Yellow;
   padding-bottom: 3em;
   padding-top: 3em;
   vertical-align: middle;
 }
+
 /*
 ------------Desktop--------------------*/
 
 .intro-section {
   margin-top: 7%;
   margin-bottom: 5%;
+  @include for-size(iPhone5-SE) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhone6-7-8) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhoneX) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPad) {
+    margin-top: 7%;
+    margin-bottom: 5%;
+  }
+  @include for-size(iPad-Pro) {
+    margin-top: 7%;
+    margin-bottom: 5%;
+  }
+
 }
 
 .features-section {
@@ -238,6 +270,7 @@ h1 {
   margin-right: auto;
   width: 8em;
 }
+
 .try-it-section {
   background-color: white;
   padding-top: 5%;
@@ -267,20 +300,11 @@ h1 {
   text-decoration: $chucksPick3Green;
 }
 
-.how-to-title-tablet {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  color: $chucksPick3Gray;
-  cursor: pointer;
-  font-size: 28px;
-}
-
 .activeHowTo-tablet, .how-to-title-tablet:hover {
   color: $chucksPick3Green;
   text-decoration: $chucksPick3Green;
 }
+
 .how-to-section-info {
   opacity: 1;
   animation: fade .5s linear;
@@ -289,9 +313,13 @@ h1 {
 }
 
 .how-to-title-text {
-  margin-top: 1em;
 
   font-weight: bold;
+}
+
+.how-to-arrows {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 .how-to-text {
@@ -309,9 +337,21 @@ h1 {
   }
 }
 
+.how-to-display {
+  @include for-size(iPad) {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  @include for-size(iPad-Pro) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 .how-to-image {
+  max-width: 100%;
   height: auto;
-  width: 25vw;
+
 }
 
 .how-to-list {
@@ -322,7 +362,7 @@ h1 {
 
 .how-to-paragraph-title {
   font-weight: bolder;
-  font-size: 2.7em;
+  font-size: 2em;
   color: white;
   text-align: left;
 }
@@ -384,8 +424,76 @@ h1 {
 
 .section-header {
   text-align: left;
+  margin-top: 0;
+  @include for-size(iPhone5-SE) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhoneX) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPad) {
+    text-align: left;
+    margin-top: 0;
+  }
+  @include for-size(iPad-Pro) {
+    text-align: left;
+    margin-top: 0;
+  }
 }
 
-h1 {
-  font-size: 2.7em;
+.try-it-out-description {
+  text-align: left;
+  font-size: 1.3750em;
+  padding-right: 7vw;
+
+  @include for-size(iPhone5-SE) {
+    text-align: center;
+    padding-right: 0;
+
+  }
+  @include for-size(iPhone6-7-8) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPhoneX) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPad) {
+    text-align: left;
+  }
+  @include for-size(iPad-Pro) {
+    text-align: left;
+  }
+}
+
+/* how to div blocks */
+#viewField {
+  display: block;
+}
+
+#selectField {
+  display: none;
+}
+
+#generateField {
+  display: none;
+}
+
+#writeField {
+  display: none;
 }

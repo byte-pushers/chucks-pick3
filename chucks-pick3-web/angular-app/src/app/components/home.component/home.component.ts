@@ -42,17 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     this.displayFeatureButtonDesktop();
-    this.displayFeatureButtonTablet();
-    document.getElementById('viewField').style.display = 'block';
-    document.getElementById('selectField').style.display = 'none';
-    document.getElementById('generateField').style.display = 'none';
-    document.getElementById('writeField').style.display = 'none';
-
-    document.getElementById('viewFieldTablet').style.display = 'block';
-    document.getElementById('selectFieldTablet').style.display = 'none';
-    document.getElementById('generateFieldTablet').style.display = 'none';
-    document.getElementById('writeFieldTablet').style.display = 'none';
-  }
+   }
 
   ngOnDestroy() {
     this.fragmentSubscription = null;
@@ -95,19 +85,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public displayFeatureDivTablet(input) {
-    // tslint:disable-next-line:max-line-length
-    const featureFields = [ 'viewFieldTablet',
-      'selectFieldTablet', 'generateFieldTablet', 'writeFieldTablet'];
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < featureFields.length; i++) {
-      if (featureFields[i].lastIndexOf(input) === 0) {
-        document.getElementById(featureFields[i]).style.display = 'block';
-        featureFields.splice(i, 1);
-        this.removeFeatureDiv(featureFields);
-      }
-    }
-  }
 
   public removeFeatureDiv(featureFields) {
     // tslint:disable-next-line:prefer-for-of
@@ -127,19 +104,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.className += ' activeHowTo';
       });
   }
-  }
-
-  public displayFeatureButtonTablet() {
-    const header = document.getElementById('featureButtonSectionTablet');
-    const btns = header.getElementsByClassName('how-to-title-tablet');
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', function() {
-        const current = document.getElementsByClassName('activeHowTo-tablet');
-        current[0].className = current[0].className.replace(' activeHowTo-tablet', '');
-        this.className += ' activeHowTo-tablet';
-      });
-    }
   }
 
 }

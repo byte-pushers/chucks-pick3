@@ -914,16 +914,13 @@ margin-top: 3em !important;
 
 @media (min-width: 1281px) {
   /* CSS */
-  .show-desktop {
-    display: block;
-  }
 
   .show-mobile {
     display: none;
   }
 
   .show-tablet {
-    display: none;
+    display: block;
   }
 }
 
@@ -935,16 +932,13 @@ margin-top: 3em !important;
 @media (min-width: 1023px) and (max-width: 1280px) {
 
   /* CSS */
-  .show-desktop {
-    display: block;
-  }
 
   .show-mobile {
     display: none;
   }
 
   .show-tablet {
-    display: none;
+    display: block;
   }
 }
 
