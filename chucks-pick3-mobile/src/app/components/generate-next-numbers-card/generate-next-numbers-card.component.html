@@ -3,12 +3,12 @@
         <div class="generate-options-title">Drawing Date:</div>
         <ion-row class="generate-picks-button-section">
             <ion-col>
-                <button #todayDrawingDate class="confirmation-button" style="background-color: #2fdf75"
+                <button id="today" #todayDrawingDate class="confirmation-button" style="background-color: #2fdf75"
                         (click)="selectTodayGenerateDrawingDate(todayDrawingDate, tomorrowDrawingDate )">Today
                 </button>
             </ion-col>
             <ion-col>
-                <button #tomorrowDrawingDate class="confirmation-button"
+                <button id="tomorrow" #tomorrowDrawingDate class="confirmation-button"
                         (click)="selectTomorrowGenerateDrawingDate(tomorrowDrawingDate, todayDrawingDate)">Tomorrow
                 </button>
             </ion-col>

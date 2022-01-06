@@ -3,7 +3,7 @@ import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
 export interface Pick3DrawDateCardProperties {
     drawDate: Date;
     drawState: string;
-    drawTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    drawTime: Pick3DrawTimeEnum;
     drawTimeAsString?: string;
     upcomingDrawTime?: Date;
     hasWinner?: boolean;
@@ -16,5 +16,5 @@ export interface Pick3DrawDateCardProperties {
     icon: string;
     slideNumber: number;
     slideName: string;
-    defaultDrawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum;
+    defaultDrawDateTime: Pick3DrawTimeEnum;
 }

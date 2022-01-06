@@ -38,18 +38,6 @@ export class ViewPicksCardComponent implements OnInit {
         this.componentState = 'initialized';
     }
 
-
-    public selectDrawingTimeCard(pick3DrawTimeCard: Pick3DrawTimeCard): void {
-        this.drawTimes.forEach(drawTime => {
-            if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
-                drawTime.setSelected(false);
-            } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
-                drawTime.setSelected(true);
-                this.drawTimeService.setCurrentDrawTimeCard(drawTime);
-            }
-        });
-    }
-
     private checkforSingleDigits(arrayTobeChecked) {
         arrayTobeChecked.forEach(array => {
             if (array.toString().length < 3) {

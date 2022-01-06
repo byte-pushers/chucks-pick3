@@ -11,6 +11,12 @@
     "src/test.ts",
     "src/polyfills.ts"
   ],
+  "paths": {
+    "@app/*": ["src/app/*"],
+    "@env/*": ["src/environments/*"],
+    "@test/*": ["test/*"],
+    "@capacitor/*": ["__mocks__/@capacitor/*"]
+  },
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"

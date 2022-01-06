@@ -1,1 +1,0 @@
-run "bower install" && "jspm install" then launch index.html

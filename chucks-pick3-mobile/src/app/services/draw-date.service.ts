@@ -6,7 +6,7 @@ import {Pick3DrawTimeCard} from '../models/pick3-draw-time-card';
   providedIn: 'root'
 })
 export class DrawDateService {
-  private pick3DrawDateSource = new Subject<Pick3DrawTimeCard>();
+  public pick3DrawDateSource = new Subject<Pick3DrawTimeCard>();
   constructor() { }
 
   public getPick3DrawDateCard$() {

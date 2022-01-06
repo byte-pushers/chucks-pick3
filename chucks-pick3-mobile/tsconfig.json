@@ -18,6 +18,10 @@
       "dom"
     ]
   },
+  "paths": {
+    "@app/*": ["src/app/*"],
+    "@env/*": ["src/environments/*"]
+  },
   "allowSyntheticDefaultImports": true,
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

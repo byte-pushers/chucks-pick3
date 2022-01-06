@@ -1,0 +1,499 @@
+@import "src/assets/scss/variables.scss";
+@import "src/assets/scss/breakpoints";
+
+.hero-area-mobile {
+  background-color: $chucksPick3Black;
+  width: 100%;
+  height: auto;
+}
+
+.hero-area {
+  background-color: $chucksPick3Black;
+  width: 100%;
+  height: auto;
+  padding-top: 2em;
+}
+
+.header-text-content-mobile {
+  padding: 100px 25px 15px;
+  color: $chucksPick3White;
+  align-content: center;
+}
+
+.header-text-mobile {
+  margin-top: 25vh;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 25vh;
+}
+
+.header-text {
+  text-align: left;
+  color: $chucksPick3White;
+}
+
+.header-paragraph {
+  font-size: 22px;
+  color: white;
+  text-align: center;
+}
+
+.text-emphasis {
+  color: $chucksPick3Green;
+}
+
+.header-btn {
+  background-color: $chucksPick3Green;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+.sign-up-btn {
+  background-color: $chucksPick3Green;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 8vh;
+  filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.4));
+}
+
+.demo-btn {
+  background-color: $chucksPick3Green;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 8vh;
+  filter: drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.4));
+
+}
+
+.header-ball {
+  width: 100%;
+  z-index: 10;
+}
+
+.header-ball-back {
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-image-mobile {
+  width: 100%;
+  height: 15vh;
+  text-align: center;
+
+
+}
+
+.header-image-section-mobile {
+  height: auto;
+  width: 13em;
+  z-index: 11;
+  margin-left: auto;
+
+}
+
+.header-image-section {
+  height: auto;
+  z-index: 11;
+  margin-left: auto;
+
+}
+
+.header-iphone-mobile {
+  height: 100px;
+  width: 200px;
+
+}
+
+.features-header {
+  text-align: left;
+  padding-left: .6em;
+  font-weight: 700;
+}
+
+.how-to-section-mobile {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background-color: $chucksPick3LightGray;
+
+}
+
+.bp-section-header {
+
+  color: $chucksPick3Gray;
+
+}
+
+.bp-section-sitemap {
+  color: $chucksPick3Gray;
+
+}
+
+.bp-section {
+  background-color: $chucksPick3Black;
+  padding-top: 5%;
+  padding-bottom: 5%;
+
+}
+
+h1 {
+  font-weight: 700;
+  text-align: center;
+  color: $chucksPick3Black;
+  font-size: 2.7em;
+  font-family: "Lato", sans-serif !important;
+}
+
+.features-section-mobile {
+  background-color: $chucksPick3Green;
+  padding-bottom: 10%;
+}
+
+.intro-section-mobile {
+  margin-top: 15em;
+  margin-bottom: 3em;
+}
+
+.try-it-section-mobile {
+  background-color: $chucksPick3LightGray;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.features-card-mobile {
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign-up-section-mobile {
+  background-color: $chucksPick3Yellow;
+  padding-bottom: 3em;
+  padding-top: 3em;
+  vertical-align: middle;
+}
+
+/*
+------------Desktop--------------------*/
+
+.intro-section {
+  margin-top: 7%;
+  margin-bottom: 5%;
+  @include for-size(iPhone5-SE) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhone6-7-8) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPhoneX) {
+    margin-top: 15em;
+    margin-bottom: 3em;
+  }
+  @include for-size(iPad) {
+    margin-top: 7%;
+    margin-bottom: 5%;
+  }
+  @include for-size(iPad-Pro) {
+    margin-top: 7%;
+    margin-bottom: 5%;
+  }
+
+}
+
+.features-section {
+  background-color: $chucksPick3Green;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+
+}
+
+.features-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: auto;
+}
+
+
+.features-card-tablet {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2em;
+}
+
+.sign-up-section {
+  background-color: $chucksPick3Yellow;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+}
+
+
+.how-to-section {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+  background-color: $chucksPick3DarkGray;
+}
+
+.mobile-img {
+  margin-bottom: 1em;
+}
+
+.try-it-out-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18em;
+}
+
+.try-it-out-image-tablet {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 13em;
+}
+
+.try-it-out-image-mobile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
+}
+
+.try-it-section {
+  background-color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  vertical-align: middle;
+}
+
+
+.activeFeatureButton {
+  background-color: $chucksPick3Green;
+  background-size: 50px, 130px, auto;
+}
+
+
+.how-to-title {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color: $chucksPick3Gray;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.activeHowTo, .how-to-title:hover {
+  color: $chucksPick3Green;
+  text-decoration: $chucksPick3Green;
+}
+
+.activeHowTo-tablet, .how-to-title-tablet:hover {
+  color: $chucksPick3Green;
+  text-decoration: $chucksPick3Green;
+}
+
+.how-to-section-info {
+  opacity: 1;
+  animation: fade .5s linear;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.how-to-title-text {
+
+  font-weight: bold;
+}
+
+.how-to-arrows {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.how-to-text {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+@keyframes fade {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}
+
+.how-to-display {
+  @include for-size(iPad) {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  @include for-size(iPad-Pro) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.how-to-image {
+  max-width: 100%;
+  height: auto;
+
+}
+
+.how-to-list {
+  text-align: right;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.how-to-paragraph-title {
+  font-weight: bolder;
+  font-size: 2em;
+  color: white;
+  text-align: left;
+}
+
+.how-to-paragraph {
+  color: white;
+  font-size: 12px;
+}
+
+.circle-stack {
+  position: absolute;
+  left: 10px;
+  width: 99px;
+  height: 50px;
+
+}
+
+.circle-sm {
+  width: 6.2px;
+  height: 6.2px;
+  border-radius: 50%;
+  background: $chucksPick3Green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-md {
+  width: 12.5px;
+  height: 12.5px;
+  border-radius: 50%;
+  background: $chucksPick3Green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-lg {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $chucksPick3Green;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-intro {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $chucksPick3Green;
+  z-index: 9;
+  margin-top: -10px;
+  margin-left: 20.5vw;
+  position: absolute;
+}
+
+
+.section-header {
+  text-align: left;
+  margin-top: 0;
+  @include for-size(iPhone5-SE) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhone6-7-8) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPhoneX) {
+    text-align: center;
+    margin-top: 5vh;
+  }
+  @include for-size(iPad) {
+    text-align: left;
+    margin-top: 0;
+  }
+  @include for-size(iPad-Pro) {
+    text-align: left;
+    margin-top: 0;
+  }
+}
+
+.try-it-out-description {
+  text-align: left;
+  font-size: 1.3750em;
+  padding-right: 7vw;
+
+  @include for-size(iPhone5-SE) {
+    text-align: center;
+    padding-right: 0;
+
+  }
+  @include for-size(iPhone6-7-8) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPhone6-7-8-Plus) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPhoneX) {
+    text-align: center;
+    padding-right: 0;
+  }
+  @include for-size(iPad) {
+    text-align: left;
+  }
+  @include for-size(iPad-Pro) {
+    text-align: left;
+  }
+}
+
+/* how to div blocks */
+#viewField {
+  display: block;
+}
+
+#selectField {
+  display: none;
+}
+
+#generateField {
+  display: none;
+}
+
+#writeField {
+  display: none;
+}

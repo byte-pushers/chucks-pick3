@@ -19,12 +19,12 @@ import {NavigationEnum} from '../../models/navigate.enum';
     styleUrls: ['home.page.scss'],
 })
 export class HomePage implements AfterViewInit, OnDestroy {
-    prevActiveIndex: number = 7;
+    public prevActiveIndex: number = 7;
     private cardContext = this.cardContextService.context$;
-    private slidesLoaded = false;
+    public slidesLoaded = false;
     @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
     default = {
-        drawDateTime: Pick3DrawTimeEnum.Pick3DrawTimeEnum.MORNING
+        drawDateTime: Pick3DrawTimeEnum.MORNING
     };
     slideOpts = {
         initialSlide: 7,
@@ -46,6 +46,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
         console.log(`HomePage constructor.`);
     }
 
+  /* istanbul ignore next */
     ngAfterViewInit() {
         const routerState = this.router.getCurrentNavigation().extras.state;
         if (routerState && this.router.url === '/home') {
@@ -55,7 +56,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
             }
         }
     }
-
+  /* istanbul ignore next */
     ngOnDestroy() {
         this.cardContext = null;
     }
@@ -67,10 +68,12 @@ export class HomePage implements AfterViewInit, OnDestroy {
             event: ev,
             translucent: true
         });
+      /* istanbul ignore next */
         popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+      /* istanbul ignore next */
         return await popover.present();
     }
-
+  /* istanbul ignore next */
     public initializePick3DrawDateCards(event: any): void {
         this.ionSlides.length().then(count => {
             console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
@@ -78,7 +81,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
             this.initializePick3DrawDateCard(event);
         });
     }
-
+  /* istanbul ignore next */
     public initializePick3DrawDateCard(event: any): void {
         if (this.slidesLoaded) {
             this.storeId();
@@ -107,13 +110,14 @@ export class HomePage implements AfterViewInit, OnDestroy {
             });
         }
     }
-
+  /* istanbul ignore next */
     private next(index) {
         this.ionSlides.slideTo(index, this.slideOpts.speed);
     }
 
-    private storeId() {
+    public storeId() {
         this.ionSlides.getActiveIndex().then(activeIndex => {
+          /* istanbul ignore else */
             if (activeIndex !== this.prevActiveIndex) {
                 this.appService.pick3CardId = (activeIndex + 1);
                 console.log(this.appService.pick3CardId);
@@ -122,7 +126,8 @@ export class HomePage implements AfterViewInit, OnDestroy {
         });
     }
 
-    private passIdToGenerate(slideNumber) {
+    public passIdToGenerate(slideNumber) {
+      /* istanbul ignore else */
         if (slideNumber >= 6) {
             this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
         }

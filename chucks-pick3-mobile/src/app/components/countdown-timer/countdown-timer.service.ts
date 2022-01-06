@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountdownTimerService {
-  private time: BehaviorSubject<string> = new BehaviorSubject<string>('00:00:00');
-  private timerInSeconds: number; //in seconds
-  private interval;
-  private state: 'start' | 'stop' = 'stop';
+  public time: BehaviorSubject<string> = new BehaviorSubject<string>('00:00:00');
+  public timerInSeconds: number; //in seconds
+  public interval;
+  public state: 'start' | 'stop' = 'stop';
 
   constructor() { }
 
@@ -22,6 +22,7 @@ export class CountdownTimerService {
     this.timerInSeconds = durationInSeconds;
 
     this.updateTimeValue();
+    /* istanbul ignore next */
     this.interval = setInterval(() => {
       this.updateTimeValue();
     }, 1000);
@@ -35,6 +36,7 @@ export class CountdownTimerService {
 
   private updateTimeValue(): void {
     let hours = this.timerInSeconds / (60 * 60);
+    /* istanbul ignore next */
     let minutes = (this.timerInSeconds >= 59) ?  59 : this.timerInSeconds / 60;
     let seconds = this.timerInSeconds % 60;
 

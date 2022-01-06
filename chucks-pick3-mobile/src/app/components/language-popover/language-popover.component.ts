@@ -16,7 +16,7 @@ switchLanguage(lang: string) {
     this.translateService.use(lang);
 }
 
-
+  /* istanbul ignore next */
     public async dismissClick() {
         await this.popoverCtrl.dismiss();
     }
