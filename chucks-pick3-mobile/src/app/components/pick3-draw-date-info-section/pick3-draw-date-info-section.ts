@@ -18,11 +18,12 @@ import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-stat
 import {NavigationEnum} from '../../models/navigate.enum';
 import {Router} from '@angular/router';
 import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
-import {PopoverController} from '@ionic/angular';
+import {NavController, PopoverController} from '@ionic/angular';
 import {AppService} from '../../app.service';
 import {DrawDateService} from '../../services/draw-date.service';
 import {Subscription} from 'rxjs';
 import {Pick3DrawTimeCardProperties} from '../../models/pick3-draw-time-card.properties';
+import {publish} from "rxjs/operators";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -61,7 +62,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
               private drawDateService: DrawDateService,
               private pick3WebScrappingService: Pick3WebScrapingProviderService,
               private appService: AppService,
-              private popoverController: PopoverController) {
+              private popoverController: PopoverController,
+              private navCtrl: NavController) {
     this.routerUrl = this.router.url;
 
     if (this.routerUrl === '/home') {
@@ -353,5 +355,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     } else {
       this.switchDrawDateButtons('viewPicksDisabled');
     }
+  }
+  public returnToPreviousPage() {
+    this.navCtrl.pop();
   }
 }
