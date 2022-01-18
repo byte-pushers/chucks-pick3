@@ -41,6 +41,7 @@ module.exports = function (config) {
         }
       }
     },
+    includeAllSources: true,
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
