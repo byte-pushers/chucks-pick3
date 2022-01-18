@@ -27,6 +27,7 @@ export class Pick3WebScrapingProviderService extends Pick3WebScrapingBaseService
       dataType: 'html',
       success: function(data) {
         const response = {statusCode: 200};
+        const response = {statusCode: 200};
         callback(null, response, data);
       },
       error: function(xhr, status, error) {
