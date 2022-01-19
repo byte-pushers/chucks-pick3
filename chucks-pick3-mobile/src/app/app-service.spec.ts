@@ -23,6 +23,7 @@ describe('AppService', () => {
   const bg = 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%' +
     '2Fwp-content%2Fuploads%2Fsites%2F28%2F2016%2F03%2FTexas-Bluebonnets-Spring-15-TXBLOOMS0316.jpg&q=85';
   const state = 'TX';
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -131,6 +132,10 @@ describe('AppService', () => {
         showCountDownToDrawing: false
       })
     ];
+
+    it('should include only 7 cards',  () => {
+      // should check to see if the amount of pick3drawdate cards equal to 7.
+    });
   });
 
   // getSlideDate()

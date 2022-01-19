@@ -48,6 +48,12 @@ describe('HomePage', () => {
     fixture.detectChanges();
   }));
 
+  it('should check to see if the last initialized slide was 7', () => {
+    if (component.slidesLoaded) {
+      console.log(component.ionSlides.getActiveIndex.length);
+    }
+    expect(component.ionSlides.getActiveIndex.length).toBeLessThanOrEqual(7);
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -73,7 +79,7 @@ describe('HomePage', () => {
     expect(popoverSpy).toHaveBeenCalled();
   });
 
-  it('should f',  () => {
+  it('should f', () => {
     spyOn(component, 'passIdToGenerate');
     component.storeId();
     expect(component.ionSlides.getActiveIndex).toBeDefined();
