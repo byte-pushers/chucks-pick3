@@ -29,6 +29,9 @@
 @import "../src/scss/app-icons"; /* For Icons */
 @import "../src/scss/draw-time-cards";
 @import "../src/scss/app-ui";
+// global.scss
+@import '~swiper/scss';
+@import '~@ionic/angular/css/ionic-swiper';
 
 .results-not-available {
   --background: #ffd743;

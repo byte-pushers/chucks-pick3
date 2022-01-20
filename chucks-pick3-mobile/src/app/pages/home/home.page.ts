@@ -11,6 +11,7 @@ import {DrawDateService} from '../../services/draw-date.service';
 import {Router} from '@angular/router';
 import {DrawStateService} from '../../services/draw-state.service';
 import {NavigationEnum} from '../../models/navigate.enum';
+import Swiper from 'swiper';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class HomePage implements AfterViewInit, OnDestroy {
     public prevActiveIndex: number = 7;
     private cardContext = this.cardContextService.context$;
     public slidesLoaded = false;
-    @ViewChild('pick3DrawDateCards') ionSlides: IonSlides;
+    @ViewChild('pick3DrawDateCards') swiper: Swiper;
     default = {
         drawDateTime: Pick3DrawTimeEnum.MORNING
     };

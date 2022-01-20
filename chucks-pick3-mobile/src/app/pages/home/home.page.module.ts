@@ -8,26 +8,28 @@ import { CardPageModule} from '../card/card.page.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {SwiperModule} from 'swiper/angular';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        TranslateModule.forChild({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-        HomePageRoutingModule,
-        CardPageModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    HomePageRoutingModule,
+    CardPageModule,
+    SwiperModule
+  ],
     exports: [
 
     ],
