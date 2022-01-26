@@ -59,13 +59,11 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   /* istanbul ignore next */
   ngAfterViewInit() {
-    const routerState = this.router.getCurrentNavigation().extras.state;
+    /*const routerState = this.router.getCurrentNavigation().extras.state;
+
     if (routerState && this.router.url === '/home') {
-      const currentSlideNumber = this.appService.pick3CardId;
-      if (currentSlideNumber) {
-        this.next(currentSlideNumber - 1);
-      }
-    }
+      // this.swiper.slideTo(1, this.slideOpts.speed);
+    }*/
   }
 
   /* istanbul ignore next */
@@ -128,11 +126,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
         }
       };
     }
-  }
-
-  /* istanbul ignore next */
-  private next(index) {
-    this.swiper.slideTo(index, this.slideOpts.speed);
   }
 
   public storeId() {
