@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 import {DrawStateService} from '../../services/draw-state.service';
 import {NavigationEnum} from '../../models/navigate.enum';
 import Swiper, {Navigation, Pagination} from "swiper";
+import {DrawTimeService} from "../../services/draw-time.service";
 
 
 @Component({
@@ -30,6 +31,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     initialSlide: 7
   });
 
+
   default = {
     drawDateTime: Pick3DrawTimeEnum.MORNING
   };
@@ -44,6 +46,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
               private popoverController: PopoverController,
               public translateService: TranslateService,
               private drawDateService: DrawDateService,
+              private drawTimeService: DrawTimeService,
               private drawStateService: DrawStateService,
               private appService: AppService,
               private router: Router,
@@ -54,7 +57,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH' + this.swiper.activeIndex);
   }
 
   /* istanbul ignore next */
@@ -85,10 +87,10 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  public initializePick3DrawDateCards(event: any): void {
+  public initializePick3DrawDateCards(swiper): void {
     let count
-    if (this.swiper.slides.length) {
-      count = this.swiper.slides.length;
+    if (swiper.activeIndex === 7) {
+      count = swiper.length;
       console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
       this.slidesLoaded = true;
       this.initializePick3DrawDateCard(event);
@@ -97,12 +99,13 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  public initializePick3DrawDateCard(event: any): void {
+  public initializePick3DrawDateCard(swiper): void {
     let activeIndex;
+    activeIndex = swiper.activeIndex;
     if (this.slidesLoaded) {
       this.storeId();
-      if (this.swiper.activeIndex){
-        activeIndex = this.swiper.activeIndex;
+        console.log(swiper.activeIndex);
+        activeIndex = swiper.activeIndex;
         // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
         console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
         // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
@@ -124,8 +127,11 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
               drawTimes: this.appService.getPick3DrawTimeCards(7)
           });*/
         }
-      };
     }
+  }
+
+  aaa() {
+
   }
 
   public storeId() {

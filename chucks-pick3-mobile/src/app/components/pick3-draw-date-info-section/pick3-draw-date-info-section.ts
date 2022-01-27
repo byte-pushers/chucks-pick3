@@ -128,6 +128,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
           console.log(this.currentSlideNumber);
           this.disableButtonOnCard(currentPick3DrawDateCardId);
+          this.appService.pick3CardId = currentPick3DrawDateCardId;
           this.setData(
             this.appService.getDrawState(),
             currentPick3DrawDateCard,
@@ -349,7 +350,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
   /* istanbul ignore next */
   private disableButtonOnCard(slideNumber) {
-    console.log(slideNumber);
+
     if (slideNumber < 6) {
       this.switchDrawDateButtons('generatePicksDisabled');
     } else {
