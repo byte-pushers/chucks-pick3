@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="scroll-content">
 
-  <swiper #pick3DrawDateCards [config]="slideOpts" [slidesPerView]="1" style="height: 100%" (slideChange)="initializePick3DrawDateCard($event)"
+  <swiper #pick3DrawDateCards [slidesPerView]="1" style="height: 100%" (slideChange)="initializePick3DrawDateCard($event)"
           (afterInit)="initializePick3DrawDateCards($event)">
     <ng-template swiperSlide>
       <ion-router-outlet name="card-page-1"></ion-router-outlet>
