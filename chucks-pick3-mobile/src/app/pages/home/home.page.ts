@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, OnDestroy} from '@angular/core';
 import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
 import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
 import {IonSlides, PopoverController} from '@ionic/angular';
@@ -20,7 +20,7 @@ import {DrawTimeService} from "../../services/draw-time.service";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, AfterViewInit, OnDestroy {
+export class HomePage implements OnDestroy {
 
   public prevActiveIndex: number = 7;
   private cardContext = this.cardContextService.context$;
@@ -34,10 +34,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   default = {
     drawDateTime: Pick3DrawTimeEnum.MORNING
-  };
-  slideOpts = {
-    initialSlide: 7,
-    speed: 400
   };
 
   pick3StateLottery: Pick3StateLottery;
@@ -56,17 +52,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     console.log(`HomePage constructor.`);
   }
 
-  ngOnInit() {
-  }
-
-  /* istanbul ignore next */
-  ngAfterViewInit() {
-    /*const routerState = this.router.getCurrentNavigation().extras.state;
-
-    if (routerState && this.router.url === '/home') {
-      // this.swiper.slideTo(1, this.slideOpts.speed);
-    }*/
-  }
 
   /* istanbul ignore next */
   ngOnDestroy() {
@@ -106,12 +91,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       this.storeId();
         console.log(swiper.activeIndex);
         activeIndex = swiper.activeIndex;
-        // TODO Determine if we are swiping left(activeIndex -1) or right (activeIndex +1) on slides
         console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
-        // const nextPick3DrawDate = this.pick3DrawDateDecks[activeIndex];
         const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-        /* console.log(`HomePage.initializePick3DrawDateCard() method activeIndex:${activeIndex}, (${activeIndex} + 1) = ${activeIndex + 1}`);*/
-
         if (activeIndex <= 6) {
           this.cardContextService.addContext({
             slideNumber: activeIndex + 1,
@@ -119,13 +100,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
             defaultDrawDateTime: this.default.drawDateTime,
             drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1)
           });
-        } else {
-          /*this.cardContextService.addContext({
-              slideNumber: 7,
-              data: pick3DrawDateDecks[6],
-              defaultDrawDateTime: this.default.drawDateTime,
-              drawTimes: this.appService.getPick3DrawTimeCards(7)
-          });*/
         }
     }
   }
