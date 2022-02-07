@@ -1,27 +1,28 @@
 <ion-content [fullscreen]="true" class="scroll-content">
-    <ion-slides pages [options]="slideOpts" #pick3DrawDateCards
-                (ionSlideTransitionStart)="initializePick3DrawDateCard($event)"
-                (ionSlidesDidLoad)="initializePick3DrawDateCards($event)">
-        <ion-slide  style="background-color: white;">
-            <ion-router-outlet name="card-page-1"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-2"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-3"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-4"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-5"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-6"></ion-router-outlet>
-        </ion-slide>
-        <ion-slide style="background-color: white;">
-            <ion-router-outlet name="card-page-7"></ion-router-outlet>
-        </ion-slide>
-    </ion-slides>
+
+  <swiper #pick3DrawDateCards [slidesPerView]="1" style="height: 100%" (slideChange)="initializePick3DrawDateCard($event)"
+          (afterInit)="initializePick3DrawDateCards($event)">
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-1"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-2"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-3"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-4"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-5"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-6"></ion-router-outlet>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-router-outlet name="card-page-7"></ion-router-outlet>
+    </ng-template>
+  </swiper>
+
 </ion-content>

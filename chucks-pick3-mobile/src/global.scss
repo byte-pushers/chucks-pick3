@@ -30,6 +30,11 @@
 @import "../src/scss/draw-time-cards";
 @import "../src/scss/app-ui";
 
+@import '~swiper/scss';
+@import '~swiper/scss/navigation';
+@import '~swiper/scss/pagination';
+
+
 .results-not-available {
   --background: #ffd743;
   font-weight: 200;

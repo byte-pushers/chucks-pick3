@@ -19,49 +19,51 @@ import {Pick3DrawDateInfoSection} from './components/pick3-draw-date-info-sectio
 import {CardPageModule} from './pages/card/card.page.module';
 import {ViewPageModule} from './pages/view/view.module';
 import {NumberUtilityService} from './services/numberUtility.service';
+import {SwiperModule} from "swiper/angular";
 
 export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LanguagePopoverComponent,
-        Pick3DrawDateInfoSection
-    ],
-    entryComponents: [],
-    imports: [
-        BrowserModule,
-        IonicModule.forRoot(),
-        AppRoutingModule,
-        HttpClientModule,
-        HomePageModule,
-        GeneratePageModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient]
-            }
-        }),
-        CardPageModule,
-        ViewPageModule
-    ],
-    providers: [
-        StatusBar,
-        SplashScreen,
-        CardContextService,
-        NumberUtilityService,
-        AppService,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-        {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
-        /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LanguagePopoverComponent,
+    Pick3DrawDateInfoSection
+  ],
+  entryComponents: [],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    HomePageModule,
+    GeneratePageModule,
+    HttpClientModule,
+    SwiperModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+    CardPageModule,
+    ViewPageModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    CardContextService,
+    NumberUtilityService,
+    AppService,
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    {provide: Pick3WebScrapingProviderService, useClass: Pick3WebScrapingProviderService},
+    /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor() {
-    }
+  constructor() {
+  }
 }
