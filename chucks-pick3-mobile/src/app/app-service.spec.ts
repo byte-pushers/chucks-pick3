@@ -132,10 +132,6 @@ describe('AppService', () => {
         showCountDownToDrawing: false
       })
     ];
-
-    it('should include only 7 cards',  () => {
-      // should check to see if the amount of pick3drawdate cards equal to 7.
-    });
   });
 
   // getSlideDate()

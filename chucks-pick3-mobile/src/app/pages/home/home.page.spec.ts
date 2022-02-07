@@ -47,13 +47,6 @@ describe('HomePage', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
-  it('should check to see if the last initialized slide was 7', () => {
-    if (component.slidesLoaded) {
-      console.log(component.ionSlides.getActiveIndex.length);
-    }
-    expect(component.ionSlides.getActiveIndex.length).toBeLessThanOrEqual(7);
-  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -66,22 +59,5 @@ describe('HomePage', () => {
     const idSpy = spyOn(appService, 'dispatchCurrentDrawCardIdEvent');
     component.passIdToGenerate(7);
     expect(idSpy).toHaveBeenCalled();
-  });
-
-  it('should check if getActiveIndex was called', () => {
-    const ionSlidesSpy = spyOn(component.ionSlides, 'getActiveIndex').and.callThrough();
-    component.storeId();
-    expect(ionSlidesSpy).toHaveBeenCalled();
-  });
-  it('should go into popover.present', () => {
-    let popoverSpy = spyOn(popover, 'create').and.callThrough();
-    component.showPopover(onclick);
-    expect(popoverSpy).toHaveBeenCalled();
-  });
-
-  it('should f', () => {
-    spyOn(component, 'passIdToGenerate');
-    component.storeId();
-    expect(component.ionSlides.getActiveIndex).toBeDefined();
   });
 });
