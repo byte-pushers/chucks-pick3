@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-cd .. && npm test
+ cd chucks-pick3-mobile || exit
+ npm test
