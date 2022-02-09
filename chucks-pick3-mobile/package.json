@@ -18,11 +18,6 @@
       "npm run prettier:check"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "cd chucks-pick3-mobile && lint-staged"
-    }
-  },
   "private": true,
   "dependencies": {
     "@angular/common": "~12.1.1",
