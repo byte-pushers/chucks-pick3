@@ -13,10 +13,13 @@
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\"",
     "prepare": "cd .. && husky install chucks-pick3-mobile/.husky"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cd .. && lint-staged && pretty-quick --staged"
+    }
+  },
   "lint-staged": {
-    "src/**/*.{ts,css,html}": [
-      "npm run prettier:check"
-    ]
+    "*.js": "eslint --cache --fix"
   },
   "private": true,
   "dependencies": {
