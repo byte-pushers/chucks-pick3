@@ -20,7 +20,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm test"
+      "pre-commit": "cd chucks-pick3-mobile && lint-staged"
     }
   },
   "private": true,
@@ -64,7 +64,7 @@
     "@types/node": "^12.20.33",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-    "eslint": "^7.6.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
     "eslint-plugin-prefer-arrow": "1.2.2",

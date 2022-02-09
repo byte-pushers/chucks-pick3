@@ -2,4 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
  cd chucks-pick3-mobile || exit
- npm test
+ ng test --no-watch --code-coverage
+ npx pretty-quick --staged
