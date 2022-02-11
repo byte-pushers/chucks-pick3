@@ -4,3 +4,4 @@
  cd chucks-pick3-mobile || exit
  ng test --no-watch --code-coverage
  npx pretty-quick --staged
+ npx commitlint --edit
