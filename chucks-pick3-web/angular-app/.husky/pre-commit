@@ -1,7 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
- cd chucks-pick3-mobile || exit
- ng test --no-watch --code-coverage
+ cd chucks-pick3-web/angular-app || exit
  npx pretty-quick --staged
  npx commitlint --edit
