@@ -3,3 +3,4 @@
 
  cd chucks-pick3-web/angular-app || exit
  npx pretty-quick --staged
+ npx commitlint --edit
