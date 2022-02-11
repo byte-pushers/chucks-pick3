@@ -7,7 +7,17 @@
     "build": "ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "webdriver": "webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false"
+    "webdriver": "webdriver-manager update --versions.chrome 74.0.3729.6 --gecko false",
+    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\"",
+    "prepare": "cd ../.. && husky install chucks-pick3-web/angular-app/.husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cd ../.. && lint-staged && pretty-quick --staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   },
   "private": true,
   "dependencies": {
@@ -42,10 +52,13 @@
     "@angular/compiler-cli": "^12.0.0-next.1",
     "@angular/language-service": "^12.0.0-next.1",
     "@angular/localize": "^12.0.0-next.1",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@types/jasmine": "^3.6.4",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "husky": "^7.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.0.0",
@@ -53,6 +66,7 @@
     "karma-coverage-istanbul-reporter": "^2.1.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lint-staged": "^12.3.3",
     "protractor": "^5.4.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
