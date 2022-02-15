@@ -24,6 +24,7 @@ import { DrawDateService } from '../../services/draw-date.service';
 import { Subscription } from 'rxjs';
 import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
 import { publish } from 'rxjs/operators';
+import { error } from 'protractor';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -90,6 +91,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       this.slideNumberClass = false;
     }
   }
+
   /* istanbul ignore next */
   ionViewDidEnter() {
     console.log(`Pick3DrawDateInfoSection.ionViewDidEnter(): `);
@@ -203,6 +205,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     );
   }
+
   /* istanbul ignore next */
   ngOnDestroy(): void {
     console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
@@ -233,6 +236,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     return await popover.present();
   }
+
   /* istanbul ignore next */
   private setData(
     drawState: string,
@@ -294,6 +298,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       pick3DrawTimeCard.showCountDownToDrawing = true;
     }
   }
+
   /* istanbul ignore next */
   private getCurrentDrawTimeIcon(pick3DrawTime: Pick3DrawTime): string {
     let pick3DrawTimeCard: Pick3DrawTimeCard;
@@ -324,6 +329,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       ? null
       : pick3DrawTimeCard.getIcon();
   }
+
   /* istanbul ignore next */
   private setDrawState(
     pick3DrawDateCard: Pick3DrawDateCard,
@@ -346,6 +352,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     }
   }
+
   /* istanbul ignore next */
   private getPastWinningDrawingNumber(
     drawState: string,
@@ -374,19 +381,36 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           /*this.selectedWinningNumbers = winningNumber;*/
         },
         (error) => {
-          // TODO: Handle error.
-          console.error('TODO: Handle error: ' + error, error);
-          this.toastService.presentToast(
-            'Internal Error',
-            'Please try again later.',
-            'internet-not-available'
-          );
-          this.drawDateCardUnavailable = true;
           this.showCountDownToDrawing = true;
+          // TODO: Handle error.
+          const errorDate = this.retrieveDay(pick3DrawDateTime);
+
+          this.checkIfErrorToastIsDisplayed(errorDate);
+          console.error('TODO: Handle error: ' + error, error);
+
           this.setCardState(null, pick3DrawTimeType);
         }
       );
   }
+
+  private retrieveDay(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+
+  private checkIfErrorToastIsDisplayed(errorDate) {
+    if (errorDate !== 'Sunday') {
+      this.drawDateCardUnavailable = false;
+      this.toastService.presentToast(
+        'Internal Error',
+        'Please try again later.',
+        'internet-not-available'
+      );
+    } else {
+      this.drawDateCardUnavailable = true;
+    }
+  }
+
   /* istanbul ignore next */
   private getCurrentWinningDrawingNumber(
     drawState: string,
@@ -415,6 +439,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         }
       );
   }
+
   /* istanbul ignore next */
   private setCardState(
     winningNumber: any,
@@ -483,6 +508,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     }
   }
+
   /* istanbul ignore next */
   public switchDrawDateButtons(drawDateButtonString: any) {
     const drawDateButtonValue =
@@ -490,6 +516,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.drawStateService.generateNavigationChoice = drawDateButtonValue;
     this.drawStateService.viewNavigationChoice = drawDateButtonValue;
   }
+
   /* istanbul ignore next */
   private disableButtonOnCard(slideNumber) {
     if (slideNumber < 6) {
@@ -498,6 +525,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       this.switchDrawDateButtons('viewPicksDisabled');
     }
   }
+
   public returnToPreviousPage() {
     this.navCtrl.pop();
   }
