@@ -25,6 +25,7 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
 import { publish } from 'rxjs/operators';
 import { error } from 'protractor';
+import { StateDrawDateService } from '../../services/state-draw-date.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -67,7 +68,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private pick3WebScrappingService: Pick3WebScrapingProviderService,
     private appService: AppService,
     private popoverController: PopoverController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private stateDrawDate: StateDrawDateService
   ) {
     this.routerUrl = this.router.url;
 
@@ -384,8 +386,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.showCountDownToDrawing = true;
           // TODO: Handle error.
           const errorDate = this.retrieveDay(pick3DrawDateTime);
-
           this.checkIfErrorToastIsDisplayed(errorDate);
+
           console.error('TODO: Handle error: ' + error, error);
 
           this.setCardState(null, pick3DrawTimeType);
@@ -399,7 +401,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   private checkIfErrorToastIsDisplayed(errorDate) {
-    if (errorDate !== 'Sunday') {
+    if (
+      errorDate !==
+      this.stateDrawDate.checkDateStateIsClosed(this.data.getDrawState())
+    ) {
       this.drawDateCardUnavailable = false;
       this.toastService.presentToast(
         'Internal Error',
