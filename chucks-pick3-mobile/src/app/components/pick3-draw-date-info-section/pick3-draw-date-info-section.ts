@@ -388,7 +388,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           const errorDate = this.retrieveDay(pick3DrawDateTime);
           this.checkIfErrorToastIsDisplayed(errorDate);
 
-          console.error('TODO: Handle error: ' + error, error);
+          console.error('TODO:: Handle error: ' + error, error);
 
           this.setCardState(null, pick3DrawTimeType);
         }
