@@ -83,7 +83,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         )[0];
       } catch (error) {
         /* istanbul ignore if */
-        if (this.id >= 1 && this.id <= 7) {
+        if (this.id >= 1 && this.id <= 8) {
           throw error;
         }
       }
@@ -323,7 +323,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           }
         });
     } catch (error) {
-      if (this.id >= 1 && this.id <= 7) {
+      if (this.id >= 1 && this.id <= 8) {
         throw error;
       }
     }
@@ -349,7 +349,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           }
         });
     } catch (error) {
-      if (this.id >= 1 && this.id <= 7) {
+      if (this.id >= 1 && this.id <= 8) {
         throw error;
       }
     }

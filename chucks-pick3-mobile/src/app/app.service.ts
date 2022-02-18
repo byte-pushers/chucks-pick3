@@ -22,6 +22,7 @@ export class AppService {
   private card5: Pick3DrawDateCard;
   private card6: Pick3DrawDateCard;
   private card7: Pick3DrawDateCard;
+  private card8: Pick3DrawDateCard;
   private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
   private pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
 
@@ -98,6 +99,15 @@ export class AppService {
         drawDate: this.getSlideDate(7),
       },
     });
+    this.card8 = new Pick3DrawDateCardDomain({
+      ...Pick3DrawDateCardDomain.DEFAULT_CONFIG,
+      ...{
+        slideNumber: 8,
+        backgroundImageUrl: this.getBackgroundImageUrl(),
+        drawState: this.getDrawState(),
+        drawDate: this.getSlideDate(8),
+      },
+    });
     this.pick3DrawDateDecks = [
       this.card1,
       this.card2,
@@ -106,6 +116,7 @@ export class AppService {
       this.card5,
       this.card6,
       this.card7,
+      this.card8,
     ];
     this.pick3DrawTimeCards = [
       new Pick3DrawTimeCardDomain({
@@ -204,6 +215,9 @@ export class AppService {
     const slideDate: Date = new Date();
 
     switch (slideNumber) {
+      case 8:
+        slideDate.setDate(slideDate.getDate() + 1);
+        break;
       case 7:
         break;
       case 6:
