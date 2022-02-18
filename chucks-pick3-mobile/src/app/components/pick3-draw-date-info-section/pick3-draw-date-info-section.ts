@@ -193,6 +193,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           const pick3DrawDateCard = this.appService.getPick3DrawDateCard(
             context.slideNumber
           );
+          console.log(this.drawTimeCard);
           const currentPick3DrawTimeCard = this.drawTimeCard
             ? this.drawTimeCard
             : this.defaultDrawTimeCard;
