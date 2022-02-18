@@ -83,7 +83,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         )[0];
       } catch (error) {
         /* istanbul ignore if */
-        if (this.id >= 1 && this.id <= 8) {
+        if (this.id >= 1 && this.id <= 7) {
           throw error;
         }
       }
@@ -193,7 +193,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           const pick3DrawDateCard = this.appService.getPick3DrawDateCard(
             context.slideNumber
           );
-          console.log(this.drawTimeCard);
           const currentPick3DrawTimeCard = this.drawTimeCard
             ? this.drawTimeCard
             : this.defaultDrawTimeCard;
@@ -324,7 +323,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           }
         });
     } catch (error) {
-      if (this.id >= 1 && this.id <= 8) {
+      if (this.id >= 1 && this.id <= 7) {
         throw error;
       }
     }
@@ -350,7 +349,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           }
         });
     } catch (error) {
-      if (this.id >= 1 && this.id <= 8) {
+      if (this.id >= 1 && this.id <= 7) {
         throw error;
       }
     }
