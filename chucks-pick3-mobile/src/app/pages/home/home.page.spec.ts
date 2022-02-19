@@ -61,8 +61,8 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have the default prevActiveIndex set to 8', () => {
-    expect(component.prevActiveIndex).toEqual(8, 'default is not 7');
+  it('should have the default prevActiveIndex set to 7', () => {
+    expect(component.prevActiveIndex).toEqual(7, 'default is not 7');
   });
 
   it('should pass the id number to the appService', () => {
