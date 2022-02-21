@@ -39,6 +39,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(
     Pick3DrawDateCardDomain.DEFAULT_CONFIG
   );
+  public tomorrowUnavailableDate: Date;
   public defaultDrawDateTime: Pick3DrawTimeEnum;
   public showCountDownToDrawing = false;
   public drawDateCardUnavailable = false;
@@ -383,6 +384,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           /*this.selectedWinningNumbers = winningNumber;*/
         },
         (error) => {
+          this.setUpNextDate(this.data.drawDate);
           this.showCountDownToDrawing = true;
           // TODO: Handle error.
           const errorDate = this.retrieveDay(pick3DrawDateTime);
@@ -401,6 +403,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   private checkIfErrorToastIsDisplayed(errorDate) {
+    console.log(errorDate);
     if (
       errorDate !==
       this.stateDrawDate.checkDateStateIsClosed(this.data.getDrawState())
@@ -435,6 +438,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         (error) => {
           // TODO: Handle error.
           console.warn('TODO: Handle error: ' + error, error);
+          this.drawDateCardUnavailable = false;
+
           this.toastService.presentToast(
             'Results Not Available',
             'Please try again later.',
@@ -533,5 +538,11 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   public returnToPreviousPage() {
     this.navCtrl.pop();
+  }
+
+  private setUpNextDate(drawDate) {
+    let tomorrow = new Date();
+    tomorrow.setDate(drawDate.getDate() + 1);
+    this.tomorrowUnavailableDate = tomorrow;
   }
 }
