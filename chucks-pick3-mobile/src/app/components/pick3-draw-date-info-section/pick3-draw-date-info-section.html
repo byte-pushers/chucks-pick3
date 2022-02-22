@@ -163,7 +163,10 @@
                 [end]="data.drawDate"
               ></countdown-timer>
               <div style="color: red" *ngIf="drawDateCardUnavailable === true">
-                {{'day.not.available' | translate}}
+                <p>{{'day.not.available' | translate}}</p>
+                <countdown-timer
+                  [end]="tomorrowUnavailableDate"
+                ></countdown-timer>
               </div>
             </div>
           </div>
