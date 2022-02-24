@@ -41,8 +41,6 @@
   display: inline-block;
   width: 40%;
 
-
-
   > ion-icon.selected {
     color: $chucksPick3Black;
   }
@@ -63,7 +61,7 @@
 }
 
 .time-of-day-text {
- float: left;
+  float: left;
   vertical-align: middle;
   font-size: 7.6vw;
   font-weight: 700;
@@ -123,5 +121,3 @@
   background-color: $chucksPick3Green;
   width: 32%;
 }
-
-

@@ -1,0 +1,85 @@
+<ion-row class="drawing-time" style="z-index: 99; display: block; height: 70%">
+  <div style="height: 50%" #continue>
+    <div class="generate-options-title">Previous Drawing Date:</div>
+    <ion-row class="generate-picks-button-section">
+      <ion-col id="yesterdayPreviousDrawingDate">
+        <button
+          id="yesterday"
+          #yesterdayPreviousDrawingDate
+          class="confirmation-button"
+          (click)="
+            selectDrawingDateMenuItemForYesterday(
+              yesterdayPreviousDrawingDate,
+              todayPreviousDrawingDate
+            )
+          "
+        >
+          Yesterday
+        </button>
+      </ion-col>
+      <ion-col id="todayPreviousDrawingDate">
+        <button
+          id="today"
+          #todayPreviousDrawingDate
+          class="confirmation-button"
+          (click)="
+            selectDrawingDateMenuItemForToday(
+              todayPreviousDrawingDate,
+              yesterdayPreviousDrawingDate
+            )
+          "
+          style="background-color: #2fdf75"
+        >
+          Today
+        </button>
+      </ion-col>
+    </ion-row>
+    <div class="generate-options-title">Previous Drawing Time:</div>
+    <form #generateForm="ngForm" (ngSubmit)="logForm()">
+      <ion-row class="generate-picks-button-section">
+        <ion-item class="ion-no-padding" style="width: 100%">
+          <ion-select
+            class="timeOfDayDropDown"
+            name="continueChoice"
+            [(ngModel)]="continueChoice"
+            placeholder="Select a Time of Day"
+            style="
+              width: 100%;
+              height: 4.5em;
+              margin-left: 2em;
+              text-align: center;
+            "
+            interface="action-sheet"
+            (ionChange)="selectDrawingTimeCard(continueChoice)"
+          >
+            <ion-select-option
+              *ngFor="let drawTime of drawTimes"
+              [value]="drawTime"
+            >
+              {{ drawTime.getTitle() | translate }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <button
+          id="continueButton"
+          [disabled]="continueButton"
+          [class.continue-button]="continueButton"
+          class="continue-button-enabled confirmation-button"
+          [value]="continueButton"
+          type="submit"
+          (click)="setDrawDateButtons('gotoGenerateNumber')"
+          [routerLink]="['/', 'generate']"
+          [state]="{
+            currentSlideNumber: this.currentDrawingCard?.getPick3DrawCardId(),
+            currentDay: this.currentDrawingCard?.getDateTime()
+          }"
+          routerDirection="forward"
+        >
+          Continue
+        </button>
+      </ion-row>
+    </form>
+  </div>
+</ion-row>

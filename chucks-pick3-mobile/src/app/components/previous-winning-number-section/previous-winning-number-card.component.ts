@@ -149,14 +149,12 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  public setDrawingTimeMenuItems(
-    targetCurrentDate: Date,
-    slideNumber: number
-  ): void {
-    const currentPick3DrawTimeCard =
-      this.appService.getPick3DrawTimeCards(slideNumber);
+  public setDrawingTimeMenuItems(pick3DrawDateCard): void {
+    const targetCurrentDate = pick3DrawDateCard.getDrawDate();
     if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
-      this.drawTimes = currentPick3DrawTimeCard;
+      this.drawTimes = this.appService.getPick3DrawTimeCards(
+        pick3DrawDateCard.slideNumber
+      );
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
@@ -166,7 +164,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.selectCurrentCard(this.drawTimes);
       }
     } else {
-      this.drawTimes = currentPick3DrawTimeCard;
+      this.drawTimes = this.appService.getPick3DrawTimeCards(
+        pick3DrawDateCard.slideNumber
+      );
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
@@ -210,18 +210,21 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       someDateTime.getDate() - 1,
       someDateTime.getHours()
     );
+    const previousPick3DrawDateCard =
+      this.appService.getPreviousWinningNumber(yesterdaysDate);
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
     this.appService.pick3CardId = 6;
-    this.setDrawingTimeMenuItems(yesterdaysDate, 6);
+    this.setDrawingTimeMenuItems(previousPick3DrawDateCard);
   }
 
   public selectDrawingDateMenuItemForToday(today: any, yesterday: any): void {
     const currentDate = new Date();
     today.style.backgroundColor = '#2fdf75';
     yesterday.style.backgroundColor = '#e5e5e5';
-    this.appService.pick3CardId = 7;
-    this.setDrawingTimeMenuItems(currentDate, 7);
+    const todaysPick3DrawDateCard =
+      this.appService.getPreviousWinningNumber(currentDate);
+    this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
   }
   /* istanbul ignore next */
   public setDrawDateButtons(drawDateButtonString: any): void {

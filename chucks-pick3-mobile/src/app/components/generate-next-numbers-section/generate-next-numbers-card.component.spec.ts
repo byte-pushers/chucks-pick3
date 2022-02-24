@@ -12,7 +12,7 @@ import { I18nService } from '../../services/i18n.service';
 import { AppService } from '../../app.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { DrawDateService } from '../../services/draw-date.service';
-import { PreviousWinningNumberCardComponent } from '../previous-winning-number-card/previous-winning-number-card.component';
+import { PreviousWinningNumberCardComponent } from '../previous-winning-number-section/previous-winning-number-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrawStateService } from '../../services/draw-state.service';
 import { Router } from '@angular/router';
@@ -96,7 +96,7 @@ describe('GenerateNextNumbersCardComponent', () => {
 
   it('should generate numbers', () => {
     component.submitGenerate();
-    expect(component.pick3CardToGenerate.pick3DrawTimeArray).toBeDefined();
+    expect(component.pick3CardToGenerate).toBeDefined();
   });
 
   it('should retrieve a next date', () => {
@@ -108,7 +108,7 @@ describe('GenerateNextNumbersCardComponent', () => {
       0,
       0
     );
-    component.setDrawingTimeMenuItems(tomorrowFullDate, 8);
+    component.setDrawingTimeMenuItems(tomorrowFullDate, 7);
     expect(component.newDrawingTimes).toBeDefined();
   });
 

@@ -4,7 +4,7 @@ import { CardPage } from './card.page';
 import { Pick3DrawDateInfoSection } from '../../components/pick3-draw-date-info-section/pick3-draw-date-info-section';
 import { Pick3DrawTimeInfoSectionComponent } from '../../components/pick3-draw-time-info-section/pick3-draw-time-info-section.component';
 import { ViewPicksCardComponent } from '../../components/view-picks-card/view-picks-card.component';
-import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-card/previous-winning-number-card.component';
+import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-section/previous-winning-number-card.component';
 import { GeneratePage } from '../generate/generate.page';
 
 const routes: Routes = [

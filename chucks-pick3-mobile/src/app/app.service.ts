@@ -9,6 +9,7 @@ import { Pick3StateLottery } from './models/pick3-state-lottery';
 import { Pick3DrawTime } from './models/pick3-draw-time';
 import { DrawTimeService } from './services/draw-time.service';
 import { Subject } from 'rxjs';
+import { error } from 'protractor';
 
 @Injectable()
 export class AppService {
@@ -22,7 +23,6 @@ export class AppService {
   private card5: Pick3DrawDateCard;
   private card6: Pick3DrawDateCard;
   private card7: Pick3DrawDateCard;
-  private card8: Pick3DrawDateCard;
   private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
   private pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
 
@@ -99,15 +99,6 @@ export class AppService {
         drawDate: this.getSlideDate(7),
       },
     });
-    this.card8 = new Pick3DrawDateCardDomain({
-      ...Pick3DrawDateCardDomain.DEFAULT_CONFIG,
-      ...{
-        slideNumber: 8,
-        backgroundImageUrl: this.getBackgroundImageUrl(),
-        drawState: this.getDrawState(),
-        drawDate: this.getSlideDate(8),
-      },
-    });
     this.pick3DrawDateDecks = [
       this.card1,
       this.card2,
@@ -116,7 +107,6 @@ export class AppService {
       this.card5,
       this.card6,
       this.card7,
-      this.card8,
     ];
     this.pick3DrawTimeCards = [
       new Pick3DrawTimeCardDomain({
@@ -215,9 +205,6 @@ export class AppService {
     const slideDate: Date = new Date();
 
     switch (slideNumber) {
-      case 8:
-        slideDate.setDate(slideDate.getDate() + 1);
-        break;
       case 7:
         break;
       case 6:
@@ -293,5 +280,18 @@ export class AppService {
 
   public dispatchCurrentDrawCardIdEvent(someCardId: number) {
     this.pick3DrawCardIdSource.next(someCardId);
+  }
+
+  // TODO getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard | Error
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public getPreviousWinningNumber(someDate: Date): Pick3DrawDateCard | Error {
+    const pick3DrawDateCard = this.pick3DrawDateDecks.find(
+      (pick3DrawDateDeck) =>
+        pick3DrawDateDeck.drawDate.getDate() === someDate.getDate()
+    );
+    const pick3CardId = pick3DrawDateCard.getSlideNumber();
+
+    return this.getPick3DrawDateCard(pick3CardId);
   }
 }
