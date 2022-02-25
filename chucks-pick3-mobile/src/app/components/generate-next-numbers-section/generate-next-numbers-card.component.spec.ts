@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
 import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
+import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 
 describe('GenerateNextNumbersCardComponent', () => {
   const date = new Date();
@@ -55,6 +56,7 @@ describe('GenerateNextNumbersCardComponent', () => {
         HttpClientTestingModule,
       ],
       providers: [
+        TomorrowPick3DrawDateCardService,
         AppService,
         Pick3WebScrapingProviderService,
         DrawStateService,
@@ -108,7 +110,7 @@ describe('GenerateNextNumbersCardComponent', () => {
       0,
       0
     );
-    component.setDrawingTimeMenuItems(tomorrowFullDate, 7);
+    component.setDrawingTimeMenuItems(model);
     expect(component.newDrawingTimes).toBeDefined();
   });
 

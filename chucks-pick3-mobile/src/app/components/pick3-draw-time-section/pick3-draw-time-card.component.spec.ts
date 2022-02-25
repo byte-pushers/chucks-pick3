@@ -87,6 +87,7 @@ describe('Pick3DrawTimeCardComponent', () => {
     // @ts-ignore
     const setDrawingTimeCardColorIndicatorsSpy = spyOn(
       component,
+      // @ts-ignore
       'setDrawingTimeCardColorIndicators'
     );
     component.ngDoCheck();
@@ -98,6 +99,7 @@ describe('Pick3DrawTimeCardComponent', () => {
     // @ts-ignore
     const setDrawingTimeCardColorIndicatorsSpy = spyOn(
       component,
+      // @ts-ignore
       'setDrawingTimeCardColorIndicators'
     );
     component.ngDoCheck();

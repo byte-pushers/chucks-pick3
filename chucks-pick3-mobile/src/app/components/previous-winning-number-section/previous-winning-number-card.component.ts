@@ -214,7 +214,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       this.appService.getPreviousWinningNumber(yesterdaysDate);
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
-    this.appService.pick3CardId = 6;
     this.setDrawingTimeMenuItems(previousPick3DrawDateCard);
   }
 

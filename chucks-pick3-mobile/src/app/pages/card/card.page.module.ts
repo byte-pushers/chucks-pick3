@@ -32,10 +32,9 @@ export function createTranslateLoader(http: HttpClient) {
     }),
   ],
   providers: [I18nService],
-  exports: [CardPage, CountdownTimerComponent],
+  exports: [CardPage],
   declarations: [
     CardPage,
-    CountdownTimerComponent,
     Pick3DrawTimeCardComponent,
     Pick3DrawTimeInfoSectionComponent,
   ],

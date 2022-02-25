@@ -107,8 +107,6 @@ export class HomePage implements OnDestroy {
     }
   }
 
-  aaa() {}
-
   public storeId() {
     let activeIndex;
     if (this.swiper.activeIndex) {

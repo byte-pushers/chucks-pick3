@@ -17,6 +17,7 @@ import { AppService } from '../../app.service';
 import { NavigationEnum } from '../../models/navigate.enum';
 import { Subscription } from 'rxjs';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
+import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -45,6 +46,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private drawDateService: DrawDateService,
     private drawTimeService: DrawTimeService,
     private appService: AppService,
+    private tomorrowService: TomorrowPick3DrawDateCardService,
     private router: Router,
     private drawStateService: DrawStateService,
     private pick3WebScrappingService: Pick3WebScrapingProviderService
@@ -77,8 +79,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     );
     tomorrow.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
-    this.appService.pick3CardId = 8;
-    this.setDrawingTimeMenuItems(tomorrowFullDate, 8);
+    const nextPick3DrawDateCard =
+      this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
+    this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
   public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
@@ -93,18 +96,17 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     );
     today.style.backgroundColor = '#2fdf75';
     tomorrow.style.backgroundColor = '#e5e5e5';
-    this.appService.pick3CardId = 7;
-    this.setDrawingTimeMenuItems(todayFullDate, 7);
+    const nextPick3DrawDateCard =
+      this.appService.getPreviousWinningNumber(todayFullDate);
+    this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
-  public setDrawingTimeMenuItems(
-    targetCurrentDate: Date,
-    slideNumber: number
-  ): void {
-    const currentPick3DrawTimeCard =
-      this.appService.getPick3DrawTimeCards(slideNumber);
+  public setDrawingTimeMenuItems(pick3DrawDateCard): void {
+    const targetCurrentDate = pick3DrawDateCard.getDrawDate();
     if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
-      this.drawTimes = currentPick3DrawTimeCard;
+      this.drawTimes = this.appService.getPick3DrawTimeCards(
+        pick3DrawDateCard.slideNumber
+      );
       this.resetDrawingTimes();
       const drawTimes = this.sortDrawTimes(this.drawTimes);
       for (const drawTime of drawTimes) {
@@ -112,7 +114,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
       }
     } else {
-      this.drawTimes = currentPick3DrawTimeCard;
+      this.drawTimes = this.appService.getPick3DrawTimeCards(
+        pick3DrawDateCard.slideNumber
+      );
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.selectDrawingTimeCard(drawTime);
