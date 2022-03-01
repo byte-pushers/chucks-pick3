@@ -106,7 +106,7 @@ export class HomePage implements OnDestroy {
       }
     }
   }
-
+  /* istanbul ignore next */
   public storeId() {
     let activeIndex;
     if (this.swiper.activeIndex) {

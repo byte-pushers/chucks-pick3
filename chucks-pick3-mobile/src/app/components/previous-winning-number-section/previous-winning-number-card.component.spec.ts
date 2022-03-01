@@ -100,9 +100,31 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(setDrawingTimeMenuItemsSpy).toHaveBeenCalled();
   });
 
+  /*  it('should call setDrawingTimeMenuItems', () => {
+    const setDrawingTimeMenuItemsForClosedDaySpy = spyOn(
+      component,
+      'setDrawingTimeMenuItemsForClosedDay'
+    );
+    const today: HTMLElement = document.getElementById('today');
+    const yesterday: HTMLElement = document.getElementById('yesterday');
+    component.selectDrawingDateMenuItemForYesterday(yesterday, today);
+    expect(setDrawingTimeMenuItemsForClosedDaySpy).toHaveBeenCalled();
+  });*/
+
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
     component.setDrawingTimeMenuItems(model);
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
+  it('should  call resetDrawingTimes', () => {
+    const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
+    component.setDrawingTimeMenuItemsForClosedDay(model);
+    expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
+  it('should  define newDrawingTimes', () => {
+    component.setDrawingTimeMenuItemsForClosedDay(model);
+    expect(component.newDrawingTimes).toBeDefined();
   });
 });

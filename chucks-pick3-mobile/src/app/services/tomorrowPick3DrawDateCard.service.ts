@@ -95,7 +95,38 @@ export class TomorrowPick3DrawDateCardService {
   public winningNumberHasBeenDrawn(pick3DrawTime: Pick3DrawTime): Boolean {
     return this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime);
   }
+  public getPick3DrawTimeCards(
+    slideNumber?: number
+  ): TomorrowPick3DrawTimeCard[] {
+    const pick3DrawTimes = this.pick3DrawTimeCards.map(
+      (drawTime) => new Pick3DrawTimeCardDomain(drawTime)
+    );
 
+    pick3DrawTimes.forEach((drawTime, drawTimeIndex) => {
+      const drawTimeHour = drawTime.getDateTime().getHours();
+      const currentHour = new Date().getHours();
+      const someDrawTime = this.getDrawTime(drawTime.getDateTime());
+
+      if (slideNumber) {
+        const slideDate = this.getSlideDate(slideNumber);
+
+        someDrawTime.getDateTime().setDate(slideDate.getDate());
+        someDrawTime.getDateTime().setMonth(slideDate.getMonth());
+        someDrawTime.getDateTime().setFullYear(slideDate.getFullYear());
+
+        drawTime.setPick3DrawCardId(slideNumber);
+      }
+
+      drawTime.setPick3DrawTime(someDrawTime);
+
+      /*if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
+      console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
+      this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+      }*/
+    });
+
+    return pick3DrawTimes;
+  }
   public getSlideDate(slideNumber): Date {
     const slideDate: Date = new Date();
 

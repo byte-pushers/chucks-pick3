@@ -388,7 +388,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.setUpNextDate(this.data.drawDate);
           this.showCountDownToDrawing = true;
           // TODO: Handle error.
-          const errorDate = this.retrieveDay(pick3DrawDateTime);
+          const errorDate = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
+          console.log(pick3DrawDateTime);
           this.checkIfErrorToastIsDisplayed(errorDate);
 
           console.error('TODO:: Handle error: ' + error, error);
@@ -396,11 +397,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.setCardState(null, pick3DrawTimeType);
         }
       );
-  }
-
-  private retrieveDay(dateStr) {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { weekday: 'long' });
   }
 
   private checkIfErrorToastIsDisplayed(errorDate) {

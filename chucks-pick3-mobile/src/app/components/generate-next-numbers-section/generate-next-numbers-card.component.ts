@@ -114,7 +114,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
       }
     } else {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
+      this.drawTimes = this.tomorrowService.getPick3DrawTimeCards(
         pick3DrawDateCard.slideNumber
       );
       this.resetDrawingTimes();
