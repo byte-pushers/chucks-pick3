@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GeneratePage } from './generate.page';
-import { GenerateNextNumbersCardComponent } from '../../components/generate-next-numbers-section/generate-next-numbers-card.component';
+import { GeneratePage } from '../generate/generate.page';
 import { Pick3GenerateDateSectionComponent } from '../../components/pick3-generate-date-section/pick3-generate-date-section.component';
+import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-section/previous-winning-number-card.component';
+import { PreviousPicksDateSectionComponent } from '../../components/previous-picks-date-section/previous-picks-date-section.component';
 
 const routes: Routes = [
   {
-    path: 'generate-picks',
+    path: 'select-picks',
     component: GeneratePage,
     children: [
       {
         path: '',
         outlet: 'primary',
-        component: Pick3GenerateDateSectionComponent,
+        component: PreviousPicksDateSectionComponent,
       },
       {
         path: '',
         outlet: 'secondary',
-        component: GenerateNextNumbersCardComponent,
+        component: PreviousWinningNumberCardComponent,
       },
     ],
   },
@@ -27,6 +28,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GeneratePageRoutingModule {
+export class PreviousPicksPageRoutingModule {
   constructor() {}
 }
