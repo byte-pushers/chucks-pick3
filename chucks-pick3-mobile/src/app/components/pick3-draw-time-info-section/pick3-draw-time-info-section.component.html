@@ -1,5 +1,12 @@
-<ion-row class="drawing-time" *ngFor="let drawTime of drawTimes" (click)="selectDrawingTimeCard(drawTime)">
-    <ion-col style="padding: 0">
-        <pick3-draw-time-card [data]="drawTime"></pick3-draw-time-card>
-    </ion-col>
+<ion-row
+  class="drawing-time"
+  *ngFor="let drawTime of drawTimes"
+  (click)="selectDrawingTimeCard(drawTime)"
+>
+  <ion-col style="padding: 0">
+    <pick3-draw-time-card
+      id="{{ drawTime.getTitle() }}"
+      [data]="drawTime"
+    ></pick3-draw-time-card>
+  </ion-col>
 </ion-row>
