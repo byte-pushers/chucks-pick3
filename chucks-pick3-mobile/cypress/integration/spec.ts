@@ -3,6 +3,9 @@ const now = new Date();
 
 describe('My First Test', () => {
   // @ts-ignore
+  beforeEach(() => {
+    cy.viewport('iphone-8');
+  });
 
   it('Contains the state', () => {
     cy.visit('/');
@@ -14,8 +17,7 @@ describe('My First Test', () => {
     cy.contains('Day');
   });
 
-  it('clicks on the drawTime button', () => {
-    cy.viewport('iphone-8');
+  it('clicks on the drawTime button for evening', () => {
     cy.get('[id="draw.time.enum.evening"]').click({
       multiple: true,
       force: true,
@@ -24,9 +26,24 @@ describe('My First Test', () => {
 
   it('should search the pick3DrawDateCard ', () => {
     const stringDate = now.toDateString();
-    cy.get('pick3-draw-date-info-section')
-      .find('span')
-      .should('have.class', 'draw-date-text')
-      .contains(stringDate);
+    cy.get('pick3-draw-date-info-section').find('span').contains(stringDate);
+  });
+
+  it('should swipe left', () => {
+    cy.get('.swiper-slide-active')
+      .trigger('pointerdown', { which: 1 })
+      .trigger('pointermove', 'right')
+      .trigger('pointerup', { force: true });
+  });
+
+  it('clicks on the drawTime button for day', () => {
+    cy.get('[id="draw.time.enum.day"]').click({
+      multiple: true,
+      force: true,
+    });
+  });
+  it('should search the pick3DrawDateCard ', () => {
+    const stringDate = now.toDateString();
+    cy.get('pick3-draw-date-info-section').find('span').contains(stringDate);
   });
 });
