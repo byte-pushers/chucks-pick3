@@ -21,6 +21,10 @@ import { ViewPageModule } from './pages/view/view.module';
 import { NumberUtilityService } from './services/numberUtility.service';
 import { SwiperModule } from 'swiper/angular';
 import { StateDrawDateService } from './services/state-draw-date.service';
+import { PreviousPicksPageModule } from './pages/previous-picks/previous-picks.module';
+import { CountdownTimerComponent } from './components/countdown-timer/countdown-timer.component';
+import { CardPage } from './pages/card/card.page';
+import { TomorrowPick3DrawDateCardService } from './services/tomorrowPick3DrawDateCard.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,9 +34,11 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     LanguagePopoverComponent,
+    CountdownTimerComponent,
     Pick3DrawDateInfoSection,
   ],
   entryComponents: [],
+  exports: [CountdownTimerComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -40,6 +46,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     HomePageModule,
     GeneratePageModule,
+    PreviousPicksPageModule,
     HttpClientModule,
     SwiperModule,
     TranslateModule.forRoot({
@@ -58,6 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
     CardContextService,
     NumberUtilityService,
     StateDrawDateService,
+    TomorrowPick3DrawDateCardService,
     AppService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

@@ -8,8 +8,9 @@ import { GeneratePageRoutingModule } from './generate.page.routing.module';
 
 import { GeneratePage } from './generate.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-card/previous-winning-number-card.component';
-import {GenerateNextNumbersCardComponent} from '../../components/generate-next-numbers-card/generate-next-numbers-card.component';
+import { PreviousWinningNumberCardComponent } from '../../components/previous-winning-number-section/previous-winning-number-card.component';
+import { GenerateNextNumbersCardComponent } from '../../components/generate-next-numbers-section/generate-next-numbers-card.component';
+import { Pick3GenerateDateSectionComponent } from '../../components/pick3-generate-date-section/pick3-generate-date-section.component';
 
 @NgModule({
   imports: [
@@ -17,15 +18,14 @@ import {GenerateNextNumbersCardComponent} from '../../components/generate-next-n
     FormsModule,
     IonicModule,
     GeneratePageRoutingModule,
-    TranslateModule
+    TranslateModule,
   ],
   declarations: [
-      GeneratePage,
-      PreviousWinningNumberCardComponent,
-      GenerateNextNumbersCardComponent
-  ]
+    GeneratePage,
+    GenerateNextNumbersCardComponent,
+    Pick3GenerateDateSectionComponent,
+  ],
 })
 export class GeneratePageModule {
-  constructor() {
-  }
+  constructor() {}
 }

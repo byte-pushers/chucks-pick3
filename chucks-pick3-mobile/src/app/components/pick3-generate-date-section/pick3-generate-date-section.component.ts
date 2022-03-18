@@ -1,45 +1,40 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CardContextService } from '../../services/card-context.service';
-import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
-import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
-import { DrawStateService } from '../../services/draw-state.service';
-import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../../services/i18n.service';
-import { Pick3DrawTime } from '../../models/pick3-draw-time';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
-import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
+import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
+import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
+import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
+import { Subscription } from 'rxjs';
+import { CardContextService } from '../../services/card-context.service';
+import { DrawStateService } from '../../services/draw-state.service';
 import { IonicToastNotificationService } from '../../services/ionic-toast-notification.service';
+import { Router } from '@angular/router';
+import { I18nService } from '../../services/i18n.service';
+import { TranslateService } from '@ngx-translate/core';
+import { DrawDateService } from '../../services/draw-date.service';
+import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import { AppService } from '../../app.service';
+import { NavController, PopoverController } from '@ionic/angular';
+import { StateDrawDateService } from '../../services/state-draw-date.service';
+import { Pick3DrawTime } from '../../models/pick3-draw-time';
 import { registerLocaleData } from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
+import { LanguagePopoverComponent } from '../language-popover/language-popover.component';
 import * as BytePushers from 'bytepushers-js-core';
-import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
 import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
 import { NavigationEnum } from '../../models/navigate.enum';
-import { Router } from '@angular/router';
-import { LanguagePopoverComponent } from '../language-popover/language-popover.component';
-import { NavController, PopoverController } from '@ionic/angular';
-import { AppService } from '../../app.service';
-import { DrawDateService } from '../../services/draw-date.service';
-import { Subscription } from 'rxjs';
-import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
-import { publish } from 'rxjs/operators';
-import { error } from 'protractor';
-import { StateDrawDateService } from '../../services/state-draw-date.service';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'pick3-draw-date-info-section',
-  templateUrl: './pick3-draw-date-info-section.html',
-  styleUrls: ['pick3-draw-date-info-section.scss'],
+  selector: 'app-pick3-generate-date-section',
+  templateUrl: './pick3-generate-date-section.component.html',
+  styleUrls: ['./pick3-generate-date-section.component.scss'],
 })
-// tslint:disable-next-line:component-class-suffix
-export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
+export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   public id = -1;
   public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(
     Pick3DrawDateCardDomain.DEFAULT_CONFIG
   );
-  public tomorrowUnavailableDate: Date;
   public defaultDrawDateTime: Pick3DrawTimeEnum;
   public showCountDownToDrawing = false;
   public drawDateCardUnavailable = false;
@@ -76,7 +71,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     if (this.routerUrl === '/home') {
       this.slideNumberClass = true;
-      this.id = ++Pick3DrawDateInfoSection.counter;
+      this.id = ++Pick3GenerateDateSectionComponent.counter;
       /* istanbul ignore next */
       try {
         this.defaultDrawTimeCard = this.appService.getPick3DrawTimeCards(
@@ -221,9 +216,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.cardContextSubscription?.unsubscribe();
 
     if (this.routerUrl === '/home') {
-      Pick3DrawDateInfoSection.counter--;
+      Pick3GenerateDateSectionComponent.counter--;
       console.log(
-        `Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3DrawDateInfoSection.counter}`
+        `Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3GenerateDateSectionComponent.counter}`
       );
     }
   }
@@ -385,11 +380,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           /*this.selectedWinningNumbers = winningNumber;*/
         },
         (error) => {
-          this.setUpNextDate(this.data.drawDate);
           this.showCountDownToDrawing = true;
           // TODO: Handle error.
-          const errorDate = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
-          console.log(pick3DrawDateTime);
+          const errorDate = this.retrieveDay(pick3DrawDateTime);
           this.checkIfErrorToastIsDisplayed(errorDate);
 
           console.error('TODO:: Handle error: ' + error, error);
@@ -399,8 +392,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       );
   }
 
+  private retrieveDay(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+
   private checkIfErrorToastIsDisplayed(errorDate) {
-    console.log(errorDate);
     if (
       errorDate !==
       this.stateDrawDate.checkDateStateIsClosed(this.data.getDrawState())
@@ -435,8 +432,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         (error) => {
           // TODO: Handle error.
           console.warn('TODO: Handle error: ' + error, error);
-          this.drawDateCardUnavailable = false;
-
           this.toastService.presentToast(
             'Results Not Available',
             'Please try again later.',
@@ -535,11 +530,5 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   public returnToPreviousPage() {
     this.navCtrl.pop();
-  }
-
-  private setUpNextDate(drawDate) {
-    let tomorrow = new Date();
-    tomorrow.setDate(drawDate.getDate() + 1);
-    this.tomorrowUnavailableDate = tomorrow;
   }
 }

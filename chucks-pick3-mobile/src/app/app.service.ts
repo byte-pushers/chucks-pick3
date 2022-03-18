@@ -9,6 +9,7 @@ import { Pick3StateLottery } from './models/pick3-state-lottery';
 import { Pick3DrawTime } from './models/pick3-draw-time';
 import { DrawTimeService } from './services/draw-time.service';
 import { Subject } from 'rxjs';
+import { error } from 'protractor';
 
 @Injectable()
 export class AppService {
@@ -279,5 +280,18 @@ export class AppService {
 
   public dispatchCurrentDrawCardIdEvent(someCardId: number) {
     this.pick3DrawCardIdSource.next(someCardId);
+  }
+
+  // TODO getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard | Error
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public getPreviousWinningNumber(someDate: Date): Pick3DrawDateCard | Error {
+    const pick3DrawDateCard = this.pick3DrawDateDecks.find(
+      (pick3DrawDateDeck) =>
+        pick3DrawDateDeck.drawDate.getDate() === someDate.getDate()
+    );
+    const pick3CardId = pick3DrawDateCard.getSlideNumber();
+
+    return this.getPick3DrawDateCard(pick3CardId);
   }
 }

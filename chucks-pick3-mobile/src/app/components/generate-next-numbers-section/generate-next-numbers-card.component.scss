@@ -1,11 +1,9 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
-
 ion-grid {
   height: 100%;
   padding: 0px;
-
 
   ion-row.primary-view {
     height: 15.7em;
@@ -19,7 +17,6 @@ ion-grid {
     @include for-size(iPhoneX) {
       height: 20em;
     }
-
   }
 
   ion-row.drawing-time {
@@ -32,7 +29,6 @@ ion-grid {
       padding: 0px;
     }
   }
-
 }
 
 .draw-date-text {
@@ -47,11 +43,9 @@ ion-grid {
   }
 }
 
-
 .scroll-content {
   overflow-y: hidden;
 }
-
 
 #continue {
   display: block;
@@ -97,8 +91,6 @@ ion-grid {
 
 ion-select {
   height: 95%;
-
-
 }
 
 .confirmation-button {
@@ -108,7 +100,6 @@ ion-select {
   .item-native .item-inner {
     padding: 0px !important;
   }
-
 }
 
 .timeOfDayDropDown {
@@ -149,7 +140,7 @@ ion-select {
   }
 }
 
-.continue-button {
+.generate-button {
   height: 4.9em !important;
   background-color: $chucksPick3Gray !important;
   color: $chucksPick3LightGray !important;
@@ -170,7 +161,7 @@ ion-select {
   }
 }
 
-.continue-button-enabled {
+.generate-button-enabled {
   height: 4.9em !important;
   background-color: $chucksPick3Yellow;
   color: $chucksPick3Black;
@@ -190,6 +181,3 @@ ion-select {
     height: 6.5em !important;
   }
 }
-
-
-

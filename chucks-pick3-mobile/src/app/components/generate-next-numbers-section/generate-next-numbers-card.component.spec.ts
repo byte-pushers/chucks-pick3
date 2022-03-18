@@ -1,43 +1,34 @@
-import {
-  async,
-  ComponentFixture,
-  fakeAsync,
-  inject,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+
+import { GenerateNextNumbersCardComponent } from './generate-next-numbers-card.component';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CardContextService } from '../../services/card-context.service';
+import { NumberUtilityService } from '../../services/numberUtility.service';
+import { I18nService } from '../../services/i18n.service';
 import { AppService } from '../../app.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { DrawDateService } from '../../services/draw-date.service';
+import { PreviousWinningNumberCardComponent } from '../previous-winning-number-section/previous-winning-number-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrawStateService } from '../../services/draw-state.service';
 import { Router } from '@angular/router';
 import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
 import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
-import { Pick3DrawTimeInfoSectionComponent } from './pick3-draw-time-info-section.component';
-import { DrawTimeService } from '../../services/draw-time.service';
-import { of } from 'rxjs';
-import { Pick3DrawTimeCardDomain } from '../../models/pick3-draw-time-card.domain';
-import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
+import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 
-describe('Pick3DrawTimeInfoSectionComponent', () => {
+describe('GenerateNextNumbersCardComponent', () => {
   const date = new Date();
-  let component: Pick3DrawTimeInfoSectionComponent;
-  let fixture: ComponentFixture<Pick3DrawTimeInfoSectionComponent>;
+  let component: GenerateNextNumbersCardComponent;
+  let fixture: ComponentFixture<GenerateNextNumbersCardComponent>;
   let router: Router;
   let drawStateService = DrawStateService;
   let drawDateService: DrawDateService;
-  let drawTimeService: DrawTimeService;
-  let appService: AppService;
   let model;
-  let pick3DrawTimeModel;
   beforeEach(async(() => {
     model = new Pick3DrawDateCardDomain({
       drawDate: date,
@@ -52,20 +43,8 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
       drawDateIcon: date,
       slideNumber: 7,
     });
-    pick3DrawTimeModel = new Pick3DrawTimeCardDomain({
-      pick3DrawCardId: 7,
-      icon: 'Morning',
-      title: 'Morning',
-      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
-      dateTime: new Date(),
-      drawTime: Pick3DrawTimeEnum.MORNING,
-      state: Pick3DrawTimeCardStateEnum.DRAWN,
-      selected: true,
-      showCountDownToDrawing: false,
-      pick3DrawTimeArray: [33, 555, 264, 346, 345],
-    });
     TestBed.configureTestingModule({
-      declarations: [Pick3DrawTimeInfoSectionComponent],
+      declarations: [GenerateNextNumbersCardComponent],
       imports: [
         CommonModule,
         IonicModule.forRoot(),
@@ -77,19 +56,16 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
         HttpClientTestingModule,
       ],
       providers: [
+        TomorrowPick3DrawDateCardService,
         AppService,
         Pick3WebScrapingProviderService,
-        AppService,
         DrawStateService,
-        DrawTimeService,
         DrawDateService,
         CardContextService,
       ],
     }).compileComponents();
     router = TestBed.get(Router);
-    appService = TestBed.get(AppService);
     drawStateService = TestBed.get(DrawStateService);
-    drawTimeService = TestBed.get(DrawTimeService);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
       extras: {
         state: {
@@ -98,11 +74,10 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
         },
       },
     } as any);
-    fixture = TestBed.createComponent(Pick3DrawTimeInfoSectionComponent);
+    fixture = TestBed.createComponent(GenerateNextNumbersCardComponent);
     component = fixture.componentInstance;
     drawDateService = TestBed.get(DrawDateService);
     drawDateService.dispatchCurrentDrawDateCardEvent(model);
-    drawTimeService.setCurrentDrawTimeCard(pick3DrawTimeModel);
     fixture.detectChanges();
   }));
 
@@ -110,17 +85,38 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get and set the currentPick3DrawTimeCard', fakeAsync(() => {
-    component.ngOnInit();
-    expect(component.drawTimes).toBeDefined();
-  }));
-
-  it('should have drawTimes as defined ', () => {
-    component.ngOnInit();
-    expect(component.drawTimes).toBeDefined();
+  it('should call setDrawingTimeMenuItems', () => {
+    const setDrawingTimeMenuItemsSpy = spyOn(
+      component,
+      'setDrawingTimeMenuItems'
+    );
+    const today: HTMLElement = document.getElementById('today');
+    const tomorrow: HTMLElement = document.getElementById('tomorrow');
+    component.selectTomorrowGenerateDrawingDate(tomorrow, today);
+    expect(setDrawingTimeMenuItemsSpy).toHaveBeenCalled();
   });
 
-  /*it('retrieves all the cars', async(  (  ) => {
-    drawTimeService.getPick3DrawTime$().subscribe(result => expect(result.drawTime).toBeGreaterThan(0));
-  }));*/
+  it('should generate numbers', () => {
+    component.submitGenerate();
+    expect(component.pick3CardToGenerate).toBeDefined();
+  });
+
+  it('should retrieve a next date', () => {
+    const tomorrowFullDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 1,
+      0,
+      0,
+      0
+    );
+    component.setDrawingTimeMenuItems(model);
+    expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should have the generateButton = false', () => {
+    component.generateChoice = model;
+    component.enableGenerateButton();
+    expect(component.generateButton).toBeFalse();
+  });
 });
