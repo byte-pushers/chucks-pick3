@@ -43,7 +43,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   public defaultDrawDateTime: Pick3DrawTimeEnum;
   public showCountDownToDrawing = false;
   public drawDateCardUnavailable = false;
-  public pick3GenerateId: number;
   public drawTimeCard: Pick3DrawTimeCard;
   public selectedDrawTimeCard: Pick3DrawTimeCardProperties;
   public generateNavigation: any;
@@ -143,7 +142,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.drawDateSubscription = this.drawDateService
       .getPick3DrawDateCard$()
       .subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-        this.pick3GenerateId = this.appService.pick3CardId;
         const currentPick3DrawDateCardId =
           currentPick3DrawDateCard.getPick3DrawCardId();
         if (this.routerUrl === '/home') {
