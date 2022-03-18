@@ -1,14 +1,10 @@
 <ion-row style="margin: 0; height: 100%; background-color: #001a8c">
   <!--[style.background]="'url(' + data.backgroundImage + ')'">-->
-  <ion-col size="2" style="margin-right: 0px" [ngSwitch]="generateNavigation">
+  <ion-col size="2" style="margin-right: 0px">
     <ion-nav-link
-      *ngSwitchCase="3"
       routerDirection="back"
       router-direction="back"
-      (click)="
-        switchDrawDateButtons('gotoPreviousWinningNumber');
-        returnToPreviousPage()
-      "
+      [routerLink]="['/', 'select-picks']"
     >
       <ion-icon
         class="generate-back-button"
@@ -114,6 +110,5 @@
       </ion-col>
     </ion-row>
   </ion-col>
-  <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
-  </ion-col>
+  <ion-col size="2" class="generate-picks-col"> </ion-col>
 </ion-row>

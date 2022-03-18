@@ -18,6 +18,7 @@ import { NavigationEnum } from '../../models/navigate.enum';
 import { Subscription } from 'rxjs';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
 import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
+import { SelectPicksService } from '../../services/select-picks.service';
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -48,6 +49,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private appService: AppService,
     private tomorrowService: TomorrowPick3DrawDateCardService,
     private router: Router,
+    private selectPicksService: SelectPicksService,
     private drawStateService: DrawStateService,
     private pick3WebScrappingService: Pick3WebScrapingProviderService
   ) {
@@ -96,8 +98,15 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     );
     today.style.backgroundColor = '#2fdf75';
     tomorrow.style.backgroundColor = '#e5e5e5';
-    const nextPick3DrawDateCard =
-      this.appService.getPreviousWinningNumber(todayFullDate);
+    const pick3DrawTime = this.appService.getDrawTime(todayFullDate);
+    const nextPick3DrawDateCard = this.appService.getPreviousWinningNumber(
+      todayFullDate,
+      pick3DrawTime
+    );
+    console.log(nextPick3DrawDateCard);
+    // TODO Save previousPick3DrawDateCard to service
+    this.selectPicksService.setSelectedPick3DrawDateCard(nextPick3DrawDateCard);
+
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 

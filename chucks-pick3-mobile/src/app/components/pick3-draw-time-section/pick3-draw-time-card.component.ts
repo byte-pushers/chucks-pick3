@@ -29,8 +29,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
 
   constructor(
     private drawStateService: DrawStateService,
-    public translateService: TranslateService,
-    private drawTimeService: DrawTimeService
+    public translateService: TranslateService
   ) {}
 
   ngOnInit() {
