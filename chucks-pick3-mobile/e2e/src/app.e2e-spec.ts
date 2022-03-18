@@ -1,14 +1,26 @@
 import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
-describe('new App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should be blank', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
+    expect(page.getTitleText()).toEqual('Welcome to protractor-example!');
+  });
+
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    browser.waitForAngularEnabled(false);
+    expect(logs).not.toContain(
+      jasmine.objectContaining({
+        level: logging.Level.SEVERE,
+      } as logging.Entry)
+    );
   });
 });

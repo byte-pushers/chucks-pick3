@@ -1,11 +1,8 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class Pick3DrawTimeInfoSectionPo {
   navigateTo() {
     return browser.get('/home');
-  }
-  getTitleText() {
-    return element(by.css('app-root h1')).getText() as Promise<string>;
   }
 
   getPick3DrawTimeId() {
