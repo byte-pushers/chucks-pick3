@@ -26,6 +26,7 @@ import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.p
 import { publish } from 'rxjs/operators';
 import { error } from 'protractor';
 import { StateDrawDateService } from '../../services/state-draw-date.service';
+import { SelectPicksService } from '../../services/select-picks.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -61,6 +62,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   constructor(
     private cardContextService: CardContextService,
     public drawStateService: DrawStateService,
+    private selectedPicks: SelectPicksService,
     private toastService: IonicToastNotificationService,
     private router: Router,
     public translate: I18nService,
@@ -541,5 +543,11 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     let tomorrow = new Date();
     tomorrow.setDate(drawDate.getDate() + 1);
     this.tomorrowUnavailableDate = tomorrow;
+  }
+
+  public gotoGeneratePicks(): void {
+    // TODO get the current drawdate card and save it on the selectPicks Service
+    this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
+    this.selectedPicks.setSelectedPick3DrawDateCard(this.data);
   }
 }

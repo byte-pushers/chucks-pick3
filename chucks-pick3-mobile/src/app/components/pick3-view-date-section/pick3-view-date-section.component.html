@@ -1,15 +1,6 @@
 <ion-row style="margin: 0; height: 100%; background-color: #1e1e1e">
   <!--[style.background]="'url(' + data.backgroundImage + ')'">-->
-  <ion-col size="2" style="margin-right: 0px">
-    <ion-icon
-      [routerLink]="['/', 'home']"
-      [state]="{ currentSlideNumber: this.pick3GenerateId }"
-      routerDirection="forward"
-      (click)="returnToPreviousPage()"
-      class="generate-back-button"
-      src="../../../assets/icon/back-arrow.svg"
-    ></ion-icon>
-  </ion-col>
+  <ion-col size="2" style="margin-right: 0px"> </ion-col>
   <ion-col size="8">
     <ion-row>
       <ion-col>
@@ -108,5 +99,13 @@
       </ion-col>
     </ion-row>
   </ion-col>
-  <ion-col size="2" class="generate-picks-col"> </ion-col>
+  <ion-col size="2" class="generate-picks-col">
+    <ion-icon
+      [routerLink]="['/', 'home']"
+      [state]="{ currentSlideNumber: this.pick3GenerateId }"
+      routerDirection="forward"
+      class="generate-back-button"
+      src="../../../assets/icon/forward-arrow.svg"
+    ></ion-icon>
+  </ion-col>
 </ion-row>

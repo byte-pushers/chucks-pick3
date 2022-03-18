@@ -1,20 +1,5 @@
 {
-  "extends": ["@commitlint/config-conventional"],
   "rules": {
-    "body-max-line-length": [0, "always", 300],
-    "body-case": [
-      0,
-      "always",
-      [
-        "lower-case",
-        "upper-case",
-        "camel-case",
-        "kebab-case",
-        "pascal-case",
-        "sentence-case",
-        "snake-case",
-        "start-case"
-      ]
-    ]
+    "body-case": [0, "always", ["lower-case", "sentence-case"]]
   }
 }

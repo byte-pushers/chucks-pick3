@@ -6,7 +6,8 @@ import {
 } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { Pick3GenerateDateSectionComponent } from './pick3-generate-date-section.component';
+import { Pick3ViewDateSectionComponent } from './pick3-view-date-section.component';
+import { Pick3GenerateDateSectionComponent } from '../pick3-generate-date-section/pick3-generate-date-section.component';
 import { Router } from '@angular/router';
 import { DrawDateService } from '../../services/draw-date.service';
 import { DrawTimeService } from '../../services/draw-time.service';
@@ -15,7 +16,6 @@ import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
 import { Pick3DrawTimeCardDomain } from '../../models/pick3-draw-time-card.domain';
 import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
-import { Pick3DrawDateInfoSection } from '../pick3-draw-date-info-section/pick3-draw-date-info-section';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -27,10 +27,10 @@ import { AppService } from '../../app.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { SelectPicksService } from '../../services/select-picks.service';
 
-describe('Pick3GenerateDateSectionComponent', () => {
+describe('Pick3ViewDateSectionComponent', () => {
   const date = new Date();
-  let component: Pick3GenerateDateSectionComponent;
-  let fixture: ComponentFixture<Pick3GenerateDateSectionComponent>;
+  let component: Pick3ViewDateSectionComponent;
+  let fixture: ComponentFixture<Pick3ViewDateSectionComponent>;
   let model;
   let drawTimeModel;
   let router: Router;
@@ -66,7 +66,7 @@ describe('Pick3GenerateDateSectionComponent', () => {
       pick3DrawTimeArray: [33, 555, 264, 346, 345],
     });
     TestBed.configureTestingModule({
-      declarations: [Pick3GenerateDateSectionComponent],
+      declarations: [Pick3ViewDateSectionComponent],
       imports: [
         CommonModule,
         IonicModule.forRoot(),
@@ -97,10 +97,11 @@ describe('Pick3GenerateDateSectionComponent', () => {
     const mockUrlTree = router.parseUrl('/home');
     // @ts-ignore: force this private property value for testing.
     router.currentUrlTree = mockUrlTree;
-    fixture = TestBed.createComponent(Pick3GenerateDateSectionComponent);
+    fixture = TestBed.createComponent(Pick3ViewDateSectionComponent);
     component = fixture.componentInstance;
     selectPicksService = TestBed.get(SelectPicksService);
     selectPicksService.setSelectedPick3DrawDateCard(model);
+    selectPicksService.setSelectedPick3DrawTimeCard(drawTimeModel);
     fixture.detectChanges();
   }));
 
