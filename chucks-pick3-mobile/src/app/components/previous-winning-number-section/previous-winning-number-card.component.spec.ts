@@ -17,10 +17,14 @@ import { Pick3LotteryService } from '../../services/pick3-lottery.service';
 
 describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
+  const yesterdaysDate: Date = new Date(
+    new Date().valueOf() - 1000 * 60 * 60 * 24
+  );
   let component: PreviousWinningNumberCardComponent;
   let fixture: ComponentFixture<PreviousWinningNumberCardComponent>;
   let router: Router;
   let model;
+  let yesterdayModel;
   let drawStateService = DrawStateService;
   beforeEach(async(() => {
     model = new Pick3DrawDateCardDomain({
@@ -36,6 +40,21 @@ describe('PreviousWinningNumberCardComponent', () => {
       drawDateIcon: date,
       slideNumber: 7,
       defaultDrawDateTime: Pick3DrawTimeEnum.MORNING,
+      slideName: 'Home',
+    });
+    yesterdayModel = new Pick3DrawDateCardDomain({
+      drawDate: yesterdaysDate,
+      drawState: 'gotoHome',
+      drawTime: Pick3DrawTimeEnum.DAY,
+      drawTimeAsString: 'Day',
+      upcomingDrawTime: yesterdaysDate,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [1, 9, 2],
+      drawDateIcon: yesterdaysDate,
+      slideNumber: 6,
+      defaultDrawDateTime: Pick3DrawTimeEnum.DAY,
       slideName: 'Home',
     });
 

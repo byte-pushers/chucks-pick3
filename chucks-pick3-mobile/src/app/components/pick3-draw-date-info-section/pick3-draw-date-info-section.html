@@ -184,45 +184,6 @@
   </ion-col>
   <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
     <ion-icon
-      (click)="switchDrawDateButtons('gotoPreviousWinningNumber');"
-      *ngSwitchCase="1"
-      [routerLink]="['/','select']"
-      [state]="{
-                    currentSlideNumber: this.pick3GenerateId,
-                currentDay: this.data.getDrawDate()}"
-      routerDirection="back"
-      src="../../../assets/generate-picks-icon.svg"
-      class="generate-picks-icon"
-      style="padding-right: 25px"
-    ></ion-icon>
-    <ion-icon *ngSwitchCase="2"></ion-icon>
-    <ion-icon *ngSwitchCase="3"></ion-icon>
-    <ion-icon
-      *ngSwitchCase="4"
-      [routerLink]="['/', 'home']"
-      [state]="{
-                  currentSlideNumber: this.pick3GenerateId,
-                  currentDay: this.data.getDrawDate()
-                }"
-      (click)="switchDrawDateButtons('gotoHome')"
-      class="generate-back-button"
-      routerDirection="back"
-      src="../../../assets/icon/forward-arrow.svg"
-    ></ion-icon>
-    <ion-icon
-      *ngSwitchCase="5"
-      (click)="switchDrawDateButtons('gotoPreviousWinningNumber');"
-      [routerLink]="['/','select-picks']"
-      [state]="{
-                  currentSlideNumber: this.pick3GenerateId,
-                  currentDay: this.data.getDrawDate()
-                }"
-      routerDirection="back"
-      src="../../../assets/generate-picks-icon.svg"
-      class="general-draw-date-button-sizing"
-      style="padding-right: 25px"
-    ></ion-icon>
-    <ion-icon
       *ngSwitchCase="6"
       src="../../../assets/generate-picks-icon.svg"
       class="general-draw-date-button-sizing"
@@ -230,8 +191,7 @@
     ></ion-icon>
 
     <ion-icon
-      (click)="switchDrawDateButtons('gotoPreviousWinningNumber')"
-      *ngSwitchDefault
+      (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
       [state]="{
                   currentSlideNumber: this.pick3GenerateId,
