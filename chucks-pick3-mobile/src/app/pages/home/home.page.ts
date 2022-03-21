@@ -20,7 +20,7 @@ import { DrawTimeService } from '../../services/draw-time.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnDestroy {
-  public prevActiveIndex: number = 8;
+  public prevActiveIndex: number = 7;
   private cardContext = this.cardContextService.context$;
   public slidesLoaded = false;
   public swiper = new Swiper('.swiper', {
@@ -74,7 +74,7 @@ export class HomePage implements OnDestroy {
   /* istanbul ignore next */
   public initializePick3DrawDateCards(swiper): void {
     let count;
-    if (swiper.activeIndex === 8) {
+    if (swiper.activeIndex === 7) {
       count = swiper.length;
       console.log(
         `HomePage.initializePick3DrawDateCards() method slide count :${count}`
@@ -122,7 +122,7 @@ export class HomePage implements OnDestroy {
 
   public passIdToGenerate(slideNumber) {
     /* istanbul ignore else */
-    if (slideNumber >= 6 || slideNumber === 8) {
+    if (slideNumber >= 6 || slideNumber === 7) {
       this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
     }
   }

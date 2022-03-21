@@ -25,6 +25,9 @@ import { NumberUtilityService } from '../../services/numberUtility.service';
 import { I18nService } from '../../services/i18n.service';
 import { AppService } from '../../app.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import { Pick3GenerateDateSectionComponent } from '../pick3-generate-date-section/pick3-generate-date-section.component';
+import { SelectPicksService } from '../../services/select-picks.service';
+import { Pick3ViewDateSectionComponent } from '../pick3-view-date-section/pick3-view-date-section.component';
 
 describe('PreviousPicksDateSectionComponent', () => {
   const date = new Date();
@@ -33,8 +36,8 @@ describe('PreviousPicksDateSectionComponent', () => {
   let model;
   let drawTimeModel;
   let router: Router;
-  let drawDateService: DrawDateService;
-  let drawTimeService: DrawTimeService;
+  let selectPicksService: SelectPicksService;
+
   beforeEach(async(() => {
     model = new Pick3DrawDateCardDomain({
       drawDate: date,
@@ -81,7 +84,7 @@ describe('PreviousPicksDateSectionComponent', () => {
         AppService,
         Pick3WebScrapingProviderService,
         DrawTimeService,
-        DrawDateService,
+        SelectPicksService,
       ],
     }).compileComponents();
     router = TestBed.get(Router);
@@ -98,33 +101,9 @@ describe('PreviousPicksDateSectionComponent', () => {
     router.currentUrlTree = mockUrlTree;
     fixture = TestBed.createComponent(PreviousPicksDateSectionComponent);
     component = fixture.componentInstance;
-    drawDateService = TestBed.get(DrawDateService);
-    drawTimeService = TestBed.get(DrawTimeService);
-    drawDateService.dispatchCurrentDrawDateCardEvent(model);
-    drawTimeService.setCurrentDrawTimeCard(drawTimeModel);
-    component.data = model;
-    component.id = 7;
-    drawTimeService.currentDrawTimeCard = drawTimeModel;
+    selectPicksService = TestBed.get(SelectPicksService);
+    selectPicksService.setSelectedPick3DrawDateCard(model);
+    selectPicksService.setSelectedPick3DrawTimeCard(drawTimeModel);
     fixture.detectChanges();
   }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should have data be null', () => {
-    component.ngOnDestroy();
-    expect(component.data).toBeNull();
-  });
-
-  it('should have currentSlideNumber defined', () => {
-    component.id = 0;
-    component.ngOnInit();
-    expect(component.currentSlideNumber).toBeDefined();
-  });
-
-  it('should have id defined  ', () => {
-    component.ngOnInit();
-    expect(component.id).toBeDefined();
-  });
 });

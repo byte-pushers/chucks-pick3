@@ -161,11 +161,6 @@ export class AppService {
       }
 
       drawTime.setPick3DrawTime(someDrawTime);
-
-      /*if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-      console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
-      this.drawTimeService.setCurrentDrawTimeCard(drawTime);
-      }*/
     });
 
     return pick3DrawTimes;
@@ -285,7 +280,10 @@ export class AppService {
   // TODO getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard | Error
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  public getPreviousWinningNumber(someDate: Date): Pick3DrawDateCard | Error {
+  public getPreviousWinningNumber(
+    someDate: Date,
+    drawTime: Pick3DrawTime
+  ): Pick3DrawDateCard {
     const pick3DrawDateCard = this.pick3DrawDateDecks.find(
       (pick3DrawDateDeck) =>
         pick3DrawDateDeck.drawDate.getDate() === someDate.getDate()
