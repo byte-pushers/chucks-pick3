@@ -25,6 +25,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
 import { NavigationEnum } from '../../models/navigate.enum';
 import { SelectPicksService } from '../../services/select-picks.service';
+import { GeneratePicksService } from '../../services/generate-picks.service';
 
 @Component({
   selector: 'app-pick3-generate-date-section',
@@ -47,9 +48,9 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
-
   constructor(
     private selectPicksService: SelectPicksService,
+    private generatePicksService: GeneratePicksService,
     private toastService: IonicToastNotificationService,
     private router: Router,
     public translate: I18nService,

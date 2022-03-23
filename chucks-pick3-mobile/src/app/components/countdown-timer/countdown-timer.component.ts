@@ -1,5 +1,14 @@
-import {Component, Input, OnInit, OnDestroy, ElementRef, Output, EventEmitter} from '@angular/core';
-import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { IonicToastNotificationService } from '../../services/ionic-toast-notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'countdown-timer',
@@ -13,12 +22,16 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   @Input() timeOnly;
   timer: any;
   displayTime: any;
+  private routerUrl;
 
-  constructor(private el: ElementRef,
-              public toastService: IonicToastNotificationService) {
+  constructor(
+    private el: ElementRef,
+    private router: Router,
+    public toastService: IonicToastNotificationService
+  ) {
     this.zeroTrigger = new EventEmitter(true);
+    this.routerUrl = this.router.url;
   }
-
 
   ngOnInit(): void {
     /* istanbul ignore next */
@@ -29,9 +42,9 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
         this.displayTime = this.getTimeDiff(this.end);
       }
     }, 1000);
-    this.zeroTrigger.subscribe(message => {
+    this.zeroTrigger.subscribe((message) => {
       /* istanbul ignore next */
-      if (message === 'reached zero') {
+      if (message === 'reached zero' && this.routerUrl === '/home') {
         clearInterval(this.timer);
       }
     });
@@ -63,18 +76,28 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
     let days = Math.floor(milisec_diff / 1000 / 60 / (60 * 24));
     let date_diff = new Date(milisec_diff);
     /* istanbul ignore next */
-    let day_string = (days) ? this.twoDigit(days) + ':' : '';
+    let day_string = days ? this.twoDigit(days) + ':' : '';
     let day_hours = days * 24;
-
 
     if (this.timeOnly) {
       let hours = date_diff.getUTCHours() + day_hours;
-      return this.twoDigit(hours) +
-        ':' + this.twoDigit(date_diff.getUTCMinutes()) + ':' + this.twoDigit(date_diff.getUTCSeconds());
+      return (
+        this.twoDigit(hours) +
+        ':' +
+        this.twoDigit(date_diff.getUTCMinutes()) +
+        ':' +
+        this.twoDigit(date_diff.getUTCSeconds())
+      );
     } else {
       // Date() takes a UTC timestamp – getHours() gets hours in local time not in UTC. therefore we have to use getUTCHours()
-      return day_string + this.twoDigit(date_diff.getUTCHours()) + ':' + this.twoDigit(date_diff.getUTCMinutes())
-        + ':' + this.twoDigit(date_diff.getUTCSeconds());
+      return (
+        day_string +
+        this.twoDigit(date_diff.getUTCHours()) +
+        ':' +
+        this.twoDigit(date_diff.getUTCMinutes()) +
+        ':' +
+        this.twoDigit(date_diff.getUTCSeconds())
+      );
     }
   }
 

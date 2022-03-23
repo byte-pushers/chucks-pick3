@@ -33,7 +33,7 @@ export class TomorrowPick3DrawDateCardService {
     this.card8 = new Pick3DrawDateCardDomain({
       ...Pick3DrawDateCardDomain.DEFAULT_CONFIG,
       ...{
-        slideNumber: 1,
+        slideNumber: 8,
         backgroundImageUrl: this.getBackgroundImageUrl(),
         drawState: this.getDrawState(),
         drawDate: this.getSlideDate(8),

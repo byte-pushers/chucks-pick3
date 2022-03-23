@@ -83,6 +83,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     today.style.backgroundColor = '#e5e5e5';
     const nextPick3DrawDateCard =
       this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
+    console.log(nextPick3DrawDateCard);
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -103,10 +104,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
       todayFullDate,
       pick3DrawTime
     );
-    console.log(nextPick3DrawDateCard);
     // TODO Save previousPick3DrawDateCard to service
-    this.selectPicksService.setSelectedPick3DrawDateCard(nextPick3DrawDateCard);
-
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -147,8 +145,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.pick3CardToGenerate = pick3DrawTimeCard;
-          console.log(this.pick3CardToGenerate);
-          this.drawDateService.dispatchCurrentDrawDateCardEvent(
+          this.selectPicksService.setSelectedPick3DrawTimeCard(
             pick3DrawTimeCard
           );
           this.enableGenerateButton();

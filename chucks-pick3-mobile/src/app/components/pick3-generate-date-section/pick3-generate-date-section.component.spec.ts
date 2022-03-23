@@ -103,8 +103,4 @@ describe('Pick3GenerateDateSectionComponent', () => {
     selectPicksService.setSelectedPick3DrawDateCard(model);
     fixture.detectChanges();
   }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
