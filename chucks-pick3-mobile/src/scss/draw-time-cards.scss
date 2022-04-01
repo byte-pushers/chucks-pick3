@@ -1,87 +1,19 @@
 @import "../../src/breakpoints.scss";
 
 .generated-picks-indicator {
-height: 100%;
+  height: 100%;
 }
 
 .draw-time-title {
-
-  @include for-size(iPhone5-SE) {
-    height: 10.2vh;
-    line-height: 10.2vh;
-  }
-  @include for-size(iPhone6-7-8) {
-    height: 10.6vh;
-    line-height: 10.6vh;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 10.7vh !important;
-    line-height: 10.7vh !important;
-  }
-  @include for-size(iPhoneX) {
-    height: 10.7vh;
-    line-height: 10.9vh;
-  }
-  @include for-size(iPad) {
-    height: 10.9vh !important;
-    line-height: 10.9vh !important;
-  }
-  @include for-size(iPad-Pro) {
-    height: 11.6vh !important;
-    line-height: 11.6vh !important;
-  }
+  height: 100%;
+  line-height: 100%;
 }
 
 .time-of-day-text {
-  @include for-size(iPhone5-SE) {
-
-    line-height: 10.2vh;
-  }
-  @include for-size(iPhone6-7-8) {
-
-    line-height: 10.6vh;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-
-    line-height: 10.7vh !important;
-  }
-  @include for-size(iPhoneX) {
-
-    line-height: 10.9vh;
-  }
-  @include for-size(iPad) {
-
-    line-height: 10.9vh !important;
-  }
-  @include for-size(iPad-Pro) {
-
-    line-height: 11.6vh !important;
-  }
+  line-height: 10.6vh;
 }
 
 .draw-time-icon {
-  @include for-size(iPhone5-SE) {
-    height: 10.2vh;
-    line-height: 10.2vh;
-  }
-  @include for-size(iPhone6-7-8) {
-    height: 10.6vh;
-    line-height: 10.6vh;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 10.7vh !important;
-    line-height: 10.7vh !important;
-  }
-  @include for-size(iPhoneX) {
-    height: 10.9vh;
-    line-height: 10.9vh;
-  }
-  @include for-size(iPad) {
-    height: 10.9vh !important;
-    line-height: 10.9vh !important;
-  }
-  @include for-size(iPad-Pro) {
-    height: 11.6vh !important;
-    line-height: 11.6vh !important;
-  }
+  height: 100%;
+  line-height: 10.6vh;
 }

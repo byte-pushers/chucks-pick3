@@ -1,7 +1,7 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
-.generate-back-button{
+.generate-back-button {
   margin-top: 29vh;
   @include for-size(iPhone5-SE) {
     height: 10.2vh;
@@ -17,7 +17,6 @@
   @include for-size(iPhoneX) {
     margin-top: 31vh;
   }
-
 }
 
 .row {
@@ -57,14 +56,12 @@ ion-grid {
   height: 100%;
   padding: 0px;
 
-
   ion-row {
     height: 100%;
-
   }
- .draw-time-string {
-  line-height: 2.7em;
-}
+  .draw-time-string {
+    line-height: 2.7em;
+  }
 
   ion-row.drawing-time {
     height: 12.5%;
@@ -76,7 +73,6 @@ ion-grid {
       padding: 0px;
     }
   }
-
 }
 
 .draw-date-text {
@@ -92,7 +88,6 @@ ion-grid {
     font-size: 7vw !important;
   }
 }
-
 
 .scroll-content {
   overflow-y: hidden;
@@ -115,8 +110,6 @@ ion-grid {
     width: 40px;
     line-height: 1.6em;
   }
-
-
 }
 
 .generate-picks-icon {
@@ -151,10 +144,14 @@ ion-grid {
     height: 11.6vh !important;
     line-height: 11.6vh !important;
   }
-
+  @media (min-width: 360px) and (max-width: 360px) and (min-height: 740px) and (max-height: 740px) {
+    height: 11vh;
+    width: 8.8vh;
+    line-height: 10.6vh;
+  }
 }
 
-.generate-picks-col{
+.generate-picks-col {
   margin-left: -2.5em;
 
   @include for-size(iPhone5-SE) {
@@ -170,10 +167,8 @@ ion-grid {
     margin-left: -2.5em;
   }
   @include for-size(iPad) {
-
   }
   @include for-size(iPad-Pro) {
-
   }
 }
 
@@ -181,7 +176,7 @@ ion-grid {
   color: white;
   @include for-size(iPhone5-SE) {
     font-size: 4vw;
-    padding-top: .5em;
+    padding-top: 0.5em;
   }
   @include for-size(iPhone6-7-8) {
     padding-top: 1.5em;
@@ -192,23 +187,17 @@ ion-grid {
   @include for-size(iPhoneX) {
     padding-top: 5em;
   }
-  @include for-size(iPad) {
-
-  }
-  @include for-size(iPad-Pro) {
-
-  }
 }
 
 .general-draw-date-button-sizing {
   width: 100%;
   stroke-width: 5px;
 
-  margin-top: 25vh;
+  margin-top: 28vh;
   @include for-size(iPhone5-SE) {
     height: 10.2vh;
     line-height: 10.2vh;
-    margin-top: 26vh;
+    margin-top: 28vh;
   }
   @include for-size(iPhone6-7-8) {
     height: 11vh;
@@ -223,7 +212,7 @@ ion-grid {
   @include for-size(iPhoneX) {
     height: 10.9vh;
     line-height: 10.9vh;
-    margin-top: 25.5vh;
+    margin-top: 28vh;
   }
   @include for-size(iPad) {
     height: 10.9vh !important;
@@ -233,7 +222,11 @@ ion-grid {
     height: 11.6vh !important;
     line-height: 11.6vh !important;
   }
-
+  @media (min-width: 360px) and (max-width: 360px) and (min-height: 740px) and (max-height: 740px) {
+    height: 11vh;
+    width: 8.8vh;
+    line-height: 10.6vh;
+  }
 }
 
 .undefined-view-picks-icon {
@@ -269,7 +262,11 @@ ion-grid {
     height: 11.6vh !important;
     line-height: 11.6vh !important;
   }
-
+  @media (min-width: 360px) and (max-width: 360px) and (min-height: 740px) and (max-height: 740px) {
+    height: 11vh;
+    width: 8.8vh;
+    line-height: 10.6vh;
+  }
 }
 .picks-indicator {
   height: 20px;
@@ -286,7 +283,6 @@ ion-grid {
     right: -2.3em;
     height: 15px;
     width: 15px;
-
   }
   @include for-size(iPhoneX) {
     bottom: -29vh !important;
@@ -313,7 +309,6 @@ ion-grid {
 .picks-indicator.not-drawn.selected,
 .picks-indicator.drawn-with-generated-picks-with-no-winners.selected {
   background-color: transparent;
-
 }
 
 .indicator.not-drawn-yet-with-generated-picks {

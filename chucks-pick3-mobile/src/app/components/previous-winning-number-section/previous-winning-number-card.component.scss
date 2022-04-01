@@ -104,80 +104,44 @@ ion-select {
 
 .timeOfDayDropDown {
   width: 100%;
-  height: 4.5em;
+  height: 5.3em;
   margin-left: 2em;
   text-align: center;
   @include for-size(iPhone5-SE) {
     height: 3.5em !important;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    height: 5em !important;
+    height: 5.6em !important;
   }
 
   @include for-size(iPhoneX) {
-    height: 5.4em !important;
+    height: 5.9em !important;
   }
 }
 
 .generate-button {
-  height: 4.9em !important;
+  height: 100%;
   background-color: $chucksPick3Yellow;
   color: $chucksPick3Black;
   font-weight: 600;
   font-size: 18px;
   vertical-align: center;
-
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 4.9em !important;
-  }
-
-  @include for-size(iPhone5-SE) {
-    height: 4em !important;
-  }
-
-  @include for-size(iPhoneX) {
-    height: 6.5em !important;
-  }
 }
 
 .continue-button {
-  height: 4.9em !important;
+  height: 100%;
   background-color: $chucksPick3Gray !important;
   color: $chucksPick3LightGray !important;
   font-weight: 600;
   font-size: 18px;
   vertical-align: center;
-
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 4.9em !important;
-  }
-
-  @include for-size(iPhone5-SE) {
-    height: 4em !important;
-  }
-
-  @include for-size(iPhoneX) {
-    height: 6.5em !important;
-  }
 }
 
 .continue-button-enabled {
-  height: 4.9em !important;
+  height: 14vh;
   background-color: $chucksPick3Yellow;
   color: $chucksPick3Black;
   font-weight: 600;
   font-size: 18px;
   vertical-align: center;
-
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 4.9em !important;
-  }
-
-  @include for-size(iPhone5-SE) {
-    height: 4em !important;
-  }
-
-  @include for-size(iPhoneX) {
-    height: 6.5em !important;
-  }
 }

@@ -1,11 +1,12 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+.drawing-time {
+  height: 100%;
+}
 .draw-time-icon {
   display: inline-block;
   width: 40%;
-
-
 
   > ion-icon.selected {
     color: $chucksPick3Black;
