@@ -83,20 +83,14 @@
               flex-basis: 100%;
             "
           >
-            <div
-              style="display: inline"
-              *ngIf="showCountDownToDrawing === false"
-            >
+            <div style="display: inline">
               <span class="dot">{{ data.winningNumberDigit1 }}</span>
               <span class="dot">{{ data.winningNumberDigit2 }}</span>
               <span class="dot">{{ data.winningNumberDigit3 }}</span>
             </div>
-            <div
-              style="display: inline"
-              *ngIf="showCountDownToDrawing === true"
-            >
+            <div style="display: inline">
               <div style="color: #ffd743ff">
-                {{ "time.not.available" | translate }}
+                <countdown-timer [end]="time.dateTime"></countdown-timer>
               </div>
             </div>
           </div>

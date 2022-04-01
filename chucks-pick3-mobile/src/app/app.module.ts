@@ -25,6 +25,7 @@ import { PreviousPicksPageModule } from './pages/previous-picks/previous-picks.m
 import { CountdownTimerComponent } from './components/countdown-timer/countdown-timer.component';
 import { CardPage } from './pages/card/card.page';
 import { TomorrowPick3DrawDateCardService } from './services/tomorrowPick3DrawDateCard.service';
+import { Pick3GenerateDateSectionComponent } from './components/pick3-generate-date-section/pick3-generate-date-section.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,6 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
     LanguagePopoverComponent,
     CountdownTimerComponent,
     Pick3DrawDateInfoSection,
+    Pick3GenerateDateSectionComponent,
   ],
   entryComponents: [],
   exports: [CountdownTimerComponent],
