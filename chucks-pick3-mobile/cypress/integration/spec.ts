@@ -1,7 +1,27 @@
+import { Pick3DrawTimeCardDomain } from '../../src/app/models/pick3-draw-time-card.domain';
+import { Pick3DrawTimeEnum } from '../../src/app/models/pick3-draw-time.enum';
+import { Pick3LotteryService } from '../../src/app/services/pick3-lottery.service';
+import { Pick3DrawDateCardDomain } from '../../src/app/models/pick3-draw-date-card.domain';
+
 const date = new Date();
 const now = new Date();
 
 describe('My First Test', () => {
+  const data = new Pick3DrawDateCardDomain({
+    drawDate: date,
+    drawState: 'gotoHome',
+    drawTime: Pick3DrawTimeEnum.MORNING,
+    drawTimeAsString: 'Morning',
+    upcomingDrawTime: date,
+    hasWinner: false,
+    backgroundImage: Pick3LotteryService,
+    winningNumber: 462,
+    winningNumberDigits: [4, 6, 2],
+    drawDateIcon: date,
+    slideNumber: 7,
+    defaultDrawDateTime: Pick3DrawTimeEnum.MORNING,
+    slideName: 'Home',
+  });
   // @ts-ignore
   beforeEach(() => {
     cy.viewport('iphone-8');
@@ -26,7 +46,8 @@ describe('My First Test', () => {
 
   it('should search the pick3DrawDateCard ', () => {
     const stringDate = now.toDateString();
-    cy.get('pick3-draw-date-info-section').find('span').contains(stringDate);
+
+    cy.contains(stringDate);
   });
 
   it('should swipe left', () => {
@@ -43,7 +64,11 @@ describe('My First Test', () => {
     });
   });
   it('should search the pick3DrawDateCard ', () => {
-    const stringDate = now.toDateString();
-    cy.get('pick3-draw-date-info-section').find('span').contains(stringDate);
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const stringDate = yesterday.toDateString();
+    cy.contains(stringDate);
   });
 });

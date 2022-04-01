@@ -108,7 +108,7 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(selectDrawingDateMenuItemForTodaySpy).toHaveBeenCalled();
   });
 
-  it('should call setDrawingTimeMenuItems', () => {
+  /*  it('should call setDrawingTimeMenuItems', () => {
     const setDrawingTimeMenuItemsSpy = spyOn(
       component,
       'setDrawingTimeMenuItems'
@@ -117,7 +117,7 @@ describe('PreviousWinningNumberCardComponent', () => {
     const yesterday: HTMLElement = document.getElementById('yesterday');
     component.selectDrawingDateMenuItemForYesterday(yesterday, today);
     expect(setDrawingTimeMenuItemsSpy).toHaveBeenCalled();
-  });
+  });*/
 
   /*  it('should call setDrawingTimeMenuItems', () => {
     const setDrawingTimeMenuItemsForClosedDaySpy = spyOn(
