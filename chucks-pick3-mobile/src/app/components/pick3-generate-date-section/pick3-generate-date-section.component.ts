@@ -15,7 +15,7 @@ import { DrawDateService } from '../../services/draw-date.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { AppService } from '../../app.service';
 import { NavController, PopoverController } from '@ionic/angular';
-import { StateDrawDateService } from '../../services/state-draw-date.service';
+import { StateService } from '../../services/state.service';
 import { Pick3DrawTime } from '../../models/pick3-draw-time';
 import { registerLocaleData } from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
@@ -47,6 +47,9 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
 
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
+  }
+  get background() {
+    return this.appService.getBackgroundImageUrl();
   }
   constructor(
     private selectPicksService: SelectPicksService,

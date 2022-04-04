@@ -1,5 +1,7 @@
-<ion-row style="margin: 0; height: 100%; background-color: #1e1e1e">
-  <!--[style.background]="'url(' + data.backgroundImage + ')'">-->
+<ion-row
+  style="margin: 0; height: 100%"
+  [style.background]="' url(' + data.backgroundImage + ')'"
+>
   <ion-col size="2" style="margin-right: 0px" [ngSwitch]="generateNavigation">
     <div
       class="picks-indicator"
@@ -162,8 +164,15 @@
                 *ngIf="drawDateCardUnavailable === false"
                 [end]="data.drawDate"
               ></countdown-timer>
-              <div style="color: red" *ngIf="drawDateCardUnavailable === true">
-                <p>{{'day.not.available' | translate}}</p>
+              <div
+                style="
+                  color: #ff4f4f;
+                  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+                    -1px 1px 0 #000, 1px 1px 0 #000;
+                "
+                *ngIf="drawDateCardUnavailable === true"
+              >
+                <b><p>{{'day.not.available' | translate}}</p></b>
                 <countdown-timer
                   [end]="tomorrowUnavailableDate"
                 ></countdown-timer>
