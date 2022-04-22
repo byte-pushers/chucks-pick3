@@ -74,9 +74,6 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
 
     if (this.routerUrl === '/home') {
       Pick3GenerateDateSectionComponent.counter--;
-      console.log(
-        `Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3GenerateDateSectionComponent.counter}`
-      );
     }
   }
 }

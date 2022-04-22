@@ -18,6 +18,7 @@ export class TomorrowPick3DrawTimeCardDomain
     drawTime: null,
     state: null,
     selected: false,
+    checkPick3DrawTimeArray: false,
     showCountDownToDrawing: true,
     pick3DrawTimeArray: null,
   };
@@ -40,9 +41,9 @@ export class TomorrowPick3DrawTimeCardDomain
   private _selected: boolean;
   // tslint:disable-next-line:variable-name
   private _showCountDownToDrawing: boolean;
+  private _checkPick3DrawTimeArray: boolean;
   // tslint:disable-next-line:variable-name
   private _pick3DrawTimeArray: number[];
-
   constructor(config: any) {
     this._icon = config ? config.icon : null;
     this._title = config
@@ -67,6 +68,11 @@ export class TomorrowPick3DrawTimeCardDomain
     this._selected = config
       ? typeof config.selected === 'boolean'
         ? config.selected
+        : false
+      : false;
+    this._checkPick3DrawTimeArray = config
+      ? typeof config.checkPick3DrawTimeArray === 'boolean'
+        ? config.checkPick3DrawTimeArray
         : false
       : false;
     this._dateTime = config
@@ -270,6 +276,22 @@ export class TomorrowPick3DrawTimeCardDomain
 
   setSelected(selected: boolean): void {
     this._selected = selected;
+  }
+
+  get checkPick3DrawTimeArray(): boolean {
+    return this._checkPick3DrawTimeArray;
+  }
+
+  set checkPick3DrawTimeArray(checkPick3DrawTimeArray: boolean) {
+    this._checkPick3DrawTimeArray = checkPick3DrawTimeArray;
+  }
+
+  getCheckPick3DrawTimeArray(): boolean {
+    return this._checkPick3DrawTimeArray;
+  }
+
+  setCheckPick3DrawTimeArray(checkPick3DrawTimeArray: boolean): void {
+    this._checkPick3DrawTimeArray = checkPick3DrawTimeArray;
   }
 
   get dateTime(): Date {

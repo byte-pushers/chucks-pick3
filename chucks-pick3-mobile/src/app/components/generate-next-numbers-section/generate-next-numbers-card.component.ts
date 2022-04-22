@@ -19,6 +19,7 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
 import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 import { SelectPicksService } from '../../services/select-picks.service';
+import { CardContextService } from '../../services/card-context.service';
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -47,6 +48,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private drawDateService: DrawDateService,
     private drawTimeService: DrawTimeService,
     private appService: AppService,
+    private cardService: CardContextService,
     private tomorrowService: TomorrowPick3DrawDateCardService,
     private router: Router,
     private selectPicksService: SelectPicksService,
@@ -64,9 +66,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     this.selectTodayGenerateDrawingDate(today, tomorrow);
     this.pick3DrawDateCardSubscription = this.drawDateService
       .getPick3DrawDateCard$()
-      .subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-        console.log(currentPick3DrawDateCard);
-      });
+      .subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {});
   }
 
   public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -83,7 +83,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     today.style.backgroundColor = '#e5e5e5';
     const nextPick3DrawDateCard =
       this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
-    console.log(nextPick3DrawDateCard);
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -163,11 +162,10 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public submitGenerate(): void {
     this.replaceGeneratedNumbers();
     this.changeNavigation('gotoViewPicks');
-    console.log(this.pick3CardToGenerate);
+    this.pick3CardToGenerate.setCheckPick3DrawTimeArray(true);
     this.drawDateService.dispatchCurrentDrawDateCardEvent(
       this.pick3CardToGenerate
     );
-    console.log(this.pick3CardToGenerate);
     this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
   }
 
@@ -208,7 +206,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   }
 
   public enableGenerateButton() {
-    console.log(this.generateChoice);
     if (this.generateChoice) {
       this.generateButton = false;
     } else {

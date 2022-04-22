@@ -23,8 +23,6 @@ import { AppService } from '../../app.service';
 import { DrawDateService } from '../../services/draw-date.service';
 import { Subscription } from 'rxjs';
 import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
-import { publish } from 'rxjs/operators';
-import { error } from 'protractor';
 import { StateDrawDateService } from '../../services/state-draw-date.service';
 import { SelectPicksService } from '../../services/select-picks.service';
 
@@ -103,6 +101,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const someDateTime = new Date();
+
     const pick3DrawTime: Pick3DrawTime =
       this.appService.getDrawTime(someDateTime);
     const currentPick3DrawTimeCard =
@@ -146,12 +145,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       .subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
         const currentPick3DrawDateCardId =
           currentPick3DrawDateCard.getPick3DrawCardId();
+        console.log(currentPick3DrawDateCard);
         if (this.routerUrl === '/home') {
           if (
             currentPick3DrawDateCardId &&
             currentPick3DrawDateCardId === this.id
           ) {
-            console.log(this.currentSlideNumber);
             this.disableButtonOnCard(currentPick3DrawDateCardId);
             this.appService.pick3CardId = currentPick3DrawDateCardId;
             this.setData(
@@ -194,7 +193,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           const pick3DrawDateCard = this.appService.getPick3DrawDateCard(
             context.slideNumber
           );
-          console.log(this.drawTimeCard);
           const currentPick3DrawTimeCard = this.drawTimeCard
             ? this.drawTimeCard
             : this.defaultDrawTimeCard;
@@ -389,7 +387,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.showCountDownToDrawing = true;
           // TODO: Handle error.
           const errorDate = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
-          console.log(pick3DrawDateTime);
           this.checkIfErrorToastIsDisplayed(errorDate);
 
           console.error('TODO:: Handle error: ' + error, error);
@@ -400,7 +397,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   private checkIfErrorToastIsDisplayed(errorDate) {
-    console.log(errorDate);
     if (
       errorDate !==
       this.stateDrawDate.checkDateStateIsClosed(this.data.getDrawState())

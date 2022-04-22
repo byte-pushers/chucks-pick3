@@ -9,6 +9,7 @@ export interface TomorrowPick3DrawtimeCardProperties {
   drawTime: Pick3DrawTimeEnum;
   state: Pick3DrawTimeCardStateEnum;
   selected: boolean;
+  checkPick3DrawTimeArray: boolean;
   showCountDownToDrawing: boolean;
   pick3DrawTimeArray: number[];
 }

@@ -132,8 +132,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.currentDrawingCard = pick3DrawTimeCard;
-          console.log(pick3DrawTimeCard);
-          // TODO Call appService.getWinningNumber pass date and draw time
           const pick3DrawDateCard = this.appService.getPreviousWinningNumber(
             pick3DrawTimeCard.getDateTime(),
             pick3DrawTimeCard.getPick3DrawTime()
@@ -258,8 +256,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       yesterdaysDate,
       pick3DrawTime
     );
-    console.log(previousPick3DrawDateCard);
-    // TODO Save previousPick3DrawDateCard to service
+
     this.selectPicksService.setSelectedPick3DrawDateCard(
       previousPick3DrawDateCard
     );
@@ -335,7 +332,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   /* istanbul ignore next */
   public checkIfLottoWasClosed(date: Date): boolean {
     const dateName = this.stateDrawDate.retrieveDay(date);
-    console.log(dateName);
+
     if (
       dateName ===
       this.stateDrawDate.checkDateStateIsClosed(

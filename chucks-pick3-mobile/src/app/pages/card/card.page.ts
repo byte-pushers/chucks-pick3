@@ -1,12 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {registerLocaleData} from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
-import {TranslateService} from '@ngx-translate/core';
-import {LanguagePopoverComponent} from '../../components/language-popover/language-popover.component';
-import {PopoverController} from '@ionic/angular';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AppService} from '../../app.service';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguagePopoverComponent } from '../../components/language-popover/language-popover.component';
+import { PopoverController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'card-page',
@@ -19,10 +19,12 @@ export class CardPage implements OnInit, OnDestroy {
   public currentSlideNumber: number;
   private routerUrl: string;
 
-  constructor(public translateService: TranslateService,
-              private popoverController: PopoverController,
-              private router: Router,
-              private appService: AppService) {
+  constructor(
+    public translateService: TranslateService,
+    private popoverController: PopoverController,
+    private router: Router,
+    private appService: AppService
+  ) {
     const routerState = this.router.getCurrentNavigation().extras.state;
     this.routerUrl = this.router.url;
 
@@ -33,12 +35,9 @@ export class CardPage implements OnInit, OnDestroy {
     if (this.routerUrl === '/home') {
       this.id = ++CardPage.counter;
       /* istanbul ignore next */
-      console.log('Card Page current slide number: ' + routerState?.currentSlideNumber);
     } else if (this.routerUrl === '/select-picks') {
       this.currentSlideNumber = this.appService.pick3CardId;
-      console.log('Card page on select-picks: ' + this.currentSlideNumber);
     }
-    console.log(`CardPage.constructor: id: ${this.id}`);
   }
 
   ngOnInit(): void {
@@ -51,10 +50,11 @@ export class CardPage implements OnInit, OnDestroy {
       component: LanguagePopoverComponent,
       cssClass: 'my-custom-class',
       event: ev,
-      translucent: true
+      translucent: true,
     });
     /* istanbul ignore next */
-    popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+    popover.style.cssText =
+      '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     /* istanbul ignore next */
     return await popover.present();
   }
@@ -64,7 +64,6 @@ export class CardPage implements OnInit, OnDestroy {
     /* istanbul ignore else */
     if (this.routerUrl === '/home') {
       CardPage.counter--;
-      console.log(`CardPage.ngOnDestroy: counter: ${CardPage.counter}`);
     }
   }
 }

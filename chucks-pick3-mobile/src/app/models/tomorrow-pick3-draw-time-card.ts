@@ -23,6 +23,8 @@ export interface TomorrowPick3DrawTimeCard
   setDrawTime(drawTime: any): void;
   getSelected(): boolean;
   setSelected(selected: boolean): void;
+  setCheckPick3DrawTimeArray(checkPick3DrawTimeArray: boolean);
+  getCheckPick3DrawTimeArray(): boolean;
   getShowCountDownToDrawing(): boolean;
   setShowCountDownToDrawing(showCountDownToDrawing: boolean): void;
   getDateTime(): Date;

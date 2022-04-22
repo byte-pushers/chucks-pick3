@@ -13,6 +13,8 @@ import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.p
 import { IonicToastNotificationService } from '../../services/ionic-toast-notification.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { AppService } from '../../app.service';
+import { DrawTimeService } from '../../services/draw-time.service';
+import { DrawDateService } from '../../services/draw-date.service';
 
 @Component({
   selector: 'app-pick3-view-date-section',
@@ -32,22 +34,27 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
   get data() {
     return this.selectPicksService.getSelectedPick3DrawDateCard();
   }
+
   /* istanbul ignore next */
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
+
   /* istanbul ignore next */
   constructor(
     private selectPicksService: SelectPicksService,
     private toastService: IonicToastNotificationService,
     private router: Router,
+    private drawDateService: DrawDateService,
     public translate: I18nService,
+    private drawTimeService: DrawTimeService,
     public translateService: TranslateService,
     private pick3WebScrappingService: Pick3WebScrapingProviderService,
     private appService: AppService
   ) {
     this.routerUrl = this.router.url;
   }
+
   /* istanbul ignore next */
   ngOnInit(): void {
     registerLocaleData(localeEsMx, 'es-MX');
@@ -58,13 +65,11 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.defaultDrawDateTime = null;
     this.showCountDownToDrawing = false;
-    this.appService = null;
 
     if (this.routerUrl === '/home') {
+      this.drawTimeService.setCurrentDrawTimeCard(this.time);
+      this.drawDateService.dispatchCurrentDrawDateCardEvent(this.time);
       Pick3ViewDateSectionComponent.counter--;
-      console.log(
-        `Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3ViewDateSectionComponent.counter}`
-      );
     }
   }
 }
