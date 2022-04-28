@@ -1,5 +1,6 @@
 {
   "rules": {
-    "body-case": [0, "always", ["lower-case", "sentence-case"]]
+    "body-case": [0, "always", ["lower-case", "sentence-case"]],
+    "body-max-line-length": [0, "always", 400]
   }
 }
