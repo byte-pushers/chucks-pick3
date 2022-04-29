@@ -392,6 +392,11 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
             this.routerUrl === '/select-picks'
           ) {
             this.setCardState(winningNumber, pick3DrawTimeType);
+            this.toastService.presentToast(
+              'Past Winning Number Available',
+              'Please check generated numbers',
+              'winner-available'
+            );
           }
           /*this.selectedWinningNumbers = winningNumber;*/
         },
@@ -442,6 +447,11 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       .then(
         (winningNumber: any) => {
           this.setCardState(winningNumber, pick3DrawTimeType);
+          this.toastService.presentToast(
+            'Winning Number Available',
+            'Please check generated numbers',
+            'winner-available'
+          );
         },
         (error) => {
           // TODO: Handle error.
