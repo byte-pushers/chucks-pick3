@@ -48,6 +48,13 @@
   top: 3em;
 }
 
+.winner-available {
+  --background: $chucksPick3Green;
+  font-weight: 200;
+  position: fixed;
+  top: 3em;
+}
+
 ion-toast::part(button) {
   --button-color: #1b1e21 !important;
   --color: #1b1e21 !important;
