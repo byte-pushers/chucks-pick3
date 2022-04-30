@@ -5,13 +5,7 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
 import { Pick3StateLottery } from '../../models/pick3-state-lottery';
 import * as BytePushers from 'bytepushers-js-core';
-import {
-  DAY_DRAW_TIME_KEY,
-  EVENING_DRAW_TIME_KEY,
-  MORNING_DRAW_TIME_KEY,
-  NIGHT_DRAW_TIME_KEY,
-  Pick3DrawTimeEnum,
-} from '../../models/pick3-draw-time.enum';
+import { DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, MORNING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY, Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { CardContextService } from '../../services/card-context.service';
 import { DrawStateService } from '../../services/draw-state.service';
@@ -34,12 +28,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   public drawTimes: Array<Pick3DrawTimeCard> = [];
   public pick3StateLottery: Pick3StateLottery;
   public date = new Date();
-  public defaultDrawingTimes = [
-    MORNING_DRAW_TIME_KEY,
-    DAY_DRAW_TIME_KEY,
-    EVENING_DRAW_TIME_KEY,
-    NIGHT_DRAW_TIME_KEY,
-  ];
+  public defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
   public continueChoice: any;
   public continueButton = true;
   public routerState = this.router.getCurrentNavigation().extras.state;
@@ -48,30 +37,13 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   public currentDateDay: number = new Date().getDate();
   public currentDateMonth: number = new Date().getMonth() + 1;
   public currentDateYear: number = new Date().getFullYear();
-  public fullDate: any =
-    this.currentDateMonth +
-    '/' +
-    this.currentDateDay +
-    '/' +
-    this.currentDateYear;
+  public fullDate: any = this.currentDateMonth + '/' + this.currentDateDay + '/' + this.currentDateYear;
   public pick3CardIdSubscription: Subscription;
   public currentDrawingCard: Pick3DrawTimeCard;
   private componentState;
 
-  constructor(
-    private pick3WebScrappingService: Pick3WebScrapingProviderService,
-    private cardContextService: CardContextService,
-    private drawTimeService: DrawTimeService,
-    private drawDateService: DrawDateService,
-    private selectPicksService: SelectPicksService,
-    private generatePicksService: GeneratePicksService,
-    private appService: AppService,
-    private stateDrawDate: StateService,
-    private drawStateService: DrawStateService,
-    private router: Router
-  ) {
-    this.pick3StateLottery =
-      pick3WebScrappingService.findRegisteredStateLottery('TX');
+  constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService, private cardContextService: CardContextService, private drawTimeService: DrawTimeService, private drawDateService: DrawDateService, private selectPicksService: SelectPicksService, private generatePicksService: GeneratePicksService, private appService: AppService, private stateDrawDate: StateService, private drawStateService: DrawStateService, private router: Router) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.componentState = 'instantiated';
   }
 
@@ -90,9 +62,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     /* istanbul ignore next */
     this.drawTimes.some((drawTime) => {
       const drawTimeHour = drawTime.getDateTime().getHours();
-      drawTime.setPick3DrawTime(
-        this.appService.getDrawTime(this.routerState?.currentDay)
-      );
+      drawTime.setPick3DrawTime(this.appService.getDrawTime(this.routerState?.currentDay));
       this.selectDrawingTimeCard(drawTime);
       this.continueChoice = drawTime;
       if (this.routerState?.currentDay.getHours() === drawTimeHour) {
@@ -104,21 +74,19 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     });
 
     /* istanbul ignore next */
-    this.pick3CardIdSubscription = this.appService
-      .getPick3DrawCardId$()
-      .subscribe((slideNumber: number) => {
+    this.pick3CardIdSubscription = this.appService.getPick3DrawCardId$().subscribe((slideNumber: number) => {
+      /* istanbul ignore if */
+      if (this.router.url === '/home') {
+        this.continueButton = true;
         /* istanbul ignore if */
-        if (this.router.url === '/home') {
-          this.continueButton = true;
+        if (slideNumber === 6) {
+          this.selectDrawingDateMenuItemForYesterday(yesterday, today);
           /* istanbul ignore if */
-          if (slideNumber === 6) {
-            this.selectDrawingDateMenuItemForYesterday(yesterday, today);
-            /* istanbul ignore if */
-          } else if (slideNumber === 7) {
-            this.selectDrawingDateMenuItemForToday(today, yesterday);
-          }
+        } else if (slideNumber === 7) {
+          this.selectDrawingDateMenuItemForToday(today, yesterday);
         }
-      });
+      }
+    });
   }
 
   ngOnDestroy() {}
@@ -134,27 +102,14 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
           this.currentDrawingCard = pick3DrawTimeCard;
           console.log(pick3DrawTimeCard);
           // TODO Call appService.getWinningNumber pass date and draw time
-          const pick3DrawDateCard = this.appService.getPreviousWinningNumber(
-            pick3DrawTimeCard.getDateTime(),
-            pick3DrawTimeCard.getPick3DrawTime()
-          );
+          const pick3DrawDateCard = this.appService.getPreviousWinningNumber(pick3DrawTimeCard.getDateTime(), pick3DrawTimeCard.getPick3DrawTime());
           pick3DrawDateCard.setDrawTime(pick3DrawTimeCard.getDrawTimeValue());
           pick3DrawDateCard.setIcon(pick3DrawTimeCard.getIcon());
-          const selectedPick3DrawDateCard = this.getCurrentWinningDrawingNumber(
-            pick3DrawDateCard,
-            pick3DrawDateCard.getDrawState(),
-            pick3DrawDateCard.getDrawDate(),
-            pick3DrawTimeCard.getDrawTimeValue()
-          );
-          const selectedPick3DrawTimeCard =
-            this.checkIfCountDownIsAvailable(pick3DrawTimeCard);
+          const selectedPick3DrawDateCard = this.getCurrentWinningDrawingNumber(pick3DrawDateCard, pick3DrawDateCard.getDrawState(), pick3DrawDateCard.getDrawDate(), pick3DrawTimeCard.getDrawTimeValue());
+          const selectedPick3DrawTimeCard = this.checkIfCountDownIsAvailable(pick3DrawTimeCard);
           // TODO Save previousPick3DrawDateCard to service
-          this.selectPicksService.setSelectedPick3DrawTimeCard(
-            selectedPick3DrawTimeCard
-          );
-          this.selectPicksService.setSelectedPick3DrawDateCard(
-            selectedPick3DrawDateCard
-          );
+          this.selectPicksService.setSelectedPick3DrawTimeCard(selectedPick3DrawTimeCard);
+          this.selectPicksService.setSelectedPick3DrawDateCard(selectedPick3DrawDateCard);
           this.validatePreviousWinningNumberComp();
         }
       });
@@ -166,9 +121,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   public setDrawingTimeMenuItems(pick3DrawDateCard): void {
     const targetCurrentDate = pick3DrawDateCard.getDrawDate();
     if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.appService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
@@ -178,17 +131,11 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.selectCurrentCard(this.drawTimes);
       }
     } else {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.appService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
-        this.newDrawingTimes.splice(
-          0,
-          this.newDrawingTimes.length,
-          ...this.defaultDrawingTimes
-        );
+        this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
@@ -200,9 +147,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     this.continueButton = false;
     const targetCurrentDate = pick3DrawDateCard.getDrawDate();
     if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.appService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         drawTime.setDrawTime(null);
@@ -214,18 +159,12 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.selectCurrentCard(this.drawTimes);
       }
     } else {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.appService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         drawTime.showCountDownToDrawing = true;
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
-        this.newDrawingTimes.splice(
-          0,
-          this.newDrawingTimes.length,
-          ...this.defaultDrawingTimes
-        );
+        this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
       /* istanbul ignore next */
       if (this.router.url === '/select-picks') {
@@ -242,27 +181,14 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  public selectDrawingDateMenuItemForYesterday(
-    yesterday: any,
-    today: any
-  ): void {
+  public selectDrawingDateMenuItemForYesterday(yesterday: any, today: any): void {
     const someDateTime = new Date();
-    const yesterdaysDate: Date = new Date(
-      someDateTime.getFullYear(),
-      someDateTime.getMonth() + 1 - 1,
-      someDateTime.getDate() - 1,
-      someDateTime.getHours()
-    );
+    const yesterdaysDate: Date = new Date(someDateTime.getFullYear(), someDateTime.getMonth() + 1 - 1, someDateTime.getDate() - 1, someDateTime.getHours());
     const pick3DrawTime = this.appService.getDrawTime(yesterdaysDate);
-    const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(
-      yesterdaysDate,
-      pick3DrawTime
-    );
+    const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(yesterdaysDate, pick3DrawTime);
     console.log(previousPick3DrawDateCard);
     // TODO Save previousPick3DrawDateCard to service
-    this.selectPicksService.setSelectedPick3DrawDateCard(
-      previousPick3DrawDateCard
-    );
+    this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
     if (this.checkIfLottoWasClosed(yesterdaysDate)) {
@@ -277,14 +203,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     today.style.backgroundColor = '#2fdf75';
     yesterday.style.backgroundColor = '#e5e5e5';
     const pick3DrawTime = this.appService.getDrawTime(currentDate);
-    const todaysPick3DrawDateCard = this.appService.getPreviousWinningNumber(
-      currentDate,
-      pick3DrawTime
-    );
+    const todaysPick3DrawDateCard = this.appService.getPreviousWinningNumber(currentDate, pick3DrawTime);
     // TODO Save previousPick3DrawDateCard to service
-    this.selectPicksService.setSelectedPick3DrawDateCard(
-      todaysPick3DrawDateCard
-    );
+    this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
 
     // TODO Save previousPick3DrawDateCard to service
     if (this.checkIfLottoWasClosed(currentDate)) {
@@ -296,17 +217,14 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   public setDrawDateButtons(drawDateButtonString: any): void {
-    const drawDateButtonValue =
-      NavigationEnum.retrieveNavigation(drawDateButtonString);
+    const drawDateButtonValue = NavigationEnum.retrieveNavigation(drawDateButtonString);
     this.drawStateService.generateNavigationChoice = drawDateButtonValue;
     this.drawStateService.viewNavigationChoice = drawDateButtonValue;
   }
 
   /* istanbul ignore next */
   submitForm(): void {
-    this.generatePicksService.dispatchGeneratePicksDrawDateCardEvent(
-      this.currentDrawingCard
-    );
+    this.generatePicksService.dispatchGeneratePicksDrawDateCardEvent(this.currentDrawingCard);
   }
 
   /* istanbul ignore next */
@@ -322,10 +240,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   private validatePreviousWinningNumberComp() {
-    if (
-      this.currentDrawingCard.showCountDownToDrawing === false &&
-      this.continueChoice
-    ) {
+    if (this.currentDrawingCard.showCountDownToDrawing === false && this.continueChoice) {
       this.continueButton = false;
     } else {
       this.continueButton = true;
@@ -336,12 +251,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   public checkIfLottoWasClosed(date: Date): boolean {
     const dateName = this.stateDrawDate.retrieveDay(date);
     console.log(dateName);
-    if (
-      dateName ===
-      this.stateDrawDate.checkDateStateIsClosed(
-        this.pick3StateLottery.getState()
-      )
-    ) {
+    if (dateName === this.stateDrawDate.checkDateStateIsClosed(this.pick3StateLottery.getState())) {
       return true;
     } else {
       return false;
@@ -350,10 +260,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
   private checkIfCountDownIsAvailable(pick3DrawTimeCard: Pick3DrawTimeCard) {
     const currentDate = new Date();
-    if (
-      pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() &&
-      this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime()) === false
-    ) {
+    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime()) === false) {
       pick3DrawTimeCard.showCountDownToDrawing = false;
     } else {
       pick3DrawTimeCard.showCountDownToDrawing = true;
@@ -361,26 +268,15 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     return pick3DrawTimeCard;
   }
 
-  private getCurrentWinningDrawingNumber(
-    pick3DrawDateCard: Pick3DrawDateCard,
-    drawState: string,
-    pick3DrawDateTime: Date,
-    pick3DrawTimeType: Pick3DrawTimeEnum
-  ): Pick3DrawDateCard {
-    this.pick3WebScrappingService
-      .getCurrentWinningDrawingNumber(
-        drawState,
-        pick3DrawDateTime,
-        pick3DrawTimeType
-      )
-      .then(
-        (winningNumber: any) => {
-          pick3DrawDateCard.setWinningNumber(winningNumber?.number);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  private getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {
+    this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
+      (winningNumber: any) => {
+        pick3DrawDateCard.setWinningNumber(winningNumber?.number);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     return pick3DrawDateCard;
   }
 }
