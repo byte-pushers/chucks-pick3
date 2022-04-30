@@ -18,7 +18,7 @@ import { DrawStateService } from '../../services/draw-state.service';
 import { DrawDateService } from '../../services/draw-date.service';
 import { AppService } from '../../app.service';
 import { NavigationEnum } from '../../models/navigate.enum';
-import { StateDrawDateService } from '../../services/state-draw-date.service';
+import { StateService } from '../../services/state.service';
 import { SelectPicksService } from '../../services/select-picks.service';
 import { GeneratePicksService } from '../../services/generate-picks.service';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
@@ -66,7 +66,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     private selectPicksService: SelectPicksService,
     private generatePicksService: GeneratePicksService,
     private appService: AppService,
-    private stateDrawDate: StateDrawDateService,
+    private stateDrawDate: StateService,
     private drawStateService: DrawStateService,
     private router: Router
   ) {
