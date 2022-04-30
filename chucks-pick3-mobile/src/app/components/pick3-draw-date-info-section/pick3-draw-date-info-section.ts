@@ -139,6 +139,15 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     });
   }
+  /* istanbul ignore next */
+  private isOnline(): boolean {
+    if (navigator.onLine) {
+      return true;
+    } else {
+      this.toastService.presentToast('No Internet Connection', 'Please try again later.', 'internet-not-available');
+      return false;
+    }
+  }
 
   /* istanbul ignore next */
   ngOnDestroy(): void {
@@ -170,28 +179,31 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   private setData(drawState: string, pick3DrawTimeCard: Pick3DrawTimeCard, backgroundImageUrl: string, drawTimeIcon: string): void {
-    const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
+    /* istanbul ignore next */
+    if (this.isOnline()) {
+      const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
 
-    this.data.setBackgroundImage(backgroundImageUrl);
-    this.data.setDrawState(drawState);
-    this.data.setDrawTime(pick3DrawTime.getType());
-    this.data.setDrawDate(new Date(pick3DrawTime.getDateTime()));
-    this.data.setIcon(drawTimeIcon);
+      this.data.setBackgroundImage(backgroundImageUrl);
+      this.data.setDrawState(drawState);
+      this.data.setDrawTime(pick3DrawTime.getType());
+      this.data.setDrawDate(new Date(pick3DrawTime.getDateTime()));
+      this.data.setIcon(drawTimeIcon);
 
-    if (this.appService.winningNumberHasBeenDrawn(pick3DrawTime) /* && this.appService.getNextDrawingTime(pick3DrawTime)*/) {
-      if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
-        this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
+      if (this.appService.winningNumberHasBeenDrawn(pick3DrawTime)) {
+        if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
+          this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
+        } else {
+          this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
+        }
       } else {
-        this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
-      }
-    } else {
-      if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
-        this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
-      } else {
-        this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
-      }
+        if (BytePushers.DateUtility.isSameDate(pick3DrawTime.getDateTime(), new Date())) {
+          this.getCurrentWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
+        } else {
+          this.getPastWinningDrawingNumber(this.data.getDrawState(), pick3DrawTime.getDateTime(), pick3DrawTime.getType());
+        }
 
-      pick3DrawTimeCard.showCountDownToDrawing = true;
+        pick3DrawTimeCard.showCountDownToDrawing = true;
+      }
     }
   }
 
