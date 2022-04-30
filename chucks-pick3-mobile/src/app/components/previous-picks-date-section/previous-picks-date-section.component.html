@@ -1,14 +1,6 @@
-<ion-row style="margin: 0; height: 100%; background-color: #1e1e1e">
-  <!--[style.background]="'url(' + data.backgroundImage + ')'">-->
+<ion-row style="margin: 0; height: 100%; background-color: #1e1e1e" [style.background]="'url(' + background + ')'">
   <ion-col size="2" style="margin-right: 0px">
-    <ion-icon
-      [routerLink]="['/', 'home']"
-      [state]="{ currentSlideNumber: this.pick3GenerateId }"
-      routerDirection="forward"
-      (click)="returnToPreviousPage()"
-      class="generate-back-button"
-      src="../../../assets/icon/back-arrow.svg"
-    ></ion-icon>
+    <ion-icon [routerLink]="['/', 'home']" [state]="{ currentSlideNumber: this.pick3GenerateId }" routerDirection="forward" (click)="returnToPreviousPage()" class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
   </ion-col>
   <ion-col size="8">
     <ion-row>
@@ -16,54 +8,25 @@
         <div class="container">
           <div class="row">
             <div class="column _55 draw-date-title" style="text-align: center">
-              <span style="font-size: 7.5vw" class="draw-date-text">{{
-                "card.state.title" | translate
-              }}</span>
+              <span style="font-size: 7.5vw" class="draw-date-text">{{ "card.state.title" | translate }}</span>
             </div>
           </div>
         </div>
         <br />
-        <div
-          class="container draw-date-text"
-          style="font-size: 5.5vw; font-weight: 500"
-        >
+        <div class="container draw-date-text" style="font-size: 5.5vw; font-weight: 500">
           <div class="row">
-            <div
-              class="column _55"
-              style="text-align: right; padding-right: 1em"
-            >
-              <ion-icon
-                *ngIf="data.icon"
-                src="/assets/icon/{{ data.icon }}.svg"
-                class="time-of-day-icon"
-              ></ion-icon>
+            <div class="column _55" style="text-align: right; padding-right: 1em">
+              <ion-icon *ngIf="data.icon" src="/assets/icon/{{ data.icon }}.svg" class="time-of-day-icon"></ion-icon>
             </div>
-            <div
-              class="column _55"
-              style="text-align: left; line-height: 2.45em"
-            >
+            <div class="column _55" style="text-align: left; line-height: 2.45em">
               {{ data.drawTimeAsString | translate }}
             </div>
           </div>
         </div>
         <br />
         <div class="row">
-          <div
-            class="column _55"
-            style="
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              flex-basis: 80% !important;
-            "
-          >
-            <span
-              style="font-size: 4.6vw; font-weight: bold"
-              class="draw-date-text"
-              >{{
-                data.drawDate
-                  | date: "EEE, MMM d, y ":"":translateService.currentLang
-              }}</span
+          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important">
+            <span style="font-size: 4.6vw; font-weight: bold" class="draw-date-text">{{ data.drawDate | date: "EEE, MMM d, y ":"":translateService.currentLang }}</span
             ><br />
           </div>
         </div>
@@ -72,38 +35,21 @@
     <ion-row>
       <ion-col>
         <div class="row">
-          <div
-            class="column _55"
-            style="
-              text-align: center;
-              margin-left: auto;
-              margin-right: auto;
-              flex-basis: 100%;
-            "
-          >
-            <div
-              style="display: inline"
-              *ngIf="time.showCountDownToDrawing === false"
-            >
+          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 100%">
+            <div style="display: inline" *ngIf="time.showCountDownToDrawing === false">
               <span class="dot">{{ data.winningNumberDigit1 }}</span>
               <span class="dot">{{ data.winningNumberDigit2 }}</span>
               <span class="dot">{{ data.winningNumberDigit3 }}</span>
             </div>
-            <div
-              style="display: inline"
-              *ngIf="time.showCountDownToDrawing === true"
-            >
-              <div style="color: #ffd743ff">
-                {{ "time.not.available" | translate }}
+            <div style="display: inline" *ngIf="time.showCountDownToDrawing === true">
+              <div style="color: #ffd743ff; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000">
+                <b>{{ "time.not.available" | translate }}</b>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div
-            class="column _55"
-            style="text-align: center; margin-left: auto; margin-right: auto"
-          ></div>
+          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto"></div>
         </div>
       </ion-col>
     </ion-row>
