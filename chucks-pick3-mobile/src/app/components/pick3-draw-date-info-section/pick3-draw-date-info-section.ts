@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
 import { publish } from 'rxjs/operators';
 import { error } from 'protractor';
-import { StateDrawDateService } from '../../services/state-draw-date.service';
+import { StateService } from '../../services/state.service';
 import { SelectPicksService } from '../../services/select-picks.service';
 
 @Component({
@@ -71,7 +71,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     private appService: AppService,
     private popoverController: PopoverController,
     private navCtrl: NavController,
-    private stateDrawDate: StateDrawDateService
+    private stateDrawDate: StateService
   ) {
     this.routerUrl = this.router.url;
 

@@ -10,6 +10,7 @@ import { Pick3DrawTime } from './models/pick3-draw-time';
 import { DrawTimeService } from './services/draw-time.service';
 import { Subject } from 'rxjs';
 import { error } from 'protractor';
+import { StateService } from './services/state.service';
 
 @Injectable()
 export class AppService {
@@ -28,7 +29,7 @@ export class AppService {
 
   constructor(
     private pick3WebScrappingService: Pick3WebScrapingProviderService,
-    private drawTimeService: DrawTimeService
+    private stateService: StateService
   ) {
     this.pick3StateLottery =
       pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -234,7 +235,9 @@ export class AppService {
   }
 
   public getBackgroundImageUrl(): string {
-    return this.pick3StateLottery.getBackgroundImageUrl();
+    return this.stateService.getStateBackgroundImage(
+      this.pick3StateLottery.getState()
+    );
   }
 
   public getCurrentDrawTime(): Pick3DrawTime {

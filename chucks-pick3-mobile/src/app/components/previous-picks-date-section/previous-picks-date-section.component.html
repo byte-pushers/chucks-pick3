@@ -1,5 +1,7 @@
-<ion-row style="margin: 0; height: 100%; background-color: #1e1e1e">
-  <!--[style.background]="'url(' + data.backgroundImage + ')'">-->
+<ion-row
+  style="margin: 0; height: 100%; background-color: #1e1e1e"
+  [style.background]="'url(' + background + ')'"
+>
   <ion-col size="2" style="margin-right: 0px">
     <ion-icon
       [routerLink]="['/', 'home']"
@@ -93,8 +95,14 @@
               style="display: inline"
               *ngIf="time.showCountDownToDrawing === true"
             >
-              <div style="color: #ffd743ff">
-                {{ "time.not.available" | translate }}
+              <div
+                style="
+                  color: #ffd743ff;
+                  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+                    -1px 1px 0 #000, 1px 1px 0 #000;
+                "
+              >
+                <b>{{ "time.not.available" | translate }}</b>
               </div>
             </div>
           </div>
