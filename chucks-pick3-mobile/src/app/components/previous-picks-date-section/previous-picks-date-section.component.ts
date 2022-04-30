@@ -41,15 +41,7 @@ export class PreviousPicksDateSectionComponent implements OnInit {
   }
 
   /* istanbul ignore next */
-  constructor(
-    public drawStateService: DrawStateService,
-    private appService: AppService,
-    private selectPicksService: SelectPicksService,
-    private router: Router,
-    private navCtrl: NavController,
-    public translate: I18nService,
-    public translateService: TranslateService
-  ) {
+  constructor(public drawStateService: DrawStateService, private appService: AppService, private selectPicksService: SelectPicksService, private router: Router, private navCtrl: NavController, public translate: I18nService, public translateService: TranslateService) {
     this.routerUrl = this.router.url;
   }
   /* istanbul ignore next */

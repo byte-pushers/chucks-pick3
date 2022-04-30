@@ -32,13 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LanguagePopoverComponent,
-    CountdownTimerComponent,
-    Pick3DrawDateInfoSection,
-    Pick3GenerateDateSectionComponent,
-  ],
+  declarations: [AppComponent, LanguagePopoverComponent, CountdownTimerComponent, Pick3DrawDateInfoSection, Pick3GenerateDateSectionComponent],
   entryComponents: [],
   exports: [CountdownTimerComponent],
   imports: [
