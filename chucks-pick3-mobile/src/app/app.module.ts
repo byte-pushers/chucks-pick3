@@ -20,7 +20,7 @@ import { CardPageModule } from './pages/card/card.page.module';
 import { ViewPageModule } from './pages/view/view.module';
 import { NumberUtilityService } from './services/numberUtility.service';
 import { SwiperModule } from 'swiper/angular';
-import { StateDrawDateService } from './services/state-draw-date.service';
+import { StateService } from './services/state.service';
 import { PreviousPicksPageModule } from './pages/previous-picks/previous-picks.module';
 import { CountdownTimerComponent } from './components/countdown-timer/countdown-timer.component';
 import { CardPage } from './pages/card/card.page';
@@ -32,13 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LanguagePopoverComponent,
-    CountdownTimerComponent,
-    Pick3DrawDateInfoSection,
-    Pick3GenerateDateSectionComponent,
-  ],
+  declarations: [AppComponent, LanguagePopoverComponent, CountdownTimerComponent, Pick3DrawDateInfoSection, Pick3GenerateDateSectionComponent],
   entryComponents: [],
   exports: [CountdownTimerComponent],
   imports: [
@@ -66,7 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     CardContextService,
     NumberUtilityService,
-    StateDrawDateService,
+    StateService,
     TomorrowPick3DrawDateCardService,
     AppService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

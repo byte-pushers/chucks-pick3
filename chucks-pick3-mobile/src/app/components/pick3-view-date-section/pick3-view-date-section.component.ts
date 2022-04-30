@@ -36,16 +36,12 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
+
+  get background() {
+    return this.appService.getBackgroundImageUrl();
+  }
   /* istanbul ignore next */
-  constructor(
-    private selectPicksService: SelectPicksService,
-    private toastService: IonicToastNotificationService,
-    private router: Router,
-    public translate: I18nService,
-    public translateService: TranslateService,
-    private pick3WebScrappingService: Pick3WebScrapingProviderService,
-    private appService: AppService
-  ) {
+  constructor(private selectPicksService: SelectPicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService) {
     this.routerUrl = this.router.url;
   }
   /* istanbul ignore next */
@@ -62,9 +58,7 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
 
     if (this.routerUrl === '/home') {
       Pick3ViewDateSectionComponent.counter--;
-      console.log(
-        `Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3ViewDateSectionComponent.counter}`
-      );
+      console.log(`Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3ViewDateSectionComponent.counter}`);
     }
   }
 }
