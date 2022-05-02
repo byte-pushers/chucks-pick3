@@ -45,24 +45,8 @@ describe('GenerateNextNumbersCardComponent', () => {
     });
     TestBed.configureTestingModule({
       declarations: [GenerateNextNumbersCardComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        TomorrowPick3DrawDateCardService,
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawStateService,
-        DrawDateService,
-        CardContextService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      providers: [TomorrowPick3DrawDateCardService, AppService, Pick3WebScrapingProviderService, DrawStateService, DrawDateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
     drawStateService = TestBed.get(DrawStateService);
@@ -86,10 +70,7 @@ describe('GenerateNextNumbersCardComponent', () => {
   });
 
   it('should call setDrawingTimeMenuItems', () => {
-    const setDrawingTimeMenuItemsSpy = spyOn(
-      component,
-      'setDrawingTimeMenuItems'
-    );
+    const setDrawingTimeMenuItemsSpy = spyOn(component, 'setDrawingTimeMenuItems');
     const today: HTMLElement = document.getElementById('today');
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
     component.selectTomorrowGenerateDrawingDate(tomorrow, today);
@@ -102,14 +83,7 @@ describe('GenerateNextNumbersCardComponent', () => {
   });
 
   it('should retrieve a next date', () => {
-    const tomorrowFullDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate() + 1,
-      0,
-      0,
-      0
-    );
+    const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
     component.setDrawingTimeMenuItems(model);
     expect(component.newDrawingTimes).toBeDefined();
   });

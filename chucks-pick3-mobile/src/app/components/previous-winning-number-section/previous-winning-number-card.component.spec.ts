@@ -17,9 +17,7 @@ import { Pick3LotteryService } from '../../services/pick3-lottery.service';
 
 describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
-  const yesterdaysDate: Date = new Date(
-    new Date().valueOf() - 1000 * 60 * 60 * 24
-  );
+  const yesterdaysDate: Date = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
   let component: PreviousWinningNumberCardComponent;
   let fixture: ComponentFixture<PreviousWinningNumberCardComponent>;
   let router: Router;
@@ -60,22 +58,8 @@ describe('PreviousWinningNumberCardComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [PreviousWinningNumberCardComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawStateService,
-        CardContextService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      providers: [AppService, Pick3WebScrapingProviderService, DrawStateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
     drawStateService = TestBed.get(DrawStateService);
@@ -100,10 +84,7 @@ describe('PreviousWinningNumberCardComponent', () => {
   });
 
   it('should call selectDrawingDateMenuItemForToday ', () => {
-    const selectDrawingDateMenuItemForTodaySpy = spyOn(
-      component,
-      'selectDrawingDateMenuItemForToday'
-    );
+    const selectDrawingDateMenuItemForTodaySpy = spyOn(component, 'selectDrawingDateMenuItemForToday');
     component.ngOnInit();
     expect(selectDrawingDateMenuItemForTodaySpy).toHaveBeenCalled();
   });

@@ -42,23 +42,8 @@ describe('Pick3DrawTimeCardComponent', () => {
     });
     TestBed.configureTestingModule({
       declarations: [Pick3DrawTimeCardComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawStateService,
-        DrawTimeService,
-        CardContextService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      providers: [AppService, Pick3WebScrapingProviderService, DrawStateService, DrawTimeService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
     drawStateService = TestBed.get(DrawStateService);

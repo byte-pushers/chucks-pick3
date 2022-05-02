@@ -4,6 +4,7 @@
 .drawing-time {
   height: 100%;
 }
+
 .draw-time-icon {
   display: inline-block;
   width: 40%;
@@ -33,6 +34,7 @@
   font-size: 7vw;
   font-weight: 700;
 }
+
 .draw-time-title {
   display: inline-block;
   width: 60%;
@@ -59,6 +61,7 @@
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners {
   background-color: $chucksPick3LightGray;
 }
+
 .generated-picks-indicator.drawn.selected,
 .generated-picks-indicator.not-drawn-yet.selected,
 .generated-picks-indicator.not-drawn.selected,

@@ -48,9 +48,11 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
+
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
+
   constructor(private selectPicksService: SelectPicksService, private generatePicksService: GeneratePicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService) {
     this.routerUrl = this.router.url;
   }

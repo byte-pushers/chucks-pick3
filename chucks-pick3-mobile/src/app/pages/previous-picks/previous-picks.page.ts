@@ -16,11 +16,7 @@ export class PreviousPicksPage implements OnInit {
   private pick3DrawnNumber: any;
   public pick3Header: string;
 
-  constructor(
-    private popoverController: PopoverController,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor(private popoverController: PopoverController, private route: ActivatedRoute, private router: Router) {
     console.info('GeneratePage.constructor() method.');
     /* istanbul ignore next */
     this.id = route.params.pipe(map((p) => p.id));
@@ -39,7 +35,7 @@ export class PreviousPicksPage implements OnInit {
       /* istanbul ignore else  */
       /* istanbul ignore  if */
     } else if (this.router.url === '/generate-picks') {
-    /* istanbul ignore  if */
+      /* istanbul ignore  if */
       /* istanbul ignore next  */
       this.pick3Header = 'generate-header';
     }
@@ -54,8 +50,7 @@ export class PreviousPicksPage implements OnInit {
       translucent: true,
     });
     /* istanbul ignore next */
-    popover.style.cssText =
-      '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+    popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     /* istanbul ignore next */
     return await popover.present();
   }

@@ -1,8 +1,8 @@
-import {Pick3DrawTimeCardDomain} from './pick3-draw-time-card.domain';
-import {Pick3DrawTimeCardStateEnum} from './pick3-draw-time-card-state.enum';
-import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
-import {Pick3DrawDateCardDomain} from './pick3-draw-date-card.domain';
-import {Pick3LotteryService} from '../services/pick3-lottery.service';
+import { Pick3DrawTimeCardDomain } from './pick3-draw-time-card.domain';
+import { Pick3DrawTimeCardStateEnum } from './pick3-draw-time-card-state.enum';
+import { Pick3DrawTimeEnum } from './pick3-draw-time.enum';
+import { Pick3DrawDateCardDomain } from './pick3-draw-date-card.domain';
+import { Pick3LotteryService } from '../services/pick3-lottery.service';
 
 describe('Pick3DrawTimeCardDomain', () => {
   const date = new Date();
@@ -10,31 +10,29 @@ describe('Pick3DrawTimeCardDomain', () => {
 
   beforeEach(() => {
     dateModel = new Pick3DrawDateCardDomain({
-      drawDate : date,
-      drawState : 'gotoHome',
+      drawDate: date,
+      drawState: 'gotoHome',
       drawTime: Pick3DrawTimeEnum.MORNING,
       drawTimeAsString: 'Morning',
       upcomingDrawTime: date,
       hasWinner: false,
       backgroundImage: Pick3LotteryService,
       winningNumber: 462,
-      winningNumberDigits: [4,6,2],
+      winningNumberDigits: [4, 6, 2],
       drawDateIcon: date,
-      slideNumber: 7
-
+      slideNumber: 7,
     });
     model = new Pick3DrawTimeCardDomain({
-      pick3DrawCardId : 7,
-      icon : 'Morning',
+      pick3DrawCardId: 7,
+      icon: 'Morning',
       title: 'Morning',
       pick3DrawTime: Pick3DrawTimeEnum.MORNING,
-      dateTime: new Date,
+      dateTime: new Date(),
       drawTime: Pick3DrawTimeEnum.MORNING,
       state: Pick3DrawTimeCardStateEnum.DRAWN,
       selected: true,
       showCountDownToDrawing: false,
-      pick3DrawTimeArray: [33,555,264,346,345]
-
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
     });
   });
 
@@ -101,7 +99,6 @@ describe('Pick3DrawTimeCardDomain', () => {
     model.state = Pick3DrawTimeCardStateEnum.DRAWN;
     expect(model.state).toEqual(Pick3DrawTimeCardStateEnum.DRAWN);
   });
-
 
   // icon
   it('should have an icon defined', () => {
@@ -181,7 +178,6 @@ describe('Pick3DrawTimeCardDomain', () => {
     expect(model.showCountDownToDrawing).toEqual(true);
   });
 
-
   it('should have a pick3DrawCardId defined', () => {
     const pick3DateTime = model.getDateTime();
     expect(pick3DateTime).toBeDefined();
@@ -200,5 +196,4 @@ describe('Pick3DrawTimeCardDomain', () => {
     const compareTo = model.compareTo(dateModel);
     expect(compareTo).toBeDefined();
   });
-
 });

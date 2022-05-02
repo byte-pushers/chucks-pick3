@@ -1,12 +1,15 @@
-import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import { Pick3DrawTimeEnum } from './pick3-draw-time.enum';
 
 export interface PreviousWinningNumber {
-    getDrawDate(): Date;
-    setDrawDate(drawDate: Date): void;
+  getDrawDate(): Date;
 
-    getDrawState(): string;
-    setDrawState(drawState: string): void;
+  setDrawDate(drawDate: Date): void;
 
-    getDrawTime(): Pick3DrawTimeEnum;
-    setDrawTime(drawTime: Pick3DrawTimeEnum): void;
+  getDrawState(): string;
+
+  setDrawState(drawState: string): void;
+
+  getDrawTime(): Pick3DrawTimeEnum;
+
+  setDrawTime(drawTime: Pick3DrawTimeEnum): void;
 }

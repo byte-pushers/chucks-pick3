@@ -3,12 +3,7 @@ import * as BytePushers from 'bytepushers-js-core';
 import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
 import { DrawDateService } from '../../services/draw-date.service';
 import { DrawStateService } from '../../services/draw-state.service';
-import {
-  DAY_DRAW_TIME_KEY,
-  EVENING_DRAW_TIME_KEY,
-  MORNING_DRAW_TIME_KEY,
-  NIGHT_DRAW_TIME_KEY,
-} from '../../models/pick3-draw-time.enum';
+import { DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, MORNING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY } from '../../models/pick3-draw-time.enum';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
 import { Pick3StateLottery } from '../../models/pick3-state-lottery';
 import { Router } from '@angular/router';
@@ -31,30 +26,15 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public pick3StateLottery: Pick3StateLottery;
   private componentState;
 
-  defaultDrawingTimes = [
-    MORNING_DRAW_TIME_KEY,
-    DAY_DRAW_TIME_KEY,
-    EVENING_DRAW_TIME_KEY,
-    NIGHT_DRAW_TIME_KEY,
-  ];
+  defaultDrawingTimes = [MORNING_DRAW_TIME_KEY, DAY_DRAW_TIME_KEY, EVENING_DRAW_TIME_KEY, NIGHT_DRAW_TIME_KEY];
   generateChoice: any;
   generateButton = true;
 
   public pick3CardToGenerate: Pick3DrawTimeCard;
   private pick3DrawDateCardSubscription: Subscription;
 
-  constructor(
-    private drawDateService: DrawDateService,
-    private drawTimeService: DrawTimeService,
-    private appService: AppService,
-    private tomorrowService: TomorrowPick3DrawDateCardService,
-    private router: Router,
-    private selectPicksService: SelectPicksService,
-    private drawStateService: DrawStateService,
-    private pick3WebScrappingService: Pick3WebScrapingProviderService
-  ) {
-    this.pick3StateLottery =
-      pick3WebScrappingService.findRegisteredStateLottery('TX');
+  constructor(private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private appService: AppService, private tomorrowService: TomorrowPick3DrawDateCardService, private router: Router, private selectPicksService: SelectPicksService, private drawStateService: DrawStateService, private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.componentState = 'instantiated';
   }
 
@@ -62,48 +42,28 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     const today: HTMLElement = document.getElementById('today');
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
     this.selectTodayGenerateDrawingDate(today, tomorrow);
-    this.pick3DrawDateCardSubscription = this.drawDateService
-      .getPick3DrawDateCard$()
-      .subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-        console.log(currentPick3DrawDateCard);
-      });
+    this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+      console.log(currentPick3DrawDateCard);
+    });
   }
 
   public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
     const date = new Date();
-    const tomorrowFullDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate() + 1,
-      0,
-      0,
-      0
-    );
+    const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
     tomorrow.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
-    const nextPick3DrawDateCard =
-      this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
+    const nextPick3DrawDateCard = this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
     console.log(nextPick3DrawDateCard);
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
   public selectTodayGenerateDrawingDate(today: any, tomorrow: any): void {
     const date = new Date();
-    const todayFullDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      0,
-      0,
-      0
-    );
+    const todayFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
     today.style.backgroundColor = '#2fdf75';
     tomorrow.style.backgroundColor = '#e5e5e5';
     const pick3DrawTime = this.appService.getDrawTime(todayFullDate);
-    const nextPick3DrawDateCard = this.appService.getPreviousWinningNumber(
-      todayFullDate,
-      pick3DrawTime
-    );
+    const nextPick3DrawDateCard = this.appService.getPreviousWinningNumber(todayFullDate, pick3DrawTime);
     // TODO Save previousPick3DrawDateCard to service
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
@@ -111,9 +71,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public setDrawingTimeMenuItems(pick3DrawDateCard): void {
     const targetCurrentDate = pick3DrawDateCard.getDrawDate();
     if (BytePushers.DateUtility.isSameDate(targetCurrentDate, new Date())) {
-      this.drawTimes = this.appService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.appService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       const drawTimes = this.sortDrawTimes(this.drawTimes);
       for (const drawTime of drawTimes) {
@@ -121,18 +79,12 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
       }
     } else {
-      this.drawTimes = this.tomorrowService.getPick3DrawTimeCards(
-        pick3DrawDateCard.slideNumber
-      );
+      this.drawTimes = this.tomorrowService.getPick3DrawTimeCards(pick3DrawDateCard.slideNumber);
       this.resetDrawingTimes();
       for (const drawTime of this.drawTimes) {
         this.selectDrawingTimeCard(drawTime);
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
-        this.newDrawingTimes.splice(
-          0,
-          this.newDrawingTimes.length,
-          ...this.defaultDrawingTimes
-        );
+        this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
     }
   }
@@ -145,9 +97,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.pick3CardToGenerate = pick3DrawTimeCard;
-          this.selectPicksService.setSelectedPick3DrawTimeCard(
-            pick3DrawTimeCard
-          );
+          this.selectPicksService.setSelectedPick3DrawTimeCard(pick3DrawTimeCard);
           this.enableGenerateButton();
         }
       });
@@ -164,9 +114,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     this.replaceGeneratedNumbers();
     this.changeNavigation('gotoViewPicks');
     console.log(this.pick3CardToGenerate);
-    this.drawDateService.dispatchCurrentDrawDateCardEvent(
-      this.pick3CardToGenerate
-    );
+    this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
     console.log(this.pick3CardToGenerate);
     this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
   }

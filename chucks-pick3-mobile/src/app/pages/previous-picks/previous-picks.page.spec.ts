@@ -22,19 +22,8 @@ describe('PreviousPicksPage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PreviousPicksPage],
-        imports: [
-          CommonModule,
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          TranslateModule,
-          HttpClientTestingModule,
-        ],
-        providers: [
-          AppService,
-          Pick3WebScrapingProviderService,
-          CardContextService,
-        ],
+        imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, HttpClientTestingModule],
+        providers: [AppService, Pick3WebScrapingProviderService, CardContextService],
       }).compileComponents();
       router = TestBed.get(Router);
       popover = TestBed.get(PopoverController);

@@ -139,6 +139,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     });
   }
+
   /* istanbul ignore next */
   private isOnline(): boolean {
     if (navigator.onLine) {

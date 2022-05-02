@@ -1,9 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-  waitForAsync,
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { PreviousPicksDateSectionComponent } from './previous-picks-date-section.component';
@@ -69,23 +64,8 @@ describe('PreviousPicksDateSectionComponent', () => {
     });
     TestBed.configureTestingModule({
       declarations: [PreviousPicksDateSectionComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        CardContextService,
-        NumberUtilityService,
-        I18nService,
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawTimeService,
-        SelectPicksService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, HttpClientTestingModule],
+      providers: [CardContextService, NumberUtilityService, I18nService, AppService, Pick3WebScrapingProviderService, DrawTimeService, SelectPicksService],
     }).compileComponents();
     router = TestBed.get(Router);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
