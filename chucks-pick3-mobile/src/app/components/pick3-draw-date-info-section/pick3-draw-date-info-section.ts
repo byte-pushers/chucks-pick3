@@ -264,9 +264,9 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.setUpNextDate(this.data.drawDate);
         this.showCountDownToDrawing = true;
         // TODO: Handle error.
-        const errorDate = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
+        const pick3DrawDay = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
         console.log(pick3DrawDateTime);
-        this.checkIfErrorToastIsDisplayed(errorDate);
+        this.handleInvalidPick3DrawDayError(pick3DrawDay);
 
         console.error('TODO:: Handle error: ' + error, error);
 
@@ -275,9 +275,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     );
   }
 
-  private checkIfErrorToastIsDisplayed(errorDate) {
-    console.log(errorDate);
-    if (errorDate !== this.stateDrawDate.checkDateStateIsClosed(this.data.getDrawState())) {
+  private handleInvalidPick3DrawDayError(pick3DrawDay) {
+    console.log(pick3DrawDay);
+
+    const closedDayArray = this.stateDrawDate.getClosedDates(this.data.getDrawState());
+
+    if (closedDayArray.includes(pick3DrawDay) === false) {
       this.drawDateCardUnavailable = false;
       this.toastService.presentToast('Internal Error', 'Please try again later.', 'internet-not-available');
     } else {

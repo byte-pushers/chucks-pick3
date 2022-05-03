@@ -191,7 +191,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
-    if (this.checkIfLottoWasClosed(yesterdaysDate)) {
+    if (this.isLotteryClosed(yesterdaysDate)) {
       this.setDrawingTimeMenuItemsForClosedDay(previousPick3DrawDateCard);
     } else {
       this.setDrawingTimeMenuItems(previousPick3DrawDateCard);
@@ -208,7 +208,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
 
     // TODO Save previousPick3DrawDateCard to service
-    if (this.checkIfLottoWasClosed(currentDate)) {
+    if (this.isLotteryClosed(currentDate)) {
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
     } else {
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
@@ -248,19 +248,15 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  public checkIfLottoWasClosed(date: Date): boolean {
+  public isLotteryClosed(date: Date): boolean {
     const dateName = this.stateDrawDate.retrieveDay(date);
     console.log(dateName);
-    if (dateName === this.stateDrawDate.checkDateStateIsClosed(this.pick3StateLottery.getState())) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.stateDrawDate.getClosedDates(this.pick3StateLottery.getState()).includes(dateName);
   }
 
   private checkIfCountDownIsAvailable(pick3DrawTimeCard: Pick3DrawTimeCard) {
     const currentDate = new Date();
-    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime()) === false) {
+    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.isLotteryClosed(pick3DrawTimeCard.getDateTime()) === false) {
       pick3DrawTimeCard.showCountDownToDrawing = false;
     } else {
       pick3DrawTimeCard.showCountDownToDrawing = true;
