@@ -230,7 +230,6 @@ export class AppService {
   }
 
   public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
-    const pick3DrawDateCard = this.getPick3DrawDateCard(currentSlideNumber);
     const drawTime = this.getDrawTime(currentDrawTime);
     const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
     return pick3DrawTime;

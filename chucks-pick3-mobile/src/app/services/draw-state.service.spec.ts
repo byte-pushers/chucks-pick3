@@ -23,21 +23,21 @@ describe('DrawStateService', () => {
   });
 
   // testing for methods and ensuring they're working together
-  it('should invoke the sortState method', () => {
-    spyOn(service, 'sortState');
-    service.passState(drawingTimeCardColorIndicators);
-    expect(service.sortState).toHaveBeenCalled();
+  it('should invoke the sortPick3DrawState method', () => {
+    spyOn(service, 'sortPick3DrawState');
+    service.passPick3DrawState(drawingTimeCardColorIndicators);
+    expect(service.sortPick3DrawState).toHaveBeenCalled();
   });
 
-  it('should invoke the applyState method', () => {
-    spyOn(service, 'applyState');
-    service.sortState(currentState);
-    expect(service.applyState).toHaveBeenCalled();
+  it('should invoke the applyPick3DrawState method', () => {
+    spyOn(service, 'applyPick3DrawState');
+    service.sortPick3DrawState(currentState);
+    expect(service.applyPick3DrawState).toHaveBeenCalled();
   });
 
-  //ensuring applyState is saving to the service's variable the picksIndicator
+  //ensuring applyPick3DrawState is saving to the service's variable the picksIndicator
   it('should be saving the  values to the picksIndicator', () => {
-    service.applyState('gray', 'not-drawn-yet', true);
+    service.applyPick3DrawState('gray', 'not-drawn-yet');
     expect(service.picksIndicator).toBeDefined('picksIndicator is not defined');
   });
 });

@@ -110,7 +110,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       const currentPick3DrawDateCardId = currentPick3DrawDateCard.getPick3DrawCardId();
       if (this.routerUrl === '/home') {
         if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
-          console.log(this.currentSlideNumber);
           this.disableButtonOnCard(currentPick3DrawDateCardId);
           this.appService.pick3CardId = currentPick3DrawDateCardId;
           this.setData(this.appService.getDrawState(), currentPick3DrawDateCard, this.appService.getBackgroundImageUrl(), currentPick3DrawDateCard.getIcon());
@@ -132,7 +131,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       if (context && /* istanbul ignore next */ context.slideNumber === this.id) {
         console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
         const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
-        console.log(this.drawTimeCard);
         const currentPick3DrawTimeCard = this.drawTimeCard ? this.drawTimeCard : this.defaultDrawTimeCard;
         this.defaultDrawDateTime = context.defaultDrawDateTime;
         this.setData(pick3DrawDateCard.getDrawState(), currentPick3DrawTimeCard, this.appService.getBackgroundImageUrl(), currentPick3DrawTimeCard.getIcon());
@@ -265,7 +263,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.showCountDownToDrawing = true;
         // TODO: Handle error.
         const pick3DrawDay = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
-        console.log(pick3DrawDateTime);
         this.handleInvalidPick3DrawDayError(pick3DrawDay);
 
         console.error('TODO:: Handle error: ' + error, error);
@@ -276,8 +273,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   private handleInvalidPick3DrawDayError(pick3DrawDay) {
-    console.log(pick3DrawDay);
-
     const closedDayArray = this.stateDrawDate.getClosedDates(this.data.getDrawState());
 
     if (closedDayArray.includes(pick3DrawDay) === false) {

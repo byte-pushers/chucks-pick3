@@ -100,7 +100,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.currentDrawingCard = pick3DrawTimeCard;
-          console.log(pick3DrawTimeCard);
           // TODO Call appService.getWinningNumber pass date and draw time
           const pick3DrawDateCard = this.appService.getPreviousWinningNumber(pick3DrawTimeCard.getDateTime(), pick3DrawTimeCard.getPick3DrawTime());
           pick3DrawDateCard.setDrawTime(pick3DrawTimeCard.getDrawTimeValue());
@@ -186,7 +185,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const yesterdaysDate: Date = new Date(someDateTime.getFullYear(), someDateTime.getMonth() + 1 - 1, someDateTime.getDate() - 1, someDateTime.getHours());
     const pick3DrawTime = this.appService.getDrawTime(yesterdaysDate);
     const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(yesterdaysDate, pick3DrawTime);
-    console.log(previousPick3DrawDateCard);
     // TODO Save previousPick3DrawDateCard to service
     this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
     yesterday.style.backgroundColor = '#2fdf75';
@@ -250,7 +248,6 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   /* istanbul ignore next */
   public isLotteryClosed(date: Date): boolean {
     const dateName = this.stateDrawDate.retrieveDay(date);
-    console.log(dateName);
     return this.stateDrawDate.getClosedDates(this.pick3StateLottery.getState()).includes(dateName);
   }
 

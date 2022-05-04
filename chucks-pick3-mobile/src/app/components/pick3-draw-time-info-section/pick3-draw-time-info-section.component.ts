@@ -87,7 +87,6 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
         drawTime.setSelected(true);
         // pick3DrawTimeCard.showCountDownToDrawing = false;
-        console.log(pick3DrawTimeCard);
         this.checkForGeneratedArray(pick3DrawTimeCard);
         this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
       }

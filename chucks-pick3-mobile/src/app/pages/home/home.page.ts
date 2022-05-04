@@ -76,7 +76,6 @@ export class HomePage implements OnDestroy {
     activeIndex = swiper.activeIndex;
     if (this.slidesLoaded) {
       this.storeId();
-      console.log(swiper.activeIndex);
       activeIndex = swiper.activeIndex;
       console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
       const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
@@ -99,7 +98,6 @@ export class HomePage implements OnDestroy {
       /* istanbul ignore else */
       if (activeIndex !== this.prevActiveIndex) {
         this.appService.pick3CardId = activeIndex + 1;
-        console.log(this.appService.pick3CardId);
         this.passIdToGenerate(activeIndex + 1);
       }
     }
