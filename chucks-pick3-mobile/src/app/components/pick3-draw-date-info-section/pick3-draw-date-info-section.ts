@@ -256,7 +256,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       (error) => {
         this.setUpNextDate(this.data.drawDate);
         this.showCountDownToDrawing = true;
-        // TODO: Handle error.
         const pick3DrawDay = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
         this.handleInvalidPick3DrawDayError(pick3DrawDay);
 
