@@ -8,13 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { GenerateNextNumbersCardComponent } from '../../components/generate-next-numbers-section/generate-next-numbers-card.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    GeneratePageRoutingModule,
-    TranslateModule,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, GeneratePageRoutingModule, TranslateModule],
   declarations: [GeneratePage, GenerateNextNumbersCardComponent],
 })
 export class GeneratePageModule {

@@ -33,11 +33,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [I18nService],
   exports: [CardPage],
-  declarations: [
-    CardPage,
-    Pick3DrawTimeCardComponent,
-    Pick3DrawTimeInfoSectionComponent,
-  ],
+  declarations: [CardPage, Pick3DrawTimeCardComponent, Pick3DrawTimeInfoSectionComponent],
 })
 export class CardPageModule {
   constructor() {}

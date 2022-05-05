@@ -9,15 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () =>
-      import('./pages/account/account.module').then((m) => m.AccountPageModule),
+    loadChildren: () => import('./pages/account/account.module').then((m) => m.AccountPageModule),
   },
   {
     path: 'settings',
-    loadChildren: () =>
-      import('./pages/settings/settings.module').then(
-        (m) => m.SettingsPageModule
-      ),
+    loadChildren: () => import('./pages/settings/settings.module').then((m) => m.SettingsPageModule),
   },
   {
     path: 'select',
@@ -47,9 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-  ],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {

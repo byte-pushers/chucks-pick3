@@ -32,6 +32,7 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
   get data() {
     return this.selectPicksService.getSelectedPick3DrawDateCard();
   }
+
   /* istanbul ignore next */
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
@@ -40,10 +41,12 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
+
   /* istanbul ignore next */
   constructor(private selectPicksService: SelectPicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService) {
     this.routerUrl = this.router.url;
   }
+
   /* istanbul ignore next */
   ngOnInit(): void {
     registerLocaleData(localeEsMx, 'es-MX');

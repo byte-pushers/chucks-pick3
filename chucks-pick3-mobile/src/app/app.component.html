@@ -1,26 +1,25 @@
 <ion-app>
-    <ion-menu menuId="main-menu" contentId="main" side="end" type="push">
-
-        <ion-content>
-            <ion-list *ngFor="let pages of navigate">
-                <ion-menu-toggle auto-hide="true">
-                    <ion-item [routerLink]="pages.url" routerDirection="forward">
-                        <ion-icon [name]="pages.icon" slot="start"></ion-icon>
-                        {{pages.title}}
-                    </ion-item>
-                </ion-menu-toggle>
-            </ion-list>
-        </ion-content>
-    </ion-menu>
-    <ion-content class="ion-padding">
-        <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-menu menuId="main-menu" contentId="main" side="end" type="push">
+    <ion-content>
+      <ion-list *ngFor="let pages of navigate">
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="pages.url" routerDirection="forward">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            {{ pages.title }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
     </ion-content>
+  </ion-menu>
+  <ion-content class="ion-padding">
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-content>
 
-    <ion-footer>
-        <ion-toolbar color="transparent">
-            <ion-buttons slot="start" [routerLink]="['/','home']"  routerDirection="root" (click)="resetButtons('gotoHome')">
-                <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
-            </ion-buttons>
-        </ion-toolbar>
-    </ion-footer>
+  <ion-footer>
+    <ion-toolbar color="transparent">
+      <ion-buttons slot="start" [routerLink]="['/', 'home']" routerDirection="root" (click)="resetButtons('gotoHome')">
+        <ion-icon class="toolbar-icon" src="/assets/icon/home-icon.svg"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </ion-app>

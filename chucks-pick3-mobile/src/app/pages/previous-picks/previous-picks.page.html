@@ -6,25 +6,16 @@
 
     <ion-buttons slot="start" (click)="showPopover($event)">
       <ion-button menu="lang-menu">
-        <b class="language">{{'language' | translate}}</b
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-caret-down-fill toolbar-icon"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
-          />
+        <b class="language">{{'language' | translate}}</b>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill toolbar-icon" viewBox="0 0 16 16">
+          <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
         </svg>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="primary">
-      <ion-menu-button menu="main-menu"
-        ><ion-icon class="toolbar-icon" src="/assets/icon/menu.svg"></ion-icon
-      ></ion-menu-button>
+      <ion-menu-button menu="main-menu">
+        <ion-icon class="toolbar-icon" src="/assets/icon/menu.svg"></ion-icon>
+      </ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

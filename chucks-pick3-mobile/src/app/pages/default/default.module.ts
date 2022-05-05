@@ -9,12 +9,7 @@ import { DefaultPageRoutingModule } from './default-routing.module';
 import { DefaultPage } from './default.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DefaultPageRoutingModule
-  ],
-  declarations: [DefaultPage]
+  imports: [CommonModule, FormsModule, IonicModule, DefaultPageRoutingModule],
+  declarations: [DefaultPage],
 })
 export class DefaultPageModule {}

@@ -1,5 +1,5 @@
-import {Pick3DrawDateCard} from './pick3-draw-date-card';
-import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
+import { Pick3DrawDateCard } from './pick3-draw-date-card';
+import { Pick3DrawTimeEnum } from './pick3-draw-time.enum';
 import * as Object from 'bytepushers-js-obj-extensions';
 
 export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
@@ -13,7 +13,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     backgroundImage: null,
     winningNumber: null,
     winningNumberDigits: null,
-    drawDateIcon: null
+    drawDateIcon: null,
   };
   private readonly _TITLE: string = null /*'Pick 3 Lottery'*/;
   // tslint:disable-next-line:variable-name
@@ -40,22 +40,18 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
   /* istanbul ignore next */
   constructor(private readonly config: any) {
-    this._drawDate = (config) ? Object.isDefinedAndNotNull(config.drawDate) ? (typeof config.drawDate === 'string')
-      ? Pick3DrawTimeEnum[config.drawDate.toUpperCase()] : config.drawDate : null : null;
-    this._drawState = (config) ? Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null : null;
-    this._drawTime = (config) ? Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string')
-      ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime : null : null;
-    this._upcomingDrawTime = (config) ? Object.isDefinedAndNotNull(config.upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string')
-      ? Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime : null : null;
-    this._hasWinner = (config) ? (typeof config.hasWinner === 'boolean') ? config.hasWinner : false : false;
-    this._backgroundImage = (config) ? Object.isDefinedAndNotNull(config.backgroundImage) ? config.backgroundImage : null : null;
-    this._winningNumber = (config) ? (config.winningNumber) ? config.winningNumber : null : null;
-    this._winningNumberDigits = (config) ? (config.winningNumberDigits) ? config.winningNumberDigits : null : null;
-    this._drawDateIcon = (config) ? config.drawDateIcon : null;
-    this._slideNumber = (config) ? config.slideNumber : -1;
-    this._slideName = (config) ? config.slideName : null;
-    this._defaultDrawDateTime = (config) ? Object.isDefinedAndNotNull(config.defaultDrawDateTime) ? (typeof config.defaultDrawDateTime === 'string')
-      ? Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime : null : null;
+    this._drawDate = config ? (Object.isDefinedAndNotNull(config.drawDate) ? (typeof config.drawDate === 'string' ? Pick3DrawTimeEnum[config.drawDate.toUpperCase()] : config.drawDate) : null) : null;
+    this._drawState = config ? (Object.isDefinedAndNotNull(config.drawState) ? config.drawState : null) : null;
+    this._drawTime = config ? (Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string' ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime) : null) : null;
+    this._upcomingDrawTime = config ? (Object.isDefinedAndNotNull(config.upcomingDrawTime) ? (typeof config.upcomingDrawTime === 'string' ? Pick3DrawTimeEnum[config.upcomingDrawTime.toUpperCase()] : config.upcomingDrawTime) : null) : null;
+    this._hasWinner = config ? (typeof config.hasWinner === 'boolean' ? config.hasWinner : false) : false;
+    this._backgroundImage = config ? (Object.isDefinedAndNotNull(config.backgroundImage) ? config.backgroundImage : null) : null;
+    this._winningNumber = config ? (config.winningNumber ? config.winningNumber : null) : null;
+    this._winningNumberDigits = config ? (config.winningNumberDigits ? config.winningNumberDigits : null) : null;
+    this._drawDateIcon = config ? config.drawDateIcon : null;
+    this._slideNumber = config ? config.slideNumber : -1;
+    this._slideName = config ? config.slideName : null;
+    this._defaultDrawDateTime = config ? (Object.isDefinedAndNotNull(config.defaultDrawDateTime) ? (typeof config.defaultDrawDateTime === 'string' ? Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime) : null) : null;
   }
 
   /* update(): void {
@@ -141,6 +137,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     return dt;
   }
+
   /* istanbul ignore next */
   getTitle(): string {
     return this._TITLE;
@@ -234,6 +231,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
   get winningNumberDigits(): number[] {
     return this._winningNumberDigits;
   }
+
   /* istanbul ignore next */
   private setWinningNumberDigits(winningNumber: number) {
     this._winningNumberDigits = [];
@@ -243,6 +241,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
       winningNumber = Math.floor(winningNumber / 10);
     }
   }
+
   /* istanbul ignore next */
   get winningNumberDigit1(): number {
     let digit = null;
@@ -259,6 +258,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     return digit;
   }
+
   /* istanbul ignore next */
   get winningNumberDigit2(): number {
     let digit = null;
@@ -275,6 +275,7 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
 
     return digit;
   }
+
   /* istanbul ignore next */
   get winningNumberDigit3(): number {
     let digit = null;

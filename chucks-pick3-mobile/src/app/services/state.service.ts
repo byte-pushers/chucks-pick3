@@ -21,6 +21,7 @@ export class StateService {
   public getStateBackgroundImage(state) {
     return this.backGroundImageArray[state];
   }
+
   public retrieveDay(dateStr) {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { weekday: 'long' });

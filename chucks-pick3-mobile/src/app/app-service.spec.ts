@@ -20,9 +20,7 @@ describe('AppService', () => {
   let pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
   let pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
   const date = new Date();
-  const bg =
-    'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%' +
-    '2Fwp-content%2Fuploads%2Fsites%2F28%2F2016%2F03%2FTexas-Bluebonnets-Spring-15-TXBLOOMS0316.jpg&q=85';
+  const bg = 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%' + '2Fwp-content%2Fuploads%2Fsites%2F28%2F2016%2F03%2FTexas-Bluebonnets-Spring-15-TXBLOOMS0316.jpg&q=85';
   const state = 'TX';
 
   beforeEach(() => {
@@ -138,49 +136,33 @@ describe('AppService', () => {
   it('should call to getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime', () => {
     spyOn(appService, 'getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime');
     appService.retrievePick3DrawDate(7, Pick3DrawTimeEnum.MORNING);
-    expect(
-      appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime
-    ).toHaveBeenCalled();
+    expect(appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime).toHaveBeenCalled();
   });
 
   // pick3StateLottery
   it('should getPick3DrawDateDecks', () => {
-    expect(appService.getPick3DrawDateDecks()).toBeDefined(
-      'getPick3DrawDateDecks is not defined'
-    );
+    expect(appService.getPick3DrawDateDecks()).toBeDefined('getPick3DrawDateDecks is not defined');
   });
   it('should return getBackgroundImageUrl', () => {
-    expect(appService.getBackgroundImageUrl()).toBeDefined(
-      'getBackgroundImageUrl is not defined'
-    );
+    expect(appService.getBackgroundImageUrl()).toBeDefined('getBackgroundImageUrl is not defined');
   });
   it('should return getCurrentDrawTime', () => {
-    expect(appService.getCurrentDrawTime()).toBeDefined(
-      'getCurrentDrawTime is not defined'
-    );
+    expect(appService.getCurrentDrawTime()).toBeDefined('getCurrentDrawTime is not defined');
   });
   it('should return getDrawTime', () => {
-    expect(appService.getDrawTime(date)).toBeDefined(
-      'getCurrentDrawTime is not defined'
-    );
+    expect(appService.getDrawTime(date)).toBeDefined('getCurrentDrawTime is not defined');
   });
   it('should return getDrawState', () => {
-    expect(appService.getDrawState()).toBeDefined(
-      'getDrawState is not defined'
-    );
+    expect(appService.getDrawState()).toBeDefined('getDrawState is not defined');
   });
   it('should return getDrawingTimeByName', () => {
-    expect(appService.getDrawingTimeByName('Morning')).toBeDefined(
-      'getDrawingTimeByName is not defined'
-    );
+    expect(appService.getDrawingTimeByName('Morning')).toBeDefined('getDrawingTimeByName is not defined');
   });
 
   // dispatchCurrentDrawCardIdEvent
   it('should retrieve a Pick3DrawCardId', () => {
     appService.dispatchCurrentDrawCardIdEvent(6);
-    expect(appService.getPick3DrawCardId$()).toBeDefined(
-      'id number was not defined'
-    );
+    expect(appService.getPick3DrawCardId$()).toBeDefined('id number was not defined');
   });
 
   it('should return as defined', () => {

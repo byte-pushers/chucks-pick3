@@ -6,9 +6,7 @@ import * as Object from 'bytepushers-js-obj-extensions';
 import { Pick3DrawTime } from './pick3-draw-time';
 import { TomorrowPick3DrawTimeCard } from './tomorrow-pick3-draw-time-card';
 
-export class TomorrowPick3DrawTimeCardDomain
-  implements TomorrowPick3DrawTimeCard
-{
+export class TomorrowPick3DrawTimeCardDomain implements TomorrowPick3DrawTimeCard {
   static readonly DEFAULT_CONFIG: any = {
     pick3DrawCardId: null,
     icon: null,
@@ -45,55 +43,15 @@ export class TomorrowPick3DrawTimeCardDomain
 
   constructor(config: any) {
     this._icon = config ? config.icon : null;
-    this._title = config
-      ? Object.isDefinedAndNotNull(config.title)
-        ? config.title
-        : null
-      : null;
-    this._drawTime = config
-      ? Object.isDefinedAndNotNull(config.drawTime)
-        ? typeof config.drawTime === 'string'
-          ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()]
-          : config.drawTime
-        : null
-      : null;
-    this._state = config
-      ? config.state
-        ? typeof config.state === 'string'
-          ? Pick3DrawTimeCardStateEnum[config.state.toUpperCase()]
-          : config.state
-        : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET
-      : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
-    this._selected = config
-      ? typeof config.selected === 'boolean'
-        ? config.selected
-        : false
-      : false;
-    this._dateTime = config
-      ? Object.isDate(config.dateTime)
-        ? config.dateTime
-        : new Date(config.dateTime)
-      : null;
-    this._pick3DrawCardId = config
-      ? config.pick3DrawCardId
-        ? config.pick3DrawCardId
-        : null
-      : null;
-    this._pick3DrawTime = config
-      ? Object.isDefinedAndNotNull(config.pick3DrawTime)
-        ? config.pick3DrawTime
-        : null
-      : null;
-    this._showCountDownToDrawing = config
-      ? typeof config.showCountDownToDrawing === 'boolean'
-        ? config.showCountDownToDrawing
-        : true
-      : true;
-    this._pick3DrawTimeArray = config
-      ? config.pick3DrawTimeArray
-        ? config.pick3DrawTimeArray
-        : null
-      : null;
+    this._title = config ? (Object.isDefinedAndNotNull(config.title) ? config.title : null) : null;
+    this._drawTime = config ? (Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string' ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime) : null) : null;
+    this._state = config ? (config.state ? (typeof config.state === 'string' ? Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state) : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET) : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
+    this._selected = config ? (typeof config.selected === 'boolean' ? config.selected : false) : false;
+    this._dateTime = config ? (Object.isDate(config.dateTime) ? config.dateTime : new Date(config.dateTime)) : null;
+    this._pick3DrawCardId = config ? (config.pick3DrawCardId ? config.pick3DrawCardId : null) : null;
+    this._pick3DrawTime = config ? (Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null) : null;
+    this._showCountDownToDrawing = config ? (typeof config.showCountDownToDrawing === 'boolean' ? config.showCountDownToDrawing : true) : true;
+    this._pick3DrawTimeArray = config ? (config.pick3DrawTimeArray ? config.pick3DrawTimeArray : null) : null;
   }
 
   set pick3DrawCardId(pick3DrawCardId: number) {

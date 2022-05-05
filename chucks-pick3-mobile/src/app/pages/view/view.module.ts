@@ -12,17 +12,7 @@ import { ViewPicksCardComponent } from '../../components/view-picks-card/view-pi
 import { Pick3ViewDateSectionComponent } from '../../components/pick3-view-date-section/pick3-view-date-section.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ViewPageRoutingModule,
-    TranslateModule,
-  ],
-  declarations: [
-    ViewPage,
-    ViewPicksCardComponent,
-    Pick3ViewDateSectionComponent,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, ViewPageRoutingModule, TranslateModule],
+  declarations: [ViewPage, ViewPicksCardComponent, Pick3ViewDateSectionComponent],
 })
 export class ViewPageModule {}

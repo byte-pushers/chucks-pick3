@@ -1,4 +1,4 @@
-import { DrawingTimeEnum} from './drawing-time.enum';
+import { DrawingTimeEnum } from './drawing-time.enum';
 
 export interface Pick3PlaysResponse {
   date: string;

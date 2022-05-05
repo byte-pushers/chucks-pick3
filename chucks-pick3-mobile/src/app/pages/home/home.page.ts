@@ -35,19 +35,8 @@ export class HomePage implements OnDestroy {
 
   pick3StateLottery: Pick3StateLottery;
 
-  constructor(
-    private cardContextService: CardContextService,
-    private popoverController: PopoverController,
-    public translateService: TranslateService,
-    private drawDateService: DrawDateService,
-    private drawTimeService: DrawTimeService,
-    private drawStateService: DrawStateService,
-    private appService: AppService,
-    private router: Router,
-    private pick3WebScrappingService: Pick3WebScrapingProviderService
-  ) {
-    this.pick3StateLottery =
-      pick3WebScrappingService.findRegisteredStateLottery('TX');
+  constructor(private cardContextService: CardContextService, private popoverController: PopoverController, public translateService: TranslateService, private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private drawStateService: DrawStateService, private appService: AppService, private router: Router, private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     translateService.setDefaultLang('en-US');
     console.log(`HomePage constructor.`);
   }
@@ -65,8 +54,7 @@ export class HomePage implements OnDestroy {
       translucent: true,
     });
     /* istanbul ignore next */
-    popover.style.cssText =
-      '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+    popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     /* istanbul ignore next */
     return await popover.present();
   }
@@ -76,9 +64,7 @@ export class HomePage implements OnDestroy {
     let count;
     if (swiper.activeIndex === 7) {
       count = swiper.length;
-      console.log(
-        `HomePage.initializePick3DrawDateCards() method slide count :${count}`
-      );
+      console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
       this.slidesLoaded = true;
       this.initializePick3DrawDateCard(event);
     }
@@ -92,9 +78,7 @@ export class HomePage implements OnDestroy {
       this.storeId();
       console.log(swiper.activeIndex);
       activeIndex = swiper.activeIndex;
-      console.log(
-        `HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`
-      );
+      console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
       const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
       if (activeIndex <= 7) {
         this.cardContextService.addContext({
@@ -106,6 +90,7 @@ export class HomePage implements OnDestroy {
       }
     }
   }
+
   /* istanbul ignore next */
   public storeId() {
     let activeIndex;

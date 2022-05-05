@@ -1,6 +1,6 @@
-import {Pick3DrawDateCardDomain} from './pick3-draw-date-card.domain';
-import {Pick3DrawTimeEnum} from './pick3-draw-time.enum';
-import {Pick3LotteryService} from '../services/pick3-lottery.service';
+import { Pick3DrawDateCardDomain } from './pick3-draw-date-card.domain';
+import { Pick3DrawTimeEnum } from './pick3-draw-time.enum';
+import { Pick3LotteryService } from '../services/pick3-lottery.service';
 
 describe('Pick3DrawDateCardDomain', () => {
   const date = new Date();
@@ -18,10 +18,9 @@ describe('Pick3DrawDateCardDomain', () => {
       winningNumber: 462,
       winningNumberDigits: [4, 6, 2],
       drawDateIcon: date,
-      slideNumber: 7
+      slideNumber: 7,
     });
   });
-
 
   // drawDate
   it('should have a drawDate defined', () => {
@@ -92,11 +91,11 @@ describe('Pick3DrawDateCardDomain', () => {
     model.setDrawTime('night');
     expect(model.getDrawTime()).toEqual(Pick3DrawTimeEnum.NIGHT);
   });
-  it('should get drawtime as string',  () => {
+  it('should get drawtime as string', () => {
     model.setDrawTime('Morning');
     expect(model.getDrawTime()).toBeDefined();
   });
-  it('should retrieve drawTime',  () => {
+  it('should retrieve drawTime', () => {
     expect(model.getDrawTime()).toBeDefined();
   });
   it('should get and set the drawTime', () => {
@@ -198,7 +197,7 @@ describe('Pick3DrawDateCardDomain', () => {
     const winningNumberValue = 264;
     model.setWinningNumber(winningNumberValue);
     const winningNumber = model.getWinningNumber();
-    expect(winningNumber).toBe(264, 'winningNumber has been changed')
+    expect(winningNumber).toBe(264, 'winningNumber has been changed');
   });
 
   it('should get and set winningNumbers', () => {
@@ -240,7 +239,6 @@ describe('Pick3DrawDateCardDomain', () => {
     expect(model.winningNumberDigits).toEqual([4, 6, 2]);
   });
 
-
   // hasWinner
   it('should change hasWinner to true', () => {
     const trueValue = true;
@@ -253,5 +251,4 @@ describe('Pick3DrawDateCardDomain', () => {
     model.hasWinner = false;
     expect(model.hasWinner).toBeFalse();
   });
-
 });
