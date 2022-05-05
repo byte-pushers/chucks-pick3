@@ -115,7 +115,7 @@ export class Pick3DrawTimeCardComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   private retrieveDrawTimeCardColorIndicators(colorIndicators) {
-    this.drawStateService.passPick3DrawState(colorIndicators);
+    this.drawStateService.updatePick3DrawState(colorIndicators);
   }
 
   /* istanbul ignore next */

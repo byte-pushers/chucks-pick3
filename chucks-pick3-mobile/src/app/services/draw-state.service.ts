@@ -12,7 +12,7 @@ export class DrawStateService {
 
   constructor() {}
 
-  public passPick3DrawState(drawState): void {
+  public updatePick3DrawState(drawState): void {
     const pick3DrawStates = Object.entries(drawState);
     this.sortPick3DrawState(pick3DrawStates);
   }

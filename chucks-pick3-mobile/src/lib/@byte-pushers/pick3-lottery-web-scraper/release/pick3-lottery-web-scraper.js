@@ -438,7 +438,6 @@ function TexasPick3Lottery(webScraperBaseUrl) {
   this.getDrawingTime = function (currentTime) {
     var midnight = new Date();
     midnight.setHours(23, 59, 59, 0);
-    //TODO: re-factor to only look a the time of day and not include the date in calculation.
     if (compareTime(currentTime, TexasPick3Lottery.getActualMorningDrawingTime().getDateTime()) === -1 || compareTime(currentTime, TexasPick3Lottery.getActualMorningDrawingTime().getDateTime()) === 0) {
       return TexasPick3Lottery.DRAWING_TIMES.MORNING(currentTime);
     } else if (compareTime(currentTime, TexasPick3Lottery.getActualDayDrawingTime().getDateTime()) === -1 || compareTime(currentTime, TexasPick3Lottery.getActualDayDrawingTime().getDateTime()) === 0) {
@@ -467,7 +466,6 @@ function TexasPick3Lottery(webScraperBaseUrl) {
     }
 
     if (drawingTime == null) {
-      //TODO: throw exception.
       throw "Unable to get Drawing Time By Name.";
     }
 

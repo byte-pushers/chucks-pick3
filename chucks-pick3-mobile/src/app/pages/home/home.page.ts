@@ -38,7 +38,6 @@ export class HomePage implements OnDestroy {
   constructor(private cardContextService: CardContextService, private popoverController: PopoverController, public translateService: TranslateService, private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private drawStateService: DrawStateService, private appService: AppService, private router: Router, private pick3WebScrappingService: Pick3WebScrapingProviderService) {
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     translateService.setDefaultLang('en-US');
-    console.log(`HomePage constructor.`);
   }
 
   /* istanbul ignore next */
@@ -64,7 +63,6 @@ export class HomePage implements OnDestroy {
     let count;
     if (swiper.activeIndex === 7) {
       count = swiper.length;
-      console.log(`HomePage.initializePick3DrawDateCards() method slide count :${count}`);
       this.slidesLoaded = true;
       this.initializePick3DrawDateCard(event);
     }
@@ -77,7 +75,6 @@ export class HomePage implements OnDestroy {
     if (this.slidesLoaded) {
       this.storeId();
       activeIndex = swiper.activeIndex;
-      console.log(`HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`);
       const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
       if (activeIndex <= 7) {
         this.cardContextService.addContext({

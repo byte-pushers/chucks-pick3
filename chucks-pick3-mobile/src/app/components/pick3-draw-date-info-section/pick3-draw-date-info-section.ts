@@ -129,7 +129,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.cardContextSubscription = this.cardContextService.context$.subscribe((context) => {
       /* istanbul ignore if */
       if (context && /* istanbul ignore next */ context.slideNumber === this.id) {
-        console.log('Pick3DrawDateInfoSection.cardContextService.context$.subscribe() method: context: ', context);
         const pick3DrawDateCard = this.appService.getPick3DrawDateCard(context.slideNumber);
         const currentPick3DrawTimeCard = this.drawTimeCard ? this.drawTimeCard : this.defaultDrawTimeCard;
         this.defaultDrawDateTime = context.defaultDrawDateTime;
@@ -150,7 +149,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   ngOnDestroy(): void {
-    console.log(`Pick3DrawDateInfoSection.ngOnDestroy: id: ${this.id}`);
     this.data = null;
     this.defaultDrawDateTime = null;
     this.showCountDownToDrawing = false;
@@ -160,7 +158,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     if (this.routerUrl === '/home') {
       Pick3DrawDateInfoSection.counter--;
-      console.log(`Pick3DrawDateInfoSection.ngOnDestroy: counter: ${Pick3DrawDateInfoSection.counter}`);
     }
   }
 
@@ -262,8 +259,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         // TODO: Handle error.
         const pick3DrawDay = this.stateDrawDate.retrieveDay(pick3DrawDateTime);
         this.handleInvalidPick3DrawDayError(pick3DrawDay);
-
-        console.error('TODO:: Handle error: ' + error, error);
 
         this.setCardState(null, pick3DrawTimeType);
       }

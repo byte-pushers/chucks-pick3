@@ -243,7 +243,6 @@ export class AppService {
     this.pick3DrawCardIdSource.next(someCardId);
   }
 
-  // TODO getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard | Error
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/member-ordering
   public getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard {

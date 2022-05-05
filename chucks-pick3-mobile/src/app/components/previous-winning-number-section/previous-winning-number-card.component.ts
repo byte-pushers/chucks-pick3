@@ -100,13 +100,13 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.currentDrawingCard = pick3DrawTimeCard;
-          // TODO Call appService.getWinningNumber pass date and draw time
+
           const pick3DrawDateCard = this.appService.getPreviousWinningNumber(pick3DrawTimeCard.getDateTime(), pick3DrawTimeCard.getPick3DrawTime());
           pick3DrawDateCard.setDrawTime(pick3DrawTimeCard.getDrawTimeValue());
           pick3DrawDateCard.setIcon(pick3DrawTimeCard.getIcon());
           const selectedPick3DrawDateCard = this.getCurrentWinningDrawingNumber(pick3DrawDateCard, pick3DrawDateCard.getDrawState(), pick3DrawDateCard.getDrawDate(), pick3DrawTimeCard.getDrawTimeValue());
           const selectedPick3DrawTimeCard = this.checkIfCountDownIsAvailable(pick3DrawTimeCard);
-          // TODO Save previousPick3DrawDateCard to service
+
           this.selectPicksService.setSelectedPick3DrawTimeCard(selectedPick3DrawTimeCard);
           this.selectPicksService.setSelectedPick3DrawDateCard(selectedPick3DrawDateCard);
           this.validatePreviousWinningNumberComp();
@@ -185,7 +185,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const yesterdaysDate: Date = new Date(someDateTime.getFullYear(), someDateTime.getMonth() + 1 - 1, someDateTime.getDate() - 1, someDateTime.getHours());
     const pick3DrawTime = this.appService.getDrawTime(yesterdaysDate);
     const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(yesterdaysDate, pick3DrawTime);
-    // TODO Save previousPick3DrawDateCard to service
+
     this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
@@ -202,10 +202,9 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     yesterday.style.backgroundColor = '#e5e5e5';
     const pick3DrawTime = this.appService.getDrawTime(currentDate);
     const todaysPick3DrawDateCard = this.appService.getPreviousWinningNumber(currentDate, pick3DrawTime);
-    // TODO Save previousPick3DrawDateCard to service
+
     this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
 
-    // TODO Save previousPick3DrawDateCard to service
     if (this.isLotteryClosed(currentDate)) {
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
     } else {

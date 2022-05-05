@@ -25,7 +25,7 @@ describe('DrawStateService', () => {
   // testing for methods and ensuring they're working together
   it('should invoke the sortPick3DrawState method', () => {
     spyOn(service, 'sortPick3DrawState');
-    service.passPick3DrawState(drawingTimeCardColorIndicators);
+    service.updatePick3DrawState(drawingTimeCardColorIndicators);
     expect(service.sortPick3DrawState).toHaveBeenCalled();
   });
 
