@@ -114,8 +114,7 @@ export class TomorrowPick3DrawDateCardService {
       drawTime.setPick3DrawTime(someDrawTime);
 
       /*if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-      console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
-      this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+       this.drawTimeService.setCurrentDrawTimeCard(drawTime);
       }*/
     });
 

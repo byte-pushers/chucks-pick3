@@ -31,7 +31,6 @@ describe('Pick3DrawTimeCardStateEnum', () => {
 
   xit('should return a string value', function () {
     const toStringValue = enumValue.toString(Pick3DrawTimeCardStateEnum.DRAWN);
-    console.log(`toStringValue = ${toStringValue}`);
     expect(toStringValue).toBe('DRAWN', 'did not convert to string');
   });
   it('should return NOT_DRAWN_YET', () => {
