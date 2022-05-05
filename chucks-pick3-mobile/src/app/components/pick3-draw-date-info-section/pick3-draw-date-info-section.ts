@@ -139,7 +139,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  private isOnline(): boolean {
+  private isApplicationOnline(): boolean {
     if (navigator.onLine) {
       return true;
     } else {
@@ -179,7 +179,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   /* istanbul ignore next */
   private setData(drawState: string, pick3DrawTimeCard: Pick3DrawTimeCard, backgroundImageUrl: string, drawTimeIcon: string): void {
     /* istanbul ignore next */
-    if (this.isOnline()) {
+    if (this.isApplicationOnline()) {
       const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
 
       this.data.setBackgroundImage(backgroundImageUrl);
@@ -212,8 +212,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
     try {
       pick3DrawTimeCard = this.appService.getPick3DrawTimeCards(this.id).find((drawTime) => {
-        // TODO We need to convert what is coming from scraper to the real enum
-        // TODO Then we want to use drawTime.toString DAY Day
         const drawTimeValue = Pick3DrawTimeEnum.toString(drawTime.getDrawTimeValue());
 
         if (drawTimeValue === Pick3DrawTimeEnum.toString(pick3DrawTime.getType())) {
@@ -380,7 +378,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   public gotoGeneratePicks(): void {
-    // TODO get the current drawdate card and save it on the selectPicks Service
     this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
     this.selectedPicks.setSelectedPick3DrawDateCard(this.data);
   }

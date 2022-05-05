@@ -53,6 +53,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     tomorrow.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
     const nextPick3DrawDateCard = this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
+    console.log(nextPick3DrawDateCard);
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -112,7 +113,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public submitGenerate(): void {
     this.replaceGeneratedNumbers();
     this.changeNavigation('gotoViewPicks');
+    console.log(this.pick3CardToGenerate);
     this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
+    console.log(this.pick3CardToGenerate);
     this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
   }
 
@@ -148,10 +151,12 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         generatedNumberArray.push(r);
       }
     }
+    console.log(generatedNumberArray);
     return generatedNumberArray;
   }
 
   public enableGenerateButton() {
+    console.log(this.generateChoice);
     if (this.generateChoice) {
       this.generateButton = false;
     } else {
