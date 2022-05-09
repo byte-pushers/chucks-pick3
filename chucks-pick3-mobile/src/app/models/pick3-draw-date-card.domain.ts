@@ -54,12 +54,6 @@ export class Pick3DrawDateCardDomain implements Pick3DrawDateCard {
     this._defaultDrawDateTime = config ? (Object.isDefinedAndNotNull(config.defaultDrawDateTime) ? (typeof config.defaultDrawDateTime === 'string' ? Pick3DrawTimeEnum[config.defaultDrawDateTime.toUpperCase()] : config.defaultDrawDateTime) : null) : null;
   }
 
-  /* update(): void {
-       //todo: update date
-       //todo: update time
-       //todo: update icon
-   }*/
-
   get drawDate(): Date {
     return this._drawDate;
   }

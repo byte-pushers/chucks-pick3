@@ -42,9 +42,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     const today: HTMLElement = document.getElementById('today');
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
     this.selectTodayGenerateDrawingDate(today, tomorrow);
-    this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-      console.log(currentPick3DrawDateCard);
-    });
+    this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {});
   }
 
   public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -53,7 +51,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     tomorrow.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
     const nextPick3DrawDateCard = this.tomorrowService.getNextWinningNumber(tomorrowFullDate);
-    console.log(nextPick3DrawDateCard);
+
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -64,7 +62,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     tomorrow.style.backgroundColor = '#e5e5e5';
     const pick3DrawTime = this.appService.getDrawTime(todayFullDate);
     const nextPick3DrawDateCard = this.appService.getPreviousWinningNumber(todayFullDate, pick3DrawTime);
-    // TODO Save previousPick3DrawDateCard to service
+
     this.setDrawingTimeMenuItems(nextPick3DrawDateCard);
   }
 
@@ -113,9 +111,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public submitGenerate(): void {
     this.replaceGeneratedNumbers();
     this.changeNavigation('gotoViewPicks');
-    console.log(this.pick3CardToGenerate);
+
     this.drawDateService.dispatchCurrentDrawDateCardEvent(this.pick3CardToGenerate);
-    console.log(this.pick3CardToGenerate);
+
     this.drawTimeService.setCurrentDrawTimeCard(this.pick3CardToGenerate);
   }
 
@@ -151,12 +149,11 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         generatedNumberArray.push(r);
       }
     }
-    console.log(generatedNumberArray);
+
     return generatedNumberArray;
   }
 
   public enableGenerateButton() {
-    console.log(this.generateChoice);
     if (this.generateChoice) {
       this.generateButton = false;
     } else {

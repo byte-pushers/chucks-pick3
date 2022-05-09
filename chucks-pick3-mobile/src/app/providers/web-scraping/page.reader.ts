@@ -18,7 +18,6 @@ export class PageReader {
     /*this.jQuery(html).each((a, b) => {
       if (b.localName === "table") {
         r = jq(b);
-        // console.log("a: " + a + ", b: " + b)
       }
     });*/
     /*this.jQuery(html).each(data.items, function(item){

@@ -17,7 +17,6 @@ export class ViewPage implements OnInit {
   public pick3Header: string;
 
   constructor(private popoverController: PopoverController, private route: ActivatedRoute) {
-    console.info('ViewPage.constructor() method.');
     /* istanbul ignore next */
     this.id = route.params.pipe(map((p) => p.id));
     /* istanbul ignore next */
@@ -27,9 +26,7 @@ export class ViewPage implements OnInit {
     this.pick3DrawnNumber = route.data.pipe(map((d) => d.user));
   }
 
-  ngOnInit(): void {
-    console.info('ViewPage.ngOnInit() method: Inside ngOnInit() method.');
-  }
+  ngOnInit(): void {}
 
   async showPopover(ev: any) {
     const popover = await this.popoverController.create({

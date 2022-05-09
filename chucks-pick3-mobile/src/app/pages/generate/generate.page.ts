@@ -18,7 +18,6 @@ export class GeneratePage implements OnInit {
   public pick3Header: string;
 
   constructor(private popoverController: PopoverController, private route: ActivatedRoute, private router: Router) {
-    console.info('GeneratePage.constructor() method.');
     /* istanbul ignore next */
     this.id = route.params.pipe(map((p) => p.id));
     /* istanbul ignore next */
@@ -29,7 +28,6 @@ export class GeneratePage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.info('GeneratePage.ngOnInit() method: Inside ngOnInit() method.');
     /* istanbul ignore if  */
     if (this.router.url === '/select-picks') {
       this.pick3Header = 'select-header';
