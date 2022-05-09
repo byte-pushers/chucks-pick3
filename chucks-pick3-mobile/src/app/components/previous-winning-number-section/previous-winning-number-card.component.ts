@@ -143,6 +143,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       }
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
+        this.continueButton = false;
       }
     }
   }
@@ -192,6 +193,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(yesterdaysDate, pick3DrawTime);
     console.log(previousPick3DrawDateCard);
     this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
+    this.continueButton = true;
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
     if (this.checkIfLottoWasClosed(yesterdaysDate)) {
@@ -260,12 +262,22 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     }
   }
 
+  private checkIfDrawTimeWillBePresent(pick3DrawTimeCard: Pick3DrawTimeCard): Pick3DrawTimeCard {
+    if (this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime())) {
+      pick3DrawTimeCard.closedState = false;
+    } else {
+      pick3DrawTimeCard.closedState = true;
+    }
+    return pick3DrawTimeCard;
+  }
+
   private checkIfCountDownIsAvailable(pick3DrawTimeCard: Pick3DrawTimeCard): Pick3DrawTimeCard {
     const currentDate = new Date();
     if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime()) === false) {
       pick3DrawTimeCard.showCountDownToDrawing = false;
     } else {
       pick3DrawTimeCard.showCountDownToDrawing = true;
+      this.checkIfDrawTimeWillBePresent(pick3DrawTimeCard);
     }
     return pick3DrawTimeCard;
   }

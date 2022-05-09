@@ -43,7 +43,10 @@
             </div>
             <div style="display: inline" *ngIf="time.showCountDownToDrawing === true">
               <div style="color: #ffd743ff; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000">
-                <b>{{ "time.not.available" | translate }}</b>
+                <b *ngIf="time.closedState === false">{{ "day.not.available" | translate }}</b>
+                <b *ngIf="time.closedState === true"
+                  ><p>{{ "time.not.available" | translate }}</p></b
+                >
               </div>
             </div>
           </div>
