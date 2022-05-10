@@ -117,6 +117,12 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
 
+  it('should  call resetDrawingTimes for yesterday', () => {
+    const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
+    component.setDrawingTimeMenuItems(yesterdayModel);
+    expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
     component.setDrawingTimeMenuItemsForClosedDay(model);
@@ -126,5 +132,17 @@ describe('PreviousWinningNumberCardComponent', () => {
   it('should  define newDrawingTimes', () => {
     component.setDrawingTimeMenuItemsForClosedDay(model);
     expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should  define newDrawingTimes', () => {
+    component.setDrawingTimeMenuItemsForClosedDay(yesterdayModel);
+    expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should return the continue button as false', function () {
+    component.continueChoice = false;
+    component.currentDrawingCard.showCountDownToDrawing = false;
+    component.validatePreviousWinningNumberComp();
+    expect(component.continueButton).toBeTrue();
   });
 });

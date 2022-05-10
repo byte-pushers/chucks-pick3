@@ -136,6 +136,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
         this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
+      /* istanbul ignore if */
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
         this.continueButton = false;
@@ -208,6 +209,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
 
     if (this.isLotteryClosed(currentDate)) {
+      /* istanbul ignore next*/
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
     } else {
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
@@ -238,7 +240,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  private validatePreviousWinningNumberComp() {
+  public validatePreviousWinningNumberComp() {
     if (this.currentDrawingCard.showCountDownToDrawing === false && this.continueChoice) {
       this.continueButton = false;
     } else {
