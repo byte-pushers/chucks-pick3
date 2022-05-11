@@ -9,7 +9,7 @@ const now = new Date();
 describe('My First Test', () => {
   const data = new Pick3DrawDateCardDomain({
     drawDate: date,
-    drawState: 'gotoHome',
+    drawState: 'homeEnabled',
     drawTime: Pick3DrawTimeEnum.MORNING,
     drawTimeAsString: 'Morning',
     upcomingDrawTime: date,
@@ -51,10 +51,7 @@ describe('My First Test', () => {
   });
 
   it('should swipe left', () => {
-    cy.get('.swiper-slide-active')
-      .trigger('pointerdown', { which: 1 })
-      .trigger('pointermove', 'right')
-      .trigger('pointerup', { force: true });
+    cy.get('.swiper-slide-active').trigger('pointerdown', { which: 1 }).trigger('pointermove', 'right').trigger('pointerup', { force: true });
   });
 
   it('clicks on the drawTime button for day', () => {

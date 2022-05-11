@@ -111,6 +111,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       if (this.routerUrl === '/home') {
         if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
           this.disableButtonOnCard(currentPick3DrawDateCardId);
+          this.checkIfGeneratedArrayIsAvailable(currentPick3DrawDateCard.pick3DrawTimeArray);
           this.appService.pick3CardId = currentPick3DrawDateCardId;
           this.setData(this.appService.getDrawState(), currentPick3DrawDateCard, this.appService.getBackgroundImageUrl(), currentPick3DrawDateCard.getIcon());
           this.drawTimeCard = currentPick3DrawDateCard;
@@ -249,7 +250,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.setCardState(winningNumber, pick3DrawTimeType);
         } else if (this.routerUrl === '/home' || this.routerUrl === '/select-picks') {
           this.setCardState(winningNumber, pick3DrawTimeType);
-          this.toastService.presentToast('Past Winning Number Available', 'Please check generated numbers', 'winner-available');
+          /* istanbul ignore if */
+          if (this.drawTimeCard !== null || undefined) {
+            this.toastService.presentToast('Past Winning Number Available', 'Please check generated numbers', 'winner-available');
+          }
         }
         /*this.selectedWinningNumbers = winningNumber;*/
       },
@@ -263,7 +267,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     );
   }
-
+  /* istanbul ignore next */
   private handleInvalidPick3DrawDayError(pick3DrawDay) {
     const closedDayArray = this.stateDrawDate.getClosedDates(this.data.getDrawState());
 
@@ -280,7 +284,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
       (winningNumber: any) => {
         this.setCardState(winningNumber, pick3DrawTimeType);
-        this.toastService.presentToast('Winning Number Available', 'Please check generated numbers', 'winner-available');
+        /* istanbul ignore if */
+        if (this.drawTimeCard !== null || undefined) {
+          this.toastService.presentToast('Winning Number Available', 'Please check generated numbers', 'winner-available');
+        }
       },
       (error) => {
         // TODO: Handle error.
@@ -374,5 +381,13 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   public gotoGeneratePicks(): void {
     this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
     this.selectedPicks.setSelectedPick3DrawDateCard(this.data);
+  }
+
+  private checkIfGeneratedArrayIsAvailable(pick3DrawTimeArray: number[]) {
+    if (pick3DrawTimeArray != null || undefined) {
+      this.switchDrawDateButtons('generatePicksDisabled');
+    } else {
+      this.switchDrawDateButtons('viewPicksDisabled');
+    }
   }
 }

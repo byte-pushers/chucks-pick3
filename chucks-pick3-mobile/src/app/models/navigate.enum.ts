@@ -3,10 +3,10 @@ import { Pick3DrawTimeEnum } from './pick3-draw-time.enum';
 export namespace NavigationEnum {
   export enum NavigationEnum {
     default,
-    gotoHome,
-    gotoPreviousWinningNumber,
-    gotoGenerateNumber,
-    gotoViewPicks,
+    homeEnabled,
+    previousWinningNumberEnabled,
+    generateNumberEnabled,
+    viewPicksEnabled,
     viewPicksDisabled,
     generatePicksDisabled,
     onViewEnabledHome,
@@ -15,20 +15,20 @@ export namespace NavigationEnum {
   export function retrieveNavigation(e: string): NavigationEnum {
     let propertyKey: NavigationEnum = null;
     switch (e) {
-      case 'gotoHome':
-        propertyKey = NavigationEnum.gotoHome;
+      case 'homeEnabled':
+        propertyKey = NavigationEnum.homeEnabled;
 
         break;
-      case 'gotoPreviousWinningNumber':
-        propertyKey = NavigationEnum.gotoPreviousWinningNumber;
+      case 'previousWinningNumberEnabled':
+        propertyKey = NavigationEnum.previousWinningNumberEnabled;
 
         break;
-      case 'gotoGenerateNumber':
-        propertyKey = NavigationEnum.gotoGenerateNumber;
+      case 'generateNumberEnabled':
+        propertyKey = NavigationEnum.generateNumberEnabled;
 
         break;
-      case 'gotoViewPicks':
-        propertyKey = NavigationEnum.gotoViewPicks;
+      case 'viewPicksEnabled':
+        propertyKey = NavigationEnum.viewPicksEnabled;
 
         break;
       case 'viewPicksDisabled':
