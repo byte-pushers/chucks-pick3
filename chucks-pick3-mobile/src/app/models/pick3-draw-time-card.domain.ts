@@ -129,7 +129,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     return this._pick3DrawTime;
   }
 
-  setPick3DrawTime(pick3DrawTime: Pick3DrawTime) {
+  public setPick3DrawTime(pick3DrawTime: Pick3DrawTime) {
     this._pick3DrawTime = pick3DrawTime;
   }
 

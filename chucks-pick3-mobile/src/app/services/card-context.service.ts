@@ -9,7 +9,7 @@ export class CardContextService {
   get context$() {
     return this.context.asObservable();
   }
-
+  /* istanbul ignore next */
   addContext(context: CardContext) {
     this.context.next(context);
   }

@@ -10,10 +10,6 @@ export class GeneratePicksService {
 
   constructor() {}
 
-  public getGeneratePicksDrawDateCard$() {
-    return this.generatePicksDrawDateSource.asObservable();
-  }
-
   public dispatchGeneratePicksDrawDateCardEvent(someDrawDateCard: Pick3DrawTimeCard) {
     this.generatePicksDrawDateSource.next(someDrawDateCard);
   }

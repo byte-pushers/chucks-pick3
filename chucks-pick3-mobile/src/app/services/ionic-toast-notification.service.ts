@@ -31,13 +31,16 @@ export class IonicToastNotificationService {
         ],
         position: 'top',
       })
-      .then((toast: HTMLIonToastElement) => {
+      .then(
         /* istanbul ignore next */
-        toast.onDidDismiss().then(() => {
-          this.isToastVisible = false;
-        });
-        /* istanbul ignore next */
-        toast.present();
-      });
+        (toast: HTMLIonToastElement) => {
+          /* istanbul ignore next */
+          toast.onDidDismiss().then(() => {
+            this.isToastVisible = false;
+          });
+          /* istanbul ignore next */
+          toast.present();
+        }
+      );
   }
 }

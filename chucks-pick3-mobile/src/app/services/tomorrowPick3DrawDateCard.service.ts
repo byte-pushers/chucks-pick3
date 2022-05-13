@@ -100,7 +100,7 @@ export class TomorrowPick3DrawDateCardService {
       const drawTimeHour = drawTime.getDateTime().getHours();
       const currentHour = new Date().getHours();
       const someDrawTime = this.getDrawTime(drawTime.getDateTime());
-
+      /* istanbul ignore next */
       if (slideNumber) {
         const slideDate = this.getSlideDate(slideNumber);
 
@@ -128,6 +128,7 @@ export class TomorrowPick3DrawDateCardService {
       case 8:
         slideDate.setDate(slideDate.getDate() + 1);
         break;
+      /* istanbul ignore next */
       default:
         throw `SlideNumber: '${slideNumber}' not supported.`;
     }
@@ -142,7 +143,7 @@ export class TomorrowPick3DrawDateCardService {
   public getPick3DrawDateDecks(): Pick3DrawDateCard[] {
     return this.pick3DrawDateDecks;
   }
-
+  /* istanbul ignore next */
   public getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime: Pick3DrawTime): Pick3DrawTimeCard {
     const pick3DrawTimeCards = this.pick3DrawTimeCards.map((drawTime) => new Pick3DrawTimeCardDomain(drawTime));
 
@@ -155,7 +156,6 @@ export class TomorrowPick3DrawDateCardService {
   }
 
   public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
-    const pick3DrawDateCard = this.getPick3DrawDateCard(currentSlideNumber);
     const drawTime = this.getDrawTime(currentDrawTime);
     const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
     return pick3DrawTime;
