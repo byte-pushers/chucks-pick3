@@ -37,6 +37,7 @@ export class PreviousPicksDateSectionComponent implements OnInit {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
 
+  /* istanbul ignore next */
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
