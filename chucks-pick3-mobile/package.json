@@ -7,17 +7,17 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-with-mocks": "gulp include-mocks && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,css,html}\"",
     "prepare": "cd .. && husky install chucks-pick3-mobile/.husky",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "cd .. && lint-staged && pretty-quick --staged"
+      "pre-commit": "cd .. && lint-staged --staged"
     }
   },
   "lint-staged": {
