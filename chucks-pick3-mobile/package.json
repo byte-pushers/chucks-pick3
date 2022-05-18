@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-with-mocks": "gulp include-mocks && ng build",
+    "build-with-mocks": "gulp include-mocks",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -67,10 +67,13 @@
     "@types/node": "^12.20.33",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "cypress": "latest",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
     "eslint-plugin-prefer-arrow": "1.2.2",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "husky": "^7.0.0",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -85,8 +88,7 @@
     "pretty-quick": "^3.1.3",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-    "typescript": "~4.2.4",
-    "cypress": "latest"
+    "typescript": "~4.2.4"
   },
   "description": "An Ionic project"
 }
