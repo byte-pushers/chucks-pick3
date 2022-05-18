@@ -3,64 +3,23 @@
     <div class="generate-options-title">Drawing Date:</div>
     <ion-row class="generate-picks-button-section">
       <ion-col>
-        <button
-          id="today"
-          #todayDrawingDate
-          class="confirmation-button"
-          style="background-color: #2fdf75"
-          (click)="
-            selectTodayGenerateDrawingDate(
-              todayDrawingDate,
-              tomorrowDrawingDate
-            )
-          "
-        >
-          Today
-        </button>
+        <button id="today" #todayDrawingDate class="confirmation-button" style="background-color: #2fdf75" (click)="selectTodayGenerateDrawingDate(todayDrawingDate, tomorrowDrawingDate)">Today</button>
       </ion-col>
       <ion-col>
-        <button
-          id="tomorrow"
-          #tomorrowDrawingDate
-          class="confirmation-button"
-          (click)="
-            selectTomorrowGenerateDrawingDate(
-              tomorrowDrawingDate,
-              todayDrawingDate
-            )
-          "
-        >
-          Tomorrow
-        </button>
+        <button id="tomorrow" #tomorrowDrawingDate class="confirmation-button" (click)="selectTomorrowGenerateDrawingDate(tomorrowDrawingDate, todayDrawingDate)">Tomorrow</button>
       </ion-col>
     </ion-row>
     <div class="generate-options-title">Drawing Time:</div>
     <ion-row class="generate-picks-button-section">
       <ion-item class="ion-no-padding" style="width: 100%">
-        <ion-select
-          class="timeOfDayDropDown"
-          [(ngModel)]="generateChoice"
-          placeholder="Select a Time of Day"
-          style="
-            width: 100%;
-            height: 4.5em;
-            margin-left: 2em;
-            text-align: center;
-          "
-          interface="action-sheet"
-          (ionChange)="selectDrawingTimeCard(generateChoice)"
-        >
-          <ion-select-option
-            *ngFor="let drawTime of drawTimes"
-            [value]="drawTime"
-          >
-            {{ drawTime.getTitle() | translate }}</ion-select-option
-          >
+        <ion-select id="timeOfDayDropDown" class="timeOfDayDropDown" [(ngModel)]="generateChoice" placeholder="Select a Time of Day" style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center" interface="action-sheet" (ionChange)="selectDrawingTimeCard(generateChoice)">
+          <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime.getDrawTimeValue()"> {{ drawTime.getTitle() | translate }}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-row>
     <ion-row class="generate-picks-button-section">
       <button
+        id="generateButton"
         class="confirmation-button generate-button generate-button-enabled"
         [disabled]="generateButton"
         [class.generate-button]="generateButton"

@@ -92,6 +92,7 @@
     <ion-icon *ngSwitchCase="6" src="../../../assets/generate-picks-icon.svg" class="general-draw-date-button-sizing" style="opacity: 40%; padding-right: 25px"></ion-icon>
 
     <ion-icon
+      id="generate-picks-icon"
       (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
       [state]="{
