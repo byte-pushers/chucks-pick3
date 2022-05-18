@@ -20,6 +20,7 @@ import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
 import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 import { SelectPicksService } from '../../services/select-picks.service';
 import {PredictionProvider} from "../../providers/prediction/prediction.service";
+import {Pick3PlaysResponse} from "../../providers/prediction/api/v1/pick3-plays-response";
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -180,9 +181,11 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   }
 
   private replaceGeneratedNumbers() {
-    const newGeneratedArray = this.predictionProvider.getPredictions(null); //this.getRandomIntInclusive();
-    /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
-    this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
+    this.predictionProvider.getPredictions(null).subscribe((response: Pick3PlaysResponse) => {
+      this.pick3CardToGenerate.setPick3DrawTimeArray(response.plays);
+    }, error => {
+      console.log(`An error occurred: ${error}`);
+    });
   }
 
   private sortDrawTimes(drawTimes) {
