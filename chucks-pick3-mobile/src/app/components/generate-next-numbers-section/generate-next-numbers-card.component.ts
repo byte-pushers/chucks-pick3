@@ -19,6 +19,7 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
 import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 import { SelectPicksService } from '../../services/select-picks.service';
+import {PredictionProvider} from "../../providers/prediction/prediction.service";
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -51,7 +52,8 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     private router: Router,
     private selectPicksService: SelectPicksService,
     private drawStateService: DrawStateService,
-    private pick3WebScrappingService: Pick3WebScrapingProviderService
+    private pick3WebScrappingService: Pick3WebScrapingProviderService,
+    private predictionProvider: PredictionProvider
   ) {
     this.pick3StateLottery =
       pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -178,7 +180,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   }
 
   private replaceGeneratedNumbers() {
-    const newGeneratedArray = this.getRandomIntInclusive();
+    const newGeneratedArray = this.predictionProvider.getPredictions(null); //this.getRandomIntInclusive();
     /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
     this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
   }

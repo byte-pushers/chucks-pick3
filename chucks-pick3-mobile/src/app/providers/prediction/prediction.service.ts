@@ -8,11 +8,12 @@ import { API_URL } from '../../app.config';
 import { Pick3PlaysRequest } from './api/v1/pick3-plays-request.model';
 import { DateUtil } from 'src/app/models/date-util';
 import { Observable, of } from 'rxjs';
+import {ChucksPick3PredictionService} from "./chucks-pick3-prediction.service";
 
 @Injectable()
-export class PredictionProvider {
+export class PredictionProvider implements ChucksPick3PredictionService{
 
-  constructor(public http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   public getPredictions(request: Pick3PlaysRequest): Observable<string | Pick3PlaysResponse> {

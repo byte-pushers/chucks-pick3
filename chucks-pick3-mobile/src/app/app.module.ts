@@ -26,6 +26,9 @@ import { CountdownTimerComponent } from './components/countdown-timer/countdown-
 import { CardPage } from './pages/card/card.page';
 import { TomorrowPick3DrawDateCardService } from './services/tomorrowPick3DrawDateCard.service';
 import { Pick3GenerateDateSectionComponent } from './components/pick3-generate-date-section/pick3-generate-date-section.component';
+import {ChucksPick3PredictionService} from "./providers/prediction/chucks-pick3-prediction.service";
+import {PredictionProvider} from "./providers/prediction/prediction.service";
+import {createPick3PredictionServiceFactory} from "./providers/prediction/prediction.factory";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -68,6 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
       provide: Pick3WebScrapingProviderService,
       useClass: Pick3WebScrapingProviderService,
     },
+    { provide: PredictionProvider, useFactory: createPick3PredictionServiceFactory(), deps: [HttpClient]}
     /*{ provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend] }*/
   ],
   bootstrap: [AppComponent],
