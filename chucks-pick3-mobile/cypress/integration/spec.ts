@@ -80,15 +80,6 @@ describe('My First Test', () => {
     });
   });
 
-  /*
-  it('should change the draw-time to morning', function() {
-    cy.get('ion-select').click();
-  });
-*/
-
-  /*  it('should select a time of day', function() {
-  cy.get('ion-select-option').should('have.value', 'Morning').click();
-  });*/
   it('should check if continue-button is false', function () {
     cy.get('[id="continueButton"]').should('have.value', 'false');
   });
