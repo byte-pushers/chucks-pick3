@@ -2,16 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import {HttpClient} from "@angular/common/http";
-import {PredictionMockService} from "../app/providers/prediction/prediction-mock.service";
-import {ChucksPick3PredictionService} from "../app/providers/prediction/chucks-pick3-prediction.service";
-import {PredictionProvider} from "../app/providers/prediction/prediction.service";
+import { HttpClient } from '@angular/common/http';
+import { PredictionMockService } from '../../test/mocks/app/providers/prediction/prediction-mock.service';
+import { ChucksPick3PredictionService } from '../app/providers/prediction/chucks-pick3-prediction.service';
+import { PredictionProvider } from '../app/providers/prediction/prediction.service';
 
 export const environment = {
   production: false,
   getChucksPick3PredictionService: (httpClient: HttpClient) => {
     let service: ChucksPick3PredictionService;
-
     if (process.env.USE_MOCKS) {
       service = new PredictionMockService(httpClient);
     } else {
@@ -19,7 +18,7 @@ export const environment = {
     }
 
     return service;
-  }
+  },
 };
 
 /*
