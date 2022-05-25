@@ -38,6 +38,7 @@ export class Pick3ViewDateSectionComponent implements OnInit, OnDestroy {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
 
+  /* istanbul ignore next */
   get background() {
     return this.appService.getBackgroundImageUrl();
   }

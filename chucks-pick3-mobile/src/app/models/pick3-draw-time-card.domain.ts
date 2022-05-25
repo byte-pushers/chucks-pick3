@@ -13,6 +13,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     pick3DrawTime: null,
     dateTime: null,
     drawTime: null,
+    closedState: false,
     state: null,
     selected: false,
     showCountDownToDrawing: true,
@@ -33,6 +34,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
   private _pick3DrawTime: Pick3DrawTime;
   // tslint:disable-next-line:variable-name
   private _state: Pick3DrawTimeCardStateEnum;
+  private _closedState: boolean;
   // tslint:disable-next-line:variable-name
   private _selected: boolean;
   // tslint:disable-next-line:variable-name
@@ -46,6 +48,7 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     this._drawTime = config ? (Object.isDefinedAndNotNull(config.drawTime) ? (typeof config.drawTime === 'string' ? Pick3DrawTimeEnum[config.drawTime.toUpperCase()] : config.drawTime) : null) : null;
     this._state = config ? (config.state ? (typeof config.state === 'string' ? Pick3DrawTimeCardStateEnum[config.state.toUpperCase()] : config.state) : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET) : Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET;
     this._selected = config ? (typeof config.selected === 'boolean' ? config.selected : false) : false;
+    this._closedState = config ? (typeof config.closedState === 'boolean' ? config.closedState : false) : false;
     this._dateTime = config ? (Object.isDate(config.dateTime) ? config.dateTime : new Date(config.dateTime)) : null;
     this._pick3DrawCardId = config ? (config.pick3DrawCardId ? config.pick3DrawCardId : null) : null;
     this._pick3DrawTime = config ? (Object.isDefinedAndNotNull(config.pick3DrawTime) ? config.pick3DrawTime : null) : null;
@@ -229,6 +232,21 @@ export class Pick3DrawTimeCardDomain implements Pick3DrawTimeCard {
     this._selected = selected;
   }
 
+  get closedState(): boolean {
+    return this._closedState;
+  }
+
+  set closedState(closedState: boolean) {
+    this._closedState = closedState;
+  }
+
+  getClosedState(): boolean {
+    return this._closedState;
+  }
+
+  setClosedState(closedState: boolean): void {
+    this._closedState = closedState;
+  }
   get dateTime(): Date {
     return this._dateTime;
   }

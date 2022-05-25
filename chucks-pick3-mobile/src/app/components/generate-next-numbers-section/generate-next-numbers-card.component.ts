@@ -93,6 +93,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(false);
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
+        /* istanbul ignore next */
           drawTime.setSelected(true);
           this.pick3CardToGenerate = pick3DrawTimeCard;
           this.selectPicksService.setSelectedPick3DrawTimeCard(pick3DrawTimeCard);
@@ -101,7 +102,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
       });
     }
   }
-
+  /* istanbul ignore next */
   private resetDrawingTimes(): void {
     if (this.newDrawingTimes !== null && this.newDrawingTimes !== undefined) {
       this.newDrawingTimes.length = 0;
@@ -124,7 +125,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   }
 
   private replaceGeneratedNumbers() {
-    const newGeneratedArray = this.getRandomIntInclusive();
+    const newGeneratedArray = this.createNumberArray();
     /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
     this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
   }
@@ -134,6 +135,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     for (const drawTime of drawTimes) {
       const drawTimeHour = drawTime.getPick3DrawTime().getDateTime().getHours();
       const index = drawTimes.indexOf(drawTime);
+      /* istanbul ignore next */
       if (drawTimeHour <= currentHour) {
         drawTimes.splice(index, 1);
       }
@@ -141,10 +143,11 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     return drawTimes;
   }
 
-  private getRandomIntInclusive() {
+  public createNumberArray() {
     const generatedNumberArray = [];
     while (generatedNumberArray.length < 12) {
       const r = Math.floor(Math.random() * 999) + 1;
+      /* istanbul ignore next */
       if (generatedNumberArray.indexOf(r) === -1) {
         generatedNumberArray.push(r);
       }

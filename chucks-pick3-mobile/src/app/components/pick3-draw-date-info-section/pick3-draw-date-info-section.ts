@@ -59,6 +59,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   constructor(private cardContextService: CardContextService, public drawStateService: DrawStateService, private selectedPicks: SelectPicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private drawDateService: DrawDateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService, private popoverController: PopoverController, private navCtrl: NavController, private stateDrawDate: StateService) {
     this.routerUrl = this.router.url;
 
+    /* istanbul ignore next */
     if (this.routerUrl === '/home') {
       this.slideNumberClass = true;
       this.id = ++Pick3DrawDateInfoSection.counter;
@@ -84,6 +85,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.drawTimeCard);
+
     const someDateTime = new Date();
     const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
     const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
@@ -111,6 +114,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       if (this.routerUrl === '/home') {
         if (currentPick3DrawDateCardId && currentPick3DrawDateCardId === this.id) {
           this.disableButtonOnCard(currentPick3DrawDateCardId);
+          this.checkIfGeneratedArrayIsAvailable(currentPick3DrawDateCard.pick3DrawTimeArray);
           this.appService.pick3CardId = currentPick3DrawDateCardId;
           this.setData(this.appService.getDrawState(), currentPick3DrawDateCard, this.appService.getBackgroundImageUrl(), currentPick3DrawDateCard.getIcon());
           this.drawTimeCard = currentPick3DrawDateCard;
@@ -249,7 +253,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
           this.setCardState(winningNumber, pick3DrawTimeType);
         } else if (this.routerUrl === '/home' || this.routerUrl === '/select-picks') {
           this.setCardState(winningNumber, pick3DrawTimeType);
-          this.toastService.presentToast('Past Winning Number Available', 'Please check generated numbers', 'winner-available');
+          /* istanbul ignore if */
+          if (this.drawTimeCard !== null || undefined) {
+            this.toastService.presentToast('Past Winning Number Available', 'Please check generated numbers', 'winner-available');
+          }
         }
         /*this.selectedWinningNumbers = winningNumber;*/
       },
@@ -263,7 +270,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     );
   }
-
+  /* istanbul ignore next */
   private handleInvalidPick3DrawDayError(pick3DrawDay) {
     const closedDayArray = this.stateDrawDate.getClosedDates(this.data.getDrawState());
 
@@ -280,7 +287,10 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
       (winningNumber: any) => {
         this.setCardState(winningNumber, pick3DrawTimeType);
-        this.toastService.presentToast('Winning Number Available', 'Please check generated numbers', 'winner-available');
+        /* istanbul ignore if */
+        if (this.drawTimeCard !== null || undefined) {
+          this.toastService.presentToast('Winning Number Available', 'Please check generated numbers', 'winner-available');
+        }
       },
       (error) => {
         // TODO: Handle error.
@@ -360,19 +370,27 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       this.switchDrawDateButtons('viewPicksDisabled');
     }
   }
-
+  /* istanbul ignore next */
   public returnToPreviousPage() {
     this.navCtrl.pop();
   }
-
+  /* istanbul ignore next */
   private setUpNextDate(drawDate) {
     let tomorrow = new Date();
     tomorrow.setDate(drawDate.getDate() + 1);
     this.tomorrowUnavailableDate = tomorrow;
   }
-
+  /* istanbul ignore next */
   public gotoGeneratePicks(): void {
     this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
     this.selectedPicks.setSelectedPick3DrawDateCard(this.data);
+  }
+
+  private checkIfGeneratedArrayIsAvailable(pick3DrawTimeArray: number[]) {
+    if (pick3DrawTimeArray != null || undefined) {
+      this.switchDrawDateButtons('generatePicksDisabled');
+    } else {
+      this.switchDrawDateButtons('viewPicksDisabled');
+    }
   }
 }

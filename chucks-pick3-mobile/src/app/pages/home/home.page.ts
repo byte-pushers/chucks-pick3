@@ -67,22 +67,24 @@ export class HomePage implements OnDestroy {
       this.initializePick3DrawDateCard(event);
     }
   }
-
   /* istanbul ignore next */
   public initializePick3DrawDateCard(swiper): void {
-    let activeIndex;
-    activeIndex = swiper.activeIndex;
-    if (this.slidesLoaded) {
-      this.storeId();
+    if (swiper != undefined || null) {
+      console.log(swiper.activeIndex);
+      let activeIndex;
       activeIndex = swiper.activeIndex;
-      const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-      if (activeIndex <= 7) {
-        this.cardContextService.addContext({
-          slideNumber: activeIndex + 1,
-          data: pick3DrawDateDecks[activeIndex],
-          defaultDrawDateTime: this.default.drawDateTime,
-          drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1),
-        });
+      if (this.slidesLoaded) {
+        this.storeId();
+        activeIndex = swiper.activeIndex;
+        const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+        if (activeIndex <= 7) {
+          this.cardContextService.addContext({
+            slideNumber: activeIndex + 1,
+            data: pick3DrawDateDecks[activeIndex],
+            defaultDrawDateTime: this.default.drawDateTime,
+            drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1),
+          });
+        }
       }
     }
   }
@@ -101,7 +103,7 @@ export class HomePage implements OnDestroy {
   }
 
   public passIdToGenerate(slideNumber) {
-    /* istanbul ignore else */
+    /* istanbul ignore next */
     if (slideNumber >= 6 || slideNumber === 7) {
       this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
     }

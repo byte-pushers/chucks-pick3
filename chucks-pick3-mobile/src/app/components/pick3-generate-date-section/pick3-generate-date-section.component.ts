@@ -26,25 +26,27 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   public currentSlideNumber: number;
   private static counter = 0;
   private routerUrl;
-
+  /* istanbul ignore next */
   get data() {
     return this.selectPicksService.getSelectedPick3DrawDateCard();
   }
-
+  /* istanbul ignore next */
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
-
+  /* istanbul ignore next */
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
-
+  /* istanbul ignore next */
   constructor(private selectPicksService: SelectPicksService, private generatePicksService: GeneratePicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService) {
     this.routerUrl = this.router.url;
   }
-
+  /* istanbul ignore next */
   ngOnInit(): void {
+    /* istanbul ignore next */
     registerLocaleData(localeEsMx, 'es-MX');
+    /* istanbul ignore next */
     registerLocaleData(localeEnUS, 'en-US');
   }
 
