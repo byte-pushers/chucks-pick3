@@ -125,7 +125,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
       }
-      /* istanbul ignore if */
+      /* istanbul ignore next */
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
       }
@@ -136,6 +136,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
         this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
+
       /* istanbul ignore if */
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
@@ -207,7 +208,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const todaysPick3DrawDateCard = this.appService.getPreviousWinningNumber(currentDate, pick3DrawTime);
 
     this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
-
+    /* istanbul ignore if */
     if (this.isLotteryClosed(currentDate)) {
       /* istanbul ignore next*/
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
@@ -229,7 +230,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  private selectCurrentCard(drawTimes) {
+  public selectCurrentCard(drawTimes) {
     if (this.currentDrawingCard) {
       for (const drawTime of drawTimes) {
         if (this.currentDrawingCard.getDrawTime() === drawTime.getDrawTime()) {
@@ -275,6 +276,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
   private getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
+      /* istanbul ignore next */
       (winningNumber: any) => {
         pick3DrawDateCard.setWinningNumber(winningNumber?.number);
       },

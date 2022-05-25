@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { PreviousWinningNumberCardComponent } from './previous-winning-number-card.component';
 import { CardContextService } from '../../services/card-context.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -58,7 +58,7 @@ describe('PreviousWinningNumberCardComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [PreviousWinningNumberCardComponent],
-      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule.withRoutes([{ path: 'select-picks', component: PreviousWinningNumberCardComponent, pathMatch: 'full' }]), TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
       providers: [AppService, Pick3WebScrapingProviderService, DrawStateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
@@ -71,9 +71,10 @@ describe('PreviousWinningNumberCardComponent', () => {
         },
       },
     } as any);
-    const mockUrlTree = router.parseUrl('/home');
+    const mockUrlTree = router.parseUrl('/select-picks');
     // @ts-ignore: force this private property value for testing.
     router.currentUrlTree = mockUrlTree;
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(PreviousWinningNumberCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -125,6 +126,12 @@ describe('PreviousWinningNumberCardComponent', () => {
 
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
+    component.setDrawingTimeMenuItems(yesterdayModel);
+    expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
+  it('should  call resetDrawingTimes', () => {
+    const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
     component.setDrawingTimeMenuItemsForClosedDay(model);
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
@@ -137,6 +144,12 @@ describe('PreviousWinningNumberCardComponent', () => {
   it('should  define newDrawingTimes', () => {
     component.setDrawingTimeMenuItemsForClosedDay(yesterdayModel);
     expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should  call resetDrawingTimes', () => {
+    const selectCurrentCardSpy = spyOn(component, 'selectCurrentCard');
+    component.setDrawingTimeMenuItems(model);
+    expect(selectCurrentCardSpy).toHaveBeenCalled();
   });
 
   it('should return the continue button as false', function () {

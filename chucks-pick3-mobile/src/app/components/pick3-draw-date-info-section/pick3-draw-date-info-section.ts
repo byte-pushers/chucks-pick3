@@ -59,6 +59,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   constructor(private cardContextService: CardContextService, public drawStateService: DrawStateService, private selectedPicks: SelectPicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private drawDateService: DrawDateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService, private popoverController: PopoverController, private navCtrl: NavController, private stateDrawDate: StateService) {
     this.routerUrl = this.router.url;
 
+    /* istanbul ignore next */
     if (this.routerUrl === '/home') {
       this.slideNumberClass = true;
       this.id = ++Pick3DrawDateInfoSection.counter;
@@ -369,17 +370,17 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       this.switchDrawDateButtons('viewPicksDisabled');
     }
   }
-
+  /* istanbul ignore next */
   public returnToPreviousPage() {
     this.navCtrl.pop();
   }
-
+  /* istanbul ignore next */
   private setUpNextDate(drawDate) {
     let tomorrow = new Date();
     tomorrow.setDate(drawDate.getDate() + 1);
     this.tomorrowUnavailableDate = tomorrow;
   }
-
+  /* istanbul ignore next */
   public gotoGeneratePicks(): void {
     this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
     this.selectedPicks.setSelectedPick3DrawDateCard(this.data);

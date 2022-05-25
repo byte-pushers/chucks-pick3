@@ -38,11 +38,11 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
-
+  /* istanbul ignore next */
   constructor(private selectPicksService: SelectPicksService, private generatePicksService: GeneratePicksService, private toastService: IonicToastNotificationService, private router: Router, public translate: I18nService, public translateService: TranslateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private appService: AppService) {
     this.routerUrl = this.router.url;
   }
-
+  /* istanbul ignore next */
   ngOnInit(): void {
     /* istanbul ignore next */
     registerLocaleData(localeEsMx, 'es-MX');
