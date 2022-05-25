@@ -9,7 +9,7 @@ const now = new Date();
 describe('My First Test', () => {
   const data = new Pick3DrawDateCardDomain({
     drawDate: date,
-    drawState: 'gotoHome',
+    drawState: 'homeEnabled',
     drawTime: Pick3DrawTimeEnum.MORNING,
     drawTimeAsString: 'Morning',
     upcomingDrawTime: date,
