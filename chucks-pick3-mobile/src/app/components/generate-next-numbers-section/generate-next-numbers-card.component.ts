@@ -14,6 +14,8 @@ import { Subscription } from 'rxjs';
 import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
 import { TomorrowPick3DrawDateCardService } from '../../services/tomorrowPick3DrawDateCard.service';
 import { SelectPicksService } from '../../services/select-picks.service';
+import { PredictionProvider } from '../../providers/prediction/prediction.service';
+import { Pick3PlaysResponse } from '../../providers/prediction/api/v1/pick3-plays-response';
 
 @Component({
   selector: 'app-generate-next-numbers-card',
@@ -33,7 +35,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   public pick3CardToGenerate: Pick3DrawTimeCard;
   private pick3DrawDateCardSubscription: Subscription;
 
-  constructor(private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private appService: AppService, private tomorrowService: TomorrowPick3DrawDateCardService, private router: Router, private selectPicksService: SelectPicksService, private drawStateService: DrawStateService, private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+  constructor(private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private appService: AppService, private tomorrowService: TomorrowPick3DrawDateCardService, private router: Router, private selectPicksService: SelectPicksService, private drawStateService: DrawStateService, private pick3WebScrappingService: Pick3WebScrapingProviderService, private predictionProvider: PredictionProvider) {
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.componentState = 'instantiated';
   }
@@ -42,7 +44,9 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     const today: HTMLElement = document.getElementById('today');
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
     this.selectTodayGenerateDrawingDate(today, tomorrow);
-    this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {});
+    this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
+      console.log(currentPick3DrawDateCard);
+    });
   }
 
   public selectTomorrowGenerateDrawingDate(tomorrow: any, today: any): void {
@@ -93,7 +97,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         if (drawTime.getDrawTime() !== pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(false);
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
-        /* istanbul ignore next */
+          /* istanbul ignore next */
           drawTime.setSelected(true);
           this.pick3CardToGenerate = pick3DrawTimeCard;
           this.selectPicksService.setSelectedPick3DrawTimeCard(pick3DrawTimeCard);
@@ -125,9 +129,14 @@ export class GenerateNextNumbersCardComponent implements OnInit {
   }
 
   private replaceGeneratedNumbers() {
-    const newGeneratedArray = this.createNumberArray();
-    /*        this.pick3CardToGenerate.getPick3DrawTimeArray().length = 0;*/
-    this.pick3CardToGenerate.setPick3DrawTimeArray(newGeneratedArray);
+    this.predictionProvider.getPredictions(null).subscribe(
+      (response: Pick3PlaysResponse) => {
+        this.pick3CardToGenerate.setPick3DrawTimeArray(response.plays);
+      },
+      (error) => {
+        console.log(`An error occurred: ${error}`);
+      }
+    );
   }
 
   private sortDrawTimes(drawTimes) {
@@ -152,7 +161,7 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         generatedNumberArray.push(r);
       }
     }
-
+    console.log(generatedNumberArray);
     return generatedNumberArray;
   }
 
