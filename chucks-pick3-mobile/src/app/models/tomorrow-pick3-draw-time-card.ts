@@ -24,6 +24,10 @@ export interface TomorrowPick3DrawTimeCard extends TomorrowPick3DrawtimeCardProp
 
   setState(state: Pick3DrawTimeCardStateEnum): void;
 
+  getClosedState(): boolean;
+
+  setClosedState(closedState: boolean);
+
   getPick3DrawTime(): Pick3DrawTime;
 
   setPick3DrawTime(pick3DrawTime: Pick3DrawTime): void;

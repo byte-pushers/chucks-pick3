@@ -84,6 +84,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.drawTimeCard);
+
     const someDateTime = new Date();
     const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
     const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
