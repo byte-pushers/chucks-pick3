@@ -26,15 +26,15 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   public currentSlideNumber: number;
   private static counter = 0;
   private routerUrl;
-
+  /* istanbul ignore next */
   get data() {
     return this.selectPicksService.getSelectedPick3DrawDateCard();
   }
-
+  /* istanbul ignore next */
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
-
+  /* istanbul ignore next */
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
@@ -44,7 +44,9 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    /* istanbul ignore next */
     registerLocaleData(localeEsMx, 'es-MX');
+    /* istanbul ignore next */
     registerLocaleData(localeEnUS, 'en-US');
   }
 

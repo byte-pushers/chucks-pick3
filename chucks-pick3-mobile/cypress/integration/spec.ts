@@ -51,10 +51,7 @@ describe('My First Test', () => {
   });
 
   it('should swipe left', () => {
-    cy.get('.swiper-slide-active')
-      .trigger('pointerdown', { which: 1 })
-      .trigger('pointermove', 'right')
-      .trigger('pointerup', { force: true });
+    cy.get('.swiper-slide-active').trigger('pointerdown', { which: 1 }).trigger('pointermove', 'right').trigger('pointerup', { force: true });
   });
 
   it('clicks on the drawTime button for day', () => {
@@ -70,5 +67,19 @@ describe('My First Test', () => {
 
     const stringDate = yesterday.toDateString();
     cy.contains(stringDate);
+  });
+  it('should swipe right', () => {
+    cy.get('.swiper-slide-active').trigger('pointerdown', { which: 1 }).trigger('pointermove', 'left').trigger('pointerup', { force: true });
+  });
+
+  it('should goto select-picks', function () {
+    cy.get('[id="generate-picks-icon"]').click({
+      multiple: true,
+      force: true,
+    });
+  });
+
+  it('should check if continue-button is false', function () {
+    cy.get('[id="continueButton"]').should('have.value', 'continueButton').should('equal', 'false');
   });
 });
