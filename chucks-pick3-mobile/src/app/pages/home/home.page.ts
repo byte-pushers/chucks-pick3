@@ -67,7 +67,6 @@ export class HomePage implements OnDestroy {
       this.initializePick3DrawDateCard(event);
     }
   }
-
   /* istanbul ignore next */
   public initializePick3DrawDateCard(swiper): void {
     if (swiper != undefined || null) {
@@ -104,7 +103,7 @@ export class HomePage implements OnDestroy {
   }
 
   public passIdToGenerate(slideNumber) {
-    /* istanbul ignore else */
+    /* istanbul ignore next */
     if (slideNumber >= 6 || slideNumber === 7) {
       this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
     }

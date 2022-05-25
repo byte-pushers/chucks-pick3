@@ -26,7 +26,10 @@ export class PreviousPicksPage implements OnInit {
     this.pick3DrawnNumber = route.data.pipe(map((d) => d.user));
   }
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    // This has been completely replaced in translate fix
+  }
 
   // tested on other components such as home page and pick3drawDate
   async showPopover(ev: any) {
