@@ -44,7 +44,9 @@ export class Pick3GenerateDateSectionComponent implements OnInit, OnDestroy {
   }
   /* istanbul ignore next */
   ngOnInit(): void {
+    /* istanbul ignore next */
     registerLocaleData(localeEsMx, 'es-MX');
+    /* istanbul ignore next */
     registerLocaleData(localeEnUS, 'en-US');
   }
 

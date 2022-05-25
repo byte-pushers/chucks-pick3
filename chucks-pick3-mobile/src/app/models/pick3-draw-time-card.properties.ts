@@ -8,6 +8,7 @@ export interface Pick3DrawTimeCardProperties {
   dateTime: Date;
   drawTime: Pick3DrawTimeEnum;
   state: Pick3DrawTimeCardStateEnum;
+  closedState: boolean;
   selected: boolean;
   showCountDownToDrawing: boolean;
   pick3DrawTimeArray: number[];

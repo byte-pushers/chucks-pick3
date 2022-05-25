@@ -22,5 +22,6 @@
   "pick3.draw.date.card.previous.drawing.date": "Fecha de Sorteo Anterior",
   "pick3.draw.date.card.previous.drawing.time": "Tiempo de Sorteo Anterior",
   "pick3.draw.date.card.current.drawing.date": "Fecha de Sorteo",
-  "pick3.draw.date.card.current.drawing.time": "Tiempo de Sorteo"
+  "pick3.draw.date.card.current.drawing.time": "Tiempo de Sorteo",
+  "select-picks": "Seleccionar Selecciones Anteriores"
 }
