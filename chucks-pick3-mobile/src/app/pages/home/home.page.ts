@@ -35,21 +35,9 @@ export class HomePage implements OnDestroy {
 
   pick3StateLottery: Pick3StateLottery;
 
-  constructor(
-    private cardContextService: CardContextService,
-    private popoverController: PopoverController,
-    public translateService: TranslateService,
-    private drawDateService: DrawDateService,
-    private drawTimeService: DrawTimeService,
-    private drawStateService: DrawStateService,
-    private appService: AppService,
-    private router: Router,
-    private pick3WebScrappingService: Pick3WebScrapingProviderService
-  ) {
-    this.pick3StateLottery =
-      pick3WebScrappingService.findRegisteredStateLottery('TX');
+  constructor(private cardContextService: CardContextService, private popoverController: PopoverController, public translateService: TranslateService, private drawDateService: DrawDateService, private drawTimeService: DrawTimeService, private drawStateService: DrawStateService, private appService: AppService, private router: Router, private pick3WebScrappingService: Pick3WebScrapingProviderService) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     translateService.setDefaultLang('en-US');
-    console.log(`HomePage constructor.`);
   }
 
   /* istanbul ignore next */
@@ -65,8 +53,7 @@ export class HomePage implements OnDestroy {
       translucent: true,
     });
     /* istanbul ignore next */
-    popover.style.cssText =
-      '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
+    popover.style.cssText = '--min-width: 4em; --max-width: 4em; --inner-border-width: 0px 0px 0px 0px !important;';
     /* istanbul ignore next */
     return await popover.present();
   }
@@ -76,36 +63,32 @@ export class HomePage implements OnDestroy {
     let count;
     if (swiper.activeIndex === 7) {
       count = swiper.length;
-      console.log(
-        `HomePage.initializePick3DrawDateCards() method slide count :${count}`
-      );
       this.slidesLoaded = true;
       this.initializePick3DrawDateCard(event);
     }
   }
-
   /* istanbul ignore next */
   public initializePick3DrawDateCard(swiper): void {
-    let activeIndex;
-    activeIndex = swiper.activeIndex;
-    if (this.slidesLoaded) {
-      this.storeId();
+    if (swiper != undefined || null) {
       console.log(swiper.activeIndex);
+      let activeIndex;
       activeIndex = swiper.activeIndex;
-      console.log(
-        `HomePage.initializePick3DrawDateCard() - Active Index: IonSlides[${activeIndex}]`
-      );
-      const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
-      if (activeIndex <= 7) {
-        this.cardContextService.addContext({
-          slideNumber: activeIndex + 1,
-          data: pick3DrawDateDecks[activeIndex],
-          defaultDrawDateTime: this.default.drawDateTime,
-          drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1),
-        });
+      if (this.slidesLoaded) {
+        this.storeId();
+        activeIndex = swiper.activeIndex;
+        const pick3DrawDateDecks = this.appService.getPick3DrawDateDecks();
+        if (activeIndex <= 7) {
+          this.cardContextService.addContext({
+            slideNumber: activeIndex + 1,
+            data: pick3DrawDateDecks[activeIndex],
+            defaultDrawDateTime: this.default.drawDateTime,
+            drawTimes: this.appService.getPick3DrawTimeCards(activeIndex + 1),
+          });
+        }
       }
     }
   }
+
   /* istanbul ignore next */
   public storeId() {
     let activeIndex;
@@ -114,14 +97,13 @@ export class HomePage implements OnDestroy {
       /* istanbul ignore else */
       if (activeIndex !== this.prevActiveIndex) {
         this.appService.pick3CardId = activeIndex + 1;
-        console.log(this.appService.pick3CardId);
         this.passIdToGenerate(activeIndex + 1);
       }
     }
   }
 
   public passIdToGenerate(slideNumber) {
-    /* istanbul ignore else */
+    /* istanbul ignore next */
     if (slideNumber >= 6 || slideNumber === 7) {
       this.appService.dispatchCurrentDrawCardIdEvent(slideNumber);
     }

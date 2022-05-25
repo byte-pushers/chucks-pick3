@@ -20,12 +20,8 @@ export class TomorrowPick3DrawDateCardService {
   private pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
   private pick3DrawTimeCards: Array<TomorrowPick3DrawTimeCard> = [];
 
-  constructor(
-    private pick3WebScrappingService: Pick3WebScrapingProviderService,
-    private drawTimeService: DrawTimeService
-  ) {
-    this.pick3StateLottery =
-      pick3WebScrappingService.findRegisteredStateLottery('TX');
+  constructor(private pick3WebScrappingService: Pick3WebScrapingProviderService, private drawTimeService: DrawTimeService) {
+    this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
     this.init();
   }
 
@@ -71,6 +67,7 @@ export class TomorrowPick3DrawDateCardService {
       }),
     ];
   }
+
   public getBackgroundImageUrl(): string {
     return this.pick3StateLottery.getBackgroundImageUrl();
   }
@@ -95,18 +92,15 @@ export class TomorrowPick3DrawDateCardService {
   public winningNumberHasBeenDrawn(pick3DrawTime: Pick3DrawTime): Boolean {
     return this.pick3StateLottery.winningNumberHasBeenDrawn(pick3DrawTime);
   }
-  public getPick3DrawTimeCards(
-    slideNumber?: number
-  ): TomorrowPick3DrawTimeCard[] {
-    const pick3DrawTimes = this.pick3DrawTimeCards.map(
-      (drawTime) => new Pick3DrawTimeCardDomain(drawTime)
-    );
+
+  public getPick3DrawTimeCards(slideNumber?: number): TomorrowPick3DrawTimeCard[] {
+    const pick3DrawTimes = this.pick3DrawTimeCards.map((drawTime) => new Pick3DrawTimeCardDomain(drawTime));
 
     pick3DrawTimes.forEach((drawTime, drawTimeIndex) => {
       const drawTimeHour = drawTime.getDateTime().getHours();
       const currentHour = new Date().getHours();
       const someDrawTime = this.getDrawTime(drawTime.getDateTime());
-
+      /* istanbul ignore next */
       if (slideNumber) {
         const slideDate = this.getSlideDate(slideNumber);
 
@@ -120,13 +114,13 @@ export class TomorrowPick3DrawDateCardService {
       drawTime.setPick3DrawTime(someDrawTime);
 
       /*if (currentHour >= drawTimeHour && drawTimeHour <= currentHour) {
-      console.log(`AppService.init() method:about fire event[pick3DrawTimeSource]: drawTime: ${drawTime}`, drawTime);
-      this.drawTimeService.setCurrentDrawTimeCard(drawTime);
+       this.drawTimeService.setCurrentDrawTimeCard(drawTime);
       }*/
     });
 
     return pick3DrawTimes;
   }
+
   public getSlideDate(slideNumber): Date {
     const slideDate: Date = new Date();
 
@@ -134,6 +128,7 @@ export class TomorrowPick3DrawDateCardService {
       case 8:
         slideDate.setDate(slideDate.getDate() + 1);
         break;
+      /* istanbul ignore next */
       default:
         throw `SlideNumber: '${slideNumber}' not supported.`;
     }
@@ -142,47 +137,27 @@ export class TomorrowPick3DrawDateCardService {
   }
 
   public getPick3DrawDateCard(cardNumber: number): Pick3DrawDateCard {
-    return this.pick3DrawDateDecks.find(
-      (pick3DrawDateDeck) => pick3DrawDateDeck.slideNumber === cardNumber
-    );
+    return this.pick3DrawDateDecks.find((pick3DrawDateDeck) => pick3DrawDateDeck.slideNumber === cardNumber);
   }
+
   public getPick3DrawDateDecks(): Pick3DrawDateCard[] {
     return this.pick3DrawDateDecks;
   }
-
-  public getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(
-    pick3DrawTime: Pick3DrawTime
-  ): Pick3DrawTimeCard {
-    const pick3DrawTimeCards = this.pick3DrawTimeCards.map(
-      (drawTime) => new Pick3DrawTimeCardDomain(drawTime)
-    );
+  /* istanbul ignore next */
+  public getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime: Pick3DrawTime): Pick3DrawTimeCard {
+    const pick3DrawTimeCards = this.pick3DrawTimeCards.map((drawTime) => new Pick3DrawTimeCardDomain(drawTime));
 
     // const currentHour = new Date().getHours();
-    const pick3DrawTimeCard = pick3DrawTimeCards.find(
-      (pick3DrawTimeCard) =>
-        Pick3DrawTimeEnum.getPropertyKey(pick3DrawTimeCard.getDrawTime()) ===
-          Pick3DrawTimeEnum.getPropertyKey(pick3DrawTime.getType()) &&
-        pick3DrawTimeCard.getDateTime().getHours() ===
-          pick3DrawTime.getDateTime().getHours() &&
-        pick3DrawTimeCard.getDateTime().getMinutes() ===
-          pick3DrawTime.getDateTime().getMinutes() &&
-        pick3DrawTimeCard.getDateTime().getSeconds() ===
-          pick3DrawTime.getDateTime().getSeconds()
-    );
+    const pick3DrawTimeCard = pick3DrawTimeCards.find((pick3DrawTimeCard) => Pick3DrawTimeEnum.getPropertyKey(pick3DrawTimeCard.getDrawTime()) === Pick3DrawTimeEnum.getPropertyKey(pick3DrawTime.getType()) && pick3DrawTimeCard.getDateTime().getHours() === pick3DrawTime.getDateTime().getHours() && pick3DrawTimeCard.getDateTime().getMinutes() === pick3DrawTime.getDateTime().getMinutes() && pick3DrawTimeCard.getDateTime().getSeconds() === pick3DrawTime.getDateTime().getSeconds());
 
     pick3DrawTimeCard.setPick3DrawTime(pick3DrawTime);
 
     return pick3DrawTimeCard;
   }
 
-  public retrievePick3DrawDate(
-    currentSlideNumber,
-    currentDrawTime
-  ): Pick3DrawTimeCard {
-    const pick3DrawDateCard = this.getPick3DrawDateCard(currentSlideNumber);
+  public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
     const drawTime = this.getDrawTime(currentDrawTime);
-    const pick3DrawTime =
-      this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
+    const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
     return pick3DrawTime;
   }
 
@@ -195,10 +170,7 @@ export class TomorrowPick3DrawDateCardService {
   }
 
   public getNextWinningNumber(someDate: Date): Pick3DrawDateCard | Error {
-    const pick3DrawDateCard = this.pick3DrawDateDecks.find(
-      (pick3DrawDateDeck) =>
-        pick3DrawDateDeck.drawDate.getDate() === someDate.getDate()
-    );
+    const pick3DrawDateCard = this.pick3DrawDateDecks.find((pick3DrawDateDeck) => pick3DrawDateDeck.drawDate.getDate() === someDate.getDate());
     const pick3CardId = pick3DrawDateCard.getSlideNumber();
 
     return this.getPick3DrawDateCard(pick3CardId);

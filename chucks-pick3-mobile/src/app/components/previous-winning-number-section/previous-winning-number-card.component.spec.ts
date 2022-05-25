@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { PreviousWinningNumberCardComponent } from './previous-winning-number-card.component';
 import { CardContextService } from '../../services/card-context.service';
 import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -17,9 +17,7 @@ import { Pick3LotteryService } from '../../services/pick3-lottery.service';
 
 describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
-  const yesterdaysDate: Date = new Date(
-    new Date().valueOf() - 1000 * 60 * 60 * 24
-  );
+  const yesterdaysDate: Date = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
   let component: PreviousWinningNumberCardComponent;
   let fixture: ComponentFixture<PreviousWinningNumberCardComponent>;
   let router: Router;
@@ -60,22 +58,8 @@ describe('PreviousWinningNumberCardComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [PreviousWinningNumberCardComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawStateService,
-        CardContextService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule.withRoutes([{ path: 'select-picks', component: PreviousWinningNumberCardComponent, pathMatch: 'full' }]), TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      providers: [AppService, Pick3WebScrapingProviderService, DrawStateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
     drawStateService = TestBed.get(DrawStateService);
@@ -87,9 +71,10 @@ describe('PreviousWinningNumberCardComponent', () => {
         },
       },
     } as any);
-    const mockUrlTree = router.parseUrl('/home');
+    const mockUrlTree = router.parseUrl('/select-picks');
     // @ts-ignore: force this private property value for testing.
     router.currentUrlTree = mockUrlTree;
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(PreviousWinningNumberCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -100,10 +85,7 @@ describe('PreviousWinningNumberCardComponent', () => {
   });
 
   it('should call selectDrawingDateMenuItemForToday ', () => {
-    const selectDrawingDateMenuItemForTodaySpy = spyOn(
-      component,
-      'selectDrawingDateMenuItemForToday'
-    );
+    const selectDrawingDateMenuItemForTodaySpy = spyOn(component, 'selectDrawingDateMenuItemForToday');
     component.ngOnInit();
     expect(selectDrawingDateMenuItemForTodaySpy).toHaveBeenCalled();
   });
@@ -136,6 +118,18 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
 
+  it('should  call resetDrawingTimes for yesterday', () => {
+    const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
+    component.setDrawingTimeMenuItems(yesterdayModel);
+    expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
+  it('should  call resetDrawingTimes', () => {
+    const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
+    component.setDrawingTimeMenuItems(yesterdayModel);
+    expect(resetDrawingTimesSpy).toHaveBeenCalled();
+  });
+
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
     component.setDrawingTimeMenuItemsForClosedDay(model);
@@ -145,5 +139,23 @@ describe('PreviousWinningNumberCardComponent', () => {
   it('should  define newDrawingTimes', () => {
     component.setDrawingTimeMenuItemsForClosedDay(model);
     expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should  define newDrawingTimes', () => {
+    component.setDrawingTimeMenuItemsForClosedDay(yesterdayModel);
+    expect(component.newDrawingTimes).toBeDefined();
+  });
+
+  it('should  call resetDrawingTimes', () => {
+    const selectCurrentCardSpy = spyOn(component, 'selectCurrentCard');
+    component.setDrawingTimeMenuItems(model);
+    expect(selectCurrentCardSpy).toHaveBeenCalled();
+  });
+
+  it('should return the continue button as false', function () {
+    component.continueChoice = false;
+    component.currentDrawingCard.showCountDownToDrawing = false;
+    component.validatePreviousWinningNumberComp();
+    expect(component.continueButton).toBeTrue();
   });
 });

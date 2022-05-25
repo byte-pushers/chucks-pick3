@@ -1,9 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  TestBed,
-  waitForAsync,
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { Pick3GenerateDateSectionComponent } from './pick3-generate-date-section.component';
@@ -67,23 +62,8 @@ describe('Pick3GenerateDateSectionComponent', () => {
     });
     TestBed.configureTestingModule({
       declarations: [Pick3GenerateDateSectionComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        CardContextService,
-        NumberUtilityService,
-        I18nService,
-        AppService,
-        Pick3WebScrapingProviderService,
-        DrawTimeService,
-        SelectPicksService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, HttpClientTestingModule],
+      providers: [CardContextService, NumberUtilityService, I18nService, AppService, Pick3WebScrapingProviderService, DrawTimeService, SelectPicksService],
     }).compileComponents();
     router = TestBed.get(Router);
     spyOn(router, 'getCurrentNavigation').and.returnValue({

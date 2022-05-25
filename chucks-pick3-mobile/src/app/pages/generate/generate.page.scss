@@ -1,4 +1,5 @@
 @import "src/theme/variables";
+
 #container {
   text-align: center;
 
@@ -41,7 +42,9 @@ ion-grid {
   }
 }
 
-.scroll-content{overflow-y: hidden;}
+.scroll-content {
+  overflow-y: hidden;
+}
 
 ion-slides {
   height: 100%;
@@ -50,5 +53,5 @@ ion-slides {
 
 .header-text {
   text-align: center;
-  color: $chucksPick3White
+  color: $chucksPick3White;
 }

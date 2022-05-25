@@ -100,14 +100,13 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
           drawTime.setSelected(true);
           this.currentDrawingCard = pick3DrawTimeCard;
-          console.log(pick3DrawTimeCard);
-          // TODO Call appService.getWinningNumber pass date and draw time
+
           const pick3DrawDateCard = this.appService.getPreviousWinningNumber(pick3DrawTimeCard.getDateTime(), pick3DrawTimeCard.getPick3DrawTime());
           pick3DrawDateCard.setDrawTime(pick3DrawTimeCard.getDrawTimeValue());
           pick3DrawDateCard.setIcon(pick3DrawTimeCard.getIcon());
           const selectedPick3DrawDateCard = this.getCurrentWinningDrawingNumber(pick3DrawDateCard, pick3DrawDateCard.getDrawState(), pick3DrawDateCard.getDrawDate(), pick3DrawTimeCard.getDrawTimeValue());
           const selectedPick3DrawTimeCard = this.checkIfCountDownIsAvailable(pick3DrawTimeCard);
-          // TODO Save previousPick3DrawDateCard to service
+
           this.selectPicksService.setSelectedPick3DrawTimeCard(selectedPick3DrawTimeCard);
           this.selectPicksService.setSelectedPick3DrawDateCard(selectedPick3DrawDateCard);
           this.validatePreviousWinningNumberComp();
@@ -126,7 +125,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
       for (const drawTime of this.drawTimes) {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
       }
-      /* istanbul ignore if */
+      /* istanbul ignore next */
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
       }
@@ -137,8 +136,11 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
         this.newDrawingTimes.push(drawTime.getDrawTimeValue());
         this.newDrawingTimes.splice(0, this.newDrawingTimes.length, ...this.defaultDrawingTimes);
       }
+
+      /* istanbul ignore if */
       if (this.router.url === '/select-picks') {
         this.selectCurrentCard(this.drawTimes);
+        this.continueButton = false;
       }
     }
   }
@@ -186,12 +188,12 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     const yesterdaysDate: Date = new Date(someDateTime.getFullYear(), someDateTime.getMonth() + 1 - 1, someDateTime.getDate() - 1, someDateTime.getHours());
     const pick3DrawTime = this.appService.getDrawTime(yesterdaysDate);
     const previousPick3DrawDateCard = this.appService.getPreviousWinningNumber(yesterdaysDate, pick3DrawTime);
-    console.log(previousPick3DrawDateCard);
-    // TODO Save previousPick3DrawDateCard to service
+
     this.selectPicksService.setSelectedPick3DrawDateCard(previousPick3DrawDateCard);
+    this.continueButton = true;
     yesterday.style.backgroundColor = '#2fdf75';
     today.style.backgroundColor = '#e5e5e5';
-    if (this.checkIfLottoWasClosed(yesterdaysDate)) {
+    if (this.isLotteryClosed(yesterdaysDate)) {
       this.setDrawingTimeMenuItemsForClosedDay(previousPick3DrawDateCard);
     } else {
       this.setDrawingTimeMenuItems(previousPick3DrawDateCard);
@@ -204,11 +206,11 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     yesterday.style.backgroundColor = '#e5e5e5';
     const pick3DrawTime = this.appService.getDrawTime(currentDate);
     const todaysPick3DrawDateCard = this.appService.getPreviousWinningNumber(currentDate, pick3DrawTime);
-    // TODO Save previousPick3DrawDateCard to service
-    this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
 
-    // TODO Save previousPick3DrawDateCard to service
-    if (this.checkIfLottoWasClosed(currentDate)) {
+    this.selectPicksService.setSelectedPick3DrawDateCard(todaysPick3DrawDateCard);
+    /* istanbul ignore if */
+    if (this.isLotteryClosed(currentDate)) {
+      /* istanbul ignore next*/
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
     } else {
       this.setDrawingTimeMenuItems(todaysPick3DrawDateCard);
@@ -228,7 +230,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  private selectCurrentCard(drawTimes) {
+  public selectCurrentCard(drawTimes) {
     if (this.currentDrawingCard) {
       for (const drawTime of drawTimes) {
         if (this.currentDrawingCard.getDrawTime() === drawTime.getDrawTime()) {
@@ -239,7 +241,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     }
   }
 
-  private validatePreviousWinningNumberComp() {
+  public validatePreviousWinningNumberComp() {
     if (this.currentDrawingCard.showCountDownToDrawing === false && this.continueChoice) {
       this.continueButton = false;
     } else {
@@ -248,28 +250,33 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
   }
 
   /* istanbul ignore next */
-  public checkIfLottoWasClosed(date: Date): boolean {
+  public isLotteryClosed(date: Date): boolean {
     const dateName = this.stateDrawDate.retrieveDay(date);
-    console.log(dateName);
-    if (dateName === this.stateDrawDate.checkDateStateIsClosed(this.pick3StateLottery.getState())) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.stateDrawDate.getClosedDates(this.pick3StateLottery.getState()).includes(dateName);
   }
 
+  private checkIfDrawTimeWillBePresent(pick3DrawTimeCard: Pick3DrawTimeCard): Pick3DrawTimeCard {
+    if (this.isLotteryClosed(pick3DrawTimeCard.getDateTime())) {
+      pick3DrawTimeCard.closedState = false;
+    } else {
+      pick3DrawTimeCard.closedState = true;
+    }
+    return pick3DrawTimeCard;
+  }
   private checkIfCountDownIsAvailable(pick3DrawTimeCard: Pick3DrawTimeCard) {
     const currentDate = new Date();
-    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.checkIfLottoWasClosed(pick3DrawTimeCard.getDateTime()) === false) {
+    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && this.isLotteryClosed(pick3DrawTimeCard.getDateTime()) === false) {
       pick3DrawTimeCard.showCountDownToDrawing = false;
     } else {
       pick3DrawTimeCard.showCountDownToDrawing = true;
+      this.checkIfDrawTimeWillBePresent(pick3DrawTimeCard);
     }
     return pick3DrawTimeCard;
   }
 
   private getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {
     this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
+      /* istanbul ignore next */
       (winningNumber: any) => {
         pick3DrawDateCard.setWinningNumber(winningNumber?.number);
       },

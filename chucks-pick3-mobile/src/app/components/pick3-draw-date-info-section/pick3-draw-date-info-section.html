@@ -2,7 +2,7 @@
   <ion-col size="2" style="margin-right: 0px" [ngSwitch]="generateNavigation">
     <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
     <ion-icon *ngSwitchCase="1" [routerLink]="['/','view']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back" src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing" style="padding-left: 15px"></ion-icon>
-    <ion-icon *ngSwitchCase="2" [routerLink]="['/', 'home']" [state]="{currentSlideNumber: this.pick3GenerateId}" routerDirection="forward" (click)="switchDrawDateButtons('gotoHome')" class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
+    <ion-icon *ngSwitchCase="2" [routerLink]="['/', 'home']" [state]="{currentSlideNumber: this.id}" routerDirection="forward" (click)="switchDrawDateButtons('homeEnabled')" class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
 
     <ion-nav-link *ngSwitchCase="3" routerDirection="back" router-direction="back" (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); returnToPreviousPage()">
       <ion-icon class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
@@ -13,7 +13,7 @@
       *ngSwitchDefault
       [routerLink]="['/','view']"
       [state]="{
-                    currentSlideNumber: this.pick3GenerateId,
+                    currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                   }"
       (click)="switchDrawDateButtons('gotoViewPicks')"
@@ -27,7 +27,7 @@
       *ngSwitchCase="6"
       [routerLink]="['/','view']"
       [state]="{
-                    currentSlideNumber: this.pick3GenerateId,
+                    currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                   }"
       (click)="switchDrawDateButtons('gotoViewPicks')"
@@ -95,7 +95,7 @@
       (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
       [state]="{
-                  currentSlideNumber: this.pick3GenerateId,
+                  currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                 }"
       routerDirection="back"

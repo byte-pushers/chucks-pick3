@@ -31,11 +31,13 @@ export class PreviousPicksDateSectionComponent implements OnInit {
   get data() {
     return this.selectPicksService.getSelectedPick3DrawDateCard();
   }
+
   /* istanbul ignore next */
   get time() {
     return this.selectPicksService.getSelectedPick3DrawTimeCard();
   }
 
+  /* istanbul ignore next */
   get background() {
     return this.appService.getBackgroundImageUrl();
   }
@@ -44,6 +46,7 @@ export class PreviousPicksDateSectionComponent implements OnInit {
   constructor(public drawStateService: DrawStateService, private appService: AppService, private selectPicksService: SelectPicksService, private router: Router, private navCtrl: NavController, public translate: I18nService, public translateService: TranslateService) {
     this.routerUrl = this.router.url;
   }
+
   /* istanbul ignore next */
   ngOnInit(): void {
     registerLocaleData(localeEsMx, 'es-MX');

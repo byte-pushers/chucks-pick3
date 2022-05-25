@@ -1,12 +1,11 @@
-import {TestBed} from '@angular/core/testing';
-import {CardContextService} from './card-context.service';
-import {Pick3LotteryService} from './pick3-lottery.service';
-import {Pick3DrawDateCardDomain} from '../models/pick3-draw-date-card.domain';
-import {Pick3DrawTimeCardDomain} from '../models/pick3-draw-time-card.domain';
-import {Pick3DrawTimeEnum} from '../models/pick3-draw-time.enum';
-import {Observable, ReplaySubject} from "rxjs";
-import {convertToParamMap, ParamMap, Params} from "@angular/router";
-
+import { TestBed } from '@angular/core/testing';
+import { CardContextService } from './card-context.service';
+import { Pick3LotteryService } from './pick3-lottery.service';
+import { Pick3DrawDateCardDomain } from '../models/pick3-draw-date-card.domain';
+import { Pick3DrawTimeCardDomain } from '../models/pick3-draw-time-card.domain';
+import { Pick3DrawTimeEnum } from '../models/pick3-draw-time.enum';
+import { Observable, ReplaySubject } from 'rxjs';
+import { convertToParamMap, ParamMap, Params } from '@angular/router';
 
 describe('CardContextService', () => {
   let service: CardContextService;
@@ -24,17 +23,14 @@ describe('CardContextService', () => {
       winningNumber: 462,
       winningNumberDigits: [4, 6, 2],
       drawDateIcon: date,
-      slideNumber: 7
+      slideNumber: 7,
     });
 
     TestBed.configureTestingModule({
-      providers: [
-        CardContextService
-      ]
-    })
-      .compileComponents();
+      providers: [CardContextService],
+    }).compileComponents();
     service = TestBed.inject(CardContextService);
-    service.context$.subscribe(context => {
+    service.context$.subscribe((context) => {
       service.addContext(model);
     });
   });
@@ -44,7 +40,6 @@ describe('CardContextService', () => {
 });
 
 class ActivatedRouteStub {
-
   private subject = new ReplaySubject<ParamMap>();
 
   constructor(initialParams?: Params) {
@@ -57,5 +52,5 @@ class ActivatedRouteStub {
   /** Set the paramMap observables's next value */
   setParamMap(params?: Params) {
     this.subject.next(convertToParamMap(params));
-  };
+  }
 }

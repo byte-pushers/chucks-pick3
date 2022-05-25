@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import {ToastController} from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
-
-
 export class IonicToastNotificationService {
   public isToastVisible: boolean;
-  constructor(public toastController: ToastController) { }
+
+  constructor(public toastController: ToastController) {}
 
   async presentToast(toastHeader: string, toastMessage: string, toastClass: string) {
     if (this.isToastVisible) {
@@ -19,26 +16,31 @@ export class IonicToastNotificationService {
 
     this.isToastVisible = true;
 
-    this.toastController.create({
-      header: toastHeader,
-      message: toastMessage,
-      duration: 2000,
-      cssClass: toastClass,
-      buttons: [
-        {
-          side: 'start',
-          icon: 'alert-circle-outline',
-          cssClass: 'results-icon'
+    this.toastController
+      .create({
+        header: toastHeader,
+        message: toastMessage,
+        duration: 2000,
+        cssClass: toastClass,
+        buttons: [
+          {
+            side: 'start',
+            icon: 'alert-circle-outline',
+            cssClass: 'results-icon',
+          },
+        ],
+        position: 'top',
+      })
+      .then(
+        /* istanbul ignore next */
+        (toast: HTMLIonToastElement) => {
+          /* istanbul ignore next */
+          toast.onDidDismiss().then(() => {
+            this.isToastVisible = false;
+          });
+          /* istanbul ignore next */
+          toast.present();
         }
-      ],
-      position: 'top'
-    }).then((toast: HTMLIonToastElement) => {
-      /* istanbul ignore next */
-      toast.onDidDismiss().then(() => {
-        this.isToastVisible = false;
-      });
-      /* istanbul ignore next */
-      toast.present();
-    });
+      );
   }
 }

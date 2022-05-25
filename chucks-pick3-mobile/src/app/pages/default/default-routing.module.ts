@@ -6,8 +6,8 @@ import { DefaultPage } from './default.page';
 const routes: Routes = [
   {
     path: '',
-    component: DefaultPage
-  }
+    component: DefaultPage,
+  },
 ];
 
 @NgModule({

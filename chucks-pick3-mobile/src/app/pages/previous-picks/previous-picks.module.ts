@@ -12,17 +12,7 @@ import { PreviousWinningNumberCardComponent } from '../../components/previous-wi
 import { PreviousPicksDateSectionComponent } from '../../components/previous-picks-date-section/previous-picks-date-section.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    PreviousPicksPageRoutingModule,
-    TranslateModule,
-  ],
-  declarations: [
-    PreviousPicksPage,
-    PreviousPicksDateSectionComponent,
-    PreviousWinningNumberCardComponent,
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, PreviousPicksPageRoutingModule, TranslateModule],
+  declarations: [PreviousPicksPage, PreviousPicksDateSectionComponent, PreviousWinningNumberCardComponent],
 })
 export class PreviousPicksPageModule {}

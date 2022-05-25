@@ -1,6 +1,5 @@
-import {TestBed} from '@angular/core/testing';
-import {DrawStateService} from './draw-state.service';
-
+import { TestBed } from '@angular/core/testing';
+import { DrawStateService } from './draw-state.service';
 
 describe('DrawStateService', () => {
   let service: DrawStateService;
@@ -10,38 +9,40 @@ describe('DrawStateService', () => {
     drawn: false,
     'drawn-with-generated-picks-with-no-winners': false,
     'drawn-with-generated-picks-with-winners': false,
-    selected: false
+    selected: false,
   };
-  const  currentState = Object.entries(drawingTimeCardColorIndicators);
+  const currentState = Object.entries(drawingTimeCardColorIndicators);
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [DrawStateService]});
+    TestBed.configureTestingModule({ providers: [DrawStateService] });
     service = TestBed.inject(DrawStateService);
   });
-// Ensuring array for spec works correctly
-  it('should contain a defined array',  () => {
-expect(drawingTimeCardColorIndicators).toBeDefined('Array is not defined.');
+  // Ensuring array for spec works correctly
+  it('should contain a defined array', () => {
+    expect(drawingTimeCardColorIndicators).toBeDefined('Array is not defined.');
   });
 
   // testing for methods and ensuring they're working together
-  it('should invoke the sortState method', () => {
-    spyOn(service, 'sortState');
-    service.passState(drawingTimeCardColorIndicators);
-    expect(service.sortState).toHaveBeenCalled();
+  it('should invoke the sortPick3DrawState method', () => {
+    spyOn(service, 'sortPick3DrawState');
+    service.updatePick3DrawState(drawingTimeCardColorIndicators);
+    expect(service.sortPick3DrawState).toHaveBeenCalled();
   });
 
-  it('should invoke the applyState method', () => {
-    spyOn(service, 'applyState');
-    service.sortState(currentState);
-    expect(service.applyState).toHaveBeenCalled();
+  it('should invoke the applyPick3DrawState method', () => {
+    spyOn(service, 'applyPick3DrawState');
+    service.sortPick3DrawState(currentState);
+    expect(service.applyPick3DrawState).toHaveBeenCalled();
   });
 
-  //ensuring applyState is saving to the service's variable the picksIndicator
-  it('should be saving the  values to the picksIndicator',  () => {
-    service.applyState('gray', 'not-drawn-yet', true);
+  //ensuring applyPick3DrawState is saving to the service's variable the picksIndicator
+  it('should be saving the  values to the picksIndicator', () => {
+    service.applyPick3DrawState('gray', 'not-drawn-yet');
     expect(service.picksIndicator).toBeDefined('picksIndicator is not defined');
   });
 
-
+  it('should call applyPick3DrawState and be null', () => {
+    service.picksIndicator = null;
+    service.sortPick3DrawState(drawingTimeCardColorIndicators);
+  });
 });
-

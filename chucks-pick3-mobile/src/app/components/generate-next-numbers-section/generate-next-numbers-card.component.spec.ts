@@ -24,11 +24,13 @@ import { PredictionProvider } from '../../providers/prediction/prediction.servic
 
 describe('GenerateNextNumbersCardComponent', () => {
   const date = new Date();
+  const tomorrowsDate: Date = new Date(new Date().valueOf() + 1000 * 60 * 60 * 24);
   let component: GenerateNextNumbersCardComponent;
   let fixture: ComponentFixture<GenerateNextNumbersCardComponent>;
   let router: Router;
   let drawStateService = DrawStateService;
   let drawDateService: DrawDateService;
+  let tomorrowsModel;
   let model;
   beforeEach(async(() => {
     model = new Pick3DrawDateCardDomain({
@@ -44,6 +46,22 @@ describe('GenerateNextNumbersCardComponent', () => {
       drawDateIcon: date,
       slideNumber: 7,
     });
+    tomorrowsModel = new Pick3DrawDateCardDomain({
+      drawDate: tomorrowsDate,
+      drawState: 'gotoHome',
+      drawTime: Pick3DrawTimeEnum.DAY,
+      drawTimeAsString: 'Day',
+      upcomingDrawTime: tomorrowsDate,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [1, 9, 2],
+      drawDateIcon: tomorrowsDate,
+      slideNumber: 8,
+      defaultDrawDateTime: Pick3DrawTimeEnum.DAY,
+      slideName: 'Home',
+    });
+
     TestBed.configureTestingModule({
       declarations: [GenerateNextNumbersCardComponent],
       imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
@@ -95,5 +113,18 @@ describe('GenerateNextNumbersCardComponent', () => {
     component.generateChoice = model;
     component.enableGenerateButton();
     expect(component.generateButton).toBeFalse();
+  });
+  it('should retrieve a previous date', () => {
+    const tomorrowFullDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+    component.setDrawingTimeMenuItems(tomorrowsModel);
+    expect(component.newDrawingTimes).toBeDefined();
+  });
+  it('should create an array', () => {
+    const testingArray = component.createNumberArray();
+    expect(testingArray).toBeDefined();
+  });
+
+  it('should  return selectDrawingTimeCard as undefined', () => {
+    expect(component.selectDrawingTimeCard(null)).toBeUndefined();
   });
 });

@@ -20,22 +20,15 @@ describe('AppService', () => {
   let pick3DrawTimeCards: Array<Pick3DrawTimeCard> = [];
   let pick3DrawDateDecks: Array<Pick3DrawDateCard> = [];
   const date = new Date();
-  const bg =
-    'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%' +
-    '2Fwp-content%2Fuploads%2Fsites%2F28%2F2016%2F03%2FTexas-Bluebonnets-Spring-15-TXBLOOMS0316.jpg&q=85';
+  const bg = 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%' + '2Fwp-content%2Fuploads%2Fsites%2F28%2F2016%2F03%2FTexas-Bluebonnets-Spring-15-TXBLOOMS0316.jpg&q=85';
   const state = 'TX';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        TomorrowPick3DrawDateCardService,
-        Pick3WebScrapingProviderService,
-      ],
+      providers: [TomorrowPick3DrawDateCardService, Pick3WebScrapingProviderService],
     }).compileComponents();
-    tomorrowPick3DrawDateCardService = TestBed.inject(
-      TomorrowPick3DrawDateCardService
-    );
+    tomorrowPick3DrawDateCardService = TestBed.inject(TomorrowPick3DrawDateCardService);
 
     card1 = new Pick3DrawDateCardDomain({
       ...Pick3DrawDateCardDomain.DEFAULT_CONFIG,
@@ -135,56 +128,45 @@ describe('AppService', () => {
 
   // retrievePick3DrawDate
   it('should call to getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime', () => {
-    spyOn(
-      tomorrowPick3DrawDateCardService,
-      'getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime'
-    );
-    tomorrowPick3DrawDateCardService.retrievePick3DrawDate(
-      8,
-      Pick3DrawTimeEnum.MORNING
-    );
-    expect(
-      tomorrowPick3DrawDateCardService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime
-    ).toHaveBeenCalled();
+    spyOn(tomorrowPick3DrawDateCardService, 'getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime');
+    tomorrowPick3DrawDateCardService.retrievePick3DrawDate(8, Pick3DrawTimeEnum.MORNING);
+    expect(tomorrowPick3DrawDateCardService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime).toHaveBeenCalled();
   });
 
   // pick3StateLottery
   it('should getPick3DrawDateDecks', () => {
-    expect(
-      tomorrowPick3DrawDateCardService.getPick3DrawDateDecks()
-    ).toBeDefined('getPick3DrawDateDecks is not defined');
+    expect(tomorrowPick3DrawDateCardService.getPick3DrawDateDecks()).toBeDefined('getPick3DrawDateDecks is not defined');
   });
   it('should return getBackgroundImageUrl', () => {
-    expect(
-      tomorrowPick3DrawDateCardService.getBackgroundImageUrl()
-    ).toBeDefined('getBackgroundImageUrl is not defined');
+    expect(tomorrowPick3DrawDateCardService.getBackgroundImageUrl()).toBeDefined('getBackgroundImageUrl is not defined');
   });
   it('should return getCurrentDrawTime', () => {
-    expect(tomorrowPick3DrawDateCardService.getCurrentDrawTime()).toBeDefined(
-      'getCurrentDrawTime is not defined'
-    );
+    expect(tomorrowPick3DrawDateCardService.getCurrentDrawTime()).toBeDefined('getCurrentDrawTime is not defined');
   });
   it('should return getDrawTime', () => {
-    expect(tomorrowPick3DrawDateCardService.getDrawTime(date)).toBeDefined(
-      'getCurrentDrawTime is not defined'
-    );
+    expect(tomorrowPick3DrawDateCardService.getDrawTime(date)).toBeDefined('getCurrentDrawTime is not defined');
   });
   it('should return getDrawState', () => {
-    expect(tomorrowPick3DrawDateCardService.getDrawState()).toBeDefined(
-      'getDrawState is not defined'
-    );
+    expect(tomorrowPick3DrawDateCardService.getDrawState()).toBeDefined('getDrawState is not defined');
   });
+  it('should return getSlideDate', () => {
+    expect(tomorrowPick3DrawDateCardService.getSlideDate(8)).toBeDefined('getSlideDate is not defined');
+  });
+  /* it('should return getSlideDate', () => {
+    expect(tomorrowPick3DrawDateCardService.getSlideDate(null)).toThrow('getSlideDate didnt throw error');
+  });*/
   it('should return getDrawingTimeByName', () => {
-    expect(
-      tomorrowPick3DrawDateCardService.getDrawingTimeByName('Morning')
-    ).toBeDefined('getDrawingTimeByName is not defined');
+    expect(tomorrowPick3DrawDateCardService.getDrawingTimeByName('Morning')).toBeDefined('getDrawingTimeByName is not defined');
   });
 
   // dispatchCurrentDrawCardIdEvent
   it('should retrieve a Pick3DrawCardId', () => {
     tomorrowPick3DrawDateCardService.dispatchCurrentDrawCardIdEvent(6);
-    expect(tomorrowPick3DrawDateCardService.getPick3DrawCardId$()).toBeDefined(
-      'id number was not defined'
-    );
+    expect(tomorrowPick3DrawDateCardService.getPick3DrawCardId$()).toBeDefined('id number was not defined');
+  });
+
+  it('should return as defined', () => {
+    const test = tomorrowPick3DrawDateCardService.getPick3DrawTimeCards(8);
+    expect(test).toBeDefined();
   });
 });
