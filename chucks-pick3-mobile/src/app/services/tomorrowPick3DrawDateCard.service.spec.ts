@@ -149,6 +149,12 @@ describe('AppService', () => {
   it('should return getDrawState', () => {
     expect(tomorrowPick3DrawDateCardService.getDrawState()).toBeDefined('getDrawState is not defined');
   });
+  it('should return getSlideDate', () => {
+    expect(tomorrowPick3DrawDateCardService.getSlideDate(8)).toBeDefined('getSlideDate is not defined');
+  });
+  /* it('should return getSlideDate', () => {
+    expect(tomorrowPick3DrawDateCardService.getSlideDate(null)).toThrow('getSlideDate didnt throw error');
+  });*/
   it('should return getDrawingTimeByName', () => {
     expect(tomorrowPick3DrawDateCardService.getDrawingTimeByName('Morning')).toBeDefined('getDrawingTimeByName is not defined');
   });
@@ -157,5 +163,10 @@ describe('AppService', () => {
   it('should retrieve a Pick3DrawCardId', () => {
     tomorrowPick3DrawDateCardService.dispatchCurrentDrawCardIdEvent(6);
     expect(tomorrowPick3DrawDateCardService.getPick3DrawCardId$()).toBeDefined('id number was not defined');
+  });
+
+  it('should return as defined', () => {
+    const test = tomorrowPick3DrawDateCardService.getPick3DrawTimeCards(8);
+    expect(test).toBeDefined();
   });
 });

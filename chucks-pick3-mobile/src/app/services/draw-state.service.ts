@@ -33,6 +33,7 @@ export class DrawStateService {
 
   public applyPick3DrawState(drawStateColorIndicators: any, attributeName: string) {
     for (let property in drawStateColorIndicators) {
+      /* istanbul ignore next */
       if (drawStateColorIndicators.hasOwnProperty(property)) {
         this.picksIndicator.push(attributeName);
         break;

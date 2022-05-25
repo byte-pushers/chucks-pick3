@@ -40,4 +40,9 @@ describe('DrawStateService', () => {
     service.applyPick3DrawState('gray', 'not-drawn-yet');
     expect(service.picksIndicator).toBeDefined('picksIndicator is not defined');
   });
+
+  it('should call applyPick3DrawState and be null', () => {
+    service.picksIndicator = null;
+    service.sortPick3DrawState(drawingTimeCardColorIndicators);
+  });
 });
