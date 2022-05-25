@@ -6,6 +6,7 @@ export interface TomorrowPick3DrawtimeCardProperties {
   icon: string;
   title: string;
   dateTime: Date;
+  closedState: boolean;
   drawTime: Pick3DrawTimeEnum;
   state: Pick3DrawTimeCardStateEnum;
   selected: boolean;

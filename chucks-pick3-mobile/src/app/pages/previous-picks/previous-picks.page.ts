@@ -26,6 +26,7 @@ export class PreviousPicksPage implements OnInit {
     this.pick3DrawnNumber = route.data.pipe(map((d) => d.user));
   }
 
+
   ngOnInit(): void {
     // This has been completely replaced in translate fix
   }
