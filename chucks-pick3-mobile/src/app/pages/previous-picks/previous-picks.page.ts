@@ -26,18 +26,7 @@ export class PreviousPicksPage implements OnInit {
     this.pick3DrawnNumber = route.data.pipe(map((d) => d.user));
   }
 
-  ngOnInit(): void {
-    /* istanbul ignore if  */
-    if (this.router.url === '/select-picks') {
-      this.pick3Header = 'select-header';
-      /* istanbul ignore else  */
-      /* istanbul ignore  if */
-    } else if (this.router.url === '/generate-picks') {
-      /* istanbul ignore  if */
-      /* istanbul ignore next  */
-      this.pick3Header = 'generate-header';
-    }
-  }
+  ngOnInit(): void {}
 
   // tested on other components such as home page and pick3drawDate
   async showPopover(ev: any) {

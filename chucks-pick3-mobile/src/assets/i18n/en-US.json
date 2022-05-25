@@ -19,8 +19,9 @@
   "pick3.draw.date.card.tomorrow": "Tomorrow",
   "pick3.draw.date.card.continue": "Continue",
   "pick3.draw.date.card.generate": "Generate",
-  "pick3.draw.date.card.previous.drawing.date": "Previous Drawing Date",
-  "pick3.draw.date.card.previous.drawing.time": "Previous Drawing Time",
+  "pick3.draw.date.card.previous.drawing.date": "Previous Drawing Date:",
+  "pick3.draw.date.card.previous.drawing.time": "Previous Drawing Time:",
   "pick3.draw.date.card.current.drawing.date": "Drawing Date",
-  "pick3.draw.date.card.current.drawing.time": "Drawing Time"
+  "pick3.draw.date.card.current.drawing.time": "Drawing Time",
+  "select-picks": "Select Previous Picks"
 }

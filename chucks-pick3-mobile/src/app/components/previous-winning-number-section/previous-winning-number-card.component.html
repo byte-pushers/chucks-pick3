@@ -1,63 +1,24 @@
 <ion-row class="drawing-time" style="z-index: 99; display: block; height: 70%">
   <div style="height: 50%" #continue>
-    <div class="generate-options-title">Previous Drawing Date:</div>
+    <div class="generate-options-title">{{ "pick3.draw.date.card.previous.drawing.date" | translate }}</div>
     <ion-row class="generate-picks-button-section">
       <ion-col id="yesterdayPreviousDrawingDate">
-        <button
-          id="yesterday"
-          #yesterdayPreviousDrawingDate
-          class="confirmation-button"
-          (click)="
-            selectDrawingDateMenuItemForYesterday(
-              yesterdayPreviousDrawingDate,
-              todayPreviousDrawingDate
-            )
-          "
-        >
-          Yesterday
+        <button id="yesterday" #yesterdayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForYesterday(yesterdayPreviousDrawingDate, todayPreviousDrawingDate)">
+          {{ "pick3.draw.date.card.yesterday" | translate }}
         </button>
       </ion-col>
       <ion-col id="todayPreviousDrawingDate">
-        <button
-          id="today"
-          #todayPreviousDrawingDate
-          class="confirmation-button"
-          (click)="
-            selectDrawingDateMenuItemForToday(
-              todayPreviousDrawingDate,
-              yesterdayPreviousDrawingDate
-            )
-          "
-          style="background-color: #2fdf75"
-        >
-          Today
+        <button id="today" #todayPreviousDrawingDate class="confirmation-button" (click)="selectDrawingDateMenuItemForToday(todayPreviousDrawingDate, yesterdayPreviousDrawingDate)" style="background-color: #2fdf75">
+          {{ "pick3.draw.date.card.today" | translate }}
         </button>
       </ion-col>
     </ion-row>
-    <div class="generate-options-title">Previous Drawing Time:</div>
+    <div class="generate-options-title">{{ "pick3.draw.date.card.previous.drawing.time" | translate }}</div>
     <form #generateForm="ngForm" (ngSubmit)="submitForm()">
       <ion-row class="generate-picks-button-section">
         <ion-item class="ion-no-padding" style="width: 100%">
-          <ion-select
-            class="timeOfDayDropDown"
-            name="continueChoice"
-            [(ngModel)]="continueChoice"
-            placeholder="Select a Time of Day"
-            style="
-              width: 100%;
-              height: 4.5em;
-              margin-left: 2em;
-              text-align: center;
-            "
-            interface="action-sheet"
-            (ionChange)="selectDrawingTimeCard(continueChoice)"
-          >
-            <ion-select-option
-              *ngFor="let drawTime of drawTimes"
-              [value]="drawTime"
-            >
-              {{ drawTime.getTitle() | translate }}</ion-select-option
-            >
+          <ion-select class="timeOfDayDropDown" name="continueChoice" [(ngModel)]="continueChoice" placeholder="Select a Time of Day" style="width: 100%; height: 4.5em; margin-left: 2em; text-align: center" interface="action-sheet" (ionChange)="selectDrawingTimeCard(continueChoice)">
+            <ion-select-option *ngFor="let drawTime of drawTimes" [value]="drawTime"> {{ drawTime.getTitle() | translate }}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-row>
@@ -77,7 +38,7 @@
           }"
           routerDirection="forward"
         >
-          Continue
+          {{ "pick3.draw.date.card.continue" | translate }}
         </button>
       </ion-row>
     </form>
