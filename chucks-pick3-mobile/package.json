@@ -5,7 +5,6 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "serve": "npm run use-mocks && ionic serve --configuration=mock",
     "start": "npm run use-prod && ionic serve --configuration=prod",
     "build": "npm run use-mocks && ng build",
     "test": "npm run use-mocks && ng test",
