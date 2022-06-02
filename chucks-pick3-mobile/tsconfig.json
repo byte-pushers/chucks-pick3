@@ -13,12 +13,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "paths": {
+    "@providers/*": ["src/app/providers"],
     "@app/*": ["src/app/*"],
     "@env/*": ["src/environments/*"]
   },

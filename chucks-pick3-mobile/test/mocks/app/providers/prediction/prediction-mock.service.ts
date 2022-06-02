@@ -1,7 +1,7 @@
-import { ChucksPick3PredictionService } from '../../../../../src/app/providers/prediction/chucks-pick3-prediction.service';
-import { Pick3PlaysRequest } from '../../../../../src/app/providers/prediction/api/v1/pick3-plays-request.model';
+import { ChucksPick3PredictionService } from '@providers/prediction/chucks-pick3-prediction.service';
+import { Pick3PlaysRequest } from '@providers/prediction/api/v1/pick3-plays-request.model';
 import { Observable, of } from 'rxjs';
-import { Pick3PlaysResponse } from '../../../../../src/app/providers/prediction/api/v1/pick3-plays-response';
+import { Pick3PlaysResponse } from '@providers/prediction/api/v1/pick3-plays-response';
 import { HttpClient } from '@angular/common/http';
 
 export class PredictionMockService implements ChucksPick3PredictionService {

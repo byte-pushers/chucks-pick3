@@ -1,6 +1,5 @@
 const { src, dest, task } = require("gulp"),
-  clean = require("gulp-clean"),
-  gutil = require("gulp-util");
+  clean = require("gulp-clean");
 const exec = require("child_process").exec;
 
 exports.default = defaultTask;
