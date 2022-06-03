@@ -7,7 +7,7 @@
     "types": [],
     "resolveJsonModule": true,
     "paths": {
-      "@providers/*": ["src/app/providers"],
+      "@providers/*": ["src/app/providers/*"],
       "@app/*": ["src/app/*"],
       "@env/*": ["src/environments/*"]
     }

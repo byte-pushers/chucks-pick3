@@ -18,7 +18,8 @@
   "paths": {
     "@providers/*": ["src/app/providers"],
     "@app/*": ["src/app/*"],
-    "@env/*": ["src/environments/*"]
+    "@env/*": ["src/environments/*"],
+    "@providers/": ["providers/*"]
   },
   "allowSyntheticDefaultImports": true,
   "angularCompilerOptions": {
