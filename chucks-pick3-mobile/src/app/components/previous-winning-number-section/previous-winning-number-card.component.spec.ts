@@ -27,6 +27,7 @@ describe('PreviousWinningNumberCardComponent', () => {
   let router: Router;
   let todayModel;
   let yesterdayModel;
+  let yesterdayPick3DrawTimeModelSunday;
   let todayPick3DrawTimeModelNight;
   let todayPick3DrawTimeModel;
   let yesterdayPick3DrawTimeModel;
@@ -53,6 +54,18 @@ describe('PreviousWinningNumberCardComponent', () => {
       title: 'Morning',
       pick3DrawTime: Pick3DrawTimeEnum.MORNING,
       dateTime: yesterdaysDate,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    yesterdayPick3DrawTimeModelSunday = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: sundayDate,
       drawTime: Pick3DrawTimeEnum.MORNING,
       state: Pick3DrawTimeCardStateEnum.DRAWN,
       selected: true,
@@ -217,17 +230,22 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(component.continueButton).toBeTrue();
   });
 
-  it('should return yesterdayModel with the showCountdownToDrawing as false', () => {
+  it('should return yesterdayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
     component.checkIfCountDownIsAvailable(yesterdayPick3DrawTimeModel);
     expect(yesterdayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
   });
 
-  it('should return model with the showCountdownToDrawing as false', () => {
+  it('should return yesterdayPick3DrawTimeModelSunday with the showCountdownToDrawing as true', () => {
+    component.checkIfCountDownIsAvailable(yesterdayPick3DrawTimeModelSunday);
+    expect(yesterdayPick3DrawTimeModelSunday.showCountDownToDrawing).toBeTrue();
+  });
+
+  it('should return todayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
     component.checkIfCountDownIsAvailable(todayPick3DrawTimeModel);
     expect(todayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
   });
 
-  it('should return nightModel with the showCountdownToDrawing as true', () => {
+  it('should return todayPick3DrawTimeModelNight with the showCountdownToDrawing as true', () => {
     component.checkIfCountDownIsAvailable(todayPick3DrawTimeModelNight);
     expect(todayPick3DrawTimeModelNight.showCountDownToDrawing).toBeTrue();
   });
