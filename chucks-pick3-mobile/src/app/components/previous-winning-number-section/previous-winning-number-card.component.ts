@@ -279,7 +279,7 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
     return pick3DrawTimeCard;
   }
 
-  private getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {
+  public getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {
     const currentDate = new Date();
     if (pick3DrawDateCard.getDrawDate().getHours() <= currentDate.getHours() || pick3DrawDateCard.getDrawDate() < currentDate) {
       this.pick3WebScrappingService.getCurrentWinningDrawingNumber(drawState, pick3DrawDateTime, pick3DrawTimeType).then(
