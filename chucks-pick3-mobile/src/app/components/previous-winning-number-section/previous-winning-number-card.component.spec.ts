@@ -14,18 +14,26 @@ import { DrawStateService } from '../../services/draw-state.service';
 import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
 import { Pick3LotteryService } from '../../services/pick3-lottery.service';
+import { Pick3DrawTimeCardDomain } from '../../models/pick3-draw-time-card.domain';
+import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
 
 describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
+  const nightDate = new Date().setHours(21, 30, 0, 0);
+  const sundayDate = new Date(2021, 11, 7, date.getTime());
   const yesterdaysDate: Date = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
   let component: PreviousWinningNumberCardComponent;
   let fixture: ComponentFixture<PreviousWinningNumberCardComponent>;
   let router: Router;
-  let model;
+  let todayModel;
   let yesterdayModel;
+  let yesterdayPick3DrawTimeModelSunday;
+  let todayPick3DrawTimeModelNight;
+  let todayPick3DrawTimeModel;
+  let yesterdayPick3DrawTimeModel;
   let drawStateService = DrawStateService;
   beforeEach(async(() => {
-    model = new Pick3DrawDateCardDomain({
+    todayModel = new Pick3DrawDateCardDomain({
       drawDate: date,
       drawState: 'gotoHome',
       drawTime: Pick3DrawTimeEnum.MORNING,
@@ -39,6 +47,54 @@ describe('PreviousWinningNumberCardComponent', () => {
       slideNumber: 7,
       defaultDrawDateTime: Pick3DrawTimeEnum.MORNING,
       slideName: 'Home',
+    });
+    yesterdayPick3DrawTimeModel = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: yesterdaysDate,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    yesterdayPick3DrawTimeModelSunday = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: sundayDate,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    todayPick3DrawTimeModel = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: new Date(),
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    todayPick3DrawTimeModelNight = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Night',
+      title: 'Night',
+      pick3DrawTime: Pick3DrawTimeEnum.NIGHT,
+      dateTime: nightDate,
+      drawTime: Pick3DrawTimeEnum.NIGHT,
+      state: Pick3DrawTimeCardStateEnum.NOT_DRAWN_YET,
+      selected: true,
+      showCountDownToDrawing: true,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
     });
     yesterdayModel = new Pick3DrawDateCardDomain({
       drawDate: yesterdaysDate,
@@ -58,7 +114,22 @@ describe('PreviousWinningNumberCardComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [PreviousWinningNumberCardComponent],
-      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule.withRoutes([{ path: 'select-picks', component: PreviousWinningNumberCardComponent, pathMatch: 'full' }]), TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      imports: [
+        CommonModule,
+        IonicModule.forRoot(),
+        TranslateModule.forRoot(),
+        RouterTestingModule.withRoutes([
+          {
+            path: 'select-picks',
+            component: PreviousWinningNumberCardComponent,
+            pathMatch: 'full',
+          },
+        ]),
+        TranslateModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+      ],
       providers: [AppService, Pick3WebScrapingProviderService, DrawStateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
@@ -114,7 +185,7 @@ describe('PreviousWinningNumberCardComponent', () => {
 
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
-    component.setDrawingTimeMenuItems(model);
+    component.setDrawingTimeMenuItems(todayModel);
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
 
@@ -132,12 +203,12 @@ describe('PreviousWinningNumberCardComponent', () => {
 
   it('should  call resetDrawingTimes', () => {
     const resetDrawingTimesSpy = spyOn(component, 'resetDrawingTimes');
-    component.setDrawingTimeMenuItemsForClosedDay(model);
+    component.setDrawingTimeMenuItemsForClosedDay(todayModel);
     expect(resetDrawingTimesSpy).toHaveBeenCalled();
   });
 
   it('should  define newDrawingTimes', () => {
-    component.setDrawingTimeMenuItemsForClosedDay(model);
+    component.setDrawingTimeMenuItemsForClosedDay(todayModel);
     expect(component.newDrawingTimes).toBeDefined();
   });
 
@@ -148,14 +219,34 @@ describe('PreviousWinningNumberCardComponent', () => {
 
   it('should  call resetDrawingTimes', () => {
     const selectCurrentCardSpy = spyOn(component, 'selectCurrentCard');
-    component.setDrawingTimeMenuItems(model);
+    component.setDrawingTimeMenuItems(todayModel);
     expect(selectCurrentCardSpy).toHaveBeenCalled();
   });
 
-  it('should return the continue button as false', function () {
+  it('should return the continue button as false', () => {
     component.continueChoice = false;
     component.currentDrawingCard.showCountDownToDrawing = false;
     component.validatePreviousWinningNumberComp();
     expect(component.continueButton).toBeTrue();
+  });
+
+  it('should return yesterdayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
+    component.checkIfCountDownIsAvailable(yesterdayPick3DrawTimeModel);
+    expect(yesterdayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
+  });
+
+  it('should return yesterdayPick3DrawTimeModelSunday with the showCountdownToDrawing as true', () => {
+    component.checkIfCountDownIsAvailable(yesterdayPick3DrawTimeModelSunday);
+    expect(yesterdayPick3DrawTimeModelSunday.showCountDownToDrawing).toBeTrue();
+  });
+
+  it('should return todayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
+    component.checkIfCountDownIsAvailable(todayPick3DrawTimeModel);
+    expect(todayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
+  });
+
+  it('should return todayPick3DrawTimeModelNight with the showCountdownToDrawing as true', () => {
+    component.checkIfCountDownIsAvailable(todayPick3DrawTimeModelNight);
+    expect(todayPick3DrawTimeModelNight.showCountDownToDrawing).toBeTrue();
   });
 });
