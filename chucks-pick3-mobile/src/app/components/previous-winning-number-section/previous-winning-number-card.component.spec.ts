@@ -21,14 +21,21 @@ describe('PreviousWinningNumberCardComponent', () => {
   const date = new Date();
   const nightDate = new Date().setHours(21, 30, 0, 0);
   const sundayDate = new Date(2021, 11, 7, date.getTime());
-  const yesterdaysDate: Date = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
+  const saturdayDate = new Date(2021, 11, 6, date.getTime());
+  const fridayDate = new Date(2021, 11, 5, date.getTime());
+  const yesterdaysDate = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24);
   let component: PreviousWinningNumberCardComponent;
   let fixture: ComponentFixture<PreviousWinningNumberCardComponent>;
   let router: Router;
   let todayPick3DrawDateModel;
   let yesterdayPick3DrawDateModel;
   let todayPick3DrawDateModelNight;
+  let yesterdayPick3DrawDateModelSunday;
+  let yesterdayPick3DrawDateModelSaturday;
+  let yesterdayPick3DrawDateModelFriday;
   let yesterdayPick3DrawTimeModelSunday;
+  let yesterdayPick3DrawTimeModelSaturday;
+  let yesterdayPick3DrawTimeModelFriday;
   let todayPick3DrawTimeModelNight;
   let todayPick3DrawTimeModel;
   let yesterdayPick3DrawTimeModel;
@@ -88,6 +95,30 @@ describe('PreviousWinningNumberCardComponent', () => {
       showCountDownToDrawing: false,
       pick3DrawTimeArray: [33, 555, 264, 346, 345],
     });
+    yesterdayPick3DrawTimeModelSaturday = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: sundayDate,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    yesterdayPick3DrawTimeModelFriday = new Pick3DrawTimeCardDomain({
+      pick3DrawCardId: 7,
+      icon: 'Morning',
+      title: 'Morning',
+      pick3DrawTime: Pick3DrawTimeEnum.MORNING,
+      dateTime: sundayDate,
+      drawTime: Pick3DrawTimeEnum.MORNING,
+      state: Pick3DrawTimeCardStateEnum.DRAWN,
+      selected: true,
+      showCountDownToDrawing: false,
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
     todayPick3DrawTimeModel = new Pick3DrawTimeCardDomain({
       pick3DrawCardId: 7,
       icon: 'Morning',
@@ -111,6 +142,51 @@ describe('PreviousWinningNumberCardComponent', () => {
       selected: true,
       showCountDownToDrawing: true,
       pick3DrawTimeArray: [33, 555, 264, 346, 345],
+    });
+    yesterdayPick3DrawDateModelSunday = new Pick3DrawDateCardDomain({
+      drawDate: yesterdaysDate,
+      drawState: 'TX',
+      drawTime: Pick3DrawTimeEnum.DAY,
+      drawTimeAsString: 'Day',
+      upcomingDrawTime: sundayDate,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: null,
+      winningNumberDigits: null,
+      drawDateIcon: sundayDate,
+      slideNumber: 6,
+      defaultDrawDateTime: Pick3DrawTimeEnum.DAY,
+      slideName: 'Home',
+    });
+    yesterdayPick3DrawDateModelSaturday = new Pick3DrawDateCardDomain({
+      drawDate: yesterdaysDate,
+      drawState: 'TX',
+      drawTime: Pick3DrawTimeEnum.DAY,
+      drawTimeAsString: 'Day',
+      upcomingDrawTime: saturdayDate,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [1, 9, 2],
+      drawDateIcon: saturdayDate,
+      slideNumber: 6,
+      defaultDrawDateTime: Pick3DrawTimeEnum.DAY,
+      slideName: 'Home',
+    });
+    yesterdayPick3DrawDateModelFriday = new Pick3DrawDateCardDomain({
+      drawDate: yesterdaysDate,
+      drawState: 'TX',
+      drawTime: Pick3DrawTimeEnum.DAY,
+      drawTimeAsString: 'Day',
+      upcomingDrawTime: fridayDate,
+      hasWinner: false,
+      backgroundImage: Pick3LotteryService,
+      winningNumber: 462,
+      winningNumberDigits: [1, 9, 2],
+      drawDateIcon: fridayDate,
+      slideNumber: 6,
+      defaultDrawDateTime: Pick3DrawTimeEnum.DAY,
+      slideName: 'Home',
     });
     yesterdayPick3DrawDateModel = new Pick3DrawDateCardDomain({
       drawDate: yesterdaysDate,
@@ -266,6 +342,28 @@ describe('PreviousWinningNumberCardComponent', () => {
     expect(todayPick3DrawTimeModelNight.showCountDownToDrawing).toBeTrue();
   });
 
+  it('should return winning numbers from getCurrentWinningDrawingNumber for todays morning drawing', () => {
+    component.getCurrentWinningDrawingNumber(todayPick3DrawDateModel, todayPick3DrawDateModel.getDrawState(), todayPick3DrawDateModel.getDrawDate(), todayPick3DrawTimeModel.getDrawTimeValue());
+    expect(todayPick3DrawDateModel.winningNumber).toBeDefined('todayPick3DrawDateModel has  winning numbers defined');
+  });
+  it('should return winning numbers from getCurrentWinningDrawingNumber for fridays morning drawing', () => {
+    component.getCurrentWinningDrawingNumber(yesterdayPick3DrawDateModelFriday, yesterdayPick3DrawDateModelFriday.getDrawState(), yesterdayPick3DrawDateModelFriday.getDrawDate(), yesterdayPick3DrawTimeModelFriday.getDrawTimeValue());
+    expect(yesterdayPick3DrawDateModelFriday.winningNumber).toBeDefined('todayPick3DrawDateModel has  winning numbers defined');
+  });
+
+  it('should return winning numbers from getCurrentWinningDrawingNumber for saturdays morning drawing', () => {
+    component.getCurrentWinningDrawingNumber(yesterdayPick3DrawDateModelSaturday, yesterdayPick3DrawDateModelSaturday.getDrawState(), yesterdayPick3DrawDateModelSaturday.getDrawDate(), yesterdayPick3DrawTimeModelSaturday.getDrawTimeValue());
+    expect(yesterdayPick3DrawDateModelSaturday.winningNumber).toBeDefined('todayPick3DrawDateModel has  winning numbers defined');
+  });
+
+  it('should not return winning numbers from getCurrentWinningDrawingNumber for  morning drawing', () => {
+    component.getCurrentWinningDrawingNumber(yesterdayPick3DrawDateModelSunday, yesterdayPick3DrawDateModelSunday.getDrawState(), yesterdayPick3DrawDateModelSunday.getDrawDate(), yesterdayPick3DrawTimeModelSunday.getDrawTimeValue());
+    expect(yesterdayPick3DrawDateModelSunday.winningNumber).toBeNull('todayPick3DrawDateModel has  no winning numbers defined');
+  });
+  it('should return winning numbers from getCurrentWinningDrawingNumber for todays morning drawing', () => {
+    component.getCurrentWinningDrawingNumber(todayPick3DrawDateModel, todayPick3DrawDateModel.getDrawState(), todayPick3DrawDateModel.getDrawDate(), todayPick3DrawTimeModel.getDrawTimeValue());
+    expect(todayPick3DrawDateModel.winningNumber).toBeDefined('todayPick3DrawDateModel has  winning numbers defined');
+  });
   it('should return winning numbers from getCurrentWinningDrawingNumber for todays morning drawing', () => {
     component.getCurrentWinningDrawingNumber(todayPick3DrawDateModel, todayPick3DrawDateModel.getDrawState(), todayPick3DrawDateModel.getDrawDate(), todayPick3DrawTimeModel.getDrawTimeValue());
     expect(todayPick3DrawDateModel.winningNumber).toBeDefined('todayPick3DrawDateModel has  winning numbers defined');
