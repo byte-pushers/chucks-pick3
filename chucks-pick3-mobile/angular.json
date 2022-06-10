@@ -65,6 +65,29 @@
                 }
               ]
             },
+            "mock": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.mock.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": false,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
             "ci": {
               "progress": false
             }
@@ -78,6 +101,9 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
+            },
+            "mock": {
+              "browserTarget": "app:build:mock"
             },
             "ci": {
               "progress": false
@@ -136,6 +162,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "app:serve:production"
+            },
+            "mock": {
+              "devServerTarget": "app:serve:mock"
             }
           }
         },
@@ -147,6 +176,9 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
+            },
+            "mock": {
+              "browserTarget": "app:build:mock"
             }
           }
         },
@@ -160,6 +192,10 @@
             "production": {
               "cordovaBuildTarget": "app:ionic-cordova-build:production",
               "devServerTarget": "app:serve:production"
+            },
+            "mock": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:mock",
+              "devServerTarget": "app:serve:mock"
             }
           }
         },
@@ -171,6 +207,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "app:serve:production"
+            },
+            "mock": {
+              "devServerTarget": "app:serve:mock"
             }
           }
         },

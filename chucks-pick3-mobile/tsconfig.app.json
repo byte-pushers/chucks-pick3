@@ -2,20 +2,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./out-tsc/app",
     "types": [],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@providers/*": ["src/app/providers/*"],
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"]
+    }
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts",
-    "node_modules/@types/jasmine/index.d.ts"
-  ],
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts", "node_modules/@types/jasmine/index.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["src/**/*.spec.ts"]
 }
