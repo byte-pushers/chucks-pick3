@@ -7,11 +7,14 @@
                     currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                   }"
-      style="margin-right: auto; margin-left: auto; margin-top: 15rem; height: 5rem; width: 5rem;--background: #1e1e1e !important; --background-activated: #1e1e1e !important;"
+      class="home-screen__floating-action-button"
       (click)="switchDrawDateButtons('gotoViewPicks')"
       routerDirection="back"
 
-    ><ion-icon src="../../../assets/icon/previous-picks__button.svg"  style="fill: white; height: 4rem; width: 4rem; margin-left: 0;"></ion-icon></ion-fab-button>
+    >
+      <ion-icon src="../../../assets/icon/previous-picks__button.svg"
+                class="view-picks__icon"></ion-icon>
+    </ion-fab-button>
   </ion-col>
   <ion-col size="6" class="ion-align-self-center" style="height: 100%">
     <ion-row>
@@ -75,14 +78,16 @@
     <ion-fab-button
       (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
-
-      style="margin-right: auto; margin-left: auto; margin-top: 15rem; height: 5rem; width: 5rem; --background: #1e1e1e !important; --background-activated: #1e1e1e !important;"
+      class="home-screen__floating-action-button"
       [disabled]="generatePicksButton"
       [state]="{
                   currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                 }"
-      routerDirection="back"
-    ><ion-icon src="../../../assets/icon/new-picks__button.svg"  style="fill: white; height: 3.5rem; width: 3.5rem; margin-left: 0"></ion-icon></ion-fab-button>
+      routerDirection="forward"
+    >
+      <ion-icon src="../../../assets/icon/new-picks__button.svg"
+                class="generate-picks__icon"></ion-icon>
+    </ion-fab-button>
   </ion-col>
 </ion-row>
