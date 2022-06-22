@@ -1,6 +1,9 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+ion-col {
+  height: 100%;
+}
 .generate-back-button {
   margin-top: 29vh;
   @include for-size(iPhone5-SE) {
