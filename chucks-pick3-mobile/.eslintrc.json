@@ -2,8 +2,8 @@
   "env": {
     "browser": true
   },
-  "extends": ["airbnb-base", "plugin:prettier/recommended"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb-base"],
+  "plugins": [],
   "rules": {
     // disable es6 rules -- start
     "arrow-body-style": "off",
