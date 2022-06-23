@@ -17,6 +17,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   imports: [
     CommonModule,
+    SwiperModule,
     FormsModule,
     IonicModule,
     SwiperModule,
