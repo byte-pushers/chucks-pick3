@@ -57,9 +57,7 @@
             </div>
             <div style="display: inline" *ngIf="showCountDownToDrawing === true">
               <countdown-timer *ngIf="drawDateCardUnavailable === false" [end]="data.drawDate"></countdown-timer>
-              <div
-                style="color: #ff4f4f; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
-                *ngIf="drawDateCardUnavailable === true">
+              <div style="color: #ff4f4f; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" *ngIf="drawDateCardUnavailable === true">
                 <b><p>{{'day.not.available' | translate}}</p></b>
                 <countdown-timer [end]="tomorrowUnavailableDate"></countdown-timer>
               </div>
