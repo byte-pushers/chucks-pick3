@@ -364,8 +364,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     this.drawStateService.viewNavigationChoice = drawDateButtonValue;
   }
 
-  /* istanbul ignore next */
-  private disableButtonOnCard(slideNumber) {
+  public disableButtonOnCard(slideNumber) {
     if (slideNumber < 6) {
 this.viewPicksButton = true;
 this.generatePicksButton = true;
