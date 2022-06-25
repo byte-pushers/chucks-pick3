@@ -1,32 +1,28 @@
-import {DrawTimeService} from './draw-time.service';
-import {TestBed} from '@angular/core/testing';
-import {Pick3DrawTimeEnum} from '../models/pick3-draw-time.enum';
-import {Pick3DrawTimeCardDomain} from '../models/pick3-draw-time-card.domain';
+import { DrawTimeService } from './draw-time.service';
+import { TestBed } from '@angular/core/testing';
+import { Pick3DrawTimeEnum } from '../models/pick3-draw-time.enum';
+import { Pick3DrawTimeCardDomain } from '../models/pick3-draw-time-card.domain';
 
 describe('DrawTimeService', () => {
   let service: DrawTimeService;
-  const date = new Date ();
+  const date = new Date();
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        DrawTimeService
-      ]
-    })
-      .compileComponents();
+      providers: [DrawTimeService],
+    }).compileComponents();
     service = TestBed.inject(DrawTimeService);
   });
   let model = new Pick3DrawTimeCardDomain({
-    pick3DrawCardId : 7,
-    icon : 'Morning',
+    pick3DrawCardId: 7,
+    icon: 'Morning',
     title: 'Morning',
     pick3DrawTime: [Pick3DrawTimeEnum.MORNING, date],
-    dateTime: new Date,
+    dateTime: new Date(),
     drawTime: Pick3DrawTimeEnum.MORNING,
     state: Pick3DrawTimeEnum.MORNING,
     selected: true,
     showCountDownToDrawing: false,
-    pick3DrawTimeArray: [33,555,264,346,345]
-
+    pick3DrawTimeArray: [33, 555, 264, 346, 345],
   });
 
   it('should  set the current drawTime Card', function () {

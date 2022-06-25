@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  OnDestroy,
-  ElementRef,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ElementRef, Output, EventEmitter } from '@angular/core';
 import { IonicToastNotificationService } from '../../services/ionic-toast-notification.service';
 import { Router } from '@angular/router';
 
@@ -24,11 +16,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   displayTime: any;
   private routerUrl;
 
-  constructor(
-    private el: ElementRef,
-    private router: Router,
-    public toastService: IonicToastNotificationService
-  ) {
+  constructor(private el: ElementRef, private router: Router, public toastService: IonicToastNotificationService) {
     this.zeroTrigger = new EventEmitter(true);
     this.routerUrl = this.router.url;
   }
@@ -53,6 +41,7 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.stopTimer();
   }
+
   /* istanbul ignore next */
   public getTimeDiff(datetime, useAsTimer = false) {
     datetime = new Date(datetime).getTime();
@@ -81,23 +70,10 @@ export class CountdownTimerComponent implements OnInit, OnDestroy {
 
     if (this.timeOnly) {
       let hours = date_diff.getUTCHours() + day_hours;
-      return (
-        this.twoDigit(hours) +
-        ':' +
-        this.twoDigit(date_diff.getUTCMinutes()) +
-        ':' +
-        this.twoDigit(date_diff.getUTCSeconds())
-      );
+      return this.twoDigit(hours) + ':' + this.twoDigit(date_diff.getUTCMinutes()) + ':' + this.twoDigit(date_diff.getUTCSeconds());
     } else {
       // Date() takes a UTC timestamp – getHours() gets hours in local time not in UTC. therefore we have to use getUTCHours()
-      return (
-        day_string +
-        this.twoDigit(date_diff.getUTCHours()) +
-        ':' +
-        this.twoDigit(date_diff.getUTCMinutes()) +
-        ':' +
-        this.twoDigit(date_diff.getUTCSeconds())
-      );
+      return day_string + this.twoDigit(date_diff.getUTCHours()) + ':' + this.twoDigit(date_diff.getUTCMinutes()) + ':' + this.twoDigit(date_diff.getUTCSeconds());
     }
   }
 

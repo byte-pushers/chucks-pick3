@@ -30,8 +30,9 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     if (this.routerUrl === '/home') {
       this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
       console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
-
+      console.log('******BEFORE******' + this.drawTimes);
       this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
+      console.log('******AFTER******' + this.drawTimes);
     }
 
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -87,7 +88,6 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       } else if (drawTime.getDrawTime() === pick3DrawTimeCard.getDrawTime()) {
         drawTime.setSelected(true);
         // pick3DrawTimeCard.showCountDownToDrawing = false;
-        console.log(pick3DrawTimeCard);
         this.checkForGeneratedArray(pick3DrawTimeCard);
         this.drawDateService.dispatchCurrentDrawDateCardEvent(pick3DrawTimeCard);
       }

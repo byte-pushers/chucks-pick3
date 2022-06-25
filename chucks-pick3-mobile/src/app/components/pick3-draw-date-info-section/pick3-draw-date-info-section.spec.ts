@@ -1,24 +1,23 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
-
-import {CardContextService} from '../../services/card-context.service';
-import {NumberUtilityService} from '../../services/numberUtility.service';
-import {Pick3DrawTimeCardDomain} from '../../models/pick3-draw-time-card.domain';
-import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
-import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
-import {DrawTimeService} from '../../services/draw-time.service';
-import {Pick3DrawDateInfoSection} from './pick3-draw-date-info-section';
-import {CommonModule} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {I18nService} from '../../services/i18n.service';
-import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
-import {AppService} from '../../app.service';
-import {Router} from '@angular/router';
-import {Pick3DrawDateCardDomain} from '../../models/pick3-draw-date-card.domain';
-import {Pick3LotteryService} from '../../services/pick3-lottery.service';
-import {DrawDateService} from '../../services/draw-date.service';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
+import { CardContextService } from '../../services/card-context.service';
+import { NumberUtilityService } from '../../services/numberUtility.service';
+import { Pick3DrawTimeCardDomain } from '../../models/pick3-draw-time-card.domain';
+import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
+import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
+import { DrawTimeService } from '../../services/draw-time.service';
+import { Pick3DrawDateInfoSection } from './pick3-draw-date-info-section';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { I18nService } from '../../services/i18n.service';
+import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import { AppService } from '../../app.service';
+import { Router } from '@angular/router';
+import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
+import { Pick3LotteryService } from '../../services/pick3-lottery.service';
+import { DrawDateService } from '../../services/draw-date.service';
 
 describe('Pick3DrawDateInfoSection', () => {
   const date = new Date();
@@ -43,8 +42,7 @@ describe('Pick3DrawDateInfoSection', () => {
       drawDateIcon: date,
       slideNumber: 7,
       defaultDrawDateTime: Pick3DrawTimeEnum.MORNING,
-      slideName: 'Home'
-
+      slideName: 'Home',
     });
 
     drawTimeModel = new Pick3DrawTimeCardDomain({
@@ -57,28 +55,24 @@ describe('Pick3DrawDateInfoSection', () => {
       state: Pick3DrawTimeCardStateEnum.DRAWN,
       selected: date,
       showCountDownToDrawing: false,
-      pick3DrawTimeArray: [33, 555, 264, 346, 345]
-
+      pick3DrawTimeArray: [33, 555, 264, 346, 345],
     });
     TestBed.configureTestingModule({
       declarations: [Pick3DrawDateInfoSection],
-      imports: [CommonModule, IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule, TranslateModule, HttpClientTestingModule],
-      providers: [CardContextService, NumberUtilityService, I18nService,
-        AppService, Pick3WebScrapingProviderService, DrawTimeService, DrawDateService]
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, HttpClientTestingModule],
+      providers: [CardContextService, NumberUtilityService, I18nService, AppService, Pick3WebScrapingProviderService, DrawTimeService, DrawDateService],
     }).compileComponents();
     router = TestBed.get(Router);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
       extras: {
         state: {
           currentSlideNumber: 7,
-          currentDay: Pick3DrawTimeEnum.DAY
-        }
-      }
+          currentDay: Pick3DrawTimeEnum.DAY,
+        },
+      },
     } as any);
     const mockUrlTree = router.parseUrl('/home');
-// @ts-ignore: force this private property value for testing.
+    // @ts-ignore: force this private property value for testing.
     router.currentUrlTree = mockUrlTree;
     fixture = TestBed.createComponent(Pick3DrawDateInfoSection);
     component = fixture.componentInstance;
@@ -95,7 +89,6 @@ describe('Pick3DrawDateInfoSection', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
   it('should have data be null', () => {
     component.ngOnDestroy();

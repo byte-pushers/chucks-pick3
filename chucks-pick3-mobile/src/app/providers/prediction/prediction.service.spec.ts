@@ -1,15 +1,14 @@
 'use strict';
 
-import {PredictionProvider} from './prediction.service';
-import {inject, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController, TestRequest} from '@angular/common/http/testing';
-import {DrawingTimeEnum} from './api/v1/drawing-time.enum';
-import {API_URL} from '../../app.config';
-import {Pick3PlaysResponse} from './api/v1/pick3-plays-response';
-import {Pick3PlaysRequest} from './api/v1/pick3-plays-request.model';
+import { PredictionProvider } from './prediction.service';
+import { inject, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { DrawingTimeEnum } from './api/v1/drawing-time.enum';
+import { API_URL } from '../../app.config';
+import { Pick3PlaysResponse } from './api/v1/pick3-plays-response';
+import { Pick3PlaysRequest } from './api/v1/pick3-plays-request.model';
 
 describe('PredictionProvider', () => {
-
   /*beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [PredictionProvider],
@@ -63,8 +62,7 @@ describe('PredictionProvider', () => {
 
         req.error(new ErrorEvent('network error'));
   }));*/
-
-  it('time-of-day-text', () => {
+  /*it('time-of-day-text', () => {
     expect(true).toBe(true);
-  });
+  });*/
 });

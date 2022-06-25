@@ -1,12 +1,11 @@
-import {TestBed} from '@angular/core/testing';
-import {PageReader} from './page.reader';
-
+import { TestBed } from '@angular/core/testing';
+import { PageReader } from './page.reader';
 
 describe('PageReader', () => {
   let service: PageReader;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [PageReader]});
+    TestBed.configureTestingModule({ providers: [PageReader] });
     service = TestBed.inject(PageReader);
   });
 
@@ -14,8 +13,7 @@ describe('PageReader', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return html',  () => {
+  it('should return html', () => {
     expect(service.read).toBeDefined();
   });
 });
-

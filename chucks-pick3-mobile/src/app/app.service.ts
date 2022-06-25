@@ -230,7 +230,6 @@ export class AppService {
   }
 
   public retrievePick3DrawDate(currentSlideNumber, currentDrawTime): Pick3DrawTimeCard {
-    const pick3DrawDateCard = this.getPick3DrawDateCard(currentSlideNumber);
     const drawTime = this.getDrawTime(currentDrawTime);
     const pick3DrawTime = this.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(drawTime);
     return pick3DrawTime;
@@ -244,7 +243,6 @@ export class AppService {
     this.pick3DrawCardIdSource.next(someCardId);
   }
 
-  // TODO getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard | Error
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/member-ordering
   public getPreviousWinningNumber(someDate: Date, drawTime: Pick3DrawTime): Pick3DrawDateCard {

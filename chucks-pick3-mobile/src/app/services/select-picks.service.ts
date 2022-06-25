@@ -8,26 +8,21 @@ import { Pick3DrawTime } from '../models/pick3-draw-time';
   providedIn: 'root',
 })
 export class SelectPicksService {
-  public selectedPick3DrawDateChange: Subject<Pick3DrawDateCard> =
-    new Subject<Pick3DrawDateCard>();
-  public selectedPick3DrawTimeChange: Subject<Pick3DrawTime> =
-    new Subject<Pick3DrawTime>();
+  public selectedPick3DrawDateChange: Subject<Pick3DrawDateCard> = new Subject<Pick3DrawDateCard>();
+  public selectedPick3DrawTimeChange: Subject<Pick3DrawTime> = new Subject<Pick3DrawTime>();
   public selectedPick3DrawDateCard: Pick3DrawDateCard;
   public selectedPick3DrawTimeCard: Pick3DrawTimeCard;
 
   constructor() {}
 
-  public setSelectedPick3DrawDateCard(
-    somePick3DrawDateCard: Pick3DrawDateCard
-  ) {
+  public setSelectedPick3DrawDateCard(somePick3DrawDateCard: Pick3DrawDateCard) {
     this.selectedPick3DrawDateCard = somePick3DrawDateCard;
   }
 
-  public setSelectedPick3DrawTimeCard(
-    somePick3DrawTimeCard: Pick3DrawTimeCard
-  ) {
+  public setSelectedPick3DrawTimeCard(somePick3DrawTimeCard: Pick3DrawTimeCard) {
     this.selectedPick3DrawTimeCard = somePick3DrawTimeCard;
   }
+
   public getSelectedPick3DrawTimeCard() {
     return this.selectedPick3DrawTimeCard;
   }

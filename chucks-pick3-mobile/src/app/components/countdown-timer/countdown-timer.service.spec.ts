@@ -1,9 +1,7 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-
-import {CountdownTimerService} from './countdown-timer.service';
-import {BehaviorSubject} from 'rxjs';
-
+import { CountdownTimerService } from './countdown-timer.service';
+import { BehaviorSubject } from 'rxjs';
 
 describe('CountDownTimerService', () => {
   let service: CountdownTimerService;
@@ -23,11 +21,10 @@ describe('CountDownTimerService', () => {
     expect(service.state).toEqual('start');
   });
 
-  it('should call updateTimeValue',  () => {
+  it('should call updateTimeValue', () => {
     const spy = spyOn<any>(service, 'updateTimeValue');
     service.startTimer(5);
     expect(spy).toHaveBeenCalled();
-
   });
 
   it('should stop the timer', () => {
@@ -36,11 +33,11 @@ describe('CountDownTimerService', () => {
     expect(service.state).toEqual('stop');
   });
 
-  it('should return an observable',  () => {
+  it('should return an observable', () => {
     expect(service.getTime()).toBeDefined();
   });
 
-  it('should update the timeValue',  () => {
+  it('should update the timeValue', () => {
     const spy = spyOn<any>(service, 'updateTimeValue');
     service.startTimer(5);
     expect(spy).toHaveBeenCalled();

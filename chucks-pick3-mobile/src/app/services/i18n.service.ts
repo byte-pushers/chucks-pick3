@@ -1,16 +1,16 @@
-import {Injectable} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class I18nService {
-    setLang: string;
+  setLang: string;
 
-    constructor(public translateService: TranslateService) {
-        translateService.setDefaultLang('en-US');
-        this.setLang = 'en-US';
-    }
+  constructor(public translateService: TranslateService) {
+    translateService.setDefaultLang('en-US');
+    this.setLang = 'en-US';
+  }
 
-    public setLanguage(lang) {
-        this.setLang = lang;
-    }
+  public setLanguage(lang) {
+    this.setLang = lang;
+  }
 }

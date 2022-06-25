@@ -3,7 +3,7 @@
   *ngFor="let drawTime of drawTimes"
   (click)="selectDrawingTimeCard(drawTime)"
 >
-  <ion-col style="padding: 0; margin: 0">
+  <ion-col style=" padding: 0; margin: 0">
     <pick3-draw-time-card
       id="{{ drawTime.getTitle() }}"
       [data]="drawTime"

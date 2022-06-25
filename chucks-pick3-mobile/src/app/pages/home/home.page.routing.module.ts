@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 
 const routes: Routes = [
@@ -9,17 +9,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('../card/card.page.module').then(m => m.CardPageModule),
-      }
-    ]
-  }
+        loadChildren: () => import('../card/card.page.module').then((m) => m.CardPageModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HomePageRoutingModule {
-  constructor() {
-  }
+  constructor() {}
 }

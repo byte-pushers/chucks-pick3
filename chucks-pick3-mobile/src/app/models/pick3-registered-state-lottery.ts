@@ -1,12 +1,15 @@
-import {Pick3StateLottery} from "./pick3-state-lottery";
+import { Pick3StateLottery } from './pick3-state-lottery';
 
 export interface Pick3RegisteredStateLottery {
-    getState(): string;
-    setState(state: string): void;
+  getState(): string;
 
-    getStateName(): string;
-    setStateName(stateName: string): void;
+  setState(state: string): void;
 
-    getStateLottery(): Pick3StateLottery;
-    setStateLottery(stateLottery: Pick3StateLottery): void;
+  getStateName(): string;
+
+  setStateName(stateName: string): void;
+
+  getStateLottery(): Pick3StateLottery;
+
+  setStateLottery(stateLottery: Pick3StateLottery): void;
 }

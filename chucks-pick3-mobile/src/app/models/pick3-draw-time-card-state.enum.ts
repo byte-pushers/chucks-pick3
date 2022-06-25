@@ -8,12 +8,11 @@ export enum Pick3DrawTimeCardStateEnum {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   DRAWN_WITH_GENERATED_PICKS_WITH_NO_WINNERS, // black
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS // green
+  DRAWN_WITH_GENERATED_PICKS_WITH_WINNERS, // green
 }
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Pick3DrawTimeCardStateEnum {
-
   export function getPropertyKey(e: Pick3DrawTimeCardStateEnum): string {
     let propertyKey: string = null;
 
@@ -42,7 +41,6 @@ export namespace Pick3DrawTimeCardStateEnum {
     let enumString: string = null;
 
     if (typeof e === 'number') {
-      console.log('continue...');
     } else if (typeof e === 'string') {
       e = e.toUpperCase();
       e = Pick3DrawTimeCardStateEnum[e];

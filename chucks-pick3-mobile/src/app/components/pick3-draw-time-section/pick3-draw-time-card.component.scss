@@ -1,10 +1,18 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+ion-grid {
+  background-color: $chucksPick3White;
+  border: .5px solid gray;
+  padding: 0;
+  height: 100%
+}
+
 .row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .column {
@@ -55,7 +63,8 @@
   text-align: center;
   vertical-align: middle;
   line-height: 10vh;
-  font-size: 15vw;
+  font-size: 13vw;
+  left: 20px;
   @include for-size(iPhone5-SE) {
     font-size: 12vw;
   }
@@ -67,6 +76,7 @@
   font-size: 7.6vw;
   font-weight: 700;
 }
+
 .draw-time-title {
   display: inline-block;
   width: 60%;
@@ -93,6 +103,7 @@
 .generated-picks-indicator.drawn-with-generated-picks-with-no-winners {
   background-color: $chucksPick3LightGray;
 }
+
 .generated-picks-indicator.drawn.selected,
 .generated-picks-indicator.not-drawn-yet.selected,
 .generated-picks-indicator.not-drawn.selected,

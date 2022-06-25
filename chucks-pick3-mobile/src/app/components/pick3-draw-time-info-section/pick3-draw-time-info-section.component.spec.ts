@@ -1,11 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  fakeAsync,
-  inject,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -66,25 +59,8 @@ describe('Pick3DrawTimeInfoSectionComponent', () => {
     });
     TestBed.configureTestingModule({
       declarations: [Pick3DrawTimeInfoSectionComponent],
-      imports: [
-        CommonModule,
-        IonicModule.forRoot(),
-        TranslateModule.forRoot(),
-        RouterTestingModule,
-        TranslateModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        AppService,
-        Pick3WebScrapingProviderService,
-        AppService,
-        DrawStateService,
-        DrawTimeService,
-        DrawDateService,
-        CardContextService,
-      ],
+      imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, ReactiveFormsModule, FormsModule, HttpClientTestingModule],
+      providers: [AppService, Pick3WebScrapingProviderService, AppService, DrawStateService, DrawTimeService, DrawDateService, CardContextService],
     }).compileComponents();
     router = TestBed.get(Router);
     appService = TestBed.get(AppService);

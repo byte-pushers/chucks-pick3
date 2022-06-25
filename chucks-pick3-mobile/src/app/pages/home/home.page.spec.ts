@@ -12,8 +12,14 @@ import { CardContextService } from '../../services/card-context.service';
 import { Router } from '@angular/router';
 import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
 import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
+import Swiper from 'swiper';
 
 describe('HomePage', () => {
+  const testSwiper = new Swiper('.swiper', {
+    speed: 400,
+    slidesPerView: 1,
+    initialSlide: 7,
+  });
   let date = new Date();
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
@@ -26,19 +32,8 @@ describe('HomePage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [HomePage],
-        imports: [
-          CommonModule,
-          IonicModule.forRoot(),
-          TranslateModule.forRoot(),
-          RouterTestingModule,
-          TranslateModule,
-          HttpClientTestingModule,
-        ],
-        providers: [
-          AppService,
-          Pick3WebScrapingProviderService,
-          CardContextService,
-        ],
+        imports: [CommonModule, IonicModule.forRoot(), TranslateModule.forRoot(), RouterTestingModule, TranslateModule, HttpClientTestingModule],
+        providers: [AppService, Pick3WebScrapingProviderService, CardContextService],
       }).compileComponents();
       router = TestBed.get(Router);
       popover = TestBed.get(PopoverController);

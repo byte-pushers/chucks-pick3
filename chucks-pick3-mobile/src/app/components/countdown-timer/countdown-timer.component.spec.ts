@@ -14,11 +14,7 @@ describe('CountdownTimerComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CountdownTimerComponent],
-      imports: [
-        IonicModule.forRoot(),
-        RouterTestingModule,
-        HttpClientTestingModule,
-      ],
+      imports: [IonicModule.forRoot(), RouterTestingModule, HttpClientTestingModule],
     }).compileComponents();
     router = TestBed.get(Router);
     spyOn(router, 'getCurrentNavigation').and.returnValue({
@@ -61,8 +57,7 @@ describe('CountdownTimerComponent', () => {
 
   it('should return as "" ', () => {
     const today = new Date();
-    const time =
-      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+    const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
     const timeDifferenceTest = component.getTimeDiff(time, true);
     expect(timeDifferenceTest).toEqual('');
   });
