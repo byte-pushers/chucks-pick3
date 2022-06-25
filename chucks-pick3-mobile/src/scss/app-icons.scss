@@ -50,7 +50,8 @@
   vertical-align: middle;
   right: 5px;
   line-height: 12vh;
-  font-size: 15vw;
+  font-size: 13vw;
+  margin-left: 1rem !important;
   @include for-size(iPhone5-SE) {
     font-size: 9.8vw;
   }

@@ -1,43 +1,22 @@
-<ion-row style="margin: 0; height: 100%" [style.background]="' url(' + data.backgroundImage + ')'">
-  <ion-col size="2" style="margin-right: 0px" [ngSwitch]="generateNavigation">
-    <div class="picks-indicator" *ngSwitchCase="1" [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
-    <ion-icon *ngSwitchCase="1" [routerLink]="['/','view']" (click)="switchDrawDateButtons('gotoViewPicks')" routerDirection="back" src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing" style="padding-left: 15px"></ion-icon>
-    <ion-icon *ngSwitchCase="2" [routerLink]="['/', 'home']" [state]="{currentSlideNumber: this.id}" routerDirection="forward" (click)="switchDrawDateButtons('homeEnabled')" class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
+<ion-row style=" height: 100%" [style.background]="' url(' + data.backgroundImage + ')'">
+  <ion-col size="3" class="ion-align-self-start">
+    <ion-fab-button
+      [routerLink]="['/','view']"
+      [disabled]="viewPicksButton"
+      [state]="{
+                    currentSlideNumber: this.id,
+                  currentDay: this.data.getDrawDate()
+                  }"
+      class="home-screen__floating-action-button"
+      (click)="switchDrawDateButtons('gotoViewPicks')"
+      routerDirection="back"
 
-    <ion-nav-link *ngSwitchCase="3" routerDirection="back" router-direction="back" (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); returnToPreviousPage()">
-      <ion-icon class="generate-back-button" src="../../../assets/icon/back-arrow.svg"></ion-icon>
-    </ion-nav-link>
-    <div class="picks-indicator" *ngSwitchDefault [ngClass]="drawStateService.picksIndicator" style="float: left"></div>
-    <ion-icon *ngSwitchCase="4"></ion-icon>
-    <ion-icon
-      *ngSwitchDefault
-      [routerLink]="['/','view']"
-      [state]="{
-                    currentSlideNumber: this.id,
-                  currentDay: this.data.getDrawDate()
-                  }"
-      (click)="switchDrawDateButtons('gotoViewPicks')"
-      routerDirection="back"
-      src="../../../assets/view-picks-icon.svg"
-      class="general-draw-date-button-sizing"
-      style="padding-left: 15px"
-    ></ion-icon>
-    <ion-icon *ngSwitchCase="5" src="../../../assets/view-picks-icon.svg" class="general-draw-date-button-sizing" style="opacity: 40%; padding-left: 15px"></ion-icon>
-    <ion-icon
-      *ngSwitchCase="6"
-      [routerLink]="['/','view']"
-      [state]="{
-                    currentSlideNumber: this.id,
-                  currentDay: this.data.getDrawDate()
-                  }"
-      (click)="switchDrawDateButtons('gotoViewPicks')"
-      routerDirection="back"
-      src="../../../assets/view-picks-icon.svg"
-      class="general-draw-date-button-sizing"
-      style="padding-left: 15px"
-    ></ion-icon>
+    >
+      <ion-icon src="../../../assets/icon/previous-picks__button.svg"
+                class="view-picks__icon"></ion-icon>
+    </ion-fab-button>
   </ion-col>
-  <ion-col size="8">
+  <ion-col size="6" class="ion-align-self-center" style="height: 100%">
     <ion-row>
       <ion-col>
         <div class="container">
@@ -53,12 +32,17 @@
             <div class="column _55" style="text-align: right; padding-right: 1em">
               <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg" class="time-of-day-icon"></ion-icon>
             </div>
-            <div class="column _55" style="text-align: left; line-height: 2.45em">{{data.drawTimeAsString | translate}}</div>
+            <div class="column _55"
+                 style="text-align: left; line-height: 2.45em">{{data.drawTimeAsString | translate}}</div>
           </div>
         </div>
         <br />
         <div class="row">
-          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important"><span style="font-size: 4.6vw; font-weight: bold" class="draw-date-text">{{data.drawDate| date: 'EEE MMM d y ' : '' : translateService.currentLang}}</span><br /></div>
+          <div class="column _55"
+               style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important"><span
+            style="font-size: 4.6vw; font-weight: bold"
+            class="draw-date-text">{{data.drawDate| date: 'EEE MMM d y ' : '' : translateService.currentLang}}</span><br />
+          </div>
         </div>
       </ion-col>
     </ion-row>
@@ -73,7 +57,9 @@
             </div>
             <div style="display: inline" *ngIf="showCountDownToDrawing === true">
               <countdown-timer *ngIf="drawDateCardUnavailable === false" [end]="data.drawDate"></countdown-timer>
-              <div style="color: #ff4f4f; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" *ngIf="drawDateCardUnavailable === true">
+              <div
+                style="color: #ff4f4f; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+                *ngIf="drawDateCardUnavailable === true">
                 <b><p>{{'day.not.available' | translate}}</p></b>
                 <countdown-timer [end]="tomorrowUnavailableDate"></countdown-timer>
               </div>
@@ -88,20 +74,20 @@
       </ion-col>
     </ion-row>
   </ion-col>
-  <ion-col size="2" class="generate-picks-col" [ngSwitch]="viewNavigation">
-    <ion-icon *ngSwitchCase="6" src="../../../assets/generate-picks-icon.svg" class="general-draw-date-button-sizing" style="opacity: 40%; padding-right: 25px"></ion-icon>
-
-    <ion-icon
+  <ion-col size="3" class="ion-align-self-end">
+    <ion-fab-button
       (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
+      class="home-screen__floating-action-button"
+      [disabled]="generatePicksButton"
       [state]="{
                   currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                 }"
-      routerDirection="back"
-      src="../../../assets/generate-picks-icon.svg"
-      class="generate-picks-icon"
-      style="padding-right: 25px"
-    ></ion-icon>
+      routerDirection="forward"
+    >
+      <ion-icon src="../../../assets/icon/new-picks__button.svg"
+                class="generate-picks__icon"></ion-icon>
+    </ion-fab-button>
   </ion-col>
 </ion-row>

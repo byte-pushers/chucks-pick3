@@ -1,6 +1,10 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+ion-col {
+  height: 100%;
+}
+
 .generate-back-button {
   margin-top: 29vh;
   @include for-size(iPhone5-SE) {
@@ -113,42 +117,79 @@ ion-grid {
   }
 }
 
-.generate-picks-icon {
-  width: 100%;
-  stroke-width: 5px;
-
-  margin-top: 27.8vh;
+.home-screen__floating-action-button {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15rem;
+  height: 5rem;
+  width: 5rem;
+  --background: #1e1e1e !important;
+  --background-activated: #1e1e1e !important;
+  --box-shadow: 0px 5px 2px rgba(0,0,0,0.7);
   @include for-size(iPhone5-SE) {
-    height: 10.2vh;
-    line-height: 10.2vh;
-    margin-top: 29vh;
+
   }
   @include for-size(iPhone6-7-8) {
-    height: 11vh;
-    width: 8.8vh;
-    line-height: 10.6vh;
+    margin-top: 10rem;
+    height: 4rem;
+    width: 4rem;
   }
   @include for-size(iPhone6-7-8-Plus) {
-    height: 11vh !important;
-    width: 9.6vh;
-    line-height: 10.7vh !important;
+    margin-top: 15rem;
+    height: 5rem;
+    width: 5rem;
   }
   @include for-size(iPhoneX) {
-    height: 10.9vh;
-    line-height: 10.9vh;
+    margin-top: 15rem;
+    height: 5rem;
+    width: 5rem;
   }
   @include for-size(iPad) {
-    height: 10.9vh !important;
-    line-height: 10.9vh !important;
+    margin-top: 20rem;
+    height: 10rem;
+    width: 10rem;
   }
   @include for-size(iPad-Pro) {
-    height: 11.6vh !important;
-    line-height: 11.6vh !important;
+    margin-top: 20rem;
+    height: 10rem;
+    width: 10rem;
   }
   @media (min-width: 360px) and (max-width: 360px) and (min-height: 740px) and (max-height: 740px) {
-    height: 11vh;
-    width: 8.8vh;
-    line-height: 10.6vh;
+    margin-top: 13rem;
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+.generate-picks__icon {
+  fill: white;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-left: 0;
+
+  @include for-size(iPad) {
+    height: 7rem;
+    width: 7rem;
+  }
+  @include for-size(iPad-Pro) {
+    height: 7rem;
+    width: 7rem;
+  }
+}
+
+.view-picks__icon {
+  fill: white;
+  height: 4rem;
+  width: 4rem;
+  margin-left: 0;
+
+  @include for-size(iPad) {
+    height: 7rem;
+    width: 7rem;
+  }
+  @include for-size(iPad-Pro) {
+    height: 7rem;
+    width: 7rem;
   }
 }
 
