@@ -105,4 +105,19 @@ describe('Pick3DrawDateInfoSection', () => {
     component.ngOnInit();
     expect(component.id).toBeDefined();
   });
+
+  it('should enable buttons on initialization', () => {
+    component.ngOnInit();
+    expect(component.viewPicksButton).toBeFalse();
+  });
+
+  it("should disable the buttons", () => {
+    component.disableButtonOnCard(5);
+    expect(component.viewPicksButton).toBeTrue();
+  });
+
+  it("should enable the buttons", () => {
+    component.disableButtonOnCard(6);
+    expect(component.viewPicksButton).toBeFalse();
+  });
 });
