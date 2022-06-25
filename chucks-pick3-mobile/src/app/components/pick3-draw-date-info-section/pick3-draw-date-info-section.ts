@@ -366,7 +366,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   private disableButtonOnCard(slideNumber) {
-    if (slideNumber < 7) {
+    if (slideNumber < 6) {
 this.viewPicksButton = true;
 this.generatePicksButton = true;
     } else {
