@@ -40,6 +40,8 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   public data: Pick3DrawDateCard = new Pick3DrawDateCardDomain(Pick3DrawDateCardDomain.DEFAULT_CONFIG);
   public tomorrowUnavailableDate: Date;
   public defaultDrawDateTime: Pick3DrawTimeEnum;
+  public viewPicksButton: boolean = false;
+  public generatePicksButton: boolean = true;
   public showCountDownToDrawing = false;
   public drawDateCardUnavailable = false;
   public drawTimeCard: Pick3DrawTimeCard;
@@ -364,10 +366,12 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   private disableButtonOnCard(slideNumber) {
-    if (slideNumber < 6) {
-      this.switchDrawDateButtons('generatePicksDisabled');
+    if (slideNumber < 7) {
+this.viewPicksButton = true;
+this.generatePicksButton = true;
     } else {
-      this.switchDrawDateButtons('viewPicksDisabled');
+      this.viewPicksButton = false;
+      this.generatePicksButton = false;
     }
   }
   /* istanbul ignore next */
