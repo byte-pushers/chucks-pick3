@@ -1,32 +1,32 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CardContextService } from '../../services/card-context.service';
-import { Pick3DrawTimeEnum } from '../../models/pick3-draw-time.enum';
-import { Pick3DrawDateCardDomain } from '../../models/pick3-draw-date-card.domain';
-import { DrawStateService } from '../../services/draw-state.service';
-import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../../services/i18n.service';
-import { Pick3DrawTime } from '../../models/pick3-draw-time';
-import { Pick3DrawDateCard } from '../../models/pick3-draw-date-card';
-import { Pick3WebScrapingProviderService } from '../../providers/web-scraping/pick3-web-scraping-provider.service';
-import { IonicToastNotificationService } from '../../services/ionic-toast-notification.service';
-import { registerLocaleData } from '@angular/common';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {CardContextService} from '../../services/card-context.service';
+import {Pick3DrawTimeEnum} from '../../models/pick3-draw-time.enum';
+import {Pick3DrawDateCardDomain} from '../../models/pick3-draw-date-card.domain';
+import {DrawStateService} from '../../services/draw-state.service';
+import {TranslateService} from '@ngx-translate/core';
+import {I18nService} from '../../services/i18n.service';
+import {Pick3DrawTime} from '../../models/pick3-draw-time';
+import {Pick3DrawDateCard} from '../../models/pick3-draw-date-card';
+import {Pick3WebScrapingProviderService} from '../../providers/web-scraping/pick3-web-scraping-provider.service';
+import {IonicToastNotificationService} from '../../services/ionic-toast-notification.service';
+import {registerLocaleData} from '@angular/common';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localeEnUS from '@angular/common/locales/en-US-POSIX';
 import * as BytePushers from 'bytepushers-js-core';
-import { Pick3DrawTimeCard } from '../../models/pick3-draw-time-card';
-import { Pick3DrawTimeCardStateEnum } from '../../models/pick3-draw-time-card-state.enum';
-import { NavigationEnum } from '../../models/navigate.enum';
-import { Router } from '@angular/router';
-import { LanguagePopoverComponent } from '../language-popover/language-popover.component';
-import { NavController, PopoverController } from '@ionic/angular';
-import { AppService } from '../../app.service';
-import { DrawDateService } from '../../services/draw-date.service';
-import { Subscription } from 'rxjs';
-import { Pick3DrawTimeCardProperties } from '../../models/pick3-draw-time-card.properties';
-import { publish } from 'rxjs/operators';
-import { error } from 'protractor';
-import { StateService } from '../../services/state.service';
-import { SelectPicksService } from '../../services/select-picks.service';
+import {Pick3DrawTimeCard} from '../../models/pick3-draw-time-card';
+import {Pick3DrawTimeCardStateEnum} from '../../models/pick3-draw-time-card-state.enum';
+import {NavigationEnum} from '../../models/navigate.enum';
+import {Router} from '@angular/router';
+import {LanguagePopoverComponent} from '../language-popover/language-popover.component';
+import {NavController, PopoverController} from '@ionic/angular';
+import {AppService} from '../../app.service';
+import {DrawDateService} from '../../services/draw-date.service';
+import {Subscription} from 'rxjs';
+import {Pick3DrawTimeCardProperties} from '../../models/pick3-draw-time-card.properties';
+import {publish} from 'rxjs/operators';
+import {error} from 'protractor';
+import {StateService} from '../../services/state.service';
+import {SelectPicksService} from '../../services/select-picks.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -44,6 +44,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   public generatePicksButton: boolean = true;
   public showCountDownToDrawing = false;
   public drawDateCardUnavailable = false;
+  public pick3DrawState = this.drawStateService.picksIndicator;
   public drawTimeCard: Pick3DrawTimeCard;
   public selectedDrawTimeCard: Pick3DrawTimeCardProperties;
   public generateNavigation: any;
@@ -141,6 +142,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.setData(pick3DrawDateCard.getDrawState(), currentPick3DrawTimeCard, this.appService.getBackgroundImageUrl(), currentPick3DrawTimeCard.getIcon());
       }
     });
+    console.log(this.pick3DrawState);
   }
 
   /* istanbul ignore next */
@@ -184,7 +186,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     /* istanbul ignore next */
     if (this.isApplicationOnline()) {
       const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
-
+      console.log(drawState);
       this.data.setBackgroundImage(backgroundImageUrl);
       this.data.setDrawState(drawState);
       this.data.setDrawTime(pick3DrawTime.getType());
@@ -272,6 +274,7 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
       }
     );
   }
+
   /* istanbul ignore next */
   private handleInvalidPick3DrawDayError(pick3DrawDay) {
     const closedDayArray = this.stateDrawDate.getClosedDates(this.data.getDrawState());
@@ -366,23 +369,26 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
 
   public disableButtonOnCard(slideNumber) {
     if (slideNumber < 6) {
-this.viewPicksButton = true;
-this.generatePicksButton = true;
+      this.viewPicksButton = true;
+      this.generatePicksButton = true;
     } else {
       this.viewPicksButton = false;
       this.generatePicksButton = false;
     }
   }
+
   /* istanbul ignore next */
   public returnToPreviousPage() {
     this.navCtrl.pop();
   }
+
   /* istanbul ignore next */
   private setUpNextDate(drawDate) {
     let tomorrow = new Date();
     tomorrow.setDate(drawDate.getDate() + 1);
     this.tomorrowUnavailableDate = tomorrow;
   }
+
   /* istanbul ignore next */
   public gotoGeneratePicks(): void {
     this.selectedPicks.setSelectedPick3DrawTimeCard(this.drawTimeCard);
