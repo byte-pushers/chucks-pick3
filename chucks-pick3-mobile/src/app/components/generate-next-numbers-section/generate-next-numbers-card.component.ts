@@ -45,7 +45,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
     const tomorrow: HTMLElement = document.getElementById('tomorrow');
     this.selectTodayGenerateDrawingDate(today, tomorrow);
     this.pick3DrawDateCardSubscription = this.drawDateService.getPick3DrawDateCard$().subscribe((currentPick3DrawDateCard: Pick3DrawTimeCard) => {
-      console.log(currentPick3DrawDateCard);
     });
   }
 
@@ -161,7 +160,6 @@ export class GenerateNextNumbersCardComponent implements OnInit {
         generatedNumberArray.push(r);
       }
     }
-    console.log(generatedNumberArray);
     return generatedNumberArray;
   }
 

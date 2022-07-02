@@ -29,10 +29,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
     /* istanbul ignore if */
     if (this.routerUrl === '/home') {
       this.id = ++Pick3DrawTimeInfoSectionComponent.counter;
-      console.log('Pick3DrawTimeInfoSectionComponent() constructor. id: ' + this.id);
-      console.log('******BEFORE******' + this.drawTimes);
       this.drawTimes = this.appService.getPick3DrawTimeCards(this.id);
-      console.log('******AFTER******' + this.drawTimes);
     }
 
     this.pick3StateLottery = pick3WebScrappingService.findRegisteredStateLottery('TX');
@@ -71,12 +68,10 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
 
   /* istanbul ignore next */
   ngOnDestroy(): void {
-    console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: id: ${this.id}`);
     this.drawTimeSubscription?.unsubscribe();
 
     if (this.routerUrl === '/home') {
       Pick3DrawTimeInfoSectionComponent.counter--;
-      console.log(`Pick3DrawTimeInfoSection.ngOnDestroy: counter: ${Pick3DrawTimeInfoSectionComponent.counter}`);
     }
   }
 

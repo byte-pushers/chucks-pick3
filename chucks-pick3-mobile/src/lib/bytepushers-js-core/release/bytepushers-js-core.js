@@ -1672,8 +1672,6 @@ function calculateBirthday(birthDate) {
     }
     return age;
 }
-console.log(calculateBirthday(new Date(1982, 11, 4)));
-console.log(calculateBirthday(new Date(1962, 0, 1)));
 
 
 

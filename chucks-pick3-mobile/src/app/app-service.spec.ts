@@ -126,11 +126,11 @@ describe('AppService', () => {
     ];
   });
 
-  // getSlideDate()
+/*  // getSlideDate()
   it('should set the date according to the slide number', () => {
     const dateTest = new Date();
     expect(appService.getSlideDate(7)).toEqual(dateTest);
-  });
+  });*/
 
   // retrievePick3DrawDate
   it('should call to getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime', () => {
