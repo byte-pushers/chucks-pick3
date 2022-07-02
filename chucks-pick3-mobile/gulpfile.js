@@ -9,7 +9,7 @@ function defaultTask(cb) {
   if (process.env.USE_MOCKS === "true") {
     exec("ionic serve --configuration=mock");
   } else {
-    exec("npm run use-prod && ionic serve --configuration=prod");
+    exec("npm run use-mocks && ionic serve --configuration=prod");
   }
   cb();
 }
