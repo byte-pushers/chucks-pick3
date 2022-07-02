@@ -7,7 +7,8 @@
                     currentSlideNumber: this.id,
                   currentDay: this.data.getDrawDate()
                   }"
-      class="home-screen__floating-action-button"
+      [ngClass]="pick3DrawState"
+      class="home-screen__floating-action-button picks-indicator"
       (click)="switchDrawDateButtons('gotoViewPicks')"
       routerDirection="back"
 
@@ -76,7 +77,7 @@
     <ion-fab-button
       (click)="switchDrawDateButtons('gotoPreviousWinningNumber'); gotoGeneratePicks();"
       [routerLink]="['/','select-picks']"
-      class="home-screen__floating-action-button"
+      class="home-screen__floating-action-button generated-picks__button"
       [disabled]="generatePicksButton"
       [state]="{
                   currentSlideNumber: this.id,
