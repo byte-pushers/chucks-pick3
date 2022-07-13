@@ -54,9 +54,9 @@ export class HomePage implements OnDestroy {
       this.pick3Cards.swiperRef.slideTo(data, 400)
     );
   }
-
   /* istanbul ignore next */
   ngOnDestroy() {
+    console.log('destrying home');
     this.cardContext = null;
   }
 
