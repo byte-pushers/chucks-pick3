@@ -59,3 +59,9 @@ ion-toast::part(button) {
   --button-color: #1b1e21 !important;
   --color: #1b1e21 !important;
 }
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
