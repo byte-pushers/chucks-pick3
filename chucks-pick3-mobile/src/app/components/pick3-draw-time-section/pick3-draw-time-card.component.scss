@@ -1,6 +1,13 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 ion-grid {
   background-color: $chucksPick3White;
   border: .5px solid gray;

@@ -31,6 +31,12 @@ ion-grid {
   }
 }
 
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .draw-date-text {
   color: $chucksPick3White;
 }

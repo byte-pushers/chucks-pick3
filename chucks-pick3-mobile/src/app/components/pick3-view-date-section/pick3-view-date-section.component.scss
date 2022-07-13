@@ -1,6 +1,12 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .generate-back-button {
   margin-top: 29vh;
   @include for-size(iPhone5-SE) {
