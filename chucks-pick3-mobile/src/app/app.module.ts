@@ -26,6 +26,7 @@ import { TomorrowPick3DrawDateCardService } from './services/tomorrowPick3DrawDa
 import { Pick3GenerateDateSectionComponent } from './components/pick3-generate-date-section/pick3-generate-date-section.component';
 import {PredictionProvider} from "./providers/prediction/prediction.service";
 import {createPick3PredictionServiceFactory} from "./providers/prediction/prediction.factory";
+import {enterAnimation} from '../assets/animations/nav-animation';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -37,7 +38,9 @@ export function createTranslateLoader(http: HttpClient) {
   exports: [CountdownTimerComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot(
+      {navAnimation: enterAnimation}
+    ),
     AppRoutingModule,
     HttpClientModule,
     HomePageModule,
