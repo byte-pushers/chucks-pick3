@@ -82,11 +82,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     }
   }
 
-  /* istanbul ignore next */
-  ionViewDidEnter() {
-    console.log(`Pick3DrawDateInfoSection.ionViewDidEnter(): `);
-  }
-
   ngOnInit(): void {
     console.log(this.drawTimeCard);
 
