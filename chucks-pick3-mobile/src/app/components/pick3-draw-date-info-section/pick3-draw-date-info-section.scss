@@ -1,6 +1,13 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 ion-col {
   height: 100%;
 }

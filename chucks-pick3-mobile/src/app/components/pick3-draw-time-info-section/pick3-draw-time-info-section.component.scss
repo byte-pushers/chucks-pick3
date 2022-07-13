@@ -1,6 +1,13 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .drawing-time {
   height: 100%;
 }
