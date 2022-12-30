@@ -41,7 +41,6 @@ Setup Project
 VM option: -Dspring.profiles.active=local
 Main Class: software.bytepushers.pick3.ChucksPick3Application
 Class Path: -cp chucks-pick3-ws
-Working Directory: /Users/admin/Desktop/projects/chucks-pick3/chucks-pick3-ws
 ```
 Refer screenshot:
 ![Run Configuration.png](.%2Fpostman%2FRun%20Configuration.png)
