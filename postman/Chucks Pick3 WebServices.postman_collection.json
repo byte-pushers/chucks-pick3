@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "d7b86929-fbff-49b0-a848-9052e6aa03e5",
+		"name": "Chucks Pick3 WebServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"user_id\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"username\": \"amanabrol\",\n        \"password\": \"password\",\n        \"firstName\": \"Aman\",\n        \"lastName\": \"A\",\n        \"email\": \"aman.ab36@gmail.com\",\n        \"state\": \"TX\",\n        \"phone\": \"1234567890\"\n    },\n    \"type\": \"PREMIUM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}users",
+							"host": [
+								"{{url}}users"
+							]
+						},
+						"description": "Creating the user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}users/{{user_id}}",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"id\": {{user_id}},\n        \"username\": \"abrolaman1234\",\n        \"email\": \"aman.a34@gmail.com\",\n        \"firstName\": \"Aaman\",\n        \"lastName\": \"S\",\n        \"state\": \"TX\",\n        \"phone\": \"1234567890\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}users",
+							"host": [
+								"{{url}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}users/{{user_id}}",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}customers",
+							"host": [
+								"{{root_url}}customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}customers/{{customer_id}}",
+							"host": [
+								"{{root_url}}customers"
+							],
+							"path": [
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}customers/{{customer_id}}",
+							"host": [
+								"{{root_url}}customers"
+							],
+							"path": [
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"customer_id\", pm.response.json().id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\":\"Mark1\",\n\t\"middleName\":\"T1\",\n\t\"lastName\":\"Weaver1\",\n\t\"email\":\"mark1@gmail.com\",\n\t\"phoneNumber\":\"5103348734\",\n\t\"state\":\"California\",\n\t\"zipCode\":\"90123\",\n\t\"cellPhoneType\":\"iPhone\",\n\t\"gambleFrequency\":\"sometimes\"\n}"
+						},
+						"url": {
+							"raw": "{{root_url}}customers",
+							"host": [
+								"{{root_url}}customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"{{customer_id}}\",\n\t\"firstName\":\"Mark1eeeee\",\n\t\"middleName\":\"T1\",\n\t\"lastName\":\"Weaver1\",\n\t\"email\":\"mark1@gmail.com\",\n\t\"phoneNumber\":\"5103348734\",\n\t\"state\":\"California\",\n\t\"zipCode\":\"90123\",\n\t\"cellPhoneType\":\"iPhone\",\n\t\"gambleFrequency\":\"sometimes\",\n    \"isDisabled\": false\n}"
+						},
+						"url": {
+							"raw": "{{root_url}}customers",
+							"host": [
+								"{{root_url}}customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}roles",
+							"host": [
+								"{{url}}roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbWFuIiwiaXNzIjoiUk9MRV9QUkVNSVVNIiwiaWF0IjoxNTk5OTM3NTQ3LCJleHAiOjE1OTk5NDExNDd9.EfUfrLtaRKtVn7g6NH07P_rckz_VoG37PcAnykJ5REt_8cduUxNPsTayJl7jxzjD",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}roles",
+							"host": [
+								"{{url}}roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account Types",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}account-type",
+							"host": [
+								"{{url}}account-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}account-type",
+							"host": [
+								"{{url}}account-type"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generate Picks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root_url}}numbers?winNumber=972&winDrawDate=2022-12-04&futureDrawDate=2023-09-20&winDrawTime=MORNING&futureDrawTime=DAY",
+					"host": [
+						"{{root_url}}numbers"
+					],
+					"query": [
+						{
+							"key": "winNumber",
+							"value": "972"
+						},
+						{
+							"key": "winDrawDate",
+							"value": "2022-12-04"
+						},
+						{
+							"key": "futureDrawDate",
+							"value": "2023-09-20"
+						},
+						{
+							"key": "winDrawTime",
+							"value": "MORNING"
+						},
+						{
+							"key": "futureDrawTime",
+							"value": "DAY"
+						}
+					]
+				},
+				"description": "Generates Pick 3 Lottery numbers based on previous winning number."
+			},
+			"response": []
+		},
+		{
+			"name": "Number Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root_url}}numbers/ping",
+					"host": [
+						"{{root_url}}numbers"
+					],
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Ping number function"
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"token\", pm.response.json().token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}login",
+					"host": [
+						"{{url}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}logout",
+					"host": [
+						"{{url}}logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{root_url}}customers/ping",
+					"host": [
+						"{{root_url}}customers"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
