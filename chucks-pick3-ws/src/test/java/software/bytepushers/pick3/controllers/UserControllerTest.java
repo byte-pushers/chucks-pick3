@@ -232,7 +232,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
-        assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present. status: " + response.getStatus();
+        assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
     }
 
     @Test
@@ -242,7 +242,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
-        assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user details successfully if jwt cookie is valid and present. status: " + response.getStatus();
+        assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user details successfully if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
     }
 
     @Test
@@ -254,6 +254,6 @@ public class UserControllerTest extends AbstractLoginControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .content(requestBodyInJson)).andReturn().getResponse();
-        assert response.getStatus() == HttpStatus.OK.value() : "User must be updated successfully if jwt cookie is valid and present. status: " + response.getStatus();
+        assert response.getStatus() == HttpStatus.OK.value() : "User must be updated successfully if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
     }
 }
