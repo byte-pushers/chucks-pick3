@@ -19,7 +19,7 @@ public class ModelUtils {
         UserDto userDto = new UserDto();
         UserDetailsDto userDetailsDto = new UserDetailsDto();
         AccountType accountType = AccountType.PREMIUM;
-        userDetailsDto.setRoles(Collections.singletonList(accountType.getRoleName()));
+        userDetailsDto.setRoles(Collections.singletonList(accountType.name()));
         userDetailsDto.setEmail(USER_EMAIL);
         userDetailsDto.setFirstName(USER_FIRST_NAME);
         userDetailsDto.setLastName(USER_LAST_NAME);
