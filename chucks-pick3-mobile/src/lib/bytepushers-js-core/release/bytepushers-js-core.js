@@ -3,7 +3,7 @@
 /*jslint bitwise: true, regexp: true*/
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1071,10 +1071,10 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, window, module*/
+/*global BytePushers, window, module*/
 /* jshint -W108, -W109, -W079 */
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     "use strict";
@@ -1128,11 +1128,11 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, console, window, module*/
+/*global BytePushers, console, window, module*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1184,11 +1184,11 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, window, module*/
+/*global BytePushers, window, module*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1539,11 +1539,11 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global window, document, BytePushers, module*/
+/*global window, document, BytePushers, module*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1675,11 +1675,11 @@ function calculateBirthday(birthDate) {
 
 
 
-;/*global $, window, document, BytePushers, module*/
+/*global $, window, document, BytePushers, module*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window, document) {
     'use strict';
@@ -1757,11 +1757,11 @@ var nodeModule = module || {};
     }
     nodeModule.exports = BytePushers;
 }(window, document));
-;/*global window, document, BytePushers*/
+/*global window, document, BytePushers*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1817,11 +1817,11 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers window*/
+/*global BytePushers window*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 (function (window) {
     'use strict';
@@ -1861,11 +1861,11 @@ var nodeModule = module || {};
     nodeModule.exports = BytePushers;
 }(window));
 
-;/*global window, document, BytePushers, XMLHttpRequest, ActiveXObject, module*/
+/*global window, document, BytePushers, XMLHttpRequest, ActiveXObject, module*/
 /* jshint -W108, -W109, -W079 */
 
 var window = window || {};
-var nodeModule = module || {};
+// var nodeModule = module || {};
 
 /**
  * Created with IntelliJ IDEA.
