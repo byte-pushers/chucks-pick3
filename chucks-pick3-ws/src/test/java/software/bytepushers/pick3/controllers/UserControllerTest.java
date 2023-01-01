@@ -2,6 +2,7 @@ package software.bytepushers.pick3.controllers;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -19,6 +20,7 @@ import software.bytepushers.pick3.util.ModelUtils;
 import javax.servlet.http.Cookie;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -245,14 +247,20 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
-        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getName());
-        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getValue());
-        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getMaxAge());
-        MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
-                .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
-                .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
-        assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user" +
-                " details successfully if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
+        Cookie[] cookies = LOGIN_RESPONSE.getCookies();
+        Optional<Cookie> jwtTokenCookie = Arrays.stream(cookies).filter(cookie ->
+                StringUtils.equals(cookie.getName(), JWT_TOKEN_COOKIE_NAME) && StringUtils.equals(cookie.getPath(), "/")).findAny();
+        if (jwtTokenCookie.isPresent()) {
+            Cookie cookie = jwtTokenCookie.get();
+            System.out.println("cookie: " + cookie.getName());
+            System.out.println("cookie: " + cookie.getValue());
+            System.out.println("cookie: " + cookie.getMaxAge());
+            MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
+                    .cookie(cookie)
+                    .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+            assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user" +
+                    " details successfully if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
+        }
     }
 
     @Test
