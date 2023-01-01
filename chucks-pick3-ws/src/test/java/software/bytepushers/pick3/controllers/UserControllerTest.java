@@ -229,6 +229,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT + "/5")
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
