@@ -2,14 +2,12 @@ package software.bytepushers.pick3.controllers;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.internal.engine.ConstraintViolationImpl;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import software.bytepushers.pick3.config.security.SecurityConstants;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.ApiError;
 import software.bytepushers.pick3.dto.UserDetailsDto;
@@ -17,10 +15,8 @@ import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.util.ModelUtils;
 
-import javax.servlet.http.Cookie;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -231,58 +227,41 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserDeleteByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, JWT_TOKEN);
-        cookie.setHttpOnly(true);
-        cookie.setPath("/");
-        cookie.setMaxAge(SecurityConstants.TOKEN_EXPIRY_TIME);
+        User user = ModelUtils.userEntity();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
+        LOGIN_RESPONSE = loginResponse(user, userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT + "/5")
-                .cookie(cookie)
+                .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
-        assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
+        assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present.";
     }
 
     @Test
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
-        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         User user = ModelUtils.userEntity();
+        Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         LOGIN_RESPONSE = loginResponse(user, userDto.getUser());
-        Cookie[] cookies = LOGIN_RESPONSE.getCookies();
-        System.out.println("cookies: " + cookies);
-        for (Cookie cookie : cookies) {
-            System.out.println("cookie name: " + cookie.getName());
-            System.out.println("cookie value: " + cookie.getValue());
-            System.out.println("cookie age: " + cookie.getMaxAge());
-            System.out.println("cookie path: " + cookie.getPath());
-            System.out.println("cookie domain: " + cookie.getDomain());
-            System.out.println("cookie secure: " + cookie.getSecure());
-            System.out.println("cookie version: " + cookie.getVersion());
-        }
-
-        Optional<Cookie> jwtTokenCookie = Arrays.stream(cookies).filter(cookie ->
-                StringUtils.equals(cookie.getName(), JWT_TOKEN_COOKIE_NAME) && StringUtils.equals(cookie.getPath(), "/")).findAny();
-        if (jwtTokenCookie.isPresent()) {
-            Cookie cookie = jwtTokenCookie.get();
-            MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
-                    .cookie(cookie)
-                    .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
-            assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user" +
-                    " details successfully if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
-        }
+        MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
+                .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
+                .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
+        assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user" +
+                " details successfully if jwt cookie is valid and present.";
     }
 
     @Test
     public void testUpdateUserEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
+        User user = ModelUtils.userEntity();
         userDto.getUser().setId(5L);
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
+        LOGIN_RESPONSE = loginResponse(user, userDto.getUser());
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .content(requestBodyInJson)).andReturn().getResponse();
         assert response.getStatus() == HttpStatus.OK.value() : "User must be updated successfully" +
-                " if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
+                " if jwt cookie is valid and present.";
     }
 }
