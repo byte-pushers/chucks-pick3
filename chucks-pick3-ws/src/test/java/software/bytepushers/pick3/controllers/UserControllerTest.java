@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import software.bytepushers.pick3.config.security.SecurityConstants;
 import software.bytepushers.pick3.domain.User;
 import software.bytepushers.pick3.dto.ApiError;
 import software.bytepushers.pick3.dto.UserDetailsDto;
@@ -15,6 +16,7 @@ import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.exceptions.MalformedRequestException;
 import software.bytepushers.pick3.util.ModelUtils;
 
+import javax.servlet.http.Cookie;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.Collections;
@@ -227,10 +229,13 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     @Test
     public void testUserDeleteByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
+        Cookie cookie = new Cookie(JWT_TOKEN_COOKIE_NAME, JWT_TOKEN);
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        cookie.setMaxAge(SecurityConstants.TOKEN_EXPIRY_TIME);
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(delete(USERS_END_POINT + "/5")
-                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
-                .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
+                .cookie(cookie)
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
         assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present. status: " + response.getStatus() + " content:" + response.getContentAsString();
