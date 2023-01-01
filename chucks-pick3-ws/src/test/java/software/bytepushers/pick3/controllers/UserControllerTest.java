@@ -241,6 +241,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .contentType(MediaType.APPLICATION_JSON)).andReturn().getResponse();
         assert response.getStatus() == HttpStatus.OK.value() : "User get by id endpoint must return user" +
@@ -254,6 +255,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         String requestBodyInJson = this.objectMapper.writeValueAsString(userDto);
         MockHttpServletResponse response = mvc.perform(put(USERS_END_POINT)
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
                 .content(requestBodyInJson)).andReturn().getResponse();
         assert response.getStatus() == HttpStatus.OK.value() : "User must be updated successfully" +
