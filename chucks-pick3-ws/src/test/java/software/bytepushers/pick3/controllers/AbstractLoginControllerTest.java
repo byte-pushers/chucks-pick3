@@ -15,12 +15,10 @@ import software.bytepushers.pick3.dto.LoginDto;
 import software.bytepushers.pick3.dto.LoginResponseDto;
 import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
-import software.bytepushers.pick3.dto.enums.AccountType;
 import software.bytepushers.pick3.repositories.UserRepository;
 import software.bytepushers.pick3.services.UserService;
 import software.bytepushers.pick3.util.ModelUtils;
 
-import java.util.Collections;
 import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -46,7 +44,6 @@ public abstract class AbstractLoginControllerTest extends AbstractControllerTest
         if (StringUtils.isBlank(JWT_TOKEN)) {
             User user = ModelUtils.userEntity();
             UserDto userDto = ModelUtils.userDto();
-            userDto.getUser().setRoles(Collections.singletonList(AccountType.PREMIUM.name()));
             LOGIN_RESPONSE = loginResponse(user, userDto.getUser());
             LoginResponseDto loginResponseDto = this.objectMapper.readValue(LOGIN_RESPONSE.getContentAsString(), LoginResponseDto.class);
             JWT_TOKEN = loginResponseDto.getToken();
