@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 
 import static software.bytepushers.pick3.config.security.SecurityConstants.HEADER_STRING;
 import static software.bytepushers.pick3.config.security.SecurityConstants.TOKEN_PREFIX;
@@ -27,8 +28,7 @@ public class CheckAuthCookieFilter implements Filter {
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (SecurityConstants.JWT_TOKEN_COOKIE_NAME.equals(cookie.getName())) {
-//                    mutableRequest.putHeader("Authorization", URLDecoder.decode(cookie.getValue(), "utf-8"));
-                    mutableRequest.putHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + (cookie.getValue())));
+                    mutableRequest.putHeader(HEADER_STRING, StringUtils.join(TOKEN_PREFIX + URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8)));
                 }
             }
         }
