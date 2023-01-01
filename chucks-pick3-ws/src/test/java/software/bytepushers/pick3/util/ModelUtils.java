@@ -9,7 +9,9 @@ import software.bytepushers.pick3.dto.UserDetailsDto;
 import software.bytepushers.pick3.dto.UserDto;
 import software.bytepushers.pick3.dto.enums.AccountType;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static software.bytepushers.pick3.util.TestConstants.*;
 
@@ -19,7 +21,10 @@ public class ModelUtils {
         UserDto userDto = new UserDto();
         UserDetailsDto userDetailsDto = new UserDetailsDto();
         AccountType accountType = AccountType.PREMIUM;
-        userDetailsDto.setRoles(Collections.singletonList(accountType.getRoleName()));
+        String roleName = accountType.getRoleName();
+        List<String> roleNames = new ArrayList<>();
+        roleNames.add(roleName);
+        userDetailsDto.setRoles(roleNames);
         userDetailsDto.setEmail(USER_EMAIL);
         userDetailsDto.setFirstName(USER_FIRST_NAME);
         userDetailsDto.setLastName(USER_LAST_NAME);
