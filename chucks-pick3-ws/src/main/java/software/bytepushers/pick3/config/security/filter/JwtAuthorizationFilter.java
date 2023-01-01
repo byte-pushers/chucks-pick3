@@ -65,7 +65,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         Cookie[] cookies = request.getCookies();
         if (StringUtils.startsWithIgnoreCase(header, TOKEN_PREFIX)) {
             jwtToken.set(StringUtils.substringAfter(header, TOKEN_PREFIX));
-        } else if (cookies != null) {
+        }
+        if (cookies != null) {
             Arrays.stream(cookies).filter(cookie -> StringUtils.equals(cookie.getName(), JWT_TOKEN_COOKIE_NAME))
                     .findAny().ifPresent(cookie -> jwtToken.set(cookie.getValue()));
         }
