@@ -245,6 +245,9 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
+        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getName());
+        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getValue());
+        System.out.println("cookie: " + LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME).getMaxAge());
         MockHttpServletResponse response = mvc.perform(get(USERS_END_POINT + "/5")
                 .header(HEADER_STRING, TOKEN_PREFIX + JWT_TOKEN)
                 .cookie(LOGIN_RESPONSE.getCookie(JWT_TOKEN_COOKIE_NAME))
