@@ -12,9 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import software.bytepushers.pick3.component.JwtUtils;
-import software.bytepushers.pick3.config.security.filter.CheckAuthCookieFilter;
 import software.bytepushers.pick3.config.security.filter.JwtAuthorizationFilter;
 import software.bytepushers.pick3.config.security.filter.RestAuthenticationEntryPoint;
 
@@ -74,9 +72,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .addFilter(new JwtAuthorizationFilter(this.authenticationManager(), this.jwtUtils))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        http.addFilterBefore(new CheckAuthCookieFilter(), BasicAuthenticationFilter.class);
-
     }
 
     /**
