@@ -247,7 +247,10 @@ public class UserControllerTest extends AbstractLoginControllerTest {
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         Mockito.when(this.userService.getById(Mockito.anyLong())).thenReturn(userDto.getUser());
+        User user = ModelUtils.userEntity();
+        LOGIN_RESPONSE = loginResponse(user, userDto.getUser());
         Cookie[] cookies = LOGIN_RESPONSE.getCookies();
+        System.out.println("cookies: " + cookies);
         for (Cookie cookie : cookies) {
             System.out.println("cookie name: " + cookie.getName());
             System.out.println("cookie value: " + cookie.getValue());
