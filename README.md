@@ -70,7 +70,7 @@ curl --location --request GET 'http://localhost:8080/customers/ping'
 ```aws lambda update-function-code --publish --function-name bytepushers-chucks-pick3-ws --s3-bucket com.bytepushers.chucks-pick3.webservice --s3-key bytepushers-pick3-lambda.jar --region us-east-2```
 7. To check AWS lambda status call following URL. <br />
 ```curl --location --request GET 'https://api-dev.chuckspick3.com/customers/ping'```
-8. Use following postman collection and environment variable to validate local server. <br/>
+8. Use following postman collection and environment variable to validate AWS Lambda on development environment. <br/>
    Postman Collection: [Chucks Pick3 WebServices.postman_collection.json](.%2Fpostman%2FChucks%20Pick3%20WebServices.postman_collection.json) <br/>
    Postman Environment: [ChucksPick3-Dev.postman_environment.json](.%2Fpostman%2FChucksPick3-Dev.postman_environment.json)
 
