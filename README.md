@@ -53,6 +53,26 @@ curl --location --request GET 'http://localhost:8080/customers/ping'
     Postman Collection: [Chucks Pick3 WebServices.postman_collection.json](.%2Fpostman%2FChucks%20Pick3%20WebServices.postman_collection.json) <br/>
     Postman Environment: [ChucksPick3-local.postman_environment.json](.%2Fpostman%2FChucksPick3-local.postman_environment.json)
 
+# Deploy to AWS Lambda
+1. AWS CLI should be configured for development environment.
+2. Following properties should be added in environment variable
+   1. DATASOURCE_URL
+   2. JWT_TOKEN_SECRET
+   3. DATASOURCE_USERNAME
+   4. DATASOURCE_PASSWORD
+3. Run following command and build the project <br />
+```mvn clean install -P aws```
+4. Run following command to copy jar file <br />
+```cp ./chucks-pick3-ws/target/chucks-pick3-ws.jar ./chucks-pick3-ws/target/bytepushers-pick3-lambda.jar```
+5. Copy jar file to AWS S3 bucket <br />
+```aws s3 cp ./chucks-pick3-ws/target/bytepushers-pick3-lambda.jar s3://com.bytepushers.chucks-pick3.webservice/bytepushers-pick3-lambda.jar```
+6. Run this command to update AWS lambda code with the jar file from the S3 bucket
+```aws lambda update-function-code --publish --function-name bytepushers-chucks-pick3-ws --s3-bucket com.bytepushers.chucks-pick3.webservice --s3-key bytepushers-pick3-lambda.jar --region us-east-2```
+7. To check AWS lambda status call following URL. <br />
+```curl --location --request GET 'https://api-dev.chuckspick3.com/customers/ping'```
+8. Use following postman collection and environment variable to validate local server. <br/>
+   Postman Collection: [Chucks Pick3 WebServices.postman_collection.json](.%2Fpostman%2FChucks%20Pick3%20WebServices.postman_collection.json) <br/>
+   Postman Environment: [ChucksPick3-Dev.postman_environment.json](.%2Fpostman%2FChucksPick3-Dev.postman_environment.json)
 
 # Pick 3 Lottery App
 curl -v https://cp1jlhg207.execute-api.us-east-2.amazonaws.com/Prod/numbers\?winNumber\=385\&winDrawDate\=2018-09-11\&futureDrawDate\=2018-09-17\&winDrawTime\=MORNING\&futureDrawTime\=MORNING
