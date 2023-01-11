@@ -83,8 +83,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.drawTimeCard);
-
     const someDateTime = new Date();
     const pick3DrawTime: Pick3DrawTime = this.appService.getDrawTime(someDateTime);
     const currentPick3DrawTimeCard = this.appService.getPick3DrawTimeCardsByPick3DrawTimeTypeAndDateTime(pick3DrawTime);
@@ -137,7 +135,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
         this.setData(pick3DrawDateCard.getDrawState(), currentPick3DrawTimeCard, this.appService.getBackgroundImageUrl(), currentPick3DrawTimeCard.getIcon());
       }
     });
-    console.log(this.pick3DrawState);
   }
 
   /* istanbul ignore next */
@@ -181,7 +178,6 @@ export class Pick3DrawDateInfoSection implements OnInit, OnDestroy {
     /* istanbul ignore next */
     if (this.isApplicationOnline()) {
       const pick3DrawTime = pick3DrawTimeCard.getPick3DrawTime();
-      console.log(drawState);
       this.data.setBackgroundImage(backgroundImageUrl);
       this.data.setDrawState(drawState);
       this.data.setDrawTime(pick3DrawTime.getType());

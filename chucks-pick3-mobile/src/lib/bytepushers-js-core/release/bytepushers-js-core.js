@@ -2,12 +2,12 @@
 /* jshint -W108, -W109, -W079 */
 /*jslint bitwise: true, regexp: true*/
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -19,7 +19,7 @@ var nodeModule = module || {};
     * BEGIN Array Extensions */
     if (!Array.prototype.every) {
         Array.prototype.every = function (fun, funParameter) {
-            var t = Object.create(this),
+            let t = Object.create(this),
                 len = t.length >>> 0,
                 i;
 
@@ -47,7 +47,7 @@ var nodeModule = module || {};
 
         Array.prototype.forEach = function forEach(callback, thisArg) {
 
-            var T, k, O, len, obj = {}, kValue;
+            let T, k, O, len, obj = {}, kValue;
 
             if (this === null) {
                 throw new TypeError("this is null or not defined");
@@ -99,7 +99,7 @@ var nodeModule = module || {};
 
     if (!Array.prototype.some) {
         Array.prototype.some = function (fun, functionParameter) {
-            var t = Object.create(this),
+            let t = Object.create(this),
                 len = t.length >>> 0,
                 i;
 
@@ -123,7 +123,7 @@ var nodeModule = module || {};
 
     if (!Array.prototype.isArray) {
         Array.prototype.isArray = function (arg) {
-            var targetArray = (arg === true) ? arg : this;
+            let targetArray = (arg === true) ? arg : this;
             return Object.prototype.toString.call(targetArray) === "[object Array]";
         };
     }
@@ -236,7 +236,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Date.prototype.isLastDayInMonth = function () {
-        var lastDayInMonth = this.getCurrentMonthTotalDays();
+        let lastDayInMonth = this.getCurrentMonthTotalDays();
         if (this.getDate() === lastDayInMonth) {
             return true;
         }
@@ -293,7 +293,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Date.prototype.addTime = function (time) {
-        var newDate = new Date(),
+        let newDate = new Date(),
             wholeNumber = (time > 0) ? Math.floor(time) : Math.ceil(time),
             fraction = ((time - wholeNumber).toFixed(2) * 100),
             hourInMilliseconds = 1000 * 60 * 60 * wholeNumber,
@@ -314,7 +314,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Date.isLastDayInMonth = function (date) {
-        var lastDayInMonth = date.getCurrentMonthTotalDays();
+        let lastDayInMonth = date.getCurrentMonthTotalDays();
         if (date.getDate() === lastDayInMonth) {
             return true;
         }
@@ -378,7 +378,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isArray = function (someArray) {
-        var result = false;
+        let result = false;
         if (Object.isDefined(someArray)) {
             if (someArray.constructor.toString().indexOf("Array") > -1) {
                 result = true;
@@ -396,7 +396,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isDate = function (someDate) {
-        var result = false;
+        let result = false;
         if (Object.isDefined(someDate)) {
             if (typeof someDate === "object" && someDate instanceof Date) {
                 result = true;
@@ -413,7 +413,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isString = function (someString) {
-        var result = false;
+        let result = false;
         if (Object.isDefined(someString)) {
             if (typeof someString === "string" || (typeof someString === "object" && someString instanceof String)) {
                 if (someString.trim().length > 0) {
@@ -433,7 +433,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isNumeric = function (someNumber) {
-        var result = false;
+        let result = false;
         if (Object.isDefined(someNumber) && !isNaN(someNumber)) {
             if (typeof someNumber === "number" || (typeof someNumber === "object" && someNumber instanceof Number)) {
                 result = true;
@@ -451,7 +451,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isBoolean = function (someBoolean) {
-        var result = false;
+        let result = false;
         if (Object.isDefined(someBoolean)) {
             if (typeof someBoolean === "boolean" || (typeof someBoolean === "object" && someBoolean instanceof Boolean)) {
                 result = true;
@@ -469,14 +469,14 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     Object.isDefined = function (target) {
-        var result = false;
+        let result = false;
         if (target !== undefined && target !== null) {
             result = true;
         }
         return result;
     };
     Object.isRegEx = function (someRegEx) {
-        var result = false;
+        let result = false;
 
         if (Object.isDefined(someRegEx)) {
             if ((typeof someRegEx === "object" ||  someRegEx instanceof RegExp)) {
@@ -487,7 +487,7 @@ var nodeModule = module || {};
         return result;
     };
     Object.getProperty = function (obj, p) {
-        var pFunction = "get" + p.substring(0, 1).toUpperCase() + p.substring(1),
+        let pFunction = "get" + p.substring(0, 1).toUpperCase() + p.substring(1),
             value = null;
 
         if (Object.isString(obj)) {
@@ -504,7 +504,7 @@ var nodeModule = module || {};
         return value;
     };
     Object.setProperty = function (obj, p, v) {
-        var pFunction = "set" + p.substring(0, 1).toUpperCase() + p.substring(1);
+        let pFunction = "set" + p.substring(0, 1).toUpperCase() + p.substring(1);
 
         if (Object.hasProperty(obj, p)) {
             obj[p] = v;
@@ -513,7 +513,7 @@ var nodeModule = module || {};
         }
     };
     Object.hasProperty = function (obj, p) {
-        var hasProperty = false;
+        let hasProperty = false;
 
         if (obj.hasOwnProperty(p)) {
             hasProperty = true;
@@ -522,7 +522,7 @@ var nodeModule = module || {};
         return hasProperty;
     };
     Object.hasFunction = function (obj, p) {
-        var hasFunction = false,
+        let hasFunction = false,
             pSetFunction = "set" + p.substring(0, 1).toUpperCase() + p.substring(1),
             pGetFunction = "get" + p.substring(0, 1).toUpperCase() + p.substring(1);
 
@@ -535,7 +535,7 @@ var nodeModule = module || {};
         return hasFunction;
     };
     Object.isFunction = function (target) {
-        var isFunction = false;
+        let isFunction = false;
 
         if (Object.isDefined(target)) {
             if (typeof target === "function") {
@@ -547,7 +547,7 @@ var nodeModule = module || {};
     };
 
     Object.isConstructorFunction = function (targetFunction) {
-        var isConstructorFunction = false,
+        let isConstructorFunction = false,
             isNotFirstLetterUppercase;
 
         if (Object.isFunction(targetFunction)) {
@@ -638,7 +638,7 @@ var nodeModule = module || {};
     String.format = function (someString) {
         // The string containing the format items (e.g. "{0}")
         // will and always has to be the first argument.
-        var theString = someString, i, regEx;
+        let theString = someString, i, regEx;
 
         // start with the second argument (i = 1)
         for (i = 0; i < arguments.length; i = i + 1) {
@@ -659,7 +659,7 @@ var nodeModule = module || {};
          * @returns {*}
          */
         String.prototype.substringBefore = function (searchCriteria) {
-            var searchResult = searchCriteria,
+            let searchResult = searchCriteria,
                 searchedStringIndex = this.search(searchCriteria);
 
             if (searchedStringIndex > 0) {
@@ -678,7 +678,7 @@ var nodeModule = module || {};
          * @returns {*}
          */
         String.prototype.substringAfter = function (searchCriteria) {
-            var searchResult = searchCriteria,
+            let searchResult = searchCriteria,
                 searchedStringIndex = this.search(searchCriteria);
 
             if (searchedStringIndex > -1 && searchedStringIndex + searchCriteria.length <= this.length) {
@@ -691,11 +691,11 @@ var nodeModule = module || {};
     /* END String Extensions *****************************************************************************************************/
 
     BytePushers.implementsInterface = function (o) { /*, ... */
-        var i,
+        let i,
             m,
             arg;
 
-        for (i = 1; i < arguments.length; i = i + 1) { // for each argument after o var arg = arguments[i];
+        for (i = 1; i < arguments.length; i = i + 1) { // for each argument after o let arg = arguments[i];
             arg = arguments[i];
             switch (typeof arg) { // If arg is a:
             case 'string': // string: check for a method with that name
@@ -726,7 +726,7 @@ var nodeModule = module || {};
     };
 
     BytePushers.namespace = function (ns_string) {
-        var parts = ns_string.split('.'), parent = BytePushers;
+        let parts = ns_string.split('.'), parent = BytePushers;
         // strip redundant leading global
         if (parts[0] === "BytePushers") {
             parts = parts.slice(1);
@@ -749,7 +749,7 @@ var nodeModule = module || {};
      * @returns {*}
      */
     BytePushers.inherit = function (p) {
-        var t;
+        let t;
         if (p === null) { // p must be non-null object
             throw new TypeError();
         }
@@ -835,7 +835,7 @@ var nodeModule = module || {};
     BytePushers.defineClass = function (data) {
         // Extract the fields we'll use from the argument object.
         // Set up default values.
-        var classname = data.name,
+        let classname = data.name,
             Superclass = data.extend || Object,
             constructor = data.construct || function () {return; },
             methods = data.methods || {},
@@ -966,7 +966,7 @@ var nodeModule = module || {};
     // methods in I.prototype. Otherwise, return false.  Throws an exception
     // if I is a built-in type with nonenumerable methods.
     BytePushers.provides = function (O, I) {
-        var proto = I.prototype,
+        let proto = I.prototype,
             p6;
         // If O actually is an instance of I, it obviously looks like I
         if (O instanceof I) {
@@ -1013,7 +1013,7 @@ var nodeModule = module || {};
     // instances of the type. The returned constructor has properties that // map the name of a value to the value itself, and also a values array, // a foreach() iterator function
     BytePushers.enumeration = function (namesToValues) {
         // This is the dummy constructor function that will be the return value.
-        var name,
+        let name,
             e,
             i3,
             enumeration = function () { throw "Can't Instantiate Enumerations"; },
@@ -1071,15 +1071,15 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, window, module*/
+/*global BytePushers, window, module*/
 /* jshint -W108, -W109, -W079 */
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     "use strict";
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1128,16 +1128,16 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, console, window, module*/
+/*global BytePushers, console, window, module*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1150,7 +1150,7 @@ var nodeModule = module || {};
     BytePushers.filters.GenericProptertyFilter = BytePushers.namespace("software.bytepushers.filters.GenericProptertyFilter");
 
     BytePushers.filters.GenericProptertyFilter.DatePropteryFilter = function (values, date, propertyName) {
-        var filteredDates = [];
+        let filteredDates = [];
 
         if (!Object.isArray(values)) {
             return;
@@ -1166,7 +1166,7 @@ var nodeModule = module || {};
     };
 
     BytePushers.filters.GenericProptertyFilter.StringPropteryFilter = function (values, searchText, propertyName) {
-        var filtered = [];
+        let filtered = [];
 
         if (!Object.isArray(values)) {
             return;
@@ -1184,16 +1184,16 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers, window, module*/
+/*global BytePushers, window, module*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1210,7 +1210,7 @@ var nodeModule = module || {};
     BytePushers.converters.DateConverter.MDDYYYY_DATE_FORMAT = 3;
     BytePushers.converters.DateConverter.YYYYMMDD_DATE_FORMAT = 4;
     BytePushers.converters.DateConverter.convertToDate_MDDYYYY = function (d) {
-        var month, day, year, date = new Date();
+        let month, day, year, date = new Date();
         if (d.length !== 7) {
             throw new BytePushers.exceptions.InvalidParameterException("Date String: " + d + " should be in format MDDYYYY.");
         }
@@ -1225,7 +1225,7 @@ var nodeModule = module || {};
         return date;
     };
     BytePushers.converters.DateConverter.convertToDate_MMDDYYYY = function (d) {
-        var month, day, year, date = new Date();
+        let month, day, year, date = new Date();
         if (d.length !== 8) {
             throw new BytePushers.exceptions.InvalidParameterException("Date String: " + d + " should be in format MMDDYYYY.");
         }
@@ -1240,7 +1240,7 @@ var nodeModule = module || {};
         return date;
     };
     BytePushers.converters.DateConverter.convertToDate_MMMDDYYYY = function (d) {
-        var month, day, year, date = new Date();
+        let month, day, year, date = new Date();
         if (d.length !== 9) {
             throw new BytePushers.exceptions.InvalidParameterException("Date String: " + d + " should be in format MMMDDYYYY.");
         }
@@ -1255,7 +1255,7 @@ var nodeModule = module || {};
         return date;
     };
     BytePushers.converters.DateConverter.convertToDate_YYYYMMDD = function (d) {
-        var month, day, year, date = new Date();
+        let month, day, year, date = new Date();
         if (d.length !== 8) {
             throw new BytePushers.exceptions.InvalidParameterException("Date String: " + d + " should be in format YYYYMMDD.");
         }
@@ -1279,7 +1279,7 @@ var nodeModule = module || {};
         return BytePushers.converters.DateConverter.convertToISO8601Date(iso8601DateString);
     };
     BytePushers.converters.DateConverter.convertToString_MMDDYYY = function (d, delimiter) {
-        var date = new Date(d),
+        let date = new Date(d),
             month = String(date.getMonth() + 1),
             day = String(date.getDate()),
             year = date.getFullYear(),
@@ -1320,7 +1320,7 @@ var nodeModule = module || {};
         return d.toISOString();
     };
     BytePushers.converters.DateConverter.convertToISO8601Date = function (iso8601DateString) {
-        var regexp = new RegExp("([0-9]{4})(-([0-9]{2})(-([0-9]{2})(T([0-9]{2}):([0-9]{2})(:([0-9]{2})(\\.([0-9]+))?)?(Z|(([-+])([0-9]{2}):([0-9]{2})))?)?)?)?"),
+        let regexp = new RegExp("([0-9]{4})(-([0-9]{2})(-([0-9]{2})(T([0-9]{2}):([0-9]{2})(:([0-9]{2})(\\.([0-9]+))?)?(Z|(([-+])([0-9]{2}):([0-9]{2})))?)?)?)?"),
             d = iso8601DateString.match(new RegExp(regexp)),
             date;/*,
             offset = 0;*/
@@ -1361,7 +1361,7 @@ var nodeModule = module || {};
         return date;
     };
     BytePushers.converters.DateConverter.convertToDate = function (d, dateFormat) {
-        var date = null;
+        let date = null;
         switch (dateFormat) {
         case BytePushers.converters.DateConverter.MDDYYYY_DATE_FORMAT:
             date = BytePushers.converters.DateConverter.convertToDate_MDDYYYY(d);
@@ -1382,7 +1382,7 @@ var nodeModule = module || {};
         return date;
     };
     BytePushers.converters.DateConverter.convertToString = function (d, dateFormat, delimiter) {
-        var date = null;
+        let date = null;
         switch (dateFormat) {
         case BytePushers.converters.DateConverter.MMDDYYYY_DATE_FORMAT:
             date = BytePushers.converters.DateConverter.convertToString_MMDDYYY(d, delimiter);
@@ -1407,7 +1407,7 @@ var nodeModule = module || {};
      * @author <a href="mailto:pouncilt.developer@gmail.com">Tont&eacute; Pouncil</a>
      */
     BytePushers.models.Month.getMonthIndex = function (abbr) {
-        var i = -1;
+        let i = -1;
         BytePushers.models.Month.monthNames.forEach(function (monthName, index) {
             if (monthName.abbr === abbr) {
                 i = index;
@@ -1539,16 +1539,16 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global window, document, BytePushers, module*/
+/*global window, document, BytePushers, module*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1591,7 +1591,7 @@ var nodeModule = module || {};
         }
 
         /* Parse the date parts to integers */
-        var parts = dateString.split("/"),
+        let parts = dateString.split("/"),
             day = parseInt(parts[1], 10),
             month = parseInt(parts[0], 10),
             year = parseInt(parts[2], 10),
@@ -1618,7 +1618,7 @@ var nodeModule = module || {};
      * @returns {Date} that was converted from date value.
      */
     BytePushers.DateUtility.convertToDate = function (someDateValue) {
-        var someDate = null;
+        let someDate = null;
 
         if (someDateValue instanceof Date) {
             someDate = someDateValue;
@@ -1643,7 +1643,7 @@ var nodeModule = module || {};
      * @returns {boolean} that indicates whether or not the two calendar date are the same.
      */
     BytePushers.DateUtility.isSameDate = function (someDate1, someDate2) {
-        var sameDate = false;
+        let sameDate = false;
 
         if (Object.isDate(someDate1) && Object.isDate(someDate2)) {
             if (someDate1.getFullYear() === someDate2.getFullYear()) {
@@ -1672,21 +1672,19 @@ function calculateBirthday(birthDate) {
     }
     return age;
 }
-console.log(calculateBirthday(new Date(1982, 11, 4)));
-console.log(calculateBirthday(new Date(1962, 0, 1)));
 
 
 
-;/*global $, window, document, BytePushers, module*/
+/*global $, window, document, BytePushers, module*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window, document) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1759,16 +1757,16 @@ var nodeModule = module || {};
     }
     nodeModule.exports = BytePushers;
 }(window, document));
-;/*global window, document, BytePushers*/
+/*global window, document, BytePushers*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1819,16 +1817,16 @@ var nodeModule = module || {};
 
     nodeModule.exports = BytePushers;
 }(window));
-;/*global BytePushers window*/
+/*global BytePushers window*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 (function (window) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1837,11 +1835,11 @@ var nodeModule = module || {};
         BytePushers = window.BytePushers;
     }
 
-    var specialChar = [' ', '(', ')', '-', '.'];
+    let specialChar = [' ', '(', ')', '-', '.'];
 
     function doPhoneNumberFormat(phoneNumber) {
-        var phoneNumberArray = (phoneNumber) ? phoneNumber.replace(/\D/g, '').split("") : [];
-        var formatPhoneNumber;
+        let phoneNumberArray = (phoneNumber) ? phoneNumber.replace(/\D/g, '').split("") : [];
+        let formatPhoneNumber;
 
         if (Array.isArray(phoneNumberArray) && phoneNumberArray.length === 10) {
             formatPhoneNumber = "(" + phoneNumberArray[0] + phoneNumberArray[1] + phoneNumberArray[2] + ") " + phoneNumberArray[3] + phoneNumberArray[4] + phoneNumberArray[5] + "-" + phoneNumberArray[6] + phoneNumberArray[7] + phoneNumberArray[8] + phoneNumberArray[9];
@@ -1863,11 +1861,11 @@ var nodeModule = module || {};
     nodeModule.exports = BytePushers;
 }(window));
 
-;/*global window, document, BytePushers, XMLHttpRequest, ActiveXObject, module*/
+/*global window, document, BytePushers, XMLHttpRequest, ActiveXObject, module*/
 /* jshint -W108, -W109, -W079 */
 
-var window = window || {};
-var nodeModule = module || {};
+let window = window || {};
+// let nodeModule = module || {};
 
 /**
  * Created with IntelliJ IDEA.
@@ -1879,7 +1877,7 @@ var nodeModule = module || {};
 (function (window, document) {
     'use strict';
 
-    var BytePushers;
+    let BytePushers;
 
     if (window.BytePushers !== undefined && window.BytePushers !== null) {
         BytePushers = window.BytePushers;
@@ -1895,7 +1893,7 @@ var nodeModule = module || {};
         }
         this.loadResource = function (fileName, fileType) {
             if (isResourceNotLoaded(fileName)) {
-                var fileref;
+                let fileref;
 
                 if (fileType === "js") { //if filename is a external JavaScript file
                     fileref = document.createElement('script');
@@ -1913,7 +1911,7 @@ var nodeModule = module || {};
             }
         };
         this.createResource = function (filename, filetype) {
-            var fileref = null;
+            let fileref = null;
             if (filetype === "js") { //if filename is a external JavaScript file
                 fileref = document.createElement('script');
                 fileref.setAttribute("type", "text/javascript");
@@ -1927,7 +1925,7 @@ var nodeModule = module || {};
             return fileref;
         };
         this.replaceResource = function (oldfilename, newfilename, filetype) {
-            var targetelement = (filetype === "js") ? "script" : (filetype === "css") ? "link" : "none", //determine element type to create nodelist using
+            let targetelement = (filetype === "js") ? "script" : (filetype === "css") ? "link" : "none", //determine element type to create nodelist using
                 targetattr = (filetype === "js") ? "src" : (filetype === "css") ? "href" : "none", //determine corresponding attribute to test for
                 allsuspects = document.getElementsByTagName(targetelement),
                 i,
@@ -1940,7 +1938,7 @@ var nodeModule = module || {};
             }
         };
         this.removeResource = function (oldfilename, filetype) {
-            var targetelement = (filetype === "js") ? "script" : (filetype === "css") ? "link" : "none", //determine element type to create nodelist using
+            let targetelement = (filetype === "js") ? "script" : (filetype === "css") ? "link" : "none", //determine element type to create nodelist using
                 targetattr = (filetype === "js") ? "src" : (filetype === "css") ? "href" : "none", //determine corresponding attribute to test for
                 allsuspects = document.getElementsByTagName(targetelement),
                 i,
@@ -1953,7 +1951,7 @@ var nodeModule = module || {};
             }
         };
         this.loadXMLDoc = function (theUrl) {
-            var xmlHttp, xmlDoc;
+            let xmlHttp, xmlDoc;
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlHttp = new XMLHttpRequest();

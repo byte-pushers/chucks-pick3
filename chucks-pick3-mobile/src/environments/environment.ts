@@ -11,11 +11,8 @@ export const environment = {
   production: false,
   getChucksPick3PredictionService: (httpClient: HttpClient) => {
     let service: ChucksPick3PredictionService;
-    if (process.env.USE_MOCKS) {
-      service = new PredictionMockService(httpClient);
-    } else {
-      service = new PredictionProvider(httpClient);
-    }
+
+    service = new PredictionProvider(httpClient);
 
     return service;
   },

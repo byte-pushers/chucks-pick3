@@ -5,7 +5,8 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "npm run use-mocks && ionic serve",
+    "start": "ionic serve",
+    "start-with-mock": "npm run use-mocks && ionic serve --configuration=mock",
     "build": "npm run use-mocks && ng build",
     "test": "npm run use-mocks && ng test",
     "lint": "ng lint",
@@ -62,6 +63,7 @@
     "@commitlint/config-conventional": "^16.0.0",
     "@cypress/schematic": "^1.6.0",
     "@ionic/angular-toolkit": "^4.0.0",
+    "@ionic/cli": "^6.20.6",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.20.33",
