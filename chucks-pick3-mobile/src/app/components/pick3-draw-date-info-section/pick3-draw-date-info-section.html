@@ -3,18 +3,12 @@
     <ion-fab-button
       [routerLink]="['/','view']"
       [disabled]="viewPicksButton"
-      [state]="{
-                    currentSlideNumber: this.id,
-                  currentDay: this.data.getDrawDate()
-                  }"
+      [state]="{currentSlideNumber: this.id, currentDay: this.data.getDrawDate()}"
       [ngClass]="pick3DrawState"
       class="home-screen__floating-action-button picks-indicator"
       (click)="switchDrawDateButtons('gotoViewPicks')"
-      routerDirection="back"
-
-    >
-      <ion-icon src="../../../assets/icon/previous-picks__button.svg"
-                class="view-picks__icon"></ion-icon>
+      routerDirection="back">
+      <ion-icon src="../../../assets/icon/previous-picks__button.svg" class="view-picks__icon"></ion-icon>
     </ion-fab-button>
   </ion-col>
   <ion-col size="6" class="ion-align-self-center" style="height: 100%">
@@ -33,16 +27,13 @@
             <div class="column _55" style="text-align: right; padding-right: 1em">
               <ion-icon *ngIf="data.icon" src="/assets/icon/{{data.icon}}.svg" class="time-of-day-icon"></ion-icon>
             </div>
-            <div class="column _55"
-                 style="text-align: left; line-height: 2.45em">{{data.drawTimeAsString | translate}}</div>
+            <div class="column _55" style="text-align: left; line-height: 2.45em">{{data.drawTimeAsString | translate}}</div>
           </div>
         </div>
         <br />
         <div class="row">
-          <div class="column _55"
-               style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important"><span
-            style="font-size: 4.6vw; font-weight: bold"
-            class="draw-date-text">{{data.drawDate| date: 'EEE MMM d y ' : '' : translateService.currentLang}}</span><br />
+          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 80% !important">
+            <span style="font-size: 4.6vw; font-weight: bold" class="draw-date-text">{{data.drawDate| date: 'EEE MMM d y ' : '' : translateService.currentLang}}</span><br />
           </div>
         </div>
       </ion-col>
@@ -79,14 +70,9 @@
       [routerLink]="['/','select-picks']"
       class="home-screen__floating-action-button generated-picks__button"
       [disabled]="generatePicksButton"
-      [state]="{
-                  currentSlideNumber: this.id,
-                  currentDay: this.data.getDrawDate()
-                }"
-      routerDirection="forward"
-    >
-      <ion-icon src="../../../assets/icon/new-picks__button.svg"
-                class="generate-picks__icon"></ion-icon>
+      [state]="{currentSlideNumber: this.id, currentDay: this.data.getDrawDate()}"
+      routerDirection="forward">
+      <ion-icon src="../../../assets/icon/new-picks__button.svg" class="generate-picks__icon"></ion-icon>
     </ion-fab-button>
   </ion-col>
 </ion-row>

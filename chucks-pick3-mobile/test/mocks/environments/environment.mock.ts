@@ -9,14 +9,11 @@ import {PredictionProvider} from "../app/providers/prediction/prediction.service
 
 export const environment = {
   production: false,
+  USE_MOCKS: true,
   getChucksPick3PredictionService: (httpClient: HttpClient) => {
     let service: ChucksPick3PredictionService;
 
-    if (process.env.USE_MOCKS) {
-      service = new PredictionMockService(httpClient);
-    } else {
-      service = new PredictionProvider(httpClient);
-    }
+    service = new PredictionMockService(httpClient);
 
     return service;
   }
