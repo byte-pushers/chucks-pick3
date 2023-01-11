@@ -7,7 +7,10 @@
     @media (min-width: 414px) and (min-height: 736px) { @content; }
   } @else if $size == iPhoneX {
     @media (min-width: 375px) and (min-height: 812px) { @content; }
-  } @else if $size == iPad {
+  } @else if $size == samsung-galaxy {
+    @media (min-width: 360px) and (min-height: 740px) { @content; }
+  }
+  @else if $size == iPad {
     @media (min-width: 768px) { @content; }
   } @else if $size == iPad-Pro {
     @media (min-width: 1024px) {

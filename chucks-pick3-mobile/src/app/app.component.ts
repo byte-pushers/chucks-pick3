@@ -7,6 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { DrawStateService } from "./services/draw-state.service";
 import { NavigationEnum } from "./models/navigate.enum";
 import { SlideService } from "./services/slide.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -20,6 +21,7 @@ export class AppComponent {
   constructor(private platform: Platform,
               private splashScreen: SplashScreen,
               private statusBar: StatusBar,
+              private router: Router,
               private drawStateService: DrawStateService,
               private popoverController: PopoverController,
               private translateService: TranslateService,
@@ -30,6 +32,7 @@ export class AppComponent {
   }
 
   initializeApp() {
+    this.router.navigate(['/home'])
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       /*this.splashScreen.hide();*/

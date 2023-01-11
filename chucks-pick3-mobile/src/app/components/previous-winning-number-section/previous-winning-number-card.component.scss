@@ -19,6 +19,12 @@ ion-grid {
     }
   }
 
+  ion-content {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   ion-row.drawing-time {
     height: 12.5%;
     border-top: 2px solid;

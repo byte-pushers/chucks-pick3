@@ -6,3 +6,9 @@
   margin-left: 1em;
   margin-right: 1em;
 }
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

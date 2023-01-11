@@ -1,45 +1,6 @@
 @import "../../src/breakpoints.scss";
 
 /* Icons for draw date component */
-.dot {
-  height: 50px;
-  width: 50px;
-  background-color: #FFFFFF;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 2px;
-  color: black;
-  line-height: 2em;
-  font-size: 1.5em;
-  font-weight: bold;
-
-  @include for-size(iPhone5-SE) {
-    height: 40px;
-    width: 40px;
-  }
-  @include for-size(iPhone6-7-8) {
-    height: 50px;
-    width: 50px;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    height: 60px;
-    width: 60px;
-  }
-  @include for-size(iPhoneX) {
-    height: 55px;
-    width: 55px;
-  }
-  @include for-size(iPad) {
-    height: 80px;
-    width: 80px;
-  }
-  @include for-size(iPad-Pro) {
-    height: 85px;
-    width: 85px;
-  }
-
-
-}
 
 
 
@@ -50,10 +11,10 @@
   vertical-align: middle;
   right: 5px;
   line-height: 12vh;
-  font-size: 13vw;
+  font-size: 12vw;
   margin-left: 1rem !important;
   @include for-size(iPhone5-SE) {
-    font-size: 9.8vw;
+    font-size: 5vw;
   }
   @include for-size(iPhone6-7-8) {
     font-size: 11vw;
