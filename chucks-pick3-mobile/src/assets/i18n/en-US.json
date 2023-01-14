@@ -23,5 +23,6 @@
   "pick3.draw.date.card.previous.drawing.time": "Previous Drawing Time:",
   "pick3.draw.date.card.current.drawing.date": "Drawing Date",
   "pick3.draw.date.card.current.drawing.time": "Drawing Time",
-  "select-picks": "Select Previous Picks"
+  "select-picks": "Select Previous Picks",
+  "try.again.later": "Please try again later"
 }

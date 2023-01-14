@@ -43,7 +43,7 @@ export class Pick3DrawTimeInfoSectionComponent implements OnInit, OnDestroy {
       const drawTimeHour = drawTime.getDateTime().getHours();
       drawTime.setPick3DrawTime(this.appService.getDrawTime(drawTime.getDateTime()));
 
-      if (currentHour < drawTimeHour) {
+      if (currentHour < drawTimeHour || currentHour >= 22) {
         this.selectDrawingTimeCard(drawTime);
         return true;
       }

@@ -364,7 +364,7 @@ if (component.date === date) {
 
   it('should return yesterdayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
     component.checkIfCountDownIsAvailable(yesterdayPick3DrawTimeModel);
-    expect(yesterdayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
+    expect(yesterdayPick3DrawTimeModel.showCountDownToDrawing).toBeTrue();
   });
 
   it('should return yesterdayPick3DrawTimeModelSunday with the showCountdownToDrawing as true', () => {
@@ -374,7 +374,7 @@ if (component.date === date) {
 
   it('should return todayPick3DrawTimeModel with the showCountdownToDrawing as false', () => {
     component.checkIfCountDownIsAvailable(todayPick3DrawTimeModel);
-    expect(todayPick3DrawTimeModel.showCountDownToDrawing).toBeFalse();
+    expect(todayPick3DrawTimeModel.showCountDownToDrawing).toBeTrue();
   });
 
   xit('should return todayPick3DrawTimeModelNight with the showCountdownToDrawing as true', () => {

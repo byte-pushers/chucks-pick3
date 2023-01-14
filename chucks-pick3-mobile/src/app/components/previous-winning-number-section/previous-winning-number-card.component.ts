@@ -267,16 +267,30 @@ export class PreviousWinningNumberCardComponent implements OnInit, OnDestroy {
 
   public checkIfCountDownIsAvailable(pick3DrawTimeCard: Pick3DrawTimeCard) {
     const currentDate = new Date();
-    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours()) {
+    if (pick3DrawTimeCard.getDateTime().getHours() <= currentDate.getHours() && pick3DrawTimeCard.getDateTime() === currentDate) {
       pick3DrawTimeCard.showCountDownToDrawing = false;
     } else if (pick3DrawTimeCard.getDateTime() < currentDate) {
-      pick3DrawTimeCard.showCountDownToDrawing = false;
+      this.checkIfYesterdaysDrawDateWasClosed(pick3DrawTimeCard);
     } else {
       pick3DrawTimeCard.showCountDownToDrawing = true;
+      pick3DrawTimeCard.closedState = false;
       this.continueButton = true;
       this.checkIfDrawTimeWillBePresent(pick3DrawTimeCard);
     }
     return pick3DrawTimeCard;
+  }
+
+  private checkIfYesterdaysDrawDateWasClosed(pick3DrawTimeCard) {
+    if (this.isLotteryClosed(new Date(pick3DrawTimeCard.getDateTime()))) {
+      console.log('its sunday');
+      pick3DrawTimeCard.showCountDownToDrawing = true;
+      pick3DrawTimeCard.closedState = true;
+    } else {
+      console.log('its NOT sunday');
+      pick3DrawTimeCard.showCountDownToDrawing = false;
+      pick3DrawTimeCard.closedState = false;
+    }
+    return pick3DrawTimeCard
   }
 
   public getCurrentWinningDrawingNumber(pick3DrawDateCard: Pick3DrawDateCard, drawState: string, pick3DrawDateTime: Date, pick3DrawTimeType: Pick3DrawTimeEnum): Pick3DrawDateCard {

@@ -11,7 +11,7 @@
       <ion-icon src="../../../assets/icon/previous-picks__button.svg" class="view-picks__icon"></ion-icon>
     </ion-fab-button>
   </ion-col>
-  <ion-col size="6" class="ion-align-self-center" style="height: 100%">
+  <ion-col size="6">
     <ion-row>
       <ion-col>
         <div class="container">
@@ -39,28 +39,23 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <div class="row">
-          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 100%">
-            <div style="display: inline" *ngIf="showCountDownToDrawing === false">
-              <span class="dot">{{data.winningNumberDigit1}}</span>
-              <span class="dot">{{data.winningNumberDigit2}}</span>
-              <span class="dot">{{data.winningNumberDigit3}}</span>
-            </div>
-            <div style="display: inline" *ngIf="showCountDownToDrawing === true">
-              <countdown-timer *ngIf="drawDateCardUnavailable === false" [end]="data.drawDate"></countdown-timer>
-              <div style="color: #ff4f4f; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" *ngIf="drawDateCardUnavailable === true">
-                <b><p>{{'day.not.available' | translate}}</p></b>
-                <countdown-timer [end]="tomorrowUnavailableDate"></countdown-timer>
-              </div>
-            </div>
+      <ion-col class="_55" style="text-align: center; margin-left: auto; margin-right: auto; flex-basis: 100%">
+        <div style="display: inline" *ngIf="showCountDownToDrawing === false">
+          <span class="dot">{{data.winningNumberDigit1}}</span>
+          <span class="dot">{{data.winningNumberDigit2}}</span>
+          <span class="dot">{{data.winningNumberDigit3}}</span>
+        </div>
+        <div style="display: inline" *ngIf="showCountDownToDrawing === true">
+          <countdown-timer *ngIf="drawDateCardUnavailable === false" [end]="data.drawDate"></countdown-timer>
+          <div style="color: #ff4f4f;  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" *ngIf="drawDateCardUnavailable === true">
+            <b><p style=" font-size: 3.5vw">{{'day.not.available' | translate}}</p></b>
           </div>
         </div>
-        <div class="row">
-          <div class="column _55" style="text-align: center; margin-left: auto; margin-right: auto">
-            <p [class.slideNumberClass]="slideNumberClass">{{id}}</p>
-          </div>
-        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="slide-number-row">
+      <ion-col  class="_55" style="text-align: center; margin-left: auto; margin-right: auto">
+        <p [class.slideNumberClass]="slideNumberClass">{{id}}</p>
       </ion-col>
     </ion-row>
   </ion-col>

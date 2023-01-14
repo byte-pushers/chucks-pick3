@@ -1,6 +1,13 @@
 @import "../../../breakpoints";
 @import "../../../theme/variables";
 
+
+ion-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 ion-col {
   height: 100%;
 }
@@ -90,7 +97,7 @@ ion-grid {
   margin-left: auto;
   margin-right: auto;
   @include for-size(iPhone5-SE) {
-    font-size: 7vw !important;
+    font-size: 4em !important;
   }
 }
 
@@ -98,22 +105,40 @@ ion-grid {
   overflow-y: hidden;
 }
 
+.slide-number-row {
+  @include for-size(iPhone5-SE) {
+    margin-top: 0 !important;
+  }
+  @include for-size(iPhoneX) {
+    margin-top: 5em !important;
+  }
+  @include for-size(samsung-galaxy) {
+    margin-top: 1em;
+  }
+}
+
+
 .dot {
   height: 50px;
   width: 50px;
   background-color: $chucksPick3White;
   border-radius: 50%;
   display: inline-block;
-  margin: 2px;
+  margin: .5em 2px .5em 2px;
   color: $chucksPick3Black;
   line-height: 2em;
   font-size: 1.5em;
   font-weight: bold;
 
   @include for-size(iPhone5-SE) {
+    height: 20px;
+    width: 20px;
+    line-height: 1em;
+  }
+  @include for-size(samsung-galaxy) {
     height: 40px;
     width: 40px;
-    line-height: 1.6em;
+    line-height: 1.5em;
   }
 }
 
@@ -214,19 +239,7 @@ ion-grid {
 
 .slideNumberClass {
   color: white;
-  @include for-size(iPhone5-SE) {
-    font-size: 4vw;
-    padding-top: 0.5em;
-  }
-  @include for-size(iPhone6-7-8) {
-    padding-top: 1.5em;
-  }
-  @include for-size(iPhone6-7-8-Plus) {
-    padding-top: 2.6em;
-  }
-  @include for-size(iPhoneX) {
-    padding-top: 5em;
-  }
+  vertical-align: bottom;
 }
 
 .general-draw-date-button-sizing {
