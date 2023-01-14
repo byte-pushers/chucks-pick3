@@ -32,7 +32,7 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": [],
+            "scripts": ["src/lib/polly-fill/jquery.js"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -125,7 +125,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [],
+            "scripts": ["src/lib/polly-fill/jquery.js"],
             "assets": [
               {
                 "glob": "favicon.ico",

@@ -86,7 +86,6 @@ export class HomePage implements OnDestroy {
   /* istanbul ignore next */
   public initializePick3DrawDateCard(swiper): void {
     if (swiper != undefined || null) {
-      console.log(swiper.activeIndex);
       let activeIndex;
       activeIndex = swiper.activeIndex;
       if (this.slidesLoaded) {

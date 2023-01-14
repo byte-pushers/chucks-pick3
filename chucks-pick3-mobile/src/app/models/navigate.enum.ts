@@ -12,33 +12,35 @@ export namespace NavigationEnum {
     onViewEnabledHome,
   }
 
-  export function retrieveNavigation(e: string): NavigationEnum {
+  export function retrieveNavigation(navEnumValue: string): NavigationEnum {
     let propertyKey: NavigationEnum = null;
-    switch (e) {
-      case 'homeEnabled':
-        propertyKey = NavigationEnum.homeEnabled;
+    let navEnum: NavigationEnum = NavigationEnum[navEnumValue];
+
+    switch (navEnum) {
+      case NavigationEnum.homeEnabled:
+        propertyKey = NavigationEnum['homeEnabled'];
 
         break;
-      case 'previousWinningNumberEnabled':
-        propertyKey = NavigationEnum.previousWinningNumberEnabled;
+      case NavigationEnum.previousWinningNumberEnabled:
+        propertyKey = NavigationEnum['previousWinningNumberEnabled'];
 
         break;
-      case 'generateNumberEnabled':
-        propertyKey = NavigationEnum.generateNumberEnabled;
+      case NavigationEnum.generateNumberEnabled:
+        propertyKey = NavigationEnum['generateNumberEnabled'];
 
         break;
-      case 'viewPicksEnabled':
-        propertyKey = NavigationEnum.viewPicksEnabled;
+      case NavigationEnum.viewPicksEnabled:
+        propertyKey = NavigationEnum['viewPicksEnabled'];
 
         break;
-      case 'viewPicksDisabled':
-        propertyKey = NavigationEnum.viewPicksDisabled;
+      case NavigationEnum.viewPicksDisabled:
+        propertyKey = NavigationEnum['viewPicksDisabled'];
         break;
-      case 'generatePicksDisabled':
-        propertyKey = NavigationEnum.generatePicksDisabled;
+      case NavigationEnum.generatePicksDisabled:
+        propertyKey = NavigationEnum['generatePicksDisabled'];
         break;
-      case 'onViewEnabledHome':
-        propertyKey = NavigationEnum.onViewEnabledHome;
+      case NavigationEnum.onViewEnabledHome:
+        propertyKey = NavigationEnum['onViewEnabledHome'];
         break;
     }
 

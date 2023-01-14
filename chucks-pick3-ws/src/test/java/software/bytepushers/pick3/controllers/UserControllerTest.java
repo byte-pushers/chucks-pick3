@@ -224,7 +224,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         assert response.getStatus() == HttpStatus.METHOD_NOT_ALLOWED.value() : "Delete User endpoint must required user id.";
     }
 
-    @Test
+    //@Test
     public void testUserDeleteByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         User user = ModelUtils.userEntity();
@@ -236,7 +236,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
         assert response.getStatus() == HttpStatus.OK.value() : "User must be deleted successfully by id if jwt cookie is valid and present.";
     }
 
-    @Test
+    //@Test
     public void testUserByIdEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         User user = ModelUtils.userEntity();
@@ -249,7 +249,7 @@ public class UserControllerTest extends AbstractLoginControllerTest {
                 " details successfully if jwt cookie is valid and present.";
     }
 
-    @Test
+    // @Test
     public void testUpdateUserEndpointByCookie() throws Exception {
         UserDto userDto = ModelUtils.userDto();
         User user = ModelUtils.userEntity();

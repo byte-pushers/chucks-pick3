@@ -1,4 +1,5 @@
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+declare var $: any;
 
 export class PageReader {
   private jQuery = $;
