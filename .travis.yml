@@ -10,7 +10,7 @@ matrix:
         - pip install -U pip
         - pip install awscli
       install:
-        - mvn clean install -P aws -Dmaven.test.skip=true
+        - mvn clean install -P aws -DskipTests
       before_deploy:
         - cp -Rf 'chucks-pick3-ws/target/chucks-pick3-ws.jar' ${S3_DEPLOYMENT_OBJECT_NAME}
       deploy:
