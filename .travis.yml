@@ -6,7 +6,7 @@ matrix:
         directories:
           - "$HOME/.m2"
       before_install:
-        - pyenv global 3.7.1
+        - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
       install:
@@ -110,7 +110,7 @@ matrix:
         directories:
           - "chucks-pick3-web/angular-app/node_modules"
       before_install:
-        - pyenv global 3.7.1
+        - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
         - cd chucks-pick3-web/angular-app/
