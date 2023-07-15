@@ -630,6 +630,11 @@
                     <artifactId>javax.servlet-api</artifactId>
                     <version>4.0.1</version>
                 </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>2.0.1.Final</version>
+                </dependency>
             </dependencies>
             <build>
                 <plugins>
