@@ -137,7 +137,7 @@ matrix:
             branch: master
     - language: node_js
       node_js:
-        - “16.10.0”
+        - “14.20.1”
       dist: trusty
       addons:
         chrome: stable
