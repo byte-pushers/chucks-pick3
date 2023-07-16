@@ -149,6 +149,7 @@ matrix:
         - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> .npmrc
         - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
         - npm install -g @ionic/cli
+        - npm install --save-dev ajv@^7
       install:
         - npm install
         - npm install --only=dev
