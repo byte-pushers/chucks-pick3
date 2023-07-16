@@ -113,6 +113,7 @@ matrix:
         - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
+        - npm install --save-dev ajv@^7
         - cd chucks-pick3-web/angular-app/
       install:
         - npm install
@@ -149,7 +150,6 @@ matrix:
         - printf "//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> .npmrc
         - npm config set //registry.npmjs.com/:_authToken=$NPM_TOKEN
         - npm install -g @ionic/cli
-        - npm install --save-dev ajv@^7
       install:
         - npm install
         - npm install --only=dev
