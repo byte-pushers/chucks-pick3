@@ -113,8 +113,8 @@ matrix:
         - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
-        - npm install --save-dev ajv@^7
         - cd chucks-pick3-web/angular-app/
+        - npm install --save-dev ajv@^7
       install:
         - npm install
       script:
