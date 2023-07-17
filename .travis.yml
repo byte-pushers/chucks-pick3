@@ -114,7 +114,6 @@ matrix:
         - pip install -U pip
         - pip install awscli
         - cd chucks-pick3-web/angular-app/
-        - npm install --save-dev ajv@^7
       install:
         - npm install
       script:
