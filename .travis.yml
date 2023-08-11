@@ -6,7 +6,7 @@ matrix:
         directories:
           - "$HOME/.m2"
       before_install:
-        - pyenv global 3.7.1
+        - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
       install:
@@ -105,12 +105,12 @@ matrix:
         - secure: HR01oSZJ+gAoHprnVIiyopCIPppi211f1OM2e8KwaQcu4xVk1pfy0Awm8c5Cvt0XwT79XjMbt+DDR0JyxJv93rb475D8bht4bkxVR6psgC7pow2cwb6crEN9fiw21iKC01jg878++FAIpDTUu0PSm4LPgWA2GQbSYzJfOiA6eX3Rp54VIWf2gZhpDT31sp+t8m8yhhzQBFguhOXNf9XkrsNQgMpH27wXNIjBTgq0mu4EIPaqYpiMbthyAkise6eQSm8JCIaH4pSQuGkDb4Sb03FnuVY5e93x7Y1ezY3Ye4tfo06XwRprSZ2E3mTvstv88l6x9c4DtR2UTrOrEqSjXzRELZZM6MiDK3U5zudwKhdgVlzE2SLlrt4clo+M8VpC7spwX3Mh5Q9F6nyx21aiz1jbZQz3xfii4+3kXMrJ8oOM1nqrOUzfolILSx6Sz0Civ6RC3toEBbh9T9CECL28TqGlafDNlIL84V31zlvUuBraH+hPirVG3UnSSJDDo83xhkyHi+5cQ6Pa0l1cqjrl3tnYtrgKNYG27UGEjl8b+ytI3qnX4wLZKmOP1Sepv+vB6PY9e9NrY8naWEeSfCqXaIp9y0DrMeksQKqbyn/0s42b/qBaKJpFM9WrAUdxVITN0osxvQFNtSDalkyJfUdC7ffdmMtc/nwmaKKVZlqednQ=
     - language: node_js
       node_js:
-        - “12”
+        - “14.20.1”
       cache:
         directories:
           - "chucks-pick3-web/angular-app/node_modules"
       before_install:
-        - pyenv global 3.7.1
+        - pyenv global 3.7.13
         - pip install -U pip
         - pip install awscli
         - cd chucks-pick3-web/angular-app/
@@ -137,7 +137,7 @@ matrix:
             branch: master
     - language: node_js
       node_js:
-        - “10”
+        - “14.20.1”
       dist: trusty
       addons:
         chrome: stable
