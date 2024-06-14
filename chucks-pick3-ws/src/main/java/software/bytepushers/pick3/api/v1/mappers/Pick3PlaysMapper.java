@@ -9,7 +9,6 @@ import software.bytepushers.pick3.domain.Pick3Plays;
 /**
  * Mapper for the pick3 plays to the expected response in for for {@link Pick3PlaysResponse}
  */
-@Component
 @Mapper(componentModel = "spring")
 public interface Pick3PlaysMapper {
 
